@@ -1,35 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>❤️ It's Working Heart ❤️</title>
 
 <meta name="description" content="Explore Heart Images & Videos">
 
 <!-- Open Graph -->
+
 <meta property="og:title" content="❤️ It's Working Heart ❤️">
+
 <meta property="og:description" content="Explore Heart Images & Videos">
+
 <meta property="og:image" content="/assets/cover.jpg">
+
 <meta property="og:type" content="website">
 
-<!-- Twitter/X -->
+<meta property="og:url" content="https://YOUR_RENDER_URL.onrender.com">
+
+<!-- Twitter -->
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="❤️ It's Working Heart ❤️">
+
 <meta name="twitter:description" content="Explore Heart Images & Videos">
+
 <meta name="twitter:image" content="/assets/cover.jpg">
 
 <link rel="icon" href="/assets/favicon.png">
 
-<link rel="stylesheet" href="css/style.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+background:#000;
+
+}
+
+#introVideo{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+background:#000;
+
+}
+
+#loading{
+
+position:fixed;
+
+bottom:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+color:white;
+
+font-size:18px;
+
+font-family:Arial,sans-serif;
+
+text-shadow:0 0 10px red;
+
+}
+
+.fade{
+
+animation:fadeOut .8s forwards;
+
+}
+
+@keyframes fadeOut{
+
+to{
+
+opacity:0;
+
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
-
-<div id="loader">
 
 <video
 id="introVideo"
@@ -37,13 +118,44 @@ autoplay
 muted
 playsinline>
 
-<source src="/assets/intro.mp4" type="video/mp4">
+<source
+src="/assets/intro.mp4"
+type="video/mp4">
 
 </video>
 
+<div id="loading">
+
+Loading...
+
 </div>
 
-<script src="js/intro.js"></script>
+<script>
+
+const video=document.getElementById("introVideo");
+
+video.onended=()=>{
+
+document.body.classList.add("fade");
+
+setTimeout(()=>{
+
+location.href="home.html";
+
+},800);
+
+};
+
+// If video cannot play, go to home after 8 seconds
+
+setTimeout(()=>{
+
+location.href="home.html";
+
+},8000);
+
+</script>
 
 </body>
+
 </html>
