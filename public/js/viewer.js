@@ -31,7 +31,7 @@ if (popup === "true") {
 
     container.appendChild(img);
 
-    fileName.textContent = "Popup Image";
+    fileName.textContent = "scan me";
 }
 
 // ================================
