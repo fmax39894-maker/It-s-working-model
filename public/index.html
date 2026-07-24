@@ -11,17 +11,29 @@
 
 <meta name="description" content="Explore Heart Images & Videos">
 
+<meta name="robots" content="index,follow">
+
+<link rel="canonical" href="https://it-s-working-model-production.up.railway.app/">
+
 <!-- Open Graph -->
 
 <meta property="og:title" content="❤️ It's Working Heart ❤️">
 
 <meta property="og:description" content="Explore Heart Images & Videos">
 
-<meta property="og:image" content="/assets/cover.jpg">
-
 <meta property="og:type" content="website">
 
-<meta property="og:url" content="https://it-s-working-model-production.up.railway.app">
+<meta property="og:url" content="https://it-s-working-model-production.up.railway.app/">
+
+<meta property="og:image" content="https://it-s-working-model-production.up.railway.app/assets/cover.jpg">
+
+<meta property="og:image:secure_url" content="https://it-s-working-model-production.up.railway.app/assets/cover.jpg">
+
+<meta property="og:image:type" content="image/jpeg">
+
+<meta property="og:image:width" content="1200">
+
+<meta property="og:image:height" content="630">
 
 <!-- Twitter -->
 
@@ -31,9 +43,11 @@
 
 <meta name="twitter:description" content="Explore Heart Images & Videos">
 
-<meta name="twitter:image" content="/assets/cover.jpg">
+<meta name="twitter:image" content="https://it-s-working-model-production.up.railway.app/assets/cover.jpg">
 
 <link rel="icon" href="/assets/favicon.png">
+
+<link rel="preload" href="/assets/intro.mp4" as="video">
 
 <style>
 
@@ -47,9 +61,7 @@ html,body{
 
 width:100%;
 height:100%;
-
 overflow:hidden;
-
 background:#000;
 
 }
@@ -57,15 +69,11 @@ background:#000;
 #introVideo{
 
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 object-fit:cover;
-
 background:#000;
 
 }
@@ -73,20 +81,14 @@ background:#000;
 #loading{
 
 position:fixed;
-
 bottom:20px;
-
 left:50%;
-
 transform:translateX(-50%);
-
-color:white;
-
+color:#fff;
 font-size:18px;
-
 font-family:Arial,sans-serif;
-
 text-shadow:0 0 10px red;
+z-index:10;
 
 }
 
@@ -116,25 +118,28 @@ opacity:0;
 id="introVideo"
 autoplay
 muted
-playsinline>
+playsinline
+preload="auto">
 
-<source
-src="/assets/intro.mp4"
-type="video/mp4">
+<source src="/assets/intro.mp4" type="video/mp4">
 
 </video>
 
 <div id="loading">
-
 Loading...
-
 </div>
 
 <script>
 
 const video=document.getElementById("introVideo");
 
-video.onended=()=>{
+let redirected=false;
+
+function goHome(){
+
+if(redirected) return;
+
+redirected=true;
 
 document.body.classList.add("fade");
 
@@ -144,15 +149,13 @@ location.href="home.html";
 
 },800);
 
-};
+}
 
-// If video cannot play, go to home after 8 seconds
+video.onended=goHome;
 
-setTimeout(()=>{
+video.onerror=goHome;
 
-location.href="home.html";
-
-},8000);
+setTimeout(goHome,8000);
 
 </script>
 
