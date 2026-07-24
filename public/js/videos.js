@@ -71,7 +71,7 @@ const video=document.createElement("video");
 
 video.src="/assets/videos/"+file;
 
-video.preload="metadata";
+video.preload="none";
 
 video.muted=true;
 
