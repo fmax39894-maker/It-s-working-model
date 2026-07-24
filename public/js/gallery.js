@@ -1,86 +1,85 @@
-// Gallery Container
+// ================================
+// Media Gallery Pro
+// gallery.js
+// ================================
+
 const gallery = document.getElementById("gallery");
 const loading = document.getElementById("loading");
 const empty = document.getElementById("empty");
+const searchBox = document.getElementById("search");
 
-// Search Box
-const search = document.getElementById("search");
-
-// Store all images
 let allImages = [];
 
-// Load Gallery
+// Load Images
 async function loadGallery() {
 
     loading.style.display = "flex";
+    empty.style.display = "none";
+    gallery.innerHTML = "";
 
     try {
 
-        const response = await fetch("/api/gallery");
+        const res = await fetch("/api/gallery");
 
-        const data = await response.json();
+        if (!res.ok) throw new Error("Cannot load gallery");
+
+        const data = await res.json();
 
         allImages = data.images || [];
 
         loading.style.display = "none";
 
-        createGallery(allImages);
+        displayImages(allImages);
 
     } catch (err) {
+
+        console.error(err);
 
         loading.style.display = "none";
 
         empty.style.display = "block";
-
-        console.log(err);
 
     }
 
 }
 
 // Create Gallery
-function createGallery(images) {
+function displayImages(images) {
 
     gallery.innerHTML = "";
 
-    if(images.length===0){
+    if (images.length === 0) {
 
-        empty.style.display="block";
+        empty.style.display = "block";
 
         return;
 
     }
 
-    empty.style.display="none";
+    empty.style.display = "none";
 
-    images.forEach(file=>{
+    images.forEach(file => {
 
-        const card=document.createElement("div");
+        const card = document.createElement("div");
+        card.className = "card";
 
-        card.className="card";
+        const img = document.createElement("img");
+        img.src = "/assets/images/" + file;
+        img.alt = file;
+        img.loading = "lazy";
 
-        const img=document.createElement("img");
+        img.onclick = () => {
 
-        img.loading="lazy";
-
-        img.src="/assets/images/"+file;
-
-        img.alt=file;
-
-        img.onclick=()=>{
-
-            location.href=
-            "viewer.html?type=image&file="
-            +encodeURIComponent(file);
+            location.href =
+                "viewer.html?type=image&file=" +
+                encodeURIComponent(file);
 
         };
 
-        const name=document.createElement("p");
-
-        name.textContent=file;
+        const name = document.createElement("p");
+        name.textContent = file;
 
         card.appendChild(img);
-
         card.appendChild(name);
 
         gallery.appendChild(card);
@@ -90,19 +89,26 @@ function createGallery(images) {
 }
 
 // Search
-search.addEventListener("input",()=>{
+searchBox.addEventListener("input", () => {
 
-    const text=search.value.toLowerCase();
+    const keyword = searchBox.value
+        .trim()
+        .toLowerCase();
 
-    const filtered=allImages.filter(file=>{
+    const filtered = allImages.filter(file =>
+        file.toLowerCase().includes(keyword)
+    );
 
-        return file.toLowerCase().includes(text);
-
-    });
-
-    createGallery(filtered);
+    displayImages(filtered);
 
 });
+
+// Reload Gallery
+function refreshGallery() {
+
+    loadGallery();
+
+}
 
 // Start
 loadGallery();
