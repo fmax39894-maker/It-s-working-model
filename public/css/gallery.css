@@ -59,7 +59,7 @@ height:100%;
 
 background:rgba(0,0,0,.45);
 
-backdrop-filter:blur(3px);
+backdrop-filter:blur(4px);
 
 z-index:-2;
 
@@ -81,11 +81,11 @@ align-items:center;
 
 justify-content:space-between;
 
-padding:15px;
+padding:15px 20px;
 
 background:rgba(0,0,0,.45);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(15px);
 
 z-index:100;
 
@@ -95,16 +95,18 @@ header h1{
 
 color:#fff;
 
-font-size:28px;
+font-size:30px;
 
-text-align:center;
+font-weight:bold;
 
 text-shadow:0 0 15px red;
+
+text-align:center;
 
 }
 
 /* ===========================
-BUTTONS
+NAVIGATION BUTTONS
 =========================== */
 
 .navBtn{
@@ -119,7 +121,7 @@ padding:10px 18px;
 
 border:none;
 
-border-radius:50px;
+border-radius:40px;
 
 background:rgba(255,255,255,.15);
 
@@ -129,15 +131,11 @@ cursor:pointer;
 
 transition:.3s;
 
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 
-}
+font-size:15px;
 
-.navBtn img{
-
-width:24px;
-
-height:24px;
+font-weight:600;
 
 }
 
@@ -149,15 +147,23 @@ background:rgba(255,255,255,.25);
 
 }
 
+.navBtn img{
+
+width:24px;
+
+height:24px;
+
+}
+
 /* ===========================
-SEARCH
+SEARCH BAR
 =========================== */
 
 .searchBox{
 
 width:92%;
 
-max-width:650px;
+max-width:700px;
 
 margin:25px auto;
 
@@ -173,15 +179,15 @@ padding:16px 55px 16px 20px;
 
 border:none;
 
-border-radius:40px;
+border-radius:50px;
+
+outline:none;
 
 font-size:18px;
 
-background:rgba(255,255,255,.18);
-
 color:#fff;
 
-outline:none;
+background:rgba(255,255,255,.15);
 
 backdrop-filter:blur(10px);
 
@@ -207,25 +213,25 @@ width:26px;
 
 height:26px;
 
-opacity:.85;
+opacity:.8;
 
 }
 
 /* ===========================
-CONTENT WRAPPER
+MAIN GALLERY CONTAINER
 =========================== */
 
 .gallery{
 
 width:94%;
 
-margin:20px auto 40px auto;
+margin:25px auto;
 
-min-height:300px;
+min-height:350px;
 
 }
 /* ===========================
-   IMAGE GRID
+   GALLERY GRID
 =========================== */
 
 .gallery{
@@ -241,7 +247,7 @@ padding-bottom:40px;
 }
 
 /* ===========================
-   IMAGE CARD
+   CARD
 =========================== */
 
 .card{
@@ -250,7 +256,7 @@ background:rgba(255,255,255,.12);
 
 backdrop-filter:blur(12px);
 
-border-radius:20px;
+border-radius:18px;
 
 overflow:hidden;
 
@@ -260,13 +266,15 @@ transition:.35s;
 
 box-shadow:0 8px 25px rgba(0,0,0,.35);
 
+animation:fadeIn .4s ease;
+
 }
 
 .card:hover{
 
 transform:translateY(-8px) scale(1.03);
 
-box-shadow:0 15px 35px rgba(255,0,0,.35);
+box-shadow:0 0 25px rgba(255,0,0,.45);
 
 }
 
@@ -280,6 +288,14 @@ display:block;
 
 object-fit:cover;
 
+transition:.35s;
+
+}
+
+.card:hover img{
+
+transform:scale(1.08);
+
 }
 
 .card p{
@@ -291,6 +307,8 @@ text-align:center;
 color:#fff;
 
 font-size:15px;
+
+font-weight:600;
 
 word-break:break-word;
 
@@ -306,11 +324,11 @@ display:flex;
 
 flex-direction:column;
 
-align-items:center;
-
 justify-content:center;
 
-padding:40px;
+align-items:center;
+
+padding:50px;
 
 color:#fff;
 
@@ -327,7 +345,7 @@ margin-bottom:15px;
 }
 
 /* ===========================
-   EMPTY
+   EMPTY MESSAGE
 =========================== */
 
 #empty{
@@ -366,17 +384,17 @@ width:8px;
 
 }
 
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
 ::-webkit-scrollbar-thumb{
 
 background:#ff3b3b;
 
-border-radius:20px;
-
-}
-
-::-webkit-scrollbar-track{
-
-background:#111;
+border-radius:30px;
 
 }
 
@@ -428,7 +446,7 @@ height:170px;
 
 font-size:16px;
 
-padding:14px 48px 14px 16px;
+padding:14px 50px 14px 16px;
 
 }
 
@@ -437,12 +455,6 @@ padding:14px 48px 14px 16px;
 /* ===========================
    ANIMATION
 =========================== */
-
-.card{
-
-animation:fadeIn .45s ease;
-
-}
 
 @keyframes fadeIn{
 
