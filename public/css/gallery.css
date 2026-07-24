@@ -1,0 +1,465 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+
+width:100%;
+height:100%;
+
+font-family:Poppins,sans-serif;
+
+overflow-x:hidden;
+
+background:#000;
+
+}
+
+/* ===========================
+BACKGROUND
+=========================== */
+
+.bg{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:url("/assets/backgrounds/images.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+z-index:-3;
+
+}
+
+.overlay{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(3px);
+
+z-index:-2;
+
+}
+
+/* ===========================
+HEADER
+=========================== */
+
+header{
+
+position:sticky;
+
+top:0;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:15px;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(12px);
+
+z-index:100;
+
+}
+
+header h1{
+
+color:#fff;
+
+font-size:28px;
+
+text-align:center;
+
+text-shadow:0 0 15px red;
+
+}
+
+/* ===========================
+BUTTONS
+=========================== */
+
+.navBtn{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:10px 18px;
+
+border:none;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.15);
+
+color:#fff;
+
+cursor:pointer;
+
+transition:.3s;
+
+backdrop-filter:blur(8px);
+
+}
+
+.navBtn img{
+
+width:24px;
+
+height:24px;
+
+}
+
+.navBtn:hover{
+
+transform:scale(1.05);
+
+background:rgba(255,255,255,.25);
+
+}
+
+/* ===========================
+SEARCH
+=========================== */
+
+.searchBox{
+
+width:92%;
+
+max-width:650px;
+
+margin:25px auto;
+
+position:relative;
+
+}
+
+.searchBox input{
+
+width:100%;
+
+padding:16px 55px 16px 20px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:18px;
+
+background:rgba(255,255,255,.18);
+
+color:#fff;
+
+outline:none;
+
+backdrop-filter:blur(10px);
+
+}
+
+.searchBox input::placeholder{
+
+color:#ddd;
+
+}
+
+.searchIcon{
+
+position:absolute;
+
+right:18px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+width:26px;
+
+height:26px;
+
+opacity:.85;
+
+}
+
+/* ===========================
+CONTENT WRAPPER
+=========================== */
+
+.gallery{
+
+width:94%;
+
+margin:20px auto 40px auto;
+
+min-height:300px;
+
+}
+/* ===========================
+   IMAGE GRID
+=========================== */
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+
+gap:20px;
+
+padding-bottom:40px;
+
+}
+
+/* ===========================
+   IMAGE CARD
+=========================== */
+
+.card{
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+overflow:hidden;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+box-shadow:0 15px 35px rgba(255,0,0,.35);
+
+}
+
+.card img{
+
+width:100%;
+
+height:220px;
+
+display:block;
+
+object-fit:cover;
+
+}
+
+.card p{
+
+padding:12px;
+
+text-align:center;
+
+color:#fff;
+
+font-size:15px;
+
+word-break:break-word;
+
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+#loading{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+padding:40px;
+
+color:#fff;
+
+}
+
+#loading img{
+
+width:70px;
+
+height:70px;
+
+margin-bottom:15px;
+
+}
+
+/* ===========================
+   EMPTY
+=========================== */
+
+#empty{
+
+text-align:center;
+
+padding:60px 20px;
+
+color:#fff;
+
+}
+
+#empty img{
+
+width:90px;
+
+margin-bottom:15px;
+
+opacity:.85;
+
+}
+
+#empty h2{
+
+font-size:26px;
+
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#ff3b3b;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+header{
+
+padding:12px;
+
+}
+
+header h1{
+
+font-size:22px;
+
+}
+
+.navBtn{
+
+padding:8px 12px;
+
+}
+
+.navBtn span{
+
+display:none;
+
+}
+
+.gallery{
+
+grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+
+gap:14px;
+
+}
+
+.card img{
+
+height:170px;
+
+}
+
+.searchBox input{
+
+font-size:16px;
+
+padding:14px 48px 14px 16px;
+
+}
+
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+.card{
+
+animation:fadeIn .45s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
