@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Media Viewer</title>
+
+<link rel="stylesheet"
+href="css/viewer.css">
+
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="viewerBg"></div>
+
+<div class="viewerOverlay"></div>
+
+<!-- Navigation -->
+
+<div class="topBar">
+
+<button
+class="circleBtn"
+onclick="history.back()">
+
+<img src="/assets/buttons/back.png">
+
+</button>
+
+<button
+class="circleBtn"
+onclick="location.href='home.html'">
+
+<img src="/assets/buttons/home.png">
+
+</button>
+
+<button
+class="circleBtn"
+id="downloadBtn">
+
+<img src="/assets/buttons/download.png">
+
+</button>
+
+<button
+class="circleBtn"
+onclick="location.href='images.html'">
+
+<img src="/assets/buttons/close.png">
+
+</button>
+
+</div>
+
+<!-- Viewer -->
+
+<div id="viewerContainer">
+
+<!-- Image or Video will load here -->
+
+</div>
+
+<!-- Filename -->
+
+<p id="fileName"></p>
+
+<script src="js/viewer.js"></script>
+
+</body>
+
+</html>
