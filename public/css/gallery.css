@@ -35,15 +35,27 @@ left:0;
 width:100%;
 height:100%;
 
-background:url("/assets/backgrounds/images.jpg");
-
 background-size:cover;
 
 background-position:center;
 
 background-repeat:no-repeat;
 
+background-attachment:fixed;
+
 z-index:-3;
+
+}
+
+.imagesBg{
+
+background-image:url("/assets/backgrounds/images.jpg");
+
+}
+
+.videosBg{
+
+background-image:url("/assets/backgrounds/videos.jpg");
 
 }
 
