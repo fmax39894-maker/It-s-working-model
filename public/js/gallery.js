@@ -64,11 +64,18 @@ function displayImages(images) {
         card.className = "card";
 
         const img = document.createElement("img");
+
         img.src = "/assets/images/" + file;
-        img.alt = file;
+
+        img.alt = "";
+
         img.loading = "lazy";
 
-        img.onclick = () => {
+        img.decoding = "async";
+
+        img.draggable = false;
+
+        card.onclick = () => {
 
             location.href =
                 "viewer.html?type=image&file=" +
@@ -76,11 +83,7 @@ function displayImages(images) {
 
         };
 
-        const name = document.createElement("p");
-        name.textContent = file;
-
         card.appendChild(img);
-        card.appendChild(name);
 
         gallery.appendChild(card);
 
