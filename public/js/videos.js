@@ -11,131 +11,119 @@ let allVideos = [];
 
 // Load Videos
 
-async function loadVideos(){
+async function loadVideos() {
 
-loading.style.display="flex";
+    loading.style.display = "flex";
 
-empty.style.display="none";
+    empty.style.display = "none";
 
-gallery.innerHTML="";
+    gallery.innerHTML = "";
 
-try{
+    try {
 
-const response=await fetch("/api/gallery");
+        const response = await fetch("/api/gallery");
 
-const data=await response.json();
+        const data = await response.json();
 
-allVideos=data.videos||[];
+        allVideos = data.videos || [];
 
-loading.style.display="none";
+        loading.style.display = "none";
 
-displayVideos(allVideos);
+        displayVideos(allVideos);
 
-}catch(e){
+    } catch (e) {
 
-console.log(e);
+        console.log(e);
 
-loading.style.display="none";
+        loading.style.display = "none";
 
-empty.style.display="block";
+        empty.style.display = "block";
 
-}
+    }
 
 }
 
 // Display Videos
 
-function displayVideos(videos){
+function displayVideos(videos) {
 
-gallery.innerHTML="";
+    gallery.innerHTML = "";
 
-if(videos.length===0){
+    if (videos.length === 0) {
 
-empty.style.display="block";
+        empty.style.display = "block";
 
-return;
+        return;
 
-}
+    }
 
-empty.style.display="none";
+    empty.style.display = "none";
 
-videos.forEach(file=>{
+    videos.forEach(file => {
 
-const card=document.createElement("div");
+        const card = document.createElement("div");
 
-card.className="card";
+        card.className = "card";
 
-// Thumbnail
+        // Video Thumbnail
 
-const video=document.createElement("video");
+        const video = document.createElement("video");
 
-video.src="/assets/videos/"+file;
+        video.src = "/assets/videos/" + file;
 
-video.preload="none";
+        video.preload = "metadata";
 
-video.muted=true;
+        video.muted = true;
 
-video.playsInline=true;
+        video.playsInline = true;
 
-// Play Icon
+        // Play Icon
 
-const play=document.createElement("div");
+        const play = document.createElement("div");
 
-play.className="playIcon";
+        play.className = "playIcon";
 
-play.innerHTML="▶";
+        play.innerHTML = "▶";
 
-// Name
+        // Open Viewer
 
-const name=document.createElement("p");
+        card.onclick = () => {
 
-name.textContent=file;
+            location.href =
+                "viewer.html?type=video&file=" +
+                encodeURIComponent(file);
 
-// Open Viewer
+        };
 
-card.onclick=()=>{
+        card.appendChild(video);
 
-location.href=
+        card.appendChild(play);
 
-"viewer.html?type=video&file="+
+        gallery.appendChild(card);
 
-encodeURIComponent(file);
-
-};
-
-card.appendChild(video);
-
-card.appendChild(play);
-
-card.appendChild(name);
-
-gallery.appendChild(card);
-
-});
+    });
 
 }
 
 // Search
 
-search.addEventListener("input",()=>{
+search.addEventListener("input", () => {
 
-const text=search.value.toLowerCase();
+    const text = search.value.toLowerCase();
 
-const result=allVideos.filter(v=>
+    const result = allVideos.filter(v =>
+        v.toLowerCase().includes(text)
+    );
 
-v.toLowerCase().includes(text)
-
-);
-
-displayVideos(result);
+    displayVideos(result);
 
 });
 
 // Refresh
 
-function refreshVideos(){
+function refreshVideos() {
 
-loadVideos();
+    loadVideos();
 
 }
 
