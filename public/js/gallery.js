@@ -77,9 +77,7 @@ function displayImages(images) {
 
         card.onclick = () => {
 
-            location.href =
-                "viewer.html?type=image&file=" +
-                encodeURIComponent(file);
+            window.location.href=`viewer.html?type=image&file=${encodeURIComponent(file)}`;
 
         };
 
