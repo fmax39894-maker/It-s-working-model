@@ -1,0 +1,402 @@
+/*=========================================
+        PREMIUM BOTTOM NAVIGATION
+==========================================*/
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:18px;
+
+    transform:translateX(-50%);
+
+    width:94%;
+
+    max-width:520px;
+
+    height:72px;
+
+    border-radius:40px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+
+    0 8px 35px rgba(0,0,0,.45),
+
+    0 0 18px rgba(0,191,255,.18);
+
+    z-index:9999;
+
+    overflow:hidden;
+
+}
+
+
+/* Moving Active Circle */
+
+.bottom-nav .indicator{
+
+    position:absolute;
+
+    top:8px;
+
+    left:16px;
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#00d4ff,#0078ff);
+
+    box-shadow:
+
+    0 0 18px cyan,
+
+    0 0 35px rgba(0,191,255,.55);
+
+    transition:.35s ease;
+
+    z-index:0;
+
+}
+
+
+/* Navigation Item */
+
+.nav-item{
+
+    position:relative;
+
+    width:25%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+    z-index:2;
+
+    text-decoration:none;
+
+}
+
+
+/* Icon */
+
+.nav-item img{
+
+    width:26px;
+
+    height:26px;
+
+    object-fit:contain;
+
+    transition:.3s;
+
+    filter:
+
+    brightness(.95)
+
+    drop-shadow(0 0 4px rgba(255,255,255,.35));
+
+}
+
+
+/* Emoji Support */
+
+.nav-item span{
+
+    font-size:25px;
+
+    transition:.3s;
+
+}
+
+
+/* Label */
+
+.nav-item small{
+
+    margin-top:4px;
+
+    font-size:10px;
+
+    color:white;
+
+    opacity:.82;
+
+    transition:.3s;
+
+    letter-spacing:.4px;
+
+}
+
+
+/* Active Item */
+
+.nav-item.active img,
+
+.nav-item.active span{
+
+    transform:translateY(-10px) scale(1.18);
+
+    filter:
+
+    drop-shadow(0 0 12px white)
+
+    drop-shadow(0 0 20px cyan);
+
+}
+
+.nav-item.active small{
+
+    color:#00d4ff;
+
+    opacity:1;
+
+    font-weight:bold;
+
+}
+
+
+/* Hover */
+
+.nav-item:hover img,
+
+.nav-item:hover span{
+
+    transform:translateY(-6px) scale(1.08);
+
+}
+
+/*=========================================
+        Bottom Navigation (Part 2)
+==========================================*/
+
+/* Active Indicator Positions */
+
+.bottom-nav.home .indicator{
+    transform:translateX(0);
+}
+
+.bottom-nav.video .indicator{
+    transform:translateX(calc(100% + 12px));
+}
+
+.bottom-nav.image .indicator{
+    transform:translateX(calc(200% + 24px));
+}
+
+.bottom-nav.special .indicator{
+    transform:translateX(calc(300% + 36px));
+}
+
+
+/* Press Effect */
+
+.nav-item:active{
+    transform:scale(.95);
+}
+
+
+/* Top Glow */
+
+.bottom-nav::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:15%;
+
+    width:70%;
+    height:2px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        #00d4ff,
+        transparent
+    );
+
+    box-shadow:0 0 15px cyan;
+
+}
+
+
+/* Bottom Reflection */
+
+.bottom-nav::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:10%;
+
+    bottom:-10px;
+
+    width:80%;
+
+    height:18px;
+
+    background:rgba(0,212,255,.15);
+
+    filter:blur(14px);
+
+    border-radius:50%;
+
+}
+
+
+/* Icon Animation */
+
+.nav-item.active{
+
+    animation:navBounce .45s ease;
+
+}
+
+@keyframes navBounce{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    40%{
+
+        transform:translateY(-12px);
+
+    }
+
+    70%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* Responsive */
+
+@media(max-width:480px){
+
+.bottom-nav{
+
+    width:96%;
+
+    height:68px;
+
+}
+
+.bottom-nav .indicator{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.nav-item img{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+.nav-item span{
+
+    font-size:22px;
+
+}
+
+.nav-item small{
+
+    font-size:9px;
+
+}
+
+}
+
+
+/* Landscape */
+
+@media (orientation:landscape){
+
+.bottom-nav{
+
+    max-width:600px;
+
+    bottom:10px;
+
+}
+
+}
+
+
+/* Safe Area */
+
+.bottom-nav{
+
+    padding-bottom:env(safe-area-inset-bottom);
+
+}
+
+
+/* Hide When Needed */
+
+.bottom-nav.hide{
+
+    transform:translate(-50%,120px);
+
+    transition:.35s;
+
+}
+
+
+/* Show */
+
+.bottom-nav.show{
+
+    transform:translate(-50%,0);
+
+    transition:.35s;
+
+}
