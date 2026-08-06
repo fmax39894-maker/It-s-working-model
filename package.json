@@ -1,16 +1,14 @@
 {
-  "name": "its-working-heart",
+  "name": "media-showcase",
   "version": "1.0.0",
-  "description": "Automatic Image & Video Gallery",
+  "description": "Premium Media Showcase",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0"
   }
 }
