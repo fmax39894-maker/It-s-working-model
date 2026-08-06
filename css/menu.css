@@ -140,3 +140,377 @@ body{
     border-radius:22px;
 
 }
+
+/*=========================================
+        MENU CARD CONTENT
+=========================================*/
+
+
+.menu-card h2{
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+    color:#00d4ff;
+
+    text-shadow:
+
+    0 0 10px cyan;
+
+}
+
+
+.menu-card p{
+
+    line-height:1.7;
+
+    font-size:15px;
+
+    color:rgba(255,255,255,.85);
+
+}
+
+
+/*=========================================
+        LINKS
+=========================================*/
+
+
+.menu-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+.menu-links a{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+
+    rgba(255,255,255,.06);
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+    transition:.3s;
+
+}
+
+
+.menu-links a:hover{
+
+    transform:translateX(8px);
+
+    background:
+
+    rgba(0,212,255,.18);
+
+    box-shadow:
+
+    0 0 18px rgba(0,212,255,.35);
+
+}
+
+
+/*=========================================
+        SOCIAL BUTTONS
+=========================================*/
+
+
+.social-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+}
+
+
+.social-grid a{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+
+    rgba(255,255,255,.07);
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+
+}
+
+
+.social-grid a:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+    0 0 20px cyan;
+
+}
+
+
+/*=========================================
+        CARD ANIMATION
+=========================================*/
+
+
+.menu-card{
+
+    animation:
+
+    menuCard .6s ease forwards;
+
+}
+
+
+@keyframes menuCard{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(35px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+/*=========================================
+        BACK BUTTON EFFECT
+=========================================*/
+
+.back-btn:hover{
+
+    transform:scale(1.1);
+
+    background:
+
+    rgba(0,212,255,.25);
+
+    box-shadow:
+
+    0 0 20px cyan;
+
+}
+
+.back-btn:active{
+
+    transform:scale(.92);
+
+}
+
+
+/*=========================================
+        GLASS SHINE
+=========================================*/
+
+
+.menu-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.menu-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.12),
+
+    transparent
+
+    );
+
+
+    transform:skewX(-20deg);
+
+    animation:
+
+    cardShine 8s infinite;
+
+}
+
+
+@keyframes cardShine{
+
+    0%{
+
+        left:-120%;
+
+    }
+
+
+    20%{
+
+        left:120%;
+
+    }
+
+
+    100%{
+
+        left:120%;
+
+    }
+
+}
+
+
+/*=========================================
+        MOBILE RESPONSIVE
+=========================================*/
+
+
+@media(max-width:600px){
+
+
+.menu-logo{
+
+    width:140px;
+
+}
+
+
+.menu-scroll{
+
+    padding:14px;
+
+}
+
+
+.menu-card{
+
+    padding:16px;
+
+    border-radius:18px;
+
+}
+
+
+.menu-card h2{
+
+    font-size:20px;
+
+}
+
+
+.menu-card p{
+
+    font-size:14px;
+
+}
+
+
+.social-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+.back-btn{
+
+    width:45px;
+
+    height:45px;
+
+}
+
+
+}
+
+
+/*=========================================
+        SMALL HEIGHT DEVICES
+=========================================*/
+
+
+@media(max-height:600px){
+
+.menu-header{
+
+    height:70px;
+
+}
+
+
+.menu-scroll{
+
+    top:80px;
+
+}
+
+}
+
+
+/*=========================================
+        END MENU CSS
+=========================================*/
