@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Media Showcase</title>
+
+<meta name="theme-color" content="#000000">
+
+<link rel="icon" href="assets/logo/logo.png">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animation.css">
+<link rel="stylesheet" href="css/frame.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/home.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+        LOADER
+========================== -->
+
+<div id="loader" class="center">
+
+    <img
+    src="assets/logo/logo.png"
+    class="loader-logo pulse">
+
+</div>
+
+<!-- =========================
+      BACKGROUND VIDEO
+========================== -->
+
+<video
+
+class="bg-video"
+
+autoplay
+
+muted
+
+loop
+
+playsinline>
+
+<source
+
+src="videos/home/home.mp4"
+
+type="video/mp4">
+
+</video>
+
+<div class="overlay"></div>
+
+<!-- =========================
+        HEADER
+========================== -->
+
+<header id="header">
+
+<div class="logo fade-down">
+
+<img
+
+src="assets/logo/logo.png"
+
+alt="Logo">
+
+</div>
+
+<button
+
+class="menu-btn ripple"
+
+onclick="goMenu()">
+
+☰
+
+</button>
+
+</header>
+
+<!-- =========================
+       HOME CONTENT
+========================== -->
+
+<section
+
+class="page"
+
+id="homePage">
+
+<div class="home-center">
+
+<div class="welcome-glow">
+
+</div>
+
+</div>
+
+</section>
+
+<!--=========================
+     BOTTOM NAVIGATION
+==========================-->
+
+<nav class="bottom-nav home show">
+
+    <div class="indicator"></div>
+
+    <div class="nav-item active"
+         data-page="index.html">
+
+        <span>🏠</span>
+
+        <small>Home</small>
+
+    </div>
+
+    <div class="nav-item"
+         data-page="videos.html">
+
+        <span>🎥</span>
+
+        <small>Videos</small>
+
+    </div>
+
+    <div class="nav-item"
+         data-page="images.html">
+
+        <span>🖼️</span>
+
+        <small>Images</small>
+
+    </div>
+
+    <div class="nav-item"
+         data-page="special.html">
+
+        <span>✨</span>
+
+        <small>Special</small>
+
+    </div>
+
+</nav>
+
+<!--=========================
+      PARTICLES
+==========================-->
+
+<div id="particles"></div>
+
+<!--=========================
+      AUDIO
+==========================-->
+
+<audio
+id="clickSound"
+preload="auto">
+
+<source
+src="assets/effects/click.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<!--=========================
+      JAVASCRIPT
+==========================-->
+
+<script src="js/app.js"></script>
+
+<script src="js/navbar.js"></script>
+
+<script src="js/home.js"></script>
+
+</body>
+
+</html>
+
