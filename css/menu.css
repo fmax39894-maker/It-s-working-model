@@ -1,0 +1,142 @@
+/*=========================================
+            MENU PAGE
+=========================================*/
+
+body{
+
+    background:#05070d;
+
+    overflow:hidden;
+
+    color:#fff;
+
+}
+
+/* Background */
+
+.menu-bg{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #030712,
+        #0b1220,
+        #101827
+    );
+
+    z-index:-5;
+
+}
+
+/* Header */
+
+.menu-header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:85px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+/* Logo */
+
+.menu-logo{
+
+    width:180px;
+
+    max-width:70vw;
+
+    filter:
+
+    drop-shadow(0 0 12px cyan);
+
+}
+
+/* Back Button */
+
+.back-btn{
+
+    position:absolute;
+
+    left:18px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    color:#fff;
+
+    font-size:24px;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    cursor:pointer;
+
+}
+
+/* Scroll */
+
+.menu-scroll{
+
+    position:absolute;
+
+    top:100px;
+
+    left:0;
+
+    right:0;
+
+    bottom:95px;
+
+    overflow-y:auto;
+
+    padding:18px;
+
+}
+
+.menu-scroll::-webkit-scrollbar{
+
+    width:0;
+
+}
+
+/* Card */
+
+.menu-card{
+
+    margin-bottom:18px;
+
+    padding:20px;
+
+    border-radius:22px;
+
+}
