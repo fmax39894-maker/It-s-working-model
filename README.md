@@ -1,38 +1,23 @@
-# ❤️ It's Working Heart
+# Media Showcase
 
-A modern automatic Image & Video Gallery.
+Premium Media Showcase Website
 
-## Features
+Features
 
-- Fullscreen Intro Video
-- Automatic Image Gallery
-- Automatic Video Gallery
-- Fullscreen Viewer
-- Download Button
-- Floating Popup Image
-- Search
-- Mobile Friendly
-- GitHub + Render Ready
+✔ Full Screen Home Video
 
-## Installation
+✔ Video Gallery
 
-```bash
-npm install
-npm start
-```
+✔ Image Gallery
 
-Server:
+✔ Decorative Frames
 
-http://localhost:3000
+✔ Glass Bottom Navigation
 
-Deploy:
+✔ Menu Page
 
-- Push to GitHub
-- Connect repository to Render
-- Build Command:
+✔ Download Images
 
-npm install
+✔ Mobile Friendly
 
-- Start Command:
-
-npm start
+✔ Fullscreen Player
