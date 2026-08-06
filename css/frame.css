@@ -1,0 +1,361 @@
+/*==========================================
+      Decorative Media Frames
+==========================================*/
+
+.frame{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:320px;
+
+    aspect-ratio:1/1;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* Decorative PNG Frame */
+
+.frame-img{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    animation:frameGlow 3s ease-in-out infinite;
+
+}
+
+/* Media Container */
+
+.media-box{
+
+    position:relative;
+
+    width:72%;
+
+    height:72%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* PNG Images */
+
+.media-box img{
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 0 8px rgba(255,255,255,.35));
+
+    transition:.35s;
+
+}
+
+/* Video Cover */
+
+.media-box video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+}
+
+/* Hover Animation */
+
+.frame:hover .media-box img,
+.frame:hover .media-box video{
+
+    transform:scale(1.08);
+
+}
+
+/* Blue Glow */
+
+.blue-frame{
+
+    filter:
+
+    drop-shadow(0 0 8px #00d9ff)
+
+    drop-shadow(0 0 20px #00d9ff)
+
+    drop-shadow(0 0 40px #00d9ff);
+
+}
+
+/* Purple Glow */
+
+.purple-frame{
+
+    filter:
+
+    drop-shadow(0 0 8px #8b5cf6)
+
+    drop-shadow(0 0 20px #8b5cf6)
+
+    drop-shadow(0 0 40px #8b5cf6);
+
+}
+
+/* Gold Glow */
+
+.gold-frame{
+
+    filter:
+
+    drop-shadow(0 0 8px gold)
+
+    drop-shadow(0 0 20px gold)
+
+    drop-shadow(0 0 40px orange);
+
+}
+
+/* Red Glow */
+
+.red-frame{
+
+    filter:
+
+    drop-shadow(0 0 8px #ff3d3d)
+
+    drop-shadow(0 0 20px #ff3d3d)
+
+    drop-shadow(0 0 40px #ff3d3d);
+
+}
+
+/* White Glow */
+
+.white-frame{
+
+    filter:
+
+    drop-shadow(0 0 8px white)
+
+    drop-shadow(0 0 18px white);
+
+}
+
+/* Play Button */
+
+.play-icon{
+
+    position:absolute;
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    color:white;
+
+    box-shadow:0 0 20px cyan;
+
+    transition:.3s;
+
+}
+
+.frame:hover .play-icon{
+
+    transform:scale(1.15);
+
+}
+
+/* Frame Title */
+
+.frame-title{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    text-shadow:0 0 10px cyan;
+
+}
+
+/* Card */
+
+.media-card{
+
+    width:100%;
+
+    margin-bottom:35px;
+
+}
+
+/* Fullscreen */
+
+.viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.viewer img,
+.viewer video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+/* Close Button */
+
+.close-viewer{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+/* Download Button */
+
+.download{
+
+    position:absolute;
+
+    bottom:100px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#00bfff,#0088ff);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    box-shadow:0 0 20px cyan;
+
+    cursor:pointer;
+
+}
+
+/* Frame Glow Animation */
+
+@keyframes frameGlow{
+
+    0%{
+
+        transform:scale(1);
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.015);
+
+        filter:brightness(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        filter:brightness(1);
+
+    }
+
+}
