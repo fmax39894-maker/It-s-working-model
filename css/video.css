@@ -1,513 +1,298 @@
-/*=========================================
-            VIDEO GALLERY
-=========================================*/
+<!DOCTYPE html>
+<html lang="en">
 
-body{
+<head>
 
-    background:#04060b;
+<meta charset="UTF-8">
 
-    color:#fff;
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-    overflow:hidden;
+<title>Videos</title>
 
-}
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animation.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/video.css">
 
+</head>
 
-/* Background */
+<body>
 
-.video-bg{
+<!-- ==========================
+        BACKGROUND
+========================== -->
 
-    position:fixed;
+<div class="video-bg"></div>
 
-    inset:0;
+<!-- ==========================
+        HEADER
+========================== -->
 
-    background:
+<header class="gallery-header">
 
-    linear-gradient(
+<div class="logo">
 
-        135deg,
+<img
+src="assets/logo/logo.png"
+alt="Logo">
 
-        #050816,
+</div>
 
-        #0b1324,
+<button
+class="menu-btn ripple"
+onclick="goMenu()">
 
-        #101b35
+☰
 
-    );
+</button>
 
-    z-index:-10;
+</header>
 
-}
+<!-- ==========================
+      VIDEO GALLERY
+========================== -->
 
+<div class="video-gallery">
 
-/* Header */
+<!-- ==========================
+        VIDEO CARD 1
+========================== -->
 
-.gallery-header{
+<div class="video-card"
+     data-video="assets/videos/video1.mp4">
 
-    position:fixed;
+    <div class="video-frame">
 
-    top:0;
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
 
-    left:0;
+            <source
+            src="assets/videos/video1.mp4"
+            type="video/mp4">
 
-    width:100%;
+        </video>
 
-    height:85px;
+        <div class="play-btn">
 
-    display:flex;
+            ▶
 
-    justify-content:center;
+        </div>
 
-    align-items:center;
+    </div>
 
-    z-index:1000;
+    <h3>Video 1</h3>
 
-}
+</div>
 
+<!-- ==========================
+        VIDEO CARD 2
+========================== -->
 
-.gallery-logo{
+<div class="video-card"
+     data-video="assets/videos/video2.mp4">
 
-    width:170px;
+    <div class="video-frame">
 
-    filter:
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
 
-    drop-shadow(0 0 12px cyan);
+            <source
+            src="assets/videos/video2.mp4"
+            type="video/mp4">
 
-}
+        </video>
 
+        <div class="play-btn">
 
-/* Gallery */
+            ▶
 
-.video-gallery{
+        </div>
 
-    position:absolute;
+    </div>
 
-    top:100px;
+    <h3>Video 2</h3>
 
-    left:0;
+</div>
 
-    right:0;
+<!-- ==========================
+        VIDEO CARD 3
+========================== -->
 
-    bottom:95px;
+<div class="video-card"
+     data-video="assets/videos/video3.mp4">
 
-    overflow-y:auto;
+    <div class="video-frame">
 
-    padding:18px;
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
 
-    display:grid;
+            <source
+            src="assets/videos/video3.mp4"
+            type="video/mp4">
 
-    grid-template-columns:
+        </video>
 
-    repeat(auto-fill,minmax(250px,1fr));
+        <div class="play-btn">
 
-    gap:22px;
+            ▶
 
-}
+        </div>
 
+    </div>
 
-.video-gallery::-webkit-scrollbar{
+    <h3>Video 3</h3>
 
-    display:none;
+</div>
 
-}
+<!-- ==========================
+        VIDEO CARD 4
+========================== -->
 
+<div class="video-card"
+     data-video="assets/videos/video4.mp4">
 
-/* Card */
+    <div class="video-frame">
 
-.video-card{
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
 
-    background:
+            <source
+            src="assets/videos/video4.mp4"
+            type="video/mp4">
 
-    rgba(255,255,255,.05);
+        </video>
 
-    border:
+        <div class="play-btn">
 
-    1px solid rgba(255,255,255,.12);
+            ▶
 
-    border-radius:24px;
+        </div>
 
-    overflow:hidden;
+    </div>
 
-    backdrop-filter:blur(15px);
+    <h3>Video 4</h3>
 
-    transition:.35s;
+</div>
 
-}
+</div>
 
+<!-- ==========================
+     FULLSCREEN PLAYER
+========================== -->
 
-.video-card:hover{
+<div id="videoViewer" class="viewer">
 
-    transform:
+    <button
+    class="close-viewer">
 
-    translateY(-8px);
+        ✕
 
-    box-shadow:
+    </button>
 
-    0 0 25px rgba(0,212,255,.35);
+    <video
+    id="player"
+    controls
+    playsinline>
 
-}
+        <source
+        src=""
+        type="video/mp4">
 
-/*=========================================
-        DECORATIVE FRAME
-=========================================*/
+    </video>
 
-.video-frame{
+    <a
+    id="downloadVideo"
+    href=""
+    download>
 
-    position:relative;
+        <button
+        class="download">
 
-    margin:16px;
+            ⬇ Download
 
-    border-radius:20px;
+        </button>
 
-    overflow:hidden;
+    </a>
 
-    border:3px solid rgba(255,255,255,.18);
+</div>
 
-    background:#111;
+<!-- ==========================
+      BOTTOM NAVIGATION
+========================== -->
 
-    box-shadow:
+<nav class="bottom-nav video show">
 
-    0 0 18px rgba(0,212,255,.35),
+    <div class="indicator"></div>
 
-    inset 0 0 15px rgba(255,255,255,.08);
+    <div class="nav-item"
+         data-page="index.html">
 
-}
+        <img
+        src="assets/icons/home.png"
+        alt="Home">
 
+        <small>Home</small>
 
-/* Cover Image */
+    </div>
 
-.cover-image{
+    <div class="nav-item active"
+         data-page="videos.html">
 
-    width:100%;
+        <img
+        src="assets/icons/videos.png"
+        alt="Videos">
 
-    height:220px;
+        <small>Videos</small>
 
-    object-fit:contain;
+    </div>
 
-    display:block;
+    <div class="nav-item"
+         data-page="images.html">
 
-    background:
+        <img
+        src="assets/icons/images.png"
+        alt="Images">
 
-    radial-gradient(circle,#18263d,#0a0f18);
+        <small>Images</small>
 
-    transition:.35s;
+    </div>
 
-}
+    <div class="nav-item"
+         data-page="special.html">
 
+        <img
+        src="assets/icons/special.png"
+        alt="Special">
 
-.video-card:hover .cover-image{
+        <small>Special</small>
 
-    transform:scale(1.05);
+    </div>
 
-}
+</nav>
 
+<!-- ==========================
+          JAVASCRIPT
+========================== -->
 
-/* Play Button */
+<script src="js/app.js"></script>
 
-.play-btn{
+<script src="js/navbar.js"></script>
 
-    position:absolute;
+<script src="js/video.js"></script>
 
-    left:50%;
+</body>
 
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:72px;
-
-    height:72px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:32px;
-
-    color:white;
-
-    background:
-
-    rgba(0,212,255,.18);
-
-    backdrop-filter:blur(12px);
-
-    border:2px solid rgba(255,255,255,.25);
-
-    box-shadow:
-
-    0 0 25px cyan;
-
-    transition:.3s;
-
-}
-
-
-.video-card:hover .play-btn{
-
-    transform:
-
-    translate(-50%,-50%)
-
-    scale(1.12);
-
-}
-
-
-/* Title */
-
-.video-card h3{
-
-    text-align:center;
-
-    padding:0 0 18px;
-
-    font-size:18px;
-
-    color:white;
-
-    letter-spacing:.5px;
-
-}
-
-
-/* Shine */
-
-.video-frame::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-120%;
-
-    width:50%;
-
-    height:100%;
-
-    background:
-
-    linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        rgba(255,255,255,.25),
-
-        transparent
-
-    );
-
-    transform:skewX(-25deg);
-
-    animation:
-
-    frameShine 6s infinite;
-
-}
-
-@keyframes frameShine{
-
-    0%{
-
-        left:-120%;
-
-    }
-
-    30%{
-
-        left:130%;
-
-    }
-
-    100%{
-
-        left:130%;
-
-    }
-
-}
-
-/*=========================================
-        FULLSCREEN PLAYER
-=========================================*/
-
-.viewer{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.96);
-
-    z-index:99999;
-
-    flex-direction:column;
-
-}
-
-.viewer.active{
-
-    display:flex;
-
-}
-
-.viewer video{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    background:#000;
-
-}
-
-
-/* Close Button */
-
-.close-viewer{
-
-    position:absolute;
-
-    top:18px;
-
-    right:18px;
-
-    width:52px;
-
-    height:52px;
-
-    border:none;
-
-    border-radius:50%;
-
-    color:#fff;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    background:rgba(255,255,255,.12);
-
-    backdrop-filter:blur(12px);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    z-index:10;
-
-}
-
-
-/* Download Button */
-
-.download{
-
-    position:absolute;
-
-    bottom:95px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    border:none;
-
-    border-radius:30px;
-
-    padding:14px 28px;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    color:white;
-
-    background:linear-gradient(135deg,#00c6ff,#0072ff);
-
-    box-shadow:
-
-    0 0 20px rgba(0,212,255,.5);
-
-}
-
-
-/* Mobile */
-
-@media(max-width:700px){
-
-.gallery-logo{
-
-    width:135px;
-
-}
-
-.video-gallery{
-
-    grid-template-columns:1fr;
-
-    padding:14px;
-
-}
-
-.cover-image{
-
-    height:200px;
-
-}
-
-.play-btn{
-
-    width:60px;
-
-    height:60px;
-
-    font-size:28px;
-
-}
-
-.download{
-
-    width:88%;
-
-    padding:15px;
-
-}
-
-}
-
-
-/* Landscape */
-
-@media(orientation:landscape){
-
-.download{
-
-    bottom:20px;
-
-}
-
-}
-
-
-/* End */
-
-video{
-
-    outline:none;
-
-}
+</html>
