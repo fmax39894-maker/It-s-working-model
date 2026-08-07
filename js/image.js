@@ -110,3 +110,129 @@ function openImage(index){
     }
 
 }
+
+/*=========================================
+        VIEWER EVENTS
+=========================================*/
+
+function bindViewer(){
+
+    const viewer=document.getElementById("imageViewer");
+
+    const close=document.querySelector(".close-viewer");
+
+    if(!viewer || !close) return;
+
+    close.addEventListener("click",closeImage);
+
+    viewer.addEventListener("click",(e)=>{
+
+        if(e.target===viewer){
+
+            closeImage();
+
+        }
+
+    });
+
+}
+
+
+/*=========================================
+        CLOSE IMAGE
+=========================================*/
+
+function closeImage(){
+
+    const viewer=document.getElementById("imageViewer");
+
+    const image=document.getElementById("fullImage");
+
+    const logo=document.querySelector(".gallery-logo");
+
+    viewer.classList.remove("active");
+
+    image.removeAttribute("src");
+
+    if(logo){
+
+        logo.style.display="block";
+
+    }
+
+}
+
+
+/*=========================================
+        SWIPE SUPPORT
+=========================================*/
+
+let startX=0;
+
+document.addEventListener("touchstart",(e)=>{
+
+    startX=e.touches[0].clientX;
+
+},{passive:true});
+
+document.addEventListener("touchend",(e)=>{
+
+    const endX=e.changedTouches[0].clientX;
+
+    const diff=endX-startX;
+
+    if(!document.getElementById("imageViewer")
+
+        .classList.contains("active")) return;
+
+    if(diff<-60){
+
+        nextImage();
+
+    }
+
+    if(diff>60){
+
+        previousImage();
+
+    }
+
+},{passive:true});
+
+
+/*=========================================
+        NEXT IMAGE
+=========================================*/
+
+function nextImage(){
+
+    currentIndex++;
+
+    if(currentIndex>=images.length){
+
+        currentIndex=0;
+
+    }
+
+    openImage(currentIndex);
+
+}
+
+
+/*=========================================
+        PREVIOUS IMAGE
+=========================================*/
+
+function previousImage(){
+
+    currentIndex--;
+
+    if(currentIndex<0){
+
+        currentIndex=images.length-1;
+
+    }
+
+    openImage(currentIndex);
+
+}
