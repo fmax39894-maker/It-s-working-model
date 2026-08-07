@@ -1,298 +1,500 @@
-<!DOCTYPE html>
-<html lang="en">
+/*=========================================
+        PREMIUM VIDEO GALLERY
+=========================================*/
 
-<head>
+*{
 
-<meta charset="UTF-8">
+    box-sizing:border-box;
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+}
 
-<title>Videos</title>
+body{
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animation.css">
-<link rel="stylesheet" href="css/navbar.css">
-<link rel="stylesheet" href="css/video.css">
+    margin:0;
 
-</head>
+    background:#05070d;
 
-<body>
+    color:#fff;
 
-<!-- ==========================
+    overflow:hidden;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+}
+
+
+/*=========================================
         BACKGROUND
-========================== -->
+=========================================*/
 
-<div class="video-bg"></div>
+.video-bg{
 
-<!-- ==========================
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #050816,
+
+        #0b1324,
+
+        #16223c
+
+    );
+
+    z-index:-5;
+
+}
+
+
+/*=========================================
         HEADER
-========================== -->
+=========================================*/
 
-<header class="gallery-header">
+.gallery-header{
 
-<div class="logo">
+    position:fixed;
 
-<img
-src="assets/logo/logo.png"
-alt="Logo">
+    top:0;
 
-</div>
+    left:0;
 
-<button
-class="menu-btn ripple"
-onclick="goMenu()">
+    width:100%;
 
-☰
+    height:85px;
 
-</button>
+    display:flex;
 
-</header>
+    justify-content:center;
 
-<!-- ==========================
-      VIDEO GALLERY
-========================== -->
+    align-items:center;
 
-<div class="video-gallery">
+    z-index:1000;
 
-<!-- ==========================
-        VIDEO CARD 1
-========================== -->
+}
 
-<div class="video-card"
-     data-video="assets/videos/video1.mp4">
+.logo img{
 
-    <div class="video-frame">
+    width:180px;
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
+    filter:
 
-            <source
-            src="assets/videos/video1.mp4"
-            type="video/mp4">
+    drop-shadow(0 0 14px cyan);
 
-        </video>
+}
 
-        <div class="play-btn">
 
-            ▶
+/*=========================================
+        GALLERY
+=========================================*/
 
-        </div>
+.video-gallery{
 
-    </div>
+    position:absolute;
 
-    <h3>Video 1</h3>
+    top:95px;
 
-</div>
+    bottom:95px;
 
-<!-- ==========================
-        VIDEO CARD 2
-========================== -->
+    left:0;
 
-<div class="video-card"
-     data-video="assets/videos/video2.mp4">
+    right:0;
 
-    <div class="video-frame">
+    overflow-y:auto;
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
+    padding:20px;
 
-            <source
-            src="assets/videos/video2.mp4"
-            type="video/mp4">
+    display:grid;
 
-        </video>
+    grid-template-columns:
 
-        <div class="play-btn">
+    repeat(auto-fit,minmax(260px,1fr));
 
-            ▶
+    gap:22px;
 
-        </div>
+}
 
-    </div>
+.video-gallery::-webkit-scrollbar{
 
-    <h3>Video 2</h3>
+    display:none;
 
-</div>
+}
 
-<!-- ==========================
-        VIDEO CARD 3
-========================== -->
+/*=========================================
+        PREMIUM VIDEO CARD
+=========================================*/
 
-<div class="video-card"
-     data-video="assets/videos/video3.mp4">
+.video-card{
 
-    <div class="video-frame">
+    background:rgba(255,255,255,.05);
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
+    border:1px solid rgba(255,255,255,.12);
 
-            <source
-            src="assets/videos/video3.mp4"
-            type="video/mp4">
+    border-radius:24px;
 
-        </video>
+    overflow:hidden;
 
-        <div class="play-btn">
+    backdrop-filter:blur(15px);
 
-            ▶
+    transition:.35s;
 
-        </div>
+    cursor:pointer;
 
-    </div>
+}
 
-    <h3>Video 3</h3>
+.video-card:hover{
 
-</div>
+    transform:translateY(-8px);
 
-<!-- ==========================
-        VIDEO CARD 4
-========================== -->
+    box-shadow:
 
-<div class="video-card"
-     data-video="assets/videos/video4.mp4">
+    0 0 30px rgba(0,212,255,.35);
 
-    <div class="video-frame">
+}
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
 
-            <source
-            src="assets/videos/video4.mp4"
-            type="video/mp4">
+/*=========================================
+        VIDEO FRAME
+=========================================*/
 
-        </video>
+.video-frame{
 
-        <div class="play-btn">
+    position:relative;
 
-            ▶
+    margin:16px;
 
-        </div>
+    border-radius:20px;
 
-    </div>
+    overflow:hidden;
 
-    <h3>Video 4</h3>
+    border:3px solid rgba(255,255,255,.18);
 
-</div>
+    background:#111;
 
-</div>
+    box-shadow:
 
-<!-- ==========================
-     FULLSCREEN PLAYER
-========================== -->
+    0 0 20px rgba(0,212,255,.45),
 
-<div id="videoViewer" class="viewer">
+    inset 0 0 15px rgba(255,255,255,.08);
 
-    <button
-    class="close-viewer">
+}
 
-        ✕
 
-    </button>
+/*=========================================
+        VIDEO THUMBNAIL
+=========================================*/
 
-    <video
-    id="player"
-    controls
-    playsinline>
+.cover-video{
 
-        <source
-        src=""
-        type="video/mp4">
+    width:100%;
 
-    </video>
+    height:230px;
 
-    <a
-    id="downloadVideo"
-    href=""
-    download>
+    display:block;
 
-        <button
-        class="download">
+    object-fit:cover;
 
-            ⬇ Download
+    background:#000;
 
-        </button>
+    transition:.35s;
 
-    </a>
+}
 
-</div>
+.video-card:hover .cover-video{
 
-<!-- ==========================
-      BOTTOM NAVIGATION
-========================== -->
+    transform:scale(1.05);
 
-<nav class="bottom-nav video show">
+}
 
-    <div class="indicator"></div>
 
-    <div class="nav-item"
-         data-page="index.html">
+/*=========================================
+        PLAY BUTTON
+=========================================*/
 
-        <img
-        src="assets/icons/home.png"
-        alt="Home">
+.play-btn{
 
-        <small>Home</small>
+    position:absolute;
 
-    </div>
+    left:50%;
 
-    <div class="nav-item active"
-         data-page="videos.html">
+    top:50%;
 
-        <img
-        src="assets/icons/videos.png"
-        alt="Videos">
+    transform:translate(-50%,-50%);
 
-        <small>Videos</small>
+    width:72px;
 
-    </div>
+    height:72px;
 
-    <div class="nav-item"
-         data-page="images.html">
+    border-radius:50%;
 
-        <img
-        src="assets/icons/images.png"
-        alt="Images">
+    display:flex;
 
-        <small>Images</small>
+    justify-content:center;
 
-    </div>
+    align-items:center;
 
-    <div class="nav-item"
-         data-page="special.html">
+    font-size:30px;
 
-        <img
-        src="assets/icons/special.png"
-        alt="Special">
+    color:#fff;
 
-        <small>Special</small>
+    background:rgba(0,212,255,.22);
 
-    </div>
+    backdrop-filter:blur(12px);
 
-</nav>
+    border:2px solid rgba(255,255,255,.25);
 
-<!-- ==========================
-          JAVASCRIPT
-========================== -->
+    box-shadow:0 0 25px cyan;
 
-<script src="js/app.js"></script>
+    transition:.3s;
 
-<script src="js/navbar.js"></script>
+}
 
-<script src="js/video.js"></script>
+.video-card:hover .play-btn{
 
-</body>
+    transform:translate(-50%,-50%) scale(1.1);
 
-</html>
+}
+
+
+/*=========================================
+        CARD TITLE
+=========================================*/
+
+.video-card h3{
+
+    text-align:center;
+
+    padding:0 0 18px;
+
+    font-size:18px;
+
+    color:#fff;
+
+}
+
+/*=========================================
+        SHINING FRAME
+=========================================*/
+
+.video-frame::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:45%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    animation:shine 6s linear infinite;
+
+}
+
+@keyframes shine{
+
+    0%{
+
+        left:-120%;
+
+    }
+
+    40%{
+
+        left:130%;
+
+    }
+
+    100%{
+
+        left:130%;
+
+    }
+
+}
+
+
+/*=========================================
+        FULLSCREEN PLAYER
+=========================================*/
+
+.viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.97);
+
+    z-index:99999;
+
+    flex-direction:column;
+
+}
+
+.viewer.active{
+
+    display:flex;
+
+}
+
+.viewer video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    background:#000;
+
+}
+
+
+/*=========================================
+        CLOSE BUTTON
+=========================================*/
+
+.close-viewer{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:54px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    z-index:5;
+
+}
+
+
+/*=========================================
+        DOWNLOAD BUTTON
+=========================================*/
+
+.download{
+
+    position:absolute;
+
+    bottom:95px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border:none;
+
+    border-radius:40px;
+
+    padding:15px 34px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#00c6ff,#0072ff);
+
+    box-shadow:0 0 20px rgba(0,212,255,.5);
+
+    cursor:pointer;
+
+}
+
+
+/*=========================================
+        MOBILE
+=========================================*/
+
+@media(max-width:700px){
+
+.video-gallery{
+
+    grid-template-columns:1fr;
+
+    padding:14px;
+
+}
+
+.cover-video{
+
+    height:200px;
+
+}
+
+.logo img{
+
+    width:140px;
+
+}
+
+.play-btn{
+
+    width:60px;
+
+    height:60px;
+
+    font-size:26px;
+
+}
+
+.download{
+
+    width:90%;
+
+    padding:15px;
+
+}
+
+}
+
+video{
+
+    outline:none;
+
+}
+
