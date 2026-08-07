@@ -236,3 +236,118 @@ function previousImage(){
     openImage(currentIndex);
 
 }
+
+"use strict";
+
+/*=========================================
+        KEYBOARD CONTROLS
+=========================================*/
+
+document.addEventListener("keydown",(e)=>{
+
+    const viewer=document.getElementById("imageViewer");
+
+    if(!viewer.classList.contains("active")) return;
+
+    switch(e.key){
+
+        case "ArrowRight":
+
+            nextImage();
+
+            break;
+
+        case "ArrowLeft":
+
+            previousImage();
+
+            break;
+
+        case "Escape":
+
+            closeImage();
+
+            break;
+
+    }
+
+});
+
+
+/*=========================================
+        IMAGE PRELOAD
+=========================================*/
+
+function preloadImages(){
+
+    images.forEach(item=>{
+
+        const img=new Image();
+
+        img.src=item.file;
+
+    });
+
+}
+
+window.addEventListener("load",preloadImages);
+
+
+/*=========================================
+        PREVENT DRAG
+=========================================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+    img.addEventListener("dragstart",(e)=>{
+
+        e.preventDefault();
+
+    });
+
+});
+
+
+/*=========================================
+        VIEWER ANIMATION
+=========================================*/
+
+const viewer=document.getElementById("imageViewer");
+
+if(viewer){
+
+    viewer.addEventListener("transitionend",()=>{
+
+        if(!viewer.classList.contains("active")){
+
+            const image=document.getElementById("fullImage");
+
+            image.removeAttribute("src");
+
+        }
+
+    });
+
+}
+
+
+/*=========================================
+        PAGE READY
+=========================================*/
+
+window.addEventListener("load",()=>{
+
+    console.log(
+
+        "%cImage Gallery Ready",
+
+        "color:#00d4ff;font-size:18px;font-weight:bold;"
+
+    );
+
+});
+
+
+/*=========================================
+        END OF image.js
+=========================================*/
