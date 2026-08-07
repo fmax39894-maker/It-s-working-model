@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Videos</title>
 
@@ -19,17 +19,25 @@ content="width=device-width,initial-scale=1.0">
 
 <body>
 
-<!-- Background -->
+<!-- ==========================
+        BACKGROUND
+========================== -->
 
 <div class="video-bg"></div>
 
-<!-- Header -->
+<!-- ==========================
+        HEADER
+========================== -->
 
 <header class="gallery-header">
 
+<div class="logo">
+
 <img
 src="assets/logo/logo.png"
-class="gallery-logo">
+alt="Logo">
+
+</div>
 
 <button
 class="menu-btn ripple"
@@ -41,105 +49,243 @@ onclick="goMenu()">
 
 </header>
 
-<!-- Gallery -->
+<!-- ==========================
+      VIDEO GALLERY
+========================== -->
 
 <div class="video-gallery">
 
-<img src="assets/icons/home.png">
-<img src="assets/icons/videos.png">
-<img src="assets/icons/images.png">
-<img src="assets/icons/special.png">
+<!-- ==========================
+        VIDEO CARD 1
+========================== -->
 
-<h3>
+<div class="video-card"
+     data-video="assets/videos/video1.mp4">
 
-Video 4
+    <div class="video-frame">
 
-</h3>
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
+
+            <source
+            src="assets/videos/video1.mp4"
+            type="video/mp4">
+
+        </video>
+
+        <div class="play-btn">
+
+            ▶
+
+        </div>
+
+    </div>
+
+    <h3>Video 1</h3>
+
+</div>
+
+<!-- ==========================
+        VIDEO CARD 2
+========================== -->
+
+<div class="video-card"
+     data-video="assets/videos/video2.mp4">
+
+    <div class="video-frame">
+
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
+
+            <source
+            src="assets/videos/video2.mp4"
+            type="video/mp4">
+
+        </video>
+
+        <div class="play-btn">
+
+            ▶
+
+        </div>
+
+    </div>
+
+    <h3>Video 2</h3>
+
+</div>
+
+<!-- ==========================
+        VIDEO CARD 3
+========================== -->
+
+<div class="video-card"
+     data-video="assets/videos/video3.mp4">
+
+    <div class="video-frame">
+
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
+
+            <source
+            src="assets/videos/video3.mp4"
+            type="video/mp4">
+
+        </video>
+
+        <div class="play-btn">
+
+            ▶
+
+        </div>
+
+    </div>
+
+    <h3>Video 3</h3>
+
+</div>
+
+<!-- ==========================
+        VIDEO CARD 4
+========================== -->
+
+<div class="video-card"
+     data-video="assets/videos/video4.mp4">
+
+    <div class="video-frame">
+
+        <video
+        class="cover-video"
+        muted
+        preload="metadata"
+        playsinline>
+
+            <source
+            src="assets/videos/video4.mp4"
+            type="video/mp4">
+
+        </video>
+
+        <div class="play-btn">
+
+            ▶
+
+        </div>
+
+    </div>
+
+    <h3>Video 4</h3>
 
 </div>
 
 </div>
 
-<!-- Fullscreen Video Player -->
+<!-- ==========================
+     FULLSCREEN PLAYER
+========================== -->
 
 <div id="videoViewer" class="viewer">
 
-<button
-class="close-viewer">
+    <button
+    class="close-viewer">
 
-✕
+        ✕
 
-</button>
+    </button>
 
-<video
-id="player"
-controls
-playsinline>
+    <video
+    id="player"
+    controls
+    playsinline>
 
-<source
-src=""
-type="video/mp4">
+        <source
+        src=""
+        type="video/mp4">
 
-</video>
+    </video>
 
-<a
-id="downloadVideo"
-href=""
-download>
+    <a
+    id="downloadVideo"
+    href=""
+    download>
 
-<button class="download">
+        <button
+        class="download">
 
-⬇ Download
+            ⬇ Download
 
-</button>
+        </button>
 
-</a>
-
-</div>
-
-<!-- Bottom Navigation -->
-
-<nav class="bottom-nav video">
-
-<div class="indicator"></div>
-
-<div class="nav-item"
-data-page="index.html">
-
-<span><img src="assets/icons/home.png"></span>
-
-<small>Home</small>
+    </a>
 
 </div>
 
-<div class="nav-item active"
-data-page="videos.html">
+<!-- ==========================
+      BOTTOM NAVIGATION
+========================== -->
 
-<span><img src="assets/icons/videos.png"></span>
+<nav class="bottom-nav video show">
 
-<small>Videos</small>
+    <div class="indicator"></div>
 
-</div>
+    <div class="nav-item"
+         data-page="index.html">
 
-<div class="nav-item"
-data-page="images.html">
+        <img
+        src="assets/icons/home.png"
+        alt="Home">
 
-<span><img src="assets/icons/images.png"></span>
+        <small>Home</small>
 
-<small>Images</small>
+    </div>
 
-</div>
+    <div class="nav-item active"
+         data-page="videos.html">
 
-<div class="nav-item"
-data-page="special.html">
+        <img
+        src="assets/icons/videos.png"
+        alt="Videos">
 
-<span><img src="assets/icons/special.png"></span>
+        <small>Videos</small>
 
-<small>Special</small>
+    </div>
 
-</div>
+    <div class="nav-item"
+         data-page="images.html">
+
+        <img
+        src="assets/icons/images.png"
+        alt="Images">
+
+        <small>Images</small>
+
+    </div>
+
+    <div class="nav-item"
+         data-page="special.html">
+
+        <img
+        src="assets/icons/special.png"
+        alt="Special">
+
+        <small>Special</small>
+
+    </div>
 
 </nav>
+
+<!-- ==========================
+          JAVASCRIPT
+========================== -->
 
 <script src="js/app.js"></script>
 
