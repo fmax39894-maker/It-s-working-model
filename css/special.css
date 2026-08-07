@@ -1,0 +1,397 @@
+/*=========================================
+            SPECIAL PAGE
+=========================================*/
+
+body{
+
+    margin:0;
+
+    overflow:hidden;
+
+    background:#000;
+
+    color:#fff;
+
+    font-family:sans-serif;
+
+}
+
+
+/*=========================================
+        FULLSCREEN VIDEO
+=========================================*/
+
+.special-container{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+
+.special-video{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    background:#000;
+
+}
+
+
+/*=========================================
+        HEADER
+=========================================*/
+
+.gallery-header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+.gallery-logo{
+
+    width:170px;
+
+    filter:
+
+    drop-shadow(0 0 15px cyan);
+
+}
+
+
+.menu-btn{
+
+    position:absolute;
+
+    right:18px;
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    color:#fff;
+
+    font-size:22px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+/*=========================================
+        MAGIC BUTTON
+=========================================*/
+
+.magic-btn{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:120px;
+
+    transform:translateX(-50%);
+
+    padding:16px 38px;
+
+    border:none;
+
+    border-radius:40px;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #00d4ff,
+
+        #0066ff
+
+    );
+
+    box-shadow:
+
+    0 0 20px cyan,
+
+    0 0 45px rgba(0,212,255,.45);
+
+    animation:
+
+    glowPulse 2s infinite;
+
+}
+
+
+@keyframes glowPulse{
+
+    0%{
+
+        transform:
+
+        translateX(-50%)
+
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+
+        translateX(-50%)
+
+        scale(1.06);
+
+    }
+
+    100%{
+
+        transform:
+
+        translateX(-50%)
+
+        scale(1);
+
+    }
+
+}
+
+/*=========================================
+        FULLSCREEN IMAGE VIEWER
+=========================================*/
+
+.special-viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:rgba(0,0,0,.97);
+
+    z-index:99999;
+
+}
+
+.special-viewer.active{
+
+    display:flex;
+
+}
+
+.special-viewer img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    padding:20px;
+
+}
+
+
+/*=========================================
+        CLOSE BUTTON
+=========================================*/
+
+.close-viewer{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+
+    0 0 18px rgba(0,212,255,.45);
+
+}
+
+
+/*=========================================
+        DOWNLOAD BUTTON
+=========================================*/
+
+.download{
+
+    position:absolute;
+
+    bottom:95px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #00c6ff,
+
+        #0072ff
+
+    );
+
+    box-shadow:
+
+    0 0 20px rgba(0,212,255,.55);
+
+}
+
+
+/*=========================================
+        MOBILE
+=========================================*/
+
+@media(max-width:700px){
+
+.gallery-logo{
+
+    width:135px;
+
+}
+
+.magic-btn{
+
+    width:88%;
+
+    font-size:17px;
+
+    padding:15px;
+
+}
+
+.download{
+
+    width:88%;
+
+    padding:15px;
+
+}
+
+.close-viewer{
+
+    width:46px;
+
+    height:46px;
+
+    font-size:20px;
+
+}
+
+}
+
+
+/*=========================================
+        LANDSCAPE
+=========================================*/
+
+@media(orientation:landscape){
+
+.magic-btn{
+
+    bottom:35px;
+
+}
+
+.download{
+
+    bottom:20px;
+
+}
+
+}
+
+
+/*=========================================
+        END OF special.css
+=========================================*/
