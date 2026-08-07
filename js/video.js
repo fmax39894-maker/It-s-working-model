@@ -1,70 +1,38 @@
 "use strict";
 
 /*=========================================
-            VIDEO GALLERY
+        VIDEO GALLERY
 =========================================*/
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-    initVideos();
+    initVideoGallery();
 
 });
 
-function initVideos(){
+function initVideoGallery(){
 
-    bindCards();
+    setupCards();
 
-    bindViewer();
+    setupViewer();
 
 }
 
-
 /*=========================================
-        VIDEO LIST
+        OPEN VIDEO
 =========================================*/
 
-const videos=[
+function setupCards(){
 
-{
-title:"Video 1",
-cover:"assets/covers/video1.png",
-file:"videos/video1.mp4"
-},
+    const cards=document.querySelectorAll(".video-card");
 
-{
-title:"Video 2",
-cover:"assets/covers/video2.png",
-file:"videos/video2.mp4"
-},
-
-{
-title:"Video 3",
-cover:"assets/covers/video3.png",
-file:"videos/video3.mp4"
-},
-
-{
-title:"Video 4",
-cover:"assets/covers/video4.png",
-file:"videos/video4.mp4"
-}
-
-];
-
-
-/*=========================================
-        OPEN PLAYER
-=========================================*/
-
-function bindCards(){
-
-    document.querySelectorAll(".video-card")
-
-    .forEach((card,index)=>{
+    cards.forEach(card=>{
 
         card.addEventListener("click",()=>{
 
-            playVideo(videos[index]);
+            const file=card.dataset.video;
+
+            openPlayer(file);
 
         });
 
@@ -72,8 +40,11 @@ function bindCards(){
 
 }
 
+/*=========================================
+        PLAYER
+=========================================*/
 
-function playVideo(video){
+function openPlayer(file){
 
     const viewer=document.getElementById("videoViewer");
 
@@ -81,21 +52,35 @@ function playVideo(video){
 
     const download=document.getElementById("downloadVideo");
 
+    if(!viewer || !player) return;
+
     viewer.classList.add("active");
 
-    player.src=video.file;
+    player.src=file;
 
     player.load();
 
     player.play().catch(()=>{});
 
-    download.href=video.file;
+    if(download){
 
-    const logo=document.querySelector(".gallery-logo");
+        download.href=file;
+
+    }
+
+    const logo=document.querySelector(".logo");
 
     if(logo){
 
         logo.style.display="none";
+
+    }
+
+    const nav=document.querySelector(".bottom-nav");
+
+    if(nav){
+
+        nav.style.display="none";
 
     }
 
@@ -105,7 +90,7 @@ function playVideo(video){
         CLOSE PLAYER
 =========================================*/
 
-function bindViewer(){
+function setupViewer(){
 
     const viewer=document.getElementById("videoViewer");
 
@@ -113,9 +98,16 @@ function bindViewer(){
 
     const close=document.querySelector(".close-viewer");
 
+
     if(!viewer || !player || !close) return;
 
-    close.addEventListener("click",closePlayer);
+
+    close.addEventListener("click",()=>{
+
+        closePlayer();
+
+    });
+
 
     viewer.addEventListener("click",(e)=>{
 
@@ -127,8 +119,13 @@ function bindViewer(){
 
     });
 
+
 }
 
+
+/*=========================================
+        CLOSE FUNCTION
+=========================================*/
 
 function closePlayer(){
 
@@ -136,7 +133,9 @@ function closePlayer(){
 
     const player=document.getElementById("player");
 
-    const logo=document.querySelector(".gallery-logo");
+
+    if(!viewer || !player) return;
+
 
     player.pause();
 
@@ -144,7 +143,11 @@ function closePlayer(){
 
     player.load();
 
+
     viewer.classList.remove("active");
+
+
+    const logo=document.querySelector(".logo");
 
     if(logo){
 
@@ -152,37 +155,35 @@ function closePlayer(){
 
     }
 
+
+    const nav=document.querySelector(".bottom-nav");
+
+    if(nav){
+
+        nav.style.display="flex";
+
+    }
+
+
 }
 
 
 /*=========================================
-        AUTO HIDE CONTROLS
+        VIDEO END
 =========================================*/
 
-let hideTimer;
+const mainPlayer=document.getElementById("player");
 
-const player=document.getElementById("player");
 
-if(player){
+if(mainPlayer){
 
-    player.addEventListener("mousemove",resetHideTimer);
+    mainPlayer.addEventListener("ended",()=>{
 
-    player.addEventListener("touchstart",resetHideTimer);
+        closePlayer();
 
-}
-
-function resetHideTimer(){
-
-    clearTimeout(hideTimer);
-
-    hideTimer=setTimeout(()=>{
-
-        // Future custom controls
-
-    },3000);
+    });
 
 }
-
 
 /*=========================================
         SWIPE DOWN TO CLOSE
@@ -190,37 +191,56 @@ function resetHideTimer(){
 
 let startY=0;
 
+
 document.addEventListener("touchstart",(e)=>{
 
-    startY=e.touches[0].clientY;
+    if(e.touches.length){
 
-},{passive:true});
-
-document.addEventListener("touchend",(e)=>{
-
-    const endY=e.changedTouches[0].clientY;
-
-    if(endY-startY>120){
-
-        closePlayer();
+        startY=e.touches[0].clientY;
 
     }
 
 },{passive:true});
 
+
+
+document.addEventListener("touchend",(e)=>{
+
+    if(e.changedTouches.length){
+
+        let endY=e.changedTouches[0].clientY;
+
+
+        if(endY-startY>120){
+
+            closePlayer();
+
+        }
+
+    }
+
+},{passive:true});
+
+
+
 /*=========================================
-        KEYBOARD SHORTCUTS
+        KEYBOARD CONTROLS
 =========================================*/
 
 document.addEventListener("keydown",(e)=>{
+
 
     const viewer=document.getElementById("videoViewer");
 
     const player=document.getElementById("player");
 
-    if(!viewer.classList.contains("active")) return;
+
+    if(!viewer || !viewer.classList.contains("active")) return;
+
+
 
     switch(e.key){
+
 
         case "Escape":
 
@@ -228,9 +248,12 @@ document.addEventListener("keydown",(e)=>{
 
             break;
 
+
+
         case " ":
 
             e.preventDefault();
+
 
             if(player.paused){
 
@@ -244,9 +267,12 @@ document.addEventListener("keydown",(e)=>{
 
             break;
 
+
+
         case "f":
 
         case "F":
+
 
             if(player.requestFullscreen){
 
@@ -256,79 +282,29 @@ document.addEventListener("keydown",(e)=>{
 
             break;
 
+
     }
+
 
 });
 
 
-/*=========================================
-        VIDEO END
-=========================================*/
-
-const endPlayer=document.getElementById("player");
-
-if(endPlayer){
-
-    endPlayer.addEventListener("ended",()=>{
-
-        closePlayer();
-
-    });
-
-}
-
 
 /*=========================================
-        LOOP OPTION
+        PRELOAD VIDEOS
 =========================================*/
 
-function setLoop(enable){
 
-    const p=document.getElementById("player");
+document.querySelectorAll(".cover-video")
 
-    if(p){
-
-        p.loop=enable;
-
-    }
-
-}
+.forEach(video=>{
 
 
-/*=========================================
-        PRELOAD NEXT
-=========================================*/
+    video.load();
 
-videos.forEach(v=>{
-
-    const link=document.createElement("link");
-
-    link.rel="preload";
-
-    link.as="video";
-
-    link.href=v.file;
-
-    document.head.appendChild(link);
 
 });
 
-
-/*=========================================
-        PERFORMANCE
-=========================================*/
-
-window.addEventListener("beforeunload",()=>{
-
-    const p=document.getElementById("player");
-
-    if(p){
-
-        p.pause();
-
-    }
-
-});
 
 
 /*=========================================
@@ -339,10 +315,6 @@ console.log(
 
 "%cVideo Gallery Ready",
 
-"color:#00d4ff;font-size:18px;font-weight:bold;"
+"color:#00d4ff;font-size:18px;font-weight:bold"
 
 );
-
-/*=========================================
-        END OF video.js
-=========================================*/
