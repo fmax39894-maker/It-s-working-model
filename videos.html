@@ -5,7 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Videos</title>
@@ -17,201 +18,238 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no
 
 </head>
 
+
 <body>
 
-<!-- ==========================
-        BACKGROUND
-========================== -->
+
+<!-- =========================================
+        VIDEO BACKGROUND
+========================================= -->
 
 <div class="video-bg"></div>
 
-<!-- ==========================
+
+<!-- =========================================
         HEADER
-========================== -->
+========================================= -->
 
 <header class="gallery-header">
 
-<div class="logo">
+    <div class="logo">
 
-<img
-src="assets/logo/logo.png"
-alt="Logo">
+        <img
+        src="assets/logo/logo.png"
+        alt="Logo">
 
-</div>
+    </div>
 
-<button
-class="menu-btn ripple"
-onclick="goMenu()">
 
-☰
+    <button
+    class="menu-btn ripple"
+    onclick="goMenu()">
 
-</button>
+        ☰
+
+    </button>
 
 </header>
 
-<!-- ==========================
-      VIDEO GALLERY
-========================== -->
 
-<div class="video-gallery">
+<!-- =========================================
+        VIDEO GALLERY
+========================================= -->
 
-<!-- ==========================
-        VIDEO CARD 1
-========================== -->
+<main class="video-gallery">
 
-<div class="video-card"
-     data-video="assets/videos/video1.mp4">
 
-    <div class="video-frame">
+    <!-- VIDEO 1 -->
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
+    <article
+    class="video-card"
+    data-video="assets/videos/video1.mp4">
 
-            <source
-            src="assets/videos/video1.mp4"
-            type="video/mp4">
+        <div class="video-frame">
 
-        </video>
+            <video
+            class="video-preview"
+            muted
+            playsinline
+            preload="metadata">
 
-        <div class="play-btn">
+                <source
+                src="assets/videos/video1.mp4"
+                type="video/mp4">
 
-            ▶
+            </video>
 
-        </div>
 
-    </div>
+            <div class="play-btn">
 
-    <h3>Video 1</h3>
+                ▶
 
-</div>
-
-<!-- ==========================
-        VIDEO CARD 2
-========================== -->
-
-<div class="video-card"
-     data-video="assets/videos/video2.mp4">
-
-    <div class="video-frame">
-
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
-
-            <source
-            src="assets/videos/video2.mp4"
-            type="video/mp4">
-
-        </video>
-
-        <div class="play-btn">
-
-            ▶
+            </div>
 
         </div>
 
-    </div>
 
-    <h3>Video 2</h3>
+        <h3>
 
-</div>
+            Video 1
 
-<!-- ==========================
-        VIDEO CARD 3
-========================== -->
+        </h3>
 
-<div class="video-card"
-     data-video="assets/videos/video3.mp4">
+    </article>
 
-    <div class="video-frame">
 
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
 
-            <source
-            src="assets/videos/video3.mp4"
-            type="video/mp4">
+    <!-- VIDEO 2 -->
 
-        </video>
+    <article
+    class="video-card"
+    data-video="assets/videos/video2.mp4">
 
-        <div class="play-btn">
+        <div class="video-frame">
 
-            ▶
+            <video
+            class="video-preview"
+            muted
+            playsinline
+            preload="metadata">
 
-        </div>
+                <source
+                src="assets/videos/video2.mp4"
+                type="video/mp4">
 
-    </div>
+            </video>
 
-    <h3>Video 3</h3>
 
-</div>
+            <div class="play-btn">
 
-<!-- ==========================
-        VIDEO CARD 4
-========================== -->
+                ▶
 
-<div class="video-card"
-     data-video="assets/videos/video4.mp4">
-
-    <div class="video-frame">
-
-        <video
-        class="cover-video"
-        muted
-        preload="metadata"
-        playsinline>
-
-            <source
-            src="assets/videos/video4.mp4"
-            type="video/mp4">
-
-        </video>
-
-        <div class="play-btn">
-
-            ▶
+            </div>
 
         </div>
 
-    </div>
 
-    <h3>Video 4</h3>
+        <h3>
 
-</div>
+            Video 2
 
-</div>
+        </h3>
 
-<!-- ==========================
-     FULLSCREEN PLAYER
-========================== -->
+    </article>
 
-<div id="videoViewer" class="viewer">
+
+
+    <!-- VIDEO 3 -->
+
+    <article
+    class="video-card"
+    data-video="assets/videos/video3.mp4">
+
+        <div class="video-frame">
+
+            <video
+            class="video-preview"
+            muted
+            playsinline
+            preload="metadata">
+
+                <source
+                src="assets/videos/video3.mp4"
+                type="video/mp4">
+
+            </video>
+
+
+            <div class="play-btn">
+
+                ▶
+
+            </div>
+
+        </div>
+
+
+        <h3>
+
+            Video 3
+
+        </h3>
+
+    </article>
+
+
+
+    <!-- VIDEO 4 -->
+
+    <article
+    class="video-card"
+    data-video="assets/videos/video4.mp4">
+
+        <div class="video-frame">
+
+            <video
+            class="video-preview"
+            muted
+            playsinline
+            preload="metadata">
+
+                <source
+                src="assets/videos/video4.mp4"
+                type="video/mp4">
+
+            </video>
+
+
+            <div class="play-btn">
+
+                ▶
+
+            </div>
+
+        </div>
+
+
+        <h3>
+
+            Video 4
+
+        </h3>
+
+    </article>
+
+
+</main>
+
+
+
+<!-- =========================================
+        FULLSCREEN VIDEO VIEWER
+========================================= -->
+
+<div
+id="videoViewer"
+class="viewer">
+
 
     <button
-    class="close-viewer">
+    class="close-viewer"
+    type="button">
 
         ✕
 
     </button>
+
 
     <video
     id="player"
     controls
     playsinline>
 
-        <source
-        src=""
-        type="video/mp4">
-
     </video>
+
 
     <a
     id="downloadVideo"
@@ -219,7 +257,8 @@ onclick="goMenu()">
     download>
 
         <button
-        class="download">
+        class="download"
+        type="button">
 
             ⬇ Download
 
@@ -229,16 +268,20 @@ onclick="goMenu()">
 
 </div>
 
-<!-- ==========================
-      BOTTOM NAVIGATION
-========================== -->
+
+
+<!-- =========================================
+        BOTTOM NAVIGATION
+========================================= -->
 
 <nav class="bottom-nav video show">
 
     <div class="indicator"></div>
 
-    <div class="nav-item"
-         data-page="index.html">
+
+    <div
+    class="nav-item"
+    data-page="index.html">
 
         <img
         src="assets/icons/home.png"
@@ -248,8 +291,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item active"
-         data-page="videos.html">
+
+    <div
+    class="nav-item active"
+    data-page="videos.html">
 
         <img
         src="assets/icons/videos.png"
@@ -259,8 +304,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item"
-         data-page="images.html">
+
+    <div
+    class="nav-item"
+    data-page="images.html">
 
         <img
         src="assets/icons/images.png"
@@ -270,8 +317,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item"
-         data-page="special.html">
+
+    <div
+    class="nav-item"
+    data-page="special.html">
 
         <img
         src="assets/icons/special.png"
@@ -283,15 +332,18 @@ onclick="goMenu()">
 
 </nav>
 
-<!-- ==========================
-          JAVASCRIPT
-========================== -->
+
+
+<!-- =========================================
+        JAVASCRIPT
+========================================= -->
 
 <script src="js/app.js"></script>
 
 <script src="js/navbar.js"></script>
 
 <script src="js/video.js"></script>
+
 
 </body>
 
