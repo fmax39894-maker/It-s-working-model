@@ -1,22 +1,24 @@
-/*=========================================
+/* =========================================
         IMAGE GALLERY
-=========================================*/
+========================================= */
 
 body{
     margin:0;
     padding:0;
 
-    background:#050816;
+    width:100%;
+    height:100vh;
 
+    background:#050816;
     color:#fff;
 
     overflow:hidden;
 }
 
 
-/*=========================================
+/* =========================================
         BACKGROUND
-=========================================*/
+========================================= */
 
 .image-bg{
 
@@ -39,9 +41,9 @@ body{
 }
 
 
-/*=========================================
+/* =========================================
         HEADER
-=========================================*/
+========================================= */
 
 .gallery-header{
 
@@ -51,7 +53,7 @@ body{
     left:0;
 
     width:100%;
-    height:90px;
+    height:85px;
 
     display:flex;
 
@@ -59,84 +61,120 @@ body{
     align-items:center;
 
     z-index:1000;
-
-    pointer-events:none;
 }
 
 
-.gallery-logo{
-
-    width:170px;
-
-    max-width:45vw;
-
-    height:auto;
-
-    filter:
-        drop-shadow(0 0 12px cyan);
-}
-
-
-.gallery-header .menu-btn{
-
-    pointer-events:auto;
+.gallery-header .logo{
 
     position:absolute;
 
     top:18px;
-    right:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:170px;
+
+    max-width:55vw;
 }
 
 
-/*=========================================
+.gallery-header .logo img{
+
+    width:100%;
+
+    display:block;
+
+    filter:drop-shadow(0 0 12px cyan);
+}
+
+
+/* =========================================
+        MORE BUTTON
+========================================= */
+
+.gallery-header .menu-btn{
+
+    position:fixed !important;
+
+    top:18px !important;
+    right:18px !important;
+    left:auto !important;
+
+    width:55px;
+    height:55px;
+
+    margin:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.20);
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(18px);
+
+    color:#fff;
+
+    font-size:28px;
+
+    z-index:99999;
+}
+
+
+/* =========================================
         IMAGE GALLERY
-=========================================*/
+========================================= */
 
 .image-gallery{
 
     position:fixed;
 
-    top:95px;
+    top:90px;
 
     left:0;
     right:0;
 
-    bottom:120px;
+    bottom:105px;
+
+    width:100%;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
     padding:
-        20px 18px 40px;
+        18px 15px 40px;
 
     display:grid;
 
     grid-template-columns:
         repeat(auto-fit,minmax(280px,1fr));
 
-    gap:24px;
+    gap:22px;
 
     align-content:start;
 
     -webkit-overflow-scrolling:touch;
 
+    scrollbar-width:none;
 }
 
-
-/* Hide scrollbar */
 
 .image-gallery::-webkit-scrollbar{
 
-    width:0;
-    height:0;
+    display:none;
 
 }
 
 
-/*=========================================
+/* =========================================
         IMAGE CARD
-=========================================*/
+========================================= */
 
 .image-card{
 
@@ -144,15 +182,15 @@ body{
 
     min-width:0;
 
-    padding-bottom:18px;
-
     background:
         rgba(255,255,255,.06);
 
     border:
         1px solid rgba(255,255,255,.14);
 
-    border-radius:26px;
+    border-radius:24px;
+
+    padding:0 0 18px;
 
     overflow:hidden;
 
@@ -162,26 +200,12 @@ body{
 
     box-shadow:
         0 8px 30px rgba(0,0,0,.35);
-
-    transition:.3s;
-
-    cursor:pointer;
 }
 
 
-.image-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 0 25px rgba(0,212,255,.30);
-
-}
-
-
-/*=========================================
+/* =========================================
         IMAGE FRAME
-=========================================*/
+========================================= */
 
 .image-frame{
 
@@ -204,18 +228,16 @@ body{
 
     box-shadow:
         0 0 18px rgba(0,212,255,.35);
-
 }
 
 
-/*=========================================
+/* =========================================
         IMAGE
-=========================================*/
+========================================= */
 
 .image-frame img{
 
     width:100%;
-
     height:100%;
 
     display:block;
@@ -223,33 +245,30 @@ body{
     object-fit:cover;
 
     background:#000;
-
 }
 
 
-/*=========================================
-        IMAGE TITLE
-=========================================*/
+/* =========================================
+        TITLE
+========================================= */
 
 .image-card h3{
 
     margin:4px 0 0;
 
-    padding:
-        0 10px;
+    padding:0 10px;
 
     text-align:center;
 
     font-size:18px;
 
     color:#fff;
-
 }
 
 
-/*=========================================
-        IMAGE VIEWER
-=========================================*/
+/* =========================================
+        FULLSCREEN VIEWER
+========================================= */
 
 .viewer{
 
@@ -260,41 +279,36 @@ body{
     display:none;
 
     justify-content:center;
-
     align-items:center;
 
     flex-direction:column;
 
     background:#000;
 
-    z-index:99999;
-
+    z-index:999999;
 }
 
 
 .viewer.active{
 
     display:flex;
-
 }
 
 
 .viewer img{
 
     width:100vw;
-
     height:100vh;
 
     object-fit:contain;
 
     background:#000;
-
 }
 
 
-/*=========================================
-        CLOSE BUTTON
-=========================================*/
+/* =========================================
+        CLOSE
+========================================= */
 
 .close-viewer{
 
@@ -314,22 +328,19 @@ body{
 
     font-size:24px;
 
-    background:
-        rgba(255,255,255,.12);
+    background:rgba(255,255,255,.12);
 
     backdrop-filter:blur(12px);
 
-    border:
-        1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.25);
 
     z-index:20;
-
 }
 
 
-/*=========================================
+/* =========================================
         DOWNLOAD
-=========================================*/
+========================================= */
 
 .download{
 
@@ -364,27 +375,34 @@ body{
         0 0 20px rgba(0,212,255,.5);
 
     z-index:20;
-
 }
 
 
-/*=========================================
+/* =========================================
         MOBILE
-=========================================*/
+========================================= */
 
 @media(max-width:700px){
 
     .gallery-header{
 
         height:85px;
-
     }
 
 
-    .gallery-logo{
+    .gallery-header .logo{
 
         width:145px;
+    }
 
+
+    .gallery-header .menu-btn{
+
+        top:16px !important;
+        right:15px !important;
+
+        width:52px;
+        height:52px;
     }
 
 
@@ -392,17 +410,16 @@ body{
 
         top:88px;
 
-        bottom:115px;
+        bottom:105px;
 
         padding:
-            15px 14px 35px;
+            15px 12px 35px;
 
         display:flex;
 
         flex-direction:column;
 
         gap:20px;
-
     }
 
 
@@ -411,7 +428,6 @@ body{
         flex:none;
 
         width:100%;
-
     }
 
 
@@ -422,14 +438,12 @@ body{
         margin:10px;
 
         aspect-ratio:16 / 10;
-
     }
 
 
     .image-card h3{
 
         font-size:17px;
-
     }
 
 
@@ -437,46 +451,31 @@ body{
 
         width:88%;
 
+        padding:15px;
     }
 
 }
 
 
-/*=========================================
+/* =========================================
         SMALL PHONES
-=========================================*/
+========================================= */
 
-@media(max-width:400px){
+@media(max-height:700px){
 
     .image-gallery{
 
-        padding:
-            12px 10px 30px;
+        top:85px;
 
-        gap:18px;
+        bottom:95px;
 
+        padding-top:12px;
     }
 
 
     .image-frame{
 
         aspect-ratio:16 / 10;
-
-    }
-
-}
-
-
-/*=========================================
-        LANDSCAPE
-=========================================*/
-
-@media(orientation:landscape){
-
-    .image-gallery{
-
-        bottom:90px;
-
     }
 
 }
