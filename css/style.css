@@ -155,21 +155,33 @@ body{
 
 }
 
-/* ==========================
-    MENU BUTTON
-========================== */
+/*=========================================
+        MORE / MENU BUTTON
+=========================================*/
 
 .menu-btn{
 
-    position:fixed;
+    position:fixed !important;
 
-    top:18px;
+    top:18px !important;
 
-    right:18px;
+    right:18px !important;
+
+    left:auto !important;
+
+    margin:0 !important;
 
     width:55px;
 
     height:55px;
+
+    padding:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     border:none;
 
@@ -177,19 +189,40 @@ body{
 
     border-radius:50%;
 
-    background:var(--glass);
+    background:rgba(255,255,255,.10);
 
     backdrop-filter:blur(18px);
 
-    border:1px solid var(--border);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.20);
 
     color:#fff;
 
-    font-size:26px;
+    font-size:27px;
 
     cursor:pointer;
 
-    z-index:1001;
+    z-index:99999;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    .menu-btn{
+
+        top:18px !important;
+
+        right:16px !important;
+
+        width:55px;
+
+        height:55px;
+
+    }
 
 }
 
