@@ -5,7 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Images</title>
@@ -17,177 +18,161 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no
 
 </head>
 
+
 <body>
 
-<!-- ==========================
+
+<!-- =========================================
         BACKGROUND
-========================== -->
+========================================= -->
 
 <div class="image-bg"></div>
 
-<!-- ==========================
+
+<!-- =========================================
         HEADER
-========================== -->
+========================================= -->
 
 <header class="gallery-header">
 
-<div class="logo">
+    <div class="logo">
 
-<img
-src="assets/logo/logo.png"
-alt="Logo">
+        <img
+        src="assets/logo/logo.png"
+        alt="Logo">
 
-</div>
+    </div>
 
-<button
-class="menu-btn ripple"
-onclick="goMenu()">
 
-☰
+    <button
+    class="menu-btn ripple"
+    onclick="goMenu()">
 
-</button>
+        ☰
+
+    </button>
 
 </header>
 
-<!-- ==========================
+
+<!-- =========================================
         IMAGE GALLERY
-========================== -->
+========================================= -->
 
-<div class="image-gallery">
+<main class="image-gallery">
 
-<!-- ==========================
-        IMAGE CARD 1
-========================== -->
 
-<div class="image-card"
-     data-image="assets/images/image1.jpg">
+    <!-- IMAGE 1 -->
 
-    <div class="image-frame">
+    <article class="image-card">
 
-        <img
-        src="assets/images/image1.jpg"
-        alt="Image 1"
-        loading="lazy">
+        <div class="image-frame">
 
-        <div class="image-overlay">
-
-            <span>View</span>
+            <img
+            src="assets/images/image1.jpg"
+            alt="Image 1"
+            loading="lazy">
 
         </div>
 
-    </div>
+        <h3>Image 1</h3>
 
-    <h3>Image 1</h3>
-
-</div>
+    </article>
 
 
-<!-- ==========================
-        IMAGE CARD 2
-========================== -->
 
-<div class="image-card"
-     data-image="assets/images/image2.jpg">
+    <!-- IMAGE 2 -->
 
-    <div class="image-frame">
+    <article class="image-card">
 
-        <img
-        src="assets/images/image2.jpg"
-        alt="Image 2"
-        loading="lazy">
+        <div class="image-frame">
 
-        <div class="image-overlay">
-
-            <span>View</span>
+            <img
+            src="assets/images/image2.jpg"
+            alt="Image 2"
+            loading="lazy">
 
         </div>
 
-    </div>
+        <h3>Image 2</h3>
 
-    <h3>Image 2</h3>
+    </article>
 
-</div>
 
-<!-- ==========================
-        IMAGE CARD 3
-========================== -->
 
-<div class="image-card"
-     data-image="assets/images/image3.jpg">
+    <!-- IMAGE 3 -->
 
-    <div class="image-frame">
+    <article class="image-card">
 
-        <img
-        src="assets/images/image3.jpg"
-        alt="Image 3"
-        loading="lazy">
+        <div class="image-frame">
 
-        <div class="image-overlay">
-
-            <span>View</span>
+            <img
+            src="assets/images/image3.jpg"
+            alt="Image 3"
+            loading="lazy">
 
         </div>
 
-    </div>
+        <h3>Image 3</h3>
 
-    <h3>Image 3</h3>
-
-</div>
+    </article>
 
 
-<!-- ==========================
-        IMAGE CARD 4
-========================== -->
 
-<div class="image-card"
-     data-image="assets/images/image4.jpg">
+    <!-- IMAGE 4 -->
 
-    <div class="image-frame">
+    <article class="image-card">
 
-        <img
-        src="assets/images/image4.jpg"
-        alt="Image 4"
-        loading="lazy">
+        <div class="image-frame">
 
-        <div class="image-overlay">
-
-            <span>View</span>
+            <img
+            src="assets/images/image4.jpg"
+            alt="Image 4"
+            loading="lazy">
 
         </div>
 
-    </div>
+        <h3>Image 4</h3>
 
-    <h3>Image 4</h3>
-
-</div>
+    </article>
 
 
-</div>
+</main>
 
-<!-- ==========================
-      FULLSCREEN IMAGE VIEWER
-========================== -->
 
-<div id="imageViewer" class="viewer">
+
+<!-- =========================================
+        FULLSCREEN IMAGE VIEWER
+========================================= -->
+
+<div
+id="imageViewer"
+class="viewer">
+
 
     <button
-    class="close-viewer">
+    class="close-viewer"
+    type="button">
 
         ✕
 
     </button>
 
+
     <img
     id="viewerImage"
     src=""
-    alt="Full Image">
+    alt="Full Screen Image">
+
 
     <a
     id="downloadImage"
     href=""
     download>
 
-        <button class="download">
+        <button
+        class="download"
+        type="button">
 
             ⬇ Download
 
@@ -197,16 +182,20 @@ onclick="goMenu()">
 
 </div>
 
-<!-- ==========================
-      BOTTOM NAVIGATION
-========================== -->
+
+
+<!-- =========================================
+        BOTTOM NAVIGATION
+========================================= -->
 
 <nav class="bottom-nav image show">
 
     <div class="indicator"></div>
 
-    <div class="nav-item"
-         data-page="index.html">
+
+    <div
+    class="nav-item"
+    data-page="index.html">
 
         <img
         src="assets/icons/home.png"
@@ -216,8 +205,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item"
-         data-page="videos.html">
+
+    <div
+    class="nav-item"
+    data-page="videos.html">
 
         <img
         src="assets/icons/videos.png"
@@ -227,8 +218,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item active"
-         data-page="images.html">
+
+    <div
+    class="nav-item active"
+    data-page="images.html">
 
         <img
         src="assets/icons/images.png"
@@ -238,8 +231,10 @@ onclick="goMenu()">
 
     </div>
 
-    <div class="nav-item"
-         data-page="special.html">
+
+    <div
+    class="nav-item"
+    data-page="special.html">
 
         <img
         src="assets/icons/special.png"
@@ -252,9 +247,10 @@ onclick="goMenu()">
 </nav>
 
 
-<!-- ==========================
-          JAVASCRIPT
-========================== -->
+
+<!-- =========================================
+        JAVASCRIPT
+========================================= -->
 
 <script src="js/app.js"></script>
 
