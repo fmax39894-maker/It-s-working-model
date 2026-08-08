@@ -1,249 +1,196 @@
-/*=========================================
-        VIDEO GALLERY
-=========================================*/
+/* =========================================
+   VIDEO GALLERY
+========================================= */
 
 body{
-
-    background:#04060b;
-
+    margin:0;
+    padding:0;
+    background:#050816;
     color:#fff;
-
     overflow:hidden;
-
 }
 
-
-/*=========================================
-        BACKGROUND
-=========================================*/
-
+/* Background */
 .video-bg{
-
     position:fixed;
-
     inset:0;
-
+    width:100%;
+    height:100%;
     background:
-
-    linear-gradient(
-        135deg,
-        #050816,
-        #0b1324,
-        #101b35
-    );
-
+        linear-gradient(
+            135deg,
+            #050816,
+            #0b1324,
+            #101b35
+        );
     z-index:-10;
-
 }
 
-
-/*=========================================
-        HEADER
-=========================================*/
+/* =========================================
+   HEADER
+========================================= */
 
 .gallery-header{
-
     position:fixed;
-
     top:0;
-
     left:0;
-
     width:100%;
-
-    height:85px;
+    height:90px;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    z-index:5000;
-
+    z-index:1000;
+    pointer-events:none;
 }
 
-
-.gallery-header .logo img{
-
+.gallery-logo{
     width:170px;
+    max-width:45vw;
+    height:auto;
 
-    display:block;
-
-    filter:
-
-    drop-shadow(0 0 12px cyan);
-
+    filter:drop-shadow(0 0 12px cyan);
 }
 
+.gallery-header .menu-btn{
+    pointer-events:auto;
 
-/*=========================================
-        VIDEO GALLERY
-=========================================*/
+    position:absolute;
+    right:18px;
+    top:18px;
+}
+
+/* =========================================
+   VIDEO GALLERY
+========================================= */
 
 .video-gallery{
 
-    position:absolute;
+    position:fixed;
 
     top:95px;
-
     left:0;
-
     right:0;
 
-    bottom:105px;
+    /* IMPORTANT */
+    bottom:120px;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
-    padding:15px;
-
-    padding-bottom:25px;
+    padding:20px 18px 40px;
 
     display:grid;
 
     grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
 
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:22px;
+    gap:24px;
 
     align-content:start;
 
+    -webkit-overflow-scrolling:touch;
 }
 
+/* Scrollbar hidden */
 .video-gallery::-webkit-scrollbar{
-
-    display:none;
-
+    width:0;
+    height:0;
 }
 
-
-/*=========================================
-        VIDEO CARD
-=========================================*/
+/* =========================================
+   VIDEO CARD
+========================================= */
 
 .video-card{
 
     width:100%;
-
     min-width:0;
 
     background:
-
-    rgba(255,255,255,.05);
+        rgba(255,255,255,.06);
 
     border:
+        1px solid rgba(255,255,255,.14);
 
-    1px solid rgba(255,255,255,.12);
+    border-radius:26px;
 
-    border-radius:24px;
+    padding:0 0 18px;
 
     overflow:hidden;
 
     backdrop-filter:blur(15px);
 
-    -webkit-backdrop-filter:blur(15px);
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.35);
 
     transition:.3s;
-
-    cursor:pointer;
-
 }
 
-
-.video-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-
-    0 0 25px rgba(0,212,255,.35);
-
-}
-
-
-/*=========================================
-        VIDEO FRAME
-=========================================*/
+/* =========================================
+   VIDEO FRAME
+========================================= */
 
 .video-frame{
 
     position:relative;
 
-    width:calc(100% - 32px);
+    width:calc(100% - 24px);
 
-    height:210px;
-
-    margin:16px;
+    margin:12px;
 
     border-radius:20px;
 
     overflow:hidden;
 
-    border:
-
-    3px solid rgba(255,255,255,.18);
+    border:3px solid rgba(255,255,255,.18);
 
     background:#000;
 
     box-shadow:
+        0 0 18px rgba(0,212,255,.35),
+        inset 0 0 15px rgba(255,255,255,.08);
 
-    0 0 18px rgba(0,212,255,.35),
-
-    inset 0 0 15px rgba(255,255,255,.08);
-
+    aspect-ratio:16 / 9;
 }
 
+/* =========================================
+   COVER IMAGE
+========================================= */
 
-/*=========================================
-        VIDEO PREVIEW
-=========================================*/
-
-.video-preview{
-
-    display:block;
+.cover-image{
 
     width:100%;
-
     height:100%;
+
+    display:block;
 
     object-fit:cover;
 
     background:#000;
-
-    border:none;
-
-    outline:none;
-
 }
 
-
-/*=========================================
-        PLAY BUTTON
-=========================================*/
+/* =========================================
+   PLAY BUTTON
+========================================= */
 
 .play-btn{
 
     position:absolute;
 
     left:50%;
-
     top:50%;
 
     transform:translate(-50%,-50%);
 
-    width:68px;
-
-    height:68px;
+    width:64px;
+    height:64px;
 
     border-radius:50%;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     color:#fff;
@@ -251,122 +198,39 @@ body{
     font-size:28px;
 
     background:
-
-    rgba(0,212,255,.20);
+        rgba(0,212,255,.20);
 
     backdrop-filter:blur(12px);
 
-    -webkit-backdrop-filter:blur(12px);
-
     border:
-
-    2px solid rgba(255,255,255,.25);
+        2px solid rgba(255,255,255,.3);
 
     box-shadow:
+        0 0 25px cyan;
 
-    0 0 25px cyan;
-
-    pointer-events:none;
-
-    z-index:3;
-
+    z-index:5;
 }
 
-
-/*=========================================
-        TITLE
-=========================================*/
+/* =========================================
+   TITLE
+========================================= */
 
 .video-card h3{
 
-    margin:0;
+    margin:4px 0 0;
 
-    padding:
-
-    0 0 18px;
+    padding:0 10px;
 
     text-align:center;
 
     font-size:18px;
 
     color:#fff;
-
-    letter-spacing:.5px;
-
 }
 
-
-/*=========================================
-        FRAME SHINE
-=========================================*/
-
-.video-frame::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-120%;
-
-    width:45%;
-
-    height:100%;
-
-    background:
-
-    linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        rgba(255,255,255,.25),
-
-        transparent
-
-    );
-
-    transform:skewX(-25deg);
-
-    animation:
-
-    frameShine 6s infinite;
-
-    z-index:2;
-
-    pointer-events:none;
-
-}
-
-
-@keyframes frameShine{
-
-    0%{
-
-        left:-120%;
-
-    }
-
-    30%{
-
-        left:130%;
-
-    }
-
-    100%{
-
-        left:130%;
-
-    }
-
-}
-
-
-/*=========================================
-        FULLSCREEN VIEWER
-=========================================*/
+/* =========================================
+   FULLSCREEN VIEWER
+========================================= */
 
 .viewer{
 
@@ -377,257 +241,167 @@ body{
     display:none;
 
     justify-content:center;
-
     align-items:center;
 
     flex-direction:column;
 
-    background:
-
-    rgba(0,0,0,.97);
+    background:#000;
 
     z-index:99999;
-
 }
-
 
 .viewer.active{
-
     display:flex;
-
 }
-
 
 .viewer video{
 
     width:100vw;
-
     height:100vh;
 
     object-fit:contain;
 
     background:#000;
-
-    outline:none;
-
 }
 
-
-/*=========================================
-        CLOSE BUTTON
-=========================================*/
+/* =========================================
+   CLOSE BUTTON
+========================================= */
 
 .close-viewer{
 
     position:absolute;
 
     top:18px;
-
     right:18px;
 
     width:52px;
-
     height:52px;
 
     border:none;
-
     border-radius:50%;
-
-    background:
-
-    rgba(255,255,255,.12);
-
-    backdrop-filter:blur(12px);
-
-    -webkit-backdrop-filter:blur(12px);
-
-    border:
-
-    1px solid rgba(255,255,255,.2);
 
     color:#fff;
 
-    font-size:23px;
+    font-size:24px;
 
-    z-index:10;
+    background:
+        rgba(255,255,255,.12);
 
+    backdrop-filter:blur(12px);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    z-index:20;
 }
 
-
-/*=========================================
-        DOWNLOAD BUTTON
-=========================================*/
+/* =========================================
+   DOWNLOAD
+========================================= */
 
 .download{
 
     position:absolute;
 
-    bottom:95px;
-
+    bottom:100px;
     left:50%;
 
     transform:translateX(-50%);
 
-    border:none;
-
-    border-radius:30px;
-
     padding:14px 28px;
 
-    font-size:16px;
-
-    font-weight:bold;
+    border:none;
+    border-radius:30px;
 
     color:#fff;
 
+    font-size:16px;
+    font-weight:bold;
+
     background:
-
-    linear-gradient(
-
-        135deg,
-
-        #00c6ff,
-
-        #0072ff
-
-    );
+        linear-gradient(
+            135deg,
+            #00c6ff,
+            #0072ff
+        );
 
     box-shadow:
+        0 0 20px rgba(0,212,255,.5);
 
-    0 0 20px rgba(0,212,255,.5);
-
+    z-index:20;
 }
 
-
-/*=========================================
-        MOBILE
-=========================================*/
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:700px){
 
     .gallery-header{
-
-        height:80px;
-
+        height:85px;
     }
 
-
-    .gallery-header .logo img{
-
-        width:140px;
-
+    .gallery-logo{
+        width:145px;
     }
-
 
     .video-gallery{
 
-        top:90px;
+        top:88px;
 
-        bottom:95px;
+        bottom:115px;
 
-        padding:12px;
+        padding:
+            15px 14px 35px;
 
-        padding-bottom:25px;
+        display:flex;
 
-        grid-template-columns:1fr;
+        flex-direction:column;
 
-        gap:18px;
-
+        gap:20px;
     }
 
+    .video-card{
+        flex:none;
+        width:100%;
+    }
 
     .video-frame{
 
-        width:calc(100% - 28px);
+        width:calc(100% - 20px);
 
-        height:200px;
+        margin:10px;
 
-        margin:14px;
-
+        aspect-ratio:16 / 9;
     }
-
 
     .play-btn{
-
-        width:60px;
-
-        height:60px;
-
-        font-size:26px;
-
+        width:58px;
+        height:58px;
+        font-size:25px;
     }
 
+    .video-card h3{
+        font-size:17px;
+    }
 
     .download{
-
         width:88%;
-
-        padding:15px;
-
     }
-
 }
 
-
-/*=========================================
-        SMALL PHONES
-=========================================*/
-
-@media(max-width:400px){
-
-    .video-gallery{
-
-        bottom:95px;
-
-        padding:10px;
-
-    }
-
-
-    .video-frame{
-
-        height:185px;
-
-    }
-
-}
-
-
-/*=========================================
-        LANDSCAPE
-=========================================*/
+/* =========================================
+   LANDSCAPE
+========================================= */
 
 @media(orientation:landscape){
 
     .video-gallery{
-
-        bottom:95px;
-
+        bottom:90px;
     }
-
 
     .video-frame{
-
-        height:180px;
-
+        aspect-ratio:16 / 9;
     }
-
-
-    .download{
-
-        bottom:20px;
-
-    }
-
-}
-
-
-/*=========================================
-        VIDEO RESET
-=========================================*/
-
-video{
-
-    outline:none;
-
 }
