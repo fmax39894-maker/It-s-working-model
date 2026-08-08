@@ -1,7 +1,7 @@
 "use strict";
 
 /*=========================================
-            SPECIAL PAGE
+        SPECIAL PAGE
 =========================================*/
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -10,169 +10,22 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 
+
+/*=========================================
+        INITIALIZE
+=========================================*/
+
 function initSpecial(){
 
-    initVideo();
+    const button=
+    document.getElementById("getSpecialBtn");
 
-    initButton();
+    if(!button) return;
 
-    initViewer();
 
-}
+    button.addEventListener("click",()=>{
 
-
-/*=========================================
-        VIDEO
-=========================================*/
-
-function initVideo(){
-
-    const video=document.getElementById("specialVideo");
-
-    if(!video) return;
-
-    video.loop=true;
-
-    video.muted=true;
-
-    video.playsInline=true;
-
-    video.play().catch(()=>{});
-
-}
-
-
-/*=========================================
-        MAGIC BUTTON
-=========================================*/
-
-function initButton(){
-
-    const btn=document.getElementById("magicBtn");
-
-    if(!btn) return;
-
-    btn.addEventListener("click",openViewer);
-
-}
-
-
-/*=========================================
-        OPEN IMAGE
-=========================================*/
-
-function openViewer(){
-
-    const viewer=document.getElementById("specialViewer");
-
-    const logo=document.querySelector(".gallery-logo");
-
-    const button=document.getElementById("magicBtn");
-
-    viewer.classList.add("active");
-
-    if(logo){
-
-        logo.style.display="none";
-
-    }
-
-    if(button){
-
-        button.style.display="none";
-
-    }
-
-}
-
-
-/*=========================================
-        VIEWER EVENTS
-=========================================*/
-
-function initViewer(){
-
-    const close=document.getElementById("closeSpecial");
-
-    const viewer=document.getElementById("specialViewer");
-
-    if(close){
-
-        close.addEventListener("click",closeViewer);
-
-    }
-
-    if(viewer){
-
-        viewer.addEventListener("click",(e)=>{
-
-            if(e.target===viewer){
-
-                closeViewer();
-
-            }
-
-        });
-
-    }
-
-}
-
-/*=========================================
-        CLOSE VIEWER
-=========================================*/
-
-function closeViewer(){
-
-    const viewer=document.getElementById("specialViewer");
-
-    const logo=document.querySelector(".gallery-logo");
-
-    const button=document.getElementById("magicBtn");
-
-    viewer.classList.remove("active");
-
-    if(logo){
-
-        logo.style.display="block";
-
-    }
-
-    if(button){
-
-        button.style.display="block";
-
-    }
-
-}
-
-
-/*=========================================
-        KEYBOARD
-=========================================*/
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        closeViewer();
-
-    }
-
-});
-
-
-/*=========================================
-        PREVENT IMAGE DRAG
-=========================================*/
-
-const specialImage=document.getElementById("specialImage");
-
-if(specialImage){
-
-    specialImage.addEventListener("dragstart",(e)=>{
-
-        e.preventDefault();
+        showSpecial();
 
     });
 
@@ -180,51 +33,142 @@ if(specialImage){
 
 
 /*=========================================
-        SWIPE DOWN TO CLOSE
+        SHOW SPECIAL
 =========================================*/
 
-let startY=0;
+function showSpecial(){
 
-document.addEventListener("touchstart",(e)=>{
+    const result=
+    document.getElementById("specialResult");
 
-    startY=e.touches[0].clientY;
+    if(!result) return;
 
-},{passive:true});
 
-document.addEventListener("touchend",(e)=>{
+    result.innerHTML=`
 
-    const viewer=document.getElementById("specialViewer");
+        <div class="special-popup">
 
-    if(!viewer.classList.contains("active")) return;
+            <button
+            class="special-close"
+            type="button">
 
-    const endY=e.changedTouches[0].clientY;
+                ✕
 
-    if(endY-startY>120){
+            </button>
 
-        closeViewer();
+
+            <div class="special-popup-icon">
+
+                ✨
+
+            </div>
+
+
+            <h2>
+
+                Special Content
+
+            </h2>
+
+
+            <p>
+
+                Your special content will appear here.
+
+            </p>
+
+        </div>
+
+    `;
+
+
+    result.style.display="flex";
+
+
+    const close=
+    result.querySelector(".special-close");
+
+
+    if(close){
+
+        close.addEventListener("click",()=>{
+
+            closeSpecial();
+
+        });
 
     }
 
-},{passive:true});
+}
 
 
 /*=========================================
-        PAGE READY
+        CLOSE SPECIAL
 =========================================*/
 
-window.addEventListener("load",()=>{
+function closeSpecial(){
 
-    console.log(
+    const result=
+    document.getElementById("specialResult");
 
-        "%cSpecial Page Ready",
+    if(!result) return;
 
-        "color:#00d4ff;font-size:18px;font-weight:bold;"
 
-    );
+    result.style.display="none";
+
+    result.innerHTML="";
+
+}
+
+
+/*=========================================
+        CLICK OUTSIDE
+=========================================*/
+
+document.addEventListener("click",(e)=>{
+
+    const result=
+    document.getElementById("specialResult");
+
+
+    if(!result) return;
+
+
+    if(
+        result.style.display==="flex" &&
+        e.target===result
+    ){
+
+        closeSpecial();
+
+    }
 
 });
 
 
 /*=========================================
-        END OF special.js
+        ESCAPE
 =========================================*/
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        closeSpecial();
+
+    }
+
+});
+
+
+/*=========================================
+        READY
+=========================================*/
+
+console.log(
+
+"%cSpecial Page Ready",
+
+"color:#00d4ff;font-size:18px;font-weight:bold;"
+
+);
