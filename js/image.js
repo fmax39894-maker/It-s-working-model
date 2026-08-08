@@ -1,72 +1,41 @@
 "use strict";
 
 /*=========================================
-            IMAGE GALLERY
+        IMAGE GALLERY
 =========================================*/
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-    initImages();
+    initImageGallery();
 
 });
 
-const images=[
 
-{
-title:"Image 1",
-file:"assets/images/image1.png"
-},
+function initImageGallery(){
 
-{
-title:"Image 2",
-file:"assets/images/image2.png"
-},
+    setupImageCards();
 
-{
-title:"Image 3",
-file:"assets/images/image3.png"
-},
-
-{
-title:"Image 4",
-file:"assets/images/image4.png"
-}
-
-];
-
-let currentIndex=0;
-
-
-/*=========================================
-        INITIALIZE
-=========================================*/
-
-function initImages(){
-
-    bindImages();
-
-    bindViewer();
+    setupImageViewer();
 
 }
 
 
 /*=========================================
-        IMAGE CLICK
+        IMAGE CARDS
 =========================================*/
 
-function bindImages(){
+function setupImageCards(){
 
-    document
+    const cards=document.querySelectorAll(".image-card");
 
-    .querySelectorAll(".image-card")
 
-    .forEach((card,index)=>{
+    cards.forEach(card=>{
 
         card.addEventListener("click",()=>{
 
-            currentIndex=index;
+            const image=card.dataset.image;
 
-            openImage(index);
+            openImage(image);
 
         });
 
@@ -79,29 +48,32 @@ function bindImages(){
         OPEN IMAGE
 =========================================*/
 
-function openImage(index){
+function openImage(file){
 
-    const viewer=
+    const viewer=document.getElementById("imageViewer");
 
-    document.getElementById("imageViewer");
+    const image=document.getElementById("viewerImage");
 
-    const image=
+    const download=document.getElementById("downloadImage");
 
-    document.getElementById("fullImage");
 
-    const download=
+    if(!viewer || !image) return;
 
-    document.getElementById("downloadImage");
 
-    image.src=images[index].file;
+    image.src=file;
 
-    download.href=images[index].file;
+
+    if(download){
+
+        download.href=file;
+
+    }
+
 
     viewer.classList.add("active");
 
-    const logo=
 
-    document.querySelector(".gallery-logo");
+    const logo=document.querySelector(".logo");
 
     if(logo){
 
@@ -109,21 +81,39 @@ function openImage(index){
 
     }
 
+
+    const nav=document.querySelector(".bottom-nav");
+
+    if(nav){
+
+        nav.style.display="none";
+
+    }
+
 }
 
 /*=========================================
-        VIEWER EVENTS
+        IMAGE VIEWER
 =========================================*/
 
-function bindViewer(){
+function setupImageViewer(){
 
     const viewer=document.getElementById("imageViewer");
 
+    const image=document.getElementById("viewerImage");
+
     const close=document.querySelector(".close-viewer");
 
-    if(!viewer || !close) return;
 
-    close.addEventListener("click",closeImage);
+    if(!viewer || !image || !close) return;
+
+
+    close.addEventListener("click",()=>{
+
+        closeImage();
+
+    });
+
 
     viewer.addEventListener("click",(e)=>{
 
@@ -146,13 +136,19 @@ function closeImage(){
 
     const viewer=document.getElementById("imageViewer");
 
-    const image=document.getElementById("fullImage");
+    const image=document.getElementById("viewerImage");
 
-    const logo=document.querySelector(".gallery-logo");
+
+    if(!viewer || !image) return;
+
+
+    image.src="";
+
 
     viewer.classList.remove("active");
 
-    image.removeAttribute("src");
+
+    const logo=document.querySelector(".logo");
 
     if(logo){
 
@@ -160,84 +156,50 @@ function closeImage(){
 
     }
 
+
+    const nav=document.querySelector(".bottom-nav");
+
+    if(nav){
+
+        nav.style.display="flex";
+
+    }
+
 }
 
-
 /*=========================================
-        SWIPE SUPPORT
+        SWIPE DOWN TO CLOSE
 =========================================*/
 
-let startX=0;
+let imageStartY=0;
 
 document.addEventListener("touchstart",(e)=>{
 
-    startX=e.touches[0].clientX;
+    if(e.touches.length){
+
+        imageStartY=e.touches[0].clientY;
+
+    }
 
 },{passive:true});
+
 
 document.addEventListener("touchend",(e)=>{
 
-    const endX=e.changedTouches[0].clientX;
+    if(e.changedTouches.length){
 
-    const diff=endX-startX;
+        const imageEndY=e.changedTouches[0].clientY;
 
-    if(!document.getElementById("imageViewer")
+        if(imageEndY-imageStartY>120){
 
-        .classList.contains("active")) return;
+            closeImage();
 
-    if(diff<-60){
-
-        nextImage();
-
-    }
-
-    if(diff>60){
-
-        previousImage();
+        }
 
     }
 
 },{passive:true});
 
-
-/*=========================================
-        NEXT IMAGE
-=========================================*/
-
-function nextImage(){
-
-    currentIndex++;
-
-    if(currentIndex>=images.length){
-
-        currentIndex=0;
-
-    }
-
-    openImage(currentIndex);
-
-}
-
-
-/*=========================================
-        PREVIOUS IMAGE
-=========================================*/
-
-function previousImage(){
-
-    currentIndex--;
-
-    if(currentIndex<0){
-
-        currentIndex=images.length-1;
-
-    }
-
-    openImage(currentIndex);
-
-}
-
-"use strict";
 
 /*=========================================
         KEYBOARD CONTROLS
@@ -247,27 +209,12 @@ document.addEventListener("keydown",(e)=>{
 
     const viewer=document.getElementById("imageViewer");
 
-    if(!viewer.classList.contains("active")) return;
+    if(!viewer || !viewer.classList.contains("active")) return;
 
-    switch(e.key){
 
-        case "ArrowRight":
+    if(e.key==="Escape"){
 
-            nextImage();
-
-            break;
-
-        case "ArrowLeft":
-
-            previousImage();
-
-            break;
-
-        case "Escape":
-
-            closeImage();
-
-            break;
+        closeImage();
 
     }
 
@@ -275,56 +222,16 @@ document.addEventListener("keydown",(e)=>{
 
 
 /*=========================================
-        IMAGE PRELOAD
+        IMAGE LOADED
 =========================================*/
 
-function preloadImages(){
+const viewerImage=document.getElementById("viewerImage");
 
-    images.forEach(item=>{
+if(viewerImage){
 
-        const img=new Image();
+    viewerImage.addEventListener("load",()=>{
 
-        img.src=item.file;
-
-    });
-
-}
-
-window.addEventListener("load",preloadImages);
-
-
-/*=========================================
-        PREVENT DRAG
-=========================================*/
-
-document.querySelectorAll("img").forEach(img=>{
-
-    img.addEventListener("dragstart",(e)=>{
-
-        e.preventDefault();
-
-    });
-
-});
-
-
-/*=========================================
-        VIEWER ANIMATION
-=========================================*/
-
-const viewer=document.getElementById("imageViewer");
-
-if(viewer){
-
-    viewer.addEventListener("transitionend",()=>{
-
-        if(!viewer.classList.contains("active")){
-
-            const image=document.getElementById("fullImage");
-
-            image.removeAttribute("src");
-
-        }
+        viewerImage.style.opacity="1";
 
     });
 
@@ -332,22 +239,13 @@ if(viewer){
 
 
 /*=========================================
-        PAGE READY
+        READY
 =========================================*/
 
-window.addEventListener("load",()=>{
+console.log(
 
-    console.log(
+"%cImage Gallery Ready",
 
-        "%cImage Gallery Ready",
+"color:#00d4ff;font-size:18px;font-weight:bold"
 
-        "color:#00d4ff;font-size:18px;font-weight:bold;"
-
-    );
-
-});
-
-
-/*=========================================
-        END OF image.js
-=========================================*/
+);
