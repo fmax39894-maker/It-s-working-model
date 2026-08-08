@@ -1,219 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-
-<title>Menu</title>
-
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animation.css">
-<link rel="stylesheet" href="css/navbar.css">
-<link rel="stylesheet" href="css/menu.css">
-
-</head>
-
-
-<body>
-
-
-<!-- =========================================
-        BACKGROUND
-========================================= -->
-
-<div class="menu-bg"></div>
-
-
-<!-- =========================================
-        HEADER
-========================================= -->
-
-<header class="gallery-header">
-
-    <div class="logo">
-
-        <img
-        src="assets/logo/logo.png"
-        alt="Logo">
-
-    </div>
-
-
-    <button
-    class="menu-btn ripple"
-    onclick="goHome()">
-
-        ✕
-
-    </button>
-
-</header>
-
-
-<!-- =========================================
-        MENU CONTENT
-========================================= -->
-
-<main class="menu-page">
-
-
-    <section class="menu-card">
-
-        <div class="menu-icon">
-
-            ☰
-
-        </div>
-
-
-        <h1>
-
-            Menu
-
-        </h1>
-
-
-        <p>
-
-            Explore the website
-
-        </p>
-
-
-        <!-- HOME -->
-
-        <button
-        class="menu-option ripple"
-        onclick="goHome()">
-
-            <span>🏠</span>
-
-            <strong>Home</strong>
-
-        </button>
-
-
-        <!-- VIDEOS -->
-
-        <button
-        class="menu-option ripple"
-        onclick="goVideos()">
-
-            <span>🎥</span>
-
-            <strong>Videos</strong>
-
-        </button>
-
-
-        <!-- IMAGES -->
-
-        <button
-        class="menu-option ripple"
-        onclick="goImages()">
-
-            <span>🖼️</span>
-
-            <strong>Images</strong>
-
-        </button>
-
-
-        <!-- SPECIAL -->
-
-        <button
-        class="menu-option ripple"
-        onclick="goSpecial()">
-
-            <span>✨</span>
-
-            <strong>Special</strong>
-
-        </button>
-
-    </section>
-
-</main>
-
-
-<!-- =========================================
-        SYMBOL NAVIGATION
-========================================= -->
-
 <nav class="bottom-nav menu show">
 
-    <div class="nav-item"
-         onclick="goHome()">
-
-        <span class="nav-symbol">
-
-            🏠
-
-        </span>
-
+    <div class="nav-item" onclick="goHome()">
+        <img src="assets/icons/home.png" alt="Home">
         <small>Home</small>
-
     </div>
 
-
-    <div class="nav-item"
-         onclick="goVideos()">
-
-        <span class="nav-symbol">
-
-            🎥
-
-        </span>
-
+    <div class="nav-item" onclick="goVideos()">
+        <img src="assets/icons/videos.png" alt="Videos">
         <small>Videos</small>
-
     </div>
 
-
-    <div class="nav-item"
-         onclick="goImages()">
-
-        <span class="nav-symbol">
-
-            🖼️
-
-        </span>
-
+    <div class="nav-item" onclick="goImages()">
+        <img src="assets/icons/images.png" alt="Images">
         <small>Images</small>
-
     </div>
 
-
-    <div class="nav-item"
-         onclick="goSpecial()">
-
-        <span class="nav-symbol">
-
-            ✨
-
-        </span>
-
+    <div class="nav-item" onclick="goSpecial()">
+        <img src="assets/icons/special.png" alt="Special">
         <small>Special</small>
-
     </div>
 
 </nav>
-
-
-<!-- =========================================
-        JAVASCRIPT
-========================================= -->
-
-<script src="js/app.js"></script>
-
-<script src="js/navbar.js"></script>
-
-
-</body>
-
-</html>
