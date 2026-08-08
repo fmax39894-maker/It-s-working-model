@@ -1,4 +1,14 @@
 /*=========================================
+        ANDROID PHONE BACK BUTTON
+=========================================*/
+
+document.addEventListener("backbutton", () => {
+
+    goHome();
+
+});
+
+/*=========================================
         PREMIUM NAVBAR
 =========================================*/
 
@@ -139,7 +149,7 @@ function navigate(page){
 
     setTimeout(()=>{
 
-        location.href=page;
+        location.replace(page);
 
     },180);
 
