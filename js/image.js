@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 function initImageGallery(){
 
-    setupImageCards();
+    bindImageCards();
 
-    setupImageViewer();
+    bindImageViewer();
 
 }
 
@@ -24,18 +24,19 @@ function initImageGallery(){
         IMAGE CARDS
 =========================================*/
 
-function setupImageCards(){
+function bindImageCards(){
 
     const cards=document.querySelectorAll(".image-card");
-
 
     cards.forEach(card=>{
 
         card.addEventListener("click",()=>{
 
-            const image=card.dataset.image;
+            const image=card.querySelector("img");
 
-            openImage(image);
+            if(!image) return;
+
+            openImage(image.src);
 
         });
 
@@ -48,7 +49,7 @@ function setupImageCards(){
         OPEN IMAGE
 =========================================*/
 
-function openImage(file){
+function openImage(src){
 
     const viewer=document.getElementById("imageViewer");
 
@@ -56,16 +57,15 @@ function openImage(file){
 
     const download=document.getElementById("downloadImage");
 
-
     if(!viewer || !image) return;
 
 
-    image.src=file;
+    image.src=src;
 
 
     if(download){
 
-        download.href=file;
+        download.href=src;
 
     }
 
@@ -73,7 +73,9 @@ function openImage(file){
     viewer.classList.add("active");
 
 
-    const logo=document.querySelector(".logo");
+    /* Hide logo */
+
+    const logo=document.querySelector(".gallery-header .logo");
 
     if(logo){
 
@@ -81,6 +83,8 @@ function openImage(file){
 
     }
 
+
+    /* Hide navigation */
 
     const nav=document.querySelector(".bottom-nav");
 
@@ -92,20 +96,19 @@ function openImage(file){
 
 }
 
+
 /*=========================================
-        IMAGE VIEWER
+        VIEWER
 =========================================*/
 
-function setupImageViewer(){
+function bindImageViewer(){
 
     const viewer=document.getElementById("imageViewer");
-
-    const image=document.getElementById("viewerImage");
 
     const close=document.querySelector(".close-viewer");
 
 
-    if(!viewer || !image || !close) return;
+    if(!viewer || !close) return;
 
 
     close.addEventListener("click",()=>{
@@ -139,16 +142,22 @@ function closeImage(){
     const image=document.getElementById("viewerImage");
 
 
-    if(!viewer || !image) return;
-
-
-    image.src="";
+    if(!viewer) return;
 
 
     viewer.classList.remove("active");
 
 
-    const logo=document.querySelector(".logo");
+    if(image){
+
+        image.src="";
+
+    }
+
+
+    /* Restore logo */
+
+    const logo=document.querySelector(".gallery-header .logo");
 
     if(logo){
 
@@ -156,6 +165,8 @@ function closeImage(){
 
     }
 
+
+    /* Restore navigation */
 
     const nav=document.querySelector(".bottom-nav");
 
@@ -167,17 +178,19 @@ function closeImage(){
 
 }
 
+
 /*=========================================
-        SWIPE DOWN TO CLOSE
+        SWIPE DOWN
 =========================================*/
 
-let imageStartY=0;
+let startY=0;
+
 
 document.addEventListener("touchstart",(e)=>{
 
     if(e.touches.length){
 
-        imageStartY=e.touches[0].clientY;
+        startY=e.touches[0].clientY;
 
     }
 
@@ -188,11 +201,20 @@ document.addEventListener("touchend",(e)=>{
 
     if(e.changedTouches.length){
 
-        const imageEndY=e.changedTouches[0].clientY;
+        const endY=e.changedTouches[0].clientY;
 
-        if(imageEndY-imageStartY>120){
+        if(endY-startY>120){
 
-            closeImage();
+            const viewer=document.getElementById("imageViewer");
+
+            if(
+                viewer &&
+                viewer.classList.contains("active")
+            ){
+
+                closeImage();
+
+            }
 
         }
 
@@ -202,40 +224,27 @@ document.addEventListener("touchend",(e)=>{
 
 
 /*=========================================
-        KEYBOARD CONTROLS
+        ESCAPE KEY
 =========================================*/
 
 document.addEventListener("keydown",(e)=>{
 
+    if(e.key!=="Escape") return;
+
+
     const viewer=document.getElementById("imageViewer");
 
-    if(!viewer || !viewer.classList.contains("active")) return;
 
-
-    if(e.key==="Escape"){
+    if(
+        viewer &&
+        viewer.classList.contains("active")
+    ){
 
         closeImage();
 
     }
 
 });
-
-
-/*=========================================
-        IMAGE LOADED
-=========================================*/
-
-const viewerImage=document.getElementById("viewerImage");
-
-if(viewerImage){
-
-    viewerImage.addEventListener("load",()=>{
-
-        viewerImage.style.opacity="1";
-
-    });
-
-}
 
 
 /*=========================================
@@ -246,6 +255,6 @@ console.log(
 
 "%cImage Gallery Ready",
 
-"color:#00d4ff;font-size:18px;font-weight:bold"
+"color:#00d4ff;font-size:18px;font-weight:bold;"
 
 );
