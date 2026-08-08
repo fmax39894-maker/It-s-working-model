@@ -7,7 +7,7 @@
 
 <meta
 name="viewport"
-content="width=device-width,initial-scale=1.0">
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Menu</title>
 
@@ -18,223 +18,185 @@ content="width=device-width,initial-scale=1.0">
 
 </head>
 
+
 <body>
 
-<!-- Background -->
+
+<!-- =========================================
+        BACKGROUND
+========================================= -->
 
 <div class="menu-bg"></div>
 
-<!-- Header -->
 
-<header class="menu-header">
+<!-- =========================================
+        HEADER
+========================================= -->
 
-<img
-src="assets/logo/logo.png"
-class="menu-logo">
+<header class="gallery-header">
 
-<button
-class="back-btn ripple"
-onclick="history.back()">
+    <div class="logo">
 
-←
+        <img
+        src="assets/logo/logo.png"
+        alt="Logo">
 
-</button>
+    </div>
+
+
+    <button
+    class="menu-btn ripple"
+    onclick="goHome()">
+
+        ✕
+
+    </button>
 
 </header>
 
-<!-- Main Content -->
 
-<div class="menu-scroll">
+<!-- =========================================
+        MENU CONTENT
+========================================= -->
 
-<div class="glass menu-card fade-up">
+<main class="menu-page">
 
-<h2>
 
-About
+    <section class="menu-card">
 
-</h2>
+        <div class="menu-icon">
 
-<p>
+            ☰
 
-Welcome to our Premium Media Showcase.
+        </div>
 
-Enjoy beautiful videos, images and
-special moments in one place.
 
-</p>
+        <h1>
 
-</div>
+            Menu
 
-<div class="glass menu-card fade-up">
+        </h1>
 
-<h2>
 
-Description
+        <p>
 
-</h2>
+            Explore the website
 
-<p>
+        </p>
 
-This website is specially designed with
-glassmorphism UI, glowing frames,
-fullscreen media player and smooth
-animations.
 
-</p>
+        <!-- HOME -->
 
-</div>
+        <button
+        class="menu-option ripple"
+        onclick="goHome()">
 
-<!-- Links -->
+            <span>🏠</span>
 
-<div class="glass menu-card fade-up">
+            <strong>Home</strong>
 
-<h2>
+        </button>
 
-Quick Links
 
-</h2>
+        <!-- VIDEOS -->
 
-<div class="menu-links">
+        <button
+        class="menu-option ripple"
+        onclick="goVideos()">
 
-<a
-href="index.html">
+            <span>🎥</span>
 
-🏠 Home
+            <strong>Videos</strong>
 
-</a>
+        </button>
 
-<a
-href="videos.html">
 
-🎥 Videos
+        <!-- IMAGES -->
 
-</a>
+        <button
+        class="menu-option ripple"
+        onclick="goImages()">
 
-<a
-href="images.html">
+            <span>🖼️</span>
 
-🖼 Images
+            <strong>Images</strong>
 
-</a>
+        </button>
 
-<a
-href="special.html">
 
-✨ Special
+        <!-- SPECIAL -->
 
-</a>
+        <button
+        class="menu-option ripple"
+        onclick="goSpecial()">
 
-</div>
+            <span>✨</span>
 
-</div>
+            <strong>Special</strong>
 
+        </button>
 
-<!-- Social -->
+    </section>
 
-<div class="glass menu-card fade-up">
+</main>
 
-<h2>
 
-Follow Us
+<!-- =========================================
+        SYMBOL NAVIGATION
+========================================= -->
 
-</h2>
-
-<div class="social-grid">
-
-<a href="#">
-
-📺 YouTube
-
-</a>
-
-<a href="#">
-
-📷 Instagram
-
-</a>
-
-<a href="#">
-
-📢 Telegram
-
-</a>
-
-<a href="#">
-
-🌐 Website
-
-</a>
-
-</div>
-
-</div>
-
-
-<!-- Contact -->
-
-<div class="glass menu-card fade-up">
-
-<h2>
-
-Contact
-
-</h2>
-
-<p>
-
-Email :
-
-your@email.com
-
-</p>
-
-<p>
-
-Website :
-
-www.example.com
-
-</p>
-
-</div>
-
-<!-- Bottom Navigation -->
-
-<nav class="bottom-nav">
-
-    <div class="indicator"></div>
+<nav class="bottom-nav menu show">
 
     <div class="nav-item"
-         data-page="index.html">
+         onclick="goHome()">
 
-        <span>🏠</span>
+        <span class="nav-symbol">
+
+            🏠
+
+        </span>
 
         <small>Home</small>
 
     </div>
 
-    <div class="nav-item"
-         data-page="videos.html">
 
-        <span>🎥</span>
+    <div class="nav-item"
+         onclick="goVideos()">
+
+        <span class="nav-symbol">
+
+            🎥
+
+        </span>
 
         <small>Videos</small>
 
     </div>
 
-    <div class="nav-item"
-         data-page="images.html">
 
-        <span>🖼️</span>
+    <div class="nav-item"
+         onclick="goImages()">
+
+        <span class="nav-symbol">
+
+            🖼️
+
+        </span>
 
         <small>Images</small>
 
     </div>
 
-    <div class="nav-item"
-         data-page="special.html">
 
-        <span>✨</span>
+    <div class="nav-item"
+         onclick="goSpecial()">
+
+        <span class="nav-symbol">
+
+            ✨
+
+        </span>
 
         <small>Special</small>
 
@@ -242,13 +204,15 @@ www.example.com
 
 </nav>
 
-<!-- Scripts -->
+
+<!-- =========================================
+        JAVASCRIPT
+========================================= -->
 
 <script src="js/app.js"></script>
 
 <script src="js/navbar.js"></script>
 
-<script src="js/menu.js"></script>
 
 </body>
 
