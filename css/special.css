@@ -16,6 +16,78 @@ body{
 
 
 /*=========================================
+        SPECIAL POPUP
+=========================================*/
+
+.special-popup{
+
+    position:relative;
+
+    width:min(420px,90vw);
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:rgba(20,30,50,.96);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:0 0 40px rgba(0,212,255,.25);
+
+}
+
+
+.special-popup-icon{
+
+    font-size:45px;
+
+    margin-bottom:15px;
+
+}
+
+
+.special-popup h2{
+
+    margin:0 0 12px;
+
+}
+
+
+.special-popup p{
+
+    color:rgba(255,255,255,.7);
+
+}
+
+
+.special-close{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.1);
+
+    color:#fff;
+
+    font-size:20px;
+
+}
+
+/*=========================================
         BACKGROUND
 =========================================*/
 
