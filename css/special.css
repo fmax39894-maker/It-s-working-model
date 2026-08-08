@@ -4,62 +4,38 @@
 
 body{
     margin:0;
-    background:#000;
-    color:#fff;
+    padding:0;
+
+    width:100%;
+    height:100vh;
+
     overflow:hidden;
+
+    background:#000;
+
+    color:#fff;
 }
 
 
-/* Background */
+/* =========================================
+        BACKGROUND
+========================================= */
 
 .special-bg{
+
     position:fixed;
+
     inset:0;
+
     background:#000;
-    z-index:-1;
+
+    z-index:-10;
 }
 
 
-/* QR SCREEN */
-
-.qr-screen{
-
-    position:fixed;
-
-    top:55px;
-    left:0;
-    right:0;
-
-    bottom:95px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    overflow:hidden;
-}
-
-
-/* QR IMAGE */
-
-.qr-image{
-
-    max-width:100%;
-    max-height:100%;
-
-    width:auto;
-    height:auto;
-
-    object-fit:contain;
-
-    display:block;
-}
-
-
-/* HEADER */
+/* =========================================
+        HEADER
+========================================= */
 
 .gallery-header{
 
@@ -77,148 +53,105 @@ body{
     align-items:center;
 
     z-index:1000;
-
-    pointer-events:none;
 }
+
 
 .gallery-header .logo{
 
-    pointer-events:none;
+    position:absolute;
+
+    top:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:220px;
+
+    max-width:65vw;
 }
+
+
+.gallery-header .logo img{
+
+    width:100%;
+
+    display:block;
+}
+
+
+/* =========================================
+        MORE BUTTON
+========================================= */
 
 .menu-btn{
 
-    pointer-events:auto;
-}
+    position:fixed;
 
+    top:18px;
+    right:18px;
 
-/* MOBILE */
-
-@media(max-width:700px){
-
-    .qr-screen{
-
-        bottom:95px;
-
-        padding:10px;
-
-    }
-
-    .qr-image{
-
-        max-width:100%;
-        max-height:100%;
-
-    }
-
-}
-
-
-/*=========================================
-        SPECIAL POPUP
-=========================================*/
-
-.special-popup{
-
-    position:relative;
-
-    width:min(420px,90vw);
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    border-radius:28px;
-
-    background:rgba(20,30,50,.96);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    box-shadow:0 0 40px rgba(0,212,255,.25);
-
-}
-
-
-.special-popup-icon{
-
-    font-size:45px;
-
-    margin-bottom:15px;
-
-}
-
-
-.special-popup h2{
-
-    margin:0 0 12px;
-
-}
-
-
-.special-popup p{
-
-    color:rgba(255,255,255,.7);
-
-}
-
-
-.special-close{
-
-    position:absolute;
-
-    top:12px;
-
-    right:12px;
-
-    width:42px;
-
-    height:42px;
-
-    border:none;
+    width:55px;
+    height:55px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
 
     color:#fff;
 
-    font-size:20px;
+    font-size:30px;
 
-}
-
-/*=========================================
-        BACKGROUND
-=========================================*/
-
-.special-bg{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(
-        circle at center,
-        #172342 0%,
-        #0a1020 45%,
-        #03050a 100%
-    );
-
-    z-index:-10;
-
+    z-index:1001;
 }
 
 
-/*=========================================
-        SPECIAL PAGE
-=========================================*/
+/* =========================================
+        SPECIAL CONTENT
+========================================= */
 
-.special-page{
+.special-content{
 
     position:fixed;
 
-    inset:0;
+    top:115px;
+
+    left:0;
+    right:0;
+
+    bottom:105px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    overflow:hidden;
+
+    padding:20px;
+
+}
+
+
+/* =========================================
+        WHITE SQUARE
+========================================= */
+
+.qr-box{
+
+    width:min(82vw,420px);
+
+    aspect-ratio:1 / 1;
+
+    background:#fff;
+
+    border-radius:18px;
 
     display:flex;
 
@@ -226,231 +159,201 @@ body{
 
     align-items:center;
 
-    padding:90px 20px 150px;
+    padding:18px;
+
+    box-shadow:
+
+        0 0 20px rgba(0,212,255,.35),
+
+        0 0 50px rgba(0,212,255,.15);
+
+    overflow:hidden;
 
 }
 
 
-/*=========================================
-        SPECIAL CARD
-=========================================*/
+/* =========================================
+        QR IMAGE
+========================================= */
 
-.special-card{
+.qr-image{
 
-    width:min(430px,92vw);
+    width:100%;
 
-    padding:38px 25px;
+    height:100%;
 
-    text-align:center;
+    object-fit:contain;
+
+    display:block;
+
+}
+
+
+/* =========================================
+        DOWNLOAD BUTTON
+========================================= */
+
+.qr-download{
+
+    margin-top:20px;
+
+    min-width:210px;
+
+    height:55px;
+
+    padding:0 25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
 
     border-radius:30px;
 
     background:
 
-    rgba(255,255,255,.07);
+        linear-gradient(
 
-    border:
+            135deg,
 
-    1px solid rgba(255,255,255,.18);
+            #00c6ff,
 
-    backdrop-filter:blur(18px);
+            #0072ff
 
-    -webkit-backdrop-filter:blur(18px);
-
-    box-shadow:
-
-    0 15px 50px rgba(0,0,0,.45),
-
-    0 0 30px rgba(0,212,255,.15);
-
-}
-
-
-/*=========================================
-        ICON
-=========================================*/
-
-.special-icon{
-
-    width:85px;
-
-    height:85px;
-
-    margin:0 auto 20px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    font-size:42px;
-
-    background:
-
-    rgba(0,212,255,.12);
-
-    border:
-
-    1px solid rgba(255,255,255,.2);
-
-    box-shadow:
-
-    0 0 30px rgba(0,212,255,.4);
-
-}
-
-
-/*=========================================
-        TITLE
-=========================================*/
-
-.special-card h1{
-
-    margin:0 0 12px;
-
-    font-size:30px;
-
-    letter-spacing:2px;
-
-}
-
-
-/*=========================================
-        DESCRIPTION
-=========================================*/
-
-.special-card p{
-
-    margin:0 auto 28px;
-
-    max-width:320px;
-
-    line-height:1.6;
-
-    color:rgba(255,255,255,.7);
-
-    font-size:15px;
-
-}
-
-
-/*=========================================
-        GET SPECIAL BUTTON
-=========================================*/
-
-.special-button{
-
-    border:none;
-
-    outline:none;
-
-    padding:15px 32px;
-
-    border-radius:50px;
+        );
 
     color:#fff;
 
-    font-size:16px;
+    font-size:17px;
 
     font-weight:bold;
 
-    background:
-
-    linear-gradient(
-        135deg,
-        #00c6ff,
-        #0072ff
-    );
-
     box-shadow:
 
-    0 0 25px rgba(0,212,255,.45);
+        0 0 18px rgba(0,212,255,.55);
 
-    cursor:pointer;
+    border:1px solid rgba(255,255,255,.25);
 
-}
-
-
-/*=========================================
-        RESULT AREA
-=========================================*/
-
-.special-result{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.96);
-
-    z-index:99998;
+    transition:.25s;
 
 }
 
 
-/*=========================================
+/* Download icon */
+
+.qr-download::before{
+
+    content:"⬇";
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+
+.qr-download:active{
+
+    transform:scale(.95);
+
+}
+
+
+/* =========================================
         MOBILE
-=========================================*/
+========================================= */
 
 @media(max-width:700px){
 
-    .special-page{
+    .gallery-header .logo{
 
-        padding:
+        width:160px;
 
-        90px 16px 150px;
-
-    }
-
-    .special-card{
-
-        padding:32px 20px;
+        top:20px;
 
     }
 
-    .special-icon{
 
-        width:75px;
+    .menu-btn{
 
-        height:75px;
+        top:18px;
+        right:16px;
 
-        font-size:36px;
+        width:52px;
+        height:52px;
 
     }
 
-    .special-card h1{
 
-        font-size:26px;
+    .special-content{
+
+        top:125px;
+
+        bottom:105px;
+
+        padding:15px;
+
+    }
+
+
+    .qr-box{
+
+        width:82vw;
+
+        max-width:360px;
+
+        padding:15px;
+
+    }
+
+
+    .qr-download{
+
+        min-width:220px;
+
+        height:55px;
+
+        font-size:16px;
 
     }
 
 }
 
 
-/*=========================================
-        SMALL PHONE
-=========================================*/
+/* =========================================
+        SMALL PHONES
+========================================= */
 
-@media(max-width:400px){
+@media(max-height:700px){
 
-    .special-page{
+    .special-content{
 
-        padding-bottom:160px;
+        top:110px;
+
+        bottom:90px;
 
     }
 
-    .special-card{
 
-        padding:28px 18px;
+    .qr-box{
+
+        width:65vw;
+
+        max-width:300px;
+
+    }
+
+
+    .qr-download{
+
+        margin-top:12px;
+
+        height:48px;
 
     }
 
