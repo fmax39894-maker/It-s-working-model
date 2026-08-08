@@ -44,89 +44,48 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no
     </div>
 
 
-   <button
-class="menu-btn ripple"
-onclick="goMenu()">
+    <button
+    class="menu-btn ripple"
+    onclick="goMenu()">
 
-⋮
+        ⋮
 
-</button>
+    </button>
 
 </header>
 
 
 <!-- =========================================
-        SPECIAL CONTENT
+        FULLSCREEN QR
 ========================================= -->
 
-<main class="special-page">
+<main class="qr-screen">
 
-    <section class="special-card">
+    <div class="qr-container">
 
-        <div class="special-icon">
+        <img
+        src="assets/special/qr.png"
+        class="qr-image"
+        alt="QR Code">
 
-            ✨
-
-        </div>
-
-
-        <h1>
-
-            Special
-
-        </h1>
-
-
-        <p>
-
-            Discover the special content of this website.
-
-        </p>
-
-
-        <button
-        class="special-button ripple"
-        id="getSpecialBtn"
-        type="button">
-
-            ✨ Get Special
-
-        </button>
-
-    </section>
+    </div>
 
 </main>
-
-
-<!-- =========================================
-        SPECIAL RESULT
-========================================= -->
-
-<div
-id="specialResult"
-class="special-result">
-
-</div>
 
 
 <!-- =========================================
         BOTTOM NAVIGATION
 ========================================= -->
 
-<nav class="bottom-nav special show">
-
-    <div class="indicator"></div>
-
+<nav class="bottom-nav special">
 
     <div
     class="nav-item"
     data-page="index.html">
 
-        <span class="nav-symbol">
-
-            <img src="assets/icons/home.png">
-
-        </span>
+        <img
+        src="assets/icons/home.png"
+        alt="Home">
 
         <small>Home</small>
 
@@ -137,11 +96,9 @@ class="special-result">
     class="nav-item"
     data-page="videos.html">
 
-        <span class="nav-symbol">
-
-            <img src="assets/icons/videos.png">
-
-        </span>
+        <img
+        src="assets/icons/videos.png"
+        alt="Videos">
 
         <small>Videos</small>
 
@@ -152,11 +109,9 @@ class="special-result">
     class="nav-item"
     data-page="images.html">
 
-        <span class="nav-symbol">
-
-            <img src="assets/icons/images.png">
-
-        </span>
+        <img
+        src="assets/icons/images.png"
+        alt="Images">
 
         <small>Images</small>
 
@@ -167,11 +122,9 @@ class="special-result">
     class="nav-item active"
     data-page="special.html">
 
-        <span class="nav-symbol">
-
-            <img src="assets/icons/special.png">
-
-        </span>
+        <img
+        src="assets/icons/special.png"
+        alt="Special">
 
         <small>Special</small>
 
@@ -187,9 +140,6 @@ class="special-result">
 <script src="js/app.js"></script>
 
 <script src="js/navbar.js"></script>
-
-<script src="js/special.js"></script>
-
 
 </body>
 
