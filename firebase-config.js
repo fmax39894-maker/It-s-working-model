@@ -3,17 +3,20 @@
 // Working Model of Heart
 // ============================================================
 
-import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
     getFirestore
 } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 // ============================================================
-// 🔥 YOUR FIREBASE CONFIGURATION
+// YOUR FIREBASE CONFIG
 // ============================================================
 
 const firebaseConfig = {
@@ -33,14 +36,16 @@ const firebaseConfig = {
 // INITIALIZE FIREBASE
 // ============================================================
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
 
 // ============================================================
-// FIRESTORE DATABASE
+// FIRESTORE
 // ============================================================
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
 
 
 // ============================================================
@@ -49,5 +54,6 @@ const db = getFirestore(app);
 
 export {
     app,
-    db
+    db,
+    firebaseConfig
 };
