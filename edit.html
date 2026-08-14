@@ -1,1240 +1,823 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    content="width=device-width,initial-scale=1"
 >
 
-<title>Admin Editor — Working Model of Heart</title>
-
-<meta
-    name="theme-color"
-    content="#08090b"
->
+<title>Media Editor · Working Model of Heart</title>
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
     margin:0;
-    padding:0;
-}
-
-html,
-body{
-
-    width:100%;
-    min-height:100%;
-
-}
-
-body{
-
-    background:#08090b;
-
-    color:#fff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
+    min-height:100vh;
     background:
         radial-gradient(
-            circle at 10% 10%,
-            #ff263820,
-            transparent 30%
+            circle at 20% 0%,
+            #3b0a10 0,
+            transparent 32%
         ),
         radial-gradient(
-            circle at 90% 90%,
-            #7b2cff18,
+            circle at 100% 40%,
+            #24070b 0,
             transparent 30%
-        );
-
+        ),
+        #08090b;
+    color:#fff;
+    font-family:Arial,sans-serif;
 }
 
-
 /* =========================================================
-   APP
+   NAVBAR
 ========================================================= */
 
-.editor-app{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:100vh;
-
-    padding-bottom:50px;
-
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.editor-header{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
+nav{
+    height:64px;
+    padding:0 6%;
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
-    gap:15px;
+    background:#090a0cee;
+    border-bottom:1px solid #292a2e;
 
-    padding:
-        14px
-        clamp(
-            14px,
-            4vw,
-            45px
-        );
+    position:sticky;
+    top:0;
+    z-index:20;
 
-    border-bottom:
-        1px solid
-        #ffffff18;
-
-    background:#08090bed;
-
-    backdrop-filter:
-        blur(20px);
-
+    backdrop-filter:blur(14px);
 }
 
+.brand{
+    font-size:18px;
+    font-weight:800;
+}
 
-.header-left{
+.brand span{
+    color:#ff2638;
+}
 
+.nav-right{
     display:flex;
-
     align-items:center;
-
-    gap:12px;
-
-    min-width:0;
-
+    gap:10px;
 }
 
+.status{
+    display:flex;
+    align-items:center;
+    gap:7px;
 
-.back-button{
+    padding:8px 11px;
 
-    width:42px;
-    height:42px;
+    border:1px solid #34363c;
+    border-radius:9px;
 
-    flex-shrink:0;
+    background:#111317;
 
-    border:
-        1px solid
-        #ffffff20;
+    color:#aaa;
+    font-size:11px;
+    font-weight:700;
+}
 
-    border-radius:12px;
+.status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#777;
+}
 
-    background:#14161a;
+.status.live{
+    color:#69e58a;
+    border-color:#285d38;
+}
 
+.status.live .status-dot{
+    background:#69e58a;
+    box-shadow:0 0 10px #69e58a;
+}
+
+.back-btn{
+    border:1px solid #383a40;
+    background:#111317;
     color:#fff;
 
+    padding:9px 13px;
+
+    border-radius:9px;
+
     cursor:pointer;
+    font-weight:700;
 
-    font-size:20px;
-
+    transition:.25s;
 }
 
-
-.header-text{
-
-    min-width:0;
-
+.back-btn:hover{
+    border-color:#ff2638;
+    background:#ff2638;
 }
 
+/* =========================================================
+   PAGE HEADER
+========================================================= */
 
-.header-text h1{
+.header{
+    max-width:1100px;
+    margin:auto;
+
+    padding:55px 20px 25px;
+}
+
+.eyebrow{
+    font-size:11px;
+    letter-spacing:3px;
+    color:#ff6b76;
+    font-weight:800;
+}
+
+.header h1{
+    margin:12px 0 10px;
 
     font-size:
-        clamp(
-            17px,
-            4vw,
-            25px
-        );
+        clamp(34px,6vw,58px);
 
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
+    line-height:1;
 }
 
-
-.header-text p{
-
-    margin-top:3px;
-
-    color:#777b83;
-
-    font-size:11px;
-
+.header h1 span{
+    color:#ff2638;
 }
 
+.header p{
+    margin:0;
 
-.logout-button{
+    max-width:650px;
 
-    padding:
-        10px
-        13px;
+    color:#aeb1b8;
 
-    border:
-        1px solid
-        #ff263850;
-
-    border-radius:10px;
-
-    background:#ff263815;
-
-    color:#ff6875;
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    font-weight:800;
-
+    line-height:1.65;
 }
-
 
 /* =========================================================
    MAIN
 ========================================================= */
 
-.editor-main{
+main{
+    width:min(1100px,92%);
+    margin:auto;
 
-    width:
-        min(
-            1150px,
-            calc(
-                100% - 28px
-            )
-        );
-
-    margin:
-        25px
-        auto;
-
+    padding-bottom:70px;
 }
-
 
 /* =========================================================
-   STATUS
+   TOOLBAR
 ========================================================= */
 
-.status-bar{
-
+.toolbar{
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
+    align-items:center;
+    gap:15px;
 
-    gap:10px;
+    margin:20px 0;
 
-    margin-bottom:20px;
+    padding:15px;
 
-    padding:
-        12px
-        15px;
-
-    border:
-        1px solid
-        #ffffff15;
-
-    border-radius:13px;
+    border:1px solid #303238;
+    border-radius:14px;
 
     background:#111317;
-
 }
 
-
-.status-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
+.toolbar-info{
     color:#aaa;
-
-    font-size:12px;
-
+    font-size:13px;
+    line-height:1.5;
 }
 
-
-.status-dot{
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#4ade80;
-
-    box-shadow:
-        0 0 12px
-        #4ade80;
-
-}
-
-
-.refresh-button{
-
-    padding:
-        8px
-        12px;
-
-    border:
-        1px solid
-        #ffffff20;
-
-    border-radius:8px;
-
-    background:#181a1f;
-
+.toolbar-info strong{
     color:#fff;
+}
+
+.save-btn{
+    border:0;
+
+    padding:12px 20px;
+
+    border-radius:9px;
+
+    background:#ff2638;
+    color:#fff;
+
+    font-weight:800;
 
     cursor:pointer;
 
-    font-size:11px;
+    box-shadow:
+        0 10px 30px #ff263833;
 
+    transition:.25s;
 }
 
+.save-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 14px 35px #ff263850;
+}
+
+.save-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+}
 
 /* =========================================================
-   SECTION
+   MESSAGE
+========================================================= */
+
+.message{
+    min-height:20px;
+
+    margin:10px 0 20px;
+
+    font-size:13px;
+    font-weight:700;
+
+    color:#ff6875;
+}
+
+.message.success{
+    color:#69e58a;
+}
+
+/* =========================================================
+   MEDIA SECTIONS
 ========================================================= */
 
 .media-section{
+    margin-top:25px;
 
-    margin-bottom:25px;
+    padding:22px;
 
-    border:
-        1px solid
-        #ffffff14;
-
-    border-radius:20px;
+    border:1px solid #34363c;
+    border-radius:17px;
 
     background:
         linear-gradient(
             145deg,
-            #111317,
-            #0c0d10
+            #121418,
+            #0d0f12
         );
 
-    overflow:hidden;
-
     box-shadow:
-        0 20px 50px
-        #0005;
-
+        0 20px 55px #0005;
 }
 
-
-.section-header{
-
+.media-head{
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
-
-    gap:12px;
-
-    padding:
-        18px;
-
-    border-bottom:
-        1px solid
-        #ffffff12;
-
-}
-
-
-.section-title{
-
-    display:flex;
-
     align-items:center;
 
-    gap:11px;
+    gap:15px;
 
+    margin-bottom:18px;
 }
 
+.media-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-.section-icon{
-
-    width:40px;
-    height:40px;
+.media-icon{
+    width:45px;
+    height:45px;
 
     display:grid;
-
     place-items:center;
 
-    border-radius:11px;
-
-    background:#ff263815;
-
-    font-size:20px;
-
-}
-
-
-.section-title h2{
-
-    font-size:17px;
-
-}
-
-
-.section-title p{
-
-    margin-top:3px;
-
-    color:#70747c;
-
-    font-size:10px;
-
-}
-
-
-.add-button{
-
-    padding:
-        10px
-        14px;
-
-    border:0;
-
-    border-radius:10px;
+    border-radius:12px;
 
     background:#ff2638;
 
-    color:#fff;
+    font-size:22px;
 
-    cursor:pointer;
+    box-shadow:
+        0 10px 25px #ff263833;
+}
+
+.media-title h2{
+    margin:0;
+    font-size:20px;
+}
+
+.media-title p{
+    margin:4px 0 0;
+
+    color:#777;
 
     font-size:11px;
-
-    font-weight:800;
-
-    white-space:nowrap;
-
 }
 
+.add-btn{
+    border:1px solid #ff2638;
 
-.add-button:active{
-
-    transform:
-        scale(.97);
-
-}
-
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.table-wrap{
-
-    width:100%;
-
-    overflow-x:auto;
-
-}
-
-
-.media-table{
-
-    width:100%;
-
-    min-width:720px;
-
-    border-collapse:collapse;
-
-}
-
-
-.media-table th{
-
-    padding:
-        12px
-        15px;
-
-    color:#656970;
-
-    background:#0c0d10;
-
-    font-size:10px;
-
-    text-align:left;
-
-    text-transform:uppercase;
-
-    letter-spacing:.7px;
-
-}
-
-
-.media-table td{
-
-    padding:
-        13px
-        15px;
-
-    border-top:
-        1px solid
-        #ffffff0c;
-
-    vertical-align:middle;
-
-    font-size:12px;
-
-}
-
-
-.media-table tr:hover td{
-
-    background:#ffffff03;
-
-}
-
-
-.number-cell{
-
-    width:45px;
-
-    color:#555960;
-
-}
-
-
-.name-cell{
-
-    min-width:160px;
-
-    max-width:230px;
-
-    font-weight:700;
-
-}
-
-
-.url-cell{
-
-    min-width:250px;
-
-    max-width:400px;
-
-}
-
-
-.url-text{
-
-    display:block;
-
-    max-width:380px;
-
-    color:#7f9cff;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-}
-
-
-.type-badge{
-
-    display:inline-flex;
-
-    padding:
-        5px
-        8px;
-
-    border-radius:7px;
-
-    background:#ffffff09;
-
-    color:#aaa;
-
-    font-size:9px;
-
-    font-weight:800;
-
-}
-
-
-.action-cell{
-
-    width:150px;
-
-}
-
-
-.actions{
-
-    display:flex;
-
-    gap:6px;
-
-}
-
-
-.action-button{
-
-    width:34px;
-    height:34px;
-
-    border:
-        1px solid
-        #ffffff15;
-
-    border-radius:8px;
-
-    background:#181a1f;
-
-    color:#fff;
-
-    cursor:pointer;
-
-}
-
-
-.action-button:hover{
-
-    background:#252830;
-
-}
-
-
-.action-delete{
+    background:transparent;
 
     color:#ff6875;
 
-    border-color:#ff263825;
+    padding:10px 14px;
 
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    transition:.25s;
+
+    white-space:nowrap;
 }
 
+.add-btn:hover{
+    background:#ff2638;
+    color:#fff;
+}
+
+/* =========================================================
+   ITEMS
+========================================================= */
+
+.media-list{
+    display:grid;
+    gap:12px;
+}
+
+.media-item{
+    display:grid;
+
+    grid-template-columns:
+        52px
+        minmax(0,1fr)
+        auto;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:14px;
+
+    border:1px solid #2d3035;
+    border-radius:12px;
+
+    background:#0b0d10;
+
+    transition:.25s;
+}
+
+.media-item:hover{
+    border-color:#ff263866;
+
+    transform:
+        translateY(-1px);
+}
+
+.media-number{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:10px;
+
+    background:#181a1f;
+
+    color:#ff6875;
+
+    font-weight:800;
+}
+
+.media-info{
+    min-width:0;
+}
+
+.media-name{
+    color:#fff;
+
+    font-size:14px;
+    font-weight:800;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.media-url{
+    margin-top:5px;
+
+    color:#777;
+
+    font-size:11px;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.media-actions{
+    display:flex;
+    gap:7px;
+}
+
+.action-btn{
+    border:1px solid #383a40;
+
+    background:#111317;
+
+    color:#fff;
+
+    width:36px;
+    height:36px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.action-btn:hover{
+    border-color:#ff2638;
+    background:#ff2638;
+}
+
+.action-btn.delete:hover{
+    background:#b81424;
+    border-color:#b81424;
+}
 
 /* =========================================================
    EMPTY
 ========================================================= */
 
-.empty-row td{
-
-    padding:
-        45px
-        20px;
+.empty{
+    padding:35px 15px;
 
     text-align:center;
 
-    color:#5f636a;
+    border:1px dashed #34363c;
 
+    border-radius:12px;
+
+    color:#666;
+
+    font-size:13px;
 }
-
 
 .empty-icon{
-
-    display:block;
-
+    font-size:30px;
     margin-bottom:8px;
-
-    font-size:28px;
-
 }
-
-
-.empty-text{
-
-    font-size:12px;
-
-}
-
-
-/* =========================================================
-   SAVE BAR
-========================================================= */
-
-.save-bar{
-
-    position:sticky;
-
-    bottom:15px;
-
-    z-index:50;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-    margin-top:5px;
-
-    padding:
-        12px
-        15px;
-
-    border:
-        1px solid
-        #ffffff20;
-
-    border-radius:15px;
-
-    background:#111317ed;
-
-    backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 15px 40px
-        #0009;
-
-}
-
-
-.save-info{
-
-    color:#777b83;
-
-    font-size:11px;
-
-}
-
-
-.save-info strong{
-
-    color:#fff;
-
-}
-
-
-.save-button{
-
-    min-width:130px;
-
-    padding:
-        12px
-        18px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:12px;
-
-    font-weight:900;
-
-}
-
-
-.save-button:disabled{
-
-    opacity:.5;
-
-    cursor:not-allowed;
-
-}
-
 
 /* =========================================================
    MODAL
 ========================================================= */
 
 .modal{
-
     position:fixed;
 
     inset:0;
 
-    z-index:500;
+    z-index:100;
 
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
-    background:#000c;
+    background:#000b;
 
-    backdrop-filter:
-        blur(12px);
-
+    backdrop-filter:blur(8px);
 }
-
 
 .modal.show{
-
     display:flex;
 
+    animation:fadeIn .2s ease;
 }
-
 
 .modal-box{
+    width:min(520px,100%);
 
-    width:
-        min(
-            500px,
-            100%
-        );
+    border:1px solid #3b3d43;
+    border-radius:18px;
 
-    max-height:
-        calc(
-            100vh - 40px
-        );
-
-    overflow-y:auto;
-
-    padding:22px;
-
-    border:
-        1px solid
-        #ffffff20;
-
-    border-radius:20px;
-
-    background:#111317;
+    background:#101114;
 
     box-shadow:
-        0 30px 90px
-        #000d;
+        0 30px 90px #000c;
 
+    overflow:hidden;
+
+    animation:modalIn .25s ease;
 }
 
-
-.modal-header{
-
+.modal-head{
     display:flex;
-
+    justify-content:space-between;
     align-items:center;
 
-    justify-content:space-between;
+    padding:18px 20px;
 
-    gap:10px;
-
-    margin-bottom:20px;
-
+    border-bottom:1px solid #292b30;
 }
 
+.modal-head h2{
+    margin:0;
 
-.modal-header h2{
-
-    font-size:19px;
-
+    font-size:18px;
 }
-
 
 .modal-close{
+    width:34px;
+    height:34px;
 
-    width:35px;
-    height:35px;
+    border:0;
 
-    border:
-        1px solid
-        #ffffff15;
+    border-radius:50%;
 
-    border-radius:9px;
-
-    background:#181a1f;
+    background:#1b1d22;
 
     color:#fff;
 
+    font-size:22px;
+
     cursor:pointer;
-
-    font-size:19px;
-
 }
 
+.modal-close:hover{
+    background:#ff2638;
+}
+
+.modal-body{
+    padding:20px;
+}
 
 .form-group{
-
-    margin-bottom:15px;
-
+    margin-bottom:16px;
 }
 
-
-.form-label{
-
+.form-group label{
     display:block;
 
     margin-bottom:7px;
 
-    color:#aaa;
+    color:#ff6875;
 
-    font-size:11px;
+    font-size:10px;
 
-    font-weight:700;
+    font-weight:800;
 
+    letter-spacing:1.8px;
 }
 
-
-.form-input{
-
+.form-group input{
     width:100%;
 
-    padding:
-        13px;
+    padding:13px 14px;
 
-    border:
-        1px solid
-        #34363d;
+    border:1px solid #383a40;
+    border-radius:9px;
 
-    border-radius:10px;
+    background:#08090b;
+
+    color:#fff;
 
     outline:none;
 
-    background:#08090b;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:12px;
-
+    font-size:14px;
 }
 
-
-.form-input:focus{
-
-    border-color:
-        #ff2638;
+.form-group input:focus{
+    border-color:#ff2638;
 
     box-shadow:
-        0 0 0 3px
-        #ff263810;
-
+        0 0 0 3px #ff26381a;
 }
-
 
 .form-help{
+    margin-top:7px;
 
-    margin-top:6px;
+    color:#666;
 
-    color:#60646c;
-
-    font-size:9px;
+    font-size:11px;
 
     line-height:1.5;
-
 }
 
-
-.type-selector{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:8px;
-
-}
-
-
-.type-option{
-
-    padding:
-        12px;
-
-    border:
-        1px solid
-        #34363d;
-
-    border-radius:10px;
-
-    background:#08090b;
-
-    color:#777b83;
-
-    cursor:pointer;
-
-    text-align:center;
-
-    font-size:11px;
-
-    font-weight:800;
-
-}
-
-
-.type-option.selected{
-
-    border-color:
-        #ff2638;
-
-    background:
-        #ff263815;
-
-    color:#fff;
-
-}
-
-
-.modal-actions{
-
+.modal-footer{
     display:flex;
 
-    gap:8px;
+    justify-content:flex-end;
 
-    margin-top:20px;
+    gap:10px;
 
+    padding:16px 20px;
+
+    border-top:1px solid #292b30;
 }
 
+.cancel-btn{
+    border:1px solid #383a40;
 
-.modal-actions button{
-
-    flex:1;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    font-weight:800;
-
-}
-
-
-.cancel-button{
-
-    border:
-        1px solid
-        #34363d;
-
-    background:#181a1f;
+    background:#111317;
 
     color:#fff;
 
+    padding:11px 16px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:700;
 }
 
-
-.confirm-button{
-
+.confirm-btn{
     border:0;
 
     background:#ff2638;
 
     color:#fff;
 
+    padding:11px 18px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:800;
 }
 
-
 /* =========================================================
-   TOAST
+   PREVIEW
 ========================================================= */
 
-.toast{
+.preview{
+    margin-top:12px;
 
-    position:fixed;
+    display:none;
 
-    left:50%;
-
-    bottom:25px;
-
-    z-index:1000;
-
-    transform:
-        translate(
-            -50%,
-            30px
-        );
-
-    width:
-        max-content;
-
-    max-width:
-        calc(
-            100% - 30px
-        );
-
-    padding:
-        11px
-        16px;
-
-    border:
-        1px solid
-        #ffffff20;
+    border:1px solid #292b30;
 
     border-radius:10px;
 
-    background:#181a1f;
+    overflow:hidden;
 
-    color:#fff;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:
-        .25s;
-
-    font-size:11px;
-
-    box-shadow:
-        0 15px 40px
-        #0009;
-
+    background:#08090b;
 }
 
-
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translate(
-            -50%,
-            0
-        );
-
+.preview.show{
+    display:block;
 }
 
+.preview img,
+.preview video{
+    width:100%;
+    max-height:220px;
 
-.toast.success{
+    display:block;
 
-    border-color:
-        #4ade8050;
-
+    object-fit:contain;
 }
-
-
-.toast.error{
-
-    border-color:
-        #ff263850;
-
-}
-
 
 /* =========================================================
-   RESPONSIVE
+   FOOTER
+========================================================= */
+
+footer{
+    padding:25px 20px 35px;
+
+    border-top:1px solid #292a30;
+
+    text-align:center;
+
+    color:#555;
+
+    font-size:11px;
+}
+
+footer span{
+    color:#ff2638;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(15px) scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media(max-width:600px){
 
-    .editor-header{
-
-        padding:
-            12px;
-
+    nav{
+        padding:0 4%;
     }
 
-
-    .editor-main{
-
-        width:
-            calc(
-                100% - 20px
-            );
-
-        margin-top:18px;
-
-    }
-
-
-    .section-header{
-
-        align-items:flex-start;
-
-    }
-
-
-    .section-title h2{
-
+    .brand{
         font-size:15px;
-
     }
 
-
-    .add-button{
-
-        padding:
-            9px
-            10px;
-
-        font-size:10px;
-
-    }
-
-
-    .save-bar{
-
-        bottom:8px;
-
-        margin:
-            0
-            -3px;
-
-    }
-
-
-    .save-info{
-
+    .status{
         display:none;
-
     }
 
+    .header{
+        padding-top:40px;
+    }
 
-    .save-button{
+    .toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
 
+    .save-btn{
         width:100%;
+    }
 
+    .media-section{
+        padding:15px;
+    }
+
+    .media-head{
+        align-items:flex-start;
+    }
+
+    .media-title h2{
+        font-size:17px;
+    }
+
+    .add-btn{
+        padding:9px 10px;
+        font-size:11px;
+    }
+
+    .media-item{
+        grid-template-columns:
+            42px
+            minmax(0,1fr);
+    }
+
+    .media-number{
+        width:38px;
+        height:38px;
+    }
+
+    .media-actions{
+        grid-column:2;
+    }
+
+    .action-btn{
+        flex:1;
     }
 
 }
@@ -1243,377 +826,207 @@ body::before{
 
 </head>
 
-
 <body>
 
+<!-- =======================================================
+     NAVIGATION
+======================================================== -->
 
-<div class="editor-app">
+<nav>
 
+    <div class="brand">
+        Working Model of <span>Heart</span>
+    </div>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <div class="nav-right">
 
-<header class="editor-header">
+        <div id="firebaseStatus" class="status">
 
+            <span class="status-dot"></span>
 
-    <div class="header-left">
-
-
-        <button
-            class="back-button"
-            onclick="goBack()"
-            aria-label="Back"
-        >
-            ←
-        </button>
-
-
-        <div class="header-text">
-
-            <h1>
-                Media Editor
-            </h1>
-
-            <p>
-                Working Model of Heart
-            </p>
+            Connecting...
 
         </div>
 
+        <button
+            class="back-btn"
+            onclick="goBack()"
+        >
+            ← Back
+        </button>
 
     </div>
 
+</nav>
 
-    <button
-        class="logout-button"
-        onclick="logout()"
-    >
-        Logout
-    </button>
 
+<!-- =======================================================
+     HEADER
+======================================================== -->
+
+<header class="header">
+
+    <div class="eyebrow">
+        ADMIN MEDIA CONTROL
+    </div>
+
+    <h1>
+        Project <span>Editor</span>
+    </h1>
+
+    <p>
+        Manage the photos and videos displayed on the
+        Working Model of the Human Heart website.
+        Only links are stored. No media files are uploaded.
+    </p>
 
 </header>
 
 
+<main>
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<!-- =======================================================
+     TOOLBAR
+======================================================== -->
 
-<main class="editor-main">
+<div class="toolbar">
 
+    <div class="toolbar-info">
 
-    <!-- STATUS -->
+        <strong>Firebase Media Database</strong><br>
 
-    <div class="status-bar">
-
-
-        <div class="status-left">
-
-            <span class="status-dot"></span>
-
-            <span id="statusText">
-                Connected to Firebase
-            </span>
-
-        </div>
-
-
-        <button
-            class="refresh-button"
-            onclick="loadMedia()"
-        >
-            ↻ Refresh
-        </button>
-
+        Add image and video links below.
+        Click Save Changes when finished.
 
     </div>
 
-
-
-    <!-- =================================================
-         IMAGES
-    ================================================== -->
-
-    <section class="media-section">
-
-
-        <div class="section-header">
-
-
-            <div class="section-title">
-
-
-                <div class="section-icon">
-                    📸
-                </div>
-
-
-                <div>
-
-                    <h2>
-                        Images
-                    </h2>
-
-                    <p>
-                        Manage image links
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-            <button
-                class="add-button"
-                onclick="openAddModal('photo')"
-            >
-                + Add Image
-            </button>
-
-
-        </div>
-
-
-        <div class="table-wrap">
-
-
-            <table class="media-table">
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            #
-                        </th>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Image Link
-                        </th>
-
-                        <th>
-                            Type
-                        </th>
-
-                        <th>
-                            Actions
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="imageTable">
-
-                    <tr class="empty-row">
-
-                        <td colspan="5">
-
-                            <span class="empty-icon">
-                                ⏳
-                            </span>
-
-                            <span class="empty-text">
-                                Loading images...
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         VIDEOS
-    ================================================== -->
-
-    <section class="media-section">
-
-
-        <div class="section-header">
-
-
-            <div class="section-title">
-
-
-                <div class="section-icon">
-                    🎬
-                </div>
-
-
-                <div>
-
-                    <h2>
-                        Videos
-                    </h2>
-
-                    <p>
-                        Manage video links
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-            <button
-                class="add-button"
-                onclick="openAddModal('video')"
-            >
-                + Add Video
-            </button>
-
-
-        </div>
-
-
-        <div class="table-wrap">
-
-
-            <table class="media-table">
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            #
-                        </th>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Video Link
-                        </th>
-
-                        <th>
-                            Type
-                        </th>
-
-                        <th>
-                            Actions
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="videoTable">
-
-                    <tr class="empty-row">
-
-                        <td colspan="5">
-
-                            <span class="empty-icon">
-                                ⏳
-                            </span>
-
-                            <span class="empty-text">
-                                Loading videos...
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         SAVE BAR
-    ================================================== -->
-
-    <div class="save-bar">
-
-
-        <div class="save-info">
-
-            <strong id="changeCount">
-                0 changes
-            </strong>
-
-            <br>
-
-            Changes are saved directly to Firebase.
-
-        </div>
-
-
-        <button
-            id="saveButton"
-            class="save-button"
-            onclick="saveChanges()"
-            disabled
-        >
-            💾 Save Changes
-        </button>
-
-
-    </div>
-
-
-</main>
-
+    <button
+        id="saveAllBtn"
+        class="save-btn"
+        onclick="saveAllChanges()"
+    >
+        💾 Save Changes
+    </button>
 
 </div>
 
 
+<div
+    id="message"
+    class="message"
+></div>
 
-<!-- =====================================================
+
+<!-- =======================================================
+     IMAGES
+======================================================== -->
+
+<section class="media-section">
+
+    <div class="media-head">
+
+        <div class="media-title">
+
+            <div class="media-icon">
+                📸
+            </div>
+
+            <div>
+
+                <h2>
+                    Images
+                </h2>
+
+                <p>
+                    Image links shown in the photo gallery
+                </p>
+
+            </div>
+
+        </div>
+
+        <button
+            class="add-btn"
+            onclick="openAddModal('photo')"
+        >
+            ＋ Add Image
+        </button>
+
+    </div>
+
+
+    <div
+        id="imageList"
+        class="media-list"
+    ></div>
+
+</section>
+
+
+<!-- =======================================================
+     VIDEOS
+======================================================== -->
+
+<section class="media-section">
+
+    <div class="media-head">
+
+        <div class="media-title">
+
+            <div class="media-icon">
+                🎬
+            </div>
+
+            <div>
+
+                <h2>
+                    Videos
+                </h2>
+
+                <p>
+                    Video links shown in the video gallery
+                </p>
+
+            </div>
+
+        </div>
+
+        <button
+            class="add-btn"
+            onclick="openAddModal('video')"
+        >
+            ＋ Add Video
+        </button>
+
+    </div>
+
+
+    <div
+        id="videoList"
+        class="media-list"
+    ></div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
      ADD / EDIT MODAL
-===================================================== -->
+======================================================== -->
 
 <div
     id="mediaModal"
     class="modal"
-    onclick="closeModalOutside(event)"
 >
 
+    <div class="modal-box">
 
-    <div
-        class="modal-box"
-        onclick="event.stopPropagation()"
-    >
-
-
-        <div class="modal-header">
-
+        <div class="modal-head">
 
             <h2 id="modalTitle">
-                Add Image
+                Add Media
             </h2>
-
 
             <button
                 class="modal-close"
@@ -1622,172 +1035,120 @@ body::before{
                 ×
             </button>
 
-
         </div>
 
 
+        <div class="modal-body">
 
-        <!-- TYPE -->
+            <div class="form-group">
 
-        <div class="form-group">
+                <label>
+                    MEDIA NAME
+                </label>
 
-
-            <label class="form-label">
-                Media Type
-            </label>
-
-
-            <div class="type-selector">
-
-
-                <button
-                    id="photoType"
-                    class="type-option"
-                    onclick="selectType('photo')"
+                <input
+                    id="mediaName"
+                    type="text"
+                    placeholder="Example: Heart Model Photo"
+                    autocomplete="off"
                 >
-                    📸 Image
-                </button>
+
+            </div>
 
 
-                <button
-                    id="videoType"
-                    class="type-option"
-                    onclick="selectType('video')"
+            <div class="form-group">
+
+                <label>
+                    MEDIA LINK / URL
+                </label>
+
+                <input
+                    id="mediaUrl"
+                    type="url"
+                    placeholder="https://example.com/image.jpg"
+                    autocomplete="off"
                 >
-                    🎬 Video
-                </button>
 
+                <div class="form-help">
+
+                    Paste a direct, publicly accessible
+                    image or video URL.
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="preview"
+                class="preview"
+            >
+
+                <img
+                    id="previewImage"
+                    alt="Preview"
+                >
+
+                <video
+                    id="previewVideo"
+                    controls
+                    playsinline
+                ></video>
 
             </div>
 
         </div>
 
 
-
-        <!-- NAME -->
-
-        <div class="form-group">
-
-
-            <label
-                class="form-label"
-                for="mediaName"
-            >
-                Display Name
-            </label>
-
-
-            <input
-                id="mediaName"
-                class="form-input"
-                type="text"
-                placeholder="Example: Heart Model"
-                autocomplete="off"
-            >
-
-        </div>
-
-
-
-        <!-- URL -->
-
-        <div class="form-group">
-
-
-            <label
-                class="form-label"
-                for="mediaUrl"
-            >
-                Media Link
-            </label>
-
-
-            <input
-                id="mediaUrl"
-                class="form-input"
-                type="url"
-                placeholder="https://example.com/image.jpg"
-                autocomplete="off"
-            >
-
-
-            <div class="form-help">
-
-                Paste the direct image or video URL.
-                The website will use this link instead
-                of storing the media file locally.
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ACTIONS -->
-
-        <div class="modal-actions">
-
+        <div class="modal-footer">
 
             <button
-                class="cancel-button"
+                class="cancel-btn"
                 onclick="closeModal()"
             >
                 Cancel
             </button>
 
-
             <button
-                class="confirm-button"
-                onclick="submitMedia()"
+                id="modalSaveBtn"
+                class="confirm-btn"
+                onclick="saveModalMedia()"
             >
-                <span id="confirmText">
-                    Add Media
-                </span>
+                Add Media
             </button>
 
-
         </div>
-
 
     </div>
 
 </div>
 
 
+<!-- =======================================================
+     FOOTER
+======================================================== -->
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
+<footer>
 
-<div
-    id="toast"
-    class="toast"
-></div>
+    Working Model of <span>Heart</span>
+    · Team Red Diamond
+    · Science Exhibition 2026
 
+</footer>
 
 
-<!-- =====================================================
-     FIREBASE + EDITOR JS
-===================================================== -->
+<!-- =======================================================
+     FIREBASE + EDITOR
+======================================================== -->
 
 <script type="module">
 
-/* =========================================================
-   FIREBASE IMPORTS
-========================================================= */
-
 import {
-
-    initializeApp
-
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    db
+} from "./firebase-config.js";
 
 
 import {
-
-    getFirestore,
     collection,
     getDocs,
     addDoc,
@@ -1797,315 +1158,223 @@ import {
     serverTimestamp,
     query,
     orderBy
-
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+// =========================================================
+// DATABASE COLLECTION
+// =========================================================
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
-
-const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyCYpUFyBaOByeByNrkeqR8ErT3K7r7TbKc",
-
-    authDomain:
-        "working-model-of-heart-251c4.firebaseapp.com",
-
-    projectId:
-        "working-model-of-heart-251c4",
-
-    storageBucket:
-        "working-model-of-heart-251c4.firebasestorage.app",
-
-    messagingSenderId:
-        "225784710105",
-
-    appId:
-        "1:225784710105:web:d6526ae93c57073e740fc8",
-
-    measurementId:
-        "G-HCTMP0Z38C"
-
-};
-
-
-const firebaseApp =
-    initializeApp(
-        firebaseConfig
-    );
-
-
-const db =
-    getFirestore(
-        firebaseApp
-    );
-
-
-const COLLECTION =
+const COLLECTION_NAME =
     "heartProjectMedia";
 
 
+// =========================================================
+// STATE
+// =========================================================
 
-/* =========================================================
-   STATE
-========================================================= */
+let mediaItems = [];
 
-let mediaList = [];
+let editingId = null;
 
-let selectedType =
-    "photo";
-
-let editingId =
-    null;
-
-let pendingChanges =
-    0;
+let editingType = null;
 
 
+// =========================================================
+// ELEMENTS
+// =========================================================
 
-/* =========================================================
-   ADMIN SESSION
-========================================================= */
+const imageList =
+    document.getElementById("imageList");
 
-if(
-    sessionStorage.getItem(
-        "heartAdminAccess"
-    ) !== "true"
-){
+const videoList =
+    document.getElementById("videoList");
 
-    window.location.replace(
-        "index.html"
-    );
+const modal =
+    document.getElementById("mediaModal");
+
+const mediaName =
+    document.getElementById("mediaName");
+
+const mediaUrl =
+    document.getElementById("mediaUrl");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalSaveBtn =
+    document.getElementById("modalSaveBtn");
+
+const preview =
+    document.getElementById("preview");
+
+const previewImage =
+    document.getElementById("previewImage");
+
+const previewVideo =
+    document.getElementById("previewVideo");
+
+const message =
+    document.getElementById("message");
+
+const firebaseStatus =
+    document.getElementById("firebaseStatus");
+
+
+// =========================================================
+// MESSAGE
+// =========================================================
+
+function showMessage(text, success=false){
+
+    message.textContent = text;
+
+    message.className =
+        success
+        ? "message success"
+        : "message";
 
 }
 
 
+// =========================================================
+// FIREBASE STATUS
+// =========================================================
 
-/* =========================================================
-   DOM
-========================================================= */
+function setFirebaseStatus(online){
 
-const imageTable =
-    document.getElementById(
-        "imageTable"
-    );
+    if(online){
 
+        firebaseStatus.classList.add("live");
 
-const videoTable =
-    document.getElementById(
-        "videoTable"
-    );
+        firebaseStatus.innerHTML =
+            '<span class="status-dot"></span> Firebase Connected';
 
+    }else{
 
-const mediaModal =
-    document.getElementById(
-        "mediaModal"
-    );
+        firebaseStatus.classList.remove("live");
 
-
-const mediaName =
-    document.getElementById(
-        "mediaName"
-    );
-
-
-const mediaUrl =
-    document.getElementById(
-        "mediaUrl"
-    );
-
-
-const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
-
-
-const confirmText =
-    document.getElementById(
-        "confirmText"
-    );
-
-
-const saveButton =
-    document.getElementById(
-        "saveButton"
-    );
-
-
-const changeCount =
-    document.getElementById(
-        "changeCount"
-    );
-
-
-const statusText =
-    document.getElementById(
-        "statusText"
-    );
-
-
-
-/* =========================================================
-   LOAD MEDIA
-========================================================= */
-
-window.loadMedia =
-async function(){
-
-    statusText.textContent =
-        "Loading Firebase data...";
-
-
-    try{
-
-        const mediaQuery =
-            query(
-
-                collection(
-                    db,
-                    COLLECTION
-                ),
-
-                orderBy(
-                    "createdAt",
-                    "asc"
-                )
-
-            );
-
-
-        const snapshot =
-            await getDocs(
-                mediaQuery
-            );
-
-
-        mediaList =
-            snapshot.docs.map(
-                item => ({
-
-                    id:
-                        item.id,
-
-                    ...item.data()
-
-                })
-            );
-
-
-        renderTables();
-
-
-        statusText.textContent =
-            "Connected to Firebase";
-
-
-        pendingChanges =
-            0;
-
-
-        updateSaveBar();
-
-
-    }catch(error){
-
-        console.error(
-            error
-        );
-
-
-        statusText.textContent =
-            "Firebase connection error";
-
-
-        showToast(
-            "Unable to load Firebase data.",
-            "error"
-        );
-
-
-        renderError();
+        firebaseStatus.innerHTML =
+            '<span class="status-dot"></span> Firebase Error';
 
     }
 
-};
+}
 
 
+// =========================================================
+// LOAD MEDIA
+// =========================================================
 
-/* =========================================================
-   RENDER TABLES
-========================================================= */
+async function loadMedia(){
 
-function renderTables(){
+    try{
 
-    const images =
-        mediaList.filter(
-            item =>
-                item.type === "photo"
+        showMessage("Loading media...");
+
+        const q =
+            query(
+                collection(db,COLLECTION_NAME),
+                orderBy("createdAt","asc")
+            );
+
+        const snapshot =
+            await getDocs(q);
+
+        mediaItems = [];
+
+        snapshot.forEach(item => {
+
+            mediaItems.push({
+
+                id:item.id,
+
+                ...item.data()
+
+            });
+
+        });
+
+        renderLists();
+
+        setFirebaseStatus(true);
+
+        showMessage(
+            `${mediaItems.length} media item(s) loaded.`,
+            true
         );
 
+    }catch(error){
 
-    const videos =
-        mediaList.filter(
-            item =>
-                item.type === "video"
+        console.error(error);
+
+        setFirebaseStatus(false);
+
+        showMessage(
+            "Unable to load Firebase media. Check Firestore setup."
         );
 
+    }
 
-    renderTable(
-        imageTable,
-        images,
-        "photo"
+}
+
+
+// =========================================================
+// RENDER LISTS
+// =========================================================
+
+function renderLists(){
+
+    renderType(
+        "photo",
+        imageList,
+        "📸",
+        "No image links added yet."
     );
 
-
-    renderTable(
-        videoTable,
-        videos,
-        "video"
+    renderType(
+        "video",
+        videoList,
+        "🎬",
+        "No video links added yet."
     );
 
 }
 
 
+// =========================================================
+// RENDER ONE TYPE
+// =========================================================
 
-function renderTable(
-    table,
-    items,
-    type
+function renderType(
+    type,
+    container,
+    icon,
+    emptyText
 ){
 
-    table.innerHTML =
-        "";
+    container.innerHTML = "";
+
+    const items =
+        mediaItems.filter(
+            item => item.type === type
+        );
 
 
-    if(
-        items.length === 0
-    ){
+    if(!items.length){
 
-        table.innerHTML = `
+        container.innerHTML = `
 
-            <tr class="empty-row">
+            <div class="empty">
 
-                <td colspan="5">
+                <div class="empty-icon">
+                    ${icon}
+                </div>
 
-                    <span class="empty-icon">
-                        ${type === "photo" ? "📸" : "🎬"}
-                    </span>
+                ${emptyText}
 
-                    <span class="empty-text">
-                        No ${type === "photo" ? "images" : "videos"} added yet.
-                    </span>
-
-                </td>
-
-            </tr>
+            </div>
 
         `;
 
@@ -2118,78 +1387,124 @@ function renderTable(
         (item,index) => {
 
             const row =
-                document.createElement(
-                    "tr"
-                );
+                document.createElement("div");
+
+            row.className =
+                "media-item";
 
 
-            row.innerHTML = `
+            const number =
+                document.createElement("div");
 
-                <td class="number-cell">
-                    ${index + 1}
-                </td>
+            number.className =
+                "media-number";
 
-                <td class="name-cell">
-                    ${escapeHtml(item.name || "Untitled")}
-                </td>
-
-                <td class="url-cell">
-
-                    <span
-                        class="url-text"
-                        title="${escapeHtml(item.url || "")}"
-                    >
-                        ${escapeHtml(item.url || "")}
-                    </span>
-
-                </td>
-
-                <td>
-
-                    <span class="type-badge">
-                        ${type === "photo" ? "IMAGE" : "VIDEO"}
-                    </span>
-
-                </td>
-
-                <td class="action-cell">
-
-                    <div class="actions">
-
-                        <button
-                            class="action-button"
-                            title="Open"
-                            onclick="openLink('${escapeJs(item.url || "")}')"
-                        >
-                            ↗
-                        </button>
-
-                        <button
-                            class="action-button"
-                            title="Edit"
-                            onclick="editMedia('${escapeJs(item.id)}')"
-                        >
-                            ✎
-                        </button>
-
-                        <button
-                            class="action-button action-delete"
-                            title="Delete"
-                            onclick="removeMedia('${escapeJs(item.id)}')"
-                        >
-                            🗑
-                        </button>
-
-                    </div>
-
-                </td>
-
-            `;
+            number.textContent =
+                String(index + 1).padStart(2,"0");
 
 
-            table.appendChild(
-                row
-            );
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "media-info";
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "media-name";
+
+            name.textContent =
+                item.name || "Untitled";
+
+
+            const url =
+                document.createElement("div");
+
+            url.className =
+                "media-url";
+
+            url.textContent =
+                item.url;
+
+
+            info.appendChild(name);
+
+            info.appendChild(url);
+
+
+            const actions =
+                document.createElement("div");
+
+            actions.className =
+                "media-actions";
+
+
+            const open =
+                document.createElement("button");
+
+            open.className =
+                "action-btn";
+
+            open.title =
+                "Open link";
+
+            open.textContent =
+                "↗";
+
+            open.onclick =
+                () => openLink(item.url);
+
+
+            const edit =
+                document.createElement("button");
+
+            edit.className =
+                "action-btn";
+
+            edit.title =
+                "Edit";
+
+            edit.textContent =
+                "✎";
+
+            edit.onclick =
+                () => openEditModal(item);
+
+
+            const remove =
+                document.createElement("button");
+
+            remove.className =
+                "action-btn delete";
+
+            remove.title =
+                "Delete";
+
+            remove.textContent =
+                "×";
+
+            remove.onclick =
+                () => removeMedia(item);
+
+
+            actions.appendChild(open);
+
+            actions.appendChild(edit);
+
+            actions.appendChild(remove);
+
+
+            row.appendChild(number);
+
+            row.appendChild(info);
+
+            row.appendChild(actions);
+
+
+            container.appendChild(row);
 
         }
     );
@@ -2197,132 +1512,86 @@ function renderTable(
 }
 
 
+// =========================================================
+// OPEN LINK
+// =========================================================
 
-/* =========================================================
-   ERROR TABLE
-========================================================= */
+function openLink(url){
 
-function renderError(){
+    if(!url) return;
 
-    imageTable.innerHTML = `
-
-        <tr class="empty-row">
-
-            <td colspan="5">
-
-                <span class="empty-icon">
-                    ⚠️
-                </span>
-
-                <span class="empty-text">
-                    Could not load Firebase data.
-                </span>
-
-            </td>
-
-        </tr>
-
-    `;
-
-
-    videoTable.innerHTML =
-        imageTable.innerHTML;
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
 
 }
 
 
-
-/* =========================================================
-   ADD MODAL
-========================================================= */
+// =========================================================
+// ADD MODAL
+// =========================================================
 
 window.openAddModal =
 function(type){
 
-    editingId =
-        null;
+    editingId = null;
 
-
-    selectedType =
-        type;
+    editingType = type;
 
 
     modalTitle.textContent =
         type === "photo"
-            ? "Add Image"
-            : "Add Video";
+        ? "Add Image Link"
+        : "Add Video Link";
 
 
-    confirmText.textContent =
-        "Add Media";
+    modalSaveBtn.textContent =
+        type === "photo"
+        ? "Add Image"
+        : "Add Video";
 
 
-    mediaName.value =
-        "";
+    mediaName.value = "";
+
+    mediaUrl.value = "";
 
 
-    mediaUrl.value =
-        "";
+    clearPreview();
 
 
-    updateTypeButtons();
-
-
-    mediaModal.classList.add(
-        "show"
-    );
-
+    modal.classList.add("show");
 
     setTimeout(
-        () =>
-            mediaName.focus(),
+        () => mediaName.focus(),
         100
     );
 
 };
 
 
+// =========================================================
+// EDIT MODAL
+// =========================================================
 
-/* =========================================================
-   EDIT MODAL
-========================================================= */
-
-window.editMedia =
-function(id){
-
-    const item =
-        mediaList.find(
-            media =>
-                media.id === id
-        );
-
-
-    if(!item){
-
-        showToast(
-            "Media not found.",
-            "error"
-        );
-
-        return;
-
-    }
-
+function openEditModal(item){
 
     editingId =
-        id;
+        item.id;
 
-
-    selectedType =
+    editingType =
         item.type;
 
 
     modalTitle.textContent =
-        "Edit Media";
+        item.type === "photo"
+        ? "Edit Image Link"
+        : "Edit Video Link";
 
 
-    confirmText.textContent =
-        "Update Media";
+    modalSaveBtn.textContent =
+        "Save Changes";
 
 
     mediaName.value =
@@ -2333,75 +1602,124 @@ function(id){
         item.url || "";
 
 
-    updateTypeButtons();
+    updatePreview();
 
 
-    mediaModal.classList.add(
-        "show"
-    );
-
-
-    setTimeout(
-        () =>
-            mediaName.focus(),
-        100
-    );
-
-};
-
-
-
-/* =========================================================
-   TYPE SELECTOR
-========================================================= */
-
-window.selectType =
-function(type){
-
-    selectedType =
-        type;
-
-
-    updateTypeButtons();
-
-};
-
-
-function updateTypeButtons(){
-
-    document
-        .getElementById(
-            "photoType"
-        )
-        .classList.toggle(
-            "selected",
-            selectedType === "photo"
-        );
-
-
-    document
-        .getElementById(
-            "videoType"
-        )
-        .classList.toggle(
-            "selected",
-            selectedType === "video"
-        );
+    modal.classList.add("show");
 
 }
 
 
+window.openEditModal =
+openEditModal;
 
-/* =========================================================
-   SUBMIT ADD / UPDATE
-========================================================= */
 
-window.submitMedia =
+// =========================================================
+// CLOSE MODAL
+// =========================================================
+
+window.closeModal =
+function(){
+
+    modal.classList.remove("show");
+
+    editingId = null;
+
+    editingType = null;
+
+    mediaName.value = "";
+
+    mediaUrl.value = "";
+
+    clearPreview();
+
+};
+
+
+// =========================================================
+// PREVIEW
+// =========================================================
+
+function clearPreview(){
+
+    preview.classList.remove("show");
+
+    previewImage.style.display =
+        "none";
+
+    previewVideo.style.display =
+        "none";
+
+    previewImage.removeAttribute("src");
+
+    previewVideo.removeAttribute("src");
+
+}
+
+
+function updatePreview(){
+
+    const url =
+        mediaUrl.value.trim();
+
+    if(!url){
+
+        clearPreview();
+
+        return;
+
+    }
+
+
+    preview.classList.add("show");
+
+
+    if(editingType === "photo"){
+
+        previewImage.style.display =
+            "block";
+
+        previewVideo.style.display =
+            "none";
+
+        previewImage.src =
+            url;
+
+    }else{
+
+        previewImage.style.display =
+            "none";
+
+        previewVideo.style.display =
+            "block";
+
+        previewVideo.src =
+            url;
+
+    }
+
+}
+
+
+// =========================================================
+// URL PREVIEW
+// =========================================================
+
+mediaUrl.addEventListener(
+    "input",
+    updatePreview
+);
+
+
+// =========================================================
+// SAVE MODAL
+// =========================================================
+
+window.saveModalMedia =
 async function(){
 
     const name =
         mediaName.value.trim();
-
 
     const url =
         mediaUrl.value.trim();
@@ -2409,9 +1727,8 @@ async function(){
 
     if(!name){
 
-        showToast(
-            "Enter a display name.",
-            "error"
+        showMessage(
+            "Please enter a media name."
         );
 
         mediaName.focus();
@@ -2423,9 +1740,8 @@ async function(){
 
     if(!url){
 
-        showToast(
-            "Enter a media link.",
-            "error"
+        showMessage(
+            "Please enter a media URL."
         );
 
         mediaUrl.focus();
@@ -2433,35 +1749,30 @@ async function(){
         return;
 
     }
-
-
-    if(
-        !isValidUrl(url)
-    ){
-
-        showToast(
-            "Enter a valid URL.",
-            "error"
-        );
-
-        mediaUrl.focus();
-
-        return;
-
-    }
-
-
-    const button =
-        document.querySelector(
-            ".confirm-button"
-        );
-
-
-    button.disabled =
-        true;
 
 
     try{
+
+        modalSaveBtn.disabled =
+            true;
+
+        modalSaveBtn.textContent =
+            "Saving...";
+
+
+        const data = {
+
+            name:name,
+
+            url:url,
+
+            type:editingType,
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
 
         if(editingId){
 
@@ -2469,140 +1780,171 @@ async function(){
 
                 doc(
                     db,
-                    COLLECTION,
+                    COLLECTION_NAME,
                     editingId
+                ),
+
+                data
+
+            );
+
+            showMessage(
+                "✓ Media link updated successfully.",
+                true
+            );
+
+        }else{
+
+            await addDoc(
+
+                collection(
+                    db,
+                    COLLECTION_NAME
                 ),
 
                 {
 
-                    type:
-                        selectedType,
+                    ...data,
 
-                    name:
-                        name,
-
-                    url:
-                        url,
-
-                    updatedAt:
+                    createdAt:
                         serverTimestamp()
 
                 }
 
             );
 
-
-            const index =
-                mediaList.findIndex(
-                    item =>
-                        item.id === editingId
-                );
-
-
-            if(index !== -1){
-
-                mediaList[index] = {
-
-                    ...mediaList[index],
-
-                    type:
-                        selectedType,
-
-                    name:
-                        name,
-
-                    url:
-                        url
-
-                };
-
-            }
-
-
-            showToast(
-                "Media updated successfully.",
-                "success"
-            );
-
-
-        }else{
-
-            const result =
-                await addDoc(
-
-                    collection(
-                        db,
-                        COLLECTION
-                    ),
-
-                    {
-
-                        type:
-                            selectedType,
-
-                        name:
-                            name,
-
-                        url:
-                            url,
-
-                        createdAt:
-                            serverTimestamp(),
-
-                        updatedAt:
-                            serverTimestamp()
-
-                    }
-
-                );
-
-
-            mediaList.push({
-
-                id:
-                    result.id,
-
-                type:
-                    selectedType,
-
-                name:
-                    name,
-
-                url:
-                    url
-
-            });
-
-
-            showToast(
-                "Media added successfully.",
-                "success"
+            showMessage(
+                "✓ Media link added successfully.",
+                true
             );
 
         }
 
 
-        renderTables();
-
-
         closeModal();
 
-
-        pendingChanges = 0;
-
-        updateSaveBar();
+        await loadMedia();
 
 
     }catch(error){
 
-        console.error(
-            error
+        console.error(error);
+
+        showMessage(
+            "Save failed. Check your Firebase Firestore configuration and rules."
+        );
+
+    }finally{
+
+        modalSaveBtn.disabled =
+            false;
+
+        modalSaveBtn.textContent =
+            editingId
+            ? "Save Changes"
+            : (
+                editingType === "photo"
+                ? "Add Image"
+                : "Add Video"
+            );
+
+    }
+
+};
+
+
+// =========================================================
+// REMOVE MEDIA
+// =========================================================
+
+async function removeMedia(item){
+
+    const confirmed =
+        confirm(
+            `Remove "${item.name}" from the gallery?`
         );
 
 
-        showToast(
-            "Firebase save failed.",
-            "error"
+    if(!confirmed) return;
+
+
+    try{
+
+        showMessage(
+            "Removing media..."
+        );
+
+
+        await deleteDoc(
+
+            doc(
+                db,
+                COLLECTION_NAME,
+                item.id
+            )
+
+        );
+
+
+        showMessage(
+            "✓ Media removed successfully.",
+            true
+        );
+
+
+        await loadMedia();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "Unable to remove this media."
+        );
+
+    }
+
+}
+
+
+window.removeMedia =
+removeMedia;
+
+
+// =========================================================
+// SAVE ALL
+// =========================================================
+
+window.saveAllChanges =
+async function(){
+
+    const button =
+        document.getElementById("saveAllBtn");
+
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "⏳ Saving...";
+
+
+    try{
+
+        await loadMedia();
+
+        showMessage(
+            "✓ All changes are saved in Firebase.",
+            true
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "Unable to save changes."
         );
 
     }finally{
@@ -2610,412 +1952,50 @@ async function(){
         button.disabled =
             false;
 
-    }
-
-};
-
-
-
-/* =========================================================
-   DELETE
-========================================================= */
-
-window.removeMedia =
-async function(id){
-
-    const item =
-        mediaList.find(
-            media =>
-                media.id === id
-        );
-
-
-    if(!item){
-
-        return;
-
-    }
-
-
-    const confirmed =
-        window.confirm(
-
-            `Remove "${item.name}"?\n\nThis will permanently delete the link from Firebase.`
-
-        );
-
-
-    if(!confirmed){
-
-        return;
-
-    }
-
-
-    try{
-
-        await deleteDoc(
-
-            doc(
-                db,
-                COLLECTION,
-                id
-            )
-
-        );
-
-
-        mediaList =
-            mediaList.filter(
-                media =>
-                    media.id !== id
-            );
-
-
-        renderTables();
-
-
-        showToast(
-            "Link removed successfully.",
-            "success"
-        );
-
-
-        pendingChanges = 0;
-
-        updateSaveBar();
-
-
-    }catch(error){
-
-        console.error(
-            error
-        );
-
-
-        showToast(
-            "Could not remove the link.",
-            "error"
-        );
+        button.textContent =
+            "💾 Save Changes";
 
     }
 
 };
 
 
-
-/* =========================================================
-   SAVE BUTTON
-========================================================= */
-
-window.saveChanges =
-function(){
-
-    /*
-       Add/edit/delete operations are already written
-       directly to Firestore.
-
-       This button acts as a final confirmation/refresh
-       so the editor and Firebase remain synchronized.
-    */
-
-    loadMedia();
-
-
-    showToast(
-        "Changes synchronized with Firebase.",
-        "success"
-    );
-
-};
-
-
-
-function updateSaveBar(){
-
-    changeCount.textContent =
-        `${pendingChanges} changes`;
-
-
-    saveButton.disabled =
-        pendingChanges === 0;
-
-}
-
-
-
-/* =========================================================
-   OPEN LINK
-========================================================= */
-
-window.openLink =
-function(url){
-
-    if(!url){
-
-        showToast(
-            "No link available.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-};
-
-
-
-/* =========================================================
-   MODAL CLOSE
-========================================================= */
-
-window.closeModal =
-function(){
-
-    mediaModal.classList.remove(
-        "show"
-    );
-
-
-    editingId =
-        null;
-
-};
-
-
-window.closeModalOutside =
-function(event){
-
-    if(
-        event.target ===
-        mediaModal
-    ){
-
-        closeModal();
-
-    }
-
-};
-
-
-
-/* =========================================================
-   BACK
-========================================================= */
+// =========================================================
+// BACK BUTTON
+// =========================================================
 
 window.goBack =
 function(){
 
-    window.location.href =
-        "index.html";
+    if(
+        document.referrer &&
+        document.referrer.includes(
+            window.location.host
+        )
+    ){
 
-};
+        history.back();
 
+    }else{
 
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-window.logout =
-function(){
-
-    sessionStorage.removeItem(
-        "heartAdminAccess"
-    );
-
-
-    window.location.replace(
-        "index.html"
-    );
-
-};
-
-
-
-/* =========================================================
-   URL VALIDATION
-========================================================= */
-
-function isValidUrl(
-    value
-){
-
-    try{
-
-        const url =
-            new URL(
-                value
-            );
-
-
-        return (
-            url.protocol ===
-                "http:" ||
-
-            url.protocol ===
-                "https:"
-        );
-
-    }catch{
-
-        return false;
+        window.location.href =
+            "index.html";
 
     }
 
-}
+};
 
 
+// =========================================================
+// CLOSE MODAL WHEN CLICKING OUTSIDE
+// =========================================================
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHtml(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-
-    .replace(
-        /</g,
-        "&lt;"
-    )
-
-    .replace(
-        />/g,
-        "&gt;"
-    )
-
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-
-/* =========================================================
-   ESCAPE JAVASCRIPT STRING
-========================================================= */
-
-function escapeJs(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-
-    .replace(
-        /\\/g,
-        "\\\\"
-    )
-
-    .replace(
-        /'/g,
-        "\\'"
-    )
-
-    .replace(
-        /"/g,
-        '\\"'
-    )
-
-    .replace(
-        /\n/g,
-        "\\n"
-    )
-
-    .replace(
-        /\r/g,
-        "\\r"
-    );
-
-}
-
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(
-    message,
-    type = ""
-){
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        message;
-
-
-    toast.className =
-        "toast show " +
-        type;
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2800
-        );
-
-}
-
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-    "keydown",
+modal.addEventListener(
+    "click",
     event => {
 
         if(
-            event.key ===
-            "Escape"
+            event.target === modal
         ){
 
             closeModal();
@@ -3026,20 +2006,34 @@ document.addEventListener(
 );
 
 
+// =========================================================
+// ESC KEY
+// =========================================================
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
+document.addEventListener(
+    "keydown",
+    event => {
 
-selectType(
-    "photo"
+        if(
+            event.key === "Escape" &&
+            modal.classList.contains("show")
+        ){
+
+            closeModal();
+
+        }
+
+    }
 );
 
+
+// =========================================================
+// INITIAL LOAD
+// =========================================================
 
 loadMedia();
 
 </script>
 
 </body>
-
 </html>
