@@ -1,0 +1,3270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+>
+
+<title>Heart Website — Admin Editor</title>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            #4a0b13 0,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            #26060b 0,
+            transparent 32%
+        ),
+        #08090b;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    min-height:70px;
+
+    padding:
+        12px
+        clamp(16px,5vw,60px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    background:#0a0b0edc;
+
+    border-bottom:
+        1px solid
+        #292a30;
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    min-width:0;
+
+}
+
+
+.brand-icon{
+
+    width:40px;
+
+    height:40px;
+
+    flex:none;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:11px;
+
+    background:#ff2638;
+
+    box-shadow:
+        0 8px 25px
+        #ff263844;
+
+    font-size:20px;
+
+}
+
+
+.brand-text{
+
+    min-width:0;
+
+}
+
+
+.brand-title{
+
+    margin:0;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+.brand-subtitle{
+
+    margin:3px 0 0;
+
+    color:#777b83;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+}
+
+
+.top-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.top-btn{
+
+    height:40px;
+
+    padding:
+        0
+        14px;
+
+    border:
+        1px solid
+        #383a40;
+
+    border-radius:9px;
+
+    background:#111317;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+
+.top-btn:hover{
+
+    border-color:#ff2638;
+
+}
+
+
+.top-btn.danger:hover{
+
+    background:#ff2638;
+
+    border-color:#ff2638;
+
+}
+
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+
+    width:
+        min(
+            1180px,
+            92%
+        );
+
+    margin:
+        35px
+        auto
+        70px;
+
+}
+
+
+.page-heading{
+
+    margin-bottom:28px;
+
+}
+
+
+.page-heading .eyebrow{
+
+    color:#ff6572;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    font-weight:800;
+
+}
+
+
+.page-heading h1{
+
+    margin:
+        10px
+        0
+        8px;
+
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            48px
+        );
+
+}
+
+
+.page-heading h1 span{
+
+    color:#ff2638;
+
+}
+
+
+.page-heading p{
+
+    margin:0;
+
+    max-width:650px;
+
+    color:#92959d;
+
+    line-height:1.6;
+
+    font-size:14px;
+
+}
+
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:
+        12px
+        15px;
+
+    margin-bottom:20px;
+
+    border:
+        1px solid
+        #303239;
+
+    border-radius:11px;
+
+    background:#101114;
+
+    color:#92959d;
+
+    font-size:12px;
+
+}
+
+
+.status-dot{
+
+    width:9px;
+
+    height:9px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    background:#777;
+
+}
+
+
+.status.loading
+.status-dot{
+
+    background:#ffc857;
+
+}
+
+
+.status.online{
+
+    border-color:
+        #285c3b;
+
+}
+
+
+.status.online
+.status-dot{
+
+    background:#45df7a;
+
+    box-shadow:
+        0 0 12px
+        #45df7a;
+
+}
+
+
+.status.error{
+
+    border-color:
+        #6c222b;
+
+}
+
+
+.status.error
+.status-dot{
+
+    background:#ff3e50;
+
+}
+
+
+
+/* =========================================================
+   SECTION CARD
+========================================================= */
+
+.editor-section{
+
+    margin-bottom:25px;
+
+    border:
+        1px solid
+        #303239;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111317,
+            #0d0f12
+        );
+
+    box-shadow:
+        0 18px 50px
+        #0007;
+
+    overflow:hidden;
+
+}
+
+
+.section-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:
+        20px;
+
+    border-bottom:
+        1px solid
+        #282a30;
+
+}
+
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+}
+
+
+.section-icon{
+
+    width:43px;
+
+    height:43px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#211014;
+
+    border:
+        1px solid
+        #55232a;
+
+    font-size:21px;
+
+}
+
+
+.section-title h2{
+
+    margin:0;
+
+    font-size:19px;
+
+}
+
+
+.section-title p{
+
+    margin:4px 0 0;
+
+    color:#777b83;
+
+    font-size:11px;
+
+}
+
+
+.add-btn{
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    padding:
+        11px
+        15px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    box-shadow:
+        0 8px 25px
+        #ff263833;
+
+    transition:.2s;
+
+}
+
+
+.add-btn:hover{
+
+    background:#e51d2f;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.table-wrap{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+.media-table{
+
+    width:100%;
+
+    min-width:760px;
+
+    border-collapse:
+        collapse;
+
+}
+
+
+.media-table th{
+
+    text-align:left;
+
+    padding:
+        13px
+        15px;
+
+    color:#777b83;
+
+    background:#0b0c0f;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    border-bottom:
+        1px solid
+        #292b31;
+
+}
+
+
+.media-table td{
+
+    padding:
+        13px
+        15px;
+
+    border-bottom:
+        1px solid
+        #22242a;
+
+    vertical-align:middle;
+
+}
+
+
+.media-table tr:last-child td{
+
+    border-bottom:0;
+
+}
+
+
+.media-table tr:hover td{
+
+    background:#15171b;
+
+}
+
+
+/* =========================================================
+   SERIAL
+========================================================= */
+
+.serial{
+
+    width:45px;
+
+    color:#777b83;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   MEDIA NAME
+========================================================= */
+
+.name-input{
+
+    width:100%;
+
+    min-width:180px;
+
+    padding:
+        10px
+        11px;
+
+    border:
+        1px solid
+        #383a40;
+
+    border-radius:8px;
+
+    background:#08090b;
+
+    color:#fff;
+
+    outline:none;
+
+}
+
+
+.name-input:focus{
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 0 2px
+        #ff26381a;
+
+}
+
+
+/* =========================================================
+   URL
+========================================================= */
+
+.url-cell{
+
+    min-width:280px;
+
+}
+
+
+.url-input{
+
+    width:100%;
+
+    padding:
+        10px
+        11px;
+
+    border:
+        1px solid
+        #383a40;
+
+    border-radius:8px;
+
+    background:#08090b;
+
+    color:#aeb1b8;
+
+    outline:none;
+
+    font-family:
+        monospace;
+
+    font-size:11px;
+
+}
+
+
+.url-input:focus{
+
+    border-color:#ff2638;
+
+    color:#fff;
+
+}
+
+
+.url-input.invalid{
+
+    border-color:#ff3e50;
+
+}
+
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+
+.action-btn{
+
+    width:36px;
+
+    height:36px;
+
+    display:grid;
+
+    place-items:center;
+
+    border:
+        1px solid
+        #383a40;
+
+    border-radius:8px;
+
+    background:#111317;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.action-btn:hover{
+
+    border-color:#ff2638;
+
+    background:#1a1012;
+
+}
+
+
+.action-btn.delete:hover{
+
+    border-color:#ff2638;
+
+    background:#ff2638;
+
+}
+
+
+.action-btn.open:hover{
+
+    border-color:#4b9cff;
+
+    background:#111b2a;
+
+}
+
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-row{
+
+    text-align:center;
+
+    padding:
+        35px
+        15px !important;
+
+    color:#686b73;
+
+}
+
+
+.empty-icon{
+
+    font-size:30px;
+
+    opacity:.6;
+
+    margin-bottom:8px;
+
+}
+
+
+.empty-row strong{
+
+    display:block;
+
+    color:#aaa;
+
+    margin-bottom:5px;
+
+}
+
+
+.empty-row span{
+
+    font-size:11px;
+
+}
+
+
+
+/* =========================================================
+   SAVE PANEL
+========================================================= */
+
+.save-panel{
+
+    position:sticky;
+
+    bottom:15px;
+
+    z-index:50;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:
+        14px
+        16px;
+
+    margin-top:30px;
+
+    border:
+        1px solid
+        #463034;
+
+    border-radius:14px;
+
+    background:
+        #121013ee;
+
+    box-shadow:
+        0 15px 50px
+        #000a;
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.save-info{
+
+    min-width:0;
+
+}
+
+
+.save-info strong{
+
+    display:block;
+
+    font-size:13px;
+
+}
+
+
+.save-info span{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#777b83;
+
+    font-size:10px;
+
+}
+
+
+.save-actions{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+.reload-btn,
+.save-btn{
+
+    border-radius:9px;
+
+    padding:
+        11px
+        15px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+}
+
+
+.reload-btn{
+
+    border:
+        1px solid
+        #383a40;
+
+    background:#111317;
+
+    color:#fff;
+
+}
+
+
+.save-btn{
+
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    box-shadow:
+        0 8px 25px
+        #ff263844;
+
+}
+
+
+.reload-btn:hover{
+
+    border-color:#ff2638;
+
+}
+
+
+.save-btn:hover{
+
+    background:#e51d2f;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    z-index:500;
+
+    transform:
+        translate(
+            -50%,
+            120px
+        );
+
+    width:
+        min(
+            390px,
+            90%
+        );
+
+    padding:
+        13px
+        16px;
+
+    border:
+        1px solid
+        #3b3d44;
+
+    border-radius:11px;
+
+    background:#14161a;
+
+    box-shadow:
+        0 15px 45px
+        #000b;
+
+    font-size:12px;
+
+    text-align:center;
+
+    transition:
+        transform
+        .3s
+        ease;
+
+}
+
+
+.toast.show{
+
+    transform:
+        translate(
+            -50%,
+            0
+        );
+
+}
+
+
+.toast.success{
+
+    border-color:
+        #28613e;
+
+}
+
+
+.toast.error{
+
+    border-color:
+        #69232c;
+
+}
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-backdrop{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:400;
+
+    display:none;
+
+    place-items:center;
+
+    padding:20px;
+
+    background:
+        #000b;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.modal-backdrop.show{
+
+    display:grid;
+
+}
+
+
+.modal{
+
+    width:
+        min(
+            430px,
+            100%
+        );
+
+    border:
+        1px solid
+        #3a3c42;
+
+    border-radius:17px;
+
+    background:#111317;
+
+    box-shadow:
+        0 25px 80px
+        #000d;
+
+    overflow:hidden;
+
+    animation:
+        modalIn
+        .2s
+        ease-out;
+
+}
+
+
+.modal-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+        17px
+        18px;
+
+    border-bottom:
+        1px solid
+        #292b31;
+
+}
+
+
+.modal-head h3{
+
+    margin:0;
+
+    font-size:16px;
+
+}
+
+
+.modal-close{
+
+    width:31px;
+
+    height:31px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#25272c;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:19px;
+
+}
+
+
+.modal-body{
+
+    padding:18px;
+
+}
+
+
+.modal-label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#ff6875;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    font-weight:800;
+
+}
+
+
+.modal-input{
+
+    width:100%;
+
+    padding:
+        12px;
+
+    margin-bottom:15px;
+
+    border:
+        1px solid
+        #383a40;
+
+    border-radius:9px;
+
+    background:#08090b;
+
+    color:#fff;
+
+    outline:none;
+
+}
+
+
+.modal-input:focus{
+
+    border-color:#ff2638;
+
+}
+
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    padding:
+        14px
+        18px;
+
+    border-top:
+        1px solid
+        #292b31;
+
+}
+
+
+.modal-btn{
+
+    padding:
+        10px
+        14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+}
+
+
+.modal-cancel{
+
+    border:
+        1px solid
+        #383a40;
+
+    background:#111317;
+
+    color:#fff;
+
+}
+
+
+.modal-add{
+
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+}
+
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(12px)
+            scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    .topbar{
+
+        padding:
+            10px
+            14px;
+
+    }
+
+
+    .brand-title{
+
+        font-size:14px;
+
+    }
+
+
+    .brand-subtitle{
+
+        font-size:8px;
+
+    }
+
+
+    .top-btn{
+
+        padding:
+            0
+            10px;
+
+        font-size:11px;
+
+    }
+
+
+    main{
+
+        width:94%;
+
+        margin-top:25px;
+
+    }
+
+
+    .page-heading{
+
+        margin-bottom:20px;
+
+    }
+
+
+    .section-head{
+
+        padding:15px;
+
+        align-items:flex-start;
+
+    }
+
+
+    .section-title h2{
+
+        font-size:16px;
+
+    }
+
+
+    .section-title p{
+
+        max-width:190px;
+
+    }
+
+
+    .add-btn{
+
+        padding:
+            9px
+            11px;
+
+        font-size:11px;
+
+        white-space:nowrap;
+
+    }
+
+
+    .save-panel{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+
+    .save-actions{
+
+        width:100%;
+
+    }
+
+
+    .reload-btn,
+    .save-btn{
+
+        flex:1;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<header class="topbar">
+
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ♥
+        </div>
+
+
+        <div class="brand-text">
+
+            <p class="brand-title">
+                Heart Website Editor
+            </p>
+
+            <p class="brand-subtitle">
+                ADMIN CONTROL PANEL
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button
+            class="top-btn"
+            onclick="goToWebsite()"
+        >
+            🌐 Website
+        </button>
+
+
+        <button
+            class="top-btn danger"
+            onclick="logoutAdmin()"
+        >
+            🚪 Exit
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+    <div class="page-heading">
+
+        <div class="eyebrow">
+            FIREBASE MEDIA MANAGER
+        </div>
+
+
+        <h1>
+            Edit <span>Gallery</span>
+        </h1>
+
+
+        <p>
+            Manage the image and video links displayed
+            on your Working Model of Heart website.
+            Changes are saved to Firebase Firestore.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STATUS
+    ===================================================== -->
+
+    <div
+        id="firebaseStatus"
+        class="status"
+    >
+
+        <div class="status-dot"></div>
+
+        <span>
+            Connecting to Firebase…
+        </span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         IMAGE SECTION
+    ===================================================== -->
+
+    <section
+        class="editor-section"
+    >
+
+
+        <div class="section-head">
+
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    📸
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Image Links
+                    </h2>
+
+                    <p>
+                        Photos displayed in the
+                        website gallery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="openAddModal('photo')"
+            >
+                ＋ Add Image
+            </button>
+
+
+        </div>
+
+
+
+        <div class="table-wrap">
+
+            <table
+                class="media-table"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Image Link
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="imageTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VIDEO SECTION
+    ===================================================== -->
+
+    <section
+        class="editor-section"
+    >
+
+
+        <div class="section-head">
+
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    🎬
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Video Links
+                    </h2>
+
+                    <p>
+                        Videos displayed in the
+                        website gallery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="openAddModal('video')"
+            >
+                ＋ Add Video
+            </button>
+
+
+        </div>
+
+
+
+        <div class="table-wrap">
+
+            <table
+                class="media-table"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Video Link
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="videoTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SAVE PANEL
+    ===================================================== -->
+
+    <div class="save-panel">
+
+
+        <div class="save-info">
+
+            <strong>
+                💾 Save Gallery Changes
+            </strong>
+
+            <span id="changeInfo">
+                No unsaved changes
+            </span>
+
+        </div>
+
+
+        <div class="save-actions">
+
+            <button
+                class="reload-btn"
+                onclick="reloadMedia()"
+            >
+                🔄 Reload
+            </button>
+
+
+            <button
+                class="save-btn"
+                onclick="saveAllChanges()"
+            >
+                💾 Save Changes
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     ADD MEDIA MODAL
+========================================================= -->
+
+<div
+    id="addModalBackdrop"
+    class="modal-backdrop"
+    onclick="closeModalFromBackdrop(event)"
+>
+
+
+    <div class="modal">
+
+
+        <div class="modal-head">
+
+            <h3 id="modalTitle">
+                Add Media
+            </h3>
+
+
+            <button
+                class="modal-close"
+                onclick="closeAddModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div class="modal-body">
+
+
+            <label
+                class="modal-label"
+                for="newMediaName"
+            >
+                MEDIA NAME
+            </label>
+
+
+            <input
+                id="newMediaName"
+                class="modal-input"
+                type="text"
+                placeholder="Example: Heart Model Photo"
+                autocomplete="off"
+            >
+
+
+            <label
+                class="modal-label"
+                for="newMediaUrl"
+            >
+                MEDIA LINK
+            </label>
+
+
+            <input
+                id="newMediaUrl"
+                class="modal-input"
+                type="url"
+                placeholder="https://example.com/image.jpg"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+
+        <div class="modal-footer">
+
+
+            <button
+                class="modal-btn modal-cancel"
+                onclick="closeAddModal()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                class="modal-btn modal-add"
+                onclick="addMediaFromModal()"
+            >
+                ＋ Add
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+
+<!-- =========================================================
+     FIREBASE + EDITOR LOGIC
+========================================================= -->
+
+<script type="module">
+
+
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
+
+import {
+
+    initializeApp
+
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+
+    getFirestore,
+
+    collection,
+
+    getDocs,
+
+    addDoc,
+
+    updateDoc,
+
+    deleteDoc,
+
+    doc,
+
+    serverTimestamp,
+
+    query,
+
+    orderBy
+
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+/* =========================================================
+   ADMIN ACCESS CHECK
+========================================================= */
+
+if(
+    sessionStorage.getItem(
+        "heartAdminAccess"
+    ) !== "true"
+){
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyCYpUFyBaOByeByNrkeqR8ErT3K7r7TbKc",
+
+    authDomain:
+        "working-model-of-heart-251c4.firebaseapp.com",
+
+    projectId:
+        "working-model-of-heart-251c4",
+
+    storageBucket:
+        "working-model-of-heart-251c4.firebasestorage.app",
+
+    messagingSenderId:
+        "225784710105",
+
+    appId:
+        "1:225784710105:web:d6526ae93c57073e740fc8",
+
+    measurementId:
+        "G-HCTMP0Z38C"
+
+};
+
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* =========================================================
+   FIRESTORE COLLECTION
+========================================================= */
+
+const MEDIA_COLLECTION =
+    "heartProjectMedia";
+
+
+
+/* =========================================================
+   LOCAL STATE
+========================================================= */
+
+let mediaItems = [];
+
+let originalItems = [];
+
+let selectedMediaType =
+    "photo";
+
+let hasUnsavedChanges =
+    false;
+
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const imageBody =
+    document.getElementById(
+        "imageTableBody"
+    );
+
+
+const videoBody =
+    document.getElementById(
+        "videoTableBody"
+    );
+
+
+const statusBox =
+    document.getElementById(
+        "firebaseStatus"
+    );
+
+
+const changeInfo =
+    document.getElementById(
+        "changeInfo"
+    );
+
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setStatus(
+    message,
+    type = "loading"
+){
+
+    statusBox.className =
+        "status " + type;
+
+
+    statusBox.innerHTML = `
+
+        <div class="status-dot"></div>
+
+        <span>
+            ${message}
+        </span>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   LOAD MEDIA
+========================================================= */
+
+async function loadMedia(){
+
+    setStatus(
+        "Loading gallery from Firebase…",
+        "loading"
+    );
+
+
+    try{
+
+        const mediaQuery =
+            query(
+
+                collection(
+                    db,
+                    MEDIA_COLLECTION
+                ),
+
+                orderBy(
+                    "createdAt",
+                    "asc"
+                )
+
+            );
+
+
+        const snapshot =
+            await getDocs(
+                mediaQuery
+            );
+
+
+        mediaItems =
+            snapshot.docs.map(
+                item => ({
+
+                    id:
+                        item.id,
+
+                    ...item.data()
+
+                })
+            );
+
+
+        originalItems =
+            JSON.parse(
+                JSON.stringify(
+                    mediaItems
+                )
+            );
+
+
+        renderTables();
+
+
+        setUnsavedChanges(
+            false
+        );
+
+
+        setStatus(
+            `Firebase connected · ${mediaItems.length} media item(s)`,
+            "online"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        /*
+            If the collection does not yet
+            contain data, Firestore can still
+            be used normally.
+        */
+
+        mediaItems = [];
+
+        originalItems = [];
+
+        renderTables();
+
+
+        setStatus(
+            "Could not load Firebase gallery. Check Firebase configuration and Firestore rules.",
+            "error"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RENDER BOTH TABLES
+========================================================= */
+
+function renderTables(){
+
+    renderTable(
+        "photo",
+        imageBody
+    );
+
+
+    renderTable(
+        "video",
+        videoBody
+    );
+
+}
+
+
+
+/* =========================================================
+   RENDER TABLE
+========================================================= */
+
+function renderTable(
+    type,
+    tbody
+){
+
+    tbody.innerHTML =
+        "";
+
+
+    const items =
+        mediaItems.filter(
+            item =>
+                item.type === type
+        );
+
+
+    if(
+        items.length === 0
+    ){
+
+        const row =
+            document.createElement(
+                "tr"
+            );
+
+
+        row.innerHTML = `
+
+            <td
+                colspan="4"
+                class="empty-row"
+            >
+
+                <div class="empty-icon">
+                    ${type === "photo"
+                        ? "📸"
+                        : "🎬"}
+                </div>
+
+                <strong>
+                    No ${type === "photo"
+                        ? "images"
+                        : "videos"} added
+                </strong>
+
+                <span>
+                    Click “Add ${type === "photo"
+                        ? "Image"
+                        : "Video"}”
+                    to add your first link.
+                </span>
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(
+            row
+        );
+
+
+        return;
+
+    }
+
+
+    items.forEach(
+        (item,index) => {
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.dataset.id =
+                item.id;
+
+
+            row.innerHTML = `
+
+                <td class="serial">
+                    ${index + 1}
+                </td>
+
+
+                <td>
+
+                    <input
+                        class="name-input"
+                        type="text"
+                        value="${escapeAttribute(
+                            item.name || ""
+                        )}"
+                        data-field="name"
+                        placeholder="Media name"
+                    >
+
+                </td>
+
+
+                <td class="url-cell">
+
+                    <input
+                        class="url-input"
+                        type="url"
+                        value="${escapeAttribute(
+                            item.url || ""
+                        )}"
+                        data-field="url"
+                        placeholder="https://..."
+                    >
+
+                </td>
+
+
+                <td>
+
+                    <div class="actions">
+
+                        <button
+                            class="action-btn open"
+                            title="Open link"
+                            data-action="open"
+                        >
+                            ↗
+                        </button>
+
+
+                        <button
+                            class="action-btn delete"
+                            title="Remove"
+                            data-action="delete"
+                        >
+                            🗑
+                        </button>
+
+                    </div>
+
+                </td>
+
+            `;
+
+
+            const nameInput =
+                row.querySelector(
+                    '[data-field="name"]'
+                );
+
+
+            const urlInput =
+                row.querySelector(
+                    '[data-field="url"]'
+                );
+
+
+            nameInput.addEventListener(
+                "input",
+                () => {
+
+                    updateLocalItem(
+                        item.id,
+                        "name",
+                        nameInput.value
+                    );
+
+                }
+            );
+
+
+            urlInput.addEventListener(
+                "input",
+                () => {
+
+                    updateLocalItem(
+                        item.id,
+                        "url",
+                        urlInput.value
+                    );
+
+
+                    urlInput.classList.remove(
+                        "invalid"
+                    );
+
+                }
+            );
+
+
+            row.querySelector(
+                '[data-action="open"]'
+            ).addEventListener(
+                "click",
+                () => {
+
+                    const url =
+                        urlInput.value.trim();
+
+
+                    if(
+                        !isValidUrl(url)
+                    ){
+
+                        urlInput.classList.add(
+                            "invalid"
+                        );
+
+                        showToast(
+                            "Please enter a valid URL first.",
+                            "error"
+                        );
+
+                        return;
+
+                    }
+
+
+                    window.open(
+                        url,
+                        "_blank",
+                        "noopener"
+                    );
+
+                }
+            );
+
+
+            row.querySelector(
+                '[data-action="delete"]'
+            ).addEventListener(
+                "click",
+                () => {
+
+                    removeMedia(
+                        item.id
+                    );
+
+                }
+            );
+
+
+            tbody.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   UPDATE LOCAL ITEM
+========================================================= */
+
+function updateLocalItem(
+    id,
+    field,
+    value
+){
+
+    const item =
+        mediaItems.find(
+            media =>
+                media.id === id
+        );
+
+
+    if(!item){
+
+        return;
+
+    }
+
+
+    item[field] =
+        value;
+
+
+    setUnsavedChanges(
+        true
+    );
+
+}
+
+
+
+/* =========================================================
+   ADD MEDIA
+========================================================= */
+
+function addMedia(
+    type,
+    name,
+    url
+){
+
+    const temporaryId =
+        "local_" +
+        Date.now() +
+        "_" +
+        Math.random()
+            .toString(36)
+            .slice(2);
+
+
+    mediaItems.push({
+
+        id:
+            temporaryId,
+
+        type:
+            type,
+
+        name:
+            name,
+
+        url:
+            url,
+
+        isNew:
+            true
+
+    });
+
+
+    renderTables();
+
+
+    setUnsavedChanges(
+        true
+    );
+
+
+    const target =
+        type === "photo"
+            ? imageBody
+            : videoBody;
+
+
+    const rows =
+        target.querySelectorAll(
+            "tr"
+        );
+
+
+    const lastRow =
+        rows[rows.length - 1];
+
+
+    if(lastRow){
+
+        lastRow.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"center"
+
+        });
+
+    }
+
+}
+
+
+
+/* =========================================================
+   REMOVE MEDIA
+========================================================= */
+
+function removeMedia(
+    id
+){
+
+    const item =
+        mediaItems.find(
+            media =>
+                media.id === id
+        );
+
+
+    if(!item){
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+
+            `Remove "${item.name || "this media"}" from the gallery?`
+
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    mediaItems =
+        mediaItems.filter(
+            media =>
+                media.id !== id
+        );
+
+
+    renderTables();
+
+
+    setUnsavedChanges(
+        true
+    );
+
+
+    showToast(
+        "Media removed from the editor. Press Save Changes to confirm.",
+        "success"
+    );
+
+}
+
+
+
+/* =========================================================
+   SAVE ALL
+========================================================= */
+
+async function saveAllChanges(){
+
+    if(
+        !hasUnsavedChanges
+    ){
+
+        showToast(
+            "There are no changes to save.",
+            "success"
+        );
+
+        return;
+
+    }
+
+
+    /* Validate all URLs */
+
+    for(
+        const item
+        of mediaItems
+    ){
+
+        if(
+            !item.name ||
+            !item.name.trim()
+        ){
+
+            showToast(
+                "Every media item needs a name.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            !isValidUrl(
+                item.url
+            )
+        ){
+
+            showToast(
+                `Invalid URL for "${item.name}".`,
+                "error"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    setStatus(
+        "Saving changes to Firebase…",
+        "loading"
+    );
+
+
+    try{
+
+        /*
+            1. Delete removed old documents.
+        */
+
+        const currentIds =
+            mediaItems
+                .filter(
+                    item =>
+                        !item.isNew
+                )
+                .map(
+                    item =>
+                        item.id
+                );
+
+
+        const deleted =
+            originalItems.filter(
+
+                original =>
+
+                    !currentIds.includes(
+                        original.id
+                    )
+
+                    &&
+
+                    !mediaItems.some(
+                        current =>
+                            current.id ===
+                            original.id
+                    )
+
+            );
+
+
+        for(
+            const item
+            of deleted
+        ){
+
+            await deleteDoc(
+                doc(
+                    db,
+                    MEDIA_COLLECTION,
+                    item.id
+                )
+            );
+
+        }
+
+
+
+        /*
+            2. Add/update current documents.
+        */
+
+        for(
+            const item
+            of mediaItems
+        ){
+
+            const data = {
+
+                type:
+                    item.type,
+
+                name:
+                    item.name.trim(),
+
+                url:
+                    item.url.trim(),
+
+                updatedAt:
+                    serverTimestamp()
+
+            };
+
+
+            if(
+                item.isNew
+            ){
+
+                await addDoc(
+
+                    collection(
+                        db,
+                        MEDIA_COLLECTION
+                    ),
+
+                    {
+
+                        ...data,
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+
+                );
+
+            }else{
+
+                await updateDoc(
+
+                    doc(
+                        db,
+                        MEDIA_COLLECTION,
+                        item.id
+                    ),
+
+                    data
+
+                );
+
+            }
+
+        }
+
+
+        showToast(
+            "✓ Gallery saved successfully.",
+            "success"
+        );
+
+
+        await loadMedia();
+
+
+    }catch(error){
+
+        console.error(
+            "Save error:",
+            error
+        );
+
+
+        setStatus(
+            "Save failed. Check Firestore permissions.",
+            "error"
+        );
+
+
+        showToast(
+            "Could not save changes to Firebase.",
+            "error"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RELOAD
+========================================================= */
+
+async function reloadMedia(){
+
+    if(
+        hasUnsavedChanges
+    ){
+
+        const confirmed =
+            confirm(
+                "You have unsaved changes. Reloading will discard them. Continue?"
+            );
+
+
+        if(!confirmed){
+
+            return;
+
+        }
+
+    }
+
+
+    await loadMedia();
+
+    showToast(
+        "Gallery reloaded from Firebase.",
+        "success"
+    );
+
+}
+
+
+
+/* =========================================================
+   UNSAVED STATE
+========================================================= */
+
+function setUnsavedChanges(
+    state
+){
+
+    hasUnsavedChanges =
+        state;
+
+
+    if(
+        state
+    ){
+
+        changeInfo.textContent =
+            "⚠ You have unsaved changes";
+
+
+        changeInfo.style.color =
+            "#ff6572";
+
+    }else{
+
+        changeInfo.textContent =
+            "✓ All changes saved";
+
+
+        changeInfo.style.color =
+            "#777b83";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   URL VALIDATION
+========================================================= */
+
+function isValidUrl(
+    value
+){
+
+    try{
+
+        const url =
+            new URL(
+                String(value).trim()
+            );
+
+
+        return(
+            url.protocol ===
+                "http:" ||
+
+            url.protocol ===
+                "https:"
+        );
+
+    }catch{
+
+        return false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   ATTRIBUTE ESCAPE
+========================================================= */
+
+function escapeAttribute(
+    value
+){
+
+    return String(
+        value
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    );
+
+}
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+window.openAddModal =
+function(type){
+
+    selectedMediaType =
+        type;
+
+
+    const title =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const name =
+        document.getElementById(
+            "newMediaName"
+        );
+
+
+    const url =
+        document.getElementById(
+            "newMediaUrl"
+        );
+
+
+    title.textContent =
+        type === "photo"
+            ? "Add Image Link"
+            : "Add Video Link";
+
+
+    name.value =
+        "";
+
+
+    url.value =
+        "";
+
+
+    url.placeholder =
+        type === "photo"
+            ? "https://example.com/image.jpg"
+            : "https://example.com/video.mp4";
+
+
+    document
+        .getElementById(
+            "addModalBackdrop"
+        )
+        .classList
+        .add(
+            "show"
+        );
+
+
+    setTimeout(
+        () =>
+            name.focus(),
+        100
+    );
+
+};
+
+
+
+window.closeAddModal =
+function(){
+
+    document
+        .getElementById(
+            "addModalBackdrop"
+        )
+        .classList
+        .remove(
+            "show"
+        );
+
+};
+
+
+
+window.closeModalFromBackdrop =
+function(event){
+
+    if(
+        event.target ===
+        event.currentTarget
+    ){
+
+        closeAddModal();
+
+    }
+
+};
+
+
+
+window.addMediaFromModal =
+function(){
+
+    const name =
+        document
+            .getElementById(
+                "newMediaName"
+            )
+            .value
+            .trim();
+
+
+    const url =
+        document
+            .getElementById(
+                "newMediaUrl"
+            )
+            .value
+            .trim();
+
+
+    if(!name){
+
+        showToast(
+            "Enter a name for the media.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !isValidUrl(url)
+    ){
+
+        showToast(
+            "Enter a valid http:// or https:// link.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    addMedia(
+        selectedMediaType,
+        name,
+        url
+    );
+
+
+    closeAddModal();
+
+
+    showToast(
+        "Media added. Press Save Changes.",
+        "success"
+    );
+
+};
+
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(
+    message,
+    type = "success"
+){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3000
+        );
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+window.goToWebsite =
+function(){
+
+    window.location.href =
+        "index.html";
+
+};
+
+
+
+window.logoutAdmin =
+function(){
+
+    sessionStorage.removeItem(
+        "heartAdminAccess"
+    );
+
+
+    window.location.href =
+        "index.html";
+
+};
+
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadMedia();
+
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL LOSS
+========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function(event){
+
+        if(
+            hasUnsavedChanges
+        ){
+
+            event.preventDefault();
+
+            event.returnValue = "";
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
