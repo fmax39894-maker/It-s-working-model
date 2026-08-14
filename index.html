@@ -1,199 +1,3294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
 
-<title>Media Showcase</title>
+<title>Working Model of Heart</title>
 
-<meta name="theme-color" content="#000000">
+<script src="password.js"></script>
 
-<!-- Website Preview -->
+<style>
 
-<meta property="og:title" content="Media Showcase">
-<meta property="og:description" content="Premium Media Gallery">
-<meta property="og:image" content="assets/cover.jpg">
-<meta property="og:type" content="website">
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="assets/cover.jpg">
+*{
+    box-sizing:border-box;
+}
 
-<link rel="icon" href="assets/logo/logo.png">
+html{
+    scroll-behavior:smooth;
+}
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animation.css">
-<link rel="stylesheet" href="css/frame.css">
-<link rel="stylesheet" href="css/navbar.css">
-<link rel="stylesheet" href="css/home.css">
+body{
+    margin:0;
+    background:#08090b;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+button{
+    font-family:inherit;
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav{
+    height:64px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:#090a0cdd;
+    border-bottom:1px solid #292a2e;
+
+    position:sticky;
+    top:0;
+    z-index:20;
+
+    backdrop-filter:blur(12px);
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.brand span,
+h1 span,
+.red{
+    color:#ff2638;
+}
+
+
+/* =========================================================
+   SETTINGS BUTTON
+========================================================= */
+
+.settings-btn{
+    width:40px;
+    height:40px;
+
+    border:1px solid #383a40;
+    border-radius:10px;
+
+    background:#111317;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:5px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.settings-btn span{
+    display:block;
+    width:18px;
+    height:2px;
+    background:#fff;
+    border-radius:3px;
+
+    transition:.25s;
+}
+
+.settings-btn:hover{
+    border-color:#ff2638;
+    background:#181114;
+}
+
+.settings-btn:active{
+    transform:scale(.92);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:600px;
+
+    padding:70px 7%;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at 80% 35%,
+        #420b12,
+        transparent 40%
+    );
+}
+
+.hero:before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    opacity:.18;
+
+    background-image:
+        linear-gradient(#ff263812 1px,transparent 1px),
+        linear-gradient(90deg,#ff263812 1px,transparent 1px);
+
+    background-size:42px 42px;
+
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+
+    from{
+        background-position:0 0,0 0;
+    }
+
+    to{
+        background-position:42px 42px,42px 42px;
+    }
+
+}
+
+.hero>*{
+    position:relative;
+}
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    color:#ff6b76;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(48px,6vw,78px);
+    line-height:.98;
+    margin:18px 0;
+}
+
+.hero p{
+    max-width:560px;
+    color:#cfd0d5;
+    font-size:18px;
+    line-height:1.65;
+}
+
+.btn{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 22px;
+
+    background:#ff2638;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 30px #ff263833;
+
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 15px 35px #ff263855;
+}
+
+.btn:active{
+    transform:scale(.96);
+}
+
+.live-link{
+    margin-left:10px;
+    background:#111317;
+    border:1px solid #ff2638;
+}
+
+.live-link:hover{
+    background:#ff2638;
+}
+
+
+/* =========================================================
+   BPM
+========================================================= */
+
+.bpm{
+    margin-top:22px;
+
+    width:170px;
+
+    padding:12px;
+
+    border:1px solid #383a40;
+    border-radius:10px;
+
+    background:#111317;
+
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.pulse{
+    width:31px;
+    height:31px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:#ff2638;
+
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.15);
+        box-shadow:
+            0 0 25px #ff263888;
+    }
+
+}
+
+
+/* =========================================================
+   ECG
+========================================================= */
+
+.ecg{
+    position:absolute;
+    bottom:18px;
+    left:0;
+
+    width:100%;
+    height:75px;
+}
+
+.ecg svg{
+    width:100%;
+    height:100%;
+}
+
+.ecg polyline{
+    fill:none;
+
+    stroke:#ff2638;
+
+    stroke-width:3;
+
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+
+    animation:
+        ecg 2.2s linear infinite;
+
+    filter:
+        drop-shadow(
+            0 0 7px #ff2638
+        );
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+@keyframes ecg{
+
+    to{
+        stroke-dashoffset:0;
+    }
+
+}
+
+
+/* =========================================================
+   BAR
+========================================================= */
+
+.bar{
+    width:86%;
+
+    margin:auto;
+
+    padding:14px;
+
+    text-align:center;
+
+    background:#111317;
+
+    border:1px solid #303238;
+
+    color:#aaa;
+}
+
+.bar span{
+    color:#ff2638;
+    font-weight:bold;
+}
+
+.bar b{
+    margin:0 15px;
+    color:#555;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    padding:80px 7%;
+
+    border-top:1px solid #202126;
+}
+
+.title{
+    text-align:center;
+    font-size:38px;
+}
+
+.title span{
+    color:#ff2638;
+}
+
+.sub{
+    max-width:700px;
+
+    margin:0 auto 42px;
+
+    text-align:center;
+
+    color:#aeb1b8;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1.2fr;
+
+    gap:50px;
+
+    align-items:center;
+}
+
+.about h2{
+    font-size:34px;
+}
+
+.about p{
+    color:#c5c7cc;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features,
+.steps{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.feature,
+.step{
+    padding:22px;
+
+    border:1px solid #34363c;
+
+    border-radius:13px;
+
+    background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.feature:hover,
+.step:hover{
+    transform:translateY(-6px);
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 12px 30px #ff26381c;
+}
+
+.feature .icon,
+.step .icon{
+    font-size:29px;
+
+    color:#ff2638;
+
+    margin-bottom:10px;
+}
+
+.feature p,
+.step p{
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.num{
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    display:grid;
+    place-items:center;
+
+    margin:0 auto 17px;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:.7s;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   MEDIA BUTTONS
+========================================================= */
+
+.media-view-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:0 auto 28px;
+}
+
+.media-filter,
+.host-btn,
+.unlock-btn,
+.save-media{
+
+    border:1px solid #3a3c42;
+
+    background:#111317;
+
+    color:#fff;
+
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.media-filter:hover,
+.media-filter.active,
+.host-btn:hover,
+.unlock-btn,
+.save-media{
+
+    background:#ff2638;
+
+    border-color:#ff2638;
+}
+
+.media-filter:active,
+.host-btn:active,
+.unlock-btn:active,
+.save-media:active{
+
+    transform:scale(.94);
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px,190px)
+        );
+
+    justify-content:center;
+
+    gap:15px;
+}
+
+.gallery-item{
+
+    background:#111317;
+
+    border:1px solid #34363c;
+
+    border-radius:13px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    animation:
+        galleryIn .45s;
+
+    transition:.3s;
+
+    position:relative;
+}
+
+.gallery-item:hover{
+
+    transform:
+        translateY(-7px)
+        scale(1.025);
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 15px 35px #0008,
+        0 0 20px #ff26381c;
+}
+
+.gallery-item:active{
+
+    transform:scale(.97);
+}
+
+.gallery-item img,
+.gallery-item video{
+
+    width:100%;
+
+    height:125px;
+
+    display:block;
+
+    object-fit:cover;
+
+    background:#08090b;
+}
+
+.gallery-item video{
+
+    pointer-events:none;
+}
+
+.gallery-caption{
+
+    padding:9px;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.gallery-empty{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:35px;
+}
+
+#gallery,
+#galleryEmpty{
+
+    display:none;
+}
+
+#gallery.media-visible{
+
+    display:grid;
+}
+
+#galleryEmpty.media-visible{
+
+    display:block;
+}
+
+@keyframes galleryIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+
+/* =========================================================
+   FIREBASE STATUS
+========================================================= */
+
+.firebase-status{
+
+    text-align:center;
+
+    margin:-28px auto 24px;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+.firebase-status.live{
+
+    color:#69e58a;
+}
+
+.firebase-message{
+
+    margin-top:10px;
+
+    color:#ff6875;
+
+    font-size:12px;
+
+    min-height:15px;
+}
+
+.firebase-message.ok{
+
+    color:#69e58a;
+}
+
+
+/* =========================================================
+   HOST PANEL
+========================================================= */
+
+.host-panel{
+
+    display:none;
+
+    position:relative;
+
+    max-width:560px;
+
+    margin:35px auto 0;
+
+    padding:28px;
+
+    border:1px solid #ff2638;
+
+    border-radius:16px;
+
+    background:#101114;
+
+    box-shadow:
+        0 20px 50px #000;
+}
+
+.host-panel.show{
+
+    display:block;
+
+    animation:
+        galleryIn .3s;
+}
+
+.host-panel h3{
+
+    color:#ff2638;
+
+    margin:0;
+}
+
+.host-panel p{
+
+    color:#aaa;
+
+    line-height:1.5;
+}
+
+.close-host{
+
+    position:absolute;
+
+    right:14px;
+
+    top:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#fff;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   HOST LOGIN
+========================================================= */
+
+#hostLogin{
+
+    padding:15px;
+
+    border:1px solid #34363c;
+
+    border-radius:12px;
+
+    background:#0b0c0f;
+}
+
+#hostLogin input{
+
+    display:block;
+
+    width:100%;
+
+    padding:11px;
+
+    margin:8px 0;
+
+    background:#08090b;
+
+    border:1px solid #383a40;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    outline:none;
+}
+
+#hostLogin input:focus{
+
+    border-color:#ff2638;
+}
+
+#hostLogin .unlock-btn{
+
+    width:100%;
+
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   LINK FORM
+========================================================= */
+
+.upload-area{
+
+    margin-top:18px;
+
+    display:grid;
+
+    gap:12px;
+}
+
+.link-input{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#08090b;
+
+    border:1px solid #383a40;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    outline:none;
+}
+
+.link-input:focus{
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 0 2px #ff26381a;
+}
+
+select.link-input{
+
+    cursor:pointer;
+}
+
+.host-status{
+
+    padding:10px 12px;
+
+    border:1px solid #285d38;
+
+    background:#102016;
+
+    color:#70e08b;
+
+    border-radius:8px;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.host-note{
+
+    font-size:11px!important;
+
+    color:#777!important;
+}
+
+
+/* =========================================================
+   HOST MANAGE
+========================================================= */
+
+.host-manage{
+
+    margin-top:20px;
+
+    border-top:1px solid #292b31;
+
+    padding-top:15px;
+}
+
+.host-manage h4{
+
+    margin:0 0 10px;
+
+    color:#ff8793;
+}
+
+.host-media-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    align-items:center;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #25272b;
+
+    font-size:12px;
+
+    color:#bbb;
+}
+
+.host-media-row span{
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.host-media-actions{
+
+    display:flex;
+
+    gap:6px;
+
+    flex:none;
+}
+
+.host-media-row button{
+
+    border:1px solid #ff2638;
+
+    background:transparent;
+
+    color:#ff6875;
+
+    border-radius:7px;
+
+    padding:6px 9px;
+
+    cursor:pointer;
+}
+
+.host-media-row button:hover{
+
+    background:#ff2638;
+
+    color:#fff;
+}
+
+
+/* =========================================================
+   SETTINGS MENU
+========================================================= */
+
+.settings-menu{
+
+    position:fixed;
+
+    top:76px;
+
+    right:6%;
+
+    width:min(340px,88vw);
+
+    z-index:100;
+
+    display:none;
+
+    padding:18px;
+
+    border:1px solid #3a3c42;
+
+    border-radius:16px;
+
+    background:#101114;
+
+    box-shadow:0 20px 60px #000b;
+
+    backdrop-filter:blur(15px);
+}
+
+.settings-menu.show{
+
+    display:block;
+
+    animation:
+        settingsIn .22s ease-out;
+}
+
+.settings-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.settings-head h3{
+
+    margin:0;
+
+    color:#ff2638;
+}
+
+.settings-head button{
+
+    border:0;
+
+    background:none;
+
+    color:#fff;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.settings-card{
+
+    display:flex;
+
+    gap:14px;
+
+    padding:17px;
+
+    border:1px solid #34363c;
+
+    border-radius:12px;
+
+    background:#111317;
+}
+
+.settings-icon{
+
+    font-size:27px;
+}
+
+.settings-card h4{
+
+    margin:0 0 5px;
+}
+
+.settings-card p{
+
+    margin:0 0 12px;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+.settings-action{
+
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    padding:9px 13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.settings-action:active{
+
+    transform:scale(.95);
+}
+
+.settings-password{
+
+    margin-top:12px;
+
+    padding-top:12px;
+
+    border-top:1px solid #292b31;
+}
+
+.settings-password label{
+
+    display:block;
+
+    font-size:9px;
+
+    letter-spacing:1.8px;
+
+    color:#ff6b76;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+.settings-password input{
+
+    width:100%;
+
+    padding:10px 11px;
+
+    background:#08090b;
+
+    border:1px solid #383a40;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    outline:none;
+}
+
+.settings-password .settings-action{
+
+    width:100%;
+
+    margin-top:8px;
+}
+
+#settingsPasswordMessage{
+
+    font-size:11px;
+
+    margin-top:7px;
+
+    min-height:14px;
+}
+
+.settings-host-controls{
+
+    display:none;
+
+    margin-top:10px;
+}
+
+.settings-host-controls.show{
+
+    display:block;
+}
+
+.settings-host-controls .settings-action{
+
+    width:100%;
+}
+
+@keyframes settingsIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-8px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+    }
+
+}
+
+
+/* =========================================================
+   VIEWER
+========================================================= */
+
+.section-viewer{
+
+    display:none;
+
+    margin:28px auto 0;
+
+    max-width:800px;
+
+    border:1px solid #ff2638;
+
+    border-radius:16px;
+
+    background:#0d0f12;
+
+    padding:14px;
+
+    box-shadow:
+        0 20px 55px #0008;
+}
+
+.section-viewer.show{
+
+    display:block;
+
+    animation:
+        galleryIn .25s ease-out;
+}
+
+.section-viewer-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:2px 4px 12px;
+}
+
+.section-viewer-head h3{
+
+    margin:0;
+
+    color:#ff2638;
+
+    font-size:16px;
+
+    max-width:90%;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.section-viewer-head button{
+
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    width:32px;
+
+    height:32px;
+
+    border-radius:50%;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+.section-viewer-content{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:180px;
+}
+
+.section-view-media{
+
+    max-width:100%;
+
+    max-height:500px;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.hero-logo{
+
+    display:grid;
+
+    place-items:center;
+
+    min-height:400px;
+}
+
+.hero-logo img{
+
+    width:min(360px,75vw);
+
+    height:auto;
+
+    display:block;
+
+    filter:
+        drop-shadow(
+            0 0 35px
+            rgba(255,38,56,.28)
+        );
+
+    animation:
+        logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-9px)
+            scale(1.025);
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+
+    max-width:950px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.contact-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:24px;
+
+    border:1px solid #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    transition:.3s;
+}
+
+.contact-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 12px 30px #ff26381c;
+}
+
+.contact-icon{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    font-size:22px;
+
+    flex:none;
+}
+
+.contact-card h3{
+
+    margin:0 0 6px;
+}
+
+.contact-card p{
+
+    margin:0;
+
+    color:#aaa;
+
+    word-break:break-word;
+
+    font-size:13px;
+
+    line-height:1.45;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:45px 7% 20px;
+
+    border-top:1px solid #292a30;
+
+    background:#090a0c;
+}
+
+.footer-grid{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:35px;
+}
+
+.footer-grid h3{
+
+    color:#ff2638;
+}
+
+.footer-grid p{
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+.leader{
+
+    font-size:20px;
+
+    color:#fff;
+
+    font-weight:bold;
+}
+
+.leader span{
+
+    display:block;
+
+    color:#ff2638;
+
+    font-size:13px;
+
+    margin-top:5px;
+}
+
+.copy{
+
+    text-align:center;
+
+    color:#666;
+
+    border-top:1px solid #222;
+
+    margin-top:30px;
+
+    padding-top:18px;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero p{
+
+        margin:auto;
+    }
+
+    .bpm{
+
+        margin:20px auto;
+    }
+
+    .about{
+
+        grid-template-columns:1fr;
+    }
+
+    .features,
+    .steps{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-grid{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .contact-grid{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .features,
+    .steps,
+    .footer-grid,
+    .contact-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+
+        font-size:45px;
+    }
+
+    .links{
+
+        display:none;
+    }
+
+    .gallery{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .live-link{
+
+        margin-left:0;
+
+        margin-top:10px;
+    }
+
+    .hero{
+
+        padding-top:55px;
+    }
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    transform:
+        translate(-50%,30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    background:#111317;
+
+    border:1px solid #ff2638;
+
+    color:#fff;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    font-size:13px;
+
+    box-shadow:
+        0 15px 40px #000;
+    
+    transition:.3s;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<!-- ==========================
-        LOADER
-=========================== -->
 
-<div id="loader" class="center">
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
 
-    <img
-    src="assets/logo/logo.png"
-    class="loader-logo pulse"
-    alt="Logo">
+<nav>
 
+<div class="brand">
+    Working Model of <span>Heart</span>
 </div>
 
-<!-- ==========================
-    BACKGROUND VIDEO
-=========================== -->
+<button
+class="settings-btn"
+aria-label="Open settings"
+onclick="toggleSettings()"
+>
 
-<video
-id="bgVideo"
-class="bg-video"
-autoplay
-muted
-loop
-playsinline
-preload="auto">
-
-<source
-src="assets/backgrounds/home.mp4"
-type="video/mp4">
-
-</video>
-
-<div class="overlay"></div>
-
-<!-- ==========================
-        HEADER
-=========================== -->
-
-<header id="header">
-
-    <div class="logo fade-down">
-
-        <img
-        src="assets/logo/logo.png"
-        alt="Website Logo">
-
-    </div>
-
- <button
-class="menu-btn ripple"
-onclick="goMenu()">
-
-⋮
+<span></span>
+<span></span>
+<span></span>
 
 </button>
 
+</nav>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<header
+class="hero"
+id="home"
+>
+
+<div>
+
+<div class="eyebrow">
+SCIENCE EXHIBITION 2026
+</div>
+
+<h1>
+Working Model<br>
+of the <span>Human Heart</span>
+</h1>
+
+<p>
+This project demonstrates the working of the human heart
+and how it pumps blood throughout the body.
+</p>
+
+<a
+class="btn"
+href="#model"
+>
+Explore the Model ↓
+</a>
+
+<a
+class="btn live-link"
+href="https://working-model-of-heart-251c4.web.app"
+target="_blank"
+rel="noopener"
+>
+🌐 Open Public Website
+</a>
+
+<div class="bpm">
+
+<div class="pulse">
+♥
+</div>
+
+<div>
+Heartbeat<br>
+<strong>
+<span id="bpm">72</span> BPM
+</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="ecg">
+
+<svg
+viewBox="0 0 1200 100"
+preserveAspectRatio="none"
+>
+
+<polyline
+points="
+0,52
+70,52
+88,52
+98,45
+108,52
+126,52
+138,38
+146,65
+154,52
+175,52
+188,52
+202,52
+212,18
+222,82
+232,52
+252,52
+275,52
+290,52
+302,43
+314,52
+330,52
+345,52
+360,52
+370,52
+380,52
+390,52
+400,52
+414,18
+424,82
+434,52
+454,52
+480,52
+505,52
+520,52
+534,52
+548,52
+560,52
+574,38
+582,65
+590,52
+612,52
+630,52
+645,52
+660,52
+670,18
+680,82
+690,52
+710,52
+735,52
+760,52
+775,52
+788,45
+798,52
+816,52
+830,38
+838,65
+846,52
+870,52
+900,52
+930,52
+945,52
+958,18
+968,82
+978,52
+1000,52
+1030,52
+1060,52
+1080,52
+1092,45
+1100,52
+1120,52
+1134,38
+1142,65
+1150,52
+1200,52
+"
+>
+
+</polyline>
+
+</svg>
+
+</div>
+
 </header>
 
-<!-- ==========================
-        HOME PAGE
-=========================== -->
+
+<!-- =======================================================
+     PROJECT BAR
+======================================================= -->
+
+<div class="bar">
+
+<span>Science Exhibition 2026</span>
+
+<b>|</b>
+
+Aayushman Jha
+
+<span>(Leader)</span>
+
+</div>
+
+
+<!-- =======================================================
+     SETTINGS MENU
+======================================================= -->
+
+<div
+id="settingsMenu"
+class="settings-menu"
+>
+
+<div class="settings-head">
+
+<h3>
+Settings
+</h3>
+
+<button onclick="toggleSettings()">
+×
+</button>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-icon">
+🔐
+</div>
+
+<div style="width:100%">
+
+<h4>
+Host Upload
+</h4>
+
+<p>
+Only the host can add, edit or remove
+photo and video links.
+</p>
+
+
+<div class="settings-password">
+
+<label>
+HOST PASSWORD
+</label>
+
+<input
+id="settingsPassword"
+type="password"
+placeholder="Enter password"
+>
+
+<button
+class="settings-action"
+onclick="unlockFromSettings()"
+>
+Unlock Host Controls
+</button>
+
+<div id="settingsPasswordMessage"></div>
+
+</div>
+
+
+<div
+id="settingsHostControls"
+class="settings-host-controls"
+>
+
+<button
+class="settings-action"
+onclick="openHostFromSettings()"
+>
+📸 Manage Photos & Videos
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =======================================================
+     TEAM
+======================================================= -->
 
 <section
-class="page"
-id="homePage">
+id="team"
+class="reveal"
+>
 
-    <div class="home-center">
+<h2 class="title">
+<span>Aayushman Jha</span>
+</h2>
 
-        <div class="welcome-glow">
+<p class="sub">
+Project Leader · Team Red Diamond · Science Exhibition 2026
+</p>
 
-        </div>
+<div style="text-align:center">
 
-    </div>
+<div class="leader">
+
+Project Leader
+
+<span>
+Leader
+</span>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- ==========================
-        PARTICLES
-=========================== -->
 
-<div id="particles"></div>
+<!-- =======================================================
+     MODEL
+======================================================= -->
 
-<!-- ==========================
-      BOTTOM NAVIGATION
-=========================== -->
+<section
+id="model"
+class="reveal"
+>
 
-<nav class="bottom-nav home show">
+<div class="about">
 
-    <div class="indicator"></div>
+<div></div>
 
-    <div class="nav-item active"
-         data-page="index.html">
+<div>
 
-        <img
-        src="assets/icons/home.png"
-        alt="Home">
+<h2>
+About the <span>Heart</span>
+</h2>
 
-        <small>Home</small>
+<p>
+The human heart is a muscular organ that continuously
+pumps blood throughout the body. Our working model
+demonstrates this pumping action in a simple and
+practical way.
+</p>
 
-    </div>
 
-    <div class="nav-item"
-         data-page="videos.html">
+<div class="features">
 
-        <img
-        src="assets/icons/videos.png"
-        alt="Videos">
+<div class="feature">
 
-        <small>Videos</small>
+<div class="icon">
+♥
+</div>
 
-    </div>
+<h3>
+Realistic Action
+</h3>
 
-    <div class="nav-item"
-         data-page="images.html">
+<p>
+Pumping demonstration
+</p>
 
-        <img
-        src="assets/icons/images.png"
-        alt="Images">
+</div>
 
-        <small>Images</small>
 
-    </div>
+<div class="feature">
 
-    <div class="nav-item"
-         data-page="special.html">
+<div class="icon">
+◉
+</div>
 
-        <img
-        src="assets/icons/special.png"
-        alt="Special">
+<h3>
+Blood Flow
+</h3>
 
-        <small>Special</small>
+<p>
+Shows circulation
+</p>
 
-    </div>
+</div>
 
-</nav>
 
-<!-- ==========================
-          AUDIO
-=========================== -->
+<div class="feature">
 
-<audio
-id="clickSound"
-preload="auto">
+<div class="icon">
+⚙
+</div>
 
-    <source
-    src="sounds/click.mp3"
-    type="audio/mpeg">
+<h3>
+Mechanism
+</h3>
 
-</audio>
+<p>
+Easy to understand
+</p>
 
-<!-- ==========================
-        JAVASCRIPT
-=========================== -->
+</div>
 
-<script src="js/app.js"></script>
 
-<script src="js/navbar.js"></script>
+<div class="feature">
 
-<script src="js/home.js"></script>
+<div class="icon">
+▣
+</div>
 
-</body>
+<h3>
+Educational
+</h3>
 
-</html>
+<p>
+Science project
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     MEDIA
+======================================================= -->
+
+<section
+id="media"
+class="reveal"
+>
+
+<h2 class="title">
+<span>Photo & Video</span> of Project
+</h2>
+
+<p class="sub">
+Everyone can view the project gallery.
+Only the host can add, edit and remove media links.
+</p>
+
+
+<div class="media-view-buttons">
+
+<button
+class="media-filter active"
+onclick="filterMedia('all',this)"
+>
+👀 See All
+</button>
+
+<button
+class="media-filter"
+onclick="filterMedia('photo',this)"
+>
+📸 Photos
+</button>
+
+<button
+class="media-filter"
+onclick="filterMedia('video',this)"
+>
+🎬 Videos
+</button>
+
+</div>
+
+
+<div
+id="firebaseStatus"
+class="firebase-status"
+>
+☁️ Connecting to Firebase…
+</div>
+
+
+<div
+id="gallery"
+class="gallery"
+>
+</div>
+
+
+<div
+id="galleryEmpty"
+class="gallery-empty"
+>
+No photos or videos have been added yet.
+</div>
+
+
+<!-- =====================================================
+     HOST PANEL
+===================================================== -->
+
+<div
+id="hostPanel"
+class="host-panel"
+>
+
+<div class="settings-head">
+
+<h3>
+🔐 Host Media Control
+</h3>
+
+<button onclick="closeHostPanel()">
+×
+</button>
+
+</div>
+
+
+<p>
+Add image or video <b>links</b> below.
+The links are stored as text in Firebase Firestore.
+</p>
+
+
+<!-- LOGIN -->
+
+<div id="hostLogin">
+
+<input
+id="hostPassword"
+type="password"
+placeholder="Enter host password"
+>
+
+<button
+class="unlock-btn"
+onclick="unlockHost()"
+>
+Unlock Host
+</button>
+
+<div id="hostMessage"></div>
+
+</div>
+
+
+<!-- HOST CONTROLS -->
+
+<div
+id="uploadArea"
+class="upload-area"
+style="display:none"
+>
+
+<div class="host-status">
+✓ Host access granted
+</div>
+
+
+<select
+id="mediaType"
+class="link-input"
+>
+
+<option value="photo">
+📸 Photo
+</option>
+
+<option value="video">
+🎬 Video
+</option>
+
+</select>
+
+
+<input
+id="mediaTitle"
+class="link-input"
+type="text"
+placeholder="Media title"
+>
+
+
+<input
+id="mediaUrl"
+class="link-input"
+type="url"
+placeholder="Paste image or video link"
+>
+
+
+<button
+id="saveMediaButton"
+class="save-media"
+onclick="saveMedia()"
+>
+➕ Add to Gallery
+</button>
+
+
+<div class="host-manage">
+
+<h4>
+Manage Gallery
+</h4>
+
+<div id="hostMediaList"></div>
+
+</div>
+
+
+<p class="host-note">
+Only the title, type and URL are stored in Firebase.
+No image or video file is uploaded to Firebase Storage.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- VIEWER -->
+
+<div
+id="sectionViewer"
+class="section-viewer"
+>
+
+<div class="section-viewer-head">
+
+<h3 id="sectionViewerTitle">
+Preview
+</h3>
+
+<button onclick="closeSectionViewer()">
+×
+</button>
+
+</div>
+
+<div
+id="sectionViewerContent"
+class="section-viewer-content"
+>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FUNCTION
+======================================================= -->
+
+<section
+id="working"
+class="reveal"
+>
+
+<h2 class="title">
+About the <span>Function of the Heart</span>
+</h2>
+
+<p class="sub">
+Learn the main functions of the heart and how blood
+moves through the chambers.
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="num">
+1
+</div>
+
+<div class="icon">
+⏻
+</div>
+
+<h3>
+Receives Blood
+</h3>
+
+<p>
+The atria receive blood returning to the heart.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+2
+</div>
+
+<div class="icon">
+♥
+</div>
+
+<h3>
+Pumps Blood
+</h3>
+
+<p>
+The ventricles contract and pump blood to the
+lungs and body.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+3
+</div>
+
+<div class="icon">
+◆
+</div>
+
+<h3>
+Blood Circulation
+</h3>
+
+<p>
+Blood travels through pulmonary and systemic
+circulation.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+4
+</div>
+
+<div class="icon">
+↻
+</div>
+
+<h3>
+Continuous Cycle
+</h3>
+
+<p>
+The heart repeatedly contracts and relaxes to
+maintain circulation.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+id="contact"
+class="reveal"
+>
+
+<h2 class="title">
+Contact <span>Us</span>
+</h2>
+
+<p class="sub">
+Get in touch with Team Red Diamond about our
+Working Model of the Human Heart.
+</p>
+
+
+<div class="contact-grid">
+
+
+<a
+class="contact-card"
+href="mailto:aayushmanjha1108@gmail.com"
+>
+
+<div class="contact-icon">
+✉
+</div>
+
+<div>
+
+<h3>
+Email
+</h3>
+
+<p>
+aayushmanjha1108@gmail.com
+</p>
+
+</div>
+
+</a>
+
+
+<a
+class="contact-card"
+href="tel:+919931203827"
+>
+
+<div class="contact-icon">
+☎
+</div>
+
+<div>
+
+<h3>
+Phone
+</h3>
+
+<p>
++91 99312 03827
+</p>
+
+</div>
+
+</a>
+
+
+<div class="contact-card">
+
+<div class="contact-icon">
+◆
+</div>
+
+<div>
+
+<h3>
+Team
+</h3>
+
+<p>
+Team Red Diamond
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+<div class="footer-grid">
+
+
+<div>
+
+<h3>
+About
+</h3>
+
+<p>
+Educational project to understand the structure
+and working of the human heart.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Team
+</h3>
+
+<p class="leader">
+
+Team Red Diamond
+
+<span>
+Project Leader · Leader
+</span>
+
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Contact
+</h3>
+
+<p>
+
+<a
+href="mailto:aayushmanjha1108@gmail.com"
+style="color:#aaa;text-decoration:none"
+>
+aayushmanjha1108@gmail.com
+</a>
+
+<br>
+
+<a
+href="tel:+919931203827"
+style="color:#aaa;text-decoration:none"
+>
++91 99312 03827
+</a>
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="copy">
+
+© 2026 Working Model of Heart · Team Red Diamond
+
+</div>
+
+</footer>
+
+
+<div
+id="toast"
+class="toast"
+>
+Done
+</div>
+
+
+<!-- =======================================================
+     BASIC UI JAVASCRIPT
+======================================================= -->
+
+<script>
+
+"use strict";
+
+
+/* =========================================================
+   BPM
+========================================================= */
+
+const bpm =
+document.getElementById("bpm");
+
+setInterval(()=>{
+
+    bpm.textContent =
+        70 +
+        Math.floor(
+            Math.random()*7
+        );
+
+},1200);
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+const obs =
+new IntersectionObserver(
+    entries=>{
+
+        entries.forEach(
+            entry=>{
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target
+                        .classList
+                        .add("show");
+
+                }
+
+            }
+        );
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        el=>obs.observe(el)
+    );
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function toggleSettings(){
+
+    const menu =
+        document.getElementById(
+            "settingsMenu"
+        );
+
+    menu.classList.toggle("show");
+
+}
+
+
+function unlockFromSettings(){
+
+    const pass =
+        document.getElementById(
+            "settingsPassword"
+        ).value;
+
+    const msg =
+        document.getElementById(
+            "settingsPasswordMessage"
+        );
+
+
+    if(
+        typeof HOST_PASSWORD ===
+        "undefined"
+    ){
+
+        msg.textContent =
+            "Password configuration missing.";
+
+        msg.style.color =
+            "#ff5262";
+
+        return;
+
+    }
+
+
+    if(
+        pass === HOST_PASSWORD
+    ){
+
+        hostUnlocked = true;
+
+        document
+            .getElementById(
+                "settingsHostControls"
+            )
+            .classList
+            .add("show");
+
+        msg.textContent =
+            "✓ Host controls unlocked.";
+
+        msg.style.color =
+            "#69e58a";
+
+    }
+    else{
+
+        hostUnlocked = false;
+
+        document
+            .getElementById(
+                "settingsHostControls"
+            )
+            .classList
+            .remove("show");
+
+        msg.textContent =
+            "Incorrect password.";
+
+        msg.style.color =
+            "#ff5262";
+
+    }
+
+}
+
+
+function openHostFromSettings(){
+
+    document
+        .getElementById(
+            "settingsMenu"
+        )
+        .classList
+        .remove("show");
+
+    openHostPanel();
+
+}
+
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const menu =
+            document.getElementById(
+                "settingsMenu"
+            );
+
+        const btn =
+            document.querySelector(
+                ".settings-btn"
+            );
+
+        if(
+            menu &&
+            menu.classList.contains("show") &&
+            !menu.contains(e.target) &&
+            !btn.contains(e.target)
+        ){
+
+            menu.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   HOST VARIABLES
+========================================================= */
+
+let hostUnlocked = false;
+
+let currentMediaFilter =
+    "all";
+
+let editingId = null;
+
+let mediaStore = [];
+
+
+/* =========================================================
+   HOST PANEL
+========================================================= */
+
+function openHostPanel(){
+
+    document
+        .getElementById(
+            "hostPanel"
+        )
+        .classList
+        .add("show");
+
+}
+
+
+function closeHostPanel(){
+
+    document
+        .getElementById(
+            "hostPanel"
+        )
+        .classList
+        .remove("show");
+
+    hostUnlocked = false;
+
+    document
+        .getElementById(
+            "hostLogin"
+        )
+        .style
+        .display = "block";
+
+    document
+        .getElementById(
+            "uploadArea"
+        )
+        .style
+        .display = "none";
+
+    document
+        .getElementById(
+            "hostPassword"
+        )
+        .value = "";
+
+    document
+        .getElementById(
+            "hostMessage"
+        )
+        .textContent = "";
+
+    cancelEdit();
+
+}
+
+
+function unlockHost(){
+
+    const pass =
+        document
+            .getElementById(
+                "hostPassword"
+            )
+            .value;
+
+    const msg =
+        document
+            .getElementById(
+                "hostMessage"
+            );
+
+
+    if(
+        typeof HOST_PASSWORD ===
+        "undefined"
+    ){
+
+        msg.textContent =
+            "password.js is missing.";
+
+        msg.style.color =
+            "#ff5262";
+
+        return;
+
+    }
+
+
+    if(
+        pass === HOST_PASSWORD
+    ){
+
+        hostUnlocked = true;
+
+        document
+            .getElementById(
+                "hostLogin"
+            )
+            .style
+            .display = "none";
+
+        document
+            .getElementById(
+                "uploadArea"
+            )
+            .style
+            .display = "grid";
+
+        renderHostMediaList();
+
+    }
+    else{
+
+        msg.textContent =
+            "Incorrect password.";
+
+        msg.style.color =
+            "#ff5262";
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE MEDIA
+========================================================= */
+
+async function saveMedia(){
+
+    if(!hostUnlocked){
+
+        showToast(
+            "Host access required."
+        );
+
+        return;
+
+    }
+
+
+    const type =
+        document
+            .getElementById(
+                "mediaType"
+            )
+            .value;
+
+
+    const title =
+        document
+            .getElementById(
+                "mediaTitle"
+            )
+            .value
+            .trim();
+
+
+    const url =
+        document
+            .getElementById(
+                "mediaUrl"
+            )
+            .value
+            .trim();
+
+
+    if(!title){
+
+        showToast(
+            "Enter a title."
+        );
+
+        return;
+
+    }
+
+
+    if(!url){
+
+        showToast(
+            "Paste a media link."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !/^https?:\/\//i.test(url)
+    ){
+
+        showToast(
+            "Enter a valid http/https link."
+        );
+
+        return;
+
+    }
+
+
+    const btn =
+        document.getElementById(
+            "saveMediaButton"
+        );
+
+    btn.disabled = true;
+
+    btn.textContent =
+        editingId
+        ? "Saving changes…"
+        : "Adding…";
+
+
+    try{
+
+        if(editingId){
+
+            await updateFirebaseMedia(
+                editingId,
+                {
+                    title:title,
+                    type:type,
+                    url:url
+                }
+            );
+
+            showToast(
+                "✓ Media updated."
+            );
+
+        }
+        else{
+
+            await addFirebaseMedia(
+                {
+                    title:title,
+                    type:type,
+                    url:url
+                }
+            );
+
+            showToast(
+                "✓ Media added."
+            );
+
+        }
+
+
+        clearMediaForm();
+
+        await loadFirebaseMedia();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Firebase operation failed."
+        );
+
+    }
+
+
+    btn.disabled = false;
+
+    btn.textContent =
+        "➕ Add to Gallery";
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+function clearMediaForm(){
+
+    editingId = null;
+
+    document
+        .getElementById(
+            "mediaTitle"
+        )
+        .value = "";
+
+    document
+        .getElementById(
+            "mediaUrl"
+        )
+        .value = "";
+
+    document
+        .getElementById(
+            "mediaType"
+        )
+        .value = "photo";
+
+    document
+        .getElementById(
+            "saveMediaButton"
+        )
+        .textContent =
+            "➕ Add to Gallery";
+
+}
+
+
+function cancelEdit(){
+
+    editingId = null;
+
+    const title =
+        document.getElementById(
+            "mediaTitle"
+        );
+
+    const url =
+        document.getElementById(
+            "mediaUrl"
+        );
+
+    if(title) title.value = "";
+
+    if(url) url.value = "";
+
+    const btn =
+        document.getElementById(
+            "saveMediaButton"
+        );
+
+    if(btn){
+
+        btn.textContent =
+            "➕ Add to Gallery";
+
+    }
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function filterMedia(
+    filter,
+    button
+){
+
+    currentMediaFilter =
+        filter;
+
+    document
+        .querySelectorAll(
+            ".media-filter"
+        )
+        .forEach(
+            b=>b.classList.remove(
+                "active"
+            )
+        );
+
+    button.classList.add(
+        "active"
+    );
+
+    renderMedia(
+        filter,
+        true
+    );
+
+}
+
+
+/* =========================================================
+   RENDER MEDIA
+========================================================= */
+
+function renderMedia(
+    filter="all",
+    reveal=false
+){
+
+    const gallery =
+        document.getElementById(
+            "gallery"
+        );
+
+    const empty =
+        document.getElementById(
+            "galleryEmpty"
+        );
+
+
+    gallery.innerHTML = "";
+
+
+    const items =
+        mediaStore.filter(
+            item =>
+                filter === "all" ||
+                item.type === filter
+        );
+
+
+    gallery.classList.toggle(
+        "media-visible",
+        reveal
+    );
+
+
+    empty.classList.toggle(
+        "media-visible",
+        reveal &&
+        items.length === 0
+    );
+
+
+    items.forEach(
+        item=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "gallery-item";
+
+
+            const media =
+                document.createElement(
+                    item.type === "video
