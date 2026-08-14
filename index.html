@@ -7,434 +7,574 @@
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    content="width=device-width,initial-scale=1"
 >
 
 <title>Working Model of Heart</title>
 
-<meta
-    name="description"
-    content="Working Model of Heart"
->
-
-<meta
-    name="theme-color"
-    content="#08090b"
->
-
-<link
-    rel="icon"
-    href="assets/logo/logo.png"
->
-
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html,
-body{
-
-    width:100%;
-    height:100%;
-
+    box-sizing:border-box
 }
 
 html{
-
-    scroll-behavior:smooth;
-
+    scroll-behavior:smooth
 }
 
 body{
-
-    overflow:hidden;
-
+    margin:0;
     background:#08090b;
-
     color:#fff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family:Arial,sans-serif
 }
 
 
 /* =========================================================
-   APP
+   NAVIGATION
 ========================================================= */
 
-#app{
-
-    width:100%;
-    height:100%;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-/* =========================================================
-   HOME BACKGROUND VIDEO
-========================================================= */
-
-.home-video{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    z-index:0;
-
-}
-
-
-.home-video-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:1;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #00000035,
-            #00000065
-        );
-
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page{
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:5;
-
-    display:none;
-
-    overflow:hidden;
-
-}
-
-
-.page.active{
-
-    display:block;
-
-}
-
-
-/* =========================================================
-   HOME
-========================================================= */
-
-#homePage{
-
-    display:block;
-
-}
-
-
-.home-content{
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:3;
-
+nav{
+    height:64px;
+    padding:0 6%;
     display:flex;
-
-    flex-direction:column;
-
     align-items:center;
+    justify-content:space-between;
+    background:#090a0cdd;
+    border-bottom:1px solid #292a2e;
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(10px)
+}
 
-    justify-content:center;
+.brand{
+    font-size:19px;
+    font-weight:700
+}
 
-    text-align:center;
+.brand span,
+h1 span,
+.red{
+    color:#ff2638
+}
 
-    padding:30px;
+.links{
+    display:flex;
+    gap:28px
+}
+
+.links a{
+    color:#eee;
+    text-decoration:none;
+    font-size:14px
+}
+
+.links a:hover{
+    color:#ff2638
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:600px;
+    padding:70px 7%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            #420b12,
+            transparent 40%
+        )
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.18;
+    background-image:
+        linear-gradient(
+            #ff263812 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            #ff263812 1px,
+            transparent 1px
+        );
+    background-size:42px 42px
+}
+
+.hero>*{
+    position:relative
+}
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    color:#ff6b76;
+    font-weight:bold
+}
+
+.hero h1{
+    font-size:clamp(48px,6vw,78px);
+    line-height:.98;
+    margin:18px 0
+}
+
+.hero p{
+    max-width:560px;
+    color:#cfd0d5;
+    font-size:18px;
+    line-height:1.65
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 22px;
+    background:#ff2638;
+    border-radius:9px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 12px 30px #ff263833;
+    transition:.25s
+}
+
+.btn:hover{
+    transform:translateY(-3px)
+}
+
+.live-link{
+    margin-left:10px;
+    background:#111317;
+    border:1px solid #ff2638
+}
+
+.live-link:hover{
+    background:#ff2638
+}
+
+
+/* =========================================================
+   BPM
+========================================================= */
+
+.bpm{
+    margin-top:22px;
+    width:170px;
+    padding:12px;
+    border:1px solid #383a40;
+    border-radius:10px;
+    background:#111317;
+    display:flex;
+    gap:10px;
+    align-items:center
+}
+
+.pulse{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#ff2638;
+    animation:pulse 1s infinite
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.15);
+        box-shadow:0 0 25px #ff263888
+    }
 
 }
 
 
-.home-logo{
+/* =========================================================
+   ECG
+========================================================= */
 
-    width:
-        min(
-            150px,
-            35vw
-        );
+.ecg{
+    position:absolute;
+    bottom:18px;
+    left:0;
+    width:100%;
+    height:75px
+}
 
+.ecg svg{
+    width:100%;
+    height:100%
+}
+
+.ecg polyline{
+    fill:none;
+    stroke:#ff2638;
+    stroke-width:3;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:ecg 2.2s linear infinite;
+    filter:drop-shadow(
+        0 0 7px #ff2638
+    )
+}
+
+@keyframes ecg{
+
+    to{
+        stroke-dashoffset:0
+    }
+
+}
+
+
+/* =========================================================
+   BAR
+========================================================= */
+
+.bar{
+    width:86%;
+    margin:auto;
+    padding:14px;
+    text-align:center;
+    background:#111317;
+    border:1px solid #303238;
+    color:#aaa
+}
+
+.bar span{
+    color:#ff2638;
+    font-weight:bold
+}
+
+.bar b{
+    margin:0 15px;
+    color:#555
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    padding:80px 7%;
+    border-top:1px solid #202126
+}
+
+.title{
+    text-align:center;
+    font-size:38px
+}
+
+.title span{
+    color:#ff2638
+}
+
+.sub{
+    max-width:700px;
+    margin:0 auto 42px;
+    text-align:center;
+    color:#aeb1b8;
+    line-height:1.6
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:50px;
+    align-items:center
+}
+
+.about h2{
+    font-size:34px
+}
+
+.about p{
+    color:#c5c7cc;
+    line-height:1.7
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features,
+.steps{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:15px
+}
+
+.feature,
+.step{
+    padding:22px;
+    border:1px solid #34363c;
+    border-radius:13px;
+    background:#111317;
+    text-align:center;
+    transition:.3s
+}
+
+.feature:hover,
+.step:hover{
+    transform:translateY(-6px);
+    border-color:#ff2638
+}
+
+.feature .icon,
+.step .icon{
+    font-size:29px;
+    color:#ff2638;
+    margin-bottom:10px
+}
+
+.feature p,
+.step p{
+    color:#aaa;
+    font-size:13px;
+    line-height:1.5
+}
+
+
+/* =========================================================
+   STEPS
+========================================================= */
+
+.num{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#ff2638;
+    display:grid;
+    place-items:center;
+    margin:0 auto 17px;
+    font-weight:bold
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-section img{
+    width:220px;
+    border-radius:50%;
+    box-shadow:0 0 50px #ff263833
+}
+
+.hero-logo{
+    display:grid;
+    place-items:center;
+    min-height:400px
+}
+
+.hero-logo img{
+    width:min(360px,75vw);
     height:auto;
-
-    margin-bottom:18px;
-
+    display:block;
     filter:
         drop-shadow(
-            0 10px 35px
-            #000
+            0 0 35px
+            rgba(255,38,56,.28)
         );
-
+    animation:logoFloat 4s ease-in-out infinite
 }
 
+@keyframes logoFloat{
 
-.home-title{
+    0%,100%{
+        transform:
+            translateY(0)
+            scale(1)
+    }
 
-    font-size:
-        clamp(
-            28px,
-            7vw,
-            55px
-        );
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    text-shadow:
-        0 5px 25px
-        #000;
-
-}
-
-
-.home-subtitle{
-
-    margin-top:10px;
-
-    max-width:600px;
-
-    color:#eee;
-
-    font-size:
-        clamp(
-            12px,
-            2.5vw,
-            16px
-        );
-
-    line-height:1.6;
-
-    text-shadow:
-        0 3px 15px
-        #000;
+    50%{
+        transform:
+            translateY(-9px)
+            scale(1.025)
+    }
 
 }
 
 
 /* =========================================================
-   TOP MENU
+   CONTACT
 ========================================================= */
 
-.menu-button{
+.contact-grid{
+    max-width:950px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:18px
+}
 
-    position:fixed;
+.contact-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:24px;
+    border:1px solid #34363c;
+    border-radius:14px;
+    background:#111317;
+    text-decoration:none;
+    color:#fff;
+    transition:.3s
+}
 
-    top:18px;
-    right:18px;
+.contact-card:hover{
+    transform:translateY(-5px);
+    border-color:#ff2638;
+    box-shadow:
+        0 12px 30px #ff26381c
+}
 
-    z-index:100;
-
+.contact-icon{
     width:45px;
     height:45px;
-
-    border:
-        1px solid
-        #ffffff45;
-
-    border-radius:13px;
-
-    background:#00000055;
-
-    color:#fff;
-
+    border-radius:50%;
     display:grid;
-
     place-items:center;
-
-    cursor:pointer;
-
-    backdrop-filter:
-        blur(12px);
-
-    font-size:20px;
-
-}
-
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.page-title{
-
-    position:fixed;
-
-    top:18px;
-    left:20px;
-
-    z-index:80;
-
-    padding:
-        10px
-        14px;
-
-    border:
-        1px solid
-        #ffffff25;
-
-    border-radius:12px;
-
-    background:#00000055;
-
-    backdrop-filter:
-        blur(12px);
-
-    font-size:14px;
-
-    font-weight:800;
-
-}
-
-
-/* =========================================================
-   CONTENT PAGE
-========================================================= */
-
-.content-page{
-
-    width:100%;
-    height:100%;
-
-    overflow-y:auto;
-
-    padding:
-        85px
-        18px
-        120px;
-
-}
-
-
-.content-inner{
-
-    width:
-        min(
-            1100px,
-            100%
-        );
-
-    margin:auto;
-
-}
-
-
-.section-heading{
-
-    margin-bottom:22px;
-
-}
-
-
-.section-heading h1{
-
-    font-size:
-        clamp(
-            25px,
-            6vw,
-            42px
-        );
-
-}
-
-
-.section-heading p{
-
-    margin-top:8px;
-
-    color:#92959d;
-
-    font-size:13px;
-
-}
-
-
-/* =========================================================
-   GALLERY FILTER
-========================================================= */
-
-.gallery-controls{
-
-    display:flex;
-
-    gap:8px;
-
-    margin-bottom:20px;
-
-    flex-wrap:wrap;
-
-}
-
-
-.filter-button{
-
-    padding:
-        10px
-        15px;
-
-    border:
-        1px solid
-        #33353b;
-
-    border-radius:10px;
-
-    background:#111317;
-
-    color:#aaa;
-
-    cursor:pointer;
-
-    font-size:12px;
-
-    font-weight:700;
-
-}
-
-
-.filter-button.active{
-
     background:#ff2638;
-
-    border-color:#ff2638;
-
     color:#fff;
+    font-size:22px;
+    flex:none
+}
 
+.contact-card h3{
+    margin:0 0 6px
+}
+
+.contact-card p{
+    margin:0;
+    color:#aaa;
+    word-break:break-word;
+    font-size:13px;
+    line-height:1.45
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:45px 7% 20px;
+    border-top:1px solid #292a30;
+    background:#090a0c
+}
+
+.footer-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:35px
+}
+
+.footer-grid h3{
+    color:#ff2638
+}
+
+.footer-grid p{
+    color:#aaa;
+    line-height:1.7
+}
+
+.leader{
+    font-size:20px;
+    color:#fff;
+    font-weight:bold
+}
+
+.leader span{
+    display:block;
+    color:#ff2638;
+    font-size:13px;
+    margin-top:5px
+}
+
+.copy{
+    text-align:center;
+    color:#666;
+    border-top:1px solid #222;
+    margin-top:30px;
+    padding-top:18px;
+    font-size:12px
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none
+}
+
+
+/* =========================================================
+   MEDIA BUTTONS
+========================================================= */
+
+.media-view-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:0 auto 28px
+}
+
+.media-filter,
+.unlock-btn,
+.save-media{
+    border:1px solid #3a3c42;
+    background:#111317;
+    color:#fff;
+    padding:11px 17px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s
+}
+
+.media-filter:hover,
+.media-filter.active,
+.unlock-btn:hover{
+    background:#ff2638;
+    border-color:#ff2638
 }
 
 
@@ -442,747 +582,498 @@ body{
    GALLERY
 ========================================================= */
 
-.gallery-grid{
-
+.gallery{
     display:grid;
-
     grid-template-columns:
         repeat(
-            auto-fill,
-            minmax(
-                180px,
-                1fr
-            )
+            auto-fit,
+            minmax(150px,190px)
         );
-
-    gap:15px;
-
+    justify-content:center;
+    gap:15px
 }
 
-
-.media-card{
-
-    position:relative;
-
-    min-height:170px;
-
-    overflow:hidden;
-
-    border:
-        1px solid
-        #33353b;
-
-    border-radius:16px;
-
+.gallery-item{
     background:#111317;
-
-    cursor:pointer;
-
-    transition:
-        transform .25s,
-        border-color .25s;
-
-}
-
-
-.media-card:hover{
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        #ff2638;
-
-}
-
-
-.media-card img{
-
-    width:100%;
-    height:140px;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-
-.media-card-video{
-
-    width:100%;
-    height:140px;
-
-    display:grid;
-
-    place-items:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #26070b,
-            #0d0f12
-        );
-
-    font-size:42px;
-
-}
-
-
-.media-card-name{
-
-    padding:
-        10px
-        12px;
-
-    color:#fff;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-}
-
-
-.loading{
-
-    grid-column:
-        1 / -1;
-
-    padding:50px 20px;
-
-    text-align:center;
-
-    color:#777b83;
-
-}
-
-
-.empty{
-
-    grid-column:
-        1 / -1;
-
-    padding:50px 20px;
-
-    border:
-        1px dashed
-        #35373d;
-
-    border-radius:15px;
-
-    text-align:center;
-
-    color:#777b83;
-
-}
-
-
-/* =========================================================
-   VIEWER
-========================================================= */
-
-.viewer{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:300;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
-
-    background:#000e;
-
-    backdrop-filter:
-        blur(10px);
-
-}
-
-
-.viewer.show{
-
-    display:flex;
-
-}
-
-
-.viewer-content{
-
-    position:relative;
-
-    width:
-        min(
-            1000px,
-            100%
-        );
-
-    max-height:90vh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-.viewer-media{
-
-    max-width:100%;
-
-    max-height:
-        78vh;
-
-    border-radius:12px;
-
-    object-fit:contain;
-
-    background:#000;
-
-}
-
-
-.viewer-video{
-
-    width:100%;
-
-    max-height:78vh;
-
-    border-radius:12px;
-
-    background:#000;
-
-}
-
-
-.viewer-title{
-
-    width:100%;
-
-    color:#fff;
-
-    text-align:center;
-
-    font-size:13px;
-
-}
-
-
-.viewer-close{
-
-    position:absolute;
-
-    top:-12px;
-    right:-5px;
-
-    width:40px;
-    height:40px;
-
-    border:
-        1px solid
-        #ffffff35;
-
-    border-radius:50%;
-
-    background:#17191d;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:22px;
-
-}
-
-
-/* =========================================================
-   SPECIAL PAGE
-========================================================= */
-
-.special-page{
-
-    width:100%;
-    height:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:30px;
-
-}
-
-
-.special-button{
-
-    padding:
-        16px
-        25px;
-
-    border:0;
-
+    border:1px solid #34363c;
     border-radius:13px;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-size:14px;
-
-    font-weight:800;
-
+    overflow:hidden;
     cursor:pointer;
+    animation:galleryIn .45s
+}
+
+.gallery-item:hover{
+    border-color:#ff2638;
+    transform:translateY(-3px);
+}
+
+.gallery-item img,
+.gallery-item video{
+    width:100%;
+    height:125px;
+    display:block;
+    object-fit:cover
+}
+
+.gallery-caption{
+    padding:9px;
+    color:#aaa;
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+
+.gallery-empty{
+    text-align:center;
+    color:#777;
+    padding:35px
+}
+
+@keyframes galleryIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px)
+    }
+
+    to{
+        opacity:1;
+        transform:none
+    }
 
 }
 
 
 /* =========================================================
-   QR / SPECIAL VIEW
+   FIREBASE STATUS
 ========================================================= */
 
-.special-view{
+.firebase-status{
+    text-align:center;
+    margin:-8px auto 24px;
+    color:#777;
+    font-size:11px
+}
 
-    position:fixed;
+.firebase-status.live{
+    color:#69e58a
+}
 
-    inset:0;
+.firebase-message{
+    margin-top:10px;
+    color:#ff6875;
+    font-size:12px;
+    min-height:15px
+}
 
-    z-index:250;
+.firebase-message.ok{
+    color:#69e58a
+}
 
+
+/* =========================================================
+   HOST PANEL
+========================================================= */
+
+.host-panel{
     display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    gap:20px;
-
-    background:#000e;
-
+    position:relative;
+    max-width:520px;
+    margin:35px auto 0;
+    padding:28px;
+    border:1px solid #ff2638;
+    border-radius:16px;
+    background:#101114;
+    box-shadow:0 20px 50px #000
 }
 
-
-.special-view.show{
-
-    display:flex;
-
+.host-panel.show{
+    display:block;
+    animation:galleryIn .3s
 }
 
-
-.special-image{
-
-    width:
-        min(
-            75vw,
-            420px
-        );
-
-    height:auto;
-
-    padding:15px;
-
-    background:#fff;
-
-    border-radius:12px;
-
+.host-panel h3{
+    color:#ff2638;
+    margin-bottom:8px
 }
 
+.host-panel p{
+    color:#aaa;
+    line-height:1.5
+}
 
-.download-button{
-
-    padding:
-        12px
-        18px;
-
+.close-host{
+    position:absolute;
+    right:14px;
+    top:10px;
     border:0;
-
-    border-radius:10px;
-
-    background:#ff2638;
-
+    background:none;
     color:#fff;
+    font-size:28px;
+    cursor:pointer
+}
 
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-label{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#ff6b76;
     font-weight:800;
+    margin:3px 0 8px
+}
 
+#hostLogin{
+    padding:15px;
+    border:1px solid #34363c;
+    border-radius:12px;
+    background:#0b0c0f
+}
+
+#hostLogin input{
+    display:block;
+    width:100%;
+    padding:11px;
+    margin:8px 0;
+    background:#08090b;
+    border:1px solid #383a40;
+    border-radius:8px;
+    color:#fff;
+    outline:none
+}
+
+#hostLogin input:focus{
+    border-color:#ff2638
+}
+
+#hostLogin .unlock-btn{
+    width:100%;
+    margin-top:4px
+}
+
+#hostMessage{
+    margin-top:12px;
+    color:#ff8793;
+    font-size:13px
+}
+
+
+/* =========================================================
+   HOST STATUS
+========================================================= */
+
+.host-status{
+    padding:10px 12px;
+    border:1px solid #285d38;
+    background:#102016;
+    color:#70e08b;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-btn{
+    width:38px;
+    height:38px;
+    border:1px solid #383a40;
+    border-radius:9px;
+    background:#111317;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
     cursor:pointer;
+    transition:.25s
+}
+
+.settings-btn span{
+    display:block;
+    width:18px;
+    height:2px;
+    background:#fff;
+    border-radius:3px
+}
+
+.settings-btn:hover{
+    border-color:#ff2638;
+    background:#181114
+}
+
+.settings-menu{
+    position:fixed;
+    top:76px;
+    right:6%;
+    width:min(340px,88vw);
+    z-index:100;
+    display:none;
+    padding:18px;
+    border:1px solid #3a3c42;
+    border-radius:16px;
+    background:#101114;
+    box-shadow:0 20px 60px #000b;
+    backdrop-filter:blur(15px)
+}
+
+.settings-menu.show{
+    display:block;
+    animation:settingsIn .22s ease-out
+}
+
+.settings-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px
+}
+
+.settings-head h3{
+    margin:0;
+    color:#ff2638
+}
+
+.settings-head button{
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:25px;
+    cursor:pointer
+}
+
+.settings-card{
+    display:flex;
+    gap:14px;
+    padding:17px;
+    border:1px solid #34363c;
+    border-radius:12px;
+    background:#111317
+}
+
+.settings-icon{
+    font-size:27px
+}
+
+.settings-card h4{
+    margin:0 0 5px
+}
+
+.settings-card p{
+    margin:0 0 12px;
+    color:#aaa;
+    font-size:12px;
+    line-height:1.5
+}
+
+.settings-action{
+    border:0;
+    background:#ff2638;
+    color:#fff;
+    border-radius:8px;
+    padding:9px 13px;
+    font-weight:700;
+    cursor:pointer
+}
+
+.settings-password{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #292b31
+}
+
+.settings-password label{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.8px;
+    color:#ff6b76;
+    font-weight:800;
+    margin-bottom:7px
+}
+
+.settings-password input{
+    width:100%;
+    padding:10px 11px;
+    background:#08090b;
+    border:1px solid #383a40;
+    border-radius:8px;
+    color:#fff;
+    outline:none
+}
+
+.settings-password input:focus{
+    border-color:#ff2638
+}
+
+.settings-password .settings-action{
+    width:100%;
+    margin-top:8px
+}
+
+#settingsPasswordMessage{
+    font-size:11px;
+    margin-top:7px;
+    min-height:14px
+}
+
+.settings-host-controls{
+    display:none;
+    margin-top:10px
+}
+
+.settings-host-controls.show{
+    display:block
+}
+
+.settings-host-controls .settings-action{
+    width:100%
+}
+
+@keyframes settingsIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-8px)
+    }
+
+    to{
+        opacity:1;
+        transform:none
+    }
 
 }
 
 
 /* =========================================================
-   MENU PANEL
+   SECTION VIEWER
 ========================================================= */
 
-.menu-panel{
+.section-viewer{
+    display:none;
+    margin:28px auto 0;
+    max-width:760px;
+    border:1px solid #ff2638;
+    border-radius:16px;
+    background:#0d0f12;
+    padding:14px;
+    box-shadow:0 20px 55px #0008
+}
 
+.section-viewer.show{
+    display:block;
+    animation:galleryIn .25s ease-out
+}
+
+.section-viewer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 4px 12px
+}
+
+.section-viewer-head h3{
+    margin:0;
+    color:#ff2638;
+    font-size:16px;
+    max-width:90%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+
+.section-viewer-head button{
+    border:0;
+    background:#ff2638;
+    color:#fff;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    font-size:21px;
+    cursor:pointer
+}
+
+.section-viewer-content{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:180px
+}
+
+.section-view-media{
+    max-width:100%;
+    max-height:500px;
+    border-radius:10px;
+    display:block
+}
+
+
+/* =========================================================
+   MEDIA LIGHTBOX
+========================================================= */
+
+.media-lightbox{
     position:fixed;
-
     inset:0;
-
     z-index:200;
 
     display:none;
 
-    background:#08090bf5;
-
-}
-
-
-.menu-panel.show{
-
-    display:block;
-
-}
-
-
-.menu-inner{
-
-    width:
-        min(
-            600px,
-            92%
-        );
-
-    margin:
-        90px
-        auto
-        40px;
-
-}
-
-
-.menu-inner h2{
-
-    font-size:28px;
-
-}
-
-
-.menu-inner p{
-
-    margin-top:10px;
-
-    color:#92959d;
-
-    line-height:1.7;
-
-    font-size:13px;
-
-}
-
-
-.menu-close{
-
-    margin-top:25px;
-
-    padding:
-        11px
-        18px;
-
-    border:
-        1px solid
-        #383a40;
-
-    border-radius:10px;
-
-    background:#111317;
-
-    color:#fff;
-
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
-   BOTTOM NAV
-========================================================= */
-
-.bottom-nav{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:14px;
-
-    z-index:150;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        min(
-            560px,
-            calc(
-                100% - 24px
-            )
-        );
-
-    display:flex;
-
     align-items:center;
-
-    justify-content:space-around;
-
-    gap:5px;
-
-    padding:8px;
-
-    border:
-        1px solid
-        #ffffff25;
-
-    border-radius:18px;
-
-    background:#090a0ddd;
-
-    backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 15px 40px
-        #000b;
-
-}
-
-
-.nav-button{
-
-    flex:1;
-
-    min-width:0;
-
-    border:0;
-
-    background:transparent;
-
-    color:#777b83;
-
-    padding:
-        8px
-        5px;
-
-    border-radius:11px;
-
-    cursor:pointer;
-
-    font-size:10px;
-
-    font-weight:700;
-
-}
-
-
-.nav-button-icon{
-
-    display:block;
-
-    font-size:20px;
-
-    margin-bottom:3px;
-
-}
-
-
-.nav-button.active{
-
-    background:#ff2638;
-
-    color:#fff;
-
-}
-
-
-/* =========================================================
-   ADMIN PASSWORD
-========================================================= */
-
-.password-overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:500;
-
-    display:none;
-
-    align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
-    background:#000d;
+    background:#000e;
 
-    backdrop-filter:
-        blur(10px);
-
+    backdrop-filter:blur(8px)
 }
 
+.media-lightbox.show{
+    display:flex
+}
 
-.password-overlay.show{
-
+#lightboxContent{
+    max-width:95vw;
+    max-height:90vh;
     display:flex;
-
+    align-items:center;
+    justify-content:center
 }
 
-
-.password-box{
-
-    width:
-        min(
-            390px,
-            100%
-        );
-
-    padding:25px;
-
-    border:
-        1px solid
-        #393b42;
-
-    border-radius:18px;
-
-    background:#111317;
-
-    box-shadow:
-        0 25px 70px
-        #000d;
-
+#lightboxContent img,
+#lightboxContent video{
+    max-width:95vw;
+    max-height:85vh;
+    border-radius:12px;
+    display:block
 }
 
+.lb-close{
+    position:fixed;
+    top:18px;
+    right:20px;
 
-.password-box h2{
+    width:42px;
+    height:42px;
 
-    margin-bottom:7px;
+    border:0;
+    border-radius:50%;
 
-    font-size:20px;
-
-}
-
-
-.password-box p{
-
-    margin-bottom:18px;
-
-    color:#777b83;
-
-    font-size:12px;
-
-    line-height:1.5;
-
-}
-
-
-.password-input{
-
-    width:100%;
-
-    padding:13px;
-
-    border:
-        1px solid
-        #383a40;
-
-    border-radius:10px;
-
-    background:#08090b;
-
+    background:#ff2638;
     color:#fff;
 
-    outline:none;
-
-}
-
-
-.password-input:focus{
-
-    border-color:#ff2638;
-
-}
-
-
-.password-error{
-
-    min-height:18px;
-
-    margin-top:8px;
-
-    color:#ff5968;
-
-    font-size:11px;
-
-}
-
-
-.password-actions{
-
-    display:flex;
-
-    gap:8px;
-
-    margin-top:14px;
-
-}
-
-
-.password-actions button{
-
-    flex:1;
-
-    padding:11px;
-
-    border-radius:9px;
+    font-size:27px;
 
     cursor:pointer;
 
-    font-weight:800;
-
-}
-
-
-.password-cancel{
-
-    border:
-        1px solid
-        #383a40;
-
-    background:#111317;
-
-    color:#fff;
-
-}
-
-
-.password-submit{
-
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
+    z-index:201
 }
 
 
@@ -1190,71 +1081,76 @@ body{
    MOBILE
 ========================================================= */
 
-@media(max-width:600px){
+@media(max-width:800px){
 
-    .content-page{
-
-        padding:
-            75px
-            12px
-            110px;
-
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center
     }
 
+    .hero p{
+        margin:auto
+    }
 
-    .gallery-grid{
+    .hero-logo{
+        min-height:300px
+    }
 
+    .about{
+        grid-template-columns:1fr
+    }
+
+    .features,
+    .steps{
+        grid-template-columns:1fr 1fr
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr
+    }
+
+    .links{
+        gap:12px
+    }
+
+    .links a:nth-child(n+4){
+        display:none
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr 1fr
+    }
+
+}
+
+@media(max-width:500px){
+
+    .features,
+    .steps,
+    .footer-grid{
+        grid-template-columns:1fr
+    }
+
+    .links{
+        display:none
+    }
+
+    .hero h1{
+        font-size:45px
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr
+    }
+
+    .live-link{
+        margin-left:0;
+        margin-top:10px
+    }
+
+    .gallery{
         grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-
-        gap:10px;
-
-    }
-
-
-    .media-card{
-
-        min-height:150px;
-
-    }
-
-
-    .media-card img,
-    .media-card-video{
-
-        height:115px;
-
-    }
-
-
-    .media-card-name{
-
-        font-size:11px;
-
-    }
-
-
-    .bottom-nav{
-
-        bottom:8px;
-
-    }
-
-
-    .nav-button-icon{
-
-        font-size:18px;
-
-    }
-
-
-    .nav-button{
-
-        font-size:9px;
-
+            repeat(2,1fr)
     }
 
 }
@@ -1267,612 +1163,1020 @@ body{
 <body>
 
 
-<div id="app">
+<!-- =======================================================
+     NAV
+======================================================== -->
 
+<nav>
 
-<!-- =====================================================
-     HOME
-===================================================== -->
-
-<section
-    id="homePage"
-    class="page active"
->
-
-
-    <video
-        class="home-video"
-        autoplay
-        muted
-        loop
-        playsinline
-    >
-
-        <source
-            src="assets/home.mp4"
-            type="video/mp4"
-        >
-
-    </video>
-
-
-    <div
-        class="home-video-overlay"
-    ></div>
-
-
-    <button
-        class="menu-button"
-        onclick="openMenu()"
-        aria-label="Menu"
-    >
-        ☰
-    </button>
-
-
-    <div class="home-content">
-
-
-        <img
-            class="home-logo"
-            src="assets/logo/logo.png"
-            alt="Heart"
-        >
-
-
-        <h1 class="home-title">
-            Working Model of Heart
-        </h1>
-
-
-        <p class="home-subtitle">
-            Explore the working model of the human heart
-            through images, videos and interactive content.
-        </p>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     IMAGE PAGE
-===================================================== -->
-
-<section
-    id="imagePage"
-    class="page"
->
-
-
-    <div class="page-title">
-        📸 Images
-    </div>
-
-
-    <div class="content-page">
-
-
-        <div class="content-inner">
-
-
-            <div class="section-heading">
-
-                <h1>
-                    Image Gallery
-                </h1>
-
-                <p>
-                    Images are loaded from Firebase links.
-                </p>
-
-            </div>
-
-
-            <div class="gallery-controls">
-
-                <button
-                    class="filter-button active"
-                    onclick="filterMedia('all',this)"
-                >
-                    All
-                </button>
-
-                <button
-                    class="filter-button"
-                    onclick="filterMedia('photo',this)"
-                >
-                    Images
-                </button>
-
-                <button
-                    class="filter-button"
-                    onclick="filterMedia('video',this)"
-                >
-                    Videos
-                </button>
-
-            </div>
-
-
-            <div
-                id="imageGallery"
-                class="gallery-grid"
-            >
-
-                <div class="loading">
-                    Loading images…
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     VIDEO PAGE
-===================================================== -->
-
-<section
-    id="videoPage"
-    class="page"
->
-
-
-    <div class="page-title">
-        🎬 Videos
-    </div>
-
-
-    <div class="content-page">
-
-
-        <div class="content-inner">
-
-
-            <div class="section-heading">
-
-                <h1>
-                    Video Gallery
-                </h1>
-
-                <p>
-                    Videos are loaded from Firebase links.
-                </p>
-
-            </div>
-
-
-            <div
-                id="videoGallery"
-                class="gallery-grid"
-            >
-
-                <div class="loading">
-                    Loading videos…
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SPECIAL PAGE
-===================================================== -->
-
-<section
-    id="specialPage"
-    class="page"
->
-
-
-    <div class="special-page">
-
-        <button
-            class="special-button"
-            onclick="openSpecial()"
-        >
-            ✨ Get Special
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MENU
-===================================================== -->
-
-<div
-    id="menuPanel"
-    class="menu-panel"
->
-
-
-    <button
-        class="menu-button"
-        onclick="closeMenu()"
-    >
-        ×
-    </button>
-
-
-    <div class="menu-inner">
-
-        <h2>
-            About
-        </h2>
-
-
-        <p>
-            This website presents a working model of
-            the human heart with images, videos and
-            educational material.
-        </p>
-
-
-        <button
-            class="menu-close"
-            onclick="closeMenu()"
-        >
-            Close
-        </button>
-
-    </div>
-
+<div class="brand">
+    Working Model of <span>Heart</span>
 </div>
 
 
-
-<!-- =====================================================
-     MEDIA VIEWER
-===================================================== -->
-
-<div
-    id="viewer"
-    class="viewer"
-    onclick="closeViewer(event)"
+<button
+    class="settings-btn"
+    aria-label="Open settings"
+    onclick="toggleSettings()"
 >
 
-
-    <div
-        class="viewer-content"
-        onclick="event.stopPropagation()"
-    >
-
-
-        <button
-            class="viewer-close"
-            onclick="closeViewer()"
-        >
-            ×
-        </button>
-
-
-        <img
-            id="viewerImage"
-            class="viewer-media"
-            alt=""
-            style="display:none"
-        >
-
-
-        <video
-            id="viewerVideo"
-            class="viewer-video"
-            controls
-            playsinline
-            style="display:none"
-        ></video>
-
-
-        <div
-            id="viewerTitle"
-            class="viewer-title"
-        ></div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     SPECIAL VIEW
-===================================================== -->
-
-<div
-    id="specialView"
-    class="special-view"
->
-
-
-    <img
-        id="specialImage"
-        class="special-image"
-        src="assets/special/qr.png"
-        alt="Special"
-    >
-
-
-    <button
-        class="download-button"
-        onclick="downloadSpecial()"
-    >
-        ⬇ Download
-    </button>
-
-
-    <button
-        class="menu-close"
-        onclick="closeSpecial()"
-    >
-        Close
-    </button>
-
-</div>
-
-
-
-<!-- =====================================================
-     ADMIN PASSWORD
-===================================================== -->
-
-<div
-    id="passwordOverlay"
-    class="password-overlay"
->
-
-
-    <div class="password-box">
-
-
-        <h2>
-            🔐 Admin Access
-        </h2>
-
-
-        <p>
-            Enter the administrator password to open
-            the media editor.
-        </p>
-
-
-        <input
-            id="adminPassword"
-            class="password-input"
-            type="password"
-            placeholder="Enter password"
-            autocomplete="current-password"
-            onkeydown="handlePasswordKey(event)"
-        >
-
-
-        <div
-            id="passwordError"
-            class="password-error"
-        ></div>
-
-
-        <div class="password-actions">
-
-
-            <button
-                class="password-cancel"
-                onclick="closePassword()"
-            >
-                Cancel
-            </button>
-
-
-            <button
-                class="password-submit"
-                onclick="checkAdminPassword()"
-            >
-                Continue
-            </button>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     BOTTOM NAVIGATION
-===================================================== -->
-
-<nav class="bottom-nav">
-
-
-    <button
-        class="nav-button active"
-        onclick="showPage('homePage',this)"
-    >
-
-        <span class="nav-button-icon">
-            🏠
-        </span>
-
-        Home
-
-    </button>
-
-
-    <button
-        class="nav-button"
-        onclick="showPage('imagePage',this)"
-    >
-
-        <span class="nav-button-icon">
-            🖼️
-        </span>
-
-        Images
-
-    </button>
-
-
-    <button
-        class="nav-button"
-        onclick="showPage('videoPage',this)"
-    >
-
-        <span class="nav-button-icon">
-            🎬
-        </span>
-
-        Videos
-
-    </button>
-
-
-    <button
-        class="nav-button"
-        onclick="showPage('specialPage',this)"
-    >
-
-        <span class="nav-button-icon">
-            ✨
-        </span>
-
-        Special
-
-    </button>
-
-
-    <button
-        class="nav-button"
-        onclick="openAdminPassword()"
-    >
-
-        <span class="nav-button-icon">
-            ⚙️
-        </span>
-
-        Admin
-
-    </button>
-
+<span></span>
+<span></span>
+<span></span>
+
+</button>
 
 </nav>
 
 
+<!-- =======================================================
+     HERO
+======================================================== -->
+
+<header
+    class="hero"
+    id="home"
+>
+
+<div>
+
+<div class="eyebrow">
+    SCIENCE EXHIBITION 2026
 </div>
 
 
+<h1>
+    Working Model<br>
+    of the <span>Human Heart</span>
+</h1>
+
+
+<p>
+    This project demonstrates the working
+    of the human heart and how it pumps
+    blood throughout the body.
+</p>
+
+
+<a
+    class="btn"
+    href="#model"
+>
+    Explore the Model ↓
+</a>
+
+
+<a
+    class="btn live-link"
+    href="https://working-model-of-heart-251c4.web.app"
+    target="_blank"
+    rel="noopener"
+>
+    🌐 Open Public Website
+</a>
+
+
+<div class="bpm">
+
+<div class="pulse">
+    ♥
+</div>
+
+<div>
+    Heartbeat<br>
+    <strong>
+        <span id="bpm">72</span> BPM
+    </strong>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="ecg">
+
+<svg
+    viewBox="0 0 1200 100"
+    preserveAspectRatio="none"
+>
+
+<polyline
+points="
+0,52
+70,52
+88,52
+98,45
+108,52
+126,52
+138,38
+146,65
+154,52
+175,52
+188,52
+202,52
+212,18
+222,82
+232,52
+252,52
+275,52
+290,52
+302,43
+314,52
+330,52
+345,52
+360,52
+370,52
+380,52
+390,52
+400,52
+414,18
+424,82
+434,52
+454,52
+480,52
+505,52
+520,52
+534,52
+548,52
+560,52
+574,38
+582,65
+590,52
+612,52
+630,52
+645,52
+660,52
+670,18
+680,82
+690,52
+710,52
+735,52
+760,52
+775,52
+788,45
+798,52
+816,52
+830,38
+838,65
+846,52
+870,52
+900,52
+930,52
+945,52
+958,18
+968,82
+978,52
+1000,52
+1030,52
+1060,52
+1080,52
+1092,45
+1100,52
+1120,52
+1134,38
+1142,65
+1150,52
+1200,52
+"
+></polyline>
+
+</svg>
+
+</div>
+
+</header>
+
+
+<!-- =======================================================
+     BAR
+======================================================== -->
+
+<div class="bar">
+
+<span>
+    Science Exhibition 2026
+</span>
+
+<b>|</b>
+
+Aayushman Jha
+
+<span>
+    (Leader)
+</span>
+
+</div>
+
+
+<!-- =======================================================
+     SETTINGS MENU
+======================================================== -->
+
+<div
+    id="settingsMenu"
+    class="settings-menu"
+>
+
+<div class="settings-head">
+
+<h3>
+    Settings
+</h3>
+
+<button
+    onclick="toggleSettings()"
+>
+    ×
+</button>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-icon">
+    🔐
+</div>
+
+
+<div style="width:100%">
+
+<h4>
+    Host Editor
+</h4>
+
+
+<p>
+    Enter the host password to open
+    the Firebase media editor.
+</p>
+
+
+<div class="settings-password">
+
+<label
+    for="settingsPassword"
+>
+    HOST PASSWORD
+</label>
+
+
+<input
+    id="settingsPassword"
+    type="password"
+    placeholder="Enter password"
+>
+
+
+<button
+    class="settings-action"
+    onclick="unlockFromSettings()"
+>
+    Open Editor
+</button>
+
+
+<div
+    id="settingsPasswordMessage"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =======================================================
+     TEAM
+======================================================== -->
+
+<section
+    id="team"
+    class="reveal"
+>
+
+<h2 class="title">
+    <span>Aayushman Jha</span>
+</h2>
+
+
+<p class="sub">
+    Project Leader · Team Red Diamond ·
+    Science Exhibition 2026
+</p>
+
+
+<div style="text-align:center">
+
+<div class="leader">
+
+    Project Leader
+
+    <span>
+        Leader
+    </span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     MODEL
+======================================================== -->
+
+<section
+    id="model"
+    class="reveal"
+>
+
+<div class="about">
+
+<div class="logo-card"></div>
+
+
+<div>
+
+<h2>
+    About the <span>Heart</span>
+</h2>
+
+
+<p>
+    The human heart is a muscular organ
+    that continuously pumps blood throughout
+    the body. Our working model demonstrates
+    this pumping action in a simple and
+    practical way.
+</p>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="icon">
+    ♥
+</div>
+
+<h3>
+    Realistic Action
+</h3>
+
+<p>
+    Pumping demonstration
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+    ◉
+</div>
+
+<h3>
+    Blood Flow
+</h3>
+
+<p>
+    Shows circulation
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+    ⚙
+</div>
+
+<h3>
+    Mechanism
+</h3>
+
+<p>
+    Easy to understand
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+    ▣
+</div>
+
+<h3>
+    Educational
+</h3>
+
+<p>
+    Science project
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     MEDIA
+======================================================== -->
+
+<section
+    id="media"
+    class="reveal"
+>
+
+<h2 class="title">
+    <span>Photo & Video</span>
+    of Project
+</h2>
+
+
+<p class="sub">
+    Everyone can view the project gallery.
+    The host can manage image and video links
+    from the editor.
+</p>
+
+
+<div class="media-view-buttons">
+
+<button
+    class="media-filter active"
+    onclick="filterMedia('all',this)"
+>
+    👀 See All
+</button>
+
+
+<button
+    class="media-filter"
+    onclick="filterMedia('photo',this)"
+>
+    📸 Photos
+</button>
+
+
+<button
+    class="media-filter"
+    onclick="filterMedia('video',this)"
+>
+    🎬 Videos
+</button>
+
+</div>
+
+
+<div
+    id="firebaseStatus"
+    class="firebase-status"
+>
+    ☁️ Connecting to Firebase...
+</div>
+
+
+<div
+    id="gallery"
+    class="gallery"
+></div>
+
+
+<div
+    id="galleryEmpty"
+    class="gallery-empty"
+    style="display:none"
+>
+    No photos or videos have been added yet.
+</div>
+
 
 <!-- =====================================================
-     FIREBASE
+     VIEWER
 ===================================================== -->
+
+<div
+    id="sectionViewer"
+    class="section-viewer"
+>
+
+<div class="section-viewer-head">
+
+<h3 id="sectionViewerTitle">
+    Preview
+</h3>
+
+
+<button
+    onclick="closeSectionViewer()"
+>
+    ×
+</button>
+
+</div>
+
+
+<div
+    id="sectionViewerContent"
+    class="section-viewer-content"
+></div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WORKING
+======================================================== -->
+
+<section
+    id="working"
+    class="reveal"
+>
+
+<h2 class="title">
+    About the
+    <span>Function of the Heart</span>
+</h2>
+
+
+<p class="sub">
+    Learn the main functions of the heart
+    and how blood moves through the chambers.
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="num">
+    1
+</div>
+
+<div class="icon">
+    ⏻
+</div>
+
+<h3>
+    Receives Blood
+</h3>
+
+<p>
+    The atria receive blood returning
+    to the heart.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+    2
+</div>
+
+<div class="icon">
+    ♥
+</div>
+
+<h3>
+    Pumps Blood
+</h3>
+
+<p>
+    The ventricles contract and pump
+    blood to the lungs and body.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+    3
+</div>
+
+<div class="icon">
+    ◆
+</div>
+
+<h3>
+    Blood Circulation
+</h3>
+
+<p>
+    Blood travels through pulmonary
+    and systemic circulation.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+    4
+</div>
+
+<div class="icon">
+    ↻
+</div>
+
+<h3>
+    Continuous Cycle
+</h3>
+
+<p>
+    The heart repeatedly contracts
+    and relaxes to maintain circulation.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================== -->
+
+<section
+    id="contact"
+    class="reveal"
+>
+
+<h2 class="title">
+    Contact <span>Us</span>
+</h2>
+
+
+<p class="sub">
+    Get in touch with Team Red Diamond
+    about our Working Model of the Human Heart.
+</p>
+
+
+<div class="contact-grid">
+
+
+<a
+    class="contact-card"
+    href="mailto:aayushmanjha1108@gmail.com"
+>
+
+<div class="contact-icon">
+    ✉
+</div>
+
+<div>
+
+<h3>
+    Email
+</h3>
+
+<p>
+    aayushmanjha1108@gmail.com
+</p>
+
+</div>
+
+</a>
+
+
+<a
+    class="contact-card"
+    href="tel:+919931203827"
+>
+
+<div class="contact-icon">
+    ☎
+</div>
+
+<div>
+
+<h3>
+    Phone
+</h3>
+
+<p>
+    +91 99312 03827
+</p>
+
+</div>
+
+</a>
+
+
+<div class="contact-card">
+
+<div class="contact-icon">
+    ◆
+</div>
+
+<div>
+
+<h3>
+    Team
+</h3>
+
+<p>
+    Team Red Diamond
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+
+<div>
+
+<h3>
+    About
+</h3>
+
+<p>
+    Educational project to understand
+    the structure and working of the
+    human heart.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+    Team
+</h3>
+
+<p class="leader">
+
+Team Red Diamond
+
+<span>
+    Project Leader · Leader
+</span>
+
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+    Contact
+</h3>
+
+<p>
+
+<a
+    href="mailto:aayushmanjha1108@gmail.com"
+    style="color:#aaa;text-decoration:none"
+>
+    aayushmanjha1108@gmail.com
+</a>
+
+<br>
+
+<a
+    href="tel:+919931203827"
+    style="color:#aaa;text-decoration:none"
+>
+    +91 99312 03827
+</a>
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="copy">
+
+© 2026 Working Model of Heart
+· Team Red Diamond
+
+</div>
+
+</footer>
+
+
+<!-- =======================================================
+     LIGHTBOX
+======================================================== -->
+
+<div
+    id="mediaLightbox"
+    class="media-lightbox"
+    onclick="closeMediaLightbox(event)"
+>
+
+<button
+    class="lb-close"
+    onclick="closeMediaLightbox()"
+>
+    ×
+</button>
+
+
+<div
+    id="lightboxContent"
+></div>
+
+</div>
+
+
+<!-- =======================================================
+     BASIC JAVASCRIPT
+======================================================== -->
+
+<script>
+
+const bpm =
+    document.getElementById("bpm");
+
+
+setInterval(
+
+    () => {
+
+        bpm.textContent =
+            70 +
+            Math.floor(
+                Math.random() * 7
+            );
+
+    },
+
+    1200
+
+);
+
+
+const obs =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                    }
+
+                }
+
+            );
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+
+        element => {
+
+            obs.observe(element);
+
+        }
+
+    );
+
+</script>
+
+
+<!-- =======================================================
+     FIREBASE
+======================================================== -->
 
 <script type="module">
 
-
 import {
-
-    initializeApp
-
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    db
+} from "./firebase-config.js";
 
 
 import {
-
-    getFirestore,
     collection,
     getDocs,
     query,
     orderBy
-
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+// =========================================================
+// VARIABLES
+// =========================================================
 
-/* =====================================================
-   FIREBASE CONFIGURATION
-===================================================== */
-
-const firebaseConfig = {
-
-    apiKey: "AIzaSyBsCLUl3EJoRS7uT79WK41foK4agiDYhw0",
-  authDomain: "it-s-working-heart.firebaseapp.com",
-  projectId: "it-s-working-heart",
-  storageBucket: "it-s-working-heart.firebasestorage.app",
-  messagingSenderId: "1057727831456",
-  appId: "1:1057727831456:web:269ef039c24e41f4fd18c5",
-  measurementId: "G-FGX2YNYRMD"
-
-};
-
-
-const firebaseApp =
-    initializeApp(
-        firebaseConfig
-    );
-
-
-const db =
-    getFirestore(
-        firebaseApp
-    );
-
-
-const MEDIA_COLLECTION =
+const COLLECTION_NAME =
     "heartProjectMedia";
 
 
-let allMedia = [];
+let mediaStore = [];
+
+let currentMediaFilter =
+    "all";
 
 
+// =========================================================
+// ELEMENTS
+// =========================================================
 
-/* =====================================================
-   LOAD FIREBASE MEDIA
-===================================================== */
-
-async function loadMedia(){
-
-    const imageGallery =
-        document.getElementById(
-            "imageGallery"
-        );
+const gallery =
+    document.getElementById(
+        "gallery"
+    );
 
 
-    const videoGallery =
-        document.getElementById(
-            "videoGallery"
-        );
+const galleryEmpty =
+    document.getElementById(
+        "galleryEmpty"
+    );
 
+
+const firebaseStatus =
+    document.getElementById(
+        "firebaseStatus"
+    );
+
+
+// =========================================================
+// LOAD FIREBASE MEDIA
+// =========================================================
+
+async function loadFirebaseMedia(){
 
     try{
 
-        const mediaQuery =
+        firebaseStatus.textContent =
+            "☁️ Loading project gallery...";
+
+
+        const q =
             query(
 
                 collection(
                     db,
-                    MEDIA_COLLECTION
+                    COLLECTION_NAME
                 ),
 
                 orderBy(
@@ -1884,95 +2188,115 @@ async function loadMedia(){
 
 
         const snapshot =
-            await getDocs(
-                mediaQuery
-            );
+            await getDocs(q);
 
 
-        allMedia =
-            snapshot.docs.map(
-                item => ({
+        mediaStore = [];
 
-                    id:
-                        item.id,
+
+        snapshot.forEach(
+
+            item => {
+
+                mediaStore.push({
+
+                    id:item.id,
 
                     ...item.data()
 
-                })
-            );
+                });
+
+            }
+
+        );
 
 
-        renderImages();
+        firebaseStatus.textContent =
+            "☁️ Live project gallery connected";
 
-        renderVideos();
+        firebaseStatus.classList.add(
+            "live"
+        );
+
+
+        renderMedia(
+            currentMediaFilter
+        );
 
 
     }catch(error){
 
         console.error(
-            "Firebase media error:",
+            "Firebase gallery error:",
             error
         );
 
 
-        imageGallery.innerHTML = `
-            <div class="empty">
-                Unable to load images.
-            </div>
-        `;
+        firebaseStatus.textContent =
+            "☁️ Unable to connect to Firebase";
 
 
-        videoGallery.innerHTML = `
-            <div class="empty">
-                Unable to load videos.
-            </div>
-        `;
+        firebaseStatus.classList.remove(
+            "live"
+        );
+
+
+        gallery.innerHTML = "";
+
+
+        galleryEmpty.style.display =
+            "block";
+
+
+        galleryEmpty.textContent =
+            "Firebase gallery could not be loaded.";
 
     }
 
 }
 
 
+// =========================================================
+// RENDER MEDIA
+// =========================================================
 
-/* =====================================================
-   RENDER IMAGES
-===================================================== */
+function renderMedia(
+    filter="all"
+){
 
-function renderImages(){
-
-    const container =
-        document.getElementById(
-            "imageGallery"
-        );
+    gallery.innerHTML = "";
 
 
-    const images =
-        allMedia.filter(
+    const items =
+        mediaStore.filter(
+
             item =>
-                item.type === "photo"
+
+                filter === "all" ||
+                item.type === filter
+
         );
 
 
-    container.innerHTML =
-        "";
+    if(!items.length){
 
+        galleryEmpty.style.display =
+            "block";
 
-    if(
-        images.length === 0
-    ){
-
-        container.innerHTML = `
-            <div class="empty">
-                No images have been added yet.
-            </div>
-        `;
+        galleryEmpty.textContent =
+            "No photos or videos have been added yet.";
 
         return;
 
     }
 
 
-    images.forEach(
+    galleryEmpty.style.display =
+        "none";
+
+
+    items.forEach(
+
         item => {
 
             const card =
@@ -1982,393 +2306,117 @@ function renderImages(){
 
 
             card.className =
-                "media-card";
+                "gallery-item";
 
 
-            card.innerHTML = `
+            const media =
+                document.createElement(
 
-                <img
-                    src="${safeAttribute(item.url)}"
-                    alt="${safeAttribute(item.name)}"
-                    loading="lazy"
-                >
+                    item.type === "photo"
+                    ? "img"
+                    : "video"
 
-                <div class="media-card-name">
-                    ${escapeHtml(item.name || "Image")}
-                </div>
-
-            `;
+                );
 
 
-            card.addEventListener(
-                "click",
-                () =>
-                    openImage(
-                        item.url,
-                        item.name
-                    )
-            );
+            media.src =
+                item.url;
 
 
-            container.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
+            media.alt =
+                item.name || "Project media";
 
 
-
-/* =====================================================
-   RENDER VIDEOS
-===================================================== */
-
-function renderVideos(){
-
-    const container =
-        document.getElementById(
-            "videoGallery"
-        );
-
-
-    const videos =
-        allMedia.filter(
-            item =>
+            if(
                 item.type === "video"
-        );
+            ){
+
+                media.controls =
+                    false;
+
+                media.playsInline =
+                    true;
+
+                media.preload =
+                    "metadata";
+
+            }
 
 
-    container.innerHTML =
-        "";
-
-
-    if(
-        videos.length === 0
-    ){
-
-        container.innerHTML = `
-            <div class="empty">
-                No videos have been added yet.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    videos.forEach(
-        item => {
-
-            const card =
+            const caption =
                 document.createElement(
                     "div"
                 );
 
 
-            card.className =
-                "media-card";
+            caption.className =
+                "gallery-caption";
 
 
-            card.innerHTML = `
-
-                <div class="media-card-video">
-                    ▶
-                </div>
-
-                <div class="media-card-name">
-                    ${escapeHtml(item.name || "Video")}
-                </div>
-
-            `;
+            caption.textContent =
+                item.name ||
+                "Project Media";
 
 
-            card.addEventListener(
-                "click",
-                () =>
-                    openVideo(
-                        item.url,
-                        item.name
-                    )
+            card.appendChild(
+                media
             );
 
 
-            container.appendChild(
+            card.appendChild(
+                caption
+            );
+
+
+            card.onclick =
+                () => {
+
+                    showMediaInsideSection(
+                        item
+                    );
+
+                };
+
+
+            gallery.appendChild(
                 card
             );
 
         }
+
     );
 
 }
 
 
-
-/* =====================================================
-   FILTER
-===================================================== */
+// =========================================================
+// FILTER
+// =========================================================
 
 window.filterMedia =
 function(
-    type,
+    filter,
     button
 ){
 
-    document
-        .querySelectorAll(
-            ".filter-button"
-        )
-        .forEach(
-            item =>
-                item.classList.remove(
-                    "active"
-                )
-        );
-
-
-    button.classList.add(
-        "active"
-    );
-
-
-    if(
-        type === "all" ||
-        type === "photo"
-    ){
-
-        renderImages();
-
-    }
-
-
-    if(
-        type === "video"
-    ){
-
-        renderVideos();
-
-    }
-
-};
-
-
-
-/* =====================================================
-   IMAGE VIEWER
-===================================================== */
-
-function openImage(
-    url,
-    title
-){
-
-    const viewer =
-        document.getElementById(
-            "viewer"
-        );
-
-
-    const image =
-        document.getElementById(
-            "viewerImage"
-        );
-
-
-    const video =
-        document.getElementById(
-            "viewerVideo"
-        );
-
-
-    const viewerTitle =
-        document.getElementById(
-            "viewerTitle"
-        );
-
-
-    video.pause();
-
-    video.removeAttribute(
-        "src"
-    );
-
-
-    video.style.display =
-        "none";
-
-
-    image.src =
-        url;
-
-
-    image.style.display =
-        "block";
-
-
-    viewerTitle.textContent =
-        title || "";
-
-
-    viewer.classList.add(
-        "show"
-    );
-
-}
-
-
-
-/* =====================================================
-   VIDEO VIEWER
-===================================================== */
-
-function openVideo(
-    url,
-    title
-){
-
-    const viewer =
-        document.getElementById(
-            "viewer"
-        );
-
-
-    const image =
-        document.getElementById(
-            "viewerImage"
-        );
-
-
-    const video =
-        document.getElementById(
-            "viewerVideo"
-        );
-
-
-    const viewerTitle =
-        document.getElementById(
-            "viewerTitle"
-        );
-
-
-    image.src =
-        "";
-
-
-    image.style.display =
-        "none";
-
-
-    video.src =
-        url;
-
-
-    video.style.display =
-        "block";
-
-
-    viewerTitle.textContent =
-        title || "";
-
-
-    viewer.classList.add(
-        "show"
-    );
-
-
-    video.play().catch(
-        () => {}
-    );
-
-}
-
-
-
-/* =====================================================
-   CLOSE VIEWER
-===================================================== */
-
-window.closeViewer =
-function(event){
-
-    if(
-        event &&
-        event.target !== event.currentTarget
-    ){
-
-        return;
-
-    }
-
-
-    const viewer =
-        document.getElementById(
-            "viewer"
-        );
-
-
-    const video =
-        document.getElementById(
-            "viewerVideo"
-        );
-
-
-    video.pause();
-
-    video.removeAttribute(
-        "src"
-    );
-
-
-    viewer.classList.remove(
-        "show"
-    );
-
-};
-
-
-
-/* =====================================================
-   PAGE NAVIGATION
-===================================================== */
-
-window.showPage =
-function(
-    pageId,
-    button
-){
-
-    document
-        .querySelectorAll(
-            ".page"
-        )
-        .forEach(
-            page =>
-                page.classList.remove(
-                    "active"
-                )
-        );
-
-
-    document
-        .getElementById(
-            pageId
-        )
-        .classList.add(
-            "active"
-        );
+    currentMediaFilter =
+        filter;
 
 
     document
         .querySelectorAll(
-            ".nav-button"
+            ".media-filter"
         )
         .forEach(
-            item =>
-                item.classList.remove(
+
+            btn => {
+
+                btn.classList.remove(
                     "active"
-                )
+                );
+
+            }
+
         );
 
 
@@ -2380,209 +2428,280 @@ function(
 
     }
 
-};
 
-
-
-/* =====================================================
-   MENU
-===================================================== */
-
-window.openMenu =
-function(){
-
-    document
-        .getElementById(
-            "menuPanel"
-        )
-        .classList.add(
-            "show"
-        );
+    renderMedia(
+        filter
+    );
 
 };
 
 
-window.closeMenu =
-function(){
+// =========================================================
+// SECTION VIEWER
+// =========================================================
 
-    document
-        .getElementById(
-            "menuPanel"
-        )
-        .classList.remove(
-            "show"
-        );
+window.showMediaInsideSection =
+function(item){
 
-};
-
-
-
-/* =====================================================
-   SPECIAL
-===================================================== */
-
-window.openSpecial =
-function(){
-
-    document
-        .getElementById(
-            "specialView"
-        )
-        .classList.add(
-            "show"
-        );
-
-};
-
-
-window.closeSpecial =
-function(){
-
-    document
-        .getElementById(
-            "specialView"
-        )
-        .classList.remove(
-            "show"
-        );
-
-};
-
-
-window.downloadSpecial =
-function(){
-
-    const image =
+    const viewer =
         document.getElementById(
-            "specialImage"
+            "sectionViewer"
         );
 
 
-    const link =
+    const content =
+        document.getElementById(
+            "sectionViewerContent"
+        );
+
+
+    const title =
+        document.getElementById(
+            "sectionViewerTitle"
+        );
+
+
+    content.innerHTML = "";
+
+
+    title.textContent =
+        item.name ||
+        "Project Media";
+
+
+    const media =
         document.createElement(
-            "a"
+
+            item.type === "photo"
+            ? "img"
+            : "video"
+
         );
 
 
-    link.href =
-        image.src;
+    media.src =
+        item.url;
 
 
-    link.download =
-        "heart-special.png";
+    media.alt =
+        item.name ||
+        "Project Media";
 
 
-    document.body.appendChild(
-        link
+    media.className =
+        "section-view-media";
+
+
+    if(
+        item.type === "video"
+    ){
+
+        media.controls =
+            true;
+
+        media.autoplay =
+            true;
+
+        media.playsInline =
+            true;
+
+    }
+
+
+    content.appendChild(
+        media
     );
 
 
-    link.click();
-
-
-    link.remove();
-
-};
-
-
-
-/* =====================================================
-   ADMIN PASSWORD
-===================================================== */
-
-window.openAdminPassword =
-function(){
-
-    const overlay =
-        document.getElementById(
-            "passwordOverlay"
-        );
-
-
-    const input =
-        document.getElementById(
-            "adminPassword"
-        );
-
-
-    const error =
-        document.getElementById(
-            "passwordError"
-        );
-
-
-    error.textContent =
-        "";
-
-
-    input.value =
-        "";
-
-
-    overlay.classList.add(
+    viewer.classList.add(
         "show"
     );
 
 
-    setTimeout(
-        () =>
-            input.focus(),
-        100
+    viewer.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"center"
+
+    });
+
+};
+
+
+// =========================================================
+// CLOSE SECTION VIEWER
+// =========================================================
+
+window.closeSectionViewer =
+function(){
+
+    const viewer =
+        document.getElementById(
+            "sectionViewer"
+        );
+
+
+    const content =
+        document.getElementById(
+            "sectionViewerContent"
+        );
+
+
+    viewer.classList.remove(
+        "show"
+    );
+
+
+    content.innerHTML = "";
+
+};
+
+
+// =========================================================
+// LIGHTBOX
+// =========================================================
+
+window.openMediaLightbox =
+function(item){
+
+    const box =
+        document.getElementById(
+            "mediaLightbox"
+        );
+
+
+    const content =
+        document.getElementById(
+            "lightboxContent"
+        );
+
+
+    content.innerHTML = "";
+
+
+    const media =
+        document.createElement(
+
+            item.type === "photo"
+            ? "img"
+            : "video"
+
+        );
+
+
+    media.src =
+        item.url;
+
+
+    if(
+        item.type === "video"
+    ){
+
+        media.controls =
+            true;
+
+        media.autoplay =
+            true;
+
+        media.playsInline =
+            true;
+
+    }
+
+
+    content.appendChild(
+        media
+    );
+
+
+    box.classList.add(
+        "show"
     );
 
 };
 
 
-window.closePassword =
-function(){
-
-    document
-        .getElementById(
-            "passwordOverlay"
-        )
-        .classList.remove(
-            "show"
-        );
-
-};
-
-
-window.handlePasswordKey =
+window.closeMediaLightbox =
 function(event){
 
     if(
-        event.key ===
-        "Enter"
+        event &&
+        event.target.closest(
+            "#lightboxContent"
+        )
     ){
 
-        checkAdminPassword();
+        return;
 
     }
+
+
+    const box =
+        document.getElementById(
+            "mediaLightbox"
+        );
+
+
+    box.classList.remove(
+        "show"
+    );
+
+
+    document.getElementById(
+        "lightboxContent"
+    ).innerHTML = "";
 
 };
 
 
+// =========================================================
+// SETTINGS
+// =========================================================
 
-/*
-=========================================================
- IMPORTANT:
- The password is intentionally kept here for the
- current simple admin flow.
-=========================================================
-*/
+window.toggleSettings =
+function(){
 
-window.checkAdminPassword =
+    const menu =
+        document.getElementById(
+            "settingsMenu"
+        );
+
+
+    menu.classList.toggle(
+        "show"
+    );
+
+};
+
+
+// =========================================================
+// ADMIN PASSWORD
+// =========================================================
+//
+// This password only controls opening edit.html
+// from this interface.
+//
+// Firebase security rules should be used for
+// real database protection.
+// =========================================================
+
+const HOST_PASSWORD =
+    "aayushman";
+
+
+window.unlockFromSettings =
 function(){
 
     const input =
         document.getElementById(
-            "adminPassword"
+            "settingsPassword"
         );
 
 
-    const error =
+    const msg =
         document.getElementById(
-            "passwordError"
+            "settingsPasswordMessage"
         );
 
 
@@ -2590,103 +2709,107 @@ function(){
         input.value;
 
 
-    const ADMIN_PASSWORD =
-        "aayushman";
-
-
     if(
-        password ===
-        ADMIN_PASSWORD
+        password === HOST_PASSWORD
     ){
 
-        sessionStorage.setItem(
-            "heartAdminAccess",
-            "true"
+        msg.textContent =
+            "✓ Access granted. Opening editor...";
+
+        msg.style.color =
+            "#69e58a";
+
+
+        setTimeout(
+
+            () => {
+
+                window.location.href =
+                    "edit.html";
+
+            },
+
+            500
+
         );
-
-
-        window.location.href =
-            "edit.html";
-
 
     }else{
 
-        error.textContent =
-            "❌ Incorrect admin password.";
+        msg.textContent =
+            "Incorrect password.";
 
-        input.value =
-            "";
-
-        input.focus();
+        msg.style.color =
+            "#ff5262";
 
     }
 
 };
 
 
+// =========================================================
+// CLOSE SETTINGS WHEN CLICKING OUTSIDE
+// =========================================================
 
-/* =====================================================
-   HTML ESCAPE
-===================================================== */
+document.addEventListener(
 
-function escapeHtml(
-    value
-){
+    "click",
 
-    return String(
-        value ?? ""
-    )
+    function(event){
 
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-
-    .replace(
-        /</g,
-        "&lt;"
-    )
-
-    .replace(
-        />/g,
-        "&gt;"
-    )
-
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
+        const menu =
+            document.getElementById(
+                "settingsMenu"
+            );
 
 
-function safeAttribute(
-    value
-){
-
-    return escapeHtml(
-        value
-    );
-
-}
+        const button =
+            document.querySelector(
+                ".settings-btn"
+            );
 
 
+        if(
 
-/* =====================================================
-   START
-===================================================== */
+            menu &&
+            menu.classList.contains(
+                "show"
+            ) &&
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
 
-loadMedia();
+        ){
 
+            menu.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+
+);
+
+
+// =========================================================
+// INITIAL LOAD
+// =========================================================
+
+loadFirebaseMedia();
+
+
+// =========================================================
+// REFRESH EVERY 5 SECONDS
+// =========================================================
+
+setInterval(
+
+    loadFirebaseMedia,
+
+    5000
+
+);
 
 </script>
 
-
 </body>
-
 </html>
