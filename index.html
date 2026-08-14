@@ -1,27 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1"
+    name="viewport"
+    content="width=device-width,initial-scale=1"
 >
 
 <title>Working Model of Heart</title>
 
-<script src="password.js"></script>
-
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
@@ -29,26 +25,14 @@ html{
 }
 
 body{
-    margin:0;
     background:#08090b;
     color:#fff;
     font-family:Arial,sans-serif;
     overflow-x:hidden;
 }
 
-a{
-    -webkit-tap-highlight-color:transparent;
-}
 
-button{
-    font-family:inherit;
-    -webkit-tap-highlight-color:transparent;
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* ================= NAVBAR ================= */
 
 nav{
     height:64px;
@@ -57,12 +41,12 @@ nav{
     align-items:center;
     justify-content:space-between;
 
-    background:#090a0cdd;
+    background:#090a0cee;
     border-bottom:1px solid #292a2e;
 
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:100;
 
     backdrop-filter:blur(12px);
 }
@@ -72,16 +56,9 @@ nav{
     font-weight:700;
 }
 
-.brand span,
-h1 span,
-.red{
+.brand span{
     color:#ff2638;
 }
-
-
-/* =========================================================
-   SETTINGS BUTTON
-========================================================= */
 
 .settings-btn{
     width:40px;
@@ -96,7 +73,6 @@ h1 span,
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     gap:5px;
 
     cursor:pointer;
@@ -105,28 +81,19 @@ h1 span,
 }
 
 .settings-btn span{
-    display:block;
-    width:18px;
+    width:19px;
     height:2px;
     background:#fff;
-    border-radius:3px;
-
-    transition:.25s;
+    border-radius:5px;
 }
 
 .settings-btn:hover{
     border-color:#ff2638;
-    background:#181114;
-}
-
-.settings-btn:active{
-    transform:scale(.92);
+    background:#191014;
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+/* ================= HERO ================= */
 
 .hero{
     min-height:600px;
@@ -139,7 +106,6 @@ h1 span,
     align-items:center;
 
     position:relative;
-
     overflow:hidden;
 
     background:
@@ -159,27 +125,20 @@ h1 span,
     opacity:.18;
 
     background-image:
-        linear-gradient(#ff263812 1px,transparent 1px),
-        linear-gradient(90deg,#ff263812 1px,transparent 1px);
+    linear-gradient(
+        #ff263812 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        #ff263812 1px,
+        transparent 1px
+    );
 
     background-size:42px 42px;
-
-    animation:gridMove 12s linear infinite;
 }
 
-@keyframes gridMove{
-
-    from{
-        background-position:0 0,0 0;
-    }
-
-    to{
-        background-position:42px 42px,42px 42px;
-    }
-
-}
-
-.hero>*{
+.hero > *{
     position:relative;
 }
 
@@ -194,6 +153,10 @@ h1 span,
     font-size:clamp(48px,6vw,78px);
     line-height:.98;
     margin:18px 0;
+}
+
+.hero h1 span{
+    color:#ff2638;
 }
 
 .hero p{
@@ -221,35 +184,17 @@ h1 span,
     font-weight:bold;
 
     box-shadow:
-        0 12px 30px #ff263833;
+    0 12px 30px #ff263833;
 
     transition:.25s;
 }
 
 .btn:hover{
     transform:translateY(-3px);
-    box-shadow:
-        0 15px 35px #ff263855;
-}
-
-.btn:active{
-    transform:scale(.96);
-}
-
-.live-link{
-    margin-left:10px;
-    background:#111317;
-    border:1px solid #ff2638;
-}
-
-.live-link:hover{
-    background:#ff2638;
 }
 
 
-/* =========================================================
-   BPM
-========================================================= */
+/* ================= HEART PULSE ================= */
 
 .bpm{
     margin-top:22px;
@@ -259,12 +204,15 @@ h1 span,
     padding:12px;
 
     border:1px solid #383a40;
+
     border-radius:10px;
 
     background:#111317;
 
     display:flex;
+
     gap:10px;
+
     align-items:center;
 }
 
@@ -286,19 +234,19 @@ h1 span,
 
     50%{
         transform:scale(1.15);
+
         box-shadow:
-            0 0 25px #ff263888;
+        0 0 25px #ff263888;
     }
 
 }
 
 
-/* =========================================================
-   ECG
-========================================================= */
+/* ================= ECG ================= */
 
 .ecg{
     position:absolute;
+
     bottom:18px;
     left:0;
 
@@ -318,19 +266,19 @@ h1 span,
 
     stroke-width:3;
 
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
     stroke-dasharray:900;
     stroke-dashoffset:900;
 
     animation:
-        ecg 2.2s linear infinite;
+    ecg 2.2s linear infinite;
 
     filter:
-        drop-shadow(
-            0 0 7px #ff2638
-        );
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
+    drop-shadow(
+        0 0 7px #ff2638
+    );
 }
 
 @keyframes ecg{
@@ -342,9 +290,7 @@ h1 span,
 }
 
 
-/* =========================================================
-   BAR
-========================================================= */
+/* ================= BAR ================= */
 
 .bar{
     width:86%;
@@ -373,13 +319,10 @@ h1 span,
 }
 
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+/* ================= SECTIONS ================= */
 
 section{
     padding:80px 7%;
-
     border-top:1px solid #202126;
 }
 
@@ -395,7 +338,8 @@ section{
 .sub{
     max-width:700px;
 
-    margin:0 auto 42px;
+    margin:
+    0 auto 42px;
 
     text-align:center;
 
@@ -405,9 +349,7 @@ section{
 }
 
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ================= ABOUT ================= */
 
 .about{
     max-width:1100px;
@@ -427,28 +369,30 @@ section{
     font-size:34px;
 }
 
+.about h2 span{
+    color:#ff2638;
+}
+
 .about p{
     color:#c5c7cc;
     line-height:1.7;
 }
 
 
-/* =========================================================
-   FEATURES
-========================================================= */
+/* ================= FEATURES ================= */
 
-.features,
-.steps{
+.features{
+    margin-top:25px;
+
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+    repeat(4,1fr);
 
     gap:15px;
 }
 
-.feature,
-.step{
+.feature{
     padding:22px;
 
     border:1px solid #34363c;
@@ -462,76 +406,31 @@ section{
     transition:.3s;
 }
 
-.feature:hover,
-.step:hover{
+.feature:hover{
     transform:translateY(-6px);
 
     border-color:#ff2638;
 
     box-shadow:
-        0 12px 30px #ff26381c;
+    0 15px 35px #ff263815;
 }
 
-.feature .icon,
-.step .icon{
+.feature .icon{
     font-size:29px;
-
     color:#ff2638;
-
     margin-bottom:10px;
 }
 
-.feature p,
-.step p{
+.feature p{
     color:#aaa;
-
     font-size:13px;
-
     line-height:1.5;
 }
 
-.num{
-    width:30px;
-    height:30px;
 
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-    place-items:center;
-
-    margin:0 auto 17px;
-
-    font-weight:bold;
-}
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal{
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
-}
-
-
-/* =========================================================
-   MEDIA BUTTONS
-========================================================= */
+/* ================= MEDIA ================= */
 
 .media-view-buttons{
-
     display:flex;
 
     justify-content:center;
@@ -540,14 +439,11 @@ section{
 
     gap:10px;
 
-    margin:0 auto 28px;
+    margin:
+    0 auto 25px;
 }
 
-.media-filter,
-.host-btn,
-.unlock-btn,
-.save-media{
-
+.media-filter{
     border:1px solid #3a3c42;
 
     background:#111317;
@@ -566,108 +462,122 @@ section{
 }
 
 .media-filter:hover,
-.media-filter.active,
-.host-btn:hover,
-.unlock-btn,
-.save-media{
-
+.media-filter.active{
     background:#ff2638;
-
     border-color:#ff2638;
-}
 
-.media-filter:active,
-.host-btn:active,
-.unlock-btn:active,
-.save-media:active{
-
-    transform:scale(.94);
+    transform:translateY(-2px);
 }
 
 
-/* =========================================================
-   GALLERY
-========================================================= */
+/* ================= FIREBASE STATUS ================= */
+
+.firebase-status{
+    text-align:center;
+
+    margin:
+    0 auto 25px;
+
+    color:#777;
+
+    font-size:12px;
+}
+
+.firebase-status.live{
+    color:#69e58a;
+}
+
+
+/* ================= GALLERY ================= */
 
 .gallery{
+    max-width:1100px;
+
+    margin:auto;
 
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px,190px)
-        );
+    repeat(auto-fit,minmax(180px,1fr));
 
-    justify-content:center;
-
-    gap:15px;
+    gap:17px;
 }
 
 .gallery-item{
+    overflow:hidden;
 
     background:#111317;
 
     border:1px solid #34363c;
 
-    border-radius:13px;
-
-    overflow:hidden;
+    border-radius:14px;
 
     cursor:pointer;
 
-    animation:
-        galleryIn .45s;
-
     transition:.3s;
 
-    position:relative;
+    animation:
+    galleryIn .45s ease;
 }
 
 .gallery-item:hover{
-
     transform:
-        translateY(-7px)
-        scale(1.025);
+    translateY(-7px)
+    scale(1.015);
 
     border-color:#ff2638;
 
     box-shadow:
-        0 15px 35px #0008,
-        0 0 20px #ff26381c;
+    0 18px 40px #0008;
 }
 
-.gallery-item:active{
-
-    transform:scale(.97);
-}
-
-.gallery-item img,
-.gallery-item video{
-
+.gallery-thumb{
     width:100%;
 
-    height:125px;
+    height:150px;
 
-    display:block;
+    display:flex;
 
-    object-fit:cover;
+    justify-content:center;
 
-    background:#08090b;
+    align-items:center;
+
+    background:
+    radial-gradient(
+        circle,
+        #351015,
+        #0d0f12
+    );
+
+    overflow:hidden;
 }
 
-.gallery-item video{
+.gallery-thumb img{
+    width:100%;
+    height:100%;
 
-    pointer-events:none;
+    object-fit:cover;
+}
+
+.video-thumb{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:48px;
+
+    color:#ff2638;
 }
 
 .gallery-caption{
+    padding:13px;
 
-    padding:9px;
+    color:#ddd;
 
-    color:#aaa;
-
-    font-size:12px;
+    font-size:13px;
 
     white-space:nowrap;
 
@@ -676,7 +586,21 @@ section{
     text-overflow:ellipsis;
 }
 
+.gallery-type{
+    padding:
+    0 13px 12px;
+
+    color:#777;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
 .gallery-empty{
+    display:none;
 
     text-align:center;
 
@@ -685,19 +609,7 @@ section{
     padding:35px;
 }
 
-#gallery,
-#galleryEmpty{
-
-    display:none;
-}
-
-#gallery.media-visible{
-
-    display:grid;
-}
-
-#galleryEmpty.media-visible{
-
+.gallery-empty.show{
     display:block;
 }
 
@@ -705,7 +617,9 @@ section{
 
     from{
         opacity:0;
-        transform:translateY(15px);
+        transform:
+        translateY(15px)
+        scale(.97);
     }
 
     to{
@@ -716,58 +630,111 @@ section{
 }
 
 
-/* =========================================================
-   FIREBASE STATUS
-========================================================= */
+/* ================= VIEWER ================= */
 
-.firebase-status{
-
-    text-align:center;
-
-    margin:-28px auto 24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-.firebase-status.live{
-
-    color:#69e58a;
-}
-
-.firebase-message{
-
-    margin-top:10px;
-
-    color:#ff6875;
-
-    font-size:12px;
-
-    min-height:15px;
-}
-
-.firebase-message.ok{
-
-    color:#69e58a;
-}
-
-
-/* =========================================================
-   HOST PANEL
-========================================================= */
-
-.host-panel{
-
+.section-viewer{
     display:none;
 
-    position:relative;
+    max-width:850px;
+
+    margin:
+    35px auto 0;
+
+    padding:15px;
+
+    background:#0d0f12;
+
+    border:1px solid #ff2638;
+
+    border-radius:16px;
+
+    box-shadow:
+    0 20px 55px #0008;
+}
+
+.section-viewer.show{
+    display:block;
+
+    animation:
+    galleryIn .25s ease;
+}
+
+.section-viewer-head{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+    2px 4px 14px;
+}
+
+.section-viewer-head h3{
+    color:#ff2638;
+
+    font-size:16px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.section-viewer-head button{
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.section-view-content{
+    min-height:180px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.viewer-image{
+    max-width:100%;
+    max-height:600px;
+
+    border-radius:10px;
+}
+
+.viewer-video{
+    width:100%;
+    max-height:600px;
+
+    border-radius:10px;
+}
+
+
+/* ================= HOST PANEL ================= */
+
+.host-panel{
+    display:none;
 
     max-width:560px;
 
-    margin:35px auto 0;
+    margin:
+    35px auto 0;
 
-    padding:28px;
+    padding:25px;
 
     border:1px solid #ff2638;
 
@@ -776,75 +743,60 @@ section{
     background:#101114;
 
     box-shadow:
-        0 20px 50px #000;
+    0 20px 60px #000;
 }
 
 .host-panel.show{
-
     display:block;
 
     animation:
-        galleryIn .3s;
+    galleryIn .3s;
 }
 
-.host-panel h3{
+.host-head{
+    display:flex;
 
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.host-head h3{
     color:#ff2638;
-
-    margin:0;
 }
 
-.host-panel p{
-
-    color:#aaa;
-
-    line-height:1.5;
-}
-
-.close-host{
-
-    position:absolute;
-
-    right:14px;
-
-    top:10px;
-
+.host-close{
     border:0;
 
     background:none;
 
     color:#fff;
 
-    font-size:28px;
+    font-size:27px;
 
     cursor:pointer;
 }
 
+.host-description{
+    margin:15px 0;
 
-/* =========================================================
-   HOST LOGIN
-========================================================= */
+    color:#aaa;
 
-#hostLogin{
+    line-height:1.5;
 
-    padding:15px;
-
-    border:1px solid #34363c;
-
-    border-radius:12px;
-
-    background:#0b0c0f;
+    font-size:13px;
 }
 
-#hostLogin input{
 
-    display:block;
+/* ================= LOGIN ================= */
 
+.host-input{
     width:100%;
 
-    padding:11px;
+    padding:13px;
 
-    margin:8px 0;
+    margin:
+    7px 0;
 
     background:#08090b;
 
@@ -857,65 +809,66 @@ section{
     outline:none;
 }
 
-#hostLogin input:focus{
-
+.host-input:focus{
     border-color:#ff2638;
 }
 
-#hostLogin .unlock-btn{
-
+.host-btn{
     width:100%;
 
-    margin-top:4px;
-}
+    border:0;
 
-
-/* =========================================================
-   LINK FORM
-========================================================= */
-
-.upload-area{
-
-    margin-top:18px;
-
-    display:grid;
-
-    gap:12px;
-}
-
-.link-input{
-
-    width:100%;
-
-    padding:12px;
-
-    background:#08090b;
-
-    border:1px solid #383a40;
-
-    border-radius:8px;
+    background:#ff2638;
 
     color:#fff;
 
-    outline:none;
+    padding:13px;
+
+    border-radius:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:8px;
+
+    transition:.25s;
 }
 
-.link-input:focus{
-
-    border-color:#ff2638;
+.host-btn:hover{
+    transform:translateY(-2px);
 
     box-shadow:
-        0 0 0 2px #ff26381a;
+    0 10px 25px #ff263833;
 }
 
-select.link-input{
+.host-message{
+    min-height:18px;
 
-    cursor:pointer;
+    margin-top:10px;
+
+    color:#ff6673;
+
+    font-size:12px;
+}
+
+.host-message.ok{
+    color:#69e58a;
+}
+
+
+/* ================= ADMIN ================= */
+
+.admin-panel{
+    display:none;
+}
+
+.admin-panel.show{
+    display:block;
 }
 
 .host-status{
-
-    padding:10px 12px;
+    padding:12px;
 
     border:1px solid #285d38;
 
@@ -927,75 +880,105 @@ select.link-input{
 
     font-size:13px;
 
-    font-weight:700;
+    margin-bottom:15px;
 }
 
-.host-note{
+.link-form{
+    display:grid;
 
-    font-size:11px!important;
-
-    color:#777!important;
+    gap:10px;
 }
 
+.link-form label{
+    color:#aaa;
 
-/* =========================================================
-   HOST MANAGE
-========================================================= */
+    font-size:11px;
 
-.host-manage{
+    letter-spacing:1px;
+}
 
-    margin-top:20px;
+.link-select{
+    width:100%;
 
-    border-top:1px solid #292b31;
+    padding:12px;
+
+    background:#08090b;
+
+    border:1px solid #383a40;
+
+    color:#fff;
+
+    border-radius:8px;
+}
+
+.admin-actions{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.logout-btn{
+    background:#22252b;
+}
+
+.manage-list{
+    margin-top:25px;
+
+    border-top:
+    1px solid #292b31;
 
     padding-top:15px;
 }
 
-.host-manage h4{
-
-    margin:0 0 10px;
-
+.manage-list h4{
     color:#ff8793;
+
+    margin-bottom:10px;
 }
 
-.host-media-row{
-
+.manage-row{
     display:flex;
-
-    justify-content:space-between;
 
     gap:10px;
 
     align-items:center;
 
-    padding:9px 0;
+    justify-content:space-between;
 
-    border-bottom:1px solid #25272b;
+    padding:11px 0;
+
+    border-bottom:
+    1px solid #25272b;
+}
+
+.manage-name{
+    flex:1;
+
+    min-width:0;
+
+    color:#bbb;
 
     font-size:12px;
 
-    color:#bbb;
-}
-
-.host-media-row span{
-
     overflow:hidden;
 
-    text-overflow:ellipsis;
-
     white-space:nowrap;
+
+    text-overflow:ellipsis;
 }
 
-.host-media-actions{
-
+.manage-buttons{
     display:flex;
 
     gap:6px;
-
-    flex:none;
 }
 
-.host-media-row button{
+.manage-buttons button{
+    padding:6px 9px;
+
+    border-radius:7px;
 
     border:1px solid #ff2638;
 
@@ -1003,398 +986,88 @@ select.link-input{
 
     color:#ff6875;
 
-    border-radius:7px;
-
-    padding:6px 9px;
-
     cursor:pointer;
 }
 
-.host-media-row button:hover{
-
+.manage-buttons button:hover{
     background:#ff2638;
-
     color:#fff;
 }
 
 
-/* =========================================================
-   SETTINGS MENU
-========================================================= */
+/* ================= STEPS ================= */
 
-.settings-menu{
+.steps{
+    max-width:1100px;
 
-    position:fixed;
+    margin:auto;
 
-    top:76px;
+    display:grid;
 
-    right:6%;
+    grid-template-columns:
+    repeat(4,1fr);
 
-    width:min(340px,88vw);
-
-    z-index:100;
-
-    display:none;
-
-    padding:18px;
-
-    border:1px solid #3a3c42;
-
-    border-radius:16px;
-
-    background:#101114;
-
-    box-shadow:0 20px 60px #000b;
-
-    backdrop-filter:blur(15px);
+    gap:15px;
 }
 
-.settings-menu.show{
-
-    display:block;
-
-    animation:
-        settingsIn .22s ease-out;
-}
-
-.settings-head{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:15px;
-}
-
-.settings-head h3{
-
-    margin:0;
-
-    color:#ff2638;
-}
-
-.settings-head button{
-
-    border:0;
-
-    background:none;
-
-    color:#fff;
-
-    font-size:25px;
-
-    cursor:pointer;
-}
-
-.settings-card{
-
-    display:flex;
-
-    gap:14px;
-
-    padding:17px;
+.step{
+    padding:22px;
 
     border:1px solid #34363c;
 
-    border-radius:12px;
+    border-radius:13px;
 
     background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
 }
 
-.settings-icon{
+.step:hover{
+    transform:translateY(-6px);
 
-    font-size:27px;
+    border-color:#ff2638;
 }
 
-.settings-card h4{
-
-    margin:0 0 5px;
-}
-
-.settings-card p{
-
-    margin:0 0 12px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    line-height:1.5;
-}
-
-.settings-action{
-
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    border-radius:8px;
-
-    padding:9px 13px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-.settings-action:active{
-
-    transform:scale(.95);
-}
-
-.settings-password{
-
-    margin-top:12px;
-
-    padding-top:12px;
-
-    border-top:1px solid #292b31;
-}
-
-.settings-password label{
-
-    display:block;
-
-    font-size:9px;
-
-    letter-spacing:1.8px;
-
-    color:#ff6b76;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-.settings-password input{
-
-    width:100%;
-
-    padding:10px 11px;
-
-    background:#08090b;
-
-    border:1px solid #383a40;
-
-    border-radius:8px;
-
-    color:#fff;
-
-    outline:none;
-}
-
-.settings-password .settings-action{
-
-    width:100%;
-
-    margin-top:8px;
-}
-
-#settingsPasswordMessage{
-
-    font-size:11px;
-
-    margin-top:7px;
-
-    min-height:14px;
-}
-
-.settings-host-controls{
-
-    display:none;
-
-    margin-top:10px;
-}
-
-.settings-host-controls.show{
-
-    display:block;
-}
-
-.settings-host-controls .settings-action{
-
-    width:100%;
-}
-
-@keyframes settingsIn{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(-8px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:none;
-    }
-
-}
-
-
-/* =========================================================
-   VIEWER
-========================================================= */
-
-.section-viewer{
-
-    display:none;
-
-    margin:28px auto 0;
-
-    max-width:800px;
-
-    border:1px solid #ff2638;
-
-    border-radius:16px;
-
-    background:#0d0f12;
-
-    padding:14px;
-
-    box-shadow:
-        0 20px 55px #0008;
-}
-
-.section-viewer.show{
-
-    display:block;
-
-    animation:
-        galleryIn .25s ease-out;
-}
-
-.section-viewer-head{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:2px 4px 12px;
-}
-
-.section-viewer-head h3{
-
-    margin:0;
-
-    color:#ff2638;
-
-    font-size:16px;
-
-    max-width:90%;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-}
-
-.section-viewer-head button{
-
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    width:32px;
-
-    height:32px;
+.num{
+    width:30px;
+    height:30px;
 
     border-radius:50%;
 
-    font-size:21px;
-
-    cursor:pointer;
-}
-
-.section-viewer-content{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:180px;
-}
-
-.section-view-media{
-
-    max-width:100%;
-
-    max-height:500px;
-
-    border-radius:10px;
-
-    display:block;
-}
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.hero-logo{
+    background:#ff2638;
 
     display:grid;
 
     place-items:center;
 
-    min-height:400px;
+    margin:
+    0 auto 17px;
+
+    font-weight:bold;
 }
 
-.hero-logo img{
+.step .icon{
+    font-size:29px;
 
-    width:min(360px,75vw);
+    color:#ff2638;
 
-    height:auto;
-
-    display:block;
-
-    filter:
-        drop-shadow(
-            0 0 35px
-            rgba(255,38,56,.28)
-        );
-
-    animation:
-        logoFloat 4s ease-in-out infinite;
+    margin-bottom:10px;
 }
 
-@keyframes logoFloat{
+.step p{
+    color:#aaa;
 
-    0%,100%{
-        transform:
-            translateY(0)
-            scale(1);
-    }
+    font-size:13px;
 
-    50%{
-        transform:
-            translateY(-9px)
-            scale(1.025);
-    }
-
+    line-height:1.5;
 }
 
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* ================= CONTACT ================= */
 
 .contact-grid{
-
     max-width:950px;
 
     margin:auto;
@@ -1402,13 +1075,12 @@ select.link-input{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
     gap:18px;
 }
 
 .contact-card{
-
     display:flex;
 
     align-items:center;
@@ -1431,70 +1103,171 @@ select.link-input{
 }
 
 .contact-card:hover{
-
     transform:translateY(-5px);
 
     border-color:#ff2638;
-
-    box-shadow:
-        0 12px 30px #ff26381c;
 }
 
 .contact-icon{
-
     width:45px;
-
     height:45px;
 
     border-radius:50%;
 
     display:grid;
-
     place-items:center;
 
     background:#ff2638;
-
-    color:#fff;
-
-    font-size:22px;
 
     flex:none;
 }
 
 .contact-card h3{
-
-    margin:0 0 6px;
+    margin-bottom:6px;
 }
 
 .contact-card p{
-
-    margin:0;
-
     color:#aaa;
-
-    word-break:break-word;
 
     font-size:13px;
 
     line-height:1.45;
+
+    word-break:break-word;
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ================= SETTINGS ================= */
+
+.settings-menu{
+    position:fixed;
+
+    top:76px;
+    right:6%;
+
+    width:min(350px,90vw);
+
+    z-index:200;
+
+    display:none;
+
+    padding:18px;
+
+    border:1px solid #3a3c42;
+
+    border-radius:16px;
+
+    background:#101114;
+
+    box-shadow:
+    0 20px 60px #000b;
+
+    backdrop-filter:blur(15px);
+}
+
+.settings-menu.show{
+    display:block;
+
+    animation:
+    settingsIn .22s ease-out;
+}
+
+.settings-head{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.settings-head h3{
+    color:#ff2638;
+}
+
+.settings-head button{
+    border:0;
+
+    background:none;
+
+    color:#fff;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.settings-card{
+    padding:17px;
+
+    border:1px solid #34363c;
+
+    border-radius:12px;
+
+    background:#111317;
+}
+
+.settings-card h4{
+    margin-bottom:6px;
+}
+
+.settings-card p{
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-bottom:12px;
+}
+
+.settings-action{
+    width:100%;
+
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    padding:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+@keyframes settingsIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-8px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+
+/* ================= FOOTER ================= */
 
 footer{
+    padding:
+    45px 7% 20px;
 
-    padding:45px 7% 20px;
-
-    border-top:1px solid #292a30;
+    border-top:
+    1px solid #292a30;
 
     background:#090a0c;
 }
 
 .footer-grid{
-
     max-width:1100px;
 
     margin:auto;
@@ -1502,50 +1275,28 @@ footer{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
     gap:35px;
 }
 
 .footer-grid h3{
-
     color:#ff2638;
 }
 
 .footer-grid p{
-
     color:#aaa;
 
     line-height:1.7;
 }
 
-.leader{
-
-    font-size:20px;
-
-    color:#fff;
-
-    font-weight:bold;
-}
-
-.leader span{
-
-    display:block;
-
-    color:#ff2638;
-
-    font-size:13px;
-
-    margin-top:5px;
-}
-
 .copy{
-
     text-align:center;
 
     color:#666;
 
-    border-top:1px solid #222;
+    border-top:
+    1px solid #222;
 
     margin-top:30px;
 
@@ -1555,141 +1306,75 @@ footer{
 }
 
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:.7s;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
 
     .hero{
-
         grid-template-columns:1fr;
-
         text-align:center;
     }
 
     .hero p{
-
         margin:auto;
     }
 
     .bpm{
-
         margin:20px auto;
     }
 
     .about{
-
         grid-template-columns:1fr;
     }
 
     .features,
     .steps{
-
         grid-template-columns:
-            1fr 1fr;
-    }
-
-    .footer-grid{
-
-        grid-template-columns:
-            1fr 1fr;
+        1fr 1fr;
     }
 
     .contact-grid{
-
         grid-template-columns:
-            1fr 1fr;
+        1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:
+        1fr 1fr;
     }
 
 }
 
 @media(max-width:500px){
 
-    .features,
-    .steps,
-    .footer-grid,
-    .contact-grid{
-
-        grid-template-columns:1fr;
-    }
-
     .hero h1{
-
         font-size:45px;
     }
 
-    .links{
-
-        display:none;
+    .features,
+    .steps,
+    .contact-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
     }
 
-    .gallery{
-
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .live-link{
-
-        margin-left:0;
-
-        margin-top:10px;
-    }
-
-    .hero{
-
-        padding-top:55px;
-    }
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:25px;
-
-    transform:
-        translate(-50%,30px);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    z-index:9999;
-
-    background:#111317;
-
-    border:1px solid #ff2638;
-
-    color:#fff;
-
-    padding:12px 18px;
-
-    border-radius:10px;
-
-    font-size:13px;
-
-    box-shadow:
-        0 15px 40px #000;
-    
-    transition:.3s;
-}
-
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
 }
 
 </style>
@@ -1700,20 +1385,18 @@ footer{
 <body>
 
 
-<!-- =======================================================
-     NAVBAR
-======================================================= -->
+<!-- ================= NAVBAR ================= -->
 
 <nav>
 
 <div class="brand">
-    Working Model of <span>Heart</span>
+Working Model of <span>Heart</span>
 </div>
 
 <button
 class="settings-btn"
-aria-label="Open settings"
 onclick="toggleSettings()"
+aria-label="Settings"
 >
 
 <span></span>
@@ -1725,9 +1408,46 @@ onclick="toggleSettings()"
 </nav>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<!-- ================= SETTINGS ================= -->
+
+<div
+id="settingsMenu"
+class="settings-menu"
+>
+
+<div class="settings-head">
+
+<h3>Settings</h3>
+
+<button onclick="toggleSettings()">
+×
+</button>
+
+</div>
+
+
+<div class="settings-card">
+
+<h4>🔐 Host Control</h4>
+
+<p>
+Only the authorized Firebase account can add,
+edit or remove project links.
+</p>
+
+<button
+class="settings-action"
+onclick="openHostPanel()"
+>
+Open Host Panel
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
 
 <header
 class="hero"
@@ -1746,8 +1466,8 @@ of the <span>Human Heart</span>
 </h1>
 
 <p>
-This project demonstrates the working of the human heart
-and how it pumps blood throughout the body.
+This project demonstrates the working of the human
+heart and how it pumps blood throughout the body.
 </p>
 
 <a
@@ -1755,15 +1475,6 @@ class="btn"
 href="#model"
 >
 Explore the Model ↓
-</a>
-
-<a
-class="btn live-link"
-href="https://working-model-of-heart-251c4.web.app"
-target="_blank"
-rel="noopener"
->
-🌐 Open Public Website
 </a>
 
 <div class="bpm">
@@ -1774,9 +1485,11 @@ rel="noopener"
 
 <div>
 Heartbeat<br>
+
 <strong>
 <span id="bpm">72</span> BPM
 </strong>
+
 </div>
 
 </div>
@@ -1795,83 +1508,55 @@ preserveAspectRatio="none"
 points="
 0,52
 70,52
-88,52
 98,45
 108,52
-126,52
 138,38
 146,65
 154,52
-175,52
-188,52
 202,52
 212,18
 222,82
 232,52
-252,52
-275,52
 290,52
 302,43
 314,52
-330,52
-345,52
-360,52
 370,52
 380,52
 390,52
-400,52
 414,18
 424,82
 434,52
-454,52
-480,52
 505,52
 520,52
-534,52
 548,52
-560,52
 574,38
 582,65
 590,52
-612,52
-630,52
 645,52
-660,52
 670,18
 680,82
 690,52
-710,52
-735,52
 760,52
 775,52
 788,45
 798,52
-816,52
 830,38
 838,65
 846,52
-870,52
 900,52
-930,52
 945,52
 958,18
 968,82
 978,52
-1000,52
 1030,52
-1060,52
-1080,52
 1092,45
 1100,52
-1120,52
 1134,38
 1142,65
 1150,52
 1200,52
 "
->
-
-</polyline>
+></polyline>
 
 </svg>
 
@@ -1880,145 +1565,24 @@ points="
 </header>
 
 
-<!-- =======================================================
-     PROJECT BAR
-======================================================= -->
-
 <div class="bar">
 
-<span>Science Exhibition 2026</span>
+<span>
+Science Exhibition 2026
+</span>
 
 <b>|</b>
 
 Aayushman Jha
 
-<span>(Leader)</span>
-
-</div>
-
-
-<!-- =======================================================
-     SETTINGS MENU
-======================================================= -->
-
-<div
-id="settingsMenu"
-class="settings-menu"
->
-
-<div class="settings-head">
-
-<h3>
-Settings
-</h3>
-
-<button onclick="toggleSettings()">
-×
-</button>
-
-</div>
-
-
-<div class="settings-card">
-
-<div class="settings-icon">
-🔐
-</div>
-
-<div style="width:100%">
-
-<h4>
-Host Upload
-</h4>
-
-<p>
-Only the host can add, edit or remove
-photo and video links.
-</p>
-
-
-<div class="settings-password">
-
-<label>
-HOST PASSWORD
-</label>
-
-<input
-id="settingsPassword"
-type="password"
-placeholder="Enter password"
->
-
-<button
-class="settings-action"
-onclick="unlockFromSettings()"
->
-Unlock Host Controls
-</button>
-
-<div id="settingsPasswordMessage"></div>
-
-</div>
-
-
-<div
-id="settingsHostControls"
-class="settings-host-controls"
->
-
-<button
-class="settings-action"
-onclick="openHostFromSettings()"
->
-📸 Manage Photos & Videos
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =======================================================
-     TEAM
-======================================================= -->
-
-<section
-id="team"
-class="reveal"
->
-
-<h2 class="title">
-<span>Aayushman Jha</span>
-</h2>
-
-<p class="sub">
-Project Leader · Team Red Diamond · Science Exhibition 2026
-</p>
-
-<div style="text-align:center">
-
-<div class="leader">
-
-Project Leader
-
 <span>
-Leader
+(Leader)
 </span>
 
 </div>
 
-</div>
 
-</section>
-
-
-<!-- =======================================================
-     MODEL
-======================================================= -->
+<!-- ================= ABOUT ================= -->
 
 <section
 id="model"
@@ -2047,9 +1611,7 @@ practical way.
 
 <div class="feature">
 
-<div class="icon">
-♥
-</div>
+<div class="icon">♥</div>
 
 <h3>
 Realistic Action
@@ -2064,9 +1626,7 @@ Pumping demonstration
 
 <div class="feature">
 
-<div class="icon">
-◉
-</div>
+<div class="icon">◉</div>
 
 <h3>
 Blood Flow
@@ -2081,9 +1641,7 @@ Shows circulation
 
 <div class="feature">
 
-<div class="icon">
-⚙
-</div>
+<div class="icon">⚙</div>
 
 <h3>
 Mechanism
@@ -2098,9 +1656,7 @@ Easy to understand
 
 <div class="feature">
 
-<div class="icon">
-▣
-</div>
+<div class="icon">▣</div>
 
 <h3>
 Educational
@@ -2121,9 +1677,7 @@ Science project
 </section>
 
 
-<!-- =======================================================
-     MEDIA
-======================================================= -->
+<!-- ================= MEDIA ================= -->
 
 <section
 id="media"
@@ -2131,12 +1685,13 @@ class="reveal"
 >
 
 <h2 class="title">
-<span>Photo & Video</span> of Project
+<span>Photo & Video</span>
+of Project
 </h2>
 
 <p class="sub">
-Everyone can view the project gallery.
-Only the host can add, edit and remove media links.
+Project photos and videos are loaded directly from
+Firebase. Only the host can manage the links.
 </p>
 
 
@@ -2170,7 +1725,7 @@ onclick="filterMedia('video',this)"
 id="firebaseStatus"
 class="firebase-status"
 >
-☁️ Connecting to Firebase…
+☁️ Connecting to Firebase...
 </div>
 
 
@@ -2189,31 +1744,62 @@ No photos or videos have been added yet.
 </div>
 
 
-<!-- =====================================================
-     HOST PANEL
-===================================================== -->
+<!-- ================= VIEWER ================= -->
+
+<div
+id="sectionViewer"
+class="section-viewer"
+>
+
+<div class="section-viewer-head">
+
+<h3 id="viewerTitle">
+Preview
+</h3>
+
+<button onclick="closeViewer()">
+×
+</button>
+
+</div>
+
+<div
+id="viewerContent"
+class="section-view-content"
+>
+</div>
+
+</div>
+
+
+<!-- ================= HOST ================= -->
 
 <div
 id="hostPanel"
 class="host-panel"
 >
 
-<div class="settings-head">
+<div class="host-head">
 
 <h3>
-🔐 Host Media Control
+🔐 Host Media Links
 </h3>
 
-<button onclick="closeHostPanel()">
+<button
+class="host-close"
+onclick="closeHostPanel()"
+>
 ×
 </button>
 
 </div>
 
 
-<p>
-Add image or video <b>links</b> below.
-The links are stored as text in Firebase Firestore.
+<p class="host-description">
+
+Host login is protected by Firebase Authentication.
+The password is never stored in this HTML file.
+
 </p>
 
 
@@ -2222,39 +1808,71 @@ The links are stored as text in Firebase Firestore.
 <div id="hostLogin">
 
 <input
+id="hostEmail"
+class="host-input"
+type="email"
+placeholder="Host email"
+autocomplete="username"
+>
+
+<input
 id="hostPassword"
+class="host-input"
 type="password"
-placeholder="Enter host password"
+placeholder="Host password"
+autocomplete="current-password"
 >
 
 <button
-class="unlock-btn"
-onclick="unlockHost()"
+class="host-btn"
+onclick="hostLogin()"
 >
-Unlock Host
+🔓 Login
 </button>
-
-<div id="hostMessage"></div>
 
 </div>
 
 
-<!-- HOST CONTROLS -->
+<div
+id="hostMessage"
+class="host-message"
+>
+</div>
+
+
+<!-- ADMIN -->
 
 <div
-id="uploadArea"
-class="upload-area"
-style="display:none"
+id="adminPanel"
+class="admin-panel"
 >
 
 <div class="host-status">
-✓ Host access granted
+✓ Host authenticated
 </div>
 
 
+<div class="link-form">
+
+<label>
+TITLE
+</label>
+
+<input
+id="linkTitle"
+class="host-input"
+type="text"
+placeholder="Example: Heart Model Photo"
+>
+
+
+<label>
+TYPE
+</label>
+
 <select
-id="mediaType"
-class="link-input"
+id="linkType"
+class="link-select"
 >
 
 <option value="photo">
@@ -2268,75 +1886,53 @@ class="link-input"
 </select>
 
 
-<input
-id="mediaTitle"
-class="link-input"
-type="text"
-placeholder="Media title"
->
-
+<label>
+IMAGE / VIDEO LINK
+</label>
 
 <input
-id="mediaUrl"
-class="link-input"
+id="mediaLink"
+class="host-input"
 type="url"
-placeholder="Paste image or video link"
+placeholder="https://..."
 >
 
+
+<div class="admin-actions">
 
 <button
-id="saveMediaButton"
-class="save-media"
-onclick="saveMedia()"
+id="saveLinkBtn"
+class="host-btn"
+onclick="saveLink()"
 >
-➕ Add to Gallery
+➕ Add Link
 </button>
 
+<button
+class="host-btn logout-btn"
+onclick="hostLogout()"
+>
+Logout
+</button>
 
-<div class="host-manage">
+</div>
+
+</div>
+
+
+<div class="manage-list">
 
 <h4>
-Manage Gallery
+Manage Links
 </h4>
 
-<div id="hostMediaList"></div>
-
-</div>
-
-
-<p class="host-note">
-Only the title, type and URL are stored in Firebase.
-No image or video file is uploaded to Firebase Storage.
-</p>
-
-</div>
-
-</div>
-
-
-<!-- VIEWER -->
-
 <div
-id="sectionViewer"
-class="section-viewer"
+id="manageList"
 >
-
-<div class="section-viewer-head">
-
-<h3 id="sectionViewerTitle">
-Preview
-</h3>
-
-<button onclick="closeSectionViewer()">
-×
-</button>
+</div>
 
 </div>
 
-<div
-id="sectionViewerContent"
-class="section-viewer-content"
->
 </div>
 
 </div>
@@ -2344,9 +1940,7 @@ class="section-viewer-content"
 </section>
 
 
-<!-- =======================================================
-     FUNCTION
-======================================================= -->
+<!-- ================= FUNCTION ================= -->
 
 <section
 id="working"
@@ -2452,15 +2046,12 @@ maintain circulation.
 
 </div>
 
-
 </div>
 
 </section>
 
 
-<!-- =======================================================
-     CONTACT
-======================================================= -->
+<!-- ================= CONTACT ================= -->
 
 <section
 id="contact"
@@ -2491,9 +2082,7 @@ href="mailto:aayushmanjha1108@gmail.com"
 
 <div>
 
-<h3>
-Email
-</h3>
+<h3>Email</h3>
 
 <p>
 aayushmanjha1108@gmail.com
@@ -2515,9 +2104,7 @@ href="tel:+919931203827"
 
 <div>
 
-<h3>
-Phone
-</h3>
+<h3>Phone</h3>
 
 <p>
 +91 99312 03827
@@ -2536,9 +2123,7 @@ Phone
 
 <div>
 
-<h3>
-Team
-</h3>
+<h3>Team</h3>
 
 <p>
 Team Red Diamond
@@ -2554,9 +2139,7 @@ Team Red Diamond
 </section>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -2583,14 +2166,8 @@ and working of the human heart.
 Team
 </h3>
 
-<p class="leader">
-
+<p>
 Team Red Diamond
-
-<span>
-Project Leader · Leader
-</span>
-
 </p>
 
 </div>
@@ -2630,242 +2207,118 @@ style="color:#aaa;text-decoration:none"
 
 <div class="copy">
 
-© 2026 Working Model of Heart · Team Red Diamond
+© 2026 Working Model of Heart ·
+Team Red Diamond
 
 </div>
 
 </footer>
 
 
-<div
-id="toast"
-class="toast"
->
-Done
-</div>
-
-
-<!-- =======================================================
-     BASIC UI JAVASCRIPT
-======================================================= -->
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
-
-"use strict";
-
-
-/* =========================================================
-   BPM
-========================================================= */
 
 const bpm =
 document.getElementById("bpm");
 
-setInterval(()=>{
-
+setInterval(
+()=>{
     bpm.textContent =
-        70 +
-        Math.floor(
-            Math.random()*7
-        );
+    70 +
+    Math.floor(
+        Math.random()*7
+    );
+},
+1200
+);
 
-},1200);
 
+/* reveal animation */
 
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
-
-const obs =
+const observer =
 new IntersectionObserver(
-    entries=>{
+entries=>{
 
-        entries.forEach(
-            entry=>{
+    entries.forEach(
+    entry=>{
 
-                if(
-                    entry.isIntersecting
-                ){
+        if(entry.isIntersecting){
 
-                    entry.target
-                        .classList
-                        .add("show");
+            entry.target
+            .classList
+            .add("show");
 
-                }
+        }
 
-            }
-        );
+    });
 
-    },
-    {
-        threshold:.12
-    }
+},
+{
+    threshold:.12
+}
 );
 
 
 document
-    .querySelectorAll(".reveal")
-    .forEach(
-        el=>obs.observe(el)
-    );
+.querySelectorAll(".reveal")
+.forEach(
+el=>observer.observe(el)
+);
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
+/* settings */
 
 function toggleSettings(){
 
-    const menu =
-        document.getElementById(
-            "settingsMenu"
-        );
-
-    menu.classList.toggle("show");
-
-}
-
-
-function unlockFromSettings(){
-
-    const pass =
-        document.getElementById(
-            "settingsPassword"
-        ).value;
-
-    const msg =
-        document.getElementById(
-            "settingsPasswordMessage"
-        );
-
-
-    if(
-        typeof HOST_PASSWORD ===
-        "undefined"
-    ){
-
-        msg.textContent =
-            "Password configuration missing.";
-
-        msg.style.color =
-            "#ff5262";
-
-        return;
-
-    }
-
-
-    if(
-        pass === HOST_PASSWORD
-    ){
-
-        hostUnlocked = true;
-
-        document
-            .getElementById(
-                "settingsHostControls"
-            )
-            .classList
-            .add("show");
-
-        msg.textContent =
-            "✓ Host controls unlocked.";
-
-        msg.style.color =
-            "#69e58a";
-
-    }
-    else{
-
-        hostUnlocked = false;
-
-        document
-            .getElementById(
-                "settingsHostControls"
-            )
-            .classList
-            .remove("show");
-
-        msg.textContent =
-            "Incorrect password.";
-
-        msg.style.color =
-            "#ff5262";
-
-    }
-
-}
-
-
-function openHostFromSettings(){
-
     document
-        .getElementById(
-            "settingsMenu"
-        )
-        .classList
-        .remove("show");
-
-    openHostPanel();
+    .getElementById("settingsMenu")
+    .classList
+    .toggle("show");
 
 }
 
 
 document.addEventListener(
-    "click",
-    function(e){
+"click",
+event=>{
 
-        const menu =
-            document.getElementById(
-                "settingsMenu"
-            );
+    const menu =
+    document.getElementById(
+        "settingsMenu"
+    );
 
-        const btn =
-            document.querySelector(
-                ".settings-btn"
-            );
+    const button =
+    document.querySelector(
+        ".settings-btn"
+    );
 
-        if(
-            menu &&
-            menu.classList.contains("show") &&
-            !menu.contains(e.target) &&
-            !btn.contains(e.target)
-        ){
+    if(
+        menu.classList.contains("show") &&
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+    ){
 
-            menu.classList.remove("show");
-
-        }
+        menu.classList.remove("show");
 
     }
-);
+
+});
 
 
-/* =========================================================
-   HOST VARIABLES
-========================================================= */
-
-let hostUnlocked = false;
-
-let currentMediaFilter =
-    "all";
-
-let editingId = null;
-
-let mediaStore = [];
-
-
-/* =========================================================
-   HOST PANEL
-========================================================= */
+/* host */
 
 function openHostPanel(){
 
     document
-        .getElementById(
-            "hostPanel"
-        )
-        .classList
-        .add("show");
+    .getElementById("settingsMenu")
+    .classList
+    .remove("show");
+
+    document
+    .getElementById("hostPanel")
+    .classList
+    .add("show");
 
 }
 
@@ -2873,422 +2326,64 @@ function openHostPanel(){
 function closeHostPanel(){
 
     document
-        .getElementById(
-            "hostPanel"
-        )
-        .classList
-        .remove("show");
-
-    hostUnlocked = false;
-
-    document
-        .getElementById(
-            "hostLogin"
-        )
-        .style
-        .display = "block";
-
-    document
-        .getElementById(
-            "uploadArea"
-        )
-        .style
-        .display = "none";
-
-    document
-        .getElementById(
-            "hostPassword"
-        )
-        .value = "";
-
-    document
-        .getElementById(
-            "hostMessage"
-        )
-        .textContent = "";
-
-    cancelEdit();
+    .getElementById("hostPanel")
+    .classList
+    .remove("show");
 
 }
 
 
-function unlockHost(){
-
-    const pass =
-        document
-            .getElementById(
-                "hostPassword"
-            )
-            .value;
-
-    const msg =
-        document
-            .getElementById(
-                "hostMessage"
-            );
-
-
-    if(
-        typeof HOST_PASSWORD ===
-        "undefined"
-    ){
-
-        msg.textContent =
-            "password.js is missing.";
-
-        msg.style.color =
-            "#ff5262";
-
-        return;
-
-    }
-
-
-    if(
-        pass === HOST_PASSWORD
-    ){
-
-        hostUnlocked = true;
-
-        document
-            .getElementById(
-                "hostLogin"
-            )
-            .style
-            .display = "none";
-
-        document
-            .getElementById(
-                "uploadArea"
-            )
-            .style
-            .display = "grid";
-
-        renderHostMediaList();
-
-    }
-    else{
-
-        msg.textContent =
-            "Incorrect password.";
-
-        msg.style.color =
-            "#ff5262";
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVE MEDIA
-========================================================= */
-
-async function saveMedia(){
-
-    if(!hostUnlocked){
-
-        showToast(
-            "Host access required."
-        );
-
-        return;
-
-    }
-
-
-    const type =
-        document
-            .getElementById(
-                "mediaType"
-            )
-            .value;
-
-
-    const title =
-        document
-            .getElementById(
-                "mediaTitle"
-            )
-            .value
-            .trim();
-
-
-    const url =
-        document
-            .getElementById(
-                "mediaUrl"
-            )
-            .value
-            .trim();
-
-
-    if(!title){
-
-        showToast(
-            "Enter a title."
-        );
-
-        return;
-
-    }
-
-
-    if(!url){
-
-        showToast(
-            "Paste a media link."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !/^https?:\/\//i.test(url)
-    ){
-
-        showToast(
-            "Enter a valid http/https link."
-        );
-
-        return;
-
-    }
-
-
-    const btn =
-        document.getElementById(
-            "saveMediaButton"
-        );
-
-    btn.disabled = true;
-
-    btn.textContent =
-        editingId
-        ? "Saving changes…"
-        : "Adding…";
-
-
-    try{
-
-        if(editingId){
-
-            await updateFirebaseMedia(
-                editingId,
-                {
-                    title:title,
-                    type:type,
-                    url:url
-                }
-            );
-
-            showToast(
-                "✓ Media updated."
-            );
-
-        }
-        else{
-
-            await addFirebaseMedia(
-                {
-                    title:title,
-                    type:type,
-                    url:url
-                }
-            );
-
-            showToast(
-                "✓ Media added."
-            );
-
-        }
-
-
-        clearMediaForm();
-
-        await loadFirebaseMedia();
-
-    }
-    catch(error){
-
-        console.error(error);
-
-        showToast(
-            "Firebase operation failed."
-        );
-
-    }
-
-
-    btn.disabled = false;
-
-    btn.textContent =
-        "➕ Add to Gallery";
-
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-function clearMediaForm(){
-
-    editingId = null;
-
-    document
-        .getElementById(
-            "mediaTitle"
-        )
-        .value = "";
-
-    document
-        .getElementById(
-            "mediaUrl"
-        )
-        .value = "";
-
-    document
-        .getElementById(
-            "mediaType"
-        )
-        .value = "photo";
-
-    document
-        .getElementById(
-            "saveMediaButton"
-        )
-        .textContent =
-            "➕ Add to Gallery";
-
-}
-
-
-function cancelEdit(){
-
-    editingId = null;
-
-    const title =
-        document.getElementById(
-            "mediaTitle"
-        );
-
-    const url =
-        document.getElementById(
-            "mediaUrl"
-        );
-
-    if(title) title.value = "";
-
-    if(url) url.value = "";
-
-    const btn =
-        document.getElementById(
-            "saveMediaButton"
-        );
-
-    if(btn){
-
-        btn.textContent =
-            "➕ Add to Gallery";
-
-    }
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
+/* filter */
 
 function filterMedia(
-    filter,
+    type,
     button
 ){
 
-    currentMediaFilter =
-        filter;
-
     document
-        .querySelectorAll(
-            ".media-filter"
-        )
-        .forEach(
-            b=>b.classList.remove(
-                "active"
-            )
-        );
-
-    button.classList.add(
-        "active"
+    .querySelectorAll(".media-filter")
+    .forEach(
+        b=>b.classList.remove("active")
     );
 
-    renderMedia(
-        filter,
-        true
-    );
+    button.classList.add("active");
+
+    window.setGalleryFilter(type);
 
 }
 
 
-/* =========================================================
-   RENDER MEDIA
-========================================================= */
+/* viewer */
 
-function renderMedia(
-    filter="all",
-    reveal=false
-){
+function closeViewer(){
 
-    const gallery =
-        document.getElementById(
-            "gallery"
-        );
-
-    const empty =
-        document.getElementById(
-            "galleryEmpty"
-        );
-
-
-    gallery.innerHTML = "";
-
-
-    const items =
-        mediaStore.filter(
-            item =>
-                filter === "all" ||
-                item.type === filter
-        );
-
-
-    gallery.classList.toggle(
-        "media-visible",
-        reveal
+    const viewer =
+    document.getElementById(
+        "sectionViewer"
     );
 
-
-    empty.classList.toggle(
-        "media-visible",
-        reveal &&
-        items.length === 0
+    const content =
+    document.getElementById(
+        "viewerContent"
     );
 
+    viewer.classList.remove("show");
 
-    items.forEach(
-        item=>{
+    content.innerHTML="";
 
-            const card =
-                document.createElement(
-                    "div"
-                );
+}
 
-            card.className =
-                "gallery-item";
+</script>
 
 
-            const media =
-                document.createElement(
-                    item.type === "video
+<!-- Firebase + database code -->
+
+<script
+type="module"
+src="password.js"
+></script>
+
+
+</body>
+
+</html>
