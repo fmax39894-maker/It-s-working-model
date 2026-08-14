@@ -1,2905 +1,828 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Working Model of Heart</title>
-
 <style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#08090b;color:#fff;font-family:Arial,sans-serif}
+nav{height:64px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#090a0cdd;border-bottom:1px solid #292a2e;position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}
+.brand{font-size:19px;font-weight:700}.brand span,h1 span,.red{color:#ff2638}.links{display:flex;gap:28px}.links a{color:#eee;text-decoration:none;font-size:14px}.links a:hover{color:#ff2638}
+.hero{min-height:600px;padding:70px 7%;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 35%,#420b12,transparent 40%)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.18;background-image:linear-gradient(#ff263812 1px,transparent 1px),linear-gradient(90deg,#ff263812 1px,transparent 1px);background-size:42px 42px}
+.hero>*{position:relative}.eyebrow{font-size:12px;letter-spacing:3px;color:#ff6b76;font-weight:bold}.hero h1{font-size:clamp(48px,6vw,78px);line-height:.98;margin:18px 0}.hero p{max-width:560px;color:#cfd0d5;font-size:18px;line-height:1.65}
+.btn{display:inline-block;margin-top:25px;padding:14px 22px;background:#ff2638;border-radius:9px;color:#fff;text-decoration:none;font-weight:bold;box-shadow:0 12px 30px #ff263833}.btn:hover{transform:translateY(-3px)}
+.bpm{margin-top:22px;width:170px;padding:12px;border:1px solid #383a40;border-radius:10px;background:#111317;display:flex;gap:10px;align-items:center}.pulse{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#ff2638;animation:pulse 1s infinite}@keyframes pulse{50%{transform:scale(1.15);box-shadow:0 0 25px #ff263888}}
+14%{transform:rotate(-45deg) scale(1.1)}28%{transform:rotate(-45deg) scale(1)}42%{transform:rotate(-45deg) scale(1.06)}}
+.ecg{position:absolute;bottom:18px;left:0;width:100%;height:75px}.ecg svg{width:100%;height:100%}.ecg polyline{fill:none;stroke:#ff2638;stroke-width:3;stroke-dasharray:900;stroke-dashoffset:900;animation:ecg 2.2s linear infinite;filter:drop-shadow(0 0 7px #ff2638)}@keyframes ecg{to{stroke-dashoffset:0}}
+.bar{width:86%;margin:auto;padding:14px;text-align:center;background:#111317;border:1px solid #303238;color:#aaa}.bar span{color:#ff2638;font-weight:bold}.bar b{margin:0 15px;color:#555}
+section{padding:80px 7%;border-top:1px solid #202126}.title{text-align:center;font-size:38px}.title span{color:#ff2638}.sub{max-width:700px;margin:0 auto 42px;text-align:center;color:#aeb1b8;line-height:1.6}
+.about{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center}.about h2{font-size:34px}.about p{color:#c5c7cc;line-height:1.7}
+.features,.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature,.step{padding:22px;border:1px solid #34363c;border-radius:13px;background:#111317;text-align:center;transition:.3s}.feature:hover,.step:hover{transform:translateY(-6px);border-color:#ff2638}.feature .icon,.step .icon{font-size:29px;color:#ff2638;margin-bottom:10px}.feature p,.step p{color:#aaa;font-size:13px;line-height:1.5}
+.num{width:30px;height:30px;border-radius:50%;background:#ff2638;display:grid;place-items:center;margin:0 auto 17px;font-weight:bold}
+.logo-section img{width:220px;border-radius:50%;box-shadow:0 0 50px #ff263833}
+footer{padding:45px 7% 20px;border-top:1px solid #292a30;background:#090a0c}.footer-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:35px}.footer-grid h3{color:#ff2638}.footer-grid p{color:#aaa;line-height:1.7}.leader{font-size:20px;color:#fff;font-weight:bold}.leader span{display:block;color:#ff2638;font-size:13px;margin-top:5px}.copy{text-align:center;color:#666;border-top:1px solid #222;margin-top:30px;padding-top:18px;font-size:12px}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.bpm{margin:20px auto}.hero-heart{min-height:300px}.about{grid-template-columns:1fr}.features,.steps{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.links{gap:12px}.links a:nth-child(n+4){display:none}}
+@media(max-width:500px){.features,.steps,.footer-grid{grid-template-columns:1fr}.links{display:none}.hero h1{font-size:45px}}
 
-*{
-    box-sizing:border-box;
-}
+.contact-grid{max-width:950px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-card{display:flex;align-items:center;gap:15px;padding:24px;border:1px solid #34363c;border-radius:14px;background:#111317;text-decoration:none;color:#fff;transition:.3s}
+.contact-card:hover{transform:translateY(-5px);border-color:#ff2638;box-shadow:0 12px 30px #ff26381c}
+.contact-icon{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;background:#ff2638;color:#fff;font-size:22px;flex:none}
+.contact-card h3{margin:0 0 6px}.contact-card p{margin:0;color:#aaa;word-break:break-word;font-size:13px;line-height:1.45}
+.ecg polyline{stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.contact-grid{grid-template-columns:1fr}}
 
-html{
-    scroll-behavior:smooth;
-}
+.media-view-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 28px}
+.media-filter,.host-btn,.unlock-btn,.save-media{border:1px solid #3a3c42;background:#111317;color:#fff;padding:11px 17px;border-radius:9px;cursor:pointer;font-weight:700;transition:.25s}
+.media-filter:hover,.media-filter.active,.host-btn:hover,.unlock-btn,.save-media{background:#ff2638;border-color:#ff2638}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,190px));justify-content:center;gap:15px}
+.gallery-item{background:#111317;border:1px solid #34363c;border-radius:13px;overflow:hidden;cursor:pointer;animation:galleryIn .45s}
+.gallery-item img,.gallery-item video{width:100%;height:125px;display:block;object-fit:cover}
+.gallery-caption{padding:9px;color:#aaa;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gallery-empty{text-align:center;color:#777;padding:35px}
+.host-panel{display:none;position:relative;max-width:520px;margin:35px auto 0;padding:28px;border:1px solid #ff2638;border-radius:16px;background:#101114;box-shadow:0 20px 50px #000}
+.host-panel.show{display:block;animation:galleryIn .3s}
+.host-panel h3{color:#ff2638;margin-bottom:8px}.host-panel p{color:#aaa;line-height:1.5}
+.host-panel input[type=password]{width:100%;padding:12px;margin:14px 0;background:#08090b;border:1px solid #383a40;border-radius:8px;color:#fff}
+.close-host{position:absolute;right:14px;top:10px;border:0;background:none;color:#fff;font-size:28px;cursor:pointer}
+.upload-area{margin-top:18px;display:grid;gap:12px}.upload-area label{padding:14px;border:1px dashed #4a4c52;border-radius:9px;text-align:center;color:#ddd;cursor:pointer}.upload-area input{display:block;width:100%;margin-top:8px}.save-media{margin-top:4px}.host-note{font-size:11px!important;color:#777!important}
+#hostMessage{margin-top:12px;color:#ff8793;font-size:13px}
+@keyframes galleryIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@media(max-width:500px){.gallery{grid-template-columns:repeat(2,1fr)}}
 
-body{
-    margin:0;
-    background:#08090b;
-    color:#fff;
-    font-family:Arial,sans-serif;
-}
-
-
-/* ================= NAVBAR ================= */
-
-nav{
-    height:64px;
-    padding:0 6%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:#090a0cdd;
-
-    border-bottom:
-    1px solid #292a2e;
-
-    position:sticky;
-    top:0;
-    z-index:20;
-
-    backdrop-filter:blur(10px);
-}
-
-.brand{
-    font-size:19px;
-    font-weight:700;
-}
-
-.brand span,
-h1 span,
-.red{
-    color:#ff2638;
-}
-
-
-/* ================= SETTINGS BUTTON ================= */
+.hero-logo{display:grid;place-items:center;min-height:400px}
+.hero-logo img{width:min(360px,75vw);height:auto;display:block;filter:drop-shadow(0 0 35px rgba(255,38,56,.28));animation:logoFloat 4s ease-in-out infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-9px) scale(1.025)}}
 
 .settings-btn{
-    width:38px;
-    height:38px;
-
-    border:1px solid #383a40;
-    border-radius:9px;
-
-    background:#111317;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    gap:5px;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.settings-btn span{
-    display:block;
-
-    width:18px;
-    height:2px;
-
-    background:#fff;
-
-    border-radius:3px;
-}
-
-.settings-btn:hover{
-    border-color:#ff2638;
-    background:#181114;
-}
-
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:600px;
-
-    padding:70px 7%;
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-    radial-gradient(
-        circle at 80% 35%,
-        #420b12,
-        transparent 40%
-    );
-}
-
-.hero:before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    opacity:.18;
-
-    background-image:
-    linear-gradient(
-        #ff263812 1px,
-        transparent 1px
-    ),
-    linear-gradient(
-        90deg,
-        #ff263812 1px,
-        transparent 1px
-    );
-
-    background-size:42px 42px;
-}
-
-.hero>*{
-    position:relative;
-}
-
-.eyebrow{
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    color:#ff6b76;
-
-    font-weight:bold;
-}
-
-.hero h1{
-    font-size:
-    clamp(48px,6vw,78px);
-
-    line-height:.98;
-
-    margin:18px 0;
-}
-
-.hero p{
-    max-width:560px;
-
-    color:#cfd0d5;
-
-    font-size:18px;
-
-    line-height:1.65;
-}
-
-
-/* ================= BUTTON ================= */
-
-.btn{
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:14px 22px;
-
-    background:#ff2638;
-
-    border-radius:9px;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    box-shadow:
-    0 12px 30px #ff263833;
-
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-
-/* ================= BPM ================= */
-
-.bpm{
-    margin-top:22px;
-
-    width:170px;
-
-    padding:12px;
-
-    border:
-    1px solid #383a40;
-
-    border-radius:10px;
-
-    background:#111317;
-
-    display:flex;
-
-    gap:10px;
-
-    align-items:center;
-}
-
-.pulse{
-    width:31px;
-    height:31px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#ff2638;
-
-    animation:
-    pulse 1s infinite;
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.15);
-
-        box-shadow:
-        0 0 25px #ff263888;
-    }
-
-}
-
-
-/* ================= ECG ================= */
-
-.ecg{
-    position:absolute;
-
-    bottom:18px;
-    left:0;
-
-    width:100%;
-    height:75px;
-}
-
-.ecg svg{
-    width:100%;
-    height:100%;
-}
-
-.ecg polyline{
-    fill:none;
-
-    stroke:#ff2638;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
-
-    stroke-dasharray:900;
-
-    stroke-dashoffset:900;
-
-    animation:
-    ecg 2.2s linear infinite;
-
-    filter:
-    drop-shadow(
-        0 0 7px #ff2638
-    );
-}
-
-@keyframes ecg{
-
-    to{
-        stroke-dashoffset:0;
-    }
-
-}
-
-
-/* ================= BAR ================= */
-
-.bar{
-    width:86%;
-
-    margin:auto;
-
-    padding:14px;
-
-    text-align:center;
-
-    background:#111317;
-
-    border:
-    1px solid #303238;
-
-    color:#aaa;
-}
-
-.bar span{
-    color:#ff2638;
-
-    font-weight:bold;
-}
-
-.bar b{
-    margin:
-    0 15px;
-
-    color:#555;
-}
-
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:80px 7%;
-
-    border-top:
-    1px solid #202126;
-}
-
-.title{
-    text-align:center;
-
-    font-size:38px;
-}
-
-.title span{
-    color:#ff2638;
-}
-
-.sub{
-    max-width:700px;
-
-    margin:
-    0 auto 42px;
-
-    text-align:center;
-
-    color:#aeb1b8;
-
-    line-height:1.6;
-}
-
-
-/* ================= ABOUT ================= */
-
-.about{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1.2fr;
-
-    gap:50px;
-
-    align-items:center;
-}
-
-.about h2{
-    font-size:34px;
-}
-
-.about p{
-    color:#c5c7cc;
-
-    line-height:1.7;
-}
-
-
-/* ================= FEATURES ================= */
-
-.features,
-.steps{
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:15px;
-}
-
-.feature,
-.step{
-    padding:22px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:13px;
-
-    background:#111317;
-
-    text-align:center;
-
-    transition:.3s;
-}
-
-.feature:hover,
-.step:hover{
-    transform:translateY(-6px);
-
-    border-color:#ff2638;
-}
-
-.feature .icon,
-.step .icon{
-    font-size:29px;
-
-    color:#ff2638;
-
-    margin-bottom:10px;
-}
-
-.feature p,
-.step p{
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-.num{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:
-    0 auto 17px;
-
-    font-weight:bold;
-}
-
-
-/* ================= LOGO ================= */
-
-.logo-section img{
-    width:220px;
-
-    border-radius:50%;
-
-    box-shadow:
-    0 0 50px #ff263833;
-}
-
-.hero-logo{
-    display:grid;
-
-    place-items:center;
-
-    min-height:400px;
-}
-
-.hero-logo img{
-    width:min(360px,75vw);
-
-    height:auto;
-
-    display:block;
-
-    filter:
-    drop-shadow(
-        0 0 35px
-        rgba(255,38,56,.28)
-    );
-
-    animation:
-    logoFloat 4s ease-in-out infinite;
-}
-
-@keyframes logoFloat{
-
-    0%,100%{
-        transform:
-        translateY(0)
-        scale(1);
-    }
-
-    50%{
-        transform:
-        translateY(-9px)
-        scale(1.025);
-    }
-
-}
-
-
-/* ================= CONTACT ================= */
-
-.contact-grid{
-    max-width:950px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:18px;
-}
-
-.contact-card{
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:24px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    transition:.3s;
-}
-
-.contact-card:hover{
-    transform:translateY(-5px);
-
-    border-color:#ff2638;
-
-    box-shadow:
-    0 12px 30px #ff26381c;
-}
-
-.contact-icon{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-size:22px;
-
-    flex:none;
-}
-
-.contact-card h3{
-    margin:
-    0 0 6px;
-}
-
-.contact-card p{
-    margin:0;
-
-    color:#aaa;
-
-    word-break:break-word;
-
-    font-size:13px;
-
-    line-height:1.45;
-}
-
-
-/* ================= MEDIA BUTTONS ================= */
-
-.media-view-buttons{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:
-    0 auto 28px;
-}
-
-.media-filter,
-.host-btn,
-.unlock-btn,
-.save-media{
-    border:
-    1px solid #3a3c42;
-
-    background:#111317;
-
-    color:#fff;
-
-    padding:11px 17px;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    transition:.25s;
-}
-
-.media-filter:hover,
-.media-filter.active,
-.host-btn:hover,
-.unlock-btn,
-.save-media{
-    background:#ff2638;
-
-    border-color:#ff2638;
-}
-
-
-/* ================= GALLERY ================= */
-
-.gallery{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(150px,190px));
-
-    justify-content:center;
-
-    gap:15px;
-}
-
-.gallery-item{
-    background:#111317;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:13px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    animation:
-    galleryIn .45s;
-}
-
-.gallery-item img,
-.gallery-item video{
-    width:100%;
-
-    height:125px;
-
-    display:block;
-
-    object-fit:cover;
-}
-
-.gallery-caption{
-    padding:9px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-}
-
-.gallery-empty{
-    text-align:center;
-
-    color:#777;
-
-    padding:35px;
-}
-
-#gallery,
-#galleryEmpty{
-    display:none;
-}
-
-#gallery.media-visible{
-    display:grid;
-}
-
-#galleryEmpty.media-visible{
-    display:block;
-}
-
-@keyframes galleryIn{
-
-    from{
-        opacity:0;
-
-        transform:
-        translateY(15px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:none;
-    }
-
-}
-
-
-/* ================= FIREBASE STATUS ================= */
-
-.firebase-status{
-    text-align:center;
-
-    margin:
-    -28px auto 24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-.firebase-status.live{
-    color:#69e58a;
-}
-
-.firebase-message{
-    margin-top:10px;
-
-    color:#ff6875;
-
-    font-size:12px;
-
-    min-height:15px;
-}
-
-.firebase-message.ok{
-    color:#69e58a;
-}
-
-
-/* ================= HOST PANEL ================= */
-
-.host-panel{
-    display:none;
-
-    position:relative;
-
-    max-width:520px;
-
-    margin:
-    35px auto 0;
-
-    padding:28px;
-
-    border:
-    1px solid #ff2638;
-
-    border-radius:16px;
-
-    background:#101114;
-
-    box-shadow:
-    0 20px 50px #000;
-}
-
-.host-panel.show{
-    display:block;
-
-    animation:
-    galleryIn .3s;
-}
-
-.host-panel h3{
-    color:#ff2638;
-
-    margin-bottom:8px;
-}
-
-.host-panel p{
-    color:#aaa;
-
-    line-height:1.5;
-}
-
-.close-host{
-    position:absolute;
-
-    right:14px;
-    top:10px;
-
-    border:0;
-
-    background:none;
-
-    color:#fff;
-
-    font-size:28px;
-
-    cursor:pointer;
-}
-
-.host-panel input[type=password]{
-    width:100%;
-
-    padding:12px;
-
-    margin:
-    14px 0;
-
-    background:#08090b;
-
-    border:
-    1px solid #383a40;
-
-    border-radius:8px;
-
-    color:#fff;
-}
-
-.upload-area{
-    margin-top:18px;
-
-    display:grid;
-
-    gap:12px;
-}
-
-.upload-area label{
-    padding:14px;
-
-    border:
-    1px dashed #4a4c52;
-
-    border-radius:9px;
-
-    text-align:center;
-
-    color:#ddd;
-
-    cursor:pointer;
-}
-
-.upload-area input{
-    display:block;
-
-    width:100%;
-
-    margin-top:8px;
-}
-
-.save-media{
-    margin-top:4px;
-}
-
-.host-note{
-    font-size:11px!important;
-
-    color:#777!important;
-}
-
-#hostMessage{
-    margin-top:12px;
-
-    color:#ff8793;
-
-    font-size:13px;
-}
-
-
-/* ================= HOST MANAGEMENT ================= */
-
-.host-manage{
-    margin-top:20px;
-
-    border-top:
-    1px solid #292b31;
-
-    padding-top:15px;
-}
-
-.host-manage h4{
-    margin:
-    0 0 10px;
-
-    color:#ff8793;
-}
-
-.host-media-row{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    align-items:center;
-
-    padding:8px 0;
-
-    border-bottom:
-    1px solid #25272b;
-
-    font-size:12px;
-
-    color:#bbb;
-}
-
-.host-media-row span{
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-}
-
-.host-media-row button{
-    border:
-    1px solid #ff2638;
-
-    background:transparent;
-
-    color:#ff6875;
-
-    border-radius:7px;
-
-    padding:6px 9px;
-
-    cursor:pointer;
-}
-
-.host-media-row button:hover{
-    background:#ff2638;
-
-    color:#fff;
-}
-
-
-/* ================= HOST STATUS ================= */
-
-.host-status{
-    padding:
-    10px 12px;
-
-    border:
-    1px solid #285d38;
-
-    background:#102016;
-
-    color:#70e08b;
-
-    border-radius:8px;
-
-    font-size:13px;
-
-    font-weight:700;
-}
-
-
-/* ================= PASSWORD ================= */
-
-.password-label{
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    color:#ff6b76;
-
-    font-weight:800;
-
-    margin:
-    3px 0 8px;
-}
-
-#hostLogin{
-    padding:15px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:12px;
-
-    background:#0b0c0f;
-}
-
-#hostLogin input{
-    display:block;
-
-    width:100%;
-
-    padding:11px;
-
-    margin:8px 0;
-
-    background:#08090b;
-
-    border:
-    1px solid #383a40;
-
-    border-radius:8px;
-
-    color:#fff;
-}
-
-#hostLogin .unlock-btn{
-    width:100%;
-
-    margin-top:4px;
-}
-
-.settings-password{
-    margin-top:12px;
-
-    padding-top:12px;
-
-    border-top:
-    1px solid #292b31;
-}
-
-.settings-password label{
-    display:block;
-
-    font-size:9px;
-
-    letter-spacing:1.8px;
-
-    color:#ff6b76;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-.settings-password input{
-    width:100%;
-
-    padding:
-    10px 11px;
-
-    background:#08090b;
-
-    border:
-    1px solid #383a40;
-
-    border-radius:8px;
-
-    color:#fff;
-
-    outline:none;
-}
-
-.settings-password input:focus{
-    border-color:#ff2638;
-}
-
-.settings-password .settings-action{
-    width:100%;
-
-    margin-top:8px;
-}
-
-#settingsPasswordMessage{
-    font-size:11px;
-
-    margin-top:7px;
-
-    min-height:14px;
-}
-
-.settings-host-controls{
-    display:none;
-
-    margin-top:10px;
-}
-
-.settings-host-controls.show{
-    display:block;
-}
-
-.settings-host-controls .settings-action{
-    width:100%;
-}
-
-
-/* ================= SETTINGS MENU ================= */
-
+  width:38px;height:38px;border:1px solid #383a40;border-radius:9px;
+  background:#111317;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;gap:5px;cursor:pointer;transition:.25s
+}
+.settings-btn span{display:block;width:18px;height:2px;background:#fff;border-radius:3px}
+.settings-btn:hover{border-color:#ff2638;background:#181114}
 .settings-menu{
-    position:fixed;
-
-    top:76px;
-    right:6%;
-
-    width:min(340px,88vw);
-
-    z-index:100;
-
-    display:none;
-
-    padding:18px;
-
-    border:
-    1px solid #3a3c42;
-
-    border-radius:16px;
-
-    background:#101114;
-
-    box-shadow:
-    0 20px 60px #000b;
-
-    backdrop-filter:blur(15px);
+  position:fixed;top:76px;right:6%;width:min(340px,88vw);z-index:100;
+  display:none;padding:18px;border:1px solid #3a3c42;border-radius:16px;
+  background:#101114;box-shadow:0 20px 60px #000b;backdrop-filter:blur(15px)
 }
-
-.settings-menu.show{
-    display:block;
-
-    animation:
-    settingsIn .22s ease-out;
-}
-
-.settings-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:15px;
-}
-
-.settings-head h3{
-    margin:0;
-
-    color:#ff2638;
-}
-
-.settings-head button{
-    border:0;
-
-    background:none;
-
-    color:#fff;
-
-    font-size:25px;
-
-    cursor:pointer;
-}
-
-.settings-card{
-    display:flex;
-
-    gap:14px;
-
-    padding:17px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:12px;
-
-    background:#111317;
-}
-
-.settings-icon{
-    font-size:27px;
-}
-
-.settings-card h4{
-    margin:
-    0 0 5px;
-}
-
-.settings-card p{
-    margin:
-    0 0 12px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    line-height:1.5;
-}
-
-.settings-action{
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    border-radius:8px;
-
-    padding:9px 13px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-@keyframes settingsIn{
-
-    from{
-        opacity:0;
-
-        transform:
-        translateY(-8px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:none;
-    }
-
-}
-
-
-/* ================= VIEWER ================= */
+.settings-menu.show{display:block;animation:settingsIn .22s ease-out}
+.settings-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.settings-head h3{margin:0;color:#ff2638}
+.settings-head button{border:0;background:none;color:#fff;font-size:25px;cursor:pointer}
+.settings-card{display:flex;gap:14px;padding:17px;border:1px solid #34363c;border-radius:12px;background:#111317}
+.settings-icon{font-size:27px}
+.settings-card h4{margin:0 0 5px}.settings-card p{margin:0 0 12px;color:#aaa;font-size:12px;line-height:1.5}
+.settings-action{border:0;background:#ff2638;color:#fff;border-radius:8px;padding:9px 13px;font-weight:700;cursor:pointer}
+@keyframes settingsIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 .section-viewer{
-    display:none;
-
-    margin:
-    28px auto 0;
-
-    max-width:760px;
-
-    border:
-    1px solid #ff2638;
-
-    border-radius:16px;
-
-    background:#0d0f12;
-
-    padding:14px;
-
-    box-shadow:
-    0 20px 55px #0008;
+  display:none;
+  margin:28px auto 0;
+  max-width:760px;
+  border:1px solid #ff2638;
+  border-radius:16px;
+  background:#0d0f12;
+  padding:14px;
+  box-shadow:0 20px 55px #0008;
 }
-
-.section-viewer.show{
-    display:block;
-
-    animation:
-    galleryIn .25s ease-out;
-}
-
-.section-viewer-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:
-    2px 4px 12px;
-}
-
-.section-viewer-head h3{
-    margin:0;
-
-    color:#ff2638;
-
-    font-size:16px;
-
-    max-width:90%;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-}
-
-.section-viewer-head button{
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    width:32px;
-
-    height:32px;
-
-    border-radius:50%;
-
-    font-size:21px;
-
-    cursor:pointer;
-}
-
-.section-viewer-content{
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:180px;
-}
-
-.section-view-media{
-    max-width:100%;
-
-    max-height:500px;
-
-    border-radius:10px;
-
-    display:block;
-}
-
-
-/* ================= LOCAL BADGE ================= */
-
-.local-badge{
-    text-align:center;
-
-    color:#777;
-
-    font-size:11px;
-
-    margin:
-    -28px auto 24px;
-
-    letter-spacing:.2px;
-}
-
-
-/* ================= REVEAL ================= */
-
-.reveal{
-    opacity:0;
-
-    transform:
-    translateY(25px);
-
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
-}
-
-
-/* ================= FOOTER ================= */
-
-footer{
-    padding:
-    45px 7% 20px;
-
-    border-top:
-    1px solid #292a30;
-
-    background:#090a0c;
-}
-
-.footer-grid{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:35px;
-}
-
-.footer-grid h3{
-    color:#ff2638;
-}
-
-.footer-grid p{
-    color:#aaa;
-
-    line-height:1.7;
-}
-
-.leader{
-    font-size:20px;
-
-    color:#fff;
-
-    font-weight:bold;
-}
-
-.leader span{
-    display:block;
-
-    color:#ff2638;
-
-    font-size:13px;
-
-    margin-top:5px;
-}
-
-.copy{
-    text-align:center;
-
-    color:#666;
-
-    border-top:
-    1px solid #222;
-
-    margin-top:30px;
-
-    padding-top:18px;
-
-    font-size:12px;
-}
-
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:800px){
-
-    .hero{
-        grid-template-columns:1fr;
-
-        text-align:center;
-    }
-
-    .hero p{
-        margin:auto;
-    }
-
-    .bpm{
-        margin:20px auto;
-    }
-
-    .hero-heart{
-        min-height:300px;
-    }
-
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    .features,
-    .steps{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-}
-
-@media(max-width:500px){
-
-    .features,
-    .steps,
-    .footer-grid,
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero h1{
-        font-size:45px;
-    }
-
-    .gallery{
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-}
-
-</style>
-
+.section-viewer.show{display:block;animation:galleryIn .25s ease-out}
+.section-viewer-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 12px}
+.section-viewer-head h3{margin:0;color:#ff2638;font-size:16px;max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.section-viewer-head button{border:0;background:#ff2638;color:#fff;width:32px;height:32px;border-radius:50%;font-size:21px;cursor:pointer}
+.section-viewer-content{display:flex;justify-content:center;align-items:center;min-height:180px}
+.section-view-media{max-width:100%;max-height:500px;border-radius:10px;display:block}
+.host-manage{margin-top:20px;border-top:1px solid #292b31;padding-top:15px}
+.host-manage h4{margin:0 0 10px;color:#ff8793}
+.host-media-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #25272b;font-size:12px;color:#bbb}
+.host-media-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.host-media-row button{border:1px solid #ff2638;background:transparent;color:#ff6875;border-radius:7px;padding:6px 9px;cursor:pointer}
+.host-media-row button:hover{background:#ff2638;color:#fff}
+
+.host-status{padding:10px 12px;border:1px solid #285d38;background:#102016;color:#70e08b;border-radius:8px;font-size:13px;font-weight:700}
+
+.password-label{font-size:10px;letter-spacing:2px;color:#ff6b76;font-weight:800;margin:3px 0 8px}
+#hostLogin{padding:15px;border:1px solid #34363c;border-radius:12px;background:#0b0c0f}
+#hostLogin .unlock-btn{width:100%;margin-top:4px}
+
+.settings-password{margin-top:12px;padding-top:12px;border-top:1px solid #292b31}
+.settings-password label{display:block;font-size:9px;letter-spacing:1.8px;color:#ff6b76;font-weight:800;margin-bottom:7px}
+.settings-password input{width:100%;padding:10px 11px;background:#08090b;border:1px solid #383a40;border-radius:8px;color:#fff;outline:none}
+.settings-password input:focus{border-color:#ff2638}
+.settings-password .settings-action{width:100%;margin-top:8px}
+#settingsPasswordMessage{font-size:11px;margin-top:7px;min-height:14px}
+.settings-host-controls{display:none;margin-top:10px}
+.settings-host-controls.show{display:block}
+.settings-host-controls .settings-action{width:100%}
+
+#gallery,#galleryEmpty{display:none}
+#gallery.media-visible{display:grid}
+#galleryEmpty.media-visible{display:block}
+
+
+
+.local-badge{text-align:center;color:#777;font-size:11px;margin:-28px auto 24px;letter-spacing:.2px}
+.firebase-status{{text-align:center;margin:-28px auto 24px;color:#777;font-size:11px}}.firebase-status.live{{color:#69e58a}}.firebase-message{{margin-top:10px;color:#ff6875;font-size:12px;min-height:15px}}.firebase-message.ok{{color:#69e58a}}#hostLogin input{{display:block;width:100%;padding:11px;margin:8px 0;background:#08090b;border:1px solid #383a40;border-radius:8px;color:#fff}}.live-link{margin-left:10px;background:#111317;border:1px solid #ff2638}.live-link:hover{background:#ff2638}@media(max-width:500px){.live-link{margin-left:0;margin-top:10px}}</style>
 </head>
-
-
 <body>
+<nav><div class="brand">Working Model of <span>Heart</span></div><button class="settings-btn" aria-label="Open settings" onclick="toggleSettings()">
+<span></span><span></span><span></span>
+</button></nav>
 
-
-<!-- ================= NAVBAR ================= -->
-
-<nav>
-
-<div class="brand">
-Working Model of <span>Heart</span>
-</div>
-
-<button
-class="settings-btn"
-aria-label="Open settings"
-onclick="toggleSettings()"
->
-
-<span></span>
-<span></span>
-<span></span>
-
-</button>
-
-</nav>
-
-
-<!-- ================= HERO ================= -->
-
-<header
-class="hero"
-id="home"
->
-
+<header class="hero" id="home">
 <div>
-
-<div class="eyebrow">
-SCIENCE EXHIBITION 2026
+<div class="eyebrow">SCIENCE EXHIBITION 2026</div>
+<h1>Working Model<br>of the <span>Human Heart</span></h1>
+<p>This project demonstrates the working of the human heart and how it pumps blood throughout the body.</p>
+<a class="btn" href="#model">Explore the Model ↓</a>
+    <a class="btn live-link" href="https://working-model-of-heart-251c4.web.app" target="_blank" rel="noopener">🌐 Open Public Website</a>
+<div class="bpm"><div class="pulse">♥</div><div>Heartbeat<br><strong><span id="bpm">72</span> BPM</strong></div></div>
 </div>
 
-<h1>
-Working Model<br>
-of the <span>Human Heart</span>
-</h1>
-
-<p>
-This project demonstrates the working of the human heart and how it pumps blood throughout the body.
-</p>
-
-<a
-class="btn"
-href="#model"
->
-Explore the Model ↓
-</a>
-
-<a
-class="btn live-link"
-href="https://working-model-of-heart-251c4.web.app"
-target="_blank"
-rel="noopener"
->
-🌐 Open Public Website
-</a>
-
-<div class="bpm">
-
-<div class="pulse">
-♥
-</div>
-
-<div>
-
-Heartbeat<br>
-
-<strong>
-<span id="bpm">72</span> BPM
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="ecg"
-aria-label="animated ECG heartbeat"
->
-
-<svg
-viewBox="0 0 1200 100"
-preserveAspectRatio="none"
->
-
-<polyline
-points="
-0,52
-70,52
-88,52
-98,45
-108,52
-126,52
-138,38
-146,65
-154,52
-175,52
-188,52
-202,52
-212,18
-222,82
-232,52
-252,52
-275,52
-290,52
-302,43
-314,52
-330,52
-345,52
-360,52
-370,52
-380,52
-390,52
-400,52
-414,18
-424,82
-434,52
-454,52
-480,52
-505,52
-520,52
-534,52
-548,52
-560,52
-574,38
-582,65
-590,52
-612,52
-630,52
-645,52
-660,52
-670,18
-680,82
-690,52
-710,52
-735,52
-760,52
-775,52
-788,45
-798,52
-816,52
-830,38
-838,65
-846,52
-870,52
-900,52
-930,52
-945,52
-958,18
-968,82
-978,52
-1000,52
-1030,52
-1060,52
-1080,52
-1092,45
-1100,52
-1120,52
-1134,38
-1142,65
-1150,52
-1200,52
-"
->
-</polyline>
-
-</svg>
-
-</div>
-
+<div class="ecg" aria-label="animated ECG heartbeat">
+<svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+<polyline points="0,52 70,52 88,52 98,45 108,52 126,52 138,38 146,65 154,52 175,52 188,52 202,52 212,18 222,82 232,52 252,52 275,52 290,52 302,43 314,52 330,52 345,52 360,52 370,52 380,52 390,52 400,52 414,18 424,82 434,52 454,52 480,52 505,52 520,52 534,52 548,52 560,52 574,38 582,65 590,52 612,52 630,52 645,52 660,52 670,18 680,82 690,52 710,52 735,52 760,52 775,52 788,45 798,52 816,52 830,38 838,65 846,52 870,52 900,52 930,52 945,52 958,18 968,82 978,52 1000,52 1030,52 1060,52 1080,52 1092,45 1100,52 1120,52 1134,38 1142,65 1150,52 1200,52"/>
+</svg></div>
 </header>
 
+<div class="bar"><span>Science Exhibition 2026</span><b>|</b> Aayushman Jha <span>(Leader)</span></div>
 
-<!-- ================= BAR ================= -->
 
-<div class="bar">
+<div id="settingsMenu" class="settings-menu">
+  <div class="settings-head">
+    <h3>Settings</h3>
+    <button onclick="toggleSettings()">×</button>
+  </div>
 
-<span>
-Science Exhibition 2026
-</span>
+  <div class="settings-card">
+    <div class="settings-icon">🔐</div>
+    <div style="width:100%">
+      <h4>Host Upload</h4>
+      <p>Host controls are available only after entering the password.</p>
 
-<b>|</b>
+      <div class="settings-password">
+        <label for="settingsPassword">HOST PASSWORD</label>
+        <input id="settingsPassword" type="password" placeholder="Enter password">
+        <button class="settings-action" onclick="unlockFromSettings()">Unlock Host Controls</button>
+        <div id="settingsPasswordMessage"></div>
+      </div>
 
-Aayushman Jha
-
-<span>
-(Leader)
-</span>
-
+      <div id="settingsHostControls" class="settings-host-controls">
+        <button class="settings-action" onclick="openHostFromSettings()">📸 Add / Remove Photos & Videos</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<section id="team" class="reveal"><h2 class="title"><span>Aayushman Jha</span></h2><p class="sub">Project Leader · Team Red Diamond · Science Exhibition 2026</p><div style="text-align:center"><div class="leader">Project Leader<span>Leader</span></div></div></section>
 
-<!-- ================= SETTINGS ================= -->
+<section id="model" class="reveal"><div class="about">
+<div class="logo-card"></div>
+<div><h2>About the <span>Heart</span></h2><p>The human heart is a muscular organ that continuously pumps blood throughout the body. Our working model demonstrates this pumping action in a simple and practical way.</p>
+<div class="features"><div class="feature"><div class="icon">♥</div><h3>Realistic Action</h3><p>Pumping demonstration</p></div><div class="feature"><div class="icon">◉</div><h3>Blood Flow</h3><p>Shows circulation</p></div><div class="feature"><div class="icon">⚙</div><h3>Mechanism</h3><p>Easy to understand</p></div><div class="feature"><div class="icon">▣</div><h3>Educational</h3><p>Science project</p></div></div></div>
+</div></section>
 
-<div
-id="settingsMenu"
-class="settings-menu"
->
+<section id="media" class="reveal">
+  <h2 class="title"><span>Photo & Video</span> of Project</h2>
+  <p class="sub">Everyone can view the project gallery. Only the host can add photos and videos.</p>
 
-<div class="settings-head">
+  <div class="media-view-buttons">
+    <button class="media-filter" onclick="filterMedia('all',this)">👀 See All</button>
+    <button class="media-filter" onclick="filterMedia('photo',this)">📸 Photos</button>
+    <button class="media-filter" onclick="filterMedia('video',this)">🎬 Videos</button>
+    
+  </div>
 
-<h3>
-Settings
-</h3>
+  <div id="firebaseStatus" class="firebase-status">☁️ Connecting to project storage…</div>
+  <div id="gallery" class="gallery"></div>
+  <div id="galleryEmpty" class="gallery-empty">No photos or videos have been added yet.</div>
 
-<button
-onclick="toggleSettings()"
->
-×
-</button>
+  
+<div id="hostPanel" class="host-panel">
+  <div class="settings-head">
+    <h3>🔐 Host Media Control</h3><div class="password-label">HOST PASSWORD</div>
+    <button onclick="closeHostPanel()">×</button>
+  </div>
 
+  <p>Enter the password below to unlock <b>Add Photo</b>, <b>Add Video</b>, and <b>Remove</b> controls.</p>
+
+  <div id="hostLogin">
+    <input id="hostPassword" type="password" placeholder="Enter host password">
+    <button class="unlock-btn" onclick="unlockHost()">Unlock</button>
+    <div id="hostMessage"></div>
+  </div>
+
+  <div id="uploadArea" class="upload-area" style="display:none">
+    <div class="host-status">✓ Firebase host access granted</div>
+
+    <label style="cursor:default;text-align:left">
+      📸 Image URL / Link
+      <input id="imageUrl" type="url" placeholder="https://example.com/image.jpg">
+    </label>
+
+    <label style="cursor:default;text-align:left">
+      🎬 Video URL / Link
+      <input id="videoUrl" type="url" placeholder="https://example.com/video.mp4">
+    </label>
+
+    <label style="cursor:default;text-align:left">
+      📝 Media title
+      <input id="mediaTitle" type="text" placeholder="Example: Heart Model Photo">
+    </label>
+
+    <button class="save-media" onclick="addFirebaseLink()">☁️ Add Link to Firebase</button>
+    <div id="firebaseMessage" class="firebase-message"></div>
+
+    <div class="host-manage">
+      <h4>Remove Photos & Videos</h4>
+      <div id="hostMediaList"></div>
+    </div>
+
+    <p class="host-note">Only the media URL and title are saved in Firebase. The actual image/video stays at its original URL.</p>
+  </div>
 </div>
+</section>
 
+<section id="working" class="reveal"><h2 class="title">About the <span>Function of the Heart</span></h2><p class="sub">Learn the main functions of the heart and how blood moves through the chambers.</p>
+<div class="steps"><div class="step"><div class="num">1</div><div class="icon">⏻</div><h3>Receives Blood</h3><p>The atria receive blood returning to the heart.</p></div><div class="step"><div class="num">2</div><div class="icon">♥</div><h3>Pumps Blood</h3><p>The ventricles contract and pump blood to the lungs and body.</p></div><div class="step"><div class="num">3</div><div class="icon">◆</div><h3>Blood Circulation</h3><p>Blood travels through pulmonary and systemic circulation.</p></div><div class="step"><div class="num">4</div><div class="icon">↻</div><h3>Continuous Cycle</h3><p>The heart repeatedly contracts and relaxes to maintain circulation.</p></div></div></section>
 
-<div class="settings-card">
-
-<div class="settings-icon">
-🔐
-</div>
-
-<div style="width:100%">
-
-<h4>
-Host Upload
-</h4>
-
-<p>
-Host controls are available only after entering the password.
-</p>
-
-
-<div class="settings-password">
-
-<label
-for="settingsPassword"
->
-HOST PASSWORD
-</label>
-
-<input
-id="settingsPassword"
-type="password"
-placeholder="Enter password"
->
-
-<button
-class="settings-action"
-onclick="unlockFromSettings()"
->
-Unlock Host Controls
-</button>
-
-<div
-id="settingsPasswordMessage"
-></div>
-
-</div>
-
-
-<div
-id="settingsHostControls"
-class="settings-host-controls"
->
-
-<button
-class="settings-action"
-onclick="openHostFromSettings()"
->
-📸 Add / Remove Photos & Videos
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= TEAM ================= -->
-
-<section
-id="team"
-class="reveal"
->
-
-<h2 class="title">
-
-<span>
-Aayushman Jha
-</span>
-
-</h2>
-
-<p class="sub">
-Project Leader · Team Red Diamond · Science Exhibition 2026
-</p>
-
-<div style="text-align:center">
-
-<div class="leader">
-
-Project Leader
-
-<span>
-Leader
-</span>
-
-</div>
-
-</div>
-
+<section id="contact" class="reveal">
+  <h2 class="title">Contact <span>Us</span></h2>
+  <p class="sub">Get in touch with Team Red Diamond about our Working Model of the Human Heart.</p>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:aayushmanjha1108@gmail.com">
+      <div class="contact-icon">✉</div>
+      <div><h3>Email</h3><p>aayushmanjha1108@gmail.com</p></div>
+    </a>
+    <a class="contact-card" href="tel:+919931203827">
+      <div class="contact-icon">☎</div>
+      <div><h3>Phone</h3><p>+91 99312 03827</p></div>
+    </a>
+    <div class="contact-card">
+      <div class="contact-icon">◆</div>
+      <div><h3>Team</h3><p>Team Red Diamond</p></div>
+    </div>
+  </div>
 </section>
 
 
-<!-- ================= MODEL ================= -->
 
-<section
-id="model"
-class="reveal"
->
 
-<div class="about">
 
-<div class="logo-card">
-</div>
 
-<div>
 
-<h2>
-About the <span>Heart</span>
-</h2>
 
-<p>
-The human heart is a muscular organ that continuously pumps blood throughout the body. Our working model demonstrates this pumping action in a simple and practical way.
-</p>
 
 
-<div class="features">
-
-
-<div class="feature">
-
-<div class="icon">
-♥
-</div>
-
-<h3>
-Realistic Action
-</h3>
-
-<p>
-Pumping demonstration
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-◉
-</div>
-
-<h3>
-Blood Flow
-</h3>
-
-<p>
-Shows circulation
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-⚙
-</div>
-
-<h3>
-Mechanism
-</h3>
-
-<p>
-Easy to understand
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-▣
-</div>
-
-<h3>
-Educational
-</h3>
-
-<p>
-Science project
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MEDIA ================= -->
-
-<section
-id="media"
-class="reveal"
->
-
-<h2 class="title">
-
-<span>
-Photo & Video
-</span>
-
-of Project
-
-</h2>
-
-<p class="sub">
-Everyone can view the project gallery. Only the host can add photos and videos.
-</p>
-
-
-<div class="media-view-buttons">
-
-<button
-class="media-filter"
-onclick="filterMedia('all',this)"
->
-👀 See All
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('photo',this)"
->
-📸 Photos
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('video',this)"
->
-🎬 Videos
-</button>
-
-</div>
-
-
-<div
-id="firebaseStatus"
-class="firebase-status"
->
-☁️ Connecting to project storage…
-</div>
-
-
-<div
-id="gallery"
-class="gallery"
->
-</div>
-
-
-<div
-id="galleryEmpty"
-class="gallery-empty"
->
-No photos or videos have been added yet.
-</div>
-
-
-<!-- ================= HOST PANEL ================= -->
-
-<div
-id="hostPanel"
-class="host-panel"
->
-
-<div class="settings-head">
-
-<h3>
-🔐 Host Media Control
-</h3>
-
-<div class="password-label">
-HOST PASSWORD
-</div>
-
-<button
-onclick="closeHostPanel()"
->
-×
-</button>
-
-</div>
-
-
-<p>
-Enter the password below to unlock
-<b>Add Photo</b>,
-<b>Add Video</b>,
-and <b>Remove</b> controls.
-</p>
-
-
-<div id="hostLogin">
-
-<input
-id="hostPassword"
-type="password"
-placeholder="Enter host password"
->
-
-<button
-class="unlock-btn"
-onclick="unlockHost()"
->
-Unlock
-</button>
-
-<div
-id="hostMessage"
-></div>
-
-</div>
-
-
-<div
-id="uploadArea"
-class="upload-area"
-style="display:none"
->
-
-<div class="host-status">
-✓ Host access granted
-</div>
-
-
-<label>
-
-📸 Add Photos
-
-<input
-id="photoFiles"
-type="file"
-accept="image/*"
-multiple
->
-
-</label>
-
-
-<label>
-
-🎬 Add Videos
-
-<input
-id="videoFiles"
-type="file"
-accept="video/*"
-multiple
->
-
-</label>
-
-
-<button
-class="save-media"
-onclick="saveMedia()"
->
-Add to Gallery
-</button>
-
-
-<div class="host-manage">
-
-<h4>
-Remove Photos & Videos
-</h4>
-
-<div
-id="hostMediaList"
-></div>
-
-</div>
-
-
-<p class="host-note">
-Media is stored locally in this browser. No account or external data setup is required.
-</p>
-
-</div>
-
-</div>
-
-
-<!-- Part 2 continues from here -->
-
-
-<!-- ================= TEAM ================= -->
-
-<section id="team" class="reveal">
-
-<h2 class="title">
-<span>Aayushman Jha</span>
-</h2>
-
-<p class="sub">
-Project Leader · Team Red Diamond · Science Exhibition 2026
-</p>
-
-<div style="text-align:center">
-
-<div class="leader">
-
-Project Leader
-
-<span>
-Leader
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MODEL ================= -->
-
-<section
-id="model"
-class="reveal"
->
-
-<div class="about">
-
-<div class="logo-card">
-</div>
-
-
-<div>
-
-<h2>
-About the <span>Heart</span>
-</h2>
-
-<p>
-The human heart is a muscular organ that continuously
-pumps blood throughout the body. Our working model
-demonstrates this pumping action in a simple and
-practical way.
-</p>
-
-
-<div class="features">
-
-
-<div class="feature">
-
-<div class="icon">
-♥
-</div>
-
-<h3>
-Realistic Action
-</h3>
-
-<p>
-Pumping demonstration
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-◉
-</div>
-
-<h3>
-Blood Flow
-</h3>
-
-<p>
-Shows circulation
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-⚙
-</div>
-
-<h3>
-Mechanism
-</h3>
-
-<p>
-Easy to understand
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-▣
-</div>
-
-<h3>
-Educational
-</h3>
-
-<p>
-Science project
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MEDIA ================= -->
-
-<section
-id="media"
-class="reveal"
->
-
-<h2 class="title">
-
-<span>
-Photo & Video
-</span>
-
-of Project
-
-</h2>
-
-
-<p class="sub">
-
-Everyone can view the project gallery.
-Only the host can add photos and videos.
-
-</p>
-
-
-<div class="media-view-buttons">
-
-
-<button
-class="media-filter"
-onclick="filterMedia('all',this)"
->
-👀 See All
-</button>
-
-
-<button
-class="media-filter"
-onclick="filterMedia('photo',this)"
->
-📸 Photos
-</button>
-
-
-<button
-class="media-filter"
-onclick="filterMedia('video',this)"
->
-🎬 Videos
-</button>
-
-
-</div>
-
-
-<div
-id="firebaseStatus"
-class="firebase-status"
->
-☁️ Connecting to project storage…
-</div>
-
-
-<div
-id="gallery"
-class="gallery"
->
-</div>
-
-
-<div
-id="galleryEmpty"
-class="gallery-empty"
->
-No photos or videos have been added yet.
-</div>
-
-
-<!-- ================= HOST PANEL ================= -->
-
-<div
-id="hostPanel"
-class="host-panel"
->
-
-
-<div class="settings-head">
-
-<h3>
-🔐 Host Media Control
-</h3>
-
-<div class="password-label">
-HOST PASSWORD
-</div>
-
-<button
-onclick="closeHostPanel()"
->
-×
-</button>
-
-</div>
-
-
-<p>
-Enter the password below to unlock
-<b>Add Photo</b>,
-<b>Add Video</b>,
-and <b>Remove</b> controls.
-</p>
-
-
-<div id="hostLogin">
-
-<input
-id="hostPassword"
-type="password"
-placeholder="Enter host password"
->
-
-<button
-class="unlock-btn"
-onclick="unlockHost()"
->
-Unlock
-</button>
-
-<div id="hostMessage">
-</div>
-
-</div>
-
-
-<div
-id="uploadArea"
-class="upload-area"
-style="display:none"
->
-
-
-<div class="host-status">
-✓ Host access granted
-</div>
-
-
-<label>
-
-📸 Add Photos
-
-<input
-id="photoFiles"
-type="file"
-accept="image/*"
-multiple
->
-
-</label>
-
-
-<label>
-
-🎬 Add Videos
-
-<input
-id="videoFiles"
-type="file"
-accept="video/*"
-multiple
->
-
-</label>
-
-
-<button
-class="save-media"
-onclick="saveMedia()"
->
-Add to Gallery
-</button>
-
-
-<div class="host-manage">
-
-<h4>
-Remove Photos & Videos
-</h4>
-
-<div id="hostMediaList">
-</div>
-
-</div>
-
-
-<p class="host-note">
-
-Media is stored locally in this browser.
-No account or external data setup is required.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= HEART FUNCTION ================= -->
-
-<section
-id="working"
-class="reveal"
->
-
-
-<h2 class="title">
-
-About the
-<span>
-Function of the Heart
-</span>
-
-</h2>
-
-
-<p class="sub">
-
-Learn the main functions of the heart and
-how blood moves through the chambers.
-
-</p>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="num">
-1
-</div>
-
-<div class="icon">
-⏻
-</div>
-
-<h3>
-Receives Blood
-</h3>
-
-<p>
-The atria receive blood returning to the heart.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-2
-</div>
-
-<div class="icon">
-♥
-</div>
-
-<h3>
-Pumps Blood
-</h3>
-
-<p>
-The ventricles contract and pump blood
-to the lungs and body.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-3
-</div>
-
-<div class="icon">
-◆
-</div>
-
-<h3>
-Blood Circulation
-</h3>
-
-<p>
-Blood travels through pulmonary
-and systemic circulation.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-4
-</div>
-
-<div class="icon">
-↻
-</div>
-
-<h3>
-Continuous Cycle
-</h3>
-
-<p>
-The heart repeatedly contracts and relaxes
-to maintain circulation.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section
-id="contact"
-class="reveal"
->
-
-
-<h2 class="title">
-Contact <span>Us</span>
-</h2>
-
-
-<p class="sub">
-
-Get in touch with Team Red Diamond about
-our Working Model of the Human Heart.
-
-</p>
-
-
-<div class="contact-grid">
-
-
-<a
-class="contact-card"
-href="mailto:aayushmanjha1108@gmail.com"
->
-
-<div class="contact-icon">
-✉
-</div>
-
-<div>
-
-<h3>
-Email
-</h3>
-
-<p>
-aayushmanjha1108@gmail.com
-</p>
-
-</div>
-
-</a>
-
-
-<a
-class="contact-card"
-href="tel:+919931203827"
->
-
-<div class="contact-icon">
-☎
-</div>
-
-<div>
-
-<h3>
-Phone
-</h3>
-
-<p>
-+91 99312 03827
-</p>
-
-</div>
-
-</a>
-
-
-<div class="contact-card">
-
-<div class="contact-icon">
-◆
-</div>
-
-<div>
-
-<h3>
-Team
-</h3>
-
-<p>
-Team Red Diamond
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
-
-
-<div class="footer-grid">
-
-
-<div>
-
-<h3>
-About
-</h3>
-
-<p>
-Educational project to understand the
-structure and working of the human heart.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Team
-</h3>
-
-<p class="leader">
-
-Team Red Diamond
-
-<span>
-Project Leader · Leader
-</span>
-
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Contact
-</h3>
-
-<p>
-
-<a
-href="mailto:aayushmanjha1108@gmail.com"
-style="color:#aaa;text-decoration:none"
->
-aayushmanjha1108@gmail.com
-</a>
-
-<br>
-
-<a
-href="tel:+919931203827"
-style="color:#aaa;text-decoration:none"
->
-+91 99312 03827
-</a>
-
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="copy">
-
-© 2026 Working Model of Heart ·
-Team Red Diamond
-
-</div>
-
-
+  <div class="footer-grid">
+    <div>
+      <h3>About</h3>
+      <p>Educational project to understand the structure and working of the human heart.</p>
+    </div>
+    <div>
+      <h3>Team</h3>
+      <p class="leader">Team Red Diamond<span>Project Leader · Leader</span></p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>
+        <a href="mailto:aayushmanjha1108@gmail.com" style="color:#aaa;text-decoration:none">aayushmanjha1108@gmail.com</a><br>
+        <a href="tel:+919931203827" style="color:#aaa;text-decoration:none">+91 99312 03827</a>
+      </p>
+    </div>
+  </div>
+  <div class="copy">© 2026 Working Model of Heart · Team Red Diamond</div>
 </footer>
 
 
-<!-- ================= BASIC SCRIPT ================= -->
+
+
 
 <script>
-
-const bpm =
-document.getElementById("bpm");
-
-setInterval(()=>{
-
-    bpm.textContent =
-    70 + Math.floor(Math.random()*7);
-
-},1200);
-
-
-const obs =
-new IntersectionObserver(
-entries =>
-entries.forEach(entry => {
-
-    if(entry.isIntersecting){
-
-        entry.target.classList.add("show");
-
-    }
-
-}),
-{
-    threshold:.12
-});
-
-
-document
-.querySelectorAll(".reveal")
-.forEach(element =>
-obs.observe(element)
-);
-
+const bpm=document.getElementById('bpm');setInterval(()=>bpm.textContent=70+Math.floor(Math.random()*7),1200);
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(e=>obs.observe(e));
 </script>
 
 
-<!-- ================= SECTION VIEWER ================= -->
-
-<div
-id="sectionViewer"
-class="section-viewer"
->
-
-<div class="section-viewer-head">
-
-<h3 id="sectionViewerTitle">
-Preview
-</h3>
-
-<button
-onclick="closeSectionViewer()"
->
-×
-</button>
-
+<div id="sectionViewer" class="section-viewer">
+  <div class="section-viewer-head">
+    <h3 id="sectionViewerTitle">Preview</h3>
+    <button onclick="closeSectionViewer()">×</button>
+  </div>
+  <div id="sectionViewerContent"></div>
 </div>
 
-
-<div
-id="sectionViewerContent"
-class="section-viewer-content"
->
+<div id="mediaLightbox" class="media-lightbox" onclick="closeMediaLightbox(event)">
+  <button class="lb-close" onclick="closeMediaLightbox()">×</button>
+  <div id="lightboxContent"></div>
 </div>
 
-</div>
+<script>
+const HOST_PASSWORD = "aayushman";
+let hostUnlocked = false;
+let currentMediaFilter = "all";
+let mediaStore = JSON.parse(localStorage.getItem("heartProjectMedia") || "[]");
+
+function openHostPanel(){document.getElementById("hostPanel").classList.add("show")}
+function closeHostPanel(){
+  document.getElementById("hostPanel").classList.remove("show");
+  hostUnlocked=false;
+  document.getElementById("hostLogin").style.display="block";
+  document.getElementById("uploadArea").style.display="none";
+  document.getElementById("hostPassword").value="";
+  document.getElementById("hostMessage").textContent="";
+}
+
+function unlockHost(){
+  const pass=document.getElementById("hostPassword").value;
+  const msg=document.getElementById("hostMessage");
+
+  if(pass===HOST_PASSWORD){
+    hostUnlocked=true;
+    document.getElementById("hostLogin").style.display="none";
+    document.getElementById("uploadArea").style.display="grid";
+    renderHostMediaList();
+  }else{
+    msg.textContent="Incorrect password. Please try again.";
+    msg.style.color="#ff5262";
+  }
+}
+
+function renderMedia(filter="all", reveal=false){
+  const gallery=document.getElementById("gallery");
+  gallery.innerHTML="";
+  const items=mediaStore.filter(x=>filter==="all"||x.type===filter);
+
+  if(reveal){
+    gallery.classList.add("media-visible");
+  }else{
+    gallery.classList.remove("media-visible");
+  }
+
+  const empty=document.getElementById("galleryEmpty");
+  empty.classList.toggle("media-visible", reveal && items.length===0);
+
+  items.forEach(item=>{
+    const card=document.createElement("div");
+    card.className="gallery-item";
+
+    const media=document.createElement(item.type==="photo"?"img":"video");
+    media.src=item.data;
+    media.alt=item.name;
+    if(item.type==="video"){
+      media.controls=false;
+      media.playsInline=true;
+      media.preload="metadata";
+    }
+
+    const cap=document.createElement("div");
+    cap.className="gallery-caption";
+    cap.textContent=item.name;
+
+    card.appendChild(media);
+    card.appendChild(cap);
+    card.onclick=()=>showMediaInsideSection(item);
+    gallery.appendChild(card);
+  });
+
+  renderHostMediaList();
+}
+
+function showMediaInsideSection(item){
+  const viewer=document.getElementById("sectionViewer");
+  const content=document.getElementById("sectionViewerContent");
+  const title=document.getElementById("sectionViewerTitle");
+
+  content.innerHTML="";
+  title.textContent=item.name;
+
+  const media=document.createElement(item.type==="photo"?"img":"video");
+  media.src=item.data;
+  media.alt=item.name;
+  media.className="section-view-media";
+
+  if(item.type==="video"){
+    media.controls=true;
+    media.autoplay=true;
+    media.playsInline=true;
+  }
+
+  content.appendChild(media);
+  viewer.classList.add("show");
+  viewer.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function closeSectionViewer(){
+  const viewer=document.getElementById("sectionViewer");
+  const content=document.getElementById("sectionViewerContent");
+  viewer.classList.remove("show");
+  content.innerHTML="";
+}
+
+function renderHostMediaList(){
+  const list=document.getElementById("hostMediaList");
+  if(!list)return;
+
+  if(!hostUnlocked){
+    list.innerHTML="";
+    return;
+  }
+
+  list.innerHTML="";
+  mediaStore.forEach((item,index)=>{
+    const row=document.createElement("div");
+    row.className="host-media-row";
+
+    const label=document.createElement("span");
+    label.textContent=(item.type==="photo"?"📸 ":"🎬 ")+item.name;
+
+    const remove=document.createElement("button");
+    remove.textContent="Remove";
+    remove.onclick=()=>{
+      if(!confirm("Remove this item from the gallery?")) return;
+      mediaStore.splice(index,1);
+      localStorage.setItem("heartProjectMedia",JSON.stringify(mediaStore));
+      renderMedia(currentMediaFilter,true);
+      document.getElementById("hostMessage").textContent="✓ Media removed.";
+    };
+
+    row.appendChild(label);
+    row.appendChild(remove);
+    list.appendChild(row);
+  });
+}
+
+function filterMedia(filter,button){
+  currentMediaFilter = filter;
+  document.querySelectorAll(".media-filter").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  renderMedia(filter,true);
+}
+
+function openMediaLightbox(item){
+  const box=document.getElementById("mediaLightbox");
+  const content=document.getElementById("lightboxContent");
+  content.innerHTML="";
+  const media=document.createElement(item.type==="photo"?"img":"video");
+  media.src=item.data;
+  if(item.type==="video"){media.controls=true;media.autoplay=true;media.playsInline=true}
+  content.appendChild(media);
+  box.classList.add("show");
+}
+function closeMediaLightbox(event){
+  if(event && event.target.closest("#lightboxContent"))return;
+  document.getElementById("mediaLightbox").classList.remove("show");
+  document.getElementById("lightboxContent").innerHTML="";
+}
+renderMedia("all",false);
+
+function toggleSettings(){
+  const menu=document.getElementById("settingsMenu");
+  menu.classList.toggle("show");
+}
+function unlockFromSettings(){
+  const pass=document.getElementById("settingsPassword").value;
+  const msg=document.getElementById("settingsPasswordMessage");
+
+  if(pass===HOST_PASSWORD){
+    hostUnlocked=true;
+    document.getElementById("settingsHostControls").classList.add("show");
+    msg.textContent="✓ Host controls unlocked.";
+    msg.style.color="#69e58a";
+  }else{
+    hostUnlocked=false;
+    document.getElementById("settingsHostControls").classList.remove("show");
+    msg.textContent="Incorrect password.";
+    msg.style.color="#ff5262";
+  }
+}
+
+function openHostFromSettings(){
+  document.getElementById("settingsMenu").classList.remove("show");
+  openHostPanel();
+}
+document.addEventListener("click",function(e){
+  const menu=document.getElementById("settingsMenu");
+  const btn=document.querySelector(".settings-btn");
+  if(menu && menu.classList.contains("show") && !menu.contains(e.target) && !btn.contains(e.target)){
+    menu.classList.remove("show");
+  }
+});
+</script>
 
 
-<!-- ================= LIGHTBOX ================= -->
 
-<div
-id="mediaLightbox"
-class="media-lightbox"
-onclick="closeMediaLightbox(event)"
->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc, getDocs, deleteDoc, doc,
+  query, orderBy, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-<button
-class="lb-close"
-onclick="closeMediaLightbox()"
->
-×
-</button>
+const firebaseConfig = {
+  apiKey: "AIzaSyBsCLUl3EJoRS7uT79WK41foK4agiDYhw0",
+  authDomain: "it-s-working-heart.firebaseapp.com",
+  projectId: "it-s-working-heart",
+  storageBucket: "it-s-working-heart.firebasestorage.app",
+  messagingSenderId: "1057727831456",
+  appId: "1:1057727831456:web:b79eaf751a07978efd18c5",
+  measurementId: "G-KH4Q0JBS4H"
+};
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-<div id="lightboxContent">
-</div>
+const MEDIA_COLLECTION = "heartProjectMedia";
 
-</div>
+let firebaseUser = null;
+let mediaStore = [];
+let currentMediaFilter = "all";
+
+function msg(text, ok=false){
+  const e = document.getElementById("firebaseMessage");
+  if(e){
+    e.textContent = text;
+    e.className = "firebase-message " + (ok ? "ok" : "");
+  }
+}
+
+function detectType(url){
+  const clean = url.split("?")[0].split("#")[0].toLowerCase();
+  if(/\.(mp4|webm|ogg|mov|m4v)(\.)?$/i.test(clean)) return "video";
+  return "photo";
+}
+
+function validHttpUrl(value){
+  try{
+    const u = new URL(value);
+    return u.protocol === "http:" || u.protocol === "https:";
+  }catch{
+    return false;
+  }
+}
+
+async function loadFirebaseMedia(){
+  try{
+    const q = query(collection(db, MEDIA_COLLECTION), orderBy("createdAt", "desc"));
+    const snap = await getDocs(q);
+
+    mediaStore = snap.docs.map(d => ({
+      id: d.id,
+      ...d.data()
+    })).filter(x => x.url && x.type);
+
+    renderMedia(currentMediaFilter, false);
+    renderHostMediaList();
+
+    const st = document.getElementById("firebaseStatus");
+    if(st){
+      st.textContent = "☁️ Live Firebase gallery connected";
+      st.className = "firebase-status live";
+    }
+  }catch(error){
+    console.error(error);
+    const st = document.getElementById("firebaseStatus");
+    if(st){
+      st.textContent = "☁️ Firebase database setup required";
+      st.className = "firebase-status";
+    }
+    msg("Could not load Firebase gallery. Check Firestore rules.");
+  }
+}
+
+async function addFirebaseLink(){
+  if(!firebaseUser){
+    msg("Leader login is required.");
+    return;
+  }
+
+  const imageUrl = document.getElementById("imageUrl").value.trim();
+  const videoUrl = document.getElementById("videoUrl").value.trim();
+  const titleInput = document.getElementById("mediaTitle").value.trim();
+
+  if(!imageUrl && !videoUrl){
+    msg("Paste an image or video URL first.");
+    return;
+  }
+
+  if(imageUrl && videoUrl){
+    msg("Add one link at a time.");
+    return;
+  }
+
+  const url = imageUrl || videoUrl;
+
+  if(!validHttpUrl(url)){
+    msg("Please enter a valid http:// or https:// URL.");
+    return;
+  }
+
+  const type = imageUrl ? "photo" : "video";
+  const name = titleInput || (type === "photo" ? "Project Photo" : "Project Video");
+
+  try{
+    msg("Saving link to Firebase…");
+
+    await addDoc(collection(db, MEDIA_COLLECTION), {
+      name,
+      url,
+      type,
+      createdAt: serverTimestamp(),
+      addedBy: firebaseUser.uid
+    });
+
+    document.getElementById("imageUrl").value = "";
+    document.getElementById("videoUrl").value = "";
+    document.getElementById("mediaTitle").value = "";
+
+    msg("✓ Link added. Visitors can see it now.", true);
+    await loadFirebaseMedia();
+    renderMedia(currentMediaFilter, true);
+  }catch(error){
+    console.error(error);
+    msg("Failed to save link. Check Firestore rules.");
+  }
+}
+
+async function removeFirebaseMedia(id){
+  if(!firebaseUser) return;
+
+  if(!confirm("Remove this item from the gallery?")) return;
+
+  try{
+    await deleteDoc(doc(db, MEDIA_COLLECTION, id));
+    msg("✓ Media removed.", true);
+    await loadFirebaseMedia();
+    renderMedia(currentMediaFilter, true);
+  }catch(error){
+    console.error(error);
+    msg("Remove failed. Check Firestore rules.");
+  }
+}
+
+function renderMedia(filter="all", reveal=false){
+  const gallery = document.getElementById("gallery");
+  const empty = document.getElementById("galleryEmpty");
+  if(!gallery || !empty) return;
+
+  gallery.innerHTML = "";
+
+  const items = mediaStore.filter(
+    x => filter === "all" || x.type === filter
+  );
+
+  gallery.classList.toggle("media-visible", reveal);
+  empty.classList.toggle(
+    "media-visible",
+    reveal && items.length === 0
+  );
+
+  items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "gallery-item";
+
+    const media = document.createElement(
+      item.type === "photo" ? "img" : "video"
+    );
+
+    media.src = item.url;
+    media.alt = item.name;
+    media.loading = "lazy";
+
+    if(item.type === "video"){
+      media.controls = false;
+      media.playsInline = true;
+      media.preload = "metadata";
+    }
+
+    const cap = document.createElement("div");
+    cap.className = "gallery-caption";
+    cap.textContent = item.name;
+
+    card.appendChild(media);
+    card.appendChild(cap);
+    card.onclick = () => showMediaInsideSection(item);
+
+    gallery.appendChild(card);
+  });
+}
+
+function showMediaInsideSection(item){
+  const viewer = document.getElementById("sectionViewer");
+  const content = document.getElementById("sectionViewerContent");
+  const title = document.getElementById("sectionViewerTitle");
+
+  content.innerHTML = "";
+  title.textContent = item.name;
+
+  const media = document.createElement(
+    item.type === "photo" ? "img" : "video"
+  );
+
+  media.src = item.url;
+  media.alt = item.name;
+  media.className = "section-view-media";
+
+  if(item.type === "video"){
+    media.controls = true;
+    media.autoplay = true;
+    media.playsInline = true;
+  }
+
+  content.appendChild(media);
+  viewer.classList.add("show");
+  viewer.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function renderHostMediaList(){
+  const list = document.getElementById("hostMediaList");
+  if(!list) return;
+
+  if(!firebaseUser){
+    list.innerHTML = "";
+    return;
+  }
+
+  list.innerHTML = "";
+
+  mediaStore.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "host-media-row";
+
+    const label = document.createElement("span");
+    label.textContent =
+      (item.type === "photo" ? "📸 " : "🎬 ") + item.name;
+
+    const remove = document.createElement("button");
+    remove.textContent = "Remove";
+    remove.onclick = () => removeFirebaseMedia(item.id);
+
+    row.append(label, remove);
+    list.appendChild(row);
+  });
+}
+
+function filterMedia(filter, button){
+  currentMediaFilter = filter;
+
+  document.querySelectorAll(".media-filter")
+    .forEach(b => b.classList.remove("active"));
+
+  button.classList.add("active");
+  renderMedia(filter, true);
+}
+
+async function loginLeader(){
+  const email = document.getElementById("leaderEmail")?.value.trim();
+  const pw = document.getElementById("leaderPassword")?.value;
+
+  if(!email || !pw){
+    msg("Enter the leader email and password.");
+    return;
+  }
+
+  try{
+    await signInWithEmailAndPassword(auth, email, pw);
+    msg("✓ Leader access granted.", true);
+  }catch(error){
+    console.error(error);
+    msg("Login failed. Check your email and password.");
+  }
+}
+
+async function logoutLeader(){
+  await signOut(auth);
+}
+
+onAuthStateChanged(auth, user => {
+  firebaseUser = user;
+
+  const login = document.getElementById("hostLogin");
+  const upload = document.getElementById("uploadArea");
+
+  if(login) login.style.display = user ? "none" : "block";
+  if(upload) upload.style.display = user ? "grid" : "none";
+
+  renderHostMediaList();
+});
+
+window.loginLeader = loginLeader;
+window.logoutLeader = logoutLeader;
+window.addFirebaseLink = addFirebaseLink;
+window.filterMedia = filterMedia;
+
+loadFirebaseMedia();
+setInterval(loadFirebaseMedia, 10000);
+</script>
+</body>
+</html>
