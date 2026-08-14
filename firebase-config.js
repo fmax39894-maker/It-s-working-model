@@ -11,12 +11,12 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyBsCLUl3EJoRS7uT79WK41foK4agiDYhw0",
-  authDomain: "it-s-working-heart.firebaseapp.com",
-  projectId: "it-s-working-heart",
-  storageBucket: "it-s-working-heart.firebasestorage.app",
-  messagingSenderId: "1057727831456",
-  appId: "1:1057727831456:web:269ef039c24e41f4fd18c5",
+    apiKey: "AIzaSyDdYdMXyUU52kvja7a8jE3-8Bh1ahY3sjU",
+  authDomain: "working-heart.firebaseapp.com",
+  projectId: "working-heart",
+  storageBucket: "working-heart.firebasestorage.app",
+  messagingSenderId: "583684499453",
+  appId: "1:583684499453:web:228153929c4abdb4711b94",
 
 };
 
