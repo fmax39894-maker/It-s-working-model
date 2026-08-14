@@ -1,16 +1,25 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
 <meta charset="utf-8">
+
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
 >
 
+<meta name="theme-color" content="#08090b">
+
 <title>Admin Editor · Working Model of Heart</title>
 
+
 <style>
+
+/* =========================================================
+                    RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -24,82 +33,130 @@ body{
   margin:0;
   background:#08090b;
   color:#fff;
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-/* =========================
-        TOP BAR
-========================= */
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================================
+                    TOP BAR
+========================================================= */
 
 .topbar{
-  height:64px;
-  padding:0 6%;
+
+  min-height:64px;
+
+  padding:0 5%;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
 
   background:#090a0c;
+
   border-bottom:1px solid #292a2e;
 
   position:sticky;
   top:0;
-  z-index:50;
 
-  backdrop-filter:blur(12px);
+  z-index:100;
+
+  backdrop-filter:blur(14px);
+
 }
 
 .brand{
+
   font-size:19px;
-  font-weight:700;
+  font-weight:800;
+
 }
 
 .brand span{
   color:#ff2638;
 }
 
-.back-btn{
+.top-actions{
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+}
+
+.top-btn{
+
   border:1px solid #383a40;
+
   background:#111317;
+
   color:#fff;
 
-  padding:10px 15px;
+  padding:10px 13px;
+
   border-radius:9px;
 
   cursor:pointer;
+
   font-weight:700;
 
-  transition:.25s;
+  transition:.2s;
+
 }
 
-.back-btn:hover{
+.top-btn:hover{
   border-color:#ff2638;
-  background:#181114;
 }
 
-/* =========================
-        PAGE
-========================= */
+.top-btn:active{
+  transform:scale(.97);
+}
+
+
+/* =========================================================
+                    PAGE
+========================================================= */
 
 .page{
-  width:min(1100px,92%);
+
+  width:min(1120px,92%);
+
   margin:auto;
-  padding:35px 0 70px;
+
+  padding:35px 0 80px;
+
 }
 
 .page-head{
-  margin-bottom:28px;
+  margin-bottom:25px;
 }
 
 .eyebrow{
-  color:#ff6b76;
+
+  color:#ff6875;
+
   font-size:11px;
+
   letter-spacing:3px;
+
   font-weight:800;
+
 }
 
 h1{
-  margin:10px 0 8px;
+
+  margin:9px 0 8px;
+
   font-size:clamp(32px,6vw,52px);
+
 }
 
 h1 span{
@@ -107,58 +164,99 @@ h1 span{
 }
 
 .page-head p{
+
   margin:0;
+
   color:#9fa2a9;
+
   line-height:1.6;
+
 }
 
-/* =========================
-        STATUS
-========================= */
+
+/* =========================================================
+                    STATUS
+========================================================= */
 
 .status{
+
   margin-bottom:20px;
-  padding:13px 15px;
+
+  padding:14px 16px;
 
   border:1px solid #34363c;
+
   border-radius:11px;
 
   background:#101114;
 
   color:#aaa;
+
   font-size:13px;
+
+  line-height:1.5;
+
+  word-break:break-word;
+
 }
 
 .status.success{
+
   border-color:#285d38;
+
   background:#102016;
+
   color:#70e08b;
+
 }
 
 .status.error{
+
   border-color:#63252c;
+
   background:#1b0e10;
+
   color:#ff6875;
+
 }
 
-/* =========================
-        EDITOR GRID
-========================= */
+.status.warning{
+
+  border-color:#665021;
+
+  background:#1b170d;
+
+  color:#ffd36b;
+
+}
+
+
+/* =========================================================
+                    GRID
+========================================================= */
 
 .editor-grid{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:20px;
+
 }
 
 .panel{
+
   padding:23px;
 
   background:#101114;
+
   border:1px solid #34363c;
+
   border-radius:16px;
 
   box-shadow:0 20px 50px #0005;
+
 }
 
 .panel.full{
@@ -166,17 +264,25 @@ h1 span{
 }
 
 .panel-head{
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:15px;
 
   margin-bottom:18px;
+
 }
 
 .panel-head h2{
+
   margin:0;
+
   font-size:20px;
+
 }
 
 .panel-head h2 span{
@@ -184,77 +290,115 @@ h1 span{
 }
 
 .count{
-  min-width:32px;
-  height:30px;
 
-  display:grid;
-  place-items:center;
+  min-width:34px;
+
+  height:30px;
 
   padding:0 9px;
 
+  display:grid;
+
+  place-items:center;
+
   background:#181114;
+
   border:1px solid #ff2638;
+
   border-radius:8px;
 
   color:#ff6875;
+
   font-size:12px;
-  font-weight:700;
+
+  font-weight:800;
+
 }
 
-/* =========================
-        FORM
-========================= */
+
+/* =========================================================
+                    FORM
+========================================================= */
 
 .form{
+
   display:grid;
-  gap:12px;
+
+  gap:11px;
+
 }
 
 .label{
+
   color:#ff8793;
+
   font-size:10px;
+
   letter-spacing:1.8px;
+
   font-weight:800;
+
 }
 
 input{
+
   width:100%;
 
   padding:13px 14px;
 
   background:#08090b;
+
   color:#fff;
 
   border:1px solid #383a40;
+
   border-radius:9px;
 
   outline:none;
 
   font-size:14px;
+
 }
 
 input:focus{
+
   border-color:#ff2638;
+
   box-shadow:0 0 0 3px #ff263815;
+
 }
 
 input::placeholder{
   color:#666970;
 }
 
-.form-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+input:disabled{
+  opacity:.6;
 }
 
-button{
-  font-family:inherit;
+
+/* =========================================================
+                    BUTTONS
+========================================================= */
+
+.form-buttons{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-top:2px;
+
 }
 
 .primary{
+
   border:1px solid #ff2638;
+
   background:#ff2638;
+
   color:#fff;
 
   padding:12px 16px;
@@ -263,19 +407,38 @@ button{
 
   cursor:pointer;
 
-  font-weight:700;
+  font-weight:800;
 
-  transition:.25s;
+  transition:.2s;
+
 }
 
 .primary:hover{
-  transform:translateY(-2px);
+
+  transform:translateY(-1px);
+
   box-shadow:0 10px 25px #ff263833;
+
+}
+
+.primary:disabled{
+
+  opacity:.55;
+
+  cursor:not-allowed;
+
+  transform:none;
+
+  box-shadow:none;
+
 }
 
 .secondary{
+
   border:1px solid #383a40;
+
   background:#111317;
+
   color:#fff;
 
   padding:12px 16px;
@@ -286,39 +449,109 @@ button{
 
   font-weight:700;
 
-  transition:.25s;
+  transition:.2s;
+
 }
 
 .secondary:hover{
   border-color:#ff2638;
 }
 
-/* =========================
-        LINK LIST
-========================= */
+.secondary:disabled{
+  opacity:.5;
+}
+
+
+/* =========================================================
+                    PREVIEW
+========================================================= */
+
+.preview{
+
+  display:none;
+
+  margin-top:5px;
+
+  padding:10px;
+
+  background:#08090b;
+
+  border:1px solid #292b31;
+
+  border-radius:10px;
+
+}
+
+.preview.show{
+  display:block;
+}
+
+.preview img,
+.preview video{
+
+  display:block;
+
+  width:100%;
+
+  max-height:280px;
+
+  object-fit:contain;
+
+  border-radius:8px;
+
+  background:#000;
+
+}
+
+.preview-error{
+
+  padding:15px;
+
+  color:#ff6875;
+
+  font-size:12px;
+
+  text-align:center;
+
+}
+
+
+/* =========================================================
+                    LIST
+========================================================= */
 
 .list{
+
   display:grid;
+
   gap:10px;
+
 }
 
 .empty{
+
   padding:25px 15px;
 
   text-align:center;
 
   border:1px dashed #34363c;
+
   border-radius:11px;
 
   color:#666970;
+
   font-size:13px;
+
 }
 
 .media-row{
+
   display:grid;
+
   grid-template-columns:1fr auto;
 
   gap:12px;
+
   align-items:center;
 
   padding:13px;
@@ -326,9 +559,11 @@ button{
   background:#0b0c0f;
 
   border:1px solid #292b31;
+
   border-radius:11px;
 
   transition:.2s;
+
 }
 
 .media-row:hover{
@@ -340,15 +575,21 @@ button{
 }
 
 .media-name{
-  font-weight:700;
+
+  font-weight:800;
+
   font-size:14px;
 
   overflow:hidden;
+
   text-overflow:ellipsis;
+
   white-space:nowrap;
+
 }
 
 .media-url{
+
   margin-top:5px;
 
   color:#777b83;
@@ -356,30 +597,44 @@ button{
   font-size:11px;
 
   overflow:hidden;
+
   text-overflow:ellipsis;
+
   white-space:nowrap;
+
 }
 
 .media-actions{
+
   display:flex;
+
   gap:7px;
+
 }
 
 .edit-btn,
 .delete-btn{
+
   border-radius:7px;
+
   padding:8px 10px;
 
   cursor:pointer;
 
   font-size:12px;
-  font-weight:700;
+
+  font-weight:800;
+
 }
 
 .edit-btn{
+
   border:1px solid #383a40;
+
   background:#111317;
+
   color:#fff;
+
 }
 
 .edit-btn:hover{
@@ -387,97 +642,104 @@ button{
 }
 
 .delete-btn{
+
   border:1px solid #65252d;
+
   background:#1b0e10;
+
   color:#ff6875;
+
 }
 
 .delete-btn:hover{
+
   background:#ff2638;
+
   color:#fff;
+
 }
 
-/* =========================
-        PREVIEW
-========================= */
 
-.preview{
-  margin-top:15px;
+/* =========================================================
+                    EDITING BADGE
+========================================================= */
+
+.editing-badge{
 
   display:none;
 
-  padding:12px;
+  margin-bottom:12px;
 
-  background:#08090b;
-
-  border:1px solid #292b31;
-  border-radius:10px;
-}
-
-.preview.show{
-  display:block;
-}
-
-.preview img,
-.preview video{
-  display:block;
-
-  width:100%;
-  max-height:280px;
-
-  object-fit:contain;
+  padding:9px 11px;
 
   border-radius:8px;
-  background:#000;
-}
 
-/* =========================
-        DANGER
-========================= */
-
-.danger{
-  margin-top:20px;
-
-  padding-top:20px;
-
-  border-top:1px solid #292b31;
-}
-
-.danger-btn{
-  width:100%;
-
-  padding:12px;
-
-  border:1px solid #63252c;
+  border:1px solid #ff2638;
 
   background:#1b0e10;
 
+  color:#ff8793;
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+.editing-badge.show{
+  display:block;
+}
+
+
+/* =========================================================
+                    DATABASE INFO
+========================================================= */
+
+.info-text{
+
+  color:#999da5;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  margin:0;
+
+}
+
+.info-small{
+
+  color:#777b83;
+
+  font-size:12px;
+
+  line-height:1.7;
+
+  margin-bottom:0;
+
+}
+
+.info-small b{
   color:#ff6875;
-
-  border-radius:9px;
-
-  cursor:pointer;
-
-  font-weight:700;
 }
 
-.danger-btn:hover{
-  background:#ff2638;
-  color:#fff;
-}
 
-/* =========================
-        LOGIN OVERLAY
-========================= */
+/* =========================================================
+                    LOGIN
+========================================================= */
 
 .login-overlay{
+
   position:fixed;
+
   inset:0;
 
   z-index:1000;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   padding:20px;
@@ -485,9 +747,11 @@ button{
   background:#050608ee;
 
   backdrop-filter:blur(15px);
+
 }
 
 .login-box{
+
   width:min(420px,100%);
 
   padding:30px;
@@ -495,20 +759,27 @@ button{
   background:#101114;
 
   border:1px solid #ff2638;
+
   border-radius:18px;
 
   box-shadow:
+
     0 25px 80px #000,
+
     0 0 40px #ff26381c;
+
 }
 
 .login-icon{
+
   width:60px;
+
   height:60px;
 
   margin:0 auto 18px;
 
   display:grid;
+
   place-items:center;
 
   background:#ff2638;
@@ -518,28 +789,41 @@ button{
   font-size:28px;
 
   box-shadow:0 0 30px #ff263855;
+
 }
 
 .login-box h2{
+
   margin:0;
+
   text-align:center;
+
 }
 
 .login-box p{
+
   text-align:center;
+
   color:#999da5;
+
   font-size:13px;
+
   line-height:1.5;
+
 }
 
 .login-form{
+
   margin-top:20px;
 
   display:grid;
+
   gap:10px;
+
 }
 
 .login-message{
+
   min-height:18px;
 
   color:#ff6875;
@@ -547,15 +831,26 @@ button{
   text-align:center;
 
   font-size:12px;
+
 }
 
-.login-btn{
-  width:100%;
+
+/* =========================================================
+                    LOADING
+========================================================= */
+
+.loading{
+
+  opacity:.6;
+
+  pointer-events:none;
+
 }
 
-/* =========================
-        RESPONSIVE
-========================= */
+
+/* =========================================================
+                    MOBILE
+========================================================= */
 
 @media(max-width:800px){
 
@@ -579,9 +874,17 @@ button{
     font-size:15px;
   }
 
+  .top-btn{
+    padding:9px 10px;
+    font-size:12px;
+  }
+
   .page{
+
     width:94%;
+
     padding-top:25px;
+
   }
 
   .panel{
@@ -607,14 +910,31 @@ button{
 
 }
 
+
+/* =========================================================
+                    REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =====================================================
+
+<!-- =========================================================
                     TOP BAR
-===================================================== -->
+========================================================= -->
 
 <header class="topbar">
 
@@ -622,21 +942,35 @@ button{
     Working Model of <span>Heart</span>
   </div>
 
-  <button
-    class="back-btn"
-    onclick="goBack()"
-  >
-    ← Back
-  </button>
+  <div class="top-actions">
+
+    <button
+      id="refreshBtn"
+      class="top-btn"
+      type="button"
+    >
+      ↻ Refresh
+    </button>
+
+    <button
+      class="top-btn"
+      type="button"
+      onclick="goBack()"
+    >
+      ← Back
+    </button>
+
+  </div>
 
 </header>
 
 
-<!-- =====================================================
-                    EDITOR
-===================================================== -->
+<!-- =========================================================
+                    PAGE
+========================================================= -->
 
 <main class="page">
+
 
   <div class="page-head">
 
@@ -649,27 +983,29 @@ button{
     </h1>
 
     <p>
-      Manage the image and video links displayed on the
+      Manage image and video links displayed on the
       Working Model of Heart website.
     </p>
 
   </div>
 
 
+  <!-- STATUS -->
+
   <div
     id="status"
     class="status"
   >
-    ☁️ Connecting to Firestore...
+    ☁️ Waiting for admin login...
   </div>
 
 
   <div class="editor-grid">
 
 
-    <!-- =================================================
-                    IMAGE PANEL
-    ================================================== -->
+    <!-- =====================================================
+                        IMAGE FORM
+    ====================================================== -->
 
     <section class="panel">
 
@@ -689,7 +1025,16 @@ button{
       </div>
 
 
+      <div
+        id="imageEditingBadge"
+        class="editing-badge"
+      >
+        ✏️ Editing image
+      </div>
+
+
       <div class="form">
+
 
         <label class="label">
           IMAGE NAME
@@ -720,14 +1065,15 @@ button{
           <button
             id="imageSaveBtn"
             class="primary"
-            onclick="saveImage()"
+            type="button"
           >
             ➕ Add Image
           </button>
 
           <button
+            id="imageClearBtn"
             class="secondary"
-            onclick="clearImageForm()"
+            type="button"
           >
             Clear
           </button>
@@ -740,14 +1086,15 @@ button{
           class="preview"
         ></div>
 
+
       </div>
 
     </section>
 
 
-    <!-- =================================================
-                    VIDEO PANEL
-    ================================================== -->
+    <!-- =====================================================
+                        VIDEO FORM
+    ====================================================== -->
 
     <section class="panel">
 
@@ -767,7 +1114,16 @@ button{
       </div>
 
 
+      <div
+        id="videoEditingBadge"
+        class="editing-badge"
+      >
+        ✏️ Editing video
+      </div>
+
+
       <div class="form">
+
 
         <label class="label">
           VIDEO NAME
@@ -798,14 +1154,15 @@ button{
           <button
             id="videoSaveBtn"
             class="primary"
-            onclick="saveVideo()"
+            type="button"
           >
             ➕ Add Video
           </button>
 
           <button
+            id="videoClearBtn"
             class="secondary"
-            onclick="clearVideoForm()"
+            type="button"
           >
             Clear
           </button>
@@ -818,14 +1175,15 @@ button{
           class="preview"
         ></div>
 
+
       </div>
 
     </section>
 
 
-    <!-- =================================================
-                    IMAGE LIST
-    ================================================== -->
+    <!-- =====================================================
+                        IMAGE LIST
+    ====================================================== -->
 
     <section class="panel">
 
@@ -851,7 +1209,7 @@ button{
       >
 
         <div class="empty">
-          Loading images...
+          No images loaded yet.
         </div>
 
       </div>
@@ -859,9 +1217,9 @@ button{
     </section>
 
 
-    <!-- =================================================
-                    VIDEO LIST
-    ================================================== -->
+    <!-- =====================================================
+                        VIDEO LIST
+    ====================================================== -->
 
     <section class="panel">
 
@@ -887,7 +1245,7 @@ button{
       >
 
         <div class="empty">
-          Loading videos...
+          No videos loaded yet.
         </div>
 
       </div>
@@ -895,9 +1253,9 @@ button{
     </section>
 
 
-    <!-- =================================================
-                    DATABASE INFO
-    ================================================== -->
+    <!-- =====================================================
+                    FIRESTORE INFORMATION
+    ====================================================== -->
 
     <section class="panel full">
 
@@ -909,31 +1267,29 @@ button{
 
       </div>
 
-      <p
-        style="
-        color:#999da5;
-        font-size:13px;
-        line-height:1.7;
-        margin:0;
-        "
-      >
+
+      <p class="info-text">
+
         This editor stores only the media name and URL in
-        Firebase Firestore. Images and videos themselves are
-        not uploaded to Firebase Storage.
+        Firebase Firestore.
+
+        The actual image and video files are hosted elsewhere.
+
+        Firebase Storage is not used.
+
       </p>
 
-      <p
-        style="
-        color:#777b83;
-        font-size:12px;
-        line-height:1.7;
-        margin-bottom:0;
-        "
-      >
-        Collections used:
-        <b style="color:#ff6875">images</b>
+
+      <p class="info-small">
+
+        Collections:
+
+        <b>images</b>
+
         and
-        <b style="color:#ff6875">videos</b>.
+
+        <b>videos</b>.
+
       </p>
 
     </section>
@@ -944,9 +1300,9 @@ button{
 </main>
 
 
-<!-- =====================================================
-                    LOGIN SCREEN
-===================================================== -->
+<!-- =========================================================
+                    LOGIN OVERLAY
+========================================================= -->
 
 <div
   id="loginOverlay"
@@ -959,9 +1315,11 @@ button{
       🔐
     </div>
 
+
     <h2>
       Admin Editor
     </h2>
+
 
     <p>
       Enter the admin password to manage
@@ -978,12 +1336,15 @@ button{
         autocomplete="current-password"
       >
 
+
       <button
-        class="primary login-btn"
-        onclick="unlockEditor()"
+        id="loginBtn"
+        class="primary"
+        type="button"
       >
         🔓 Unlock Editor
       </button>
+
 
       <div
         id="loginMessage"
@@ -997,32 +1358,23 @@ button{
 </div>
 
 
-<!-- =====================================================
-                FIREBASE + EDITOR JAVASCRIPT
-===================================================== -->
+<!-- =========================================================
+                    FIREBASE
+========================================================= -->
 
 <script type="module">
 
-/*
-=========================================================
-                  FIREBASE CONFIG
-=========================================================
 
-EDIT YOUR FIREBASE CONFIG HERE.
-
-Firebase Console
-→ Project Settings
-→ Your apps
-→ Web app
-→ Firebase SDK setup
-
-Replace the values below with your project's values.
-=========================================================
-*/
+/* =========================================================
+                    FIREBASE IMPORTS
+========================================================= */
 
 import {
   initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
   getFirestore,
@@ -1032,10 +1384,26 @@ import {
   doc,
   updateDoc,
   deleteDoc,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  getDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =========================================================
+                    FIREBASE CONFIG
+=========================================================
+
+IMPORTANT:
+
+Replace EVERY value below with the values from:
+
+Firebase Console
+→ Project Settings
+→ Your apps
+→ Web app </>
+
+========================================================= */
 
 const firebaseConfig = {
 
@@ -1060,76 +1428,199 @@ const firebaseConfig = {
 };
 
 
-/* =====================================================
-                    INITIALIZE
-===================================================== */
+/* =========================================================
+                    CONFIG CHECK
+========================================================= */
 
-const app =
-  initializeApp(firebaseConfig);
+function configIsMissing(){
 
-const db =
-  getFirestore(app);
+  const values = [
+
+    firebaseConfig.apiKey,
+
+    firebaseConfig.authDomain,
+
+    firebaseConfig.projectId,
+
+    firebaseConfig.messagingSenderId,
+
+    firebaseConfig.appId
+
+  ];
+
+  return values.some(
+    value =>
+      !value ||
+      String(value).includes("YOUR_")
+  );
+
+}
 
 
-/* =====================================================
+/* =========================================================
+                    FIREBASE INITIALIZATION
+========================================================= */
+
+let app = null;
+
+let db = null;
+
+let firebaseReady = false;
+
+
+try{
+
+  if(configIsMissing()){
+
+    throw new Error(
+      "Firebase configuration is still using placeholder values."
+    );
+
+  }
+
+
+  app =
+    initializeApp(
+      firebaseConfig
+    );
+
+
+  db =
+    getFirestore(
+      app
+    );
+
+
+  firebaseReady =
+    true;
+
+
+}catch(error){
+
+  console.error(
+    "Firebase initialization error:",
+    error
+  );
+
+
+  setStatus(
+    "❌ Firebase configuration error: " +
+    error.message,
+    "error"
+  );
+
+}
+
+
+/* =========================================================
                     SETTINGS
-===================================================== */
+========================================================= */
 
 /*
-IMPORTANT:
+This password protects only the editor interface.
 
-This password protects the editor UI only.
+It is NOT Firestore security.
 
-For real security, Firestore rules should also require
-Firebase Authentication. Do not rely on this password
-alone for production security.
+For production, use Firebase Authentication
+and secure Firestore rules.
 */
 
-const ADMIN_PASSWORD = "aayushman";
+const ADMIN_PASSWORD =
+  "aayushman";
 
 
-let editingImageId = null;
-let editingVideoId = null;
+/* =========================================================
+                    STATE
+========================================================= */
 
 let images = [];
+
 let videos = [];
 
+let editingImageId = null;
 
-/* =====================================================
-                    DOM HELPERS
-===================================================== */
+let editingVideoId = null;
+
+let busy = false;
+
+
+/* =========================================================
+                    DOM
+========================================================= */
 
 const $ = id =>
   document.getElementById(id);
 
+
+/* =========================================================
+                    STATUS
+========================================================= */
 
 function setStatus(
   message,
   type = ""
 ){
 
-  const status =
+  const element =
     $("status");
 
-  status.textContent =
+  element.textContent =
     message;
 
-  status.className =
-    "status " + type;
+  element.className =
+    "status";
+
+  if(type){
+
+    element.classList.add(
+      type
+    );
+
+  }
+
 }
 
 
-/* =====================================================
-                    LOGIN
-===================================================== */
+/* =========================================================
+                    ERROR FORMATTER
+========================================================= */
 
-window.unlockEditor = function(){
+function firebaseError(error){
+
+  console.error(
+    "Firebase error:",
+    error
+  );
+
+
+  const code =
+    error?.code ||
+    "unknown-error";
+
+
+  const message =
+    error?.message ||
+    String(error);
+
+
+  return (
+    "❌ " +
+    code +
+    " — " +
+    message
+  );
+
+}
+
+
+/* =========================================================
+                    LOGIN
+========================================================= */
+
+function unlockEditor(){
 
   const password =
     $("adminPassword").value;
-
-  const message =
-    $("loginMessage");
 
 
   if(password === ADMIN_PASSWORD){
@@ -1137,16 +1628,17 @@ window.unlockEditor = function(){
     $("loginOverlay").style.display =
       "none";
 
+
     setStatus(
-      "✓ Admin editor unlocked. Connecting to Firestore...",
-      "success"
+      "☁️ Admin unlocked. Testing Firestore connection..."
     );
 
-    loadAllMedia();
+
+    testFirestore();
 
   }else{
 
-    message.textContent =
+    $("loginMessage").textContent =
       "Incorrect admin password.";
 
     $("adminPassword").value =
@@ -1156,10 +1648,14 @@ window.unlockEditor = function(){
 
   }
 
-};
+}
 
 
-/* ENTER KEY LOGIN */
+$("loginBtn").addEventListener(
+  "click",
+  unlockEditor
+);
+
 
 $("adminPassword").addEventListener(
   "keydown",
@@ -1175,84 +1671,53 @@ $("adminPassword").addEventListener(
 );
 
 
-/* =====================================================
-                    LOAD ALL MEDIA
-===================================================== */
+/* =========================================================
+                    FIRESTORE TEST
+========================================================= */
 
-async function loadAllMedia(){
+async function testFirestore(){
+
+  if(!firebaseReady){
+
+    return;
+
+  }
+
 
   try{
 
     setStatus(
-      "☁️ Loading media from Firestore..."
+      "☁️ Testing Firestore connection..."
     );
 
 
-    /* IMAGES */
+    /*
+      We perform a READ against the images collection.
 
-    const imageQuery =
-      query(
-        collection(db,"images"),
-        orderBy("createdAt","asc")
-      );
+      This confirms that Firestore is actually reachable.
+    */
 
-    const imageSnapshot =
-      await getDocs(imageQuery);
-
-
-    images =
-      imageSnapshot.docs.map(item => ({
-
-        id:item.id,
-
-        ...item.data()
-
-      }));
-
-
-    /* VIDEOS */
-
-    const videoQuery =
-      query(
-        collection(db,"videos"),
-        orderBy("createdAt","asc")
-      );
-
-    const videoSnapshot =
-      await getDocs(videoQuery);
-
-
-    videos =
-      videoSnapshot.docs.map(item => ({
-
-        id:item.id,
-
-        ...item.data()
-
-      }));
-
-
-    renderImages();
-
-    renderVideos();
+    await getDocs(
+      collection(
+        db,
+        "images"
+      )
+    );
 
 
     setStatus(
-      "☁️ Firestore connected · Editor is ready.",
+      "✓ Firestore connected successfully.",
       "success"
     );
 
 
+    await loadAllMedia();
+
+
   }catch(error){
 
-    console.error(
-      "Firestore error:",
-      error
-    );
-
-
     setStatus(
-      "Unable to connect to Firebase Firestore. Check your Firebase configuration and Firestore rules.",
+      firebaseError(error),
       "error"
     );
 
@@ -1261,14 +1726,192 @@ async function loadAllMedia(){
 }
 
 
-/* =====================================================
-                    SAVE IMAGE
-===================================================== */
+/* =========================================================
+                    LOAD ALL MEDIA
+========================================================= */
 
-window.saveImage = async function(){
+async function loadAllMedia(){
+
+  if(!firebaseReady){
+
+    return;
+
+  }
+
+
+  try{
+
+    setStatus(
+      "☁️ Loading media from Firestore..."
+    );
+
+
+    /*
+      IMPORTANT:
+
+      We intentionally do NOT use orderBy("createdAt").
+
+      This makes the editor compatible with older documents
+      that may not have createdAt.
+    */
+
+
+    const imageSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "images"
+        )
+      );
+
+
+    images =
+      imageSnapshot.docs.map(
+        item => ({
+
+          id:item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    const videoSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "videos"
+        )
+      );
+
+
+    videos =
+      videoSnapshot.docs.map(
+        item => ({
+
+          id:item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    /*
+      Sort locally.
+
+      Documents without createdAt go to the beginning.
+    */
+
+    images.sort(
+      sortByCreatedAt
+    );
+
+
+    videos.sort(
+      sortByCreatedAt
+    );
+
+
+    renderImages();
+
+    renderVideos();
+
+
+    setStatus(
+      `✓ Firestore connected · ${images.length} images · ${videos.length} videos`,
+      "success"
+    );
+
+
+  }catch(error){
+
+    setStatus(
+      firebaseError(error),
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+                    SORT
+========================================================= */
+
+function sortByCreatedAt(a,b){
+
+  const aTime =
+    Number(
+      a.createdAt || 0
+    );
+
+  const bTime =
+    Number(
+      b.createdAt || 0
+    );
+
+
+  return aTime - bTime;
+
+}
+
+
+/* =========================================================
+                    VALIDATE URL
+========================================================= */
+
+function isValidUrl(value){
+
+  try{
+
+    const url =
+      new URL(value);
+
+
+    return (
+
+      url.protocol === "http:" ||
+
+      url.protocol === "https:"
+
+    );
+
+  }catch{
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================================
+                    SAVE IMAGE
+========================================================= */
+
+async function saveImage(){
+
+  if(busy)return;
+
+
+  if(!firebaseReady){
+
+    setStatus(
+      "❌ Firebase is not initialized.",
+      "error"
+    );
+
+    return;
+
+  }
+
 
   const name =
     $("imageName").value.trim();
+
 
   const url =
     $("imageUrl").value.trim();
@@ -1277,9 +1920,11 @@ window.saveImage = async function(){
   if(!name){
 
     setStatus(
-      "Please enter an image name.",
+      "❌ Please enter an image name.",
       "error"
     );
+
+    $("imageName").focus();
 
     return;
 
@@ -1289,9 +1934,11 @@ window.saveImage = async function(){
   if(!isValidUrl(url)){
 
     setStatus(
-      "Please enter a valid image URL.",
+      "❌ Please enter a valid HTTP/HTTPS image URL.",
       "error"
     );
+
+    $("imageUrl").focus();
 
     return;
 
@@ -1300,8 +1947,15 @@ window.saveImage = async function(){
 
   try{
 
-    $("imageSaveBtn").disabled =
-      true;
+    busy = true;
+
+    setFormBusy(
+      true
+    );
+
+
+    const now =
+      Date.now();
 
 
     if(editingImageId){
@@ -1320,7 +1974,7 @@ window.saveImage = async function(){
 
           url:url,
 
-          updatedAt:Date.now()
+          updatedAt:now
 
         }
 
@@ -1335,30 +1989,37 @@ window.saveImage = async function(){
 
     }else{
 
-      await addDoc(
+      const result =
+        await addDoc(
 
-        collection(
-          db,
-          "images"
-        ),
+          collection(
+            db,
+            "images"
+          ),
 
-        {
+          {
 
-          name:name,
+            name:name,
 
-          url:url,
+            url:url,
 
-          createdAt:Date.now(),
+            createdAt:now,
 
-          updatedAt:Date.now()
+            updatedAt:now
 
-        }
+          }
 
+        );
+
+
+      console.log(
+        "Image document created:",
+        result.id
       );
 
 
       setStatus(
-        "✓ Image link added successfully.",
+        "✓ Image link uploaded to Firestore successfully.",
         "success"
       );
 
@@ -1372,32 +2033,48 @@ window.saveImage = async function(){
 
   }catch(error){
 
-    console.error(error);
-
     setStatus(
-      "Failed to save image link. Check Firestore rules.",
+      firebaseError(error),
       "error"
     );
 
-
   }finally{
 
-    $("imageSaveBtn").disabled =
-      false;
+    busy = false;
+
+    setFormBusy(
+      false
+    );
 
   }
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     SAVE VIDEO
-===================================================== */
+========================================================= */
 
-window.saveVideo = async function(){
+async function saveVideo(){
+
+  if(busy)return;
+
+
+  if(!firebaseReady){
+
+    setStatus(
+      "❌ Firebase is not initialized.",
+      "error"
+    );
+
+    return;
+
+  }
+
 
   const name =
     $("videoName").value.trim();
+
 
   const url =
     $("videoUrl").value.trim();
@@ -1406,9 +2083,11 @@ window.saveVideo = async function(){
   if(!name){
 
     setStatus(
-      "Please enter a video name.",
+      "❌ Please enter a video name.",
       "error"
     );
+
+    $("videoName").focus();
 
     return;
 
@@ -1418,9 +2097,11 @@ window.saveVideo = async function(){
   if(!isValidUrl(url)){
 
     setStatus(
-      "Please enter a valid video URL.",
+      "❌ Please enter a valid HTTP/HTTPS video URL.",
       "error"
     );
+
+    $("videoUrl").focus();
 
     return;
 
@@ -1429,8 +2110,15 @@ window.saveVideo = async function(){
 
   try{
 
-    $("videoSaveBtn").disabled =
-      true;
+    busy = true;
+
+    setFormBusy(
+      true
+    );
+
+
+    const now =
+      Date.now();
 
 
     if(editingVideoId){
@@ -1449,7 +2137,7 @@ window.saveVideo = async function(){
 
           url:url,
 
-          updatedAt:Date.now()
+          updatedAt:now
 
         }
 
@@ -1464,30 +2152,37 @@ window.saveVideo = async function(){
 
     }else{
 
-      await addDoc(
+      const result =
+        await addDoc(
 
-        collection(
-          db,
-          "videos"
-        ),
+          collection(
+            db,
+            "videos"
+          ),
 
-        {
+          {
 
-          name:name,
+            name:name,
 
-          url:url,
+            url:url,
 
-          createdAt:Date.now(),
+            createdAt:now,
 
-          updatedAt:Date.now()
+            updatedAt:now
 
-        }
+          }
 
+        );
+
+
+      console.log(
+        "Video document created:",
+        result.id
       );
 
 
       setStatus(
-        "✓ Video link added successfully.",
+        "✓ Video link uploaded to Firestore successfully.",
         "success"
       );
 
@@ -1501,33 +2196,55 @@ window.saveVideo = async function(){
 
   }catch(error){
 
-    console.error(error);
-
     setStatus(
-      "Failed to save video link. Check Firestore rules.",
+      firebaseError(error),
       "error"
     );
 
-
   }finally{
 
-    $("videoSaveBtn").disabled =
-      false;
+    busy = false;
+
+    setFormBusy(
+      false
+    );
 
   }
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
+                    FORM BUSY
+========================================================= */
+
+function setFormBusy(state){
+
+  $("imageSaveBtn").disabled =
+    state;
+
+  $("videoSaveBtn").disabled =
+    state;
+
+  $("imageClearBtn").disabled =
+    state;
+
+  $("videoClearBtn").disabled =
+    state;
+
+}
+
+
+/* =========================================================
                     EDIT IMAGE
-===================================================== */
+========================================================= */
 
-window.editImage = function(id){
+function editImage(id){
 
   const item =
     images.find(
-      x => x.id === id
+      image =>
+        image.id === id
     );
 
 
@@ -1550,6 +2267,10 @@ window.editImage = function(id){
     "✓ Update Image";
 
 
+  $("imageEditingBadge")
+    .classList.add("show");
+
+
   showImagePreview(
     item.url
   );
@@ -1560,18 +2281,19 @@ window.editImage = function(id){
     block:"center"
   });
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     EDIT VIDEO
-===================================================== */
+========================================================= */
 
-window.editVideo = function(id){
+function editVideo(id){
 
   const item =
     videos.find(
-      x => x.id === id
+      video =>
+        video.id === id
     );
 
 
@@ -1594,6 +2316,10 @@ window.editVideo = function(id){
     "✓ Update Video";
 
 
+  $("videoEditingBadge")
+    .classList.add("show");
+
+
   showVideoPreview(
     item.url
   );
@@ -1604,18 +2330,22 @@ window.editVideo = function(id){
     block:"center"
   });
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     DELETE IMAGE
-===================================================== */
+========================================================= */
 
-window.deleteImage = async function(id){
+async function deleteImage(id){
+
+  if(busy)return;
+
 
   const item =
     images.find(
-      x => x.id === id
+      image =>
+        image.id === id
     );
 
 
@@ -1624,7 +2354,7 @@ window.deleteImage = async function(id){
 
   const confirmed =
     confirm(
-      `Remove "${item.name}" from the website?`
+      `Remove "${item.name || "this image"}" from Firestore?`
     );
 
 
@@ -1633,17 +2363,27 @@ window.deleteImage = async function(id){
 
   try{
 
+    busy = true;
+
+
+    setStatus(
+      "☁️ Removing image..."
+    );
+
+
     await deleteDoc(
+
       doc(
         db,
         "images",
         id
       )
+
     );
 
 
     setStatus(
-      "✓ Image link removed.",
+      "✓ Image link removed successfully.",
       "success"
     );
 
@@ -1653,27 +2393,33 @@ window.deleteImage = async function(id){
 
   }catch(error){
 
-    console.error(error);
-
     setStatus(
-      "Failed to remove image link.",
+      firebaseError(error),
       "error"
     );
 
+  }finally{
+
+    busy = false;
+
   }
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     DELETE VIDEO
-===================================================== */
+========================================================= */
 
-window.deleteVideo = async function(id){
+async function deleteVideo(id){
+
+  if(busy)return;
+
 
   const item =
     videos.find(
-      x => x.id === id
+      video =>
+        video.id === id
     );
 
 
@@ -1682,7 +2428,7 @@ window.deleteVideo = async function(id){
 
   const confirmed =
     confirm(
-      `Remove "${item.name}" from the website?`
+      `Remove "${item.name || "this video"}" from Firestore?`
     );
 
 
@@ -1691,17 +2437,27 @@ window.deleteVideo = async function(id){
 
   try{
 
+    busy = true;
+
+
+    setStatus(
+      "☁️ Removing video..."
+    );
+
+
     await deleteDoc(
+
       doc(
         db,
         "videos",
         id
       )
+
     );
 
 
     setStatus(
-      "✓ Video link removed.",
+      "✓ Video link removed successfully.",
       "success"
     );
 
@@ -1711,21 +2467,23 @@ window.deleteVideo = async function(id){
 
   }catch(error){
 
-    console.error(error);
-
     setStatus(
-      "Failed to remove video link.",
+      firebaseError(error),
       "error"
     );
 
+  }finally{
+
+    busy = false;
+
   }
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     RENDER IMAGES
-===================================================== */
+========================================================= */
 
 function renderImages(){
 
@@ -1758,120 +2516,153 @@ function renderImages(){
     "";
 
 
-  images.forEach(item => {
+  images.forEach(
+    item => {
 
-    const row =
-      document.createElement(
-        "div"
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "media-row";
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "media-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "media-name";
+
+
+      name.textContent =
+        "📸 " +
+        (item.name || "Unnamed image");
+
+
+      const url =
+        document.createElement(
+          "div"
+        );
+
+
+      url.className =
+        "media-url";
+
+
+      url.textContent =
+        item.url || "";
+
+
+      info.append(
+        name,
+        url
       );
 
-    row.className =
-      "media-row";
+
+      const actions =
+        document.createElement(
+          "div"
+        );
 
 
-    const info =
-      document.createElement(
-        "div"
+      actions.className =
+        "media-actions";
+
+
+      const edit =
+        document.createElement(
+          "button"
+        );
+
+
+      edit.type =
+        "button";
+
+
+      edit.className =
+        "edit-btn";
+
+
+      edit.textContent =
+        "Edit";
+
+
+      edit.addEventListener(
+        "click",
+        () =>
+          editImage(
+            item.id
+          )
       );
 
-    info.className =
-      "media-info";
+
+      const remove =
+        document.createElement(
+          "button"
+        );
 
 
-    const name =
-      document.createElement(
-        "div"
+      remove.type =
+        "button";
+
+
+      remove.className =
+        "delete-btn";
+
+
+      remove.textContent =
+        "Remove";
+
+
+      remove.addEventListener(
+        "click",
+        () =>
+          deleteImage(
+            item.id
+          )
       );
 
-    name.className =
-      "media-name";
 
-    name.textContent =
-      "📸 " +
-      item.name;
-
-
-    const url =
-      document.createElement(
-        "div"
+      actions.append(
+        edit,
+        remove
       );
 
-    url.className =
-      "media-url";
 
-    url.textContent =
-      item.url;
-
-
-    info.append(
-      name,
-      url
-    );
-
-
-    const actions =
-      document.createElement(
-        "div"
+      row.append(
+        info,
+        actions
       );
 
-    actions.className =
-      "media-actions";
 
-
-    const edit =
-      document.createElement(
-        "button"
+      list.appendChild(
+        row
       );
 
-    edit.className =
-      "edit-btn";
-
-    edit.textContent =
-      "Edit";
-
-    edit.onclick =
-      () => editImage(item.id);
-
-
-    const remove =
-      document.createElement(
-        "button"
-      );
-
-    remove.className =
-      "delete-btn";
-
-    remove.textContent =
-      "Remove";
-
-    remove.onclick =
-      () => deleteImage(item.id);
-
-
-    actions.append(
-      edit,
-      remove
-    );
-
-
-    row.append(
-      info,
-      actions
-    );
-
-
-    list.appendChild(
-      row
-    );
-
-  });
+    }
+  );
 
 }
 
 
-/* =====================================================
+/* =========================================================
                     RENDER VIDEOS
-===================================================== */
+========================================================= */
 
 function renderVideos(){
 
@@ -1904,122 +2695,155 @@ function renderVideos(){
     "";
 
 
-  videos.forEach(item => {
+  videos.forEach(
+    item => {
 
-    const row =
-      document.createElement(
-        "div"
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "media-row";
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "media-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "media-name";
+
+
+      name.textContent =
+        "🎬 " +
+        (item.name || "Unnamed video");
+
+
+      const url =
+        document.createElement(
+          "div"
+        );
+
+
+      url.className =
+        "media-url";
+
+
+      url.textContent =
+        item.url || "";
+
+
+      info.append(
+        name,
+        url
       );
 
-    row.className =
-      "media-row";
+
+      const actions =
+        document.createElement(
+          "div"
+        );
 
 
-    const info =
-      document.createElement(
-        "div"
+      actions.className =
+        "media-actions";
+
+
+      const edit =
+        document.createElement(
+          "button"
+        );
+
+
+      edit.type =
+        "button";
+
+
+      edit.className =
+        "edit-btn";
+
+
+      edit.textContent =
+        "Edit";
+
+
+      edit.addEventListener(
+        "click",
+        () =>
+          editVideo(
+            item.id
+          )
       );
 
-    info.className =
-      "media-info";
+
+      const remove =
+        document.createElement(
+          "button"
+        );
 
 
-    const name =
-      document.createElement(
-        "div"
+      remove.type =
+        "button";
+
+
+      remove.className =
+        "delete-btn";
+
+
+      remove.textContent =
+        "Remove";
+
+
+      remove.addEventListener(
+        "click",
+        () =>
+          deleteVideo(
+            item.id
+          )
       );
 
-    name.className =
-      "media-name";
 
-    name.textContent =
-      "🎬 " +
-      item.name;
-
-
-    const url =
-      document.createElement(
-        "div"
+      actions.append(
+        edit,
+        remove
       );
 
-    url.className =
-      "media-url";
 
-    url.textContent =
-      item.url;
-
-
-    info.append(
-      name,
-      url
-    );
-
-
-    const actions =
-      document.createElement(
-        "div"
+      row.append(
+        info,
+        actions
       );
 
-    actions.className =
-      "media-actions";
 
-
-    const edit =
-      document.createElement(
-        "button"
+      list.appendChild(
+        row
       );
 
-    edit.className =
-      "edit-btn";
-
-    edit.textContent =
-      "Edit";
-
-    edit.onclick =
-      () => editVideo(item.id);
-
-
-    const remove =
-      document.createElement(
-      "button"
-      );
-
-    remove.className =
-      "delete-btn";
-
-    remove.textContent =
-      "Remove";
-
-    remove.onclick =
-      () => deleteVideo(item.id);
-
-
-    actions.append(
-      edit,
-      remove
-    );
-
-
-    row.append(
-      info,
-      actions
-    );
-
-
-    list.appendChild(
-      row
-    );
-
-  });
+    }
+  );
 
 }
 
 
-/* =====================================================
-                    CLEAR IMAGE FORM
-===================================================== */
+/* =========================================================
+                    CLEAR IMAGE
+========================================================= */
 
-window.clearImageForm = function(){
+function clearImageForm(){
 
   editingImageId =
     null;
@@ -2027,6 +2851,7 @@ window.clearImageForm = function(){
 
   $("imageName").value =
     "";
+
 
   $("imageUrl").value =
     "";
@@ -2036,21 +2861,24 @@ window.clearImageForm = function(){
     "➕ Add Image";
 
 
-  $("imagePreview").innerHTML =
-    "";
+  $("imageEditingBadge")
+    .classList.remove(
+      "show"
+    );
 
-  $("imagePreview").classList.remove(
-    "show"
+
+  clearPreview(
+    $("imagePreview")
   );
 
-};
+}
 
 
-/* =====================================================
-                    CLEAR VIDEO FORM
-===================================================== */
+/* =========================================================
+                    CLEAR VIDEO
+========================================================= */
 
-window.clearVideoForm = function(){
+function clearVideoForm(){
 
   editingVideoId =
     null;
@@ -2058,6 +2886,7 @@ window.clearVideoForm = function(){
 
   $("videoName").value =
     "";
+
 
   $("videoUrl").value =
     "";
@@ -2067,19 +2896,38 @@ window.clearVideoForm = function(){
     "➕ Add Video";
 
 
-  $("videoPreview").innerHTML =
+  $("videoEditingBadge")
+    .classList.remove(
+      "show"
+    );
+
+
+  clearPreview(
+    $("videoPreview")
+  );
+
+}
+
+
+/* =========================================================
+                    CLEAR PREVIEW
+========================================================= */
+
+function clearPreview(box){
+
+  box.innerHTML =
     "";
 
-  $("videoPreview").classList.remove(
+  box.classList.remove(
     "show"
   );
 
-};
+}
 
 
-/* =====================================================
+/* =========================================================
                     IMAGE PREVIEW
-===================================================== */
+========================================================= */
 
 function showImagePreview(url){
 
@@ -2087,25 +2935,71 @@ function showImagePreview(url){
     $("imagePreview");
 
 
-  box.innerHTML = `
-    <img
-      src="${escapeAttribute(url)}"
-      alt="Image preview"
-      onerror="this.parentElement.innerHTML='<div style=&quot;color:#ff6875;padding:10px;font-size:12px&quot;>Unable to load this image URL.</div>'"
-    >
-  `;
+  box.innerHTML =
+    "";
 
 
-  box.classList.add(
-    "show"
+  if(!isValidUrl(url)){
+
+    clearPreview(
+      box
+    );
+
+    return;
+
+  }
+
+
+  const image =
+    document.createElement(
+      "img"
+    );
+
+
+  image.alt =
+    "Image preview";
+
+
+  image.src =
+    url;
+
+
+  image.onload =
+    () => {
+
+      box.classList.add(
+        "show"
+      );
+
+    };
+
+
+  image.onerror =
+    () => {
+
+      box.innerHTML = `
+        <div class="preview-error">
+          ⚠️ Unable to load this image URL.
+        </div>
+      `;
+
+      box.classList.add(
+        "show"
+      );
+
+    };
+
+
+  box.appendChild(
+    image
   );
 
 }
 
 
-/* =====================================================
+/* =========================================================
                     VIDEO PREVIEW
-===================================================== */
+========================================================= */
 
 function showVideoPreview(url){
 
@@ -2113,14 +3007,59 @@ function showVideoPreview(url){
     $("videoPreview");
 
 
-  box.innerHTML = `
-    <video
-      src="${escapeAttribute(url)}"
-      controls
-      playsinline
-      preload="metadata"
-    ></video>
-  `;
+  box.innerHTML =
+    "";
+
+
+  if(!isValidUrl(url)){
+
+    clearPreview(
+      box
+    );
+
+    return;
+
+  }
+
+
+  const video =
+    document.createElement(
+      "video"
+    );
+
+
+  video.src =
+    url;
+
+
+  video.controls =
+    true;
+
+
+  video.playsInline =
+    true;
+
+
+  video.preload =
+    "metadata";
+
+
+  video.onerror =
+    () => {
+
+      box.innerHTML = `
+        <div class="preview-error">
+          ⚠️ Unable to load this video URL.
+          Make sure the URL points directly to a playable video file.
+        </div>
+      `;
+
+    };
+
+
+  box.appendChild(
+    video
+  );
 
 
   box.classList.add(
@@ -2130,22 +3069,167 @@ function showVideoPreview(url){
 }
 
 
-/* =====================================================
-                    URL PREVIEW
-===================================================== */
+/* =========================================================
+                    LIVE IMAGE PREVIEW
+========================================================= */
 
 $("imageUrl").addEventListener(
-  "change",
+  "input",
   () => {
 
     const url =
       $("imageUrl").value.trim();
+
 
     if(url){
 
       showImagePreview(
         url
       );
+
+    }else{
+
+      clearPreview(
+        $("imagePreview")
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+                    LIVE VIDEO PREVIEW
+========================================================= */
+
+$("videoUrl").addEventListener(
+  "input",
+  () => {
+
+    const url =
+      $("videoUrl").value.trim();
+
+
+    if(url){
+
+      showVideoPreview(
+        url
+      );
+
+    }else{
+
+      clearPreview(
+        $("videoPreview")
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+                    BUTTON EVENTS
+========================================================= */
+
+$("imageSaveBtn").addEventListener(
+  "click",
+  saveImage
+);
+
+
+$("videoSaveBtn").addEventListener(
+  "click",
+  saveVideo
+);
+
+
+$("imageClearBtn").addEventListener(
+  "click",
+  clearImageForm
+);
+
+
+$("videoClearBtn").addEventListener(
+  "click",
+  clearVideoForm
+);
+
+
+$("refreshBtn").addEventListener(
+  "click",
+  () => {
+
+    if(!firebaseReady){
+
+      setStatus(
+        "❌ Firebase is not initialized.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    loadAllMedia();
+
+  }
+);
+
+
+/* =========================================================
+                    ENTER KEY
+========================================================= */
+
+$("imageName").addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      event.preventDefault();
+
+      saveImage();
+
+    }
+
+  }
+);
+
+
+$("imageUrl").addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      event.preventDefault();
+
+      saveImage();
+
+    }
+
+  }
+);
+
+
+$("videoName").addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      event.preventDefault();
+
+      saveVideo();
 
     }
 
@@ -2154,17 +3238,16 @@ $("imageUrl").addEventListener(
 
 
 $("videoUrl").addEventListener(
-  "change",
-  () => {
+  "keydown",
+  event => {
 
-    const url =
-      $("videoUrl").value.trim();
+    if(
+      event.key === "Enter"
+    ){
 
-    if(url){
+      event.preventDefault();
 
-      showVideoPreview(
-        url
-      );
+      saveVideo();
 
     }
 
@@ -2172,72 +3255,59 @@ $("videoUrl").addEventListener(
 );
 
 
-/* =====================================================
-                    URL VALIDATION
-===================================================== */
+/* =========================================================
+                    BACK
+========================================================= */
 
-function isValidUrl(url){
+window.goBack =
+  function(){
 
-  try{
+    window.location.href =
+      "index.html";
 
-    const parsed =
-      new URL(url);
-
-    return (
-      parsed.protocol === "http:" ||
-      parsed.protocol === "https:"
-    );
-
-  }catch{
-
-    return false;
-
-  }
-
-}
+  };
 
 
-/* =====================================================
-                    HTML ESCAPE
-===================================================== */
+/* =========================================================
+                    EXPOSE FUNCTIONS
+========================================================= */
 
-function escapeAttribute(value){
+window.editImage =
+  editImage;
 
-  return String(value)
+window.editVideo =
+  editVideo;
 
-    .replace(/&/g,"&amp;")
+window.deleteImage =
+  deleteImage;
 
-    .replace(/"/g,"&quot;")
+window.deleteVideo =
+  deleteVideo;
 
-    .replace(/</g,"&lt;")
+window.clearImageForm =
+  clearImageForm;
 
-    .replace(/>/g,"&gt;");
+window.clearVideoForm =
+  clearVideoForm;
 
-}
-
-
-/* =====================================================
-                    BACK BUTTON
-===================================================== */
-
-window.goBack = function(){
-
-  window.location.href =
-    "index.html";
-
-};
+window.unlockEditor =
+  unlockEditor;
 
 
-/* =====================================================
+/* =========================================================
                     INITIAL STATE
-===================================================== */
+========================================================= */
 
 $("loginOverlay").style.display =
   "flex";
 
+
 $("adminPassword").focus();
+
 
 </script>
 
+
 </body>
+
 </html>
