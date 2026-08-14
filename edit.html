@@ -10,16 +10,13 @@
   content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
 >
 
-<meta name="theme-color" content="#08090b">
-
 <title>Admin Editor · Working Model of Heart</title>
-
 
 <style>
 
-/* =========================================================
+/* =====================================================
                     RESET
-========================================================= */
+===================================================== */
 
 *{
   box-sizing:border-box;
@@ -33,7 +30,7 @@ body{
   margin:0;
   background:#08090b;
   color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 button,
@@ -41,20 +38,16 @@ input{
   font-family:inherit;
 }
 
-button{
-  -webkit-tap-highlight-color:transparent;
-}
 
-
-/* =========================================================
+/* =====================================================
                     TOP BAR
-========================================================= */
+===================================================== */
 
 .topbar{
 
-  min-height:64px;
+  height:64px;
 
-  padding:0 5%;
+  padding:0 6%;
 
   display:flex;
   align-items:center;
@@ -67,32 +60,27 @@ button{
   position:sticky;
   top:0;
 
-  z-index:100;
+  z-index:50;
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(12px);
 
 }
 
 .brand{
 
   font-size:19px;
-  font-weight:800;
+
+  font-weight:700;
 
 }
 
 .brand span{
+
   color:#ff2638;
-}
-
-.top-actions{
-
-  display:flex;
-  align-items:center;
-  gap:8px;
 
 }
 
-.top-btn{
+.back-btn{
 
   border:1px solid #383a40;
 
@@ -100,7 +88,7 @@ button{
 
   color:#fff;
 
-  padding:10px 13px;
+  padding:10px 15px;
 
   border-radius:9px;
 
@@ -108,40 +96,32 @@ button{
 
   font-weight:700;
 
-  transition:.2s;
-
 }
 
-.top-btn:hover{
-  border-color:#ff2638;
-}
+.back-btn:active{
 
-.top-btn:active{
   transform:scale(.97);
+
 }
 
 
-/* =========================================================
+/* =====================================================
                     PAGE
-========================================================= */
+===================================================== */
 
 .page{
 
-  width:min(1120px,92%);
+  width:min(1100px,92%);
 
   margin:auto;
 
-  padding:35px 0 80px;
+  padding:35px 0 70px;
 
-}
-
-.page-head{
-  margin-bottom:25px;
 }
 
 .eyebrow{
 
-  color:#ff6875;
+  color:#ff6b76;
 
   font-size:11px;
 
@@ -153,14 +133,16 @@ button{
 
 h1{
 
-  margin:9px 0 8px;
+  margin:10px 0 8px;
 
   font-size:clamp(32px,6vw,52px);
 
 }
 
 h1 span{
+
   color:#ff2638;
+
 }
 
 .page-head p{
@@ -174,15 +156,15 @@ h1 span{
 }
 
 
-/* =========================================================
+/* =====================================================
                     STATUS
-========================================================= */
+===================================================== */
 
 .status{
 
-  margin-bottom:20px;
+  margin:25px 0 20px;
 
-  padding:14px 16px;
+  padding:14px 15px;
 
   border:1px solid #34363c;
 
@@ -195,8 +177,6 @@ h1 span{
   font-size:13px;
 
   line-height:1.5;
-
-  word-break:break-word;
 
 }
 
@@ -222,18 +202,18 @@ h1 span{
 
 .status.warning{
 
-  border-color:#665021;
+  border-color:#665226;
 
-  background:#1b170d;
+  background:#1c170c;
 
   color:#ffd36b;
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     GRID
-========================================================= */
+===================================================== */
 
 .editor-grid{
 
@@ -260,7 +240,9 @@ h1 span{
 }
 
 .panel.full{
+
   grid-column:1/-1;
+
 }
 
 .panel-head{
@@ -286,20 +268,22 @@ h1 span{
 }
 
 .panel-head h2 span{
+
   color:#ff2638;
+
 }
 
 .count{
 
-  min-width:34px;
+  min-width:32px;
 
   height:30px;
-
-  padding:0 9px;
 
   display:grid;
 
   place-items:center;
+
+  padding:0 9px;
 
   background:#181114;
 
@@ -311,20 +295,20 @@ h1 span{
 
   font-size:12px;
 
-  font-weight:800;
+  font-weight:700;
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     FORM
-========================================================= */
+===================================================== */
 
 .form{
 
   display:grid;
 
-  gap:11px;
+  gap:12px;
 
 }
 
@@ -369,17 +353,10 @@ input:focus{
 }
 
 input::placeholder{
+
   color:#666970;
+
 }
-
-input:disabled{
-  opacity:.6;
-}
-
-
-/* =========================================================
-                    BUTTONS
-========================================================= */
 
 .form-buttons{
 
@@ -389,7 +366,11 @@ input:disabled{
 
   gap:10px;
 
-  margin-top:2px;
+}
+
+button{
+
+  border:0;
 
 }
 
@@ -407,29 +388,15 @@ input:disabled{
 
   cursor:pointer;
 
-  font-weight:800;
-
-  transition:.2s;
-
-}
-
-.primary:hover{
-
-  transform:translateY(-1px);
-
-  box-shadow:0 10px 25px #ff263833;
+  font-weight:700;
 
 }
 
 .primary:disabled{
 
-  opacity:.55;
+  opacity:.5;
 
   cursor:not-allowed;
-
-  transform:none;
-
-  box-shadow:none;
 
 }
 
@@ -449,76 +416,12 @@ input:disabled{
 
   font-weight:700;
 
-  transition:.2s;
-
-}
-
-.secondary:hover{
-  border-color:#ff2638;
-}
-
-.secondary:disabled{
-  opacity:.5;
 }
 
 
-/* =========================================================
-                    PREVIEW
-========================================================= */
-
-.preview{
-
-  display:none;
-
-  margin-top:5px;
-
-  padding:10px;
-
-  background:#08090b;
-
-  border:1px solid #292b31;
-
-  border-radius:10px;
-
-}
-
-.preview.show{
-  display:block;
-}
-
-.preview img,
-.preview video{
-
-  display:block;
-
-  width:100%;
-
-  max-height:280px;
-
-  object-fit:contain;
-
-  border-radius:8px;
-
-  background:#000;
-
-}
-
-.preview-error{
-
-  padding:15px;
-
-  color:#ff6875;
-
-  font-size:12px;
-
-  text-align:center;
-
-}
-
-
-/* =========================================================
+/* =====================================================
                     LIST
-========================================================= */
+===================================================== */
 
 .list{
 
@@ -562,21 +465,17 @@ input:disabled{
 
   border-radius:11px;
 
-  transition:.2s;
-
-}
-
-.media-row:hover{
-  border-color:#ff263855;
 }
 
 .media-info{
+
   min-width:0;
+
 }
 
 .media-name{
 
-  font-weight:800;
+  font-weight:700;
 
   font-size:14px;
 
@@ -623,7 +522,7 @@ input:disabled{
 
   font-size:12px;
 
-  font-weight:800;
+  font-weight:700;
 
 }
 
@@ -637,10 +536,6 @@ input:disabled{
 
 }
 
-.edit-btn:hover{
-  border-color:#ff2638;
-}
-
 .delete-btn{
 
   border:1px solid #65252d;
@@ -651,49 +546,52 @@ input:disabled{
 
 }
 
-.delete-btn:hover{
 
-  background:#ff2638;
+/* =====================================================
+                    PREVIEW
+===================================================== */
 
-  color:#fff;
-
-}
-
-
-/* =========================================================
-                    EDITING BADGE
-========================================================= */
-
-.editing-badge{
+.preview{
 
   display:none;
 
-  margin-bottom:12px;
+  padding:12px;
 
-  padding:9px 11px;
+  background:#08090b;
+
+  border:1px solid #292b31;
+
+  border-radius:10px;
+
+}
+
+.preview.show{
+
+  display:block;
+
+}
+
+.preview img,
+.preview video{
+
+  display:block;
+
+  width:100%;
+
+  max-height:280px;
+
+  object-fit:contain;
 
   border-radius:8px;
 
-  border:1px solid #ff2638;
-
-  background:#1b0e10;
-
-  color:#ff8793;
-
-  font-size:11px;
-
-  font-weight:800;
+  background:#000;
 
 }
 
-.editing-badge.show{
-  display:block;
-}
 
-
-/* =========================================================
-                    DATABASE INFO
-========================================================= */
+/* =====================================================
+                    INFO
+===================================================== */
 
 .info-text{
 
@@ -715,18 +613,12 @@ input:disabled{
 
   line-height:1.7;
 
-  margin-bottom:0;
-
-}
-
-.info-small b{
-  color:#ff6875;
 }
 
 
-/* =========================================================
+/* =====================================================
                     LOGIN
-========================================================= */
+===================================================== */
 
 .login-overlay{
 
@@ -763,9 +655,7 @@ input:disabled{
   border-radius:18px;
 
   box-shadow:
-
     0 25px 80px #000,
-
     0 0 40px #ff26381c;
 
 }
@@ -787,8 +677,6 @@ input:disabled{
   border-radius:15px;
 
   font-size:28px;
-
-  box-shadow:0 0 30px #ff263855;
 
 }
 
@@ -835,31 +723,22 @@ input:disabled{
 }
 
 
-/* =========================================================
-                    LOADING
-========================================================= */
-
-.loading{
-
-  opacity:.6;
-
-  pointer-events:none;
-
-}
-
-
-/* =========================================================
-                    MOBILE
-========================================================= */
+/* =====================================================
+                    RESPONSIVE
+===================================================== */
 
 @media(max-width:800px){
 
   .editor-grid{
+
     grid-template-columns:1fr;
+
   }
 
   .panel.full{
+
     grid-column:auto;
+
   }
 
 }
@@ -867,16 +746,15 @@ input:disabled{
 @media(max-width:500px){
 
   .topbar{
+
     padding:0 4%;
+
   }
 
   .brand{
-    font-size:15px;
-  }
 
-  .top-btn{
-    padding:9px 10px;
-    font-size:12px;
+    font-size:15px;
+
   }
 
   .page{
@@ -888,38 +766,34 @@ input:disabled{
   }
 
   .panel{
+
     padding:18px;
+
   }
 
   .form-buttons{
+
     grid-template-columns:1fr;
+
   }
 
   .media-row{
+
     grid-template-columns:1fr;
+
   }
 
   .media-actions{
+
     width:100%;
+
   }
 
   .edit-btn,
   .delete-btn{
+
     flex:1;
-  }
 
-}
-
-
-/* =========================================================
-                    REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *{
-    scroll-behavior:auto!important;
-    transition:none!important;
   }
 
 }
@@ -932,42 +806,31 @@ input:disabled{
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
                     TOP BAR
-========================================================= -->
+===================================================== -->
 
 <header class="topbar">
 
   <div class="brand">
+
     Working Model of <span>Heart</span>
-  </div>
-
-  <div class="top-actions">
-
-    <button
-      id="refreshBtn"
-      class="top-btn"
-      type="button"
-    >
-      ↻ Refresh
-    </button>
-
-    <button
-      class="top-btn"
-      type="button"
-      onclick="goBack()"
-    >
-      ← Back
-    </button>
 
   </div>
+
+  <button
+    class="back-btn"
+    id="backBtn"
+  >
+    ← Back
+  </button>
 
 </header>
 
 
-<!-- =========================================================
-                    PAGE
-========================================================= -->
+<!-- =====================================================
+                    MAIN PAGE
+===================================================== -->
 
 <main class="page">
 
@@ -975,61 +838,63 @@ input:disabled{
   <div class="page-head">
 
     <div class="eyebrow">
+
       ADMIN EDITOR
+
     </div>
 
     <h1>
+
       Media <span>Editor</span>
+
     </h1>
 
     <p>
-      Manage image and video links displayed on the
-      Working Model of Heart website.
+
+      Manage image and video links displayed
+      on the Working Model of Heart website.
+
     </p>
 
   </div>
 
 
-  <!-- STATUS -->
-
   <div
     id="status"
     class="status"
   >
-    ☁️ Waiting for admin login...
+
+    🔒 Login required.
+
   </div>
 
 
   <div class="editor-grid">
 
 
-    <!-- =====================================================
-                        IMAGE FORM
-    ====================================================== -->
+    <!-- =================================================
+                    IMAGE FORM
+    ================================================== -->
 
     <section class="panel">
 
       <div class="panel-head">
 
         <h2>
+
           📸 <span>Image</span> Links
+
         </h2>
 
         <div
           id="imageCount"
           class="count"
         >
+
           0
+
         </div>
 
-      </div>
-
-
-      <div
-        id="imageEditingBadge"
-        class="editing-badge"
-      >
-        ✏️ Editing image
       </div>
 
 
@@ -1037,8 +902,11 @@ input:disabled{
 
 
         <label class="label">
+
           IMAGE NAME
+
         </label>
+
 
         <input
           id="imageName"
@@ -1049,8 +917,11 @@ input:disabled{
 
 
         <label class="label">
+
           IMAGE URL
+
         </label>
+
 
         <input
           id="imageUrl"
@@ -1062,21 +933,26 @@ input:disabled{
 
         <div class="form-buttons">
 
+
           <button
             id="imageSaveBtn"
             class="primary"
-            type="button"
           >
+
             ➕ Add Image
+
           </button>
+
 
           <button
             id="imageClearBtn"
             class="secondary"
-            type="button"
           >
+
             Clear
+
           </button>
+
 
         </div>
 
@@ -1092,33 +968,29 @@ input:disabled{
     </section>
 
 
-    <!-- =====================================================
-                        VIDEO FORM
-    ====================================================== -->
+    <!-- =================================================
+                    VIDEO FORM
+    ================================================== -->
 
     <section class="panel">
 
       <div class="panel-head">
 
         <h2>
+
           🎬 <span>Video</span> Links
+
         </h2>
 
         <div
           id="videoCount"
           class="count"
         >
+
           0
+
         </div>
 
-      </div>
-
-
-      <div
-        id="videoEditingBadge"
-        class="editing-badge"
-      >
-        ✏️ Editing video
       </div>
 
 
@@ -1126,8 +998,11 @@ input:disabled{
 
 
         <label class="label">
+
           VIDEO NAME
+
         </label>
+
 
         <input
           id="videoName"
@@ -1138,8 +1013,11 @@ input:disabled{
 
 
         <label class="label">
+
           VIDEO URL
+
         </label>
+
 
         <input
           id="videoUrl"
@@ -1151,21 +1029,26 @@ input:disabled{
 
         <div class="form-buttons">
 
+
           <button
             id="videoSaveBtn"
             class="primary"
-            type="button"
           >
+
             ➕ Add Video
+
           </button>
+
 
           <button
             id="videoClearBtn"
             class="secondary"
-            type="button"
           >
+
             Clear
+
           </button>
+
 
         </div>
 
@@ -1181,23 +1064,27 @@ input:disabled{
     </section>
 
 
-    <!-- =====================================================
-                        IMAGE LIST
-    ====================================================== -->
+    <!-- =================================================
+                    IMAGE LIST
+    ================================================== -->
 
     <section class="panel">
 
       <div class="panel-head">
 
         <h2>
+
           📸 Saved <span>Images</span>
+
         </h2>
 
         <div
           id="imageListCount"
           class="count"
         >
+
           0
+
         </div>
 
       </div>
@@ -1209,7 +1096,9 @@ input:disabled{
       >
 
         <div class="empty">
-          No images loaded yet.
+
+          Login to load images.
+
         </div>
 
       </div>
@@ -1217,23 +1106,27 @@ input:disabled{
     </section>
 
 
-    <!-- =====================================================
-                        VIDEO LIST
-    ====================================================== -->
+    <!-- =================================================
+                    VIDEO LIST
+    ================================================== -->
 
     <section class="panel">
 
       <div class="panel-head">
 
         <h2>
+
           🎬 Saved <span>Videos</span>
+
         </h2>
 
         <div
           id="videoListCount"
           class="count"
         >
+
           0
+
         </div>
 
       </div>
@@ -1245,7 +1138,9 @@ input:disabled{
       >
 
         <div class="empty">
-          No videos loaded yet.
+
+          Login to load videos.
+
         </div>
 
       </div>
@@ -1253,44 +1148,40 @@ input:disabled{
     </section>
 
 
-    <!-- =====================================================
-                    FIRESTORE INFORMATION
-    ====================================================== -->
+    <!-- =================================================
+                    FIRESTORE INFO
+    ================================================== -->
 
     <section class="panel full">
 
       <div class="panel-head">
 
         <h2>
-          ☁️ Firestore <span>Database</span>
+
+          ☁️ Firestore <span>Status</span>
+
         </h2>
 
       </div>
 
 
-      <p class="info-text">
+      <p
+        id="firebaseInfo"
+        class="info-text"
+      >
 
-        This editor stores only the media name and URL in
-        Firebase Firestore.
-
-        The actual image and video files are hosted elsewhere.
-
-        Firebase Storage is not used.
+        Firebase has not been initialized yet.
 
       </p>
 
 
       <p class="info-small">
 
-        Collections:
-
-        <b>images</b>
-
-        and
-
-        <b>videos</b>.
+        This editor uses Firestore only.
+        It does not upload files to Firebase Storage.
 
       </p>
+
 
     </section>
 
@@ -1300,49 +1191,59 @@ input:disabled{
 </main>
 
 
-<!-- =========================================================
+<!-- =====================================================
                     LOGIN OVERLAY
-========================================================= -->
+===================================================== -->
 
 <div
   id="loginOverlay"
   class="login-overlay"
 >
 
+
   <div class="login-box">
 
+
     <div class="login-icon">
+
       🔐
+
     </div>
 
 
     <h2>
+
       Admin Editor
+
     </h2>
 
 
     <p>
+
       Enter the admin password to manage
       project media links.
+
     </p>
 
 
     <div class="login-form">
 
+
       <input
         id="adminPassword"
         type="password"
         placeholder="Enter admin password"
-        autocomplete="current-password"
+        autocomplete="off"
       >
 
 
       <button
         id="loginBtn"
         class="primary"
-        type="button"
       >
+
         🔓 Unlock Editor
+
       </button>
 
 
@@ -1351,23 +1252,25 @@ input:disabled{
         class="login-message"
       ></div>
 
+
     </div>
+
 
   </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
                     FIREBASE
-========================================================= -->
+===================================================== -->
 
 <script type="module">
 
 
-/* =========================================================
+/* =====================================================
                     FIREBASE IMPORTS
-========================================================= */
+===================================================== */
 
 import {
   initializeApp
@@ -1384,26 +1287,29 @@ import {
   doc,
   updateDoc,
   deleteDoc,
-  getDoc
+  query,
+  orderBy
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
+/* =====================================================
                     FIREBASE CONFIG
-=========================================================
+=====================================================
 
 IMPORTANT:
 
-Replace EVERY value below with the values from:
+REPLACE EVERY VALUE BELOW WITH YOUR REAL
+FIREBASE WEB APP CONFIG.
 
 Firebase Console
 → Project Settings
 → Your apps
-→ Web app </>
+→ Web app
+→ SDK setup and configuration
 
-========================================================= */
+===================================================== */
 
 const firebaseConfig = {
 
@@ -1428,110 +1334,23 @@ const firebaseConfig = {
 };
 
 
-/* =========================================================
-                    CONFIG CHECK
-========================================================= */
-
-function configIsMissing(){
-
-  const values = [
-
-    firebaseConfig.apiKey,
-
-    firebaseConfig.authDomain,
-
-    firebaseConfig.projectId,
-
-    firebaseConfig.messagingSenderId,
-
-    firebaseConfig.appId
-
-  ];
-
-  return values.some(
-    value =>
-      !value ||
-      String(value).includes("YOUR_")
-  );
-
-}
-
-
-/* =========================================================
-                    FIREBASE INITIALIZATION
-========================================================= */
-
-let app = null;
-
-let db = null;
-
-let firebaseReady = false;
-
-
-try{
-
-  if(configIsMissing()){
-
-    throw new Error(
-      "Firebase configuration is still using placeholder values."
-    );
-
-  }
-
-
-  app =
-    initializeApp(
-      firebaseConfig
-    );
-
-
-  db =
-    getFirestore(
-      app
-    );
-
-
-  firebaseReady =
-    true;
-
-
-}catch(error){
-
-  console.error(
-    "Firebase initialization error:",
-    error
-  );
-
-
-  setStatus(
-    "❌ Firebase configuration error: " +
-    error.message,
-    "error"
-  );
-
-}
-
-
-/* =========================================================
-                    SETTINGS
-========================================================= */
-
-/*
-This password protects only the editor interface.
-
-It is NOT Firestore security.
-
-For production, use Firebase Authentication
-and secure Firestore rules.
-*/
+/* =====================================================
+                    ADMIN PASSWORD
+===================================================== */
 
 const ADMIN_PASSWORD =
   "aayushman";
 
 
-/* =========================================================
-                    STATE
-========================================================= */
+/* =====================================================
+                    VARIABLES
+===================================================== */
+
+let db = null;
+
+let firebaseReady = false;
+
+let editorUnlocked = false;
 
 let images = [];
 
@@ -1541,23 +1360,21 @@ let editingImageId = null;
 
 let editingVideoId = null;
 
-let busy = false;
 
-
-/* =========================================================
+/* =====================================================
                     DOM
-========================================================= */
+===================================================== */
 
 const $ = id =>
   document.getElementById(id);
 
 
-/* =========================================================
+/* =====================================================
                     STATUS
-========================================================= */
+===================================================== */
 
 function setStatus(
-  message,
+  text,
   type = ""
 ){
 
@@ -1565,91 +1382,79 @@ function setStatus(
     $("status");
 
   element.textContent =
-    message;
+    text;
 
   element.className =
     "status";
 
   if(type){
 
-    element.classList.add(
-      type
-    );
+    element.classList.add(type);
 
   }
 
 }
 
 
-/* =========================================================
-                    ERROR FORMATTER
-========================================================= */
-
-function firebaseError(error){
-
-  console.error(
-    "Firebase error:",
-    error
-  );
-
-
-  const code =
-    error?.code ||
-    "unknown-error";
-
-
-  const message =
-    error?.message ||
-    String(error);
-
-
-  return (
-    "❌ " +
-    code +
-    " — " +
-    message
-  );
-
-}
-
-
-/* =========================================================
+/* =====================================================
                     LOGIN
-========================================================= */
+=====================================================
+
+IMPORTANT:
+
+Login does NOT depend on Firebase.
+
+===================================================== */
 
 function unlockEditor(){
 
   const password =
     $("adminPassword").value;
 
-
-  if(password === ADMIN_PASSWORD){
-
-    $("loginOverlay").style.display =
-      "none";
+  const message =
+    $("loginMessage");
 
 
-    setStatus(
-      "☁️ Admin unlocked. Testing Firestore connection..."
-    );
+  if(password !== ADMIN_PASSWORD){
 
-
-    testFirestore();
-
-  }else{
-
-    $("loginMessage").textContent =
-      "Incorrect admin password.";
+    message.textContent =
+      "❌ Incorrect admin password.";
 
     $("adminPassword").value =
       "";
 
     $("adminPassword").focus();
 
+    return;
+
   }
+
+
+  /* PASSWORD CORRECT */
+
+  editorUnlocked =
+    true;
+
+
+  $("loginOverlay").style.display =
+    "none";
+
+
+  setStatus(
+    "✓ Editor unlocked. Connecting to Firestore...",
+    "warning"
+  );
+
+
+  initializeFirebase();
+
 
 }
 
+
+/* =====================================================
+                    LOGIN BUTTON
+===================================================== */
 
 $("loginBtn").addEventListener(
   "click",
@@ -1657,11 +1462,17 @@ $("loginBtn").addEventListener(
 );
 
 
+/* =====================================================
+                    ENTER KEY
+===================================================== */
+
 $("adminPassword").addEventListener(
   "keydown",
   event => {
 
     if(event.key === "Enter"){
+
+      event.preventDefault();
 
       unlockEditor();
 
@@ -1671,53 +1482,95 @@ $("adminPassword").addEventListener(
 );
 
 
-/* =========================================================
-                    FIRESTORE TEST
-========================================================= */
+/* =====================================================
+                    FIREBASE INITIALIZATION
+===================================================== */
 
-async function testFirestore(){
-
-  if(!firebaseReady){
-
-    return;
-
-  }
-
+function initializeFirebase(){
 
   try{
 
+
+    /* CHECK CONFIG */
+
+    if(
+      !firebaseConfig.apiKey ||
+      firebaseConfig.apiKey === "YOUR_API_KEY" ||
+
+      !firebaseConfig.projectId ||
+      firebaseConfig.projectId === "YOUR_PROJECT_ID" ||
+
+      !firebaseConfig.appId ||
+      firebaseConfig.appId === "YOUR_APP_ID"
+    ){
+
+      firebaseReady =
+        false;
+
+
+      $("firebaseInfo").textContent =
+        "❌ Firebase configuration is incomplete. Replace the placeholder values in edit.html with your real Firebase Web App configuration.";
+
+
+      setStatus(
+        "Editor opened, but Firebase configuration is incomplete.",
+        "error"
+      );
+
+
+      return;
+
+    }
+
+
+    /* INITIALIZE */
+
+    const app =
+      initializeApp(
+        firebaseConfig
+      );
+
+
+    db =
+      getFirestore(app);
+
+
+    firebaseReady =
+      true;
+
+
+    $("firebaseInfo").textContent =
+      "☁️ Firebase initialized. Testing Firestore connection...";
+
+
     setStatus(
-      "☁️ Testing Firestore connection..."
+      "☁️ Firebase initialized. Testing Firestore...",
+      "warning"
     );
 
 
-    /*
-      We perform a READ against the images collection.
-
-      This confirms that Firestore is actually reachable.
-    */
-
-    await getDocs(
-      collection(
-        db,
-        "images"
-      )
-    );
-
-
-    setStatus(
-      "✓ Firestore connected successfully.",
-      "success"
-    );
-
-
-    await loadAllMedia();
+    loadAllMedia();
 
 
   }catch(error){
 
+    console.error(
+      "Firebase initialization error:",
+      error
+    );
+
+
+    firebaseReady =
+      false;
+
+
+    $("firebaseInfo").textContent =
+      "❌ Firebase initialization failed: " +
+      error.message;
+
+
     setStatus(
-      firebaseError(error),
+      "Firebase initialization failed. See Firestore Status below.",
       "error"
     );
 
@@ -1726,13 +1579,13 @@ async function testFirestore(){
 }
 
 
-/* =========================================================
-                    LOAD ALL MEDIA
-========================================================= */
+/* =====================================================
+                    LOAD ALL
+===================================================== */
 
 async function loadAllMedia(){
 
-  if(!firebaseReady){
+  if(!firebaseReady || !db){
 
     return;
 
@@ -1741,28 +1594,62 @@ async function loadAllMedia(){
 
   try{
 
+
     setStatus(
-      "☁️ Loading media from Firestore..."
+      "☁️ Loading media from Firestore...",
+      "warning"
     );
 
 
-    /*
-      IMPORTANT:
+    /* ================= IMAGES ================= */
 
-      We intentionally do NOT use orderBy("createdAt").
-
-      This makes the editor compatible with older documents
-      that may not have createdAt.
-    */
-
-
-    const imageSnapshot =
-      await getDocs(
-        collection(
-          db,
-          "images"
-        )
+    const imageRef =
+      collection(
+        db,
+        "images"
       );
+
+
+    let imageSnapshot;
+
+
+    try{
+
+      const imageQuery =
+        query(
+          imageRef,
+          orderBy(
+            "createdAt",
+            "asc"
+          )
+        );
+
+
+      imageSnapshot =
+        await getDocs(
+          imageQuery
+        );
+
+
+    }catch(error){
+
+      /*
+        If orderBy fails because existing documents
+        don't contain createdAt, try without orderBy.
+      */
+
+      console.warn(
+        "Image ordered query failed. Trying simple query.",
+        error
+      );
+
+
+      imageSnapshot =
+        await getDocs(
+          imageRef
+        );
+
+    }
 
 
     images =
@@ -1777,13 +1664,50 @@ async function loadAllMedia(){
       );
 
 
-    const videoSnapshot =
-      await getDocs(
-        collection(
-          db,
-          "videos"
-        )
+    /* ================= VIDEOS ================= */
+
+    const videoRef =
+      collection(
+        db,
+        "videos"
       );
+
+
+    let videoSnapshot;
+
+
+    try{
+
+      const videoQuery =
+        query(
+          videoRef,
+          orderBy(
+            "createdAt",
+            "asc"
+          )
+        );
+
+
+      videoSnapshot =
+        await getDocs(
+          videoQuery
+        );
+
+
+    }catch(error){
+
+      console.warn(
+        "Video ordered query failed. Trying simple query.",
+        error
+      );
+
+
+      videoSnapshot =
+        await getDocs(
+          videoRef
+        );
+
+    }
 
 
     videos =
@@ -1798,37 +1722,40 @@ async function loadAllMedia(){
       );
 
 
-    /*
-      Sort locally.
-
-      Documents without createdAt go to the beginning.
-    */
-
-    images.sort(
-      sortByCreatedAt
-    );
-
-
-    videos.sort(
-      sortByCreatedAt
-    );
-
-
     renderImages();
 
     renderVideos();
 
 
+    $("firebaseInfo").textContent =
+      "✓ Firestore connected successfully. Images: " +
+      images.length +
+      " · Videos: " +
+      videos.length;
+
+
     setStatus(
-      `✓ Firestore connected · ${images.length} images · ${videos.length} videos`,
+      "✓ Firestore connected. Editor is ready.",
       "success"
     );
 
 
   }catch(error){
 
+    console.error(
+      "Firestore load error:",
+      error
+    );
+
+
+    $("firebaseInfo").textContent =
+      "❌ Firestore error: " +
+      error.message;
+
+
     setStatus(
-      firebaseError(error),
+      "Firestore connection failed: " +
+      error.message,
       "error"
     );
 
@@ -1837,70 +1764,16 @@ async function loadAllMedia(){
 }
 
 
-/* =========================================================
-                    SORT
-========================================================= */
-
-function sortByCreatedAt(a,b){
-
-  const aTime =
-    Number(
-      a.createdAt || 0
-    );
-
-  const bTime =
-    Number(
-      b.createdAt || 0
-    );
-
-
-  return aTime - bTime;
-
-}
-
-
-/* =========================================================
-                    VALIDATE URL
-========================================================= */
-
-function isValidUrl(value){
-
-  try{
-
-    const url =
-      new URL(value);
-
-
-    return (
-
-      url.protocol === "http:" ||
-
-      url.protocol === "https:"
-
-    );
-
-  }catch{
-
-    return false;
-
-  }
-
-}
-
-
-/* =========================================================
+/* =====================================================
                     SAVE IMAGE
-========================================================= */
+===================================================== */
 
 async function saveImage(){
 
-  if(busy)return;
-
-
-  if(!firebaseReady){
+  if(!firebaseReady || !db){
 
     setStatus(
-      "❌ Firebase is not initialized.",
+      "Firebase is not connected yet.",
       "error"
     );
 
@@ -1912,7 +1785,6 @@ async function saveImage(){
   const name =
     $("imageName").value.trim();
 
-
   const url =
     $("imageUrl").value.trim();
 
@@ -1920,11 +1792,9 @@ async function saveImage(){
   if(!name){
 
     setStatus(
-      "❌ Please enter an image name.",
+      "Enter an image name.",
       "error"
     );
-
-    $("imageName").focus();
 
     return;
 
@@ -1934,28 +1804,24 @@ async function saveImage(){
   if(!isValidUrl(url)){
 
     setStatus(
-      "❌ Please enter a valid HTTP/HTTPS image URL.",
+      "Enter a valid image URL.",
       "error"
     );
-
-    $("imageUrl").focus();
 
     return;
 
   }
 
 
+  const button =
+    $("imageSaveBtn");
+
+
+  button.disabled =
+    true;
+
+
   try{
-
-    busy = true;
-
-    setFormBusy(
-      true
-    );
-
-
-    const now =
-      Date.now();
 
 
     if(editingImageId){
@@ -1974,7 +1840,7 @@ async function saveImage(){
 
           url:url,
 
-          updatedAt:now
+          updatedAt:Date.now()
 
         }
 
@@ -1982,44 +1848,38 @@ async function saveImage(){
 
 
       setStatus(
-        "✓ Image link updated successfully.",
+        "✓ Image updated successfully.",
         "success"
       );
 
 
     }else{
 
-      const result =
-        await addDoc(
 
-          collection(
-            db,
-            "images"
-          ),
+      await addDoc(
 
-          {
+        collection(
+          db,
+          "images"
+        ),
 
-            name:name,
+        {
 
-            url:url,
+          name:name,
 
-            createdAt:now,
+          url:url,
 
-            updatedAt:now
+          createdAt:Date.now(),
 
-          }
+          updatedAt:Date.now()
 
-        );
+        }
 
-
-      console.log(
-        "Image document created:",
-        result.id
       );
 
 
       setStatus(
-        "✓ Image link uploaded to Firestore successfully.",
+        "✓ Image added to Firestore.",
         "success"
       );
 
@@ -2033,37 +1893,37 @@ async function saveImage(){
 
   }catch(error){
 
-    setStatus(
-      firebaseError(error),
-      "error"
+    console.error(
+      "Save image error:",
+      error
     );
 
-  }finally{
 
-    busy = false;
-
-    setFormBusy(
-      false
+    setStatus(
+      "❌ Image was not saved: " +
+      error.message,
+      "error"
     );
 
   }
 
+
+  button.disabled =
+    false;
+
 }
 
 
-/* =========================================================
+/* =====================================================
                     SAVE VIDEO
-========================================================= */
+===================================================== */
 
 async function saveVideo(){
 
-  if(busy)return;
-
-
-  if(!firebaseReady){
+  if(!firebaseReady || !db){
 
     setStatus(
-      "❌ Firebase is not initialized.",
+      "Firebase is not connected yet.",
       "error"
     );
 
@@ -2075,7 +1935,6 @@ async function saveVideo(){
   const name =
     $("videoName").value.trim();
 
-
   const url =
     $("videoUrl").value.trim();
 
@@ -2083,11 +1942,9 @@ async function saveVideo(){
   if(!name){
 
     setStatus(
-      "❌ Please enter a video name.",
+      "Enter a video name.",
       "error"
     );
-
-    $("videoName").focus();
 
     return;
 
@@ -2097,28 +1954,24 @@ async function saveVideo(){
   if(!isValidUrl(url)){
 
     setStatus(
-      "❌ Please enter a valid HTTP/HTTPS video URL.",
+      "Enter a valid video URL.",
       "error"
     );
-
-    $("videoUrl").focus();
 
     return;
 
   }
 
 
+  const button =
+    $("videoSaveBtn");
+
+
+  button.disabled =
+    true;
+
+
   try{
-
-    busy = true;
-
-    setFormBusy(
-      true
-    );
-
-
-    const now =
-      Date.now();
 
 
     if(editingVideoId){
@@ -2137,7 +1990,7 @@ async function saveVideo(){
 
           url:url,
 
-          updatedAt:now
+          updatedAt:Date.now()
 
         }
 
@@ -2145,44 +1998,38 @@ async function saveVideo(){
 
 
       setStatus(
-        "✓ Video link updated successfully.",
+        "✓ Video updated successfully.",
         "success"
       );
 
 
     }else{
 
-      const result =
-        await addDoc(
 
-          collection(
-            db,
-            "videos"
-          ),
+      await addDoc(
 
-          {
+        collection(
+          db,
+          "videos"
+        ),
 
-            name:name,
+        {
 
-            url:url,
+          name:name,
 
-            createdAt:now,
+          url:url,
 
-            updatedAt:now
+          createdAt:Date.now(),
 
-          }
+          updatedAt:Date.now()
 
-        );
+        }
 
-
-      console.log(
-        "Video document created:",
-        result.id
       );
 
 
       setStatus(
-        "✓ Video link uploaded to Firestore successfully.",
+        "✓ Video added to Firestore.",
         "success"
       );
 
@@ -2196,59 +2043,44 @@ async function saveVideo(){
 
   }catch(error){
 
-    setStatus(
-      firebaseError(error),
-      "error"
+    console.error(
+      "Save video error:",
+      error
     );
 
-  }finally{
 
-    busy = false;
-
-    setFormBusy(
-      false
+    setStatus(
+      "❌ Video was not saved: " +
+      error.message,
+      "error"
     );
 
   }
 
-}
 
-
-/* =========================================================
-                    FORM BUSY
-========================================================= */
-
-function setFormBusy(state){
-
-  $("imageSaveBtn").disabled =
-    state;
-
-  $("videoSaveBtn").disabled =
-    state;
-
-  $("imageClearBtn").disabled =
-    state;
-
-  $("videoClearBtn").disabled =
-    state;
+  button.disabled =
+    false;
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     EDIT IMAGE
-========================================================= */
+===================================================== */
 
 function editImage(id){
 
   const item =
     images.find(
-      image =>
-        image.id === id
+      x => x.id === id
     );
 
 
-  if(!item)return;
+  if(!item){
+
+    return;
+
+  }
 
 
   editingImageId =
@@ -2267,37 +2099,39 @@ function editImage(id){
     "✓ Update Image";
 
 
-  $("imageEditingBadge")
-    .classList.add("show");
-
-
   showImagePreview(
     item.url
   );
 
 
   $("imageName").scrollIntoView({
+
     behavior:"smooth",
+
     block:"center"
+
   });
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     EDIT VIDEO
-========================================================= */
+===================================================== */
 
 function editVideo(id){
 
   const item =
     videos.find(
-      video =>
-        video.id === id
+      x => x.id === id
     );
 
 
-  if(!item)return;
+  if(!item){
+
+    return;
+
+  }
 
 
   editingVideoId =
@@ -2316,60 +2150,62 @@ function editVideo(id){
     "✓ Update Video";
 
 
-  $("videoEditingBadge")
-    .classList.add("show");
-
-
   showVideoPreview(
     item.url
   );
 
 
   $("videoName").scrollIntoView({
+
     behavior:"smooth",
+
     block:"center"
+
   });
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     DELETE IMAGE
-========================================================= */
+===================================================== */
 
 async function deleteImage(id){
 
-  if(busy)return;
+  if(!firebaseReady || !db){
+
+    return;
+
+  }
 
 
   const item =
     images.find(
-      image =>
-        image.id === id
+      x => x.id === id
     );
 
 
-  if(!item)return;
+  if(!item){
+
+    return;
+
+  }
 
 
-  const confirmed =
-    confirm(
-      `Remove "${item.name || "this image"}" from Firestore?`
-    );
+  if(
+    !confirm(
+      'Remove "' +
+      (item.name || "this image") +
+      '"?'
+    )
+  ){
 
+    return;
 
-  if(!confirmed)return;
+  }
 
 
   try{
-
-    busy = true;
-
-
-    setStatus(
-      "☁️ Removing image..."
-    );
-
 
     await deleteDoc(
 
@@ -2383,7 +2219,7 @@ async function deleteImage(id){
 
 
     setStatus(
-      "✓ Image link removed successfully.",
+      "✓ Image removed.",
       "success"
     );
 
@@ -2393,57 +2229,60 @@ async function deleteImage(id){
 
   }catch(error){
 
+    console.error(error);
+
+
     setStatus(
-      firebaseError(error),
+      "❌ Image could not be removed: " +
+      error.message,
       "error"
     );
-
-  }finally{
-
-    busy = false;
 
   }
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     DELETE VIDEO
-========================================================= */
+===================================================== */
 
 async function deleteVideo(id){
 
-  if(busy)return;
+  if(!firebaseReady || !db){
+
+    return;
+
+  }
 
 
   const item =
     videos.find(
-      video =>
-        video.id === id
+      x => x.id === id
     );
 
 
-  if(!item)return;
+  if(!item){
+
+    return;
+
+  }
 
 
-  const confirmed =
-    confirm(
-      `Remove "${item.name || "this video"}" from Firestore?`
-    );
+  if(
+    !confirm(
+      'Remove "' +
+      (item.name || "this video") +
+      '"?'
+    )
+  ){
 
+    return;
 
-  if(!confirmed)return;
+  }
 
 
   try{
-
-    busy = true;
-
-
-    setStatus(
-      "☁️ Removing video..."
-    );
-
 
     await deleteDoc(
 
@@ -2457,7 +2296,7 @@ async function deleteVideo(id){
 
 
     setStatus(
-      "✓ Video link removed successfully.",
+      "✓ Video removed.",
       "success"
     );
 
@@ -2467,23 +2306,23 @@ async function deleteVideo(id){
 
   }catch(error){
 
+    console.error(error);
+
+
     setStatus(
-      firebaseError(error),
+      "❌ Video could not be removed: " +
+      error.message,
       "error"
     );
-
-  }finally{
-
-    busy = false;
 
   }
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     RENDER IMAGES
-========================================================= */
+===================================================== */
 
 function renderImages(){
 
@@ -2499,11 +2338,11 @@ function renderImages(){
     images.length;
 
 
-  if(!images.length){
+  if(images.length === 0){
 
     list.innerHTML = `
       <div class="empty">
-        No image links added yet.
+        No image links found.
       </div>
     `;
 
@@ -2518,6 +2357,7 @@ function renderImages(){
 
   images.forEach(
     item => {
+
 
       const row =
         document.createElement(
@@ -2590,10 +2430,6 @@ function renderImages(){
         );
 
 
-      edit.type =
-        "button";
-
-
       edit.className =
         "edit-btn";
 
@@ -2604,10 +2440,7 @@ function renderImages(){
 
       edit.addEventListener(
         "click",
-        () =>
-          editImage(
-            item.id
-          )
+        () => editImage(item.id)
       );
 
 
@@ -2615,10 +2448,6 @@ function renderImages(){
         document.createElement(
           "button"
         );
-
-
-      remove.type =
-        "button";
 
 
       remove.className =
@@ -2631,10 +2460,7 @@ function renderImages(){
 
       remove.addEventListener(
         "click",
-        () =>
-          deleteImage(
-            item.id
-          )
+        () => deleteImage(item.id)
       );
 
 
@@ -2654,15 +2480,16 @@ function renderImages(){
         row
       );
 
+
     }
   );
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     RENDER VIDEOS
-========================================================= */
+===================================================== */
 
 function renderVideos(){
 
@@ -2678,11 +2505,11 @@ function renderVideos(){
     videos.length;
 
 
-  if(!videos.length){
+  if(videos.length === 0){
 
     list.innerHTML = `
       <div class="empty">
-        No video links added yet.
+        No video links found.
       </div>
     `;
 
@@ -2697,6 +2524,7 @@ function renderVideos(){
 
   videos.forEach(
     item => {
+
 
       const row =
         document.createElement(
@@ -2769,10 +2597,6 @@ function renderVideos(){
         );
 
 
-      edit.type =
-        "button";
-
-
       edit.className =
         "edit-btn";
 
@@ -2783,10 +2607,7 @@ function renderVideos(){
 
       edit.addEventListener(
         "click",
-        () =>
-          editVideo(
-            item.id
-          )
+        () => editVideo(item.id)
       );
 
 
@@ -2794,10 +2615,6 @@ function renderVideos(){
         document.createElement(
           "button"
         );
-
-
-      remove.type =
-        "button";
 
 
       remove.className =
@@ -2810,10 +2627,7 @@ function renderVideos(){
 
       remove.addEventListener(
         "click",
-        () =>
-          deleteVideo(
-            item.id
-          )
+        () => deleteVideo(item.id)
       );
 
 
@@ -2833,15 +2647,16 @@ function renderVideos(){
         row
       );
 
+
     }
   );
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     CLEAR IMAGE
-========================================================= */
+===================================================== */
 
 function clearImageForm(){
 
@@ -2861,22 +2676,20 @@ function clearImageForm(){
     "➕ Add Image";
 
 
-  $("imageEditingBadge")
-    .classList.remove(
-      "show"
-    );
+  $("imagePreview").innerHTML =
+    "";
 
 
-  clearPreview(
-    $("imagePreview")
+  $("imagePreview").classList.remove(
+    "show"
   );
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     CLEAR VIDEO
-========================================================= */
+===================================================== */
 
 function clearVideoForm(){
 
@@ -2896,38 +2709,20 @@ function clearVideoForm(){
     "➕ Add Video";
 
 
-  $("videoEditingBadge")
-    .classList.remove(
-      "show"
-    );
-
-
-  clearPreview(
-    $("videoPreview")
-  );
-
-}
-
-
-/* =========================================================
-                    CLEAR PREVIEW
-========================================================= */
-
-function clearPreview(box){
-
-  box.innerHTML =
+  $("videoPreview").innerHTML =
     "";
 
-  box.classList.remove(
+
+  $("videoPreview").classList.remove(
     "show"
   );
 
 }
 
 
-/* =========================================================
+/* =====================================================
                     IMAGE PREVIEW
-========================================================= */
+===================================================== */
 
 function showImagePreview(url){
 
@@ -2939,29 +2734,18 @@ function showImagePreview(url){
     "";
 
 
-  if(!isValidUrl(url)){
-
-    clearPreview(
-      box
-    );
-
-    return;
-
-  }
-
-
   const image =
     document.createElement(
       "img"
     );
 
 
-  image.alt =
-    "Image preview";
-
-
   image.src =
     url;
+
+
+  image.alt =
+    "Image preview";
 
 
   image.onload =
@@ -2978,8 +2762,14 @@ function showImagePreview(url){
     () => {
 
       box.innerHTML = `
-        <div class="preview-error">
-          ⚠️ Unable to load this image URL.
+        <div
+          style="
+            color:#ff6875;
+            padding:10px;
+            font-size:12px;
+          "
+        >
+          Unable to load this image URL.
         </div>
       `;
 
@@ -2997,9 +2787,9 @@ function showImagePreview(url){
 }
 
 
-/* =========================================================
+/* =====================================================
                     VIDEO PREVIEW
-========================================================= */
+===================================================== */
 
 function showVideoPreview(url){
 
@@ -3009,17 +2799,6 @@ function showVideoPreview(url){
 
   box.innerHTML =
     "";
-
-
-  if(!isValidUrl(url)){
-
-    clearPreview(
-      box
-    );
-
-    return;
-
-  }
 
 
   const video =
@@ -3044,19 +2823,6 @@ function showVideoPreview(url){
     "metadata";
 
 
-  video.onerror =
-    () => {
-
-      box.innerHTML = `
-        <div class="preview-error">
-          ⚠️ Unable to load this video URL.
-          Make sure the URL points directly to a playable video file.
-        </div>
-      `;
-
-    };
-
-
   box.appendChild(
     video
   );
@@ -3069,9 +2835,9 @@ function showVideoPreview(url){
 }
 
 
-/* =========================================================
-                    LIVE IMAGE PREVIEW
-========================================================= */
+/* =====================================================
+                    URL PREVIEW
+===================================================== */
 
 $("imageUrl").addEventListener(
   "input",
@@ -3081,16 +2847,10 @@ $("imageUrl").addEventListener(
       $("imageUrl").value.trim();
 
 
-    if(url){
+    if(isValidUrl(url)){
 
       showImagePreview(
         url
-      );
-
-    }else{
-
-      clearPreview(
-        $("imagePreview")
       );
 
     }
@@ -3098,10 +2858,6 @@ $("imageUrl").addEventListener(
   }
 );
 
-
-/* =========================================================
-                    LIVE VIDEO PREVIEW
-========================================================= */
 
 $("videoUrl").addEventListener(
   "input",
@@ -3111,16 +2867,10 @@ $("videoUrl").addEventListener(
       $("videoUrl").value.trim();
 
 
-    if(url){
+    if(isValidUrl(url)){
 
       showVideoPreview(
         url
-      );
-
-    }else{
-
-      clearPreview(
-        $("videoPreview")
       );
 
     }
@@ -3129,9 +2879,35 @@ $("videoUrl").addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
+                    URL VALIDATION
+===================================================== */
+
+function isValidUrl(url){
+
+  try{
+
+    const parsed =
+      new URL(url);
+
+
+    return(
+      parsed.protocol === "http:" ||
+      parsed.protocol === "https:"
+    );
+
+  }catch{
+
+    return false;
+
+  }
+
+}
+
+
+/* =====================================================
                     BUTTON EVENTS
-========================================================= */
+===================================================== */
 
 $("imageSaveBtn").addEventListener(
   "click",
@@ -3157,156 +2933,40 @@ $("videoClearBtn").addEventListener(
 );
 
 
-$("refreshBtn").addEventListener(
+/* =====================================================
+                    BACK
+===================================================== */
+
+$("backBtn").addEventListener(
   "click",
   () => {
-
-    if(!firebaseReady){
-
-      setStatus(
-        "❌ Firebase is not initialized.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    loadAllMedia();
-
-  }
-);
-
-
-/* =========================================================
-                    ENTER KEY
-========================================================= */
-
-$("imageName").addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      event.preventDefault();
-
-      saveImage();
-
-    }
-
-  }
-);
-
-
-$("imageUrl").addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      event.preventDefault();
-
-      saveImage();
-
-    }
-
-  }
-);
-
-
-$("videoName").addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      event.preventDefault();
-
-      saveVideo();
-
-    }
-
-  }
-);
-
-
-$("videoUrl").addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      event.preventDefault();
-
-      saveVideo();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-                    BACK
-========================================================= */
-
-window.goBack =
-  function(){
 
     window.location.href =
       "index.html";
 
-  };
+  }
+);
 
 
-/* =========================================================
-                    EXPOSE FUNCTIONS
-========================================================= */
-
-window.editImage =
-  editImage;
-
-window.editVideo =
-  editVideo;
-
-window.deleteImage =
-  deleteImage;
-
-window.deleteVideo =
-  deleteVideo;
-
-window.clearImageForm =
-  clearImageForm;
-
-window.clearVideoForm =
-  clearVideoForm;
-
-window.unlockEditor =
-  unlockEditor;
-
-
-/* =========================================================
+/* =====================================================
                     INITIAL STATE
-========================================================= */
+===================================================== */
 
 $("loginOverlay").style.display =
   "flex";
 
 
-$("adminPassword").focus();
+setTimeout(
+  () => {
+
+    $("adminPassword").focus();
+
+  },
+  200
+);
 
 
 </script>
-
 
 </body>
 
