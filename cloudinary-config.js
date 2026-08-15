@@ -1,28 +1,16 @@
 "use strict";
 
 /* =========================================
-        CLOUDINARY CONFIGURATION
-   ========================================= */
+   CLOUDINARY CONFIG
+========================================= */
 
 const CLOUDINARY_CLOUD_NAME = "raykjrpl";
 
 const CLOUDINARY_UPLOAD_PRESET = "It's working heart";
 
 
-/* =========================================
-        CLOUDINARY UPLOAD URL
-   ========================================= */
+window.CLOUDINARY_CLOUD_NAME =
+    CLOUDINARY_CLOUD_NAME;
 
-const CLOUDINARY_UPLOAD_URL =
-    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`;
-
-
-/* =========================================
-        EXPORT
-   ========================================= */
-
-export {
-    CLOUDINARY_CLOUD_NAME,
-    CLOUDINARY_UPLOAD_PRESET,
-    CLOUDINARY_UPLOAD_URL
-};
+window.CLOUDINARY_UPLOAD_PRESET =
+    CLOUDINARY_UPLOAD_PRESET;
