@@ -20,7 +20,7 @@ The upload preset should be an UNSIGNED upload preset.
 
 
 const CLOUDINARY_CLOUD_NAME =
-    "YOUR_CLOUD_NAME";
+    "raykjrpl";
 
 
 const CLOUDINARY_UPLOAD_PRESET =
