@@ -1,16 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1"
+    content="width=device-width,initial-scale=1.0"
 >
 
-<title>Heart Project Editor</title>
+<title>Heart Editor</title>
+
 
 <style>
 
@@ -23,259 +24,523 @@ html{
 }
 
 body{
+
     margin:0;
-    min-height:100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:#08090b;
-    color:#fff;
-    font-family:Arial,sans-serif;
+
+    color:#f5f5f5;
+
+    min-height:100vh;
 }
+
 
 .container{
-    width:min(1000px,92%);
+
+    width:100%;
+
+    max-width:900px;
+
     margin:auto;
-    padding:30px 0 60px;
+
+    padding:25px 20px 60px;
 }
+
+
+/* =========================================
+   HEADER
+========================================= */
 
 .header{
+
     display:flex;
-    align-items:center;
+
     justify-content:space-between;
+
+    align-items:center;
+
     gap:15px;
-    margin-bottom:25px;
+
+    margin-bottom:35px;
 }
+
 
 .header h1{
+
     margin:0;
-    font-size:28px;
+
+    font-size:40px;
+
+    font-weight:800;
 }
+
 
 .header h1 span{
-    color:#ff2638;
+
+    color:#ff2438;
 }
 
-.back-btn{
-    border:1px solid #34363c;
-    background:#111317;
-    color:#fff;
-    padding:10px 15px;
-    border-radius:9px;
+
+.website-btn{
+
+    border:1px solid #303238;
+
+    background:#15171b;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:18px;
+
+    font-size:18px;
+
     text-decoration:none;
+
+    white-space:nowrap;
+
 }
+
+
+.website-btn:active{
+
+    transform:scale(.97);
+}
+
+
+/* =========================================
+   CARD
+========================================= */
 
 .card{
-    background:#111317;
-    border:1px solid #34363c;
-    border-radius:16px;
-    padding:22px;
-    margin-bottom:20px;
+
+    background:#121419;
+
+    border:1px solid #2b2e34;
+
+    border-radius:28px;
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
 }
+
 
 .card h2{
-    margin:0 0 16px;
-    color:#ff2638;
+
+    margin:0 0 25px;
+
+    color:#ff2438;
+
+    font-size:30px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-box{
+
+    background:#090a0d;
+
+    border:1px solid #292c31;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
     font-size:19px;
+
+    color:#bbb;
 }
 
-.status{
-    padding:13px;
-    border-radius:10px;
-    background:#0c0d10;
-    border:1px solid #34363c;
-    color:#aaa;
-    font-size:13px;
-    line-height:1.5;
+
+.status-ok{
+
+    color:#66e681;
 }
 
-.status.ok{
-    border-color:#285d38;
-    color:#69e58a;
+
+.status-error{
+
+    color:#ff5262;
 }
 
-.status.error{
-    border-color:#7a2730;
-    color:#ff6875;
+
+.status-loading{
+
+    color:#ddd;
 }
+
+
+/* =========================================
+   FORM
+========================================= */
 
 label{
+
     display:block;
-    color:#aaa;
-    font-size:12px;
-    margin-bottom:7px;
+
+    margin-top:20px;
+
+    margin-bottom:9px;
+
+    font-size:17px;
+
+    color:#bdbdc2;
 }
+
 
 input,
 select{
+
     width:100%;
-    padding:13px;
-    border:1px solid #383a40;
-    border-radius:9px;
+
+    padding:17px;
+
+    border-radius:16px;
+
+    border:1px solid #303239;
+
     background:#08090b;
-    color:#fff;
+
+    color:white;
+
+    font-size:17px;
+
     outline:none;
-    margin-bottom:15px;
 }
+
 
 input:focus,
 select:focus{
-    border-color:#ff2638;
+
+    border-color:#ff2438;
 }
 
-.file-box{
-    border:1px dashed #4a4c53;
-    border-radius:12px;
-    padding:22px;
-    text-align:center;
-    background:#0c0d10;
-    margin-bottom:15px;
-}
 
-.file-box input{
-    margin:0;
-    border:0;
-    padding:0;
-    background:none;
-}
+input[type="file"]{
 
-.btn{
-    border:0;
-    border-radius:9px;
-    padding:12px 18px;
-    background:#ff2638;
-    color:#fff;
-    font-weight:bold;
+    padding:15px;
+
     cursor:pointer;
 }
 
-.btn:disabled{
+
+.upload-btn{
+
+    margin-top:25px;
+
+    border:0;
+
+    background:#ff2438;
+
+    color:white;
+
+    padding:16px 28px;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+.upload-btn:disabled{
+
     opacity:.5;
+
     cursor:not-allowed;
 }
 
-.btn.secondary{
-    background:#202228;
-    border:1px solid #3a3c42;
+
+.progress-wrap{
+
+    display:none;
+
+    margin-top:20px;
 }
+
 
 .progress{
-    display:none;
-    margin-top:15px;
+
+    width:100%;
+
+    height:10px;
+
+    background:#27292e;
+
+    border-radius:20px;
+
+    overflow:hidden;
 }
 
-.progress.show{
-    display:block;
-}
 
 .progress-bar{
-    width:100%;
-    height:9px;
-    background:#202228;
-    border-radius:20px;
-    overflow:hidden;
+
+    width:0%;
+
+    height:100%;
+
+    background:#ff2438;
+
+    transition:width .2s;
 }
 
-.progress-fill{
-    width:0%;
-    height:100%;
-    background:#ff2638;
-    transition:.2s;
-}
 
 .progress-text{
-    margin-top:7px;
+
+    margin-top:8px;
+
     color:#aaa;
-    font-size:12px;
-    text-align:center;
+
+    font-size:14px;
 }
+
 
 .message{
-    min-height:20px;
-    margin-top:12px;
-    font-size:13px;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    display:none;
+
+    line-height:1.5;
 }
+
+
+.message.success{
+
+    display:block;
+
+    background:#102518;
+
+    color:#72e58b;
+
+    border:1px solid #235d32;
+}
+
 
 .message.error{
-    color:#ff6875;
+
+    display:block;
+
+    background:#2a1014;
+
+    color:#ff7180;
+
+    border:1px solid #6b2029;
 }
 
-.message.ok{
-    color:#69e58a;
-}
+
+/* =========================================
+   MEDIA LIST
+========================================= */
 
 .media-list{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(240px,1fr));
+
+    gap:20px;
 }
 
-.media-card{
-    background:#0c0d10;
-    border:1px solid #34363c;
-    border-radius:12px;
+
+.media-item{
+
+    background:#090a0d;
+
+    border:1px solid #2c2f35;
+
+    border-radius:20px;
+
     overflow:hidden;
 }
+
 
 .media-preview{
+
     width:100%;
-    height:140px;
-    object-fit:cover;
-    display:block;
-    background:#050506;
+
+    height:180px;
+
+    background:#050608;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
 }
+
+
+.media-preview img,
+.media-preview video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+.video-placeholder{
+
+    font-size:45px;
+}
+
 
 .media-info{
-    padding:12px;
+
+    padding:17px;
 }
+
 
 .media-name{
-    font-weight:bold;
-    margin-bottom:5px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:7px;
+
+    word-break:break-word;
 }
+
 
 .media-type{
+
     color:#aaa;
-    font-size:11px;
-    margin-bottom:10px;
+
+    font-size:14px;
+
+    margin-bottom:15px;
 }
 
-.delete-btn{
+
+.url-box{
+
     width:100%;
-    border:1px solid #6d2930;
-    background:#241013;
-    color:#ff6875;
-    padding:9px;
-    border-radius:8px;
+
+    background:#111318;
+
+    border:1px solid #292c31;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    font-size:12px;
+
+    color:#aaa;
+
+    word-break:break-all;
+
+    margin-bottom:12px;
+}
+
+
+.delete-btn{
+
+    width:100%;
+
+    border:1px solid #7b2630;
+
+    background:#281014;
+
+    color:#ff6573;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
     cursor:pointer;
 }
 
-.empty{
-    text-align:center;
-    color:#777;
-    padding:30px;
+
+.delete-btn:active{
+
+    transform:scale(.98);
 }
 
-.small{
-    color:#777;
-    font-size:11px;
-    line-height:1.5;
-    margin-top:10px;
+
+.empty{
+
+    text-align:center;
+
+    color:#888;
+
+    padding:30px 10px;
 }
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media(max-width:600px){
 
     .container{
-        width:94%;
-        padding-top:20px;
+
+        padding:20px 16px 50px;
     }
+
+
+    .header{
+
+        align-items:flex-start;
+    }
+
 
     .header h1{
-        font-size:22px;
+
+        font-size:32px;
     }
 
+
+    .website-btn{
+
+        padding:13px 17px;
+
+        font-size:16px;
+    }
+
+
     .card{
-        padding:17px;
+
+        padding:22px;
+
+        border-radius:24px;
+    }
+
+
+    .card h2{
+
+        font-size:27px;
     }
 
 }
@@ -287,210 +552,221 @@ select:focus{
 
 <body>
 
+
 <div class="container">
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- =====================================
+         HEADER
+    ====================================== -->
 
-<div class="header">
+    <header class="header">
 
-<h1>
-    Heart <span>Editor</span>
-</h1>
+        <h1>
+            Heart <span>Editor</span>
+        </h1>
 
-<a
-    href="index.html"
-    class="back-btn"
->
-    ← Website
-</a>
+        <a
+            href="index.html"
+            class="website-btn"
+        >
+            ← Website
+        </a>
+
+    </header>
+
+
+
+    <!-- =====================================
+         SYSTEM STATUS
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>
+            System Status
+        </h2>
+
+
+        <div
+            id="firebaseStatus"
+            class="status-box status-loading"
+        >
+            🔄 Connecting to Firebase...
+        </div>
+
+
+        <div
+            id="cloudinaryStatus"
+            class="status-box status-loading"
+        >
+            ☁️ Checking Cloudinary...
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         ADD MEDIA
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>
+            Add Project Media
+        </h2>
+
+
+        <label for="mediaName">
+            Media Name
+        </label>
+
+        <input
+            id="mediaName"
+            type="text"
+            placeholder="Example: Heart Model"
+        >
+
+
+        <label for="mediaType">
+            Media Type
+        </label>
+
+        <select id="mediaType">
+
+            <option value="image">
+                📸 Photo
+            </option>
+
+            <option value="video">
+                🎬 Video
+            </option>
+
+        </select>
+
+
+        <label for="mediaFile">
+            Select Image / Video
+        </label>
+
+        <input
+            id="mediaFile"
+            type="file"
+            accept="image/*,video/*"
+        >
+
+
+        <button
+            id="uploadBtn"
+            class="upload-btn"
+        >
+            Upload Media
+        </button>
+
+
+        <div
+            id="progressWrap"
+            class="progress-wrap"
+        >
+
+            <div class="progress">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+
+            </div>
+
+            <div
+                id="progressText"
+                class="progress-text"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <p
+            style="
+                color:#888;
+                line-height:1.6;
+                margin-top:30px;
+            "
+        >
+            The selected file is uploaded to Cloudinary.
+            Only its URL and information are saved in
+            Firebase Firestore.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXISTING MEDIA
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>
+            Existing Project Media
+        </h2>
+
+
+        <div
+            id="mediaList"
+            class="media-list"
+        >
+
+            <div class="empty">
+                Loading media...
+            </div>
+
+        </div>
+
+    </section>
+
 
 </div>
 
 
-<!-- =====================================================
-     FIREBASE STATUS
-===================================================== -->
 
-<div class="card">
+<!-- =========================================
+     CLOUDINARY
+========================================= -->
 
-<h2>
-    System Status
-</h2>
+<script src="cloudinary-config.js"></script>
 
-<div
-    id="firebaseStatus"
-    class="status"
->
-    🔄 Connecting to Firebase...
-</div>
-
-<div
-    id="cloudinaryStatus"
-    class="status"
-    style="margin-top:10px"
->
-    ☁️ Checking Cloudinary...
-</div>
-
-</div>
+<script src="cloudinary-uploads.js"></script>
 
 
-<!-- =====================================================
-     UPLOAD
-===================================================== -->
 
-<div class="card">
-
-<h2>
-    Add Project Media
-</h2>
-
-
-<label for="mediaName">
-    Media Name
-</label>
-
-<input
-    id="mediaName"
-    type="text"
-    placeholder="Example: Heart Model"
->
-
-
-<label for="mediaType">
-    Media Type
-</label>
-
-<select id="mediaType">
-
-<option value="photo">
-    📸 Photo
-</option>
-
-<option value="video">
-    🎬 Video
-</option>
-
-</select>
-
-
-<label>
-    Select Image / Video
-</label>
-
-<div class="file-box">
-
-<input
-    id="mediaFile"
-    type="file"
-    accept="image/*,video/*"
->
-
-</div>
-
-
-<button
-    id="uploadBtn"
-    class="btn"
->
-    Upload Media
-</button>
-
-
-<div
-    id="progress"
-    class="progress"
->
-
-<div class="progress-bar">
-
-<div
-    id="progressFill"
-    class="progress-fill"
-></div>
-
-</div>
-
-<div
-    id="progressText"
-    class="progress-text"
->
-    0%
-</div>
-
-</div>
-
-
-<div
-    id="uploadMessage"
-    class="message"
-></div>
-
-
-<div class="small">
-
-The selected file is uploaded to Cloudinary.
-Only its URL and information are saved in
-Firebase Firestore.
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     MEDIA LIST
-===================================================== -->
-
-<div class="card">
-
-<h2>
-    Firebase Media
-</h2>
-
-<div
-    id="mediaList"
-    class="media-list"
-></div>
-
-<div
-    id="emptyMessage"
-    class="empty"
-    style="display:none"
->
-    No media found.
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     FIREBASE + CLOUDINARY
-===================================================== -->
+<!-- =========================================
+     FIREBASE / EDITOR
+========================================= -->
 
 <script type="module">
 
-
-/* =====================================================
-   IMPORT FIREBASE CONFIG
-===================================================== */
-
-import {
-    db
-} from "./firebase-config.js";
+"use strict";
 
 
-/* =====================================================
-   FIRESTORE FUNCTIONS
-===================================================== */
+/*
+=========================================================
+        FIREBASE IMPORT
+=========================================================
+*/
 
 import {
+
     collection,
     addDoc,
     getDocs,
@@ -499,28 +775,34 @@ import {
     orderBy,
     query,
     serverTimestamp
+
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   CLOUDINARY UPLOAD FUNCTION
-===================================================== */
+import {
 
-import "./cloudinary-uploads.js";
+    db
 
-
-/* =====================================================
-   CONSTANTS
-===================================================== */
-
-const COLLECTION_NAME =
-    "heartProjectMedia";
+} from "./firebase-config.js";
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+
+/*
+=========================================================
+        IMPORTANT
+=========================================================
+*/
+
+const COLLECTION_NAME = "media";
+
+
+
+/*
+=========================================================
+        ELEMENTS
+=========================================================
+*/
 
 const firebaseStatus =
     document.getElementById(
@@ -558,21 +840,15 @@ const uploadBtn =
     );
 
 
-const uploadMessage =
+const progressWrap =
     document.getElementById(
-        "uploadMessage"
+        "progressWrap"
     );
 
 
-const progress =
+const progressBar =
     document.getElementById(
-        "progress"
-    );
-
-
-const progressFill =
-    document.getElementById(
-        "progressFill"
+        "progressBar"
     );
 
 
@@ -582,541 +858,122 @@ const progressText =
     );
 
 
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
 const mediaList =
     document.getElementById(
         "mediaList"
     );
 
 
-const emptyMessage =
-    document.getElementById(
-        "emptyMessage"
-    );
+
+/*
+=========================================================
+        FIREBASE STATUS
+=========================================================
+*/
+
+firebaseStatus.textContent =
+    "✓ Firebase connected";
 
 
-/* =====================================================
-   FIREBASE CONNECTION CHECK
-===================================================== */
-
-async function checkFirebase(){
-
-    try{
-
-        if(!db){
-
-            throw new Error(
-                "Firebase Firestore was not initialized."
-            );
-
-        }
+firebaseStatus.className =
+    "status-box status-ok";
 
 
-        /*
-        We perform a real Firestore read.
-        This confirms that Firebase is actually
-        reachable instead of only checking the
-        JavaScript configuration.
-        */
 
-        await getDocs(
-            collection(
-                db,
-                COLLECTION_NAME
-            )
-        );
+/*
+=========================================================
+        CLOUDINARY STATUS
+=========================================================
+*/
 
-
-        firebaseStatus.textContent =
-            "✓ Firebase Firestore connected";
-
-
-        firebaseStatus.classList.remove(
-            "error"
-        );
-
-
-        firebaseStatus.classList.add(
-            "ok"
-        );
-
-
-        return true;
-
-
-    }catch(error){
-
-        console.error(
-            "Firebase connection error:",
-            error
-        );
-
-
-        firebaseStatus.classList.remove(
-            "ok"
-        );
-
-
-        firebaseStatus.classList.add(
-            "error"
-        );
-
-
-        firebaseStatus.textContent =
-            "❌ Firebase error: " +
-            getFirebaseErrorMessage(
-                error
-            );
-
-
-        return false;
-
-    }
-
-}
-
-
-/* =====================================================
-   FIREBASE ERROR MESSAGE
-===================================================== */
-
-function getFirebaseErrorMessage(
-    error
+if(
+    typeof window.uploadToCloudinary ===
+    "function"
 ){
-
-    if(!error){
-
-        return "Unknown error.";
-
-    }
-
-
-    const code =
-        error.code || "";
-
-
-    if(
-        code.includes(
-            "permission-denied"
-        )
-    ){
-
-        return (
-            "Firestore permission denied. " +
-            "Check your Firebase Firestore Rules."
-        );
-
-    }
-
-
-    if(
-        code.includes(
-            "failed-precondition"
-        )
-    ){
-
-        return (
-            "Firestore is not configured correctly."
-        );
-
-    }
-
-
-    if(
-        code.includes(
-            "not-found"
-        )
-    ){
-
-        return (
-            "Firestore database was not found."
-        );
-
-    }
-
-
-    if(
-        error.message
-    ){
-
-        return error.message;
-
-    }
-
-
-    return "Unable to connect.";
-
-}
-
-
-/* =====================================================
-   CLOUDINARY CHECK
-===================================================== */
-
-function checkCloudinary(){
-
-    if(
-        typeof window.uploadToCloudinary ===
-        "function"
-    ){
-
-        cloudinaryStatus.textContent =
-            "✓ Cloudinary upload system loaded";
-
-
-        cloudinaryStatus.classList.add(
-            "ok"
-        );
-
-
-        return true;
-
-    }
-
 
     cloudinaryStatus.textContent =
-        "❌ Cloudinary upload system not loaded";
+        "✓ Cloudinary ready";
 
 
-    cloudinaryStatus.classList.add(
-        "error"
-    );
+    cloudinaryStatus.className =
+        "status-box status-ok";
+
+}else{
+
+    cloudinaryStatus.textContent =
+        "❌ Cloudinary upload script not loaded";
 
 
-    return false;
+    cloudinaryStatus.className =
+        "status-box status-error";
 
 }
 
 
-/* =====================================================
-   UPLOAD MESSAGE
-===================================================== */
 
-function showUploadMessage(
+/*
+=========================================================
+        MESSAGE
+=========================================================
+*/
+
+function showMessage(
     text,
-    type=""
+    type
 ){
 
-    uploadMessage.textContent =
+    message.textContent =
         text;
 
-
-    uploadMessage.className =
-        "message " +
-        type;
+    message.className =
+        "message " + type;
 
 }
 
 
-/* =====================================================
-   PROGRESS
-===================================================== */
 
-function setProgress(
-    percent
-){
-
-    progress.classList.add(
-        "show"
-    );
-
-
-    progressFill.style.width =
-        percent + "%";
-
-
-    progressText.textContent =
-        percent + "%";
-
-}
-
-
-/* =====================================================
-   UPLOAD MEDIA
-===================================================== */
-
-async function uploadMedia(){
-
-    showUploadMessage(
-        ""
-    );
-
-
-    const file =
-        mediaFile.files[0];
-
-
-    if(!file){
-
-        showUploadMessage(
-            "Please select an image or video.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(
-        typeof window.uploadToCloudinary !==
-        "function"
-    ){
-
-        showUploadMessage(
-            "Cloudinary upload system is not loaded.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    const name =
-        mediaName.value.trim() ||
-        file.name;
-
-
-    let type =
-        mediaType.value;
-
-
-    /*
-    Automatically correct the type
-    according to the selected file.
-    */
-
-    if(
-        file.type.startsWith(
-            "image/"
-        )
-    ){
-
-        type = "photo";
-
-    }
-
-
-    if(
-        file.type.startsWith(
-            "video/"
-        )
-    ){
-
-        type = "video";
-
-    }
-
-
-    uploadBtn.disabled =
-        true;
-
-
-    setProgress(
-        0
-    );
-
-
-    showUploadMessage(
-        "Uploading to Cloudinary..."
-    );
-
-
-    try{
-
-        /* =========================================
-           CLOUDINARY
-        ========================================= */
-
-        const result =
-            await window.uploadToCloudinary(
-
-                file,
-
-                percent => {
-
-                    setProgress(
-                        percent
-                    );
-
-                }
-
-            );
-
-
-        const url =
-            window.getCloudinaryUrl(
-                result
-            );
-
-
-        if(!url){
-
-            throw new Error(
-                "Cloudinary did not return a secure URL."
-            );
-
-        }
-
-
-        setProgress(
-            100
-        );
-
-
-        showUploadMessage(
-            "Cloudinary upload complete. Saving to Firebase...",
-            ""
-        );
-
-
-        /* =========================================
-           FIREBASE
-        ========================================= */
-
-        if(!db){
-
-            throw new Error(
-                "Firebase Firestore is not initialized."
-            );
-
-        }
-
-
-        await addDoc(
-
-            collection(
-                db,
-                COLLECTION_NAME
-            ),
-
-            {
-
-                name:name,
-
-                type:type,
-
-                url:url,
-
-                publicId:
-                    result.public_id ||
-                    "",
-
-                format:
-                    result.format ||
-                    "",
-
-                resourceType:
-                    result.resource_type ||
-                    "",
-
-                originalFilename:
-                    file.name,
-
-                createdAt:
-                    serverTimestamp()
-
-            }
-
-        );
-
-
-        showUploadMessage(
-            "✓ Media uploaded and saved successfully.",
-            "ok"
-        );
-
-
-        mediaName.value =
-            "";
-
-
-        mediaFile.value =
-            "";
-
-
-        progressFill.style.width =
-            "100%";
-
-
-        progressText.textContent =
-            "Complete";
-
-
-        await loadMedia();
-
-
-    }catch(error){
-
-        console.error(
-            "Upload error:",
-            error
-        );
-
-
-        showUploadMessage(
-            "❌ " +
-            (
-                error.message ||
-                "Upload failed."
-            ),
-            "error"
-        );
-
-    }finally{
-
-        uploadBtn.disabled =
-            false;
-
-    }
-
-}
-
-
-/* =====================================================
-   LOAD MEDIA
-===================================================== */
+/*
+=========================================================
+        LOAD MEDIA
+=========================================================
+*/
 
 async function loadMedia(){
 
     mediaList.innerHTML =
-        "";
-
-
-    emptyMessage.style.display =
-        "none";
+        `<div class="empty">
+            Loading media...
+        </div>`;
 
 
     try{
 
-        if(!db){
-
-            throw new Error(
-                "Firebase Firestore is not initialized."
+        const mediaRef =
+            collection(
+                db,
+                COLLECTION_NAME
             );
 
-        }
 
-
-        const q =
+        const mediaQuery =
             query(
-
-                collection(
-                    db,
-                    COLLECTION_NAME
-                ),
-
+                mediaRef,
                 orderBy(
                     "createdAt",
-                    "asc"
+                    "desc"
                 )
-
             );
 
 
         const snapshot =
             await getDocs(
-                q
+                mediaQuery
             );
 
 
@@ -1124,16 +981,20 @@ async function loadMedia(){
             snapshot.empty
         ){
 
-            emptyMessage.style.display =
-                "block";
+            mediaList.innerHTML =
+                `<div class="empty">
+                    No media uploaded yet.
+                </div>`;
 
             return;
 
         }
 
 
-        snapshot.forEach(
+        mediaList.innerHTML = "";
 
+
+        snapshot.forEach(
             item => {
 
                 const data =
@@ -1141,44 +1002,98 @@ async function loadMedia(){
 
 
                 createMediaCard(
-
                     item.id,
-
                     data
-
                 );
 
             }
-
         );
 
 
     }catch(error){
 
         console.error(
-            "Load media error:",
+            "Firebase media error:",
             error
         );
 
 
-        emptyMessage.style.display =
-            "block";
+        /*
+        If createdAt is missing from old
+        documents, load without orderBy.
+        */
+
+        try{
+
+            const fallback =
+                await getDocs(
+                    collection(
+                        db,
+                        COLLECTION_NAME
+                    )
+                );
 
 
-        emptyMessage.textContent =
-            "❌ Could not load Firebase media: " +
-            getFirebaseErrorMessage(
-                error
+            mediaList.innerHTML =
+                "";
+
+
+            if(
+                fallback.empty
+            ){
+
+                mediaList.innerHTML =
+                    `<div class="empty">
+                        No media uploaded yet.
+                    </div>`;
+
+                return;
+
+            }
+
+
+            fallback.forEach(
+                item => {
+
+                    createMediaCard(
+                        item.id,
+                        item.data()
+                    );
+
+                }
             );
+
+
+        }catch(secondError){
+
+            console.error(
+                secondError
+            );
+
+
+            mediaList.innerHTML =
+                `<div class="empty"
+                    style="color:#ff6573">
+                    ❌ Could not load media.
+                    <br><br>
+                    ${escapeHtml(
+                        secondError.message
+                    )}
+                </div>`;
+
+        }
 
     }
 
 }
 
 
-/* =====================================================
-   CREATE MEDIA CARD
-===================================================== */
+
+/*
+=========================================================
+        CREATE MEDIA CARD
+=========================================================
+*/
 
 function createMediaCard(
     id,
@@ -1192,154 +1107,113 @@ function createMediaCard(
 
 
     card.className =
-        "media-card";
+        "media-item";
+
+
+    const name =
+        data.name ||
+        "Unnamed Media";
 
 
     const type =
-        data.type === "video"
-        ? "video"
-        : "photo";
+        data.type ||
+        "image";
 
 
-    let preview;
+    const url =
+        data.url ||
+        data.secure_url ||
+        "";
+
+
+    let preview = "";
 
 
     if(
         type === "video"
     ){
 
-        preview =
-            document.createElement(
-                "video"
-            );
+        preview = `
 
+            <div class="media-preview">
 
-        preview.controls =
-            true;
+                <video
+                    src="${escapeAttribute(url)}"
+                    controls
+                    preload="metadata"
+                ></video>
 
+            </div>
 
-        preview.playsInline =
-            true;
-
-
-        preview.preload =
-            "metadata";
+        `;
 
     }else{
 
-        preview =
-            document.createElement(
-                "img"
-            );
+        preview = `
 
+            <div class="media-preview">
 
-        preview.alt =
-            data.name ||
-            "Project image";
+                <img
+                    src="${escapeAttribute(url)}"
+                    alt="${escapeAttribute(name)}"
+                    loading="lazy"
+                >
+
+            </div>
+
+        `;
 
     }
 
 
-    preview.className =
-        "media-preview";
+    card.innerHTML = `
 
+        ${preview}
 
-    preview.src =
-        data.url || "";
+        <div class="media-info">
 
+            <div class="media-name">
+                ${escapeHtml(name)}
+            </div>
 
-    const info =
-        document.createElement(
-            "div"
-        );
+            <div class="media-type">
+                ${type === "video"
+                    ? "🎬 Video"
+                    : "📸 Photo"}
+            </div>
 
+            <div class="url-box">
+                ${escapeHtml(url)}
+            </div>
 
-    info.className =
-        "media-info";
+            <button
+                class="delete-btn"
+                data-id="${escapeAttribute(id)}"
+            >
+                🗑 Delete
+            </button>
 
+        </div>
 
-    const name =
-        document.createElement(
-            "div"
-        );
-
-
-    name.className =
-        "media-name";
-
-
-    name.textContent =
-        data.name ||
-        "Project Media";
-
-
-    const typeText =
-        document.createElement(
-            "div"
-        );
-
-
-    typeText.className =
-        "media-type";
-
-
-    typeText.textContent =
-        type === "video"
-        ? "🎬 Video"
-        : "📸 Photo";
+    `;
 
 
     const deleteButton =
-        document.createElement(
-            "button"
+        card.querySelector(
+            ".delete-btn"
         );
 
 
-    deleteButton.className =
-        "delete-btn";
-
-
-    deleteButton.textContent =
-        "Delete from Firebase";
-
-
     deleteButton.addEventListener(
-
         "click",
+        async () => {
 
-        () => {
-
-            deleteMedia(
-                id
+            await deleteMedia(
+                id,
+                card
             );
 
         }
-
-    );
-
-
-    info.appendChild(
-        name
-    );
-
-
-    info.appendChild(
-        typeText
-    );
-
-
-    info.appendChild(
-        deleteButton
-    );
-
-
-    card.appendChild(
-        preview
-    );
-
-
-    card.appendChild(
-        info
     );
 
 
@@ -1350,17 +1224,21 @@ function createMediaCard(
 }
 
 
-/* =====================================================
-   DELETE MEDIA
-===================================================== */
+
+/*
+=========================================================
+        DELETE MEDIA
+=========================================================
+*/
 
 async function deleteMedia(
-    id
+    id,
+    card
 ){
 
     const confirmed =
         confirm(
-            "Delete this media record from Firebase?"
+            "Delete this media from the project?"
         );
 
 
@@ -1374,32 +1252,46 @@ async function deleteMedia(
     try{
 
         await deleteDoc(
-
             doc(
                 db,
                 COLLECTION_NAME,
                 id
             )
-
         );
 
 
-        await loadMedia();
+        card.remove();
+
+
+        showMessage(
+            "✓ Media deleted successfully.",
+            "success"
+        );
+
+
+        if(
+            !mediaList.children.length
+        ){
+
+            mediaList.innerHTML =
+                `<div class="empty">
+                    No media uploaded yet.
+                </div>`;
+
+        }
 
 
     }catch(error){
 
         console.error(
-            "Delete error:",
             error
         );
 
 
-        alert(
-            "Could not delete media:\n\n" +
-            getFirebaseErrorMessage(
-                error
-            )
+        showMessage(
+            "❌ Delete failed: " +
+            error.message,
+            "error"
         );
 
     }
@@ -1407,53 +1299,318 @@ async function deleteMedia(
 }
 
 
-/* =====================================================
-   BUTTON
-===================================================== */
+
+/*
+=========================================================
+        UPLOAD
+=========================================================
+*/
 
 uploadBtn.addEventListener(
     "click",
-    uploadMedia
+    async () => {
+
+        const name =
+            mediaName.value.trim();
+
+
+        const type =
+            mediaType.value;
+
+
+        const file =
+            mediaFile.files[0];
+
+
+        if(!name){
+
+            showMessage(
+                "Please enter a media name.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(!file){
+
+            showMessage(
+                "Please select an image or video.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            type === "image" &&
+            !file.type.startsWith(
+                "image/"
+            )
+        ){
+
+            showMessage(
+                "Please select an image file.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            type === "video" &&
+            !file.type.startsWith(
+                "video/"
+            )
+        ){
+
+            showMessage(
+                "Please select a video file.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            typeof window.uploadToCloudinary !==
+            "function"
+        ){
+
+            showMessage(
+                "Cloudinary upload function is not available. Check cloudinary-uploads.js.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        uploadBtn.disabled =
+            true;
+
+
+        progressWrap.style.display =
+            "block";
+
+
+        progressBar.style.width =
+            "0%";
+
+
+        progressText.textContent =
+            "Uploading: 0%";
+
+
+        message.className =
+            "message";
+
+
+        try{
+
+            /*
+            =========================================
+              CLOUDINARY UPLOAD
+            =========================================
+            */
+
+            const result =
+                await window.uploadToCloudinary(
+
+                    file,
+
+                    percent => {
+
+                        progressBar.style.width =
+                            percent + "%";
+
+
+                        progressText.textContent =
+                            "Uploading: " +
+                            percent +
+                            "%";
+
+                    }
+
+                );
+
+
+            const url =
+                window.getCloudinaryUrl
+                    ? window.getCloudinaryUrl(result)
+                    : result.secure_url;
+
+
+            if(!url){
+
+                throw new Error(
+                    "Cloudinary did not return a URL."
+                );
+
+            }
+
+
+
+            /*
+            =========================================
+              FIRESTORE SAVE
+            =========================================
+            */
+
+            await addDoc(
+
+                collection(
+                    db,
+                    COLLECTION_NAME
+                ),
+
+                {
+
+                    name:
+                        name,
+
+                    type:
+                        type,
+
+                    url:
+                        url,
+
+                    cloudinaryPublicId:
+                        result.public_id ||
+                        "",
+
+                    format:
+                        result.format ||
+                        "",
+
+                    resourceType:
+                        result.resource_type ||
+                        "",
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+
+            );
+
+
+            progressBar.style.width =
+                "100%";
+
+
+            progressText.textContent =
+                "Upload complete";
+
+
+            showMessage(
+                "✓ Media uploaded successfully and saved to Firebase.",
+                "success"
+            );
+
+
+            mediaName.value =
+                "";
+
+
+            mediaFile.value =
+                "";
+
+
+            await loadMedia();
+
+
+        }catch(error){
+
+            console.error(
+                "Upload error:",
+                error
+            );
+
+
+            showMessage(
+                "❌ Upload failed: " +
+                error.message,
+                "error"
+            );
+
+        }
+
+
+        uploadBtn.disabled =
+            false;
+
+    }
 );
 
 
-/* =====================================================
-   START
-===================================================== */
 
-async function startEditor(){
+/*
+=========================================================
+        HTML SECURITY HELPERS
+=========================================================
+*/
 
-    /*
-    IMPORTANT:
-    Load the Cloudinary script first.
-    */
+function escapeHtml(
+    value
+){
 
-    checkCloudinary();
-
-
-    /*
-    Then check Firebase.
-    */
-
-    const connected =
-        await checkFirebase();
-
-
-    if(
-        connected
-    ){
-
-        await loadMedia();
-
-    }
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-startEditor();
+function escapeAttribute(
+    value
+){
 
+    return escapeHtml(
+        value
+    );
+
+}
+
+
+
+/*
+=========================================================
+        START
+=========================================================
+*/
+
+loadMedia();
 
 </script>
+
 
 </body>
 
