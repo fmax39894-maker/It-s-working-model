@@ -1,45 +1,8 @@
 "use strict";
 
-/*
-=========================================================
-        CLOUDINARY UPLOAD SYSTEM
-        It’s Working Heart
-=========================================================
-*/
-
-/*
-IMPORTANT
----------
-Replace these two values with your Cloudinary values:
-
-1. CLOUDINARY_CLOUD_NAME
-2. CLOUDINARY_UPLOAD_PRESET
-
-The upload preset should be an UNSIGNED upload preset.
-*/
-
-
-const CLOUDINARY_CLOUD_NAME =
-    "raykjrpl";
-
-
-const CLOUDINARY_UPLOAD_PRESET =
-    "It's working heart";
-
-
-
-/* =====================================================
-   CLOUDINARY UPLOAD URL
-===================================================== */
-
-const CLOUDINARY_UPLOAD_URL =
-    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`;
-
-
-
-/* =====================================================
-   UPLOAD FILE
-===================================================== */
+/* =========================================
+   CLOUDINARY UPLOAD SYSTEM
+========================================= */
 
 async function uploadToCloudinary(
     file,
@@ -55,31 +18,37 @@ async function uploadToCloudinary(
     }
 
 
+    const cloudName =
+        window.CLOUDINARY_CLOUD_NAME;
+
+
+    const uploadPreset =
+        window.CLOUDINARY_UPLOAD_PRESET;
+
+
     if(
-        !CLOUDINARY_CLOUD_NAME ||
-        CLOUDINARY_CLOUD_NAME ===
-        "YOUR_CLOUD_NAME"
+        !cloudName ||
+        cloudName === "YOUR_CLOUD_NAME"
     ){
 
         throw new Error(
-            "Cloudinary Cloud Name is not configured."
+            "Cloudinary Cloud Name is missing."
         );
 
     }
 
 
-    if(
-        !CLOUDINARY_UPLOAD_PRESET ||
-        CLOUDINARY_UPLOAD_PRESET ===
-        "YOUR_UPLOAD_PRESET"
-    ){
+    if(!uploadPreset){
 
         throw new Error(
-            "Cloudinary Upload Preset is not configured."
+            "Cloudinary Upload Preset is missing."
         );
 
     }
 
+
+    const uploadUrl =
+        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`;
 
 
     const formData =
@@ -94,13 +63,11 @@ async function uploadToCloudinary(
 
     formData.append(
         "upload_preset",
-        CLOUDINARY_UPLOAD_PRESET
+        uploadPreset
     );
 
 
-
     return new Promise(
-
         (resolve,reject)=>{
 
             const xhr =
@@ -109,23 +76,21 @@ async function uploadToCloudinary(
 
             xhr.open(
                 "POST",
-                CLOUDINARY_UPLOAD_URL
+                uploadUrl
             );
 
 
-
-            /* =========================================
-               UPLOAD PROGRESS
-            ========================================= */
+            /* =====================================
+               PROGRESS
+            ===================================== */
 
             xhr.upload.addEventListener(
                 "progress",
-                event => {
+                function(event){
 
                     if(
                         event.lengthComputable &&
-                        typeof onProgress ===
-                        "function"
+                        typeof onProgress === "function"
                     ){
 
                         const percent =
@@ -147,182 +112,135 @@ async function uploadToCloudinary(
             );
 
 
-
-            /* =========================================
-               SUCCESS
-            ========================================= */
+            /* =====================================
+               SUCCESS / ERROR
+            ===================================== */
 
             xhr.onload =
-            function(){
+                function(){
 
-                if(
-                    xhr.status >= 200 &&
-                    xhr.status < 300
-                ){
+                    if(
+                        xhr.status >= 200 &&
+                        xhr.status < 300
+                    ){
 
-                    try{
+                        try{
 
-                        const result =
-                            JSON.parse(
-                                xhr.responseText
+                            const result =
+                                JSON.parse(
+                                    xhr.responseText
+                                );
+
+
+                            resolve(
+                                result
                             );
 
+                        }catch(error){
 
-                        resolve(
-                            result
-                        );
+                            reject(
+                                new Error(
+                                    "Invalid Cloudinary response."
+                                )
+                            );
 
-                    }catch(error){
+                        }
+
+                    }else{
+
+                        let errorMessage =
+                            "Cloudinary upload failed.";
+
+
+                        try{
+
+                            const data =
+                                JSON.parse(
+                                    xhr.responseText
+                                );
+
+
+                            if(
+                                data.error &&
+                                data.error.message
+                            ){
+
+                                errorMessage =
+                                    data.error.message;
+
+                            }
+
+                        }catch(error){
+
+                        }
+
 
                         reject(
                             new Error(
-                                "Invalid Cloudinary response."
+                                errorMessage
                             )
                         );
 
                     }
 
-                }else{
-
-                    let message =
-                        "Cloudinary upload failed.";
-
-                    try{
-
-                        const errorData =
-                            JSON.parse(
-                                xhr.responseText
-                            );
+                };
 
 
-                        if(
-                            errorData.error &&
-                            errorData.error.message
-                        ){
+            /* =====================================
+               NETWORK ERROR
+            ===================================== */
 
-                            message =
-                                errorData.error.message;
-
-                        }
-
-                    }catch(error){
-
-                        /* Ignore JSON parsing error */
-
-                    }
-
+            xhr.onerror =
+                function(){
 
                     reject(
                         new Error(
-                            message
+                            "Could not connect to Cloudinary."
                         )
                     );
 
-                }
-
-            };
+                };
 
 
-
-            /* =========================================
-               NETWORK ERROR
-            ========================================= */
-
-            xhr.onerror =
-            function(){
-
-                reject(
-                    new Error(
-                        "Network error while uploading to Cloudinary."
-                    )
-                );
-
-            };
-
-
-
-            /* =========================================
+            /* =====================================
                SEND
-            ========================================= */
+            ===================================== */
 
             xhr.send(
                 formData
             );
 
         }
-
     );
 
 }
 
 
-
-/* =====================================================
-   GET DIRECT URL
-===================================================== */
+/* =========================================
+   GET CLOUDINARY URL
+========================================= */
 
 function getCloudinaryUrl(
     result
 ){
 
     if(
-        !result ||
-        !result.secure_url
+        result &&
+        result.secure_url
     ){
 
-        return "";
+        return result.secure_url;
+
     }
 
-
-    return result.secure_url;
-
-}
-
-
-
-/* =====================================================
-   CHECK IMAGE
-===================================================== */
-
-function isImageFile(
-    file
-){
-
-    return !!(
-        file &&
-        file.type &&
-        file.type.startsWith(
-            "image/"
-        )
-    );
+    return "";
 
 }
 
 
-
-/* =====================================================
-   CHECK VIDEO
-===================================================== */
-
-function isVideoFile(
-    file
-){
-
-    return !!(
-        file &&
-        file.type &&
-        file.type.startsWith(
-            "video/"
-        )
-    );
-
-}
-
-
-
-/* =====================================================
-   EXPORT
-===================================================== */
+/* =========================================
+   GLOBAL FUNCTIONS
+========================================= */
 
 window.uploadToCloudinary =
     uploadToCloudinary;
@@ -330,11 +248,3 @@ window.uploadToCloudinary =
 
 window.getCloudinaryUrl =
     getCloudinaryUrl;
-
-
-window.isImageFile =
-    isImageFile;
-
-
-window.isVideoFile =
-    isVideoFile;
