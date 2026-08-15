@@ -673,111 +673,6 @@ footer{
 
 
 /* =========================================================
-   HOST PANEL
-========================================================= */
-
-.host-panel{
-    display:none;
-    position:relative;
-    max-width:520px;
-    margin:35px auto 0;
-    padding:28px;
-    border:1px solid #ff2638;
-    border-radius:16px;
-    background:#101114;
-    box-shadow:0 20px 50px #000
-}
-
-.host-panel.show{
-    display:block;
-    animation:galleryIn .3s
-}
-
-.host-panel h3{
-    color:#ff2638;
-    margin-bottom:8px
-}
-
-.host-panel p{
-    color:#aaa;
-    line-height:1.5
-}
-
-.close-host{
-    position:absolute;
-    right:14px;
-    top:10px;
-    border:0;
-    background:none;
-    color:#fff;
-    font-size:28px;
-    cursor:pointer
-}
-
-
-/* =========================================================
-   PASSWORD
-========================================================= */
-
-.password-label{
-    font-size:10px;
-    letter-spacing:2px;
-    color:#ff6b76;
-    font-weight:800;
-    margin:3px 0 8px
-}
-
-#hostLogin{
-    padding:15px;
-    border:1px solid #34363c;
-    border-radius:12px;
-    background:#0b0c0f
-}
-
-#hostLogin input{
-    display:block;
-    width:100%;
-    padding:11px;
-    margin:8px 0;
-    background:#08090b;
-    border:1px solid #383a40;
-    border-radius:8px;
-    color:#fff;
-    outline:none
-}
-
-#hostLogin input:focus{
-    border-color:#ff2638
-}
-
-#hostLogin .unlock-btn{
-    width:100%;
-    margin-top:4px
-}
-
-#hostMessage{
-    margin-top:12px;
-    color:#ff8793;
-    font-size:13px
-}
-
-
-/* =========================================================
-   HOST STATUS
-========================================================= */
-
-.host-status{
-    padding:10px 12px;
-    border:1px solid #285d38;
-    background:#102016;
-    color:#70e08b;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:700
-}
-
-
-/* =========================================================
    SETTINGS
 ========================================================= */
 
@@ -923,19 +818,6 @@ footer{
     min-height:14px
 }
 
-.settings-host-controls{
-    display:none;
-    margin-top:10px
-}
-
-.settings-host-controls.show{
-    display:block
-}
-
-.settings-host-controls .settings-action{
-    width:100%
-}
-
 @keyframes settingsIn{
 
     from{
@@ -1011,69 +893,6 @@ footer{
     max-height:500px;
     border-radius:10px;
     display:block
-}
-
-
-/* =========================================================
-   MEDIA LIGHTBOX
-========================================================= */
-
-.media-lightbox{
-    position:fixed;
-    inset:0;
-    z-index:200;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:#000e;
-
-    backdrop-filter:blur(8px)
-}
-
-.media-lightbox.show{
-    display:flex
-}
-
-#lightboxContent{
-    max-width:95vw;
-    max-height:90vh;
-    display:flex;
-    align-items:center;
-    justify-content:center
-}
-
-#lightboxContent img,
-#lightboxContent video{
-    max-width:95vw;
-    max-height:85vh;
-    border-radius:12px;
-    display:block
-}
-
-.lb-close{
-    position:fixed;
-    top:18px;
-    right:20px;
-
-    width:42px;
-    height:42px;
-
-    border:0;
-    border-radius:50%;
-
-    background:#ff2638;
-    color:#fff;
-
-    font-size:27px;
-
-    cursor:pointer;
-
-    z-index:201
 }
 
 
@@ -1670,6 +1489,8 @@ Aayushman Jha
 </div>
 
 
+<!-- VIEWER -->
+
 <div
     id="sectionViewer"
     class="section-viewer"
@@ -2100,25 +1921,10 @@ document
 
 
 <!-- =======================================================
-     FIREBASE + MEDIA SYSTEM
+     FIREBASE
 ======================================================== -->
 
 <script type="module">
-
-/*
-=========================================================
-   FIREBASE CONFIGURATION
-=========================================================
-
-   firebase-config.js must be in the SAME folder
-   as index.html.
-
-   Your firebase-config.js exports:
-
-   app
-   db
-=========================================================
-*/
 
 import {
     db
@@ -2146,8 +1952,7 @@ const COLLECTION_NAME =
 
 let mediaStore = [];
 
-let currentMediaFilter =
-    "all";
+let currentMediaFilter = "all";
 
 
 /* =========================================================
@@ -2155,233 +1960,144 @@ let currentMediaFilter =
 ========================================================= */
 
 const gallery =
-    document.getElementById(
-        "gallery"
-    );
-
+    document.getElementById("gallery");
 
 const galleryEmpty =
-    document.getElementById(
-        "galleryEmpty"
-    );
-
+    document.getElementById("galleryEmpty");
 
 const firebaseStatus =
-    document.getElementById(
-        "firebaseStatus"
-    );
+    document.getElementById("firebaseStatus");
 
 
 /* =========================================================
-   SHOW FIREBASE ERROR
+   STATUS
+========================================================= */
+
+function setStatus(
+    text,
+    live = false
+){
+
+    firebaseStatus.textContent =
+        text;
+
+    firebaseStatus.classList.toggle(
+        "live",
+        live
+    );
+
+}
+
+
+/* =========================================================
+   FIREBASE ERROR
 ========================================================= */
 
 function showFirebaseError(error){
 
     console.error(
-        "Firebase gallery error:",
+        "FIRESTORE ERROR:",
         error
     );
 
 
-    firebaseStatus.classList.remove(
-        "live"
+    setStatus(
+        "❌ Firebase gallery error",
+        false
     );
 
 
-    const errorCode =
-        error && error.code
-            ? String(error.code)
-            : "";
-
-
-    const errorMessage =
-        error && error.message
-            ? String(error.message)
-            : "";
-
-
-    /*
-       Permission error
-    */
-
-    if(
-        errorCode ===
-        "permission-denied" ||
-
-        errorMessage
-            .toLowerCase()
-            .includes("permission")
-    ){
-
-        firebaseStatus.textContent =
-            "☁️ Firebase permission denied";
-
-
-        gallery.innerHTML = "";
-
-
-        galleryEmpty.style.display =
-            "block";
-
-
-        galleryEmpty.textContent =
-            "Firebase permission denied. Check Firestore rules.";
-
-        return;
-
-    }
-
-
-    firebaseStatus.textContent =
-        "☁️ Firebase connection failed";
-
-
     gallery.innerHTML = "";
-
 
     galleryEmpty.style.display =
         "block";
 
 
-    galleryEmpty.textContent =
-        "Firebase gallery could not be loaded.";
-
-}
-
-
-/* =========================================================
-   GET URL FROM FIRESTORE DOCUMENT
-=========================================================
-
-   This is the important compatibility fix.
-
-   The editor may have saved the Cloudinary URL as:
-
-   url
-   fileUrl
-   secure_url
-   cloudinaryUrl
-   mediaUrl
-
-   We accept all of them.
-========================================================= */
-
-function getMediaUrl(data){
-
-    if(!data){
-        return "";
-    }
-
-
-    const possibleUrls = [
-
-        data.url,
-
-        data.fileUrl,
-
-        data.secure_url,
-
-        data.secureUrl,
-
-        data.cloudinaryUrl,
-
-        data.mediaUrl,
-
-        data.link,
-
-        data.downloadURL,
-
-        data.downloadUrl
-
-    ];
-
-
-    for(
-        const possibleUrl
-        of possibleUrls
+    if(
+        error &&
+        (
+            error.code === "permission-denied" ||
+            String(error.message)
+                .toLowerCase()
+                .includes("permission")
+        )
     ){
 
-        if(
-            typeof possibleUrl ===
-            "string" &&
+        galleryEmpty.textContent =
+            "Firestore permission denied. Check Firestore Rules.";
 
-            possibleUrl.trim() !== ""
-        ){
+    }else{
 
-            return possibleUrl.trim();
-
-        }
+        galleryEmpty.textContent =
+            "Could not load project media.";
 
     }
-
-
-    return "";
 
 }
 
 
 /* =========================================================
-   GET MEDIA TYPE
+   NORMALIZE FIRESTORE DOCUMENT
 ========================================================= */
 
-function getMediaType(
-    data,
-    url
+function normalizeMedia(
+    doc
 ){
 
+    const data =
+        doc.data();
+
+
+    console.log(
+        "Firestore document:",
+        doc.id,
+        data
+    );
+
+
     if(!data){
-        return "";
+
+        return null;
+
     }
 
 
     /*
-       Try all common field names.
+       YOUR SCREENSHOT SHOWS:
+
+       type: "image"
+
+       We support:
+
+       image
+       photo
+       img
+       video
+       videos
     */
 
     let rawType =
-
-        data.type ||
-
-        data.mediaType ||
-
-        data.kind ||
-
-        data.category ||
-
-        data.fileType ||
-
-        "";
-
-
-    rawType =
         String(
-            rawType
-        )
-        .toLowerCase()
-        .trim();
+            data.type ||
+            data.resourceType ||
+            ""
+        ).toLowerCase().trim();
 
 
-    /*
-       Normalize image names.
-    */
+    let type = "";
+
 
     if(
         rawType === "image" ||
-        rawType === "images" ||
         rawType === "photo" ||
-        rawType === "photos" ||
-        rawType === "picture"
+        rawType === "img" ||
+        rawType === "images"
     ){
 
-        return "photo";
+        type = "photo";
 
     }
 
-
-    /*
-       Normalize video names.
-    */
 
     if(
         rawType === "video" ||
@@ -2389,175 +2105,237 @@ function getMediaType(
         rawType === "movie"
     ){
 
-        return "video";
+        type = "video";
 
     }
 
 
     /*
-       If no type exists,
+       If type is missing,
        detect from URL.
     */
 
-    const lowerUrl =
+    const url =
         String(
-            url || ""
-        )
-        .toLowerCase();
+            data.url ||
+            data.secure_url ||
+            data.secureUrl ||
+            data.imageUrl ||
+            data.videoUrl ||
+            ""
+        ).trim();
 
 
-    /*
-       Cloudinary video URL
-    */
+    if(!url){
 
-    if(
-        lowerUrl.includes(
-            "/video/upload/"
-        ) ||
+        console.warn(
+            "Skipping document without URL:",
+            doc.id
+        );
 
-        lowerUrl.includes(
-            "res.cloudinary.com"
-        ) &&
-        (
-            lowerUrl.includes(
-                ".mp4"
-            ) ||
-
-            lowerUrl.includes(
-                ".webm"
-            ) ||
-
-            lowerUrl.includes(
-                ".mov"
-            ) ||
-
-            lowerUrl.includes(
-                ".m4v"
-            )
-        )
-    ){
-
-        return "video";
+        return null;
 
     }
 
 
-    /*
-       Normal video extension
-    */
+    if(!type){
 
-    if(
-        /\.(mp4|webm|mov|m4v|avi|ogg)(\?|#|$)/i
-            .test(
-                lowerUrl
-            )
-    ){
+        const lower =
+            url.toLowerCase();
 
-        return "video";
-
-    }
-
-
-    /*
-       Image extension
-    */
-
-    if(
-        /\.(jpg|jpeg|png|gif|webp|avif|bmp|svg)(\?|#|$)/i
-            .test(
-                lowerUrl
-            )
-    ){
-
-        return "photo";
-
-    }
-
-
-    /*
-       Cloudinary image URL
-       without an obvious extension.
-    */
-
-    if(
-        lowerUrl.includes(
-            "res.cloudinary.com"
-        ) &&
-        lowerUrl.includes(
-            "/image/upload/"
-        )
-    ){
-
-        return "photo";
-
-    }
-
-
-    return "";
-
-}
-
-
-/* =========================================================
-   GET MEDIA NAME
-========================================================= */
-
-function getMediaName(
-    data
-){
-
-    if(!data){
-        return "Project Media";
-    }
-
-
-    const possibleNames = [
-
-        data.name,
-
-        data.title,
-
-        data.fileName,
-
-        data.filename,
-
-        data.originalFilename,
-
-        data.original_filename,
-
-        data.public_id,
-
-        data.publicId
-
-    ];
-
-
-    for(
-        const name
-        of possibleNames
-    ){
 
         if(
-            typeof name ===
-            "string" &&
-
-            name.trim() !== ""
+            lower.includes(".mp4") ||
+            lower.includes(".webm") ||
+            lower.includes(".mov") ||
+            lower.includes(".m4v") ||
+            String(
+                data.resourceType || ""
+            ).toLowerCase() === "video"
         ){
 
-            return name.trim();
+            type = "video";
+
+        }else{
+
+            type = "photo";
 
         }
 
     }
 
 
-    return "Project Media";
+    return {
+
+        id:doc.id,
+
+        name:
+            data.name ||
+            data.title ||
+            "Project Media",
+
+        url:url,
+
+        type:type,
+
+        createdAt:
+            data.createdAt ||
+            null
+
+    };
 
 }
 
 
 /* =========================================================
-   GET CREATED TIME
+   LOAD FIREBASE MEDIA
+========================================================= */
+
+async function loadFirebaseMedia(){
+
+    try{
+
+        setStatus(
+            "☁️ Loading project gallery..."
+        );
+
+
+        /*
+           EXACT COLLECTION USED BY EDITOR
+        */
+
+        const mediaRef =
+            collection(
+                db,
+                COLLECTION_NAME
+            );
+
+
+        const snapshot =
+            await getDocs(
+                mediaRef
+            );
+
+
+        console.log(
+            "Firestore documents found:",
+            snapshot.size
+        );
+
+
+        mediaStore = [];
+
+
+        snapshot.forEach(
+
+            doc => {
+
+                const item =
+                    normalizeMedia(doc);
+
+
+                if(item){
+
+                    mediaStore.push(
+                        item
+                    );
+
+                }
+
+            }
+
+        );
+
+
+        /*
+           NEWEST FIRST
+        */
+
+        mediaStore.sort(
+
+            (a,b) => {
+
+                const aTime =
+                    getCreatedTime(
+                        a.createdAt
+                    );
+
+                const bTime =
+                    getCreatedTime(
+                        b.createdAt
+                    );
+
+
+                /*
+                   Documents without
+                   createdAt go last.
+                */
+
+                if(
+                    aTime === Number.MAX_SAFE_INTEGER &&
+                    bTime === Number.MAX_SAFE_INTEGER
+                ){
+
+                    return 0;
+
+                }
+
+
+                if(
+                    aTime === Number.MAX_SAFE_INTEGER
+                ){
+
+                    return 1;
+
+                }
+
+
+                if(
+                    bTime === Number.MAX_SAFE_INTEGER
+                ){
+
+                    return -1;
+
+                }
+
+
+                return bTime - aTime;
+
+            }
+
+        );
+
+
+        setStatus(
+            "☁️ Live project gallery connected",
+            true
+        );
+
+
+        renderMedia(
+            currentMediaFilter
+        );
+
+
+        console.log(
+            "Final media:",
+            mediaStore
+        );
+
+
+    }catch(error){
+
+        showFirebaseError(
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATED TIME
 ========================================================= */
 
 function getCreatedTime(
@@ -2586,19 +2364,6 @@ function getCreatedTime(
 
 
     /*
-       JavaScript Date
-    */
-
-    if(
-        timestamp instanceof Date
-    ){
-
-        return timestamp.getTime();
-
-    }
-
-
-    /*
        Firestore Timestamp-like object
     */
 
@@ -2616,262 +2381,38 @@ function getCreatedTime(
 
 
     /*
-       ISO date string
+       JavaScript Date
     */
 
     if(
-        typeof timestamp ===
-        "string"
+        timestamp instanceof Date
     ){
 
-        const parsed =
-            Date.parse(
-                timestamp
-            );
-
-
-        if(
-            !Number.isNaN(
-                parsed
-            )
-        ){
-
-            return parsed;
-
-        }
+        return timestamp.getTime();
 
     }
 
 
     /*
-       Number timestamp
+       String date
     */
 
+    const parsed =
+        Date.parse(
+            String(timestamp)
+        );
+
+
     if(
-        typeof timestamp ===
-        "number"
+        !Number.isNaN(parsed)
     ){
 
-        return timestamp;
+        return parsed;
 
     }
 
 
     return Number.MAX_SAFE_INTEGER;
-
-}
-
-
-/* =========================================================
-   LOAD FIREBASE MEDIA
-========================================================= */
-
-async function loadFirebaseMedia(){
-
-    try{
-
-        firebaseStatus.textContent =
-            "☁️ Loading project gallery...";
-
-
-        firebaseStatus.classList.remove(
-            "live"
-        );
-
-
-        /*
-           Read the entire collection.
-
-           We intentionally do NOT use orderBy()
-           because old documents may not contain
-           createdAt.
-        */
-
-        const snapshot =
-            await getDocs(
-
-                collection(
-                    db,
-                    COLLECTION_NAME
-                )
-
-            );
-
-
-        mediaStore = [];
-
-
-        snapshot.forEach(
-
-            documentSnapshot => {
-
-                const data =
-                    documentSnapshot.data();
-
-
-                if(!data){
-
-                    return;
-
-                }
-
-
-                /*
-                   Find Cloudinary/direct URL.
-                */
-
-                const url =
-                    getMediaUrl(
-                        data
-                    );
-
-
-                /*
-                   Ignore documents without
-                   a usable URL.
-                */
-
-                if(!url){
-
-                    console.warn(
-                        "Skipping media document without URL:",
-                        documentSnapshot.id,
-                        data
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                   Detect photo/video.
-                */
-
-                const type =
-                    getMediaType(
-                        data,
-                        url
-                    );
-
-
-                /*
-                   Ignore unsupported documents.
-                */
-
-                if(
-                    type !== "photo" &&
-                    type !== "video"
-                ){
-
-                    console.warn(
-                        "Skipping unsupported media document:",
-                        documentSnapshot.id,
-                        data
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                   Create normalized media object.
-                */
-
-                mediaStore.push({
-
-                    id:
-                        documentSnapshot.id,
-
-                    name:
-                        getMediaName(
-                            data
-                        ),
-
-                    url:
-                        url,
-
-                    type:
-                        type,
-
-                    createdAt:
-                        data.createdAt ||
-                        data.created ||
-                        data.timestamp ||
-                        null
-
-                });
-
-            }
-
-        );
-
-
-        /*
-           Sort newest/oldest safely.
-
-           Documents without a date stay at the end.
-        */
-
-        mediaStore.sort(
-
-            (a,b) => {
-
-                const aTime =
-                    getCreatedTime(
-                        a.createdAt
-                    );
-
-
-                const bTime =
-                    getCreatedTime(
-                        b.createdAt
-                    );
-
-
-                return aTime - bTime;
-
-            }
-
-        );
-
-
-        /*
-           Connected successfully.
-        */
-
-        firebaseStatus.textContent =
-            "☁️ Live project gallery connected";
-
-
-        firebaseStatus.classList.add(
-            "live"
-        );
-
-
-        /*
-           Show gallery.
-        */
-
-        renderMedia(
-            currentMediaFilter
-        );
-
-
-        console.log(
-            "✓ Firebase media loaded:",
-            mediaStore
-        );
-
-
-    }catch(error){
-
-        showFirebaseError(
-            error
-        );
-
-    }
 
 }
 
@@ -2890,17 +2431,23 @@ function renderMedia(
     const items =
         mediaStore.filter(
 
-            item =>
+            item => {
 
-                filter === "all" ||
-                item.type === filter
+                if(
+                    filter === "all"
+                ){
+
+                    return true;
+
+                }
+
+
+                return item.type === filter;
+
+            }
 
         );
 
-
-    /*
-       No matching media.
-    */
 
     if(!items.length){
 
@@ -2932,178 +2479,149 @@ function renderMedia(
         "none";
 
 
-    /*
-       Create cards.
-    */
-
     items.forEach(
 
         item => {
 
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "gallery-item";
-
-
-            /*
-               PHOTO
-            */
-
-            if(
-                item.type ===
-                "photo"
-            ){
-
-                const image =
-                    document.createElement(
-                        "img"
-                    );
-
-
-                image.src =
-                    item.url;
-
-
-                image.alt =
-                    item.name;
-
-
-                image.loading =
-                    "lazy";
-
-
-                image.onerror =
-                    function(){
-
-                        console.error(
-                            "Image failed to load:",
-                            item.url
-                        );
-
-
-                        this.style.display =
-                            "none";
-
-                    };
-
-
-                card.appendChild(
-                    image
-                );
-
-            }
-
-
-            /*
-               VIDEO
-            */
-
-            if(
-                item.type ===
-                "video"
-            ){
-
-                const video =
-                    document.createElement(
-                        "video"
-                    );
-
-
-                video.src =
-                    item.url;
-
-
-                video.preload =
-                    "metadata";
-
-
-                video.playsInline =
-                    true;
-
-
-                video.muted =
-                    true;
-
-
-                video.controls =
-                    false;
-
-
-                video.setAttribute(
-                    "playsinline",
-                    ""
-                );
-
-
-                video.onerror =
-                    function(){
-
-                        console.error(
-                            "Video failed to load:",
-                            item.url
-                        );
-
-                    };
-
-
-                card.appendChild(
-                    video
-                );
-
-            }
-
-
-            /*
-               Caption
-            */
-
-            const caption =
-                document.createElement(
-                    "div"
-                );
-
-
-            caption.className =
-                "gallery-caption";
-
-
-            caption.textContent =
-                item.name ||
-                "Project Media";
-
-
-            card.appendChild(
-                caption
-            );
-
-
-            /*
-               Open viewer.
-            */
-
-            card.addEventListener(
-                "click",
-                function(){
-
-                    showMediaInsideSection(
-                        item
-                    );
-
-                }
-            );
-
-
-            gallery.appendChild(
-                card
+            createMediaCard(
+                item
             );
 
         }
 
+    );
+
+}
+
+
+/* =========================================================
+   CREATE MEDIA CARD
+========================================================= */
+
+function createMediaCard(
+    item
+){
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "gallery-item";
+
+
+    let media;
+
+
+    if(
+        item.type === "video"
+    ){
+
+        media =
+            document.createElement(
+                "video"
+            );
+
+
+        media.controls =
+            false;
+
+        media.muted =
+            true;
+
+        media.playsInline =
+            true;
+
+        media.preload =
+            "metadata";
+
+    }else{
+
+        media =
+            document.createElement(
+                "img"
+            );
+
+        media.loading =
+            "lazy";
+
+        media.decoding =
+            "async";
+
+    }
+
+
+    media.src =
+        item.url;
+
+
+    media.alt =
+        item.name;
+
+
+    /*
+       Important:
+       do NOT hide the entire card if
+       Cloudinary is slow to load.
+    */
+
+    media.addEventListener(
+        "error",
+        function(){
+
+            console.error(
+                "Media failed:",
+                item.url
+            );
+
+
+            media.style.display =
+                "none";
+
+        }
+    );
+
+
+    const caption =
+        document.createElement(
+            "div"
+        );
+
+
+    caption.className =
+        "gallery-caption";
+
+
+    caption.textContent =
+        item.name;
+
+
+    card.appendChild(
+        media
+    );
+
+
+    card.appendChild(
+        caption
+    );
+
+
+    card.addEventListener(
+        "click",
+        function(){
+
+            showMediaInsideSection(
+                item
+            );
+
+        }
+    );
+
+
+    gallery.appendChild(
+        card
     );
 
 }
@@ -3185,91 +2703,56 @@ function(item){
 
 
     title.textContent =
-        item.name ||
-        "Project Media";
+        item.name;
 
 
-    /*
-       PHOTO VIEWER
-    */
+    let media;
+
 
     if(
-        item.type ===
-        "photo"
+        item.type === "video"
     ){
 
-        const media =
-            document.createElement(
-                "img"
-            );
-
-
-        media.src =
-            item.url;
-
-
-        media.alt =
-            item.name ||
-            "Project Media";
-
-
-        media.className =
-            "section-view-media";
-
-
-        content.appendChild(
-            media
-        );
-
-    }
-
-
-    /*
-       VIDEO VIEWER
-    */
-
-    if(
-        item.type ===
-        "video"
-    ){
-
-        const media =
+        media =
             document.createElement(
                 "video"
             );
 
 
-        media.src =
-            item.url;
-
-
-        media.className =
-            "section-view-media";
-
-
         media.controls =
             true;
-
 
         media.autoplay =
             true;
 
-
         media.playsInline =
             true;
 
+    }else{
 
-        media.setAttribute(
-            "playsinline",
-            ""
-        );
-
-
-        content.appendChild(
-            media
-        );
+        media =
+            document.createElement(
+                "img"
+            );
 
     }
+
+
+    media.src =
+        item.url;
+
+
+    media.alt =
+        item.name;
+
+
+    media.className =
+        "section-view-media";
+
+
+    content.appendChild(
+        media
+    );
 
 
     viewer.classList.add(
@@ -3289,7 +2772,7 @@ function(item){
 
 
 /* =========================================================
-   CLOSE SECTION VIEWER
+   CLOSE VIEWER
 ========================================================= */
 
 window.closeSectionViewer =
@@ -3339,34 +2822,18 @@ function(item){
     content.innerHTML = "";
 
 
-    const media =
-        document.createElement(
-
-            item.type === "photo"
-            ? "img"
-            : "video"
-
-        );
-
-
-    media.src =
-        item.url;
-
-
-    if(
-        item.type === "photo"
-    ){
-
-        media.alt =
-            item.name ||
-            "Project Media";
-
-    }
+    let media;
 
 
     if(
         item.type === "video"
     ){
+
+        media =
+            document.createElement(
+                "video"
+            );
+
 
         media.controls =
             true;
@@ -3377,12 +2844,18 @@ function(item){
         media.playsInline =
             true;
 
-        media.setAttribute(
-            "playsinline",
-            ""
-        );
+    }else{
+
+        media =
+            document.createElement(
+                "img"
+            );
 
     }
+
+
+    media.src =
+        item.url;
 
 
     content.appendChild(
@@ -3473,17 +2946,13 @@ function(){
         );
 
 
-    const password =
-        input.value;
-
-
     if(
-        password === HOST_PASSWORD
+        input.value ===
+        HOST_PASSWORD
     ){
 
         msg.textContent =
             "✓ Access granted. Opening editor...";
-
 
         msg.style.color =
             "#69e58a";
@@ -3506,7 +2975,6 @@ function(){
 
         msg.textContent =
             "Incorrect password.";
-
 
         msg.style.color =
             "#ff5262";
@@ -3544,11 +3012,9 @@ document.addEventListener(
             menu.classList.contains(
                 "show"
             ) &&
-
             !menu.contains(
                 event.target
             ) &&
-
             !button.contains(
                 event.target
             )
@@ -3567,15 +3033,15 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIAL LOAD
+   START
 ========================================================= */
 
 loadFirebaseMedia();
 
 
-/* =========================================================
-   AUTO REFRESH
-========================================================= */
+/*
+   Refresh gallery every 10 seconds.
+*/
 
 setInterval(
 
