@@ -599,7 +599,8 @@ footer{
     border-radius:13px;
     overflow:hidden;
     cursor:pointer;
-    animation:galleryIn .45s
+    animation:galleryIn .45s;
+    transition:.25s
 }
 
 .gallery-item:hover{
@@ -612,7 +613,8 @@ footer{
     width:100%;
     height:125px;
     display:block;
-    object-fit:cover
+    object-fit:cover;
+    background:#050506
 }
 
 .gallery-caption{
@@ -628,6 +630,13 @@ footer{
     text-align:center;
     color:#777;
     padding:35px
+}
+
+.gallery-error{
+    text-align:center;
+    color:#ff6875;
+    padding:25px;
+    line-height:1.6
 }
 
 @keyframes galleryIn{
@@ -653,22 +662,121 @@ footer{
     text-align:center;
     margin:-8px auto 24px;
     color:#777;
-    font-size:11px
+    font-size:11px;
+    min-height:16px
 }
 
 .firebase-status.live{
     color:#69e58a
 }
 
-.firebase-message{
-    margin-top:10px;
-    color:#ff6875;
-    font-size:12px;
-    min-height:15px
+.firebase-status.error{
+    color:#ff6875
 }
 
-.firebase-message.ok{
-    color:#69e58a
+
+/* =========================================================
+   HOST PANEL
+========================================================= */
+
+.host-panel{
+    display:none;
+    position:relative;
+    max-width:520px;
+    margin:35px auto 0;
+    padding:28px;
+    border:1px solid #ff2638;
+    border-radius:16px;
+    background:#101114;
+    box-shadow:0 20px 50px #000
+}
+
+.host-panel.show{
+    display:block;
+    animation:galleryIn .3s
+}
+
+.host-panel h3{
+    color:#ff2638;
+    margin-bottom:8px
+}
+
+.host-panel p{
+    color:#aaa;
+    line-height:1.5
+}
+
+.close-host{
+    position:absolute;
+    right:14px;
+    top:10px;
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-label{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#ff6b76;
+    font-weight:800;
+    margin:3px 0 8px
+}
+
+#hostLogin{
+    padding:15px;
+    border:1px solid #34363c;
+    border-radius:12px;
+    background:#0b0c0f
+}
+
+#hostLogin input{
+    display:block;
+    width:100%;
+    padding:11px;
+    margin:8px 0;
+    background:#08090b;
+    border:1px solid #383a40;
+    border-radius:8px;
+    color:#fff;
+    outline:none
+}
+
+#hostLogin input:focus{
+    border-color:#ff2638
+}
+
+#hostLogin .unlock-btn{
+    width:100%;
+    margin-top:4px
+}
+
+#hostMessage{
+    margin-top:12px;
+    color:#ff8793;
+    font-size:13px
+}
+
+
+/* =========================================================
+   HOST STATUS
+========================================================= */
+
+.host-status{
+    padding:10px 12px;
+    border:1px solid #285d38;
+    background:#102016;
+    color:#70e08b;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700
 }
 
 
@@ -818,6 +926,19 @@ footer{
     min-height:14px
 }
 
+.settings-host-controls{
+    display:none;
+    margin-top:10px
+}
+
+.settings-host-controls.show{
+    display:block
+}
+
+.settings-host-controls .settings-action{
+    width:100%
+}
+
 @keyframes settingsIn{
 
     from{
@@ -892,7 +1013,61 @@ footer{
     max-width:100%;
     max-height:500px;
     border-radius:10px;
-    display:block
+    display:block;
+    background:#050506
+}
+
+
+/* =========================================================
+   MEDIA LIGHTBOX
+========================================================= */
+
+.media-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:#000e;
+    backdrop-filter:blur(8px)
+}
+
+.media-lightbox.show{
+    display:flex
+}
+
+#lightboxContent{
+    max-width:95vw;
+    max-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+
+#lightboxContent img,
+#lightboxContent video{
+    max-width:95vw;
+    max-height:85vh;
+    border-radius:12px;
+    display:block;
+    background:#050506
+}
+
+.lb-close{
+    position:fixed;
+    top:18px;
+    right:20px;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:#ff2638;
+    color:#fff;
+    font-size:27px;
+    cursor:pointer;
+    z-index:201
 }
 
 
@@ -1489,8 +1664,6 @@ Aayushman Jha
 </div>
 
 
-<!-- VIEWER -->
-
 <div
     id="sectionViewer"
     class="section-viewer"
@@ -1852,6 +2025,13 @@ Team Red Diamond
 
 <script>
 
+"use strict";
+
+
+/* =========================================================
+   BPM
+========================================================= */
+
 const bpm =
     document.getElementById("bpm");
 
@@ -1860,11 +2040,15 @@ setInterval(
 
     () => {
 
-        bpm.textContent =
-            70 +
-            Math.floor(
-                Math.random() * 7
-            );
+        if(bpm){
+
+            bpm.textContent =
+                70 +
+                Math.floor(
+                    Math.random() * 7
+                );
+
+        }
 
     },
 
@@ -1872,6 +2056,10 @@ setInterval(
 
 );
 
+
+/* =========================================================
+   REVEAL
+========================================================= */
 
 const obs =
     new IntersectionObserver(
@@ -1921,398 +2109,206 @@ document
 
 
 <!-- =======================================================
-     FIREBASE
-========================================================= -->
+     FIREBASE FIRESTORE GALLERY
+     
+     IMPORTANT:
+     This reads:
+     
+     heartProjectMedia
+     
+     It does NOT use Firebase Storage.
+     It reads Cloudinary URL from:
+     
+     data.url
+======================================================== -->
 
 <script type="module">
 
-import { db } from "./firebase-config.js";
+"use strict";
+
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+import {
+    db
+} from "./firebase-config.js";
+
 
 import {
     collection,
     getDocs
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* =========================================================
+   CONFIGURATION
+========================================================= */
 
-const COLLECTION_NAME = "heartProjectMedia";
+const COLLECTION_NAME =
+    "heartProjectMedia";
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+const REFRESH_TIME =
+    10000;
+
+
+/* =========================================================
+   STATE
+========================================================= */
 
 let mediaStore = [];
 
-let currentMediaFilter = "all";
+let currentMediaFilter =
+    "all";
 
 
-/* =====================================================
+let loadingGallery =
+    false;
+
+
+/* =========================================================
    ELEMENTS
-===================================================== */
+========================================================= */
 
 const gallery =
-    document.getElementById("gallery");
-
-const galleryEmpty =
-    document.getElementById("galleryEmpty");
-
-const firebaseStatus =
-    document.getElementById("firebaseStatus");
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-function setStatus(text, live = false){
-
-    firebaseStatus.textContent = text;
-
-    firebaseStatus.classList.toggle(
-        "live",
-        live
+    document.getElementById(
+        "gallery"
     );
 
-}
+
+const galleryEmpty =
+    document.getElementById(
+        "galleryEmpty"
+    );
 
 
-/* =====================================================
-   NORMALIZE TYPE
-===================================================== */
+const firebaseStatus =
+    document.getElementById(
+        "firebaseStatus"
+    );
 
-function normalizeType(data){
 
-    if(!data){
-        return null;
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setStatus(
+    text,
+    type=""
+){
+
+    if(!firebaseStatus){
+        return;
     }
 
 
-    /*
-       Your Firestore currently contains:
-
-       type: "image"
-
-       We convert it to:
-
-       photo
-    */
-
-    let type =
-        String(
-            data.type ||
-            data.resourceType ||
-            ""
-        ).toLowerCase();
+    firebaseStatus.textContent =
+        text;
 
 
-    if(
-        type === "image" ||
-        type === "photo"
-    ){
+    firebaseStatus.classList.remove(
+        "live",
+        "error"
+    );
 
-        return "photo";
+
+    if(type){
+
+        firebaseStatus.classList.add(
+            type
+        );
 
     }
-
-
-    if(type === "video"){
-
-        return "video";
-
-    }
-
-
-    /*
-       Detect from Cloudinary URL
-    */
-
-    const url =
-        String(
-            data.url ||
-            ""
-        ).toLowerCase();
-
-
-    if(
-        /\.(jpg|jpeg|png|gif|webp|avif|bmp)(\?|$)/i
-        .test(url)
-    ){
-
-        return "photo";
-
-    }
-
-
-    if(
-        /\.(mp4|webm|mov|m4v|avi)(\?|$)/i
-        .test(url)
-    ){
-
-        return "video";
-
-    }
-
-
-    /*
-       Cloudinary resource type
-    */
-
-    const resourceType =
-        String(
-            data.resourceType ||
-            ""
-        ).toLowerCase();
-
-
-    if(resourceType === "image"){
-
-        return "photo";
-
-    }
-
-
-    if(resourceType === "video"){
-
-        return "video";
-
-    }
-
-
-    return null;
 
 }
 
 
-/* =====================================================
-   LOAD MEDIA
-===================================================== */
+/* =========================================================
+   FIREBASE ERROR
+========================================================= */
 
-async function loadFirebaseMedia(){
+function showFirebaseError(
+    error
+){
 
-    try{
+    console.error(
+        "Firebase gallery error:",
+        error
+    );
 
-        setStatus(
-            "☁️ Connecting to Firebase..."
-        );
 
+    let message =
+        "☁️ Firebase gallery could not be loaded.";
 
-        console.log(
-            "Firebase database:",
-            db
-        );
 
+    if(
+        error &&
+        error.code ===
+        "permission-denied"
+    ){
 
-        console.log(
-            "Reading collection:",
-            COLLECTION_NAME
-        );
+        message =
+            "❌ Firestore permission denied.";
 
+    }
 
-        const collectionRef =
-            collection(
-                db,
-                COLLECTION_NAME
-            );
 
+    if(
+        error &&
+        error.message &&
+        String(
+            error.message
+        )
+        .toLowerCase()
+        .includes("permission")
+    ){
 
-        const snapshot =
-            await getDocs(
-                collectionRef
-            );
+        message =
+            "❌ Firestore permission denied.";
 
+    }
 
-        console.log(
-            "Documents found:",
-            snapshot.size
-        );
 
+    setStatus(
+        message,
+        "error"
+    );
 
-        mediaStore = [];
 
-
-        snapshot.forEach(
-
-            docSnapshot => {
-
-                const data =
-                    docSnapshot.data();
-
-
-                console.log(
-                    "Firestore document:",
-                    docSnapshot.id,
-                    data
-                );
-
-
-                /*
-                   Ignore empty documents
-                */
-
-                if(!data){
-
-                    return;
-
-                }
-
-
-                /*
-                   URL is required
-                */
-
-                if(
-                    !data.url
-                ){
-
-                    console.warn(
-                        "Document has no URL:",
-                        docSnapshot.id
-                    );
-
-                    return;
-
-                }
-
-
-                const type =
-                    normalizeType(
-                        data
-                    );
-
-
-                /*
-                   Ignore documents whose
-                   type cannot be detected
-                */
-
-                if(!type){
-
-                    console.warn(
-                        "Unknown media type:",
-                        data
-                    );
-
-                    return;
-
-                }
-
-
-                mediaStore.push({
-
-                    id:
-                        docSnapshot.id,
-
-                    name:
-                        data.name ||
-                        "Project Media",
-
-                    url:
-                        String(
-                            data.url
-                        ),
-
-                    type:
-                        type,
-
-                    createdAt:
-                        data.createdAt ||
-                        null,
-
-                    format:
-                        data.format ||
-                        "",
-
-                    publicId:
-                        data.publicId ||
-                        ""
-
-                });
-
-            }
-
-        );
-
-
-        /*
-           Newest first
-        */
-
-        mediaStore.sort(
-
-            (a,b) => {
-
-                return (
-                    getCreatedTime(
-                        b.createdAt
-                    ) -
-
-                    getCreatedTime(
-                        a.createdAt
-                    )
-                );
-
-            }
-
-        );
-
-
-        console.log(
-            "Usable media:",
-            mediaStore
-        );
-
-
-        /*
-           SUCCESS
-        */
-
-        setStatus(
-            `☁️ Live project gallery connected · ${mediaStore.length} item${mediaStore.length === 1 ? "" : "s"}`,
-            true
-        );
-
-
-        renderMedia(
-            currentMediaFilter
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "FIREBASE ERROR:",
-            error
-        );
-
-
-        setStatus(
-            "❌ Firebase gallery failed"
-        );
-
+    if(gallery){
 
         gallery.innerHTML = "";
 
+    }
+
+
+    if(galleryEmpty){
 
         galleryEmpty.style.display =
             "block";
 
 
+        galleryEmpty.className =
+            "gallery-error";
+
+
         if(
-            error.code ===
-            "permission-denied"
+            message.includes(
+                "permission"
+            )
         ){
 
-            galleryEmpty.textContent =
-                "❌ Firestore permission denied. Check Firestore Rules.";
+            galleryEmpty.innerHTML =
+                "Firestore is connected, but its rules are blocking public reads.<br><br>" +
+                "Check Firestore Rules.";
 
         }else{
 
             galleryEmpty.textContent =
-                "❌ Could not read heartProjectMedia from Firestore.";
+                "Please check Firebase configuration and Firestore.";
 
         }
 
@@ -2321,11 +2317,190 @@ async function loadFirebaseMedia(){
 }
 
 
-/* =====================================================
-   CREATED TIME
-===================================================== */
+/* =========================================================
+   TYPE NORMALIZATION
+========================================================= */
 
-function getCreatedTime(timestamp){
+function normalizeType(
+    data
+){
+
+    if(!data){
+
+        return "";
+
+    }
+
+
+    /*
+       First check explicit type.
+    */
+
+    let type =
+        String(
+            data.type ||
+            ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    /*
+       image -> photo
+    */
+
+    if(
+        type === "image" ||
+        type === "photo" ||
+        type === "picture" ||
+        type === "img"
+    ){
+
+        return "photo";
+
+    }
+
+
+    /*
+       video variants
+    */
+
+    if(
+        type === "video" ||
+        type === "movie" ||
+        type === "vid"
+    ){
+
+        return "video";
+
+    }
+
+
+    /*
+       Cloudinary resourceType
+    */
+
+    const resourceType =
+        String(
+            data.resourceType ||
+            ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    if(
+        resourceType === "video"
+    ){
+
+        return "video";
+
+    }
+
+
+    if(
+        resourceType === "image"
+    ){
+
+        return "photo";
+
+    }
+
+
+    /*
+       Check format.
+    */
+
+    const format =
+        String(
+            data.format ||
+            ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    if(
+        [
+            "mp4",
+            "webm",
+            "mov",
+            "m4v",
+            "ogg"
+        ]
+        .includes(format)
+    ){
+
+        return "video";
+
+    }
+
+
+    if(
+        [
+            "jpg",
+            "jpeg",
+            "png",
+            "gif",
+            "webp",
+            "avif",
+            "bmp"
+        ]
+        .includes(format)
+    ){
+
+        return "photo";
+
+    }
+
+
+    /*
+       Last fallback:
+       detect from URL.
+    */
+
+    const url =
+        String(
+            data.url ||
+            ""
+        )
+        .split("?")[0]
+        .split("#")[0]
+        .toLowerCase();
+
+
+    if(
+        /\.(mp4|webm|mov|m4v|ogg)$/i
+        .test(url)
+    ){
+
+        return "video";
+
+    }
+
+
+    if(
+        /\.(jpg|jpeg|png|gif|webp|avif|bmp)$/i
+        .test(url)
+    ){
+
+        return "photo";
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   CREATED TIME
+========================================================= */
+
+function getCreatedTime(
+    timestamp
+){
 
     if(!timestamp){
 
@@ -2366,7 +2541,7 @@ function getCreatedTime(timestamp){
 
 
     /*
-       JavaScript Date
+       Date
     */
 
     if(
@@ -2379,17 +2554,30 @@ function getCreatedTime(timestamp){
 
 
     /*
+       Number
+    */
+
+    if(
+        typeof timestamp ===
+        "number"
+    ){
+
+        return timestamp;
+
+    }
+
+
+    /*
        String date
     */
 
     if(
-        typeof timestamp === "string"
+        typeof timestamp ===
+        "string"
     ){
 
         const time =
-            Date.parse(
-                timestamp
-            );
+            Date.parse(timestamp);
 
 
         if(!Number.isNaN(time)){
@@ -2406,18 +2594,293 @@ function getCreatedTime(timestamp){
 }
 
 
-/* =====================================================
-   RENDER
-===================================================== */
+/* =========================================================
+   CLOUDINARY URL CHECK
+========================================================= */
 
-function renderMedia(
-    filter = "all"
+function isValidMediaUrl(
+    url
 ){
 
-    gallery.innerHTML = "";
+    if(!url){
+
+        return false;
+
+    }
 
 
-    const items =
+    try{
+
+        const parsed =
+            new URL(url);
+
+
+        return (
+            parsed.protocol ===
+            "http:" ||
+
+            parsed.protocol ===
+            "https:"
+        );
+
+    }catch(error){
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD FIRESTORE
+========================================================= */
+
+async function loadFirebaseMedia(){
+
+    if(loadingGallery){
+
+        return;
+
+    }
+
+
+    loadingGallery =
+        true;
+
+
+    try{
+
+        setStatus(
+            "☁️ Loading project gallery..."
+        );
+
+
+        /*
+           IMPORTANT:
+
+           No orderBy() is used.
+
+           This avoids failures when some
+           older documents don't have
+           createdAt.
+        */
+
+        const snapshot =
+            await getDocs(
+
+                collection(
+                    db,
+                    COLLECTION_NAME
+                )
+
+            );
+
+
+        const newMedia = [];
+
+
+        snapshot.forEach(
+
+            documentSnapshot => {
+
+                const data =
+                    documentSnapshot.data();
+
+
+                if(!data){
+
+                    return;
+
+                }
+
+
+                /*
+                   The editor saves the
+                   Cloudinary URL here.
+                */
+
+                const url =
+                    String(
+                        data.url ||
+                        ""
+                    )
+                    .trim();
+
+
+                if(
+                    !isValidMediaUrl(url)
+                ){
+
+                    console.warn(
+                        "Skipping document without valid URL:",
+                        documentSnapshot.id,
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                const type =
+                    normalizeType(
+                        data
+                    );
+
+
+                if(!type){
+
+                    console.warn(
+                        "Could not determine media type:",
+                        documentSnapshot.id,
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                newMedia.push({
+
+                    id:
+                        documentSnapshot.id,
+
+                    name:
+                        String(
+                            data.name ||
+                            data.title ||
+                            "Project Media"
+                        ),
+
+                    url:
+                        url,
+
+                    type:
+                        type,
+
+                    createdAt:
+                        data.createdAt ||
+                        null,
+
+                    publicId:
+                        data.publicId ||
+                        "",
+
+                    resourceType:
+                        data.resourceType ||
+                        "",
+
+                    format:
+                        data.format ||
+                        ""
+
+                });
+
+            }
+
+        );
+
+
+        /*
+           Newest first.
+
+           If createdAt is missing,
+           the item is kept.
+        */
+
+        newMedia.sort(
+
+            (a,b) => {
+
+                const aTime =
+                    getCreatedTime(
+                        a.createdAt
+                    );
+
+
+                const bTime =
+                    getCreatedTime(
+                        b.createdAt
+                    );
+
+
+                return bTime - aTime;
+
+            }
+
+        );
+
+
+        mediaStore =
+            newMedia;
+
+
+        setStatus(
+            "☁️ Live project gallery connected",
+            "live"
+        );
+
+
+        renderMedia(
+            currentMediaFilter
+        );
+
+
+        console.log(
+            "✓ Firestore connected"
+        );
+
+
+        console.log(
+            "✓ Collection:",
+            COLLECTION_NAME
+        );
+
+
+        console.log(
+            "✓ Media loaded:",
+            mediaStore
+        );
+
+
+    }catch(error){
+
+        showFirebaseError(
+            error
+        );
+
+    }finally{
+
+        loadingGallery =
+            false;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER MEDIA
+========================================================= */
+
+function renderMedia(
+    filter="all"
+){
+
+    if(!gallery){
+
+        return;
+
+    }
+
+
+    gallery.innerHTML =
+        "";
+
+
+    let items =
         mediaStore.filter(
 
             item => {
@@ -2443,21 +2906,30 @@ function renderMedia(
 
     if(!items.length){
 
-        galleryEmpty.style.display =
-            "block";
+        if(galleryEmpty){
+
+            galleryEmpty.style.display =
+                "block";
 
 
-        if(
-            mediaStore.length === 0
-        ){
+            galleryEmpty.className =
+                "gallery-empty";
 
-            galleryEmpty.textContent =
-                "No photos or videos have been added yet.";
 
-        }else{
+            if(
+                mediaStore.length ===
+                0
+            ){
 
-            galleryEmpty.textContent =
-                "No media found for this category.";
+                galleryEmpty.textContent =
+                    "No photos or videos have been added yet.";
+
+            }else{
+
+                galleryEmpty.textContent =
+                    "No media found for this category.";
+
+            }
 
         }
 
@@ -2467,15 +2939,19 @@ function renderMedia(
     }
 
 
-    galleryEmpty.style.display =
-        "none";
+    if(galleryEmpty){
+
+        galleryEmpty.style.display =
+            "none";
+
+    }
 
 
     items.forEach(
 
         item => {
 
-            createGalleryCard(
+            createMediaCard(
                 item
             );
 
@@ -2486,11 +2962,11 @@ function renderMedia(
 }
 
 
-/* =====================================================
-   CREATE CARD
-===================================================== */
+/* =========================================================
+   CREATE MEDIA CARD
+========================================================= */
 
-function createGalleryCard(
+function createMediaCard(
     item
 ){
 
@@ -2504,94 +2980,119 @@ function createGalleryCard(
         "gallery-item";
 
 
-    /*
-       IMAGE
-    */
+    card.dataset.id =
+        item.id;
+
+
+    let media;
+
 
     if(
-        item.type === "photo"
+        item.type ===
+        "video"
     ){
 
-        const image =
-            document.createElement(
-                "img"
-            );
-
-
-        image.src =
-            item.url;
-
-
-        image.alt =
-            item.name;
-
-
-        image.loading =
-            "lazy";
-
-
-        image.onerror =
-            function(){
-
-                console.error(
-                    "Image failed:",
-                    item.url
-                );
-
-
-                this.style.display =
-                    "none";
-
-            };
-
-
-        card.appendChild(
-            image
-        );
-
-    }
-
-
-    /*
-       VIDEO
-    */
-
-    if(
-        item.type === "video"
-    ){
-
-        const video =
+        media =
             document.createElement(
                 "video"
             );
 
 
-        video.src =
-            item.url;
+        media.controls =
+            false;
 
 
-        video.preload =
+        media.playsInline =
+            true;
+
+
+        media.preload =
             "metadata";
 
 
-        video.playsInline =
-            true;
+    }else{
 
-
-        video.muted =
-            true;
-
-
-        card.appendChild(
-            video
-        );
+        media =
+            document.createElement(
+                "img"
+            );
 
     }
 
 
+    media.src =
+        item.url;
+
+
+    media.alt =
+        item.name;
+
+
     /*
-       CAPTION
+       Don't allow clicking the
+       media itself to accidentally
+       navigate away.
     */
+
+    media.draggable =
+        false;
+
+
+    /*
+       Media loading error
+    */
+
+    media.addEventListener(
+        "error",
+        function(){
+
+            card.classList.add(
+                "media-broken"
+            );
+
+
+            media.style.display =
+                "none";
+
+
+            const errorText =
+                document.createElement(
+                    "div"
+                );
+
+
+            errorText.style.height =
+                "125px";
+
+
+            errorText.style.display =
+                "grid";
+
+
+            errorText.style.placeItems =
+                "center";
+
+
+            errorText.style.color =
+                "#777";
+
+
+            errorText.style.fontSize =
+                "12px";
+
+
+            errorText.textContent =
+                "Media unavailable";
+
+
+            card.insertBefore(
+                errorText,
+                card.firstChild
+            );
+
+        }
+    );
+
 
     const caption =
         document.createElement(
@@ -2604,18 +3105,18 @@ function createGalleryCard(
 
 
     caption.textContent =
-        item.name ||
-        "Project Media";
+        item.name;
+
+
+    card.appendChild(
+        media
+    );
 
 
     card.appendChild(
         caption
     );
 
-
-    /*
-       CLICK
-    */
 
     card.addEventListener(
         "click",
@@ -2636,9 +3137,9 @@ function createGalleryCard(
 }
 
 
-/* =====================================================
+/* =========================================================
    FILTER
-===================================================== */
+========================================================= */
 
 window.filterMedia =
 function(
@@ -2683,9 +3184,9 @@ function(
 };
 
 
-/* =====================================================
-   VIEWER
-===================================================== */
+/* =========================================================
+   SECTION VIEWER
+========================================================= */
 
 window.showMediaInsideSection =
 function(item){
@@ -2708,7 +3209,19 @@ function(item){
         );
 
 
-    content.innerHTML = "";
+    if(
+        !viewer ||
+        !content ||
+        !title
+    ){
+
+        return;
+
+    }
+
+
+    content.innerHTML =
+        "";
 
 
     title.textContent =
@@ -2716,70 +3229,61 @@ function(item){
         "Project Media";
 
 
-    if(
-        item.type === "photo"
-    ){
-
-        const image =
-            document.createElement(
-                "img"
-            );
-
-
-        image.src =
-            item.url;
-
-
-        image.alt =
-            item.name;
-
-
-        image.className =
-            "section-view-media";
-
-
-        content.appendChild(
-            image
-        );
-
-    }
+    let media;
 
 
     if(
-        item.type === "video"
+        item.type ===
+        "video"
     ){
 
-        const video =
+        media =
             document.createElement(
                 "video"
             );
 
 
-        video.src =
-            item.url;
-
-
-        video.className =
-            "section-view-media";
-
-
-        video.controls =
+        media.controls =
             true;
 
 
-        video.autoplay =
+        media.autoplay =
             true;
 
 
-        video.playsInline =
+        media.playsInline =
             true;
 
 
-        content.appendChild(
-            video
-        );
+        media.preload =
+            "metadata";
+
+    }else{
+
+        media =
+            document.createElement(
+                "img"
+            );
 
     }
+
+
+    media.src =
+        item.url;
+
+
+    media.alt =
+        item.name ||
+        "Project Media";
+
+
+    media.className =
+        "section-view-media";
+
+
+    content.appendChild(
+        media
+    );
 
 
     viewer.classList.add(
@@ -2789,20 +3293,18 @@ function(item){
 
     viewer.scrollIntoView({
 
-        behavior:
-            "smooth",
+        behavior:"smooth",
 
-        block:
-            "center"
+        block:"center"
 
     });
 
 };
 
 
-/* =====================================================
-   CLOSE VIEWER
-===================================================== */
+/* =========================================================
+   CLOSE SECTION VIEWER
+========================================================= */
 
 window.closeSectionViewer =
 function(){
@@ -2819,19 +3321,28 @@ function(){
         );
 
 
-    viewer.classList.remove(
-        "show"
-    );
+    if(viewer){
+
+        viewer.classList.remove(
+            "show"
+        );
+
+    }
 
 
-    content.innerHTML = "";
+    if(content){
+
+        content.innerHTML =
+            "";
+
+    }
 
 };
 
 
-/* =====================================================
+/* =========================================================
    LIGHTBOX
-===================================================== */
+========================================================= */
 
 window.openMediaLightbox =
 function(item){
@@ -2848,37 +3359,57 @@ function(item){
         );
 
 
-    content.innerHTML = "";
+    if(
+        !box ||
+        !content
+    ){
+
+        return;
+
+    }
 
 
-    const media =
-        document.createElement(
-
-            item.type === "photo"
-            ? "img"
-            : "video"
-
-        );
+    content.innerHTML =
+        "";
 
 
-    media.src =
-        item.url;
+    let media;
 
 
     if(
-        item.type === "video"
+        item.type ===
+        "video"
     ){
+
+        media =
+            document.createElement(
+                "video"
+            );
+
 
         media.controls =
             true;
 
+
         media.autoplay =
             true;
+
 
         media.playsInline =
             true;
 
+    }else{
+
+        media =
+            document.createElement(
+                "img"
+            );
+
     }
+
+
+    media.src =
+        item.url;
 
 
     content.appendChild(
@@ -2893,15 +3424,16 @@ function(item){
 };
 
 
-/* =====================================================
+/* =========================================================
    CLOSE LIGHTBOX
-===================================================== */
+========================================================= */
 
 window.closeMediaLightbox =
 function(event){
 
     if(
         event &&
+        event.target &&
         event.target.closest(
             "#lightboxContent"
         )
@@ -2918,21 +3450,34 @@ function(event){
         );
 
 
-    box.classList.remove(
-        "show"
-    );
+    const content =
+        document.getElementById(
+            "lightboxContent"
+        );
 
 
-    document.getElementById(
-        "lightboxContent"
-    ).innerHTML = "";
+    if(box){
+
+        box.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    if(content){
+
+        content.innerHTML =
+            "";
+
+    }
 
 };
 
 
-/* =====================================================
+/* =========================================================
    SETTINGS
-===================================================== */
+========================================================= */
 
 window.toggleSettings =
 function(){
@@ -2943,6 +3488,13 @@ function(){
         );
 
 
+    if(!menu){
+
+        return;
+
+    }
+
+
     menu.classList.toggle(
         "show"
     );
@@ -2950,9 +3502,9 @@ function(){
 };
 
 
-/* =====================================================
-   HOST PASSWORD
-===================================================== */
+/* =========================================================
+   ADMIN PASSWORD
+========================================================= */
 
 const HOST_PASSWORD =
     "aayushman";
@@ -2974,7 +3526,21 @@ function(){
 
 
     if(
-        input.value ===
+        !input ||
+        !msg
+    ){
+
+        return;
+
+    }
+
+
+    const password =
+        input.value;
+
+
+    if(
+        password ===
         HOST_PASSWORD
     ){
 
@@ -3013,12 +3579,14 @@ function(){
 };
 
 
-/* =====================================================
+/* =========================================================
    CLOSE SETTINGS OUTSIDE
-===================================================== */
+========================================================= */
 
 document.addEventListener(
+
     "click",
+
     function(event){
 
         const menu =
@@ -3054,26 +3622,36 @@ document.addEventListener(
         }
 
     }
+
 );
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
 
 loadFirebaseMedia();
 
 
-/*
-   Auto refresh every 10 seconds
-*/
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
 
 setInterval(
-    loadFirebaseMedia,
-    10000
+
+    () => {
+
+        loadFirebaseMedia();
+
+    },
+
+    REFRESH_TIME
+
 );
 
 </script>
 
+
 </body>
+
 </html>
