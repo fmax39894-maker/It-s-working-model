@@ -1,16 +1,21 @@
 "use strict";
 
 /* =========================================
-   CLOUDINARY CONFIG
+   CLOUDINARY CONFIGURATION
+   It's Working Heart
 ========================================= */
 
-const CLOUDINARY_CLOUD_NAME = "raykjrpl";
+window.CLOUDINARY_CLOUD_NAME = "raykjrpl";
 
-const CLOUDINARY_UPLOAD_PRESET = "It's working heart";
+window.CLOUDINARY_UPLOAD_PRESET = "It's working heart";
 
 
-window.CLOUDINARY_CLOUD_NAME =
-    CLOUDINARY_CLOUD_NAME;
-
-window.CLOUDINARY_UPLOAD_PRESET =
-    CLOUDINARY_UPLOAD_PRESET;
+console.log("✓ Cloudinary configuration loaded");
+console.log(
+    "✓ Cloud name:",
+    window.CLOUDINARY_CLOUD_NAME
+);
+console.log(
+    "✓ Upload preset:",
+    window.CLOUDINARY_UPLOAD_PRESET
+);
