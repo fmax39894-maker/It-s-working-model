@@ -1670,10 +1670,6 @@ Aayushman Jha
 </div>
 
 
-<!-- =====================================================
-     VIEWER
-===================================================== -->
-
 <div
     id="sectionViewer"
     class="section-viewer"
@@ -2104,16 +2100,24 @@ document
 
 
 <!-- =======================================================
-     FIREBASE
+     FIREBASE + MEDIA SYSTEM
 ======================================================== -->
 
 <script type="module">
 
 /*
-    IMPORTANT:
+=========================================================
+   FIREBASE CONFIGURATION
+=========================================================
 
-    firebase-config.js must be in the
-    SAME folder as this index.html.
+   firebase-config.js must be in the SAME folder
+   as index.html.
+
+   Your firebase-config.js exports:
+
+   app
+   db
+=========================================================
 */
 
 import {
@@ -2129,12 +2133,16 @@ import {
 
 
 /* =========================================================
-   VARIABLES
+   FIRESTORE COLLECTION
 ========================================================= */
 
 const COLLECTION_NAME =
     "heartProjectMedia";
 
+
+/* =========================================================
+   VARIABLES
+========================================================= */
 
 let mediaStore = [];
 
@@ -2165,7 +2173,7 @@ const firebaseStatus =
 
 
 /* =========================================================
-   FIREBASE ERROR MESSAGE
+   SHOW FIREBASE ERROR
 ========================================================= */
 
 function showFirebaseError(error){
@@ -2181,29 +2189,41 @@ function showFirebaseError(error){
     );
 
 
+    const errorCode =
+        error && error.code
+            ? String(error.code)
+            : "";
+
+
+    const errorMessage =
+        error && error.message
+            ? String(error.message)
+            : "";
+
+
     /*
-       Firebase permission error
+       Permission error
     */
 
     if(
-        error &&
-        (
-            error.code ===
-            "permission-denied" ||
+        errorCode ===
+        "permission-denied" ||
 
-            String(error.message)
+        errorMessage
             .toLowerCase()
             .includes("permission")
-        )
     ){
 
         firebaseStatus.textContent =
             "☁️ Firebase permission denied";
 
+
         gallery.innerHTML = "";
+
 
         galleryEmpty.style.display =
             "block";
+
 
         galleryEmpty.textContent =
             "Firebase permission denied. Check Firestore rules.";
@@ -2219,6 +2239,7 @@ function showFirebaseError(error){
 
     gallery.innerHTML = "";
 
+
     galleryEmpty.style.display =
         "block";
 
@@ -2230,223 +2251,313 @@ function showFirebaseError(error){
 
 
 /* =========================================================
-   LOAD FIREBASE MEDIA
+   GET URL FROM FIRESTORE DOCUMENT
+=========================================================
+
+   This is the important compatibility fix.
+
+   The editor may have saved the Cloudinary URL as:
+
+   url
+   fileUrl
+   secure_url
+   cloudinaryUrl
+   mediaUrl
+
+   We accept all of them.
 ========================================================= */
 
-async function loadFirebaseMedia(){
+function getMediaUrl(data){
 
-    try{
+    if(!data){
+        return "";
+    }
 
-        firebaseStatus.textContent =
-            "☁️ Loading project gallery...";
 
+    const possibleUrls = [
 
-        firebaseStatus.classList.remove(
-            "live"
-        );
+        data.url,
 
+        data.fileUrl,
 
-        /*
-           IMPORTANT FIX:
+        data.secure_url,
 
-           We are NOT using:
+        data.secureUrl,
 
-           orderBy("createdAt")
+        data.cloudinaryUrl,
 
-           because older documents may not have
-           createdAt. That can cause the entire
-           query to fail.
+        data.mediaUrl,
 
-           We load all documents and sort them
-           safely in JavaScript.
-        */
+        data.link,
 
-        const snapshot =
-            await getDocs(
+        data.downloadURL,
 
-                collection(
-                    db,
-                    COLLECTION_NAME
-                )
+        data.downloadUrl
 
-            );
+    ];
 
 
-        mediaStore = [];
+    for(
+        const possibleUrl
+        of possibleUrls
+    ){
 
+        if(
+            typeof possibleUrl ===
+            "string" &&
 
-        snapshot.forEach(
+            possibleUrl.trim() !== ""
+        ){
 
-            item => {
+            return possibleUrl.trim();
 
-                const data =
-                    item.data();
-
-
-                /*
-                   Only accept documents that
-                   have a usable URL and type.
-                */
-
-                if(
-                    !data ||
-                    !data.url
-                ){
-
-                    return;
-
-                }
-
-
-                let type =
-                    data.type;
-
-
-                /*
-                   Support both:
-
-                   photo
-                   image
-
-                   and:
-
-                   video
-                */
-
-                if(
-                    type === "image"
-                ){
-
-                    type = "photo";
-
-                }
-
-
-                if(
-                    type !== "photo" &&
-                    type !== "video"
-                ){
-
-                    /*
-                       Try to detect type from URL
-                       if old documents do not have
-                       a type.
-                    */
-
-                    const lowerUrl =
-                        String(
-                            data.url
-                        ).toLowerCase();
-
-
-                    if(
-                        /\.(jpg|jpeg|png|gif|webp|avif)(\?|$)/
-                        .test(lowerUrl)
-                    ){
-
-                        type = "photo";
-
-                    }else if(
-                        /\.(mp4|webm|mov|m4v)(\?|$)/
-                        .test(lowerUrl)
-                    ){
-
-                        type = "video";
-
-                    }else{
-
-                        return;
-
-                    }
-
-                }
-
-
-                mediaStore.push({
-
-                    id:
-                        item.id,
-
-                    name:
-                        data.name ||
-                        "Project Media",
-
-                    url:
-                        data.url,
-
-                    type:
-                        type,
-
-                    createdAt:
-                        data.createdAt || null
-
-                });
-
-            }
-
-        );
-
-
-        /*
-           Safely sort documents.
-
-           New documents from edit.html have
-           createdAt.
-
-           Old documents without createdAt
-           are still displayed.
-        */
-
-        mediaStore.sort(
-
-            (a,b) => {
-
-                const aTime =
-                    getCreatedTime(
-                        a.createdAt
-                    );
-
-
-                const bTime =
-                    getCreatedTime(
-                        b.createdAt
-                    );
-
-
-                return aTime - bTime;
-
-            }
-
-        );
-
-
-        firebaseStatus.textContent =
-            "☁️ Live project gallery connected";
-
-
-        firebaseStatus.classList.add(
-            "live"
-        );
-
-
-        renderMedia(
-            currentMediaFilter
-        );
-
-
-    }catch(error){
-
-        showFirebaseError(
-            error
-        );
+        }
 
     }
+
+
+    return "";
 
 }
 
 
 /* =========================================================
-   CREATED TIME
+   GET MEDIA TYPE
+========================================================= */
+
+function getMediaType(
+    data,
+    url
+){
+
+    if(!data){
+        return "";
+    }
+
+
+    /*
+       Try all common field names.
+    */
+
+    let rawType =
+
+        data.type ||
+
+        data.mediaType ||
+
+        data.kind ||
+
+        data.category ||
+
+        data.fileType ||
+
+        "";
+
+
+    rawType =
+        String(
+            rawType
+        )
+        .toLowerCase()
+        .trim();
+
+
+    /*
+       Normalize image names.
+    */
+
+    if(
+        rawType === "image" ||
+        rawType === "images" ||
+        rawType === "photo" ||
+        rawType === "photos" ||
+        rawType === "picture"
+    ){
+
+        return "photo";
+
+    }
+
+
+    /*
+       Normalize video names.
+    */
+
+    if(
+        rawType === "video" ||
+        rawType === "videos" ||
+        rawType === "movie"
+    ){
+
+        return "video";
+
+    }
+
+
+    /*
+       If no type exists,
+       detect from URL.
+    */
+
+    const lowerUrl =
+        String(
+            url || ""
+        )
+        .toLowerCase();
+
+
+    /*
+       Cloudinary video URL
+    */
+
+    if(
+        lowerUrl.includes(
+            "/video/upload/"
+        ) ||
+
+        lowerUrl.includes(
+            "res.cloudinary.com"
+        ) &&
+        (
+            lowerUrl.includes(
+                ".mp4"
+            ) ||
+
+            lowerUrl.includes(
+                ".webm"
+            ) ||
+
+            lowerUrl.includes(
+                ".mov"
+            ) ||
+
+            lowerUrl.includes(
+                ".m4v"
+            )
+        )
+    ){
+
+        return "video";
+
+    }
+
+
+    /*
+       Normal video extension
+    */
+
+    if(
+        /\.(mp4|webm|mov|m4v|avi|ogg)(\?|#|$)/i
+            .test(
+                lowerUrl
+            )
+    ){
+
+        return "video";
+
+    }
+
+
+    /*
+       Image extension
+    */
+
+    if(
+        /\.(jpg|jpeg|png|gif|webp|avif|bmp|svg)(\?|#|$)/i
+            .test(
+                lowerUrl
+            )
+    ){
+
+        return "photo";
+
+    }
+
+
+    /*
+       Cloudinary image URL
+       without an obvious extension.
+    */
+
+    if(
+        lowerUrl.includes(
+            "res.cloudinary.com"
+        ) &&
+        lowerUrl.includes(
+            "/image/upload/"
+        )
+    ){
+
+        return "photo";
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   GET MEDIA NAME
+========================================================= */
+
+function getMediaName(
+    data
+){
+
+    if(!data){
+        return "Project Media";
+    }
+
+
+    const possibleNames = [
+
+        data.name,
+
+        data.title,
+
+        data.fileName,
+
+        data.filename,
+
+        data.originalFilename,
+
+        data.original_filename,
+
+        data.public_id,
+
+        data.publicId
+
+    ];
+
+
+    for(
+        const name
+        of possibleNames
+    ){
+
+        if(
+            typeof name ===
+            "string" &&
+
+            name.trim() !== ""
+        ){
+
+            return name.trim();
+
+        }
+
+    }
+
+
+    return "Project Media";
+
+}
+
+
+/* =========================================================
+   GET CREATED TIME
 ========================================================= */
 
 function getCreatedTime(
@@ -2454,7 +2565,9 @@ function getCreatedTime(
 ){
 
     if(!timestamp){
+
         return Number.MAX_SAFE_INTEGER;
+
     }
 
 
@@ -2486,7 +2599,7 @@ function getCreatedTime(
 
 
     /*
-       Timestamp-like object
+       Firestore Timestamp-like object
     */
 
     if(
@@ -2502,7 +2615,263 @@ function getCreatedTime(
     }
 
 
+    /*
+       ISO date string
+    */
+
+    if(
+        typeof timestamp ===
+        "string"
+    ){
+
+        const parsed =
+            Date.parse(
+                timestamp
+            );
+
+
+        if(
+            !Number.isNaN(
+                parsed
+            )
+        ){
+
+            return parsed;
+
+        }
+
+    }
+
+
+    /*
+       Number timestamp
+    */
+
+    if(
+        typeof timestamp ===
+        "number"
+    ){
+
+        return timestamp;
+
+    }
+
+
     return Number.MAX_SAFE_INTEGER;
+
+}
+
+
+/* =========================================================
+   LOAD FIREBASE MEDIA
+========================================================= */
+
+async function loadFirebaseMedia(){
+
+    try{
+
+        firebaseStatus.textContent =
+            "☁️ Loading project gallery...";
+
+
+        firebaseStatus.classList.remove(
+            "live"
+        );
+
+
+        /*
+           Read the entire collection.
+
+           We intentionally do NOT use orderBy()
+           because old documents may not contain
+           createdAt.
+        */
+
+        const snapshot =
+            await getDocs(
+
+                collection(
+                    db,
+                    COLLECTION_NAME
+                )
+
+            );
+
+
+        mediaStore = [];
+
+
+        snapshot.forEach(
+
+            documentSnapshot => {
+
+                const data =
+                    documentSnapshot.data();
+
+
+                if(!data){
+
+                    return;
+
+                }
+
+
+                /*
+                   Find Cloudinary/direct URL.
+                */
+
+                const url =
+                    getMediaUrl(
+                        data
+                    );
+
+
+                /*
+                   Ignore documents without
+                   a usable URL.
+                */
+
+                if(!url){
+
+                    console.warn(
+                        "Skipping media document without URL:",
+                        documentSnapshot.id,
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                   Detect photo/video.
+                */
+
+                const type =
+                    getMediaType(
+                        data,
+                        url
+                    );
+
+
+                /*
+                   Ignore unsupported documents.
+                */
+
+                if(
+                    type !== "photo" &&
+                    type !== "video"
+                ){
+
+                    console.warn(
+                        "Skipping unsupported media document:",
+                        documentSnapshot.id,
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                   Create normalized media object.
+                */
+
+                mediaStore.push({
+
+                    id:
+                        documentSnapshot.id,
+
+                    name:
+                        getMediaName(
+                            data
+                        ),
+
+                    url:
+                        url,
+
+                    type:
+                        type,
+
+                    createdAt:
+                        data.createdAt ||
+                        data.created ||
+                        data.timestamp ||
+                        null
+
+                });
+
+            }
+
+        );
+
+
+        /*
+           Sort newest/oldest safely.
+
+           Documents without a date stay at the end.
+        */
+
+        mediaStore.sort(
+
+            (a,b) => {
+
+                const aTime =
+                    getCreatedTime(
+                        a.createdAt
+                    );
+
+
+                const bTime =
+                    getCreatedTime(
+                        b.createdAt
+                    );
+
+
+                return aTime - bTime;
+
+            }
+
+        );
+
+
+        /*
+           Connected successfully.
+        */
+
+        firebaseStatus.textContent =
+            "☁️ Live project gallery connected";
+
+
+        firebaseStatus.classList.add(
+            "live"
+        );
+
+
+        /*
+           Show gallery.
+        */
+
+        renderMedia(
+            currentMediaFilter
+        );
+
+
+        console.log(
+            "✓ Firebase media loaded:",
+            mediaStore
+        );
+
+
+    }catch(error){
+
+        showFirebaseError(
+            error
+        );
+
+    }
 
 }
 
@@ -2512,7 +2881,7 @@ function getCreatedTime(
 ========================================================= */
 
 function renderMedia(
-    filter="all"
+    filter = "all"
 ){
 
     gallery.innerHTML = "";
@@ -2528,6 +2897,10 @@ function renderMedia(
 
         );
 
+
+    /*
+       No matching media.
+    */
 
     if(!items.length){
 
@@ -2559,6 +2932,10 @@ function renderMedia(
         "none";
 
 
+    /*
+       Create cards.
+    */
+
     items.forEach(
 
         item => {
@@ -2573,54 +2950,117 @@ function renderMedia(
                 "gallery-item";
 
 
-            const media =
-                document.createElement(
-
-                    item.type === "photo"
-                    ? "img"
-                    : "video"
-
-                );
-
-
-            media.src =
-                item.url;
-
-
-            media.alt =
-                item.name ||
-                "Project media";
-
-
             /*
-               Prevent broken media from
-               making the gallery look bad.
+               PHOTO
             */
 
-            media.onerror =
-                function(){
-
-                    this.style.display =
-                        "none";
-
-                };
-
-
             if(
-                item.type === "video"
+                item.type ===
+                "photo"
             ){
 
-                media.controls =
-                    false;
+                const image =
+                    document.createElement(
+                        "img"
+                    );
 
-                media.playsInline =
-                    true;
 
-                media.preload =
-                    "metadata";
+                image.src =
+                    item.url;
+
+
+                image.alt =
+                    item.name;
+
+
+                image.loading =
+                    "lazy";
+
+
+                image.onerror =
+                    function(){
+
+                        console.error(
+                            "Image failed to load:",
+                            item.url
+                        );
+
+
+                        this.style.display =
+                            "none";
+
+                    };
+
+
+                card.appendChild(
+                    image
+                );
 
             }
 
+
+            /*
+               VIDEO
+            */
+
+            if(
+                item.type ===
+                "video"
+            ){
+
+                const video =
+                    document.createElement(
+                        "video"
+                    );
+
+
+                video.src =
+                    item.url;
+
+
+                video.preload =
+                    "metadata";
+
+
+                video.playsInline =
+                    true;
+
+
+                video.muted =
+                    true;
+
+
+                video.controls =
+                    false;
+
+
+                video.setAttribute(
+                    "playsinline",
+                    ""
+                );
+
+
+                video.onerror =
+                    function(){
+
+                        console.error(
+                            "Video failed to load:",
+                            item.url
+                        );
+
+                    };
+
+
+                card.appendChild(
+                    video
+                );
+
+            }
+
+
+            /*
+               Caption
+            */
 
             const caption =
                 document.createElement(
@@ -2638,23 +3078,24 @@ function renderMedia(
 
 
             card.appendChild(
-                media
-            );
-
-
-            card.appendChild(
                 caption
             );
 
 
-            card.onclick =
-                () => {
+            /*
+               Open viewer.
+            */
+
+            card.addEventListener(
+                "click",
+                function(){
 
                     showMediaInsideSection(
                         item
                     );
 
-                };
+                }
+            );
 
 
             gallery.appendChild(
@@ -2748,48 +3189,87 @@ function(item){
         "Project Media";
 
 
-    const media =
-        document.createElement(
-
-            item.type === "photo"
-            ? "img"
-            : "video"
-
-        );
-
-
-    media.src =
-        item.url;
-
-
-    media.alt =
-        item.name ||
-        "Project Media";
-
-
-    media.className =
-        "section-view-media";
-
+    /*
+       PHOTO VIEWER
+    */
 
     if(
-        item.type === "video"
+        item.type ===
+        "photo"
     ){
 
-        media.controls =
-            true;
+        const media =
+            document.createElement(
+                "img"
+            );
 
-        media.autoplay =
-            true;
 
-        media.playsInline =
-            true;
+        media.src =
+            item.url;
+
+
+        media.alt =
+            item.name ||
+            "Project Media";
+
+
+        media.className =
+            "section-view-media";
+
+
+        content.appendChild(
+            media
+        );
 
     }
 
 
-    content.appendChild(
-        media
-    );
+    /*
+       VIDEO VIEWER
+    */
+
+    if(
+        item.type ===
+        "video"
+    ){
+
+        const media =
+            document.createElement(
+                "video"
+            );
+
+
+        media.src =
+            item.url;
+
+
+        media.className =
+            "section-view-media";
+
+
+        media.controls =
+            true;
+
+
+        media.autoplay =
+            true;
+
+
+        media.playsInline =
+            true;
+
+
+        media.setAttribute(
+            "playsinline",
+            ""
+        );
+
+
+        content.appendChild(
+            media
+        );
+
+    }
 
 
     viewer.classList.add(
@@ -2874,6 +3354,17 @@ function(item){
 
 
     if(
+        item.type === "photo"
+    ){
+
+        media.alt =
+            item.name ||
+            "Project Media";
+
+    }
+
+
+    if(
         item.type === "video"
     ){
 
@@ -2885,6 +3376,11 @@ function(item){
 
         media.playsInline =
             true;
+
+        media.setAttribute(
+            "playsinline",
+            ""
+        );
 
     }
 
@@ -2988,6 +3484,7 @@ function(){
         msg.textContent =
             "✓ Access granted. Opening editor...";
 
+
         msg.style.color =
             "#69e58a";
 
@@ -3010,6 +3507,7 @@ function(){
         msg.textContent =
             "Incorrect password.";
 
+
         msg.style.color =
             "#ff5262";
 
@@ -3019,7 +3517,7 @@ function(){
 
 
 /* =========================================================
-   CLOSE SETTINGS WHEN CLICKING OUTSIDE
+   CLOSE SETTINGS OUTSIDE
 ========================================================= */
 
 document.addEventListener(
@@ -3046,8 +3544,14 @@ document.addEventListener(
             menu.classList.contains(
                 "show"
             ) &&
-            !menu.contains(event.target) &&
-            !button.contains(event.target)
+
+            !menu.contains(
+                event.target
+            ) &&
+
+            !button.contains(
+                event.target
+            )
 
         ){
 
@@ -3069,12 +3573,9 @@ document.addEventListener(
 loadFirebaseMedia();
 
 
-/*
-   Refresh every 10 seconds.
-
-   This means when you add something from
-   edit.html, index.html will update automatically.
-*/
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
 
 setInterval(
 
