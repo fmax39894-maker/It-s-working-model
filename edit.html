@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1.0"
+    content="width=device-width,initial-scale=1"
 >
 
-<title>Heart Project — Media Editor</title>
+<title>Heart Project Editor</title>
 
 <style>
 
@@ -25,558 +25,257 @@ html{
 body{
     margin:0;
     min-height:100vh;
-    background:
-        radial-gradient(
-            circle at top right,
-            #3b0b12,
-            transparent 35%
-        ),
-        #08090b;
+    background:#08090b;
     color:#fff;
     font-family:Arial,sans-serif;
 }
 
+.container{
+    width:min(1000px,92%);
+    margin:auto;
+    padding:30px 0 60px;
+}
 
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:50;
-
-    padding:16px 6%;
-
+.header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    background:#090a0cee;
-    border-bottom:1px solid #292a2e;
-
-    backdrop-filter:blur(15px);
+    gap:15px;
+    margin-bottom:25px;
 }
 
-.logo{
-    font-size:20px;
-    font-weight:800;
+.header h1{
+    margin:0;
+    font-size:28px;
 }
 
-.logo span{
+.header h1 span{
     color:#ff2638;
 }
 
 .back-btn{
-    border:1px solid #3a3c42;
+    border:1px solid #34363c;
     background:#111317;
     color:#fff;
-
     padding:10px 15px;
-
     border-radius:9px;
-
     text-decoration:none;
-    font-weight:700;
 }
-
-.back-btn:hover{
-    border-color:#ff2638;
-    background:#181114;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main{
-    width:min(1050px,92%);
-    margin:35px auto 70px;
-}
-
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.page-title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.page-title h1{
-    margin:0;
-    font-size:clamp(30px,6vw,48px);
-}
-
-.page-title h1 span{
-    color:#ff2638;
-}
-
-.page-title p{
-    color:#aaa;
-    line-height:1.6;
-}
-
-
-/* =========================================================
-   FIREBASE STATUS
-========================================================= */
-
-.status{
-    width:100%;
-
-    padding:13px 16px;
-
-    margin-bottom:20px;
-
-    border:1px solid #34363c;
-    border-radius:10px;
-
-    background:#111317;
-
-    color:#aaa;
-
-    font-size:13px;
-
-    text-align:center;
-}
-
-.status.success{
-    color:#69e58a;
-    border-color:#285d38;
-    background:#102016;
-}
-
-.status.error{
-    color:#ff7180;
-    border-color:#702630;
-    background:#1c0d10;
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
 
 .card{
-    margin-bottom:22px;
-
-    padding:24px;
-
-    background:#101114;
-
-    border:1px solid #303238;
-
-    border-radius:17px;
-
-    box-shadow:0 18px 50px #0007;
+    background:#111317;
+    border:1px solid #34363c;
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:20px;
 }
 
 .card h2{
-    margin:0 0 7px;
+    margin:0 0 16px;
     color:#ff2638;
+    font-size:19px;
 }
 
-.card-description{
-    margin:0 0 20px;
-    color:#999;
+.status{
+    padding:13px;
+    border-radius:10px;
+    background:#0c0d10;
+    border:1px solid #34363c;
+    color:#aaa;
     font-size:13px;
     line-height:1.5;
 }
 
-
-/* =========================================================
-   UPLOAD GRID
-========================================================= */
-
-.upload-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.status.ok{
+    border-color:#285d38;
+    color:#69e58a;
 }
 
-
-/* =========================================================
-   UPLOAD BOX
-========================================================= */
-
-.upload-box{
-    padding:20px;
-
-    border:1px solid #34363c;
-    border-radius:14px;
-
-    background:#0c0d10;
+.status.error{
+    border-color:#7a2730;
+    color:#ff6875;
 }
-
-.upload-box h3{
-    margin:0 0 7px;
-}
-
-.upload-box p{
-    margin:0 0 17px;
-
-    color:#888;
-
-    font-size:12px;
-    line-height:1.5;
-}
-
-
-/* =========================================================
-   INPUT
-========================================================= */
 
 label{
     display:block;
-
-    margin:13px 0 7px;
-
-    color:#ff6b76;
-
-    font-size:10px;
-    font-weight:800;
-
-    letter-spacing:1.7px;
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:7px;
 }
 
-input[type="text"],
-input[type="url"],
-input[type="password"]{
-
+input,
+select{
     width:100%;
-
-    padding:12px 13px;
-
+    padding:13px;
     border:1px solid #383a40;
     border-radius:9px;
-
-    outline:none;
-
     background:#08090b;
     color:#fff;
-
-    font-size:14px;
+    outline:none;
+    margin-bottom:15px;
 }
 
-input:focus{
+input:focus,
+select:focus{
     border-color:#ff2638;
 }
 
-
-/* =========================================================
-   FILE INPUT
-========================================================= */
-
-.file-input{
-    width:100%;
-
-    padding:13px;
-
-    border:1px dashed #45474d;
-    border-radius:10px;
-
-    background:#0a0b0e;
-
-    color:#aaa;
-
-    cursor:pointer;
+.file-box{
+    border:1px dashed #4a4c53;
+    border-radius:12px;
+    padding:22px;
+    text-align:center;
+    background:#0c0d10;
+    margin-bottom:15px;
 }
 
-.file-input:hover{
-    border-color:#ff2638;
+.file-box input{
+    margin:0;
+    border:0;
+    padding:0;
+    background:none;
 }
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
 
 .btn{
-    width:100%;
-
-    margin-top:13px;
-
-    padding:12px 15px;
-
-    border:1px solid #ff2638;
+    border:0;
     border-radius:9px;
-
+    padding:12px 18px;
     background:#ff2638;
     color:#fff;
-
-    font-weight:800;
-
+    font-weight:bold;
     cursor:pointer;
-
-    transition:.2s;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 25px #ff263833;
 }
 
 .btn:disabled{
     opacity:.5;
     cursor:not-allowed;
-    transform:none;
 }
 
 .btn.secondary{
-    background:#111317;
-    border-color:#3a3c42;
+    background:#202228;
+    border:1px solid #3a3c42;
 }
 
-.btn.secondary:hover{
-    border-color:#ff2638;
+.progress{
+    display:none;
+    margin-top:15px;
 }
 
+.progress.show{
+    display:block;
+}
 
-/* =========================================================
-   UPLOAD MESSAGE
-========================================================= */
+.progress-bar{
+    width:100%;
+    height:9px;
+    background:#202228;
+    border-radius:20px;
+    overflow:hidden;
+}
 
-.upload-message{
-    min-height:17px;
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#ff2638;
+    transition:.2s;
+}
 
-    margin-top:10px;
-
-    color:#888;
-
+.progress-text{
+    margin-top:7px;
+    color:#aaa;
     font-size:12px;
+    text-align:center;
 }
 
-.upload-message.success{
-    color:#69e58a;
+.message{
+    min-height:20px;
+    margin-top:12px;
+    font-size:13px;
 }
 
-.upload-message.error{
+.message.error{
     color:#ff6875;
 }
 
-
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-.divider{
-    height:1px;
-    background:#292b31;
-    margin:25px 0;
+.message.ok{
+    color:#69e58a;
 }
 
-
-/* =========================================================
-   MEDIA LIST
-========================================================= */
-
-.media-section-title{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
+.media-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
-
-    margin-bottom:15px;
 }
 
-.media-section-title h2{
-    margin:0;
-}
-
-.count{
-    padding:5px 9px;
-
-    border-radius:20px;
-
-    background:#1b1d22;
-
-    color:#aaa;
-
-    font-size:11px;
-}
-
-
-/* =========================================================
-   MEDIA ROW
-========================================================= */
-
-.media-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:14px;
-
-    margin-bottom:10px;
-
-    border:1px solid #303238;
+.media-card{
+    background:#0c0d10;
+    border:1px solid #34363c;
     border-radius:12px;
-
-    background:#0d0f12;
+    overflow:hidden;
 }
 
-.media-thumb{
-
-    width:70px;
-    height:55px;
-
-    flex:none;
-
+.media-preview{
+    width:100%;
+    height:140px;
     object-fit:cover;
-
-    border-radius:7px;
-
-    background:#050607;
+    display:block;
+    background:#050506;
 }
 
 .media-info{
-    min-width:0;
-    flex:1;
+    padding:12px;
 }
 
 .media-name{
+    font-weight:bold;
     margin-bottom:5px;
-
-    font-weight:700;
-
-    overflow:hidden;
     white-space:nowrap;
+    overflow:hidden;
     text-overflow:ellipsis;
 }
 
-.media-url{
-
-    display:block;
-
-    color:#777;
-
+.media-type{
+    color:#aaa;
     font-size:11px;
-
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-
-    text-decoration:none;
+    margin-bottom:10px;
 }
-
-.media-url:hover{
-    color:#ff6b76;
-}
-
-
-/* =========================================================
-   DELETE
-========================================================= */
 
 .delete-btn{
-
-    flex:none;
-
-    padding:9px 12px;
-
-    border:1px solid #672832;
+    width:100%;
+    border:1px solid #6d2930;
+    background:#241013;
+    color:#ff6875;
+    padding:9px;
     border-radius:8px;
-
-    background:#210d11;
-    color:#ff7180;
-
     cursor:pointer;
-
-    font-weight:700;
 }
-
-.delete-btn:hover{
-    background:#ff2638;
-    color:#fff;
-}
-
-
-/* =========================================================
-   EMPTY
-========================================================= */
 
 .empty{
-    padding:30px;
-
     text-align:center;
-
-    border:1px dashed #34363c;
-    border-radius:12px;
-
     color:#777;
+    padding:30px;
 }
 
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-.loading{
-    padding:20px;
-
-    text-align:center;
-
-    color:#888;
+.small{
+    color:#777;
+    font-size:11px;
+    line-height:1.5;
+    margin-top:10px;
 }
 
+@media(max-width:600px){
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:750px){
-
-    .upload-grid{
-        grid-template-columns:1fr;
-    }
-
-    .media-row{
-        align-items:flex-start;
-    }
-
-    .media-thumb{
-        width:58px;
-        height:50px;
-    }
-
-}
-
-@media(max-width:500px){
-
-    header{
-        padding:13px 4%;
-    }
-
-    .logo{
-        font-size:16px;
-    }
-
-    main{
+    .container{
         width:94%;
+        padding-top:20px;
+    }
+
+    .header h1{
+        font-size:22px;
     }
 
     .card{
         padding:17px;
-    }
-
-    .media-row{
-        flex-wrap:wrap;
-    }
-
-    .media-info{
-        width:calc(100% - 75px);
-    }
-
-    .delete-btn{
-        margin-left:auto;
     }
 
 }
@@ -588,16 +287,18 @@ input:focus{
 
 <body>
 
+<div class="container">
 
-<!-- =========================================================
+
+<!-- =====================================================
      HEADER
-========================================================= -->
+===================================================== -->
 
-<header>
+<div class="header">
 
-<div class="logo">
-    Working Model of <span>Heart</span>
-</div>
+<h1>
+    Heart <span>Editor</span>
+</h1>
 
 <a
     href="index.html"
@@ -606,232 +307,67 @@ input:focus{
     ← Website
 </a>
 
-</header>
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main>
-
-
-<div class="page-title">
-
-<h1>
-    Media <span>Editor</span>
-</h1>
-
-<p>
-    Upload project photos and videos to Cloudinary
-    and save their direct links in Firebase.
-</p>
-
 </div>
 
 
-<!-- =========================================================
-     STATUS
-========================================================= -->
-
-<div
-    id="status"
-    class="status"
->
-    ☁️ Connecting to Firebase...
-</div>
-
-
-<!-- =========================================================
-     CLOUDINARY UPLOAD
-========================================================= -->
+<!-- =====================================================
+     FIREBASE STATUS
+===================================================== -->
 
 <div class="card">
 
 <h2>
-    ☁️ Upload Media
+    System Status
 </h2>
 
-<p class="card-description">
-    Select an image or video. It will be uploaded
-    to Cloudinary and the resulting direct URL
-    will be saved to your Firebase gallery.
-</p>
+<div
+    id="firebaseStatus"
+    class="status"
+>
+    🔄 Connecting to Firebase...
+</div>
 
+<div
+    id="cloudinaryStatus"
+    class="status"
+    style="margin-top:10px"
+>
+    ☁️ Checking Cloudinary...
+</div>
 
-<div class="upload-grid">
+</div>
 
 
 <!-- =====================================================
-     IMAGE
+     UPLOAD
 ===================================================== -->
 
-<div class="upload-box">
+<div class="card">
 
-<h3>
-    📸 Upload Image
-</h3>
-
-<p>
-    JPG, PNG, WEBP and other supported image formats.
-</p>
+<h2>
+    Add Project Media
+</h2>
 
 
-<label for="imageName">
-    IMAGE NAME
+<label for="mediaName">
+    Media Name
 </label>
 
 <input
-    id="imageName"
+    id="mediaName"
     type="text"
     placeholder="Example: Heart Model"
 >
 
 
-<label for="imageFile">
-    SELECT IMAGE
+<label for="mediaType">
+    Media Type
 </label>
 
-<input
-    id="imageFile"
-    class="file-input"
-    type="file"
-    accept="image/*"
->
-
-
-<button
-    id="uploadImageBtn"
-    class="btn"
->
-    Upload Image
-</button>
-
-
-<div
-    id="imageMessage"
-    class="upload-message"
-></div>
-
-</div>
-
-
-<!-- =====================================================
-     VIDEO
-===================================================== -->
-
-<div class="upload-box">
-
-<h3>
-    🎬 Upload Video
-</h3>
-
-<p>
-    Select a project video to upload to Cloudinary.
-</p>
-
-
-<label for="videoName">
-    VIDEO NAME
-</label>
-
-<input
-    id="videoName"
-    type="text"
-    placeholder="Example: Heart Working Demo"
->
-
-
-<label for="videoFile">
-    SELECT VIDEO
-</label>
-
-<input
-    id="videoFile"
-    class="file-input"
-    type="file"
-    accept="video/*"
->
-
-
-<button
-    id="uploadVideoBtn"
-    class="btn"
->
-    Upload Video
-</button>
-
-
-<div
-    id="videoMessage"
-    class="upload-message"
-></div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     MANUAL LINK
-========================================================= -->
-
-<div class="card">
-
-<h2>
-    🔗 Add Direct Link
-</h2>
-
-<p class="card-description">
-    Use this if you already have a direct image or video
-    URL from Cloudinary or another hosting service.
-</p>
-
-
-<label for="manualName">
-    MEDIA NAME
-</label>
-
-<input
-    id="manualName"
-    type="text"
-    placeholder="Example: Heart Diagram"
->
-
-
-<label for="manualUrl">
-    DIRECT MEDIA URL
-</label>
-
-<input
-    id="manualUrl"
-    type="url"
-    placeholder="https://..."
->
-
-
-<label for="manualType">
-    TYPE
-</label>
-
-<select
-    id="manualType"
-    style="
-        width:100%;
-        padding:12px;
-        border:1px solid #383a40;
-        border-radius:9px;
-        background:#08090b;
-        color:#fff;
-        outline:none;
-    "
->
+<select id="mediaType">
 
 <option value="photo">
-    📸 Image
+    📸 Photo
 </option>
 
 <option value="video">
@@ -841,253 +377,725 @@ input:focus{
 </select>
 
 
+<label>
+    Select Image / Video
+</label>
+
+<div class="file-box">
+
+<input
+    id="mediaFile"
+    type="file"
+    accept="image/*,video/*"
+>
+
+</div>
+
+
 <button
-    id="manualSaveBtn"
+    id="uploadBtn"
     class="btn"
 >
-    Save Direct Link
+    Upload Media
 </button>
 
 
 <div
-    id="manualMessage"
-    class="upload-message"
+    id="progress"
+    class="progress"
+>
+
+<div class="progress-bar">
+
+<div
+    id="progressFill"
+    class="progress-fill"
 ></div>
 
 </div>
 
+<div
+    id="progressText"
+    class="progress-text"
+>
+    0%
+</div>
 
-<!-- =========================================================
-     FIREBASE MEDIA
-========================================================= -->
+</div>
+
+
+<div
+    id="uploadMessage"
+    class="message"
+></div>
+
+
+<div class="small">
+
+The selected file is uploaded to Cloudinary.
+Only its URL and information are saved in
+Firebase Firestore.
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MEDIA LIST
+===================================================== -->
 
 <div class="card">
 
-<div class="media-section-title">
-
 <h2>
-    📸 Images
+    Firebase Media
 </h2>
 
 <div
-    id="imageCount"
-    class="count"
->
-    0
-</div>
-
-</div>
-
-
-<div
-    id="imageList"
+    id="mediaList"
+    class="media-list"
 ></div>
 
 <div
-    id="imageEmpty"
+    id="emptyMessage"
     class="empty"
+    style="display:none"
 >
-    No images added yet.
+    No media found.
 </div>
 
 </div>
 
 
-<div class="card">
-
-<div class="media-section-title">
-
-<h2>
-    🎬 Videos
-</h2>
-
-<div
-    id="videoCount"
-    class="count"
->
-    0
-</div>
-
 </div>
 
 
-<div
-    id="videoList"
-></div>
-
-<div
-    id="videoEmpty"
-    class="empty"
->
-    No videos added yet.
-</div>
-
-</div>
-
-
-</main>
-
-
-<!-- =========================================================
+<!-- =====================================================
      FIREBASE + CLOUDINARY
-========================================================= -->
+===================================================== -->
 
 <script type="module">
 
-"use strict";
 
-
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
+/* =====================================================
+   IMPORT FIREBASE CONFIG
+===================================================== */
 
 import {
     db
 } from "./firebase-config.js";
 
 
-/* =========================================================
-   FIRESTORE
-========================================================= */
+/* =====================================================
+   FIRESTORE FUNCTIONS
+===================================================== */
 
 import {
     collection,
-    getDocs,
     addDoc,
+    getDocs,
     deleteDoc,
     doc,
-    query,
     orderBy,
+    query,
     serverTimestamp
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   CLOUDINARY CONFIG
-========================================================= */
+/* =====================================================
+   CLOUDINARY UPLOAD FUNCTION
+===================================================== */
 
-import * as CloudinaryConfig
-from "./Cloudinary-config.js";
-
-
-/* =========================================================
-   CLOUDINARY UPLOAD
-========================================================= */
-
-import * as CloudinaryUpload
-from "./Cloudinary-uplods.js";
+import "./cloudinary-uploads.js";
 
 
-/* =========================================================
+/* =====================================================
    CONSTANTS
-========================================================= */
+===================================================== */
 
 const COLLECTION_NAME =
     "heartProjectMedia";
 
 
-const IMAGE_TYPE =
-    "photo";
-
-
-const VIDEO_TYPE =
-    "video";
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-let mediaStore = [];
-
-
-/* =========================================================
+/* =====================================================
    ELEMENTS
-========================================================= */
+===================================================== */
 
-const status =
+const firebaseStatus =
     document.getElementById(
-        "status"
+        "firebaseStatus"
     );
 
 
-const imageList =
+const cloudinaryStatus =
     document.getElementById(
-        "imageList"
+        "cloudinaryStatus"
     );
 
 
-const videoList =
+const mediaName =
     document.getElementById(
-        "videoList"
+        "mediaName"
     );
 
 
-const imageEmpty =
+const mediaType =
     document.getElementById(
-        "imageEmpty"
+        "mediaType"
     );
 
 
-const videoEmpty =
+const mediaFile =
     document.getElementById(
-        "videoEmpty"
+        "mediaFile"
     );
 
 
-const imageCount =
+const uploadBtn =
     document.getElementById(
-        "imageCount"
+        "uploadBtn"
     );
 
 
-const videoCount =
+const uploadMessage =
     document.getElementById(
-        "videoCount"
+        "uploadMessage"
     );
 
 
-/* =========================================================
-   STATUS
-========================================================= */
-
-function setStatus(
-    message,
-    type = ""
-){
-
-    status.textContent =
-        message;
+const progress =
+    document.getElementById(
+        "progress"
+    );
 
 
-    status.className =
-        "status";
+const progressFill =
+    document.getElementById(
+        "progressFill"
+    );
 
 
-    if(type){
+const progressText =
+    document.getElementById(
+        "progressText"
+    );
 
-        status.classList.add(
-            type
+
+const mediaList =
+    document.getElementById(
+        "mediaList"
+    );
+
+
+const emptyMessage =
+    document.getElementById(
+        "emptyMessage"
+    );
+
+
+/* =====================================================
+   FIREBASE CONNECTION CHECK
+===================================================== */
+
+async function checkFirebase(){
+
+    try{
+
+        if(!db){
+
+            throw new Error(
+                "Firebase Firestore was not initialized."
+            );
+
+        }
+
+
+        /*
+        We perform a real Firestore read.
+        This confirms that Firebase is actually
+        reachable instead of only checking the
+        JavaScript configuration.
+        */
+
+        await getDocs(
+            collection(
+                db,
+                COLLECTION_NAME
+            )
         );
+
+
+        firebaseStatus.textContent =
+            "✓ Firebase Firestore connected";
+
+
+        firebaseStatus.classList.remove(
+            "error"
+        );
+
+
+        firebaseStatus.classList.add(
+            "ok"
+        );
+
+
+        return true;
+
+
+    }catch(error){
+
+        console.error(
+            "Firebase connection error:",
+            error
+        );
+
+
+        firebaseStatus.classList.remove(
+            "ok"
+        );
+
+
+        firebaseStatus.classList.add(
+            "error"
+        );
+
+
+        firebaseStatus.textContent =
+            "❌ Firebase error: " +
+            getFirebaseErrorMessage(
+                error
+            );
+
+
+        return false;
 
     }
 
 }
 
 
-/* =========================================================
-   FIREBASE LOAD
-========================================================= */
+/* =====================================================
+   FIREBASE ERROR MESSAGE
+===================================================== */
 
-async function loadFirebaseMedia(){
+function getFirebaseErrorMessage(
+    error
+){
+
+    if(!error){
+
+        return "Unknown error.";
+
+    }
+
+
+    const code =
+        error.code || "";
+
+
+    if(
+        code.includes(
+            "permission-denied"
+        )
+    ){
+
+        return (
+            "Firestore permission denied. " +
+            "Check your Firebase Firestore Rules."
+        );
+
+    }
+
+
+    if(
+        code.includes(
+            "failed-precondition"
+        )
+    ){
+
+        return (
+            "Firestore is not configured correctly."
+        );
+
+    }
+
+
+    if(
+        code.includes(
+            "not-found"
+        )
+    ){
+
+        return (
+            "Firestore database was not found."
+        );
+
+    }
+
+
+    if(
+        error.message
+    ){
+
+        return error.message;
+
+    }
+
+
+    return "Unable to connect.";
+
+}
+
+
+/* =====================================================
+   CLOUDINARY CHECK
+===================================================== */
+
+function checkCloudinary(){
+
+    if(
+        typeof window.uploadToCloudinary ===
+        "function"
+    ){
+
+        cloudinaryStatus.textContent =
+            "✓ Cloudinary upload system loaded";
+
+
+        cloudinaryStatus.classList.add(
+            "ok"
+        );
+
+
+        return true;
+
+    }
+
+
+    cloudinaryStatus.textContent =
+        "❌ Cloudinary upload system not loaded";
+
+
+    cloudinaryStatus.classList.add(
+        "error"
+    );
+
+
+    return false;
+
+}
+
+
+/* =====================================================
+   UPLOAD MESSAGE
+===================================================== */
+
+function showUploadMessage(
+    text,
+    type=""
+){
+
+    uploadMessage.textContent =
+        text;
+
+
+    uploadMessage.className =
+        "message " +
+        type;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function setProgress(
+    percent
+){
+
+    progress.classList.add(
+        "show"
+    );
+
+
+    progressFill.style.width =
+        percent + "%";
+
+
+    progressText.textContent =
+        percent + "%";
+
+}
+
+
+/* =====================================================
+   UPLOAD MEDIA
+===================================================== */
+
+async function uploadMedia(){
+
+    showUploadMessage(
+        ""
+    );
+
+
+    const file =
+        mediaFile.files[0];
+
+
+    if(!file){
+
+        showUploadMessage(
+            "Please select an image or video.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        typeof window.uploadToCloudinary !==
+        "function"
+    ){
+
+        showUploadMessage(
+            "Cloudinary upload system is not loaded.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        mediaName.value.trim() ||
+        file.name;
+
+
+    let type =
+        mediaType.value;
+
+
+    /*
+    Automatically correct the type
+    according to the selected file.
+    */
+
+    if(
+        file.type.startsWith(
+            "image/"
+        )
+    ){
+
+        type = "photo";
+
+    }
+
+
+    if(
+        file.type.startsWith(
+            "video/"
+        )
+    ){
+
+        type = "video";
+
+    }
+
+
+    uploadBtn.disabled =
+        true;
+
+
+    setProgress(
+        0
+    );
+
+
+    showUploadMessage(
+        "Uploading to Cloudinary..."
+    );
+
 
     try{
 
-        setStatus(
-            "☁️ Loading Firebase media..."
+        /* =========================================
+           CLOUDINARY
+        ========================================= */
+
+        const result =
+            await window.uploadToCloudinary(
+
+                file,
+
+                percent => {
+
+                    setProgress(
+                        percent
+                    );
+
+                }
+
+            );
+
+
+        const url =
+            window.getCloudinaryUrl(
+                result
+            );
+
+
+        if(!url){
+
+            throw new Error(
+                "Cloudinary did not return a secure URL."
+            );
+
+        }
+
+
+        setProgress(
+            100
         );
+
+
+        showUploadMessage(
+            "Cloudinary upload complete. Saving to Firebase...",
+            ""
+        );
+
+
+        /* =========================================
+           FIREBASE
+        ========================================= */
+
+        if(!db){
+
+            throw new Error(
+                "Firebase Firestore is not initialized."
+            );
+
+        }
+
+
+        await addDoc(
+
+            collection(
+                db,
+                COLLECTION_NAME
+            ),
+
+            {
+
+                name:name,
+
+                type:type,
+
+                url:url,
+
+                publicId:
+                    result.public_id ||
+                    "",
+
+                format:
+                    result.format ||
+                    "",
+
+                resourceType:
+                    result.resource_type ||
+                    "",
+
+                originalFilename:
+                    file.name,
+
+                createdAt:
+                    serverTimestamp()
+
+            }
+
+        );
+
+
+        showUploadMessage(
+            "✓ Media uploaded and saved successfully.",
+            "ok"
+        );
+
+
+        mediaName.value =
+            "";
+
+
+        mediaFile.value =
+            "";
+
+
+        progressFill.style.width =
+            "100%";
+
+
+        progressText.textContent =
+            "Complete";
+
+
+        await loadMedia();
+
+
+    }catch(error){
+
+        console.error(
+            "Upload error:",
+            error
+        );
+
+
+        showUploadMessage(
+            "❌ " +
+            (
+                error.message ||
+                "Upload failed."
+            ),
+            "error"
+        );
+
+    }finally{
+
+        uploadBtn.disabled =
+            false;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD MEDIA
+===================================================== */
+
+async function loadMedia(){
+
+    mediaList.innerHTML =
+        "";
+
+
+    emptyMessage.style.display =
+        "none";
+
+
+    try{
+
+        if(!db){
+
+            throw new Error(
+                "Firebase Firestore is not initialized."
+            );
+
+        }
 
 
         const q =
@@ -1107,173 +1115,137 @@ async function loadFirebaseMedia(){
 
 
         const snapshot =
-            await getDocs(q);
+            await getDocs(
+                q
+            );
 
 
-        mediaStore = [];
+        if(
+            snapshot.empty
+        ){
+
+            emptyMessage.style.display =
+                "block";
+
+            return;
+
+        }
 
 
         snapshot.forEach(
+
             item => {
 
-                mediaStore.push({
+                const data =
+                    item.data();
 
-                    id:item.id,
 
-                    ...item.data()
+                createMediaCard(
 
-                });
+                    item.id,
+
+                    data
+
+                );
 
             }
-        );
 
-
-        renderMedia();
-
-
-        setStatus(
-            "✓ Firebase connected • " +
-            mediaStore.length +
-            " media item(s)",
-            "success"
         );
 
 
     }catch(error){
 
         console.error(
+            "Load media error:",
             error
         );
 
 
-        setStatus(
+        emptyMessage.style.display =
+            "block";
+
+
+        emptyMessage.textContent =
             "❌ Could not load Firebase media: " +
-            error.message,
-            "error"
-        );
+            getFirebaseErrorMessage(
+                error
+            );
 
     }
 
 }
 
 
-/* =========================================================
-   RENDER MEDIA
-========================================================= */
+/* =====================================================
+   CREATE MEDIA CARD
+===================================================== */
 
-function renderMedia(){
+function createMediaCard(
+    id,
+    data
+){
 
-    imageList.innerHTML =
-        "";
-
-    videoList.innerHTML =
-        "";
-
-
-    const images =
-        mediaStore.filter(
-            item =>
-                item.type === IMAGE_TYPE
-        );
-
-
-    const videos =
-        mediaStore.filter(
-            item =>
-                item.type === VIDEO_TYPE
-        );
-
-
-    imageCount.textContent =
-        images.length;
-
-
-    videoCount.textContent =
-        videos.length;
-
-
-    imageEmpty.style.display =
-        images.length
-        ? "none"
-        : "block";
-
-
-    videoEmpty.style.display =
-        videos.length
-        ? "none"
-        : "block";
-
-
-    images.forEach(
-        item => {
-
-            imageList.appendChild(
-                createMediaRow(item)
-            );
-
-        }
-    );
-
-
-    videos.forEach(
-        item => {
-
-            videoList.appendChild(
-                createMediaRow(item)
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CREATE MEDIA ROW
-========================================================= */
-
-function createMediaRow(item){
-
-    const row =
+    const card =
         document.createElement(
             "div"
         );
 
 
-    row.className =
-        "media-row";
+    card.className =
+        "media-card";
 
 
-    const thumb =
-        document.createElement(
-            item.type === IMAGE_TYPE
-            ? "img"
-            : "video"
-        );
+    const type =
+        data.type === "video"
+        ? "video"
+        : "photo";
 
 
-    thumb.className =
-        "media-thumb";
-
-
-    thumb.src =
-        item.url || "";
+    let preview;
 
 
     if(
-        item.type === VIDEO_TYPE
+        type === "video"
     ){
 
-        thumb.muted =
+        preview =
+            document.createElement(
+                "video"
+            );
+
+
+        preview.controls =
             true;
 
-        thumb.playsInline =
+
+        preview.playsInline =
             true;
 
-        thumb.preload =
+
+        preview.preload =
             "metadata";
 
+    }else{
+
+        preview =
+            document.createElement(
+                "img"
+            );
+
+
+        preview.alt =
+            data.name ||
+            "Project image";
+
     }
+
+
+    preview.className =
+        "media-preview";
+
+
+    preview.src =
+        data.url || "";
 
 
     const info =
@@ -1297,44 +1269,24 @@ function createMediaRow(item){
 
 
     name.textContent =
-        item.name ||
-        "Unnamed Media";
+        data.name ||
+        "Project Media";
 
 
-    const url =
+    const typeText =
         document.createElement(
-            "a"
+            "div"
         );
 
 
-    url.className =
-        "media-url";
+    typeText.className =
+        "media-type";
 
 
-    url.href =
-        item.url || "#";
-
-
-    url.target =
-        "_blank";
-
-
-    url.rel =
-        "noopener";
-
-
-    url.textContent =
-        item.url || "";
-
-
-    info.appendChild(
-        name
-    );
-
-
-    info.appendChild(
-        url
-    );
+    typeText.textContent =
+        type === "video"
+        ? "🎬 Video"
+        : "📸 Photo";
 
 
     const deleteButton =
@@ -1348,136 +1300,78 @@ function createMediaRow(item){
 
 
     deleteButton.textContent =
-        "Delete";
+        "Delete from Firebase";
 
 
-    deleteButton.onclick =
-        () => deleteMedia(
-            item.id
-        );
+    deleteButton.addEventListener(
 
+        "click",
 
-    row.appendChild(
-        thumb
-    );
+        () => {
 
-
-    row.appendChild(
-        info
-    );
-
-
-    row.appendChild(
-        deleteButton
-    );
-
-
-    return row;
-
-}
-
-
-/* =========================================================
-   SAVE FIREBASE MEDIA
-========================================================= */
-
-async function saveMedia(
-    name,
-    url,
-    type
-){
-
-    name =
-        String(
-            name || ""
-        ).trim();
-
-
-    url =
-        String(
-            url || ""
-        ).trim();
-
-
-    if(!name){
-
-        throw new Error(
-            "Media name is required."
-        );
-
-    }
-
-
-    if(!url){
-
-        throw new Error(
-            "Media URL is required."
-        );
-
-    }
-
-
-    if(
-        type !== IMAGE_TYPE &&
-        type !== VIDEO_TYPE
-    ){
-
-        throw new Error(
-            "Invalid media type."
-        );
-
-    }
-
-
-    await addDoc(
-
-        collection(
-            db,
-            COLLECTION_NAME
-        ),
-
-        {
-
-            name:name,
-
-            url:url,
-
-            type:type,
-
-            createdAt:
-                serverTimestamp()
+            deleteMedia(
+                id
+            );
 
         }
 
     );
 
+
+    info.appendChild(
+        name
+    );
+
+
+    info.appendChild(
+        typeText
+    );
+
+
+    info.appendChild(
+        deleteButton
+    );
+
+
+    card.appendChild(
+        preview
+    );
+
+
+    card.appendChild(
+        info
+    );
+
+
+    mediaList.appendChild(
+        card
+    );
+
 }
 
 
-/* =========================================================
+/* =====================================================
    DELETE MEDIA
-========================================================= */
+===================================================== */
 
-async function deleteMedia(id){
+async function deleteMedia(
+    id
+){
 
-    if(!id) return;
-
-
-    const ok =
+    const confirmed =
         confirm(
-            "Delete this media link from Firebase?"
+            "Delete this media record from Firebase?"
         );
 
 
-    if(!ok) return;
+    if(!confirmed){
+
+        return;
+
+    }
 
 
     try{
-
-        setStatus(
-            "☁️ Deleting media..."
-        );
-
 
         await deleteDoc(
 
@@ -1490,26 +1384,22 @@ async function deleteMedia(id){
         );
 
 
-        setStatus(
-            "✓ Media deleted.",
-            "success"
-        );
-
-
-        await loadFirebaseMedia();
+        await loadMedia();
 
 
     }catch(error){
 
         console.error(
+            "Delete error:",
             error
         );
 
 
-        setStatus(
-            "❌ Delete failed: " +
-            error.message,
-            "error"
+        alert(
+            "Could not delete media:\n\n" +
+            getFirebaseErrorMessage(
+                error
+            )
         );
 
     }
@@ -1517,546 +1407,51 @@ async function deleteMedia(id){
 }
 
 
-/* =========================================================
-   CLOUDINARY UPLOAD FUNCTION
-========================================================= */
+/* =====================================================
+   BUTTON
+===================================================== */
 
-async function uploadToCloudinary(
-    file
-){
+uploadBtn.addEventListener(
+    "click",
+    uploadMedia
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+async function startEditor(){
 
     /*
-       This editor supports the following
-       function names in Cloudinary-uplods.js:
-
-       uploadToCloudinary(file)
-
-       OR
-
-       uploadFileToCloudinary(file)
-
-       OR
-
-       uploadFile(file)
+    IMPORTANT:
+    Load the Cloudinary script first.
     */
 
+    checkCloudinary();
 
-    if(
-        typeof CloudinaryUpload
-            .uploadToCloudinary ===
-            "function"
-    ){
 
-        return await
-            CloudinaryUpload
-                .uploadToCloudinary(
-                    file
-                );
+    /*
+    Then check Firebase.
+    */
 
-    }
+    const connected =
+        await checkFirebase();
 
 
     if(
-        typeof CloudinaryUpload
-            .uploadFileToCloudinary ===
-            "function"
+        connected
     ){
 
-        return await
-            CloudinaryUpload
-                .uploadFileToCloudinary(
-                    file
-                );
+        await loadMedia();
 
     }
-
-
-    if(
-        typeof CloudinaryUpload
-            .uploadFile ===
-            "function"
-    ){
-
-        return await
-            CloudinaryUpload
-                .uploadFile(
-                    file
-                );
-
-    }
-
-
-    throw new Error(
-        "Cloudinary-uplods.js does not export a supported upload function."
-    );
 
 }
 
 
-/* =========================================================
-   GET CLOUDINARY URL
-========================================================= */
+startEditor();
 
-function getCloudinaryUrl(result){
-
-    if(!result){
-
-        throw new Error(
-            "Cloudinary returned no result."
-        );
-
-    }
-
-
-    if(
-        typeof result === "string"
-    ){
-
-        return result;
-
-    }
-
-
-    if(
-        result.secure_url
-    ){
-
-        return result.secure_url;
-
-    }
-
-
-    if(
-        result.url
-    ){
-
-        return result.url;
-
-    }
-
-
-    throw new Error(
-        "Cloudinary upload completed but no URL was returned."
-    );
-
-}
-
-
-/* =========================================================
-   IMAGE UPLOAD
-========================================================= */
-
-document
-    .getElementById(
-        "uploadImageBtn"
-    )
-    .addEventListener(
-        "click",
-        async function(){
-
-            const file =
-                document.getElementById(
-                    "imageFile"
-                ).files[0];
-
-
-            const name =
-                document.getElementById(
-                    "imageName"
-                ).value.trim();
-
-
-            const message =
-                document.getElementById(
-                    "imageMessage"
-                );
-
-
-            if(!file){
-
-                message.textContent =
-                    "Please select an image.";
-
-                message.className =
-                    "upload-message error";
-
-                return;
-
-            }
-
-
-            if(!name){
-
-                message.textContent =
-                    "Please enter an image name.";
-
-                message.className =
-                    "upload-message error";
-
-                return;
-
-            }
-
-
-            const button =
-                this;
-
-
-            try{
-
-                button.disabled =
-                    true;
-
-                button.textContent =
-                    "Uploading...";
-
-
-                message.textContent =
-                    "☁️ Uploading image to Cloudinary...";
-
-                message.className =
-                    "upload-message";
-
-
-                const result =
-                    await uploadToCloudinary(
-                        file
-                    );
-
-
-                const url =
-                    getCloudinaryUrl(
-                        result
-                    );
-
-
-                await saveMedia(
-                    name,
-                    url,
-                    IMAGE_TYPE
-                );
-
-
-                message.textContent =
-                    "✓ Image uploaded and saved.";
-
-                message.className =
-                    "upload-message success";
-
-
-                document.getElementById(
-                    "imageName"
-                ).value = "";
-
-
-                document.getElementById(
-                    "imageFile"
-                ).value = "";
-
-
-                await loadFirebaseMedia();
-
-
-            }catch(error){
-
-                console.error(
-                    "Image upload error:",
-                    error
-                );
-
-
-                message.textContent =
-                    "❌ " +
-                    error.message;
-
-                message.className =
-                    "upload-message error";
-
-            }finally{
-
-                button.disabled =
-                    false;
-
-                button.textContent =
-                    "Upload Image";
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   VIDEO UPLOAD
-========================================================= */
-
-document
-    .getElementById(
-        "uploadVideoBtn"
-    )
-    .addEventListener(
-        "click",
-        async function(){
-
-            const file =
-                document.getElementById(
-                    "videoFile"
-                ).files[0];
-
-
-            const name =
-                document.getElementById(
-                    "videoName"
-                ).value.trim();
-
-
-            const message =
-                document.getElementById(
-                    "videoMessage"
-                );
-
-
-            if(!file){
-
-                message.textContent =
-                    "Please select a video.";
-
-                message.className =
-                    "upload-message error";
-
-                return;
-
-            }
-
-
-            if(!name){
-
-                message.textContent =
-                    "Please enter a video name.";
-
-                message.className =
-                    "upload-message error";
-
-                return;
-
-            }
-
-
-            const button =
-                this;
-
-
-            try{
-
-                button.disabled =
-                    true;
-
-                button.textContent =
-                    "Uploading...";
-
-
-                message.textContent =
-                    "☁️ Uploading video to Cloudinary...";
-
-                message.className =
-                    "upload-message";
-
-
-                const result =
-                    await uploadToCloudinary(
-                        file
-                    );
-
-
-                const url =
-                    getCloudinaryUrl(
-                        result
-                    );
-
-
-                await saveMedia(
-                    name,
-                    url,
-                    VIDEO_TYPE
-                );
-
-
-                message.textContent =
-                    "✓ Video uploaded and saved.";
-
-                message.className =
-                    "upload-message success";
-
-
-                document.getElementById(
-                    "videoName"
-                ).value = "";
-
-
-                document.getElementById(
-                    "videoFile"
-                ).value = "";
-
-
-                await loadFirebaseMedia();
-
-
-            }catch(error){
-
-                console.error(
-                    "Video upload error:",
-                    error
-                );
-
-
-                message.textContent =
-                    "❌ " +
-                    error.message;
-
-                message.className =
-                    "upload-message error";
-
-            }finally{
-
-                button.disabled =
-                    false;
-
-                button.textContent =
-                    "Upload Video";
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   MANUAL LINK
-========================================================= */
-
-document
-    .getElementById(
-        "manualSaveBtn"
-    )
-    .addEventListener(
-        "click",
-        async function(){
-
-            const name =
-                document.getElementById(
-                    "manualName"
-                ).value.trim();
-
-
-            const url =
-                document.getElementById(
-                    "manualUrl"
-                ).value.trim();
-
-
-            const type =
-                document.getElementById(
-                    "manualType"
-                ).value;
-
-
-            const message =
-                document.getElementById(
-                    "manualMessage"
-                );
-
-
-            try{
-
-                this.disabled =
-                    true;
-
-
-                message.textContent =
-                    "☁️ Saving link...";
-
-                message.className =
-                    "upload-message";
-
-
-                await saveMedia(
-                    name,
-                    url,
-                    type
-                );
-
-
-                message.textContent =
-                    "✓ Link saved successfully.";
-
-                message.className =
-                    "upload-message success";
-
-
-                document.getElementById(
-                    "manualName"
-                ).value = "";
-
-
-                document.getElementById(
-                    "manualUrl"
-                ).value = "";
-
-
-                await loadFirebaseMedia();
-
-
-            }catch(error){
-
-                console.error(
-                    error
-                );
-
-
-                message.textContent =
-                    "❌ " +
-                    error.message;
-
-                message.className =
-                    "upload-message error";
-
-            }finally{
-
-                this.disabled =
-                    false;
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   START EDITOR
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-
-        console.log(
-            "Heart Project Editor started."
-        );
-
-        console.log(
-            "Firestore collection:",
-            COLLECTION_NAME
-        );
-
-        console.log(
-            "Cloudinary config:",
-            CloudinaryConfig
-        );
-
-        await loadFirebaseMedia();
-
-    }
-);
 
 </script>
 
