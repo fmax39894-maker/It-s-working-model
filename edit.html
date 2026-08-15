@@ -10,7 +10,7 @@
     content="width=device-width,initial-scale=1.0"
 >
 
-<title>Heart Project Editor</title>
+<title>Heart Editor</title>
 
 <style>
 
@@ -36,440 +36,245 @@ body{
     width:100%;
     max-width:900px;
     margin:auto;
-    padding:24px 18px 60px;
+    padding:20px;
 }
-
-
-/* =========================================
-   HEADER
-========================================= */
 
 .header{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:15px;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
-.header h1{
-    margin:0;
-    font-size:40px;
+.logo{
+    font-size:34px;
     font-weight:800;
 }
 
-.header h1 span{
+.logo span{
     color:#ff2438;
 }
 
 .website-btn{
-    display:inline-block;
-    text-decoration:none;
-    color:white;
-    background:#15171b;
     border:1px solid #303238;
+    background:#111216;
+    color:white;
     border-radius:18px;
-    padding:15px 23px;
+    padding:16px 22px;
     font-size:18px;
+    cursor:pointer;
 }
-
-.website-btn:active{
-    transform:scale(.97);
-}
-
-
-/* =========================================
-   CARD
-========================================= */
 
 .card{
-    background:#121419;
+    background:#111216;
     border:1px solid #292c32;
     border-radius:28px;
-    padding:28px;
-    margin-bottom:24px;
+    padding:30px;
+    margin-bottom:28px;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.25);
 }
 
 .card-title{
-    margin:0 0 24px;
-    color:#ff2438;
-    font-size:29px;
+    color:#ff263a;
+    font-size:30px;
     font-weight:800;
+    margin:0 0 25px;
 }
 
-
-/* =========================================
-   STATUS
-========================================= */
-
-.status{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    min-height:65px;
-
-    padding:18px;
-
-    margin-top:13px;
-
+.status-box{
     background:#090a0d;
-
     border:1px solid #292c32;
-
     border-radius:18px;
-
+    padding:18px;
+    margin-bottom:15px;
     font-size:18px;
-
-    color:#aaa;
+    color:#c8c8c8;
+    line-height:1.5;
 }
 
-.status.ok{
-    color:#69e77f;
-    border-color:#245d31;
+.status-ok{
+    color:#58df79;
 }
 
-.status.error{
-    color:#ff6977;
-    border-color:#6a252d;
+.status-error{
+    color:#ff5968;
 }
 
-.status.loading{
-    color:#c5c5c5;
+.status-loading{
+    color:#d0d0d0;
 }
 
-.status-icon{
-    font-size:23px;
-}
-
-
-/* =========================================
-   FORM
-========================================= */
-
-.field{
-    margin-bottom:20px;
-}
-
-.field label{
+label{
     display:block;
-    margin-bottom:9px;
-    color:#bcbcc2;
-    font-size:17px;
+    font-size:18px;
+    color:#bdbdc2;
+    margin:20px 0 9px;
 }
 
-input[type="text"],
+input,
 select{
     width:100%;
-    height:58px;
-
-    padding:0 17px;
-
+    padding:18px;
     border-radius:16px;
-
-    border:1px solid #303239;
-
-    outline:none;
-
+    border:1px solid #303238;
     background:#08090b;
-
     color:white;
-
-    font-size:17px;
+    font-size:18px;
+    outline:none;
 }
 
-input[type="text"]:focus,
+input:focus,
 select:focus{
-    border-color:#ff2438;
+    border-color:#ff263a;
 }
-
 
 .file-box{
-    border:1px dashed #3a3d43;
+    border:1px dashed #383b42;
     border-radius:18px;
-    padding:18px;
+    padding:22px;
     background:#090a0d;
 }
 
 input[type="file"]{
-    width:100%;
-    color:#ddd;
-    font-size:15px;
+    padding:10px;
 }
 
-
-.file-info{
-    margin-top:12px;
-    color:#777;
-    font-size:14px;
-    line-height:1.5;
-}
-
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.upload-btn{
+.primary-btn{
+    margin-top:25px;
+    padding:17px 28px;
     border:0;
     border-radius:16px;
-
-    padding:16px 27px;
-
-    background:#ff2438;
+    background:#ff263a;
     color:white;
-
     font-size:18px;
     font-weight:700;
-
     cursor:pointer;
-
-    transition:.2s;
 }
 
-.upload-btn:hover{
-    filter:brightness(1.08);
-}
-
-.upload-btn:active{
-    transform:scale(.97);
-}
-
-.upload-btn:disabled{
-    opacity:.55;
+.primary-btn:disabled{
+    opacity:.5;
     cursor:not-allowed;
 }
 
-
-/* =========================================
-   PROGRESS
-========================================= */
-
-.progress-area{
+.progress-wrap{
     display:none;
     margin-top:20px;
 }
 
 .progress{
-    width:100%;
     height:10px;
-
-    background:#292c31;
-
+    width:100%;
+    background:#24262b;
     border-radius:20px;
-
     overflow:hidden;
 }
 
 .progress-bar{
-    width:0%;
     height:100%;
-
-    background:#ff2438;
-
-    transition:width .2s;
+    width:0%;
+    background:#ff263a;
+    transition:.2s;
 }
 
-.progress-label{
+.progress-text{
     margin-top:8px;
-    color:#999;
-    font-size:14px;
+    color:#aaa;
 }
 
-
-/* =========================================
-   MESSAGE
-========================================= */
-
-.message{
-    display:none;
-
-    margin-top:18px;
-
-    padding:15px;
-
-    border-radius:15px;
-
-    line-height:1.5;
-
-    font-size:15px;
+.description{
+    color:#92949a;
+    font-size:16px;
+    line-height:1.6;
+    margin-top:25px;
 }
-
-.message.success{
-    display:block;
-
-    color:#6ee982;
-
-    background:#102317;
-
-    border:1px solid #285d35;
-}
-
-.message.error{
-    display:block;
-
-    color:#ff6b79;
-
-    background:#291014;
-
-    border:1px solid #6d252e;
-}
-
-
-/* =========================================
-   MEDIA LIST
-========================================= */
 
 .media-list{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(230px,1fr)
-        );
-
-    gap:20px;
-}
-
-.media-card{
-    overflow:hidden;
-
-    background:#090a0d;
-
-    border:1px solid #2c2f35;
-
-    border-radius:20px;
-}
-
-.preview{
-    width:100%;
-    height:190px;
-
-    background:#050608;
-
     display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    overflow:hidden;
+    flex-direction:column;
+    gap:15px;
 }
 
-.preview img,
-.preview video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.video-icon{
-    font-size:50px;
-}
-
-.media-body{
-    padding:17px;
+.media-item{
+    background:#090a0d;
+    border:1px solid #292c32;
+    border-radius:18px;
+    padding:18px;
 }
 
 .media-name{
-    font-size:18px;
+    font-size:19px;
     font-weight:700;
-    margin-bottom:7px;
-
-    word-break:break-word;
+    margin-bottom:8px;
 }
 
 .media-type{
-    color:#999;
+    color:#ff4052;
     font-size:14px;
     margin-bottom:12px;
 }
 
 .media-url{
-    padding:11px;
-
-    background:#111318;
-
-    border:1px solid #292c31;
-
-    border-radius:11px;
-
-    color:#8f8f95;
-
-    font-size:12px;
-
-    line-height:1.4;
-
+    width:100%;
+    background:#111216;
+    border:1px solid #292c32;
+    padding:12px;
+    border-radius:10px;
+    color:#aaa;
+    font-size:13px;
     word-break:break-all;
-
-    margin-bottom:13px;
 }
 
-.copy-btn,
-.delete-btn{
-    width:100%;
+.media-actions{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
 
-    padding:12px;
-
-    border-radius:12px;
-
-    font-size:15px;
-
+.small-btn{
+    padding:11px 16px;
+    border-radius:10px;
+    border:1px solid #33363d;
+    background:#16181d;
+    color:white;
     cursor:pointer;
 }
 
-.copy-btn{
-    margin-bottom:8px;
-
-    background:#17191e;
-
-    border:1px solid #33363d;
-
-    color:#ddd;
-}
-
 .delete-btn{
-    background:#281014;
-
-    border:1px solid #70252f;
-
-    color:#ff6978;
+    background:#421319;
+    border-color:#70202b;
+    color:#ff6c7b;
 }
-
-
-/* =========================================
-   EMPTY
-========================================= */
 
 .empty{
-    grid-column:1/-1;
-
-    padding:35px 15px;
-
+    color:#888;
     text-align:center;
-
-    color:#777;
-
-    line-height:1.6;
+    padding:25px;
 }
 
-
-/* =========================================
-   SMALL SCREEN
-========================================= */
+.notice{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:14px;
+    background:#17191d;
+    border:1px solid #303238;
+    line-height:1.5;
+}
 
 @media(max-width:600px){
 
     .container{
-        padding:20px 16px 50px;
+        padding:16px;
     }
 
     .header{
         align-items:flex-start;
     }
 
-    .header h1{
-        font-size:32px;
+    .logo{
+        font-size:29px;
     }
 
     .website-btn{
@@ -478,8 +283,8 @@ input[type="file"]{
     }
 
     .card{
-        padding:21px;
-        border-radius:24px;
+        padding:22px;
+        border-radius:23px;
     }
 
     .card-title{
@@ -492,37 +297,29 @@ input[type="file"]{
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+    <!-- HEADER -->
 
-    <!-- =====================================
-         HEADER
-    ====================================== -->
+    <div class="header">
 
-    <header class="header">
-
-        <h1>
+        <div class="logo">
             Heart <span>Editor</span>
-        </h1>
+        </div>
 
-        <a
-            href="index.html"
+        <button
             class="website-btn"
+            onclick="goWebsite()"
         >
             ← Website
-        </a>
+        </button>
 
-    </header>
+    </div>
 
 
-
-    <!-- =====================================
-         SYSTEM STATUS
-    ====================================== -->
+    <!-- STATUS -->
 
     <section class="card">
 
@@ -530,45 +327,24 @@ input[type="file"]{
             System Status
         </h2>
 
-
         <div
             id="firebaseStatus"
-            class="status loading"
+            class="status-box status-loading"
         >
-
-            <span class="status-icon">
-                🔄
-            </span>
-
-            <span>
-                Connecting to Firebase...
-            </span>
-
+            🔄 Connecting to Firebase...
         </div>
-
 
         <div
             id="cloudinaryStatus"
-            class="status loading"
+            class="status-box status-loading"
         >
-
-            <span class="status-icon">
-                ☁️
-            </span>
-
-            <span>
-                Checking Cloudinary...
-            </span>
-
+            ☁️ Checking Cloudinary...
         </div>
 
     </section>
 
 
-
-    <!-- =====================================
-         ADD MEDIA
-    ====================================== -->
+    <!-- ADD MEDIA -->
 
     <section class="card">
 
@@ -577,86 +353,60 @@ input[type="file"]{
         </h2>
 
 
-        <div class="field">
+        <label for="mediaName">
+            Media Name
+        </label>
 
-            <label for="mediaName">
-                Media Name
-            </label>
+        <input
+            id="mediaName"
+            type="text"
+            placeholder="Example: Heart Model"
+        >
+
+
+        <label for="mediaType">
+            Media Type
+        </label>
+
+        <select id="mediaType">
+
+            <option value="image">
+                📸 Photo
+            </option>
+
+            <option value="video">
+                🎬 Video
+            </option>
+
+        </select>
+
+
+        <label for="mediaFile">
+            Select Image / Video
+        </label>
+
+        <div class="file-box">
 
             <input
-                id="mediaName"
-                type="text"
-                placeholder="Example: Heart Model"
+                id="mediaFile"
+                type="file"
+                accept="image/*,video/*"
             >
 
         </div>
 
 
-
-        <div class="field">
-
-            <label for="mediaType">
-                Media Type
-            </label>
-
-            <select id="mediaType">
-
-                <option value="image">
-                    📸 Photo
-                </option>
-
-                <option value="video">
-                    🎬 Video
-                </option>
-
-            </select>
-
-        </div>
-
-
-
-        <div class="field">
-
-            <label for="mediaFile">
-                Select Image / Video
-            </label>
-
-
-            <div class="file-box">
-
-                <input
-                    id="mediaFile"
-                    type="file"
-                    accept="image/*,video/*"
-                >
-
-
-                <div
-                    id="fileInfo"
-                    class="file-info"
-                >
-                    No file selected.
-                </div>
-
-            </div>
-
-        </div>
-
-
-
         <button
             id="uploadBtn"
-            class="upload-btn"
-            type="button"
+            class="primary-btn"
         >
             Upload Media
         </button>
 
 
-
         <div
-            id="progressArea"
-            class="progress-area"
+            id="progressWrap"
+            class="progress-wrap"
         >
 
             <div class="progress">
@@ -668,44 +418,34 @@ input[type="file"]{
 
             </div>
 
-
             <div
-                id="progressLabel"
-                class="progress-label"
+                id="progressText"
+                class="progress-text"
             >
-                0%
+                Uploading 0%
             </div>
 
         </div>
 
 
-
         <div
-            id="message"
-            class="message"
+            id="notice"
+            class="notice"
         ></div>
 
 
+        <div class="description">
 
-        <p
-            style="
-                color:#85858b;
-                line-height:1.6;
-                margin:28px 0 0;
-            "
-        >
-            Images and videos are uploaded to Cloudinary.
-            Firebase Firestore stores the media name,
-            type and direct URL.
-        </p>
+            The selected file is uploaded to Cloudinary.
+            Only its URL and information are saved in
+            Firebase Firestore.
+
+        </div>
 
     </section>
 
 
-
-    <!-- =====================================
-         EXISTING MEDIA
-    ====================================== -->
+    <!-- EXISTING MEDIA -->
 
     <section class="card">
 
@@ -713,1014 +453,332 @@ input[type="file"]{
             Project Media
         </h2>
 
-
         <div
             id="mediaList"
             class="media-list"
         >
 
             <div class="empty">
-                Loading project media...
+                Loading media...
             </div>
 
         </div>
 
     </section>
 
-
 </div>
 
 
+<!-- =====================================================
+     CLOUDINARY UPLOAD SCRIPT
 
-<!-- =================================================
-     CLOUDINARY FILES
-================================================== -->
+     IMPORTANT:
+     YOUR ACTUAL FILE NAME IS:
 
-<script src="cloudinary-config.js"></script>
+     cloudinary-upload.js
 
-<script src="cloudinary-uplod.js"></script>
+     NOT cloudinary-uploads.js
+===================================================== -->
+
+<script src="./cloudinary-upload.js"></script>
 
 
-
-<!-- =================================================
+<!-- =====================================================
      FIREBASE
-================================================== -->
+===================================================== -->
 
 <script type="module">
 
-"use strict";
-
-
-/*
-=========================================================
-        FIREBASE IMPORT
-=========================================================
-*/
+import {
+    db
+} from "./firebase-config.js";
 
 import {
-
     collection,
     addDoc,
     getDocs,
     deleteDoc,
     doc,
-    query,
+    serverTimestamp,
     orderBy,
-    serverTimestamp
-
-}
-from
+    query
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-import {
+/* =====================================================
+   FIREBASE COLLECTION
 
-    db
-
-}
-from "./firebase-config.js";
-
-
-
-/*
-=========================================================
-        FIRESTORE COLLECTION
-=========================================================
-
-IMPORTANT:
-
-This must be the SAME collection used
-by your working index.html.
-
-Currently:
-*/
+   Keep this the SAME collection that index.html uses.
+===================================================== */
 
 const COLLECTION_NAME = "media";
 
 
-
-/*
-=========================================================
-        ELEMENTS
-=========================================================
-*/
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const firebaseStatus =
     document.getElementById(
         "firebaseStatus"
     );
 
-
 const cloudinaryStatus =
     document.getElementById(
         "cloudinaryStatus"
     );
-
 
 const mediaName =
     document.getElementById(
         "mediaName"
     );
 
-
 const mediaType =
     document.getElementById(
         "mediaType"
     );
-
 
 const mediaFile =
     document.getElementById(
         "mediaFile"
     );
 
-
-const fileInfo =
-    document.getElementById(
-        "fileInfo"
-    );
-
-
 const uploadBtn =
     document.getElementById(
         "uploadBtn"
     );
-
-
-const progressArea =
-    document.getElementById(
-        "progressArea"
-    );
-
-
-const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
-
-
-const progressLabel =
-    document.getElementById(
-        "progressLabel"
-    );
-
-
-const message =
-    document.getElementById(
-        "message"
-    );
-
 
 const mediaList =
     document.getElementById(
         "mediaList"
     );
 
+const progressWrap =
+    document.getElementById(
+        "progressWrap"
+    );
 
+const progressBar =
+    document.getElementById(
+        "progressBar"
+    );
 
-/*
-=========================================================
-        FIREBASE STATUS
-=========================================================
-*/
+const progressText =
+    document.getElementById(
+        "progressText"
+    );
 
-try{
+const notice =
+    document.getElementById(
+        "notice"
+    );
 
-    if(!db){
 
-        throw new Error(
-            "Firestore database object is missing."
-        );
+/* =====================================================
+   FIREBASE STATUS
 
-    }
+   Importing firebase-config.js successfully means
+   Firebase has initialized.
+===================================================== */
 
+firebaseStatus.textContent =
+    "✅ Firebase connected";
 
-    firebaseStatus.className =
-        "status ok";
+firebaseStatus.className =
+    "status-box status-ok";
 
 
-    firebaseStatus.innerHTML = `
+/* =====================================================
+   CHECK CLOUDINARY SCRIPT
+===================================================== */
 
-        <span class="status-icon">
-            ✓
-        </span>
-
-        <span>
-            Firebase connected
-        </span>
-
-    `;
-
-}catch(error){
-
-    firebaseStatus.className =
-        "status error";
-
-
-    firebaseStatus.innerHTML = `
-
-        <span class="status-icon">
-            ❌
-        </span>
-
-        <span>
-            Firebase error:
-            ${escapeHtml(error.message)}
-        </span>
-
-    `;
-
-}
-
-
-
-/*
-=========================================================
-        CLOUDINARY STATUS
-=========================================================
-
-Cloudinary does not need Firebase.
-
-We check whether the configuration
-and upload function exist.
-=========================================================
-*/
-
-function checkCloudinary(){
-
-    const cloudName =
-        window.CLOUDINARY_CLOUD_NAME;
-
-
-    const preset =
-        window.CLOUDINARY_UPLOAD_PRESET;
-
-
-    const uploadFunction =
-        window.uploadToCloudinary;
-
-
-    if(
-        !cloudName ||
-        cloudName === "YOUR_CLOUD_NAME"
-    ){
-
-        cloudinaryStatus.className =
-            "status error";
-
-
-        cloudinaryStatus.innerHTML = `
-
-            <span class="status-icon">
-                ❌
-            </span>
-
-            <span>
-                Cloudinary cloud name missing
-            </span>
-
-        `;
-
-        return false;
-
-    }
-
-
-    if(!preset){
-
-        cloudinaryStatus.className =
-            "status error";
-
-
-        cloudinaryStatus.innerHTML = `
-
-            <span class="status-icon">
-                ❌
-            </span>
-
-            <span>
-                Cloudinary upload preset missing
-            </span>
-
-        `;
-
-        return false;
-
-    }
-
-
-    if(
-        typeof uploadFunction !==
-        "function"
-    ){
-
-        cloudinaryStatus.className =
-            "status error";
-
-
-        cloudinaryStatus.innerHTML = `
-
-            <span class="status-icon">
-                ❌
-            </span>
-
-            <span>
-                cloudinary-uploads.js not loaded
-            </span>
-
-        `;
-
-        return false;
-
-    }
-
-
-    cloudinaryStatus.className =
-        "status ok";
-
-
-    cloudinaryStatus.innerHTML = `
-
-        <span class="status-icon">
-            ✓
-        </span>
-
-        <span>
-            Cloudinary ready
-        </span>
-
-    `;
-
-
-    return true;
-
-}
-
-
-const cloudinaryReady =
-    checkCloudinary();
-
-
-
-/*
-=========================================================
-        FILE SELECT
-=========================================================
-*/
-
-mediaFile.addEventListener(
-    "change",
-    function(){
-
-        const file =
-            mediaFile.files[0];
-
-
-        if(!file){
-
-            fileInfo.textContent =
-                "No file selected.";
-
-            return;
-
-        }
-
-
-        const sizeMB =
-            (
-                file.size /
-                (1024 * 1024)
-            ).toFixed(2);
-
-
-        fileInfo.textContent =
-            `${file.name} • ${sizeMB} MB`;
-
-    }
-);
-
-
-
-/*
-=========================================================
-        MEDIA TYPE CHANGE
-=========================================================
-*/
-
-mediaType.addEventListener(
-    "change",
-    function(){
-
-        if(
-            mediaType.value === "image"
-        ){
-
-            mediaFile.accept =
-                "image/*";
-
-        }else{
-
-            mediaFile.accept =
-                "video/*";
-
-        }
-
-    }
-);
-
-
-
-/*
-=========================================================
-        SHOW MESSAGE
-=========================================================
-*/
-
-function showMessage(
-    text,
-    type
+if(
+    typeof window.uploadToCloudinary ===
+    "function"
 ){
 
-    message.textContent =
-        text;
+    cloudinaryStatus.textContent =
+        "✅ Cloudinary uploader loaded";
 
+    cloudinaryStatus.className =
+        "status-box status-ok";
 
-    message.className =
-        "message " + type;
+}else{
+
+    cloudinaryStatus.textContent =
+        "❌ cloudinary-upload.js did not load";
+
+    cloudinaryStatus.className =
+        "status-box status-error";
+
+    uploadBtn.disabled = true;
 
 }
 
 
-
-/*
-=========================================================
-        UPLOAD BUTTON
-=========================================================
-*/
-
-uploadBtn.addEventListener(
-    "click",
-    uploadMedia
-);
-
-
-
-/*
-=========================================================
-        UPLOAD MEDIA
-=========================================================
-*/
-
-async function uploadMedia(){
-
-    const name =
-        mediaName.value.trim();
-
-
-    const type =
-        mediaType.value;
-
-
-    const file =
-        mediaFile.files[0];
-
-
-    if(!name){
-
-        showMessage(
-            "Please enter a media name.",
-            "error"
-        );
-
-        mediaName.focus();
-
-        return;
-
-    }
-
-
-    if(!file){
-
-        showMessage(
-            "Please select an image or video.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(!cloudinaryReady){
-
-        showMessage(
-            "Cloudinary is not ready. Check cloudinary-config.js and cloudinary-uploads.js.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    /*
-    =========================================
-        CHECK FILE TYPE
-    =========================================
-    */
-
-    if(
-        type === "image" &&
-        !file.type.startsWith("image/")
-    ){
-
-        showMessage(
-            "The selected file is not an image.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(
-        type === "video" &&
-        !file.type.startsWith("video/")
-    ){
-
-        showMessage(
-            "The selected file is not a video.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    uploadBtn.disabled =
-        true;
-
-
-    uploadBtn.textContent =
-        "Uploading...";
-
-
-    progressArea.style.display =
-        "block";
-
-
-    progressBar.style.width =
-        "0%";
-
-
-    progressLabel.textContent =
-        "Preparing upload...";
-
-
-    message.className =
-        "message";
-
-
-    try{
-
-        /*
-        =========================================
-            CLOUDINARY
-        =========================================
-        */
-
-        const result =
-            await window.uploadToCloudinary(
-
-                file,
-
-                function(percent){
-
-                    progressBar.style.width =
-                        percent + "%";
-
-
-                    progressLabel.textContent =
-                        "Uploading to Cloudinary: " +
-                        percent +
-                        "%";
-
-                }
-
-            );
-
-
-        console.log(
-            "Cloudinary result:",
-            result
-        );
-
-
-        const url =
-            window.getCloudinaryUrl
-                ? window.getCloudinaryUrl(result)
-                : result.secure_url;
-
-
-        if(!url){
-
-            throw new Error(
-                "Cloudinary did not return a secure URL."
-            );
-
-        }
-
-
-        progressBar.style.width =
-            "100%";
-
-
-        progressLabel.textContent =
-            "Cloudinary upload complete";
-
-
-        /*
-        =========================================
-            FIRESTORE
-        =========================================
-        */
-
-        await addDoc(
-
-            collection(
-                db,
-                COLLECTION_NAME
-            ),
-
-            {
-
-                name:
-                    name,
-
-                type:
-                    type,
-
-                url:
-                    url,
-
-                createdAt:
-                    serverTimestamp(),
-
-                cloudinaryPublicId:
-                    result.public_id || "",
-
-                resourceType:
-                    result.resource_type || "",
-
-                format:
-                    result.format || ""
-
-            }
-
-        );
-
-
-        /*
-        =========================================
-            COMPLETE
-        =========================================
-        */
-
-        showMessage(
-            "✓ Media uploaded to Cloudinary and saved to Firebase.",
-            "success"
-        );
-
-
-        mediaName.value =
-            "";
-
-
-        mediaFile.value =
-            "";
-
-
-        fileInfo.textContent =
-            "No file selected.";
-
-
-        await loadMedia();
-
-
-    }catch(error){
-
-        console.error(
-            "UPLOAD ERROR:",
-            error
-        );
-
-
-        showMessage(
-            "❌ " + error.message,
-            "error"
-        );
-
-    }
-
-
-    uploadBtn.disabled =
-        false;
-
-
-    uploadBtn.textContent =
-        "Upload Media";
-
-}
-
-
-
-/*
-=========================================================
-        LOAD MEDIA
-=========================================================
-*/
+/* =====================================================
+   LOAD EXISTING MEDIA
+===================================================== */
 
 async function loadMedia(){
 
-    mediaList.innerHTML = `
-
-        <div class="empty">
-            Loading project media...
-        </div>
-
-    `;
-
+    mediaList.innerHTML =
+        `<div class="empty">
+            Loading media...
+        </div>`;
 
     try{
 
-        const reference =
-            collection(
-                db,
-                COLLECTION_NAME
+        const mediaQuery =
+            query(
+                collection(
+                    db,
+                    COLLECTION_NAME
+                ),
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
             );
 
 
-        /*
-        Try ordered query first.
-        */
-
-        let snapshot;
-
-
-        try{
-
-            const orderedQuery =
-                query(
-                    reference,
-                    orderBy(
-                        "createdAt",
-                        "desc"
-                    )
-                );
-
-
-            snapshot =
-                await getDocs(
-                    orderedQuery
-                );
-
-        }catch(error){
-
-            /*
-            Old documents may not have createdAt.
-            Fallback to normal collection read.
-            */
-
-            console.warn(
-                "Ordered query failed. Using fallback.",
-                error
+        const snapshot =
+            await getDocs(
+                mediaQuery
             );
-
-
-            snapshot =
-                await getDocs(
-                    reference
-                );
-
-        }
 
 
         if(snapshot.empty){
 
-            mediaList.innerHTML = `
-
-                <div class="empty">
-
-                    No media found.
-
-                    <br><br>
-
-                    Upload your first photo or video above.
-
-                </div>
-
-            `;
+            mediaList.innerHTML =
+                `<div class="empty">
+                    No media uploaded yet.
+                </div>`;
 
             return;
 
         }
 
 
-        mediaList.innerHTML =
-            "";
+        mediaList.innerHTML = "";
 
 
         snapshot.forEach(
-            function(item){
+            item => {
 
-                createMediaCard(
+                const data =
+                    item.data();
+
+                createMediaItem(
                     item.id,
-                    item.data()
+                    data
                 );
 
             }
         );
 
-
     }catch(error){
 
         console.error(
-            "LOAD ERROR:",
+            "Firebase media error:",
             error
         );
 
 
-        mediaList.innerHTML = `
-
-            <div
-                class="empty"
-                style="color:#ff6977"
-            >
-
-                ❌ Could not load Firebase media.
-
-                <br><br>
-
+        mediaList.innerHTML =
+            `<div class="empty">
+                ❌ Could not load media.<br><br>
                 ${escapeHtml(
                     error.message
                 )}
-
-            </div>
-
-        `;
+            </div>`;
 
     }
 
 }
 
 
+/* =====================================================
+   CREATE MEDIA ITEM
+===================================================== */
 
-/*
-=========================================================
-        CREATE MEDIA CARD
-=========================================================
-*/
-
-function createMediaCard(
+function createMediaItem(
     id,
     data
 ){
 
+    const item =
+        document.createElement(
+            "div"
+        );
+
+    item.className =
+        "media-item";
+
+
     const name =
         data.name ||
-        data.title ||
         "Unnamed Media";
 
 
     const type =
         data.type ||
-        data.mediaType ||
         "image";
 
 
     const url =
         data.url ||
-        data.link ||
-        data.secure_url ||
         "";
 
 
-    const card =
-        document.createElement(
-            "article"
-        );
+    item.innerHTML = `
 
+        <div class="media-name">
+            ${escapeHtml(name)}
+        </div>
 
-    card.className =
-        "media-card";
+        <div class="media-type">
+            ${
+                type === "video"
+                ? "🎬 VIDEO"
+                : "📸 PHOTO"
+            }
+        </div>
 
+        <div class="media-url">
+            ${escapeHtml(url)}
+        </div>
 
-    let preview;
-
-
-    if(
-        type === "video"
-    ){
-
-        preview = `
-
-            <div class="preview">
-
-                <video
-                    src="${escapeAttribute(url)}"
-                    controls
-                    preload="metadata"
-                ></video>
-
-            </div>
-
-        `;
-
-    }else{
-
-        preview = `
-
-            <div class="preview">
-
-                <img
-                    src="${escapeAttribute(url)}"
-                    alt="${escapeAttribute(name)}"
-                    loading="lazy"
-                >
-
-            </div>
-
-        `;
-
-    }
-
-
-    card.innerHTML = `
-
-        ${preview}
-
-        <div class="media-body">
-
-            <div class="media-name">
-                ${escapeHtml(name)}
-            </div>
-
-
-            <div class="media-type">
-
-                ${
-                    type === "video"
-                    ? "🎬 Video"
-                    : "📸 Photo"
-                }
-
-            </div>
-
-
-            <div class="media-url">
-
-                ${escapeHtml(url)}
-
-            </div>
-
+        <div class="media-actions">
 
             <button
-                class="copy-btn"
-                type="button"
+                class="small-btn"
+                data-copy="${escapeHtml(url)}"
             >
-                📋 Copy URL
+                Copy URL
             </button>
 
-
             <button
-                class="delete-btn"
-                type="button"
+                class="small-btn delete-btn"
+                data-delete="${id}"
             >
-                🗑 Delete
+                Delete
             </button>
 
         </div>
-
     `;
 
 
-    /*
-    =========================================
-        COPY
-    =========================================
-    */
-
-    const copyButton =
-        card.querySelector(
-            ".copy-btn"
+    const copyBtn =
+        item.querySelector(
+            "[data-copy]"
         );
 
 
-    copyButton.addEventListener(
+    copyBtn.addEventListener(
         "click",
-        async function(){
+        async () => {
 
             try{
 
@@ -1728,27 +786,21 @@ function createMediaCard(
                     url
                 );
 
-
-                copyButton.textContent =
-                    "✓ URL Copied";
-
+                copyBtn.textContent =
+                    "✓ Copied";
 
                 setTimeout(
-                    function(){
-
-                        copyButton.textContent =
-                            "📋 Copy URL";
-
+                    () => {
+                        copyBtn.textContent =
+                            "Copy URL";
                     },
                     1500
                 );
 
-
             }catch(error){
 
-                showMessage(
-                    "Could not copy URL.",
-                    "error"
+                alert(
+                    "Could not copy URL."
                 );
 
             }
@@ -1757,175 +809,399 @@ function createMediaCard(
     );
 
 
-
-    /*
-    =========================================
-        DELETE
-    =========================================
-    */
-
-    const deleteButton =
-        card.querySelector(
-            ".delete-btn"
+    const deleteBtn =
+        item.querySelector(
+            "[data-delete]"
         );
 
 
-    deleteButton.addEventListener(
+    deleteBtn.addEventListener(
         "click",
-        async function(){
+        () => {
 
-            const confirmed =
-                confirm(
-                    `Delete "${name}" from Firebase?`
-                );
-
-
-            if(!confirmed){
-
-                return;
-
-            }
-
-
-            deleteButton.disabled =
-                true;
-
-
-            deleteButton.textContent =
-                "Deleting...";
-
-
-            try{
-
-                await deleteDoc(
-
-                    doc(
-                        db,
-                        COLLECTION_NAME,
-                        id
-                    )
-
-                );
-
-
-                card.remove();
-
-
-                showMessage(
-                    "✓ Media deleted from Firebase.",
-                    "success"
-                );
-
-
-                if(
-                    mediaList.children.length === 0
-                ){
-
-                    mediaList.innerHTML = `
-
-                        <div class="empty">
-
-                            No media uploaded yet.
-
-                        </div>
-
-                    `;
-
-                }
-
-
-            }catch(error){
-
-                console.error(
-                    error
-                );
-
-
-                deleteButton.disabled =
-                    false;
-
-
-                deleteButton.textContent =
-                    "🗑 Delete";
-
-
-                showMessage(
-                    "❌ Delete failed: " +
-                    error.message,
-                    "error"
-                );
-
-            }
+            deleteMedia(
+                id
+            );
 
         }
     );
 
 
     mediaList.appendChild(
-        card
+        item
     );
 
 }
 
 
+/* =====================================================
+   UPLOAD
+===================================================== */
 
-/*
-=========================================================
-        SECURITY HELPERS
-=========================================================
-*/
+uploadBtn.addEventListener(
+    "click",
+    async () => {
+
+        const name =
+            mediaName.value.trim();
+
+        const file =
+            mediaFile.files[0];
+
+        const type =
+            mediaType.value;
+
+
+        if(!name){
+
+            showNotice(
+                "❌ Please enter a media name.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        if(!file){
+
+            showNotice(
+                "❌ Please select an image or video.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        /* Validate selected file */
+
+        if(
+            type === "image" &&
+            !file.type.startsWith(
+                "image/"
+            )
+        ){
+
+            showNotice(
+                "❌ Please select an image.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        if(
+            type === "video" &&
+            !file.type.startsWith(
+                "video/"
+            )
+        ){
+
+            showNotice(
+                "❌ Please select a video.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        if(
+            typeof window.uploadToCloudinary !==
+            "function"
+        ){
+
+            showNotice(
+                "❌ Cloudinary uploader is not available. Check cloudinary-upload.js.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        uploadBtn.disabled = true;
+
+        progressWrap.style.display =
+            "block";
+
+        progressBar.style.width =
+            "0%";
+
+        progressText.textContent =
+            "Uploading 0%";
+
+
+        try{
+
+            /* =========================================
+               CLOUDINARY UPLOAD
+            ========================================= */
+
+            const result =
+                await window.uploadToCloudinary(
+                    file,
+                    percent => {
+
+                        progressBar.style.width =
+                            percent + "%";
+
+                        progressText.textContent =
+                            "Uploading " +
+                            percent +
+                            "%";
+
+                    }
+                );
+
+
+            const url =
+                window.getCloudinaryUrl
+                ? window.getCloudinaryUrl(
+                    result
+                )
+                : result.secure_url;
+
+
+            if(!url){
+
+                throw new Error(
+                    "Cloudinary did not return a URL."
+                );
+
+            }
+
+
+            progressBar.style.width =
+                "100%";
+
+            progressText.textContent =
+                "Upload complete";
+
+
+            /* =========================================
+               SAVE TO FIRESTORE
+            ========================================= */
+
+            await addDoc(
+                collection(
+                    db,
+                    COLLECTION_NAME
+                ),
+                {
+
+                    name: name,
+
+                    type: type,
+
+                    url: url,
+
+                    publicId:
+                        result.public_id ||
+                        "",
+
+                    resourceType:
+                        result.resource_type ||
+                        "",
+
+                    format:
+                        result.format ||
+                        "",
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+
+            showNotice(
+                "✅ Media uploaded successfully and saved to Firebase.",
+                false
+            );
+
+
+            /* Clear form */
+
+            mediaName.value =
+                "";
+
+            mediaFile.value =
+                "";
+
+
+            await loadMedia();
+
+
+        }catch(error){
+
+            console.error(
+                "Upload error:",
+                error
+            );
+
+
+            showNotice(
+                "❌ " +
+                error.message,
+                true
+            );
+
+        }finally{
+
+            uploadBtn.disabled =
+                false;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DELETE MEDIA
+===================================================== */
+
+async function deleteMedia(
+    id
+){
+
+    const confirmed =
+        confirm(
+            "Delete this media link from Firebase?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    try{
+
+        await deleteDoc(
+            doc(
+                db,
+                COLLECTION_NAME,
+                id
+            )
+        );
+
+
+        await loadMedia();
+
+
+        showNotice(
+            "✅ Media removed from Firebase.",
+            false
+        );
+
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+
+        showNotice(
+            "❌ Delete failed: " +
+            error.message,
+            true
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+function showNotice(
+    message,
+    isError
+){
+
+    notice.style.display =
+        "block";
+
+    notice.textContent =
+        message;
+
+    notice.style.color =
+        isError
+        ? "#ff6978"
+        : "#62e27d";
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
 
 function escapeHtml(
     value
 ){
 
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-function escapeAttribute(
-    value
-){
-
-    return escapeHtml(
+    return String(
         value
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
 
 
-
-/*
-=========================================================
-        START
-=========================================================
-*/
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
 
 loadMedia();
+
+
+/* =====================================================
+   WEBSITE BUTTON
+===================================================== */
+
+window.goWebsite =
+    function(){
+
+        window.location.href =
+            "index.html";
+
+    };
 
 </script>
 
 </body>
-
 </html>
