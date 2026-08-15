@@ -1922,42 +1922,37 @@ document
 
 <!-- =======================================================
      FIREBASE
-======================================================== -->
+========================================================= -->
 
 <script type="module">
 
-import {
-    db
-} from "./firebase-config.js";
-
+import { db } from "./firebase-config.js";
 
 import {
     collection,
     getDocs
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   FIRESTORE COLLECTION
-========================================================= */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
-const COLLECTION_NAME =
-    "heartProjectMedia";
+const COLLECTION_NAME = "heartProjectMedia";
 
 
-/* =========================================================
+/* =====================================================
    VARIABLES
-========================================================= */
+===================================================== */
 
 let mediaStore = [];
 
 let currentMediaFilter = "all";
 
 
-/* =========================================================
+/* =====================================================
    ELEMENTS
-========================================================= */
+===================================================== */
 
 const gallery =
     document.getElementById("gallery");
@@ -1969,17 +1964,13 @@ const firebaseStatus =
     document.getElementById("firebaseStatus");
 
 
-/* =========================================================
+/* =====================================================
    STATUS
-========================================================= */
+===================================================== */
 
-function setStatus(
-    text,
-    live = false
-){
+function setStatus(text, live = false){
 
-    firebaseStatus.textContent =
-        text;
+    firebaseStatus.textContent = text;
 
     firebaseStatus.classList.toggle(
         "live",
@@ -1989,222 +1980,139 @@ function setStatus(
 }
 
 
-/* =========================================================
-   FIREBASE ERROR
-========================================================= */
+/* =====================================================
+   NORMALIZE TYPE
+===================================================== */
 
-function showFirebaseError(error){
-
-    console.error(
-        "FIRESTORE ERROR:",
-        error
-    );
-
-
-    setStatus(
-        "❌ Firebase gallery error",
-        false
-    );
-
-
-    gallery.innerHTML = "";
-
-    galleryEmpty.style.display =
-        "block";
-
-
-    if(
-        error &&
-        (
-            error.code === "permission-denied" ||
-            String(error.message)
-                .toLowerCase()
-                .includes("permission")
-        )
-    ){
-
-        galleryEmpty.textContent =
-            "Firestore permission denied. Check Firestore Rules.";
-
-    }else{
-
-        galleryEmpty.textContent =
-            "Could not load project media.";
-
-    }
-
-}
-
-
-/* =========================================================
-   NORMALIZE FIRESTORE DOCUMENT
-========================================================= */
-
-function normalizeMedia(
-    doc
-){
-
-    const data =
-        doc.data();
-
-
-    console.log(
-        "Firestore document:",
-        doc.id,
-        data
-    );
-
+function normalizeType(data){
 
     if(!data){
-
         return null;
-
     }
 
 
     /*
-       YOUR SCREENSHOT SHOWS:
+       Your Firestore currently contains:
 
        type: "image"
 
-       We support:
+       We convert it to:
 
-       image
        photo
-       img
-       video
-       videos
     */
 
-    let rawType =
+    let type =
         String(
             data.type ||
             data.resourceType ||
             ""
-        ).toLowerCase().trim();
-
-
-    let type = "";
+        ).toLowerCase();
 
 
     if(
-        rawType === "image" ||
-        rawType === "photo" ||
-        rawType === "img" ||
-        rawType === "images"
+        type === "image" ||
+        type === "photo"
     ){
 
-        type = "photo";
+        return "photo";
 
     }
 
 
-    if(
-        rawType === "video" ||
-        rawType === "videos" ||
-        rawType === "movie"
-    ){
+    if(type === "video"){
 
-        type = "video";
+        return "video";
 
     }
 
 
     /*
-       If type is missing,
-       detect from URL.
+       Detect from Cloudinary URL
     */
 
     const url =
         String(
             data.url ||
-            data.secure_url ||
-            data.secureUrl ||
-            data.imageUrl ||
-            data.videoUrl ||
             ""
-        ).trim();
+        ).toLowerCase();
 
 
-    if(!url){
+    if(
+        /\.(jpg|jpeg|png|gif|webp|avif|bmp)(\?|$)/i
+        .test(url)
+    ){
 
-        console.warn(
-            "Skipping document without URL:",
-            doc.id
-        );
-
-        return null;
+        return "photo";
 
     }
 
 
-    if(!type){
+    if(
+        /\.(mp4|webm|mov|m4v|avi)(\?|$)/i
+        .test(url)
+    ){
 
-        const lower =
-            url.toLowerCase();
-
-
-        if(
-            lower.includes(".mp4") ||
-            lower.includes(".webm") ||
-            lower.includes(".mov") ||
-            lower.includes(".m4v") ||
-            String(
-                data.resourceType || ""
-            ).toLowerCase() === "video"
-        ){
-
-            type = "video";
-
-        }else{
-
-            type = "photo";
-
-        }
+        return "video";
 
     }
 
 
-    return {
+    /*
+       Cloudinary resource type
+    */
 
-        id:doc.id,
+    const resourceType =
+        String(
+            data.resourceType ||
+            ""
+        ).toLowerCase();
 
-        name:
-            data.name ||
-            data.title ||
-            "Project Media",
 
-        url:url,
+    if(resourceType === "image"){
 
-        type:type,
+        return "photo";
 
-        createdAt:
-            data.createdAt ||
-            null
+    }
 
-    };
+
+    if(resourceType === "video"){
+
+        return "video";
+
+    }
+
+
+    return null;
 
 }
 
 
-/* =========================================================
-   LOAD FIREBASE MEDIA
-========================================================= */
+/* =====================================================
+   LOAD MEDIA
+===================================================== */
 
 async function loadFirebaseMedia(){
 
     try{
 
         setStatus(
-            "☁️ Loading project gallery..."
+            "☁️ Connecting to Firebase..."
         );
 
 
-        /*
-           EXACT COLLECTION USED BY EDITOR
-        */
+        console.log(
+            "Firebase database:",
+            db
+        );
 
-        const mediaRef =
+
+        console.log(
+            "Reading collection:",
+            COLLECTION_NAME
+        );
+
+
+        const collectionRef =
             collection(
                 db,
                 COLLECTION_NAME
@@ -2213,12 +2121,12 @@ async function loadFirebaseMedia(){
 
         const snapshot =
             await getDocs(
-                mediaRef
+                collectionRef
             );
 
 
         console.log(
-            "Firestore documents found:",
+            "Documents found:",
             snapshot.size
         );
 
@@ -2228,19 +2136,101 @@ async function loadFirebaseMedia(){
 
         snapshot.forEach(
 
-            doc => {
+            docSnapshot => {
 
-                const item =
-                    normalizeMedia(doc);
+                const data =
+                    docSnapshot.data();
 
 
-                if(item){
+                console.log(
+                    "Firestore document:",
+                    docSnapshot.id,
+                    data
+                );
 
-                    mediaStore.push(
-                        item
-                    );
+
+                /*
+                   Ignore empty documents
+                */
+
+                if(!data){
+
+                    return;
 
                 }
+
+
+                /*
+                   URL is required
+                */
+
+                if(
+                    !data.url
+                ){
+
+                    console.warn(
+                        "Document has no URL:",
+                        docSnapshot.id
+                    );
+
+                    return;
+
+                }
+
+
+                const type =
+                    normalizeType(
+                        data
+                    );
+
+
+                /*
+                   Ignore documents whose
+                   type cannot be detected
+                */
+
+                if(!type){
+
+                    console.warn(
+                        "Unknown media type:",
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                mediaStore.push({
+
+                    id:
+                        docSnapshot.id,
+
+                    name:
+                        data.name ||
+                        "Project Media",
+
+                    url:
+                        String(
+                            data.url
+                        ),
+
+                    type:
+                        type,
+
+                    createdAt:
+                        data.createdAt ||
+                        null,
+
+                    format:
+                        data.format ||
+                        "",
+
+                    publicId:
+                        data.publicId ||
+                        ""
+
+                });
 
             }
 
@@ -2248,66 +2238,40 @@ async function loadFirebaseMedia(){
 
 
         /*
-           NEWEST FIRST
+           Newest first
         */
 
         mediaStore.sort(
 
             (a,b) => {
 
-                const aTime =
-                    getCreatedTime(
-                        a.createdAt
-                    );
-
-                const bTime =
+                return (
                     getCreatedTime(
                         b.createdAt
-                    );
+                    ) -
 
-
-                /*
-                   Documents without
-                   createdAt go last.
-                */
-
-                if(
-                    aTime === Number.MAX_SAFE_INTEGER &&
-                    bTime === Number.MAX_SAFE_INTEGER
-                ){
-
-                    return 0;
-
-                }
-
-
-                if(
-                    aTime === Number.MAX_SAFE_INTEGER
-                ){
-
-                    return 1;
-
-                }
-
-
-                if(
-                    bTime === Number.MAX_SAFE_INTEGER
-                ){
-
-                    return -1;
-
-                }
-
-
-                return bTime - aTime;
+                    getCreatedTime(
+                        a.createdAt
+                    )
+                );
 
             }
 
         );
 
 
+        console.log(
+            "Usable media:",
+            mediaStore
+        );
+
+
+        /*
+           SUCCESS
+        */
+
         setStatus(
-            "☁️ Live project gallery connected",
+            `☁️ Live project gallery connected · ${mediaStore.length} item${mediaStore.length === 1 ? "" : "s"}`,
             true
         );
 
@@ -2317,34 +2281,55 @@ async function loadFirebaseMedia(){
         );
 
 
-        console.log(
-            "Final media:",
-            mediaStore
-        );
-
-
     }catch(error){
 
-        showFirebaseError(
+        console.error(
+            "FIREBASE ERROR:",
             error
         );
+
+
+        setStatus(
+            "❌ Firebase gallery failed"
+        );
+
+
+        gallery.innerHTML = "";
+
+
+        galleryEmpty.style.display =
+            "block";
+
+
+        if(
+            error.code ===
+            "permission-denied"
+        ){
+
+            galleryEmpty.textContent =
+                "❌ Firestore permission denied. Check Firestore Rules.";
+
+        }else{
+
+            galleryEmpty.textContent =
+                "❌ Could not read heartProjectMedia from Firestore.";
+
+        }
 
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    CREATED TIME
-========================================================= */
+===================================================== */
 
-function getCreatedTime(
-    timestamp
-){
+function getCreatedTime(timestamp){
 
     if(!timestamp){
 
-        return Number.MAX_SAFE_INTEGER;
+        return 0;
 
     }
 
@@ -2364,7 +2349,7 @@ function getCreatedTime(
 
 
     /*
-       Firestore Timestamp-like object
+       Firestore timestamp object
     */
 
     if(
@@ -2397,29 +2382,33 @@ function getCreatedTime(
        String date
     */
 
-    const parsed =
-        Date.parse(
-            String(timestamp)
-        );
-
-
     if(
-        !Number.isNaN(parsed)
+        typeof timestamp === "string"
     ){
 
-        return parsed;
+        const time =
+            Date.parse(
+                timestamp
+            );
+
+
+        if(!Number.isNaN(time)){
+
+            return time;
+
+        }
 
     }
 
 
-    return Number.MAX_SAFE_INTEGER;
+    return 0;
 
 }
 
 
-/* =========================================================
-   RENDER MEDIA
-========================================================= */
+/* =====================================================
+   RENDER
+===================================================== */
 
 function renderMedia(
     filter = "all"
@@ -2442,7 +2431,10 @@ function renderMedia(
                 }
 
 
-                return item.type === filter;
+                return (
+                    item.type ===
+                    filter
+                );
 
             }
 
@@ -2483,7 +2475,7 @@ function renderMedia(
 
         item => {
 
-            createMediaCard(
+            createGalleryCard(
                 item
             );
 
@@ -2494,11 +2486,11 @@ function renderMedia(
 }
 
 
-/* =========================================================
-   CREATE MEDIA CARD
-========================================================= */
+/* =====================================================
+   CREATE CARD
+===================================================== */
 
-function createMediaCard(
+function createGalleryCard(
     item
 ){
 
@@ -2512,77 +2504,94 @@ function createMediaCard(
         "gallery-item";
 
 
-    let media;
+    /*
+       IMAGE
+    */
 
+    if(
+        item.type === "photo"
+    ){
+
+        const image =
+            document.createElement(
+                "img"
+            );
+
+
+        image.src =
+            item.url;
+
+
+        image.alt =
+            item.name;
+
+
+        image.loading =
+            "lazy";
+
+
+        image.onerror =
+            function(){
+
+                console.error(
+                    "Image failed:",
+                    item.url
+                );
+
+
+                this.style.display =
+                    "none";
+
+            };
+
+
+        card.appendChild(
+            image
+        );
+
+    }
+
+
+    /*
+       VIDEO
+    */
 
     if(
         item.type === "video"
     ){
 
-        media =
+        const video =
             document.createElement(
                 "video"
             );
 
 
-        media.controls =
-            false;
+        video.src =
+            item.url;
 
-        media.muted =
-            true;
 
-        media.playsInline =
-            true;
-
-        media.preload =
+        video.preload =
             "metadata";
 
-    }else{
 
-        media =
-            document.createElement(
-                "img"
-            );
+        video.playsInline =
+            true;
 
-        media.loading =
-            "lazy";
 
-        media.decoding =
-            "async";
+        video.muted =
+            true;
+
+
+        card.appendChild(
+            video
+        );
 
     }
 
 
-    media.src =
-        item.url;
-
-
-    media.alt =
-        item.name;
-
-
     /*
-       Important:
-       do NOT hide the entire card if
-       Cloudinary is slow to load.
+       CAPTION
     */
-
-    media.addEventListener(
-        "error",
-        function(){
-
-            console.error(
-                "Media failed:",
-                item.url
-            );
-
-
-            media.style.display =
-                "none";
-
-        }
-    );
-
 
     const caption =
         document.createElement(
@@ -2595,18 +2604,18 @@ function createMediaCard(
 
 
     caption.textContent =
-        item.name;
-
-
-    card.appendChild(
-        media
-    );
+        item.name ||
+        "Project Media";
 
 
     card.appendChild(
         caption
     );
 
+
+    /*
+       CLICK
+    */
 
     card.addEventListener(
         "click",
@@ -2627,9 +2636,9 @@ function createMediaCard(
 }
 
 
-/* =========================================================
+/* =====================================================
    FILTER
-========================================================= */
+===================================================== */
 
 window.filterMedia =
 function(
@@ -2674,9 +2683,9 @@ function(
 };
 
 
-/* =========================================================
-   SECTION VIEWER
-========================================================= */
+/* =====================================================
+   VIEWER
+===================================================== */
 
 window.showMediaInsideSection =
 function(item){
@@ -2703,56 +2712,74 @@ function(item){
 
 
     title.textContent =
-        item.name;
+        item.name ||
+        "Project Media";
 
 
-    let media;
+    if(
+        item.type === "photo"
+    ){
+
+        const image =
+            document.createElement(
+                "img"
+            );
+
+
+        image.src =
+            item.url;
+
+
+        image.alt =
+            item.name;
+
+
+        image.className =
+            "section-view-media";
+
+
+        content.appendChild(
+            image
+        );
+
+    }
 
 
     if(
         item.type === "video"
     ){
 
-        media =
+        const video =
             document.createElement(
                 "video"
             );
 
 
-        media.controls =
+        video.src =
+            item.url;
+
+
+        video.className =
+            "section-view-media";
+
+
+        video.controls =
             true;
 
-        media.autoplay =
+
+        video.autoplay =
             true;
 
-        media.playsInline =
+
+        video.playsInline =
             true;
 
-    }else{
 
-        media =
-            document.createElement(
-                "img"
-            );
+        content.appendChild(
+            video
+        );
 
     }
-
-
-    media.src =
-        item.url;
-
-
-    media.alt =
-        item.name;
-
-
-    media.className =
-        "section-view-media";
-
-
-    content.appendChild(
-        media
-    );
 
 
     viewer.classList.add(
@@ -2762,18 +2789,20 @@ function(item){
 
     viewer.scrollIntoView({
 
-        behavior:"smooth",
+        behavior:
+            "smooth",
 
-        block:"center"
+        block:
+            "center"
 
     });
 
 };
 
 
-/* =========================================================
+/* =====================================================
    CLOSE VIEWER
-========================================================= */
+===================================================== */
 
 window.closeSectionViewer =
 function(){
@@ -2800,9 +2829,9 @@ function(){
 };
 
 
-/* =========================================================
+/* =====================================================
    LIGHTBOX
-========================================================= */
+===================================================== */
 
 window.openMediaLightbox =
 function(item){
@@ -2822,18 +2851,23 @@ function(item){
     content.innerHTML = "";
 
 
-    let media;
+    const media =
+        document.createElement(
+
+            item.type === "photo"
+            ? "img"
+            : "video"
+
+        );
+
+
+    media.src =
+        item.url;
 
 
     if(
         item.type === "video"
     ){
-
-        media =
-            document.createElement(
-                "video"
-            );
-
 
         media.controls =
             true;
@@ -2844,18 +2878,7 @@ function(item){
         media.playsInline =
             true;
 
-    }else{
-
-        media =
-            document.createElement(
-                "img"
-            );
-
     }
-
-
-    media.src =
-        item.url;
 
 
     content.appendChild(
@@ -2869,6 +2892,10 @@ function(item){
 
 };
 
+
+/* =====================================================
+   CLOSE LIGHTBOX
+===================================================== */
 
 window.closeMediaLightbox =
 function(event){
@@ -2903,9 +2930,9 @@ function(event){
 };
 
 
-/* =========================================================
+/* =====================================================
    SETTINGS
-========================================================= */
+===================================================== */
 
 window.toggleSettings =
 function(){
@@ -2923,9 +2950,9 @@ function(){
 };
 
 
-/* =========================================================
-   ADMIN PASSWORD
-========================================================= */
+/* =====================================================
+   HOST PASSWORD
+===================================================== */
 
 const HOST_PASSWORD =
     "aayushman";
@@ -2954,6 +2981,7 @@ function(){
         msg.textContent =
             "✓ Access granted. Opening editor...";
 
+
         msg.style.color =
             "#69e58a";
 
@@ -2976,6 +3004,7 @@ function(){
         msg.textContent =
             "Incorrect password.";
 
+
         msg.style.color =
             "#ff5262";
 
@@ -2984,14 +3013,12 @@ function(){
 };
 
 
-/* =========================================================
+/* =====================================================
    CLOSE SETTINGS OUTSIDE
-========================================================= */
+===================================================== */
 
 document.addEventListener(
-
     "click",
-
     function(event){
 
         const menu =
@@ -3007,7 +3034,6 @@ document.addEventListener(
 
 
         if(
-
             menu &&
             menu.classList.contains(
                 "show"
@@ -3015,10 +3041,10 @@ document.addEventListener(
             !menu.contains(
                 event.target
             ) &&
+            button &&
             !button.contains(
                 event.target
             )
-
         ){
 
             menu.classList.remove(
@@ -3028,27 +3054,23 @@ document.addEventListener(
         }
 
     }
-
 );
 
 
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 
 loadFirebaseMedia();
 
 
 /*
-   Refresh gallery every 10 seconds.
+   Auto refresh every 10 seconds
 */
 
 setInterval(
-
     loadFirebaseMedia,
-
     10000
-
 );
 
 </script>
