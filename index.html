@@ -14,13 +14,9 @@
 
 <style>
 
-*{
-    box-sizing:border-box
-}
+*{box-sizing:border-box}
 
-html{
-    scroll-behavior:smooth
-}
+html{scroll-behavior:smooth}
 
 body{
     margin:0;
@@ -28,11 +24,6 @@ body{
     color:#fff;
     font-family:Arial,sans-serif
 }
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
 
 nav{
     height:64px;
@@ -53,9 +44,7 @@ nav{
     font-weight:700
 }
 
-.brand span,
-h1 span,
-.red{
+.brand span,h1 span,.red{
     color:#ff2638
 }
 
@@ -70,14 +59,7 @@ h1 span,
     font-size:14px
 }
 
-.links a:hover{
-    color:#ff2638
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
+.links a:hover{color:#ff2638}
 
 .hero{
     min-height:600px;
@@ -88,11 +70,11 @@ h1 span,
     position:relative;
     overflow:hidden;
     background:
-        radial-gradient(
-            circle at 80% 35%,
-            #420b12,
-            transparent 40%
-        )
+    radial-gradient(
+        circle at 80% 35%,
+        #420b12,
+        transparent 40%
+    )
 }
 
 .hero:before{
@@ -101,21 +83,19 @@ h1 span,
     inset:0;
     opacity:.18;
     background-image:
-        linear-gradient(
-            #ff263812 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            #ff263812 1px,
-            transparent 1px
-        );
+    linear-gradient(
+        #ff263812 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        #ff263812 1px,
+        transparent 1px
+    );
     background-size:42px 42px
 }
 
-.hero>*{
-    position:relative
-}
+.hero>*{position:relative}
 
 .eyebrow{
     font-size:12px;
@@ -150,9 +130,7 @@ h1 span,
     transition:.25s
 }
 
-.btn:hover{
-    transform:translateY(-3px)
-}
+.btn:hover{transform:translateY(-3px)}
 
 .live-link{
     margin-left:10px;
@@ -160,14 +138,7 @@ h1 span,
     border:1px solid #ff2638
 }
 
-.live-link:hover{
-    background:#ff2638
-}
-
-
-/* =========================================================
-   BPM
-========================================================= */
+.live-link:hover{background:#ff2638}
 
 .bpm{
     margin-top:22px;
@@ -192,18 +163,11 @@ h1 span,
 }
 
 @keyframes pulse{
-
     50%{
         transform:scale(1.15);
         box-shadow:0 0 25px #ff263888
     }
-
 }
-
-
-/* =========================================================
-   ECG
-========================================================= */
 
 .ecg{
     position:absolute;
@@ -227,23 +191,12 @@ h1 span,
     stroke-dasharray:900;
     stroke-dashoffset:900;
     animation:ecg 2.2s linear infinite;
-    filter:drop-shadow(
-        0 0 7px #ff2638
-    )
+    filter:drop-shadow(0 0 7px #ff2638)
 }
 
 @keyframes ecg{
-
-    to{
-        stroke-dashoffset:0
-    }
-
+    to{stroke-dashoffset:0}
 }
-
-
-/* =========================================================
-   BAR
-========================================================= */
 
 .bar{
     width:86%;
@@ -265,11 +218,6 @@ h1 span,
     color:#555
 }
 
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
 section{
     padding:80px 7%;
     border-top:1px solid #202126
@@ -280,9 +228,7 @@ section{
     font-size:38px
 }
 
-.title span{
-    color:#ff2638
-}
+.title span{color:#ff2638}
 
 .sub{
     max-width:700px;
@@ -291,11 +237,6 @@ section{
     color:#aeb1b8;
     line-height:1.6
 }
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
 
 .about{
     max-width:1100px;
@@ -306,30 +247,20 @@ section{
     align-items:center
 }
 
-.about h2{
-    font-size:34px
-}
+.about h2{font-size:34px}
 
 .about p{
     color:#c5c7cc;
     line-height:1.7
 }
 
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.features,
-.steps{
+.features,.steps{
     display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:15px
 }
 
-.feature,
-.step{
+.feature,.step{
     padding:22px;
     border:1px solid #34363c;
     border-radius:13px;
@@ -338,30 +269,22 @@ section{
     transition:.3s
 }
 
-.feature:hover,
-.step:hover{
+.feature:hover,.step:hover{
     transform:translateY(-6px);
     border-color:#ff2638
 }
 
-.feature .icon,
-.step .icon{
+.feature .icon,.step .icon{
     font-size:29px;
     color:#ff2638;
     margin-bottom:10px
 }
 
-.feature p,
-.step p{
+.feature p,.step p{
     color:#aaa;
     font-size:13px;
     line-height:1.5
 }
-
-
-/* =========================================================
-   STEPS
-========================================================= */
 
 .num{
     width:30px;
@@ -374,62 +297,11 @@ section{
     font-weight:bold
 }
 
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.logo-section img{
-    width:220px;
-    border-radius:50%;
-    box-shadow:0 0 50px #ff263833
-}
-
-.hero-logo{
-    display:grid;
-    place-items:center;
-    min-height:400px
-}
-
-.hero-logo img{
-    width:min(360px,75vw);
-    height:auto;
-    display:block;
-    filter:
-        drop-shadow(
-            0 0 35px
-            rgba(255,38,56,.28)
-        );
-    animation:logoFloat 4s ease-in-out infinite
-}
-
-@keyframes logoFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            scale(1)
-    }
-
-    50%{
-        transform:
-            translateY(-9px)
-            scale(1.025)
-    }
-
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
 .contact-grid{
     max-width:950px;
     margin:auto;
     display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:18px
 }
 
@@ -448,9 +320,7 @@ section{
 
 .contact-card:hover{
     transform:translateY(-5px);
-    border-color:#ff2638;
-    box-shadow:
-        0 12px 30px #ff26381c
+    border-color:#ff2638
 }
 
 .contact-icon{
@@ -465,9 +335,7 @@ section{
     flex:none
 }
 
-.contact-card h3{
-    margin:0 0 6px
-}
+.contact-card h3{margin:0 0 6px}
 
 .contact-card p{
     margin:0;
@@ -476,11 +344,6 @@ section{
     font-size:13px;
     line-height:1.45
 }
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
 
 footer{
     padding:45px 7% 20px;
@@ -492,14 +355,11 @@ footer{
     max-width:1100px;
     margin:auto;
     display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:35px
 }
 
-.footer-grid h3{
-    color:#ff2638
-}
+.footer-grid h3{color:#ff2638}
 
 .footer-grid p{
     color:#aaa;
@@ -528,11 +388,6 @@ footer{
     font-size:12px
 }
 
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
 .reveal{
     opacity:0;
     transform:translateY(25px);
@@ -544,11 +399,6 @@ footer{
     transform:none
 }
 
-
-/* =========================================================
-   MEDIA BUTTONS
-========================================================= */
-
 .media-view-buttons{
     display:flex;
     justify-content:center;
@@ -557,9 +407,7 @@ footer{
     margin:0 auto 28px
 }
 
-.media-filter,
-.unlock-btn,
-.save-media{
+.media-filter{
     border:1px solid #3a3c42;
     background:#111317;
     color:#fff;
@@ -571,24 +419,17 @@ footer{
 }
 
 .media-filter:hover,
-.media-filter.active,
-.unlock-btn:hover{
+.media-filter.active{
     background:#ff2638;
     border-color:#ff2638
 }
 
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
 .gallery{
     display:grid;
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px,190px)
-        );
+    grid-template-columns:repeat(
+        auto-fit,
+        minmax(150px,190px)
+    );
     justify-content:center;
     gap:15px
 }
@@ -599,13 +440,12 @@ footer{
     border-radius:13px;
     overflow:hidden;
     cursor:pointer;
-    animation:galleryIn .45s;
-    transition:.25s
+    animation:galleryIn .45s
 }
 
 .gallery-item:hover{
     border-color:#ff2638;
-    transform:translateY(-3px);
+    transform:translateY(-3px)
 }
 
 .gallery-item img,
@@ -613,8 +453,7 @@ footer{
     width:100%;
     height:125px;
     display:block;
-    object-fit:cover;
-    background:#050506
+    object-fit:cover
 }
 
 .gallery-caption{
@@ -632,157 +471,25 @@ footer{
     padding:35px
 }
 
-.gallery-error{
-    text-align:center;
-    color:#ff6875;
-    padding:25px;
-    line-height:1.6
-}
-
 @keyframes galleryIn{
-
     from{
         opacity:0;
         transform:translateY(15px)
     }
-
     to{
         opacity:1;
         transform:none
     }
-
 }
-
-
-/* =========================================================
-   FIREBASE STATUS
-========================================================= */
 
 .firebase-status{
     text-align:center;
     margin:-8px auto 24px;
     color:#777;
-    font-size:11px;
-    min-height:16px
+    font-size:11px
 }
 
-.firebase-status.live{
-    color:#69e58a
-}
-
-.firebase-status.error{
-    color:#ff6875
-}
-
-
-/* =========================================================
-   HOST PANEL
-========================================================= */
-
-.host-panel{
-    display:none;
-    position:relative;
-    max-width:520px;
-    margin:35px auto 0;
-    padding:28px;
-    border:1px solid #ff2638;
-    border-radius:16px;
-    background:#101114;
-    box-shadow:0 20px 50px #000
-}
-
-.host-panel.show{
-    display:block;
-    animation:galleryIn .3s
-}
-
-.host-panel h3{
-    color:#ff2638;
-    margin-bottom:8px
-}
-
-.host-panel p{
-    color:#aaa;
-    line-height:1.5
-}
-
-.close-host{
-    position:absolute;
-    right:14px;
-    top:10px;
-    border:0;
-    background:none;
-    color:#fff;
-    font-size:28px;
-    cursor:pointer
-}
-
-
-/* =========================================================
-   PASSWORD
-========================================================= */
-
-.password-label{
-    font-size:10px;
-    letter-spacing:2px;
-    color:#ff6b76;
-    font-weight:800;
-    margin:3px 0 8px
-}
-
-#hostLogin{
-    padding:15px;
-    border:1px solid #34363c;
-    border-radius:12px;
-    background:#0b0c0f
-}
-
-#hostLogin input{
-    display:block;
-    width:100%;
-    padding:11px;
-    margin:8px 0;
-    background:#08090b;
-    border:1px solid #383a40;
-    border-radius:8px;
-    color:#fff;
-    outline:none
-}
-
-#hostLogin input:focus{
-    border-color:#ff2638
-}
-
-#hostLogin .unlock-btn{
-    width:100%;
-    margin-top:4px
-}
-
-#hostMessage{
-    margin-top:12px;
-    color:#ff8793;
-    font-size:13px
-}
-
-
-/* =========================================================
-   HOST STATUS
-========================================================= */
-
-.host-status{
-    padding:10px 12px;
-    border:1px solid #285d38;
-    background:#102016;
-    color:#70e08b;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:700
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
+.firebase-status.live{color:#69e58a}
 
 .settings-btn{
     width:38px;
@@ -795,8 +502,7 @@ footer{
     justify-content:center;
     align-items:center;
     gap:5px;
-    cursor:pointer;
-    transition:.25s
+    cursor:pointer
 }
 
 .settings-btn span{
@@ -805,11 +511,6 @@ footer{
     height:2px;
     background:#fff;
     border-radius:3px
-}
-
-.settings-btn:hover{
-    border-color:#ff2638;
-    background:#181114
 }
 
 .settings-menu{
@@ -823,14 +524,10 @@ footer{
     border:1px solid #3a3c42;
     border-radius:16px;
     background:#101114;
-    box-shadow:0 20px 60px #000b;
-    backdrop-filter:blur(15px)
+    box-shadow:0 20px 60px #000b
 }
 
-.settings-menu.show{
-    display:block;
-    animation:settingsIn .22s ease-out
-}
+.settings-menu.show{display:block}
 
 .settings-head{
     display:flex;
@@ -861,29 +558,13 @@ footer{
     background:#111317
 }
 
-.settings-icon{
-    font-size:27px
-}
-
-.settings-card h4{
-    margin:0 0 5px
-}
+.settings-card h4{margin:0 0 5px}
 
 .settings-card p{
     margin:0 0 12px;
     color:#aaa;
     font-size:12px;
     line-height:1.5
-}
-
-.settings-action{
-    border:0;
-    background:#ff2638;
-    color:#fff;
-    border-radius:8px;
-    padding:9px 13px;
-    font-weight:700;
-    cursor:pointer
 }
 
 .settings-password{
@@ -911,13 +592,16 @@ footer{
     outline:none
 }
 
-.settings-password input:focus{
-    border-color:#ff2638
-}
-
-.settings-password .settings-action{
+.settings-action{
     width:100%;
-    margin-top:8px
+    margin-top:8px;
+    border:0;
+    background:#ff2638;
+    color:#fff;
+    border-radius:8px;
+    padding:10px;
+    font-weight:700;
+    cursor:pointer
 }
 
 #settingsPasswordMessage{
@@ -926,38 +610,6 @@ footer{
     min-height:14px
 }
 
-.settings-host-controls{
-    display:none;
-    margin-top:10px
-}
-
-.settings-host-controls.show{
-    display:block
-}
-
-.settings-host-controls .settings-action{
-    width:100%
-}
-
-@keyframes settingsIn{
-
-    from{
-        opacity:0;
-        transform:translateY(-8px)
-    }
-
-    to{
-        opacity:1;
-        transform:none
-    }
-
-}
-
-
-/* =========================================================
-   SECTION VIEWER
-========================================================= */
-
 .section-viewer{
     display:none;
     margin:28px auto 0;
@@ -965,14 +617,10 @@ footer{
     border:1px solid #ff2638;
     border-radius:16px;
     background:#0d0f12;
-    padding:14px;
-    box-shadow:0 20px 55px #0008
+    padding:14px
 }
 
-.section-viewer.show{
-    display:block;
-    animation:galleryIn .25s ease-out
-}
+.section-viewer.show{display:block}
 
 .section-viewer-head{
     display:flex;
@@ -984,11 +632,7 @@ footer{
 .section-viewer-head h3{
     margin:0;
     color:#ff2638;
-    font-size:16px;
-    max-width:90%;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap
+    font-size:16px
 }
 
 .section-viewer-head button{
@@ -1013,67 +657,8 @@ footer{
     max-width:100%;
     max-height:500px;
     border-radius:10px;
-    display:block;
-    background:#050506
+    display:block
 }
-
-
-/* =========================================================
-   MEDIA LIGHTBOX
-========================================================= */
-
-.media-lightbox{
-    position:fixed;
-    inset:0;
-    z-index:200;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:#000e;
-    backdrop-filter:blur(8px)
-}
-
-.media-lightbox.show{
-    display:flex
-}
-
-#lightboxContent{
-    max-width:95vw;
-    max-height:90vh;
-    display:flex;
-    align-items:center;
-    justify-content:center
-}
-
-#lightboxContent img,
-#lightboxContent video{
-    max-width:95vw;
-    max-height:85vh;
-    border-radius:12px;
-    display:block;
-    background:#050506
-}
-
-.lb-close{
-    position:fixed;
-    top:18px;
-    right:20px;
-    width:42px;
-    height:42px;
-    border:0;
-    border-radius:50%;
-    background:#ff2638;
-    color:#fff;
-    font-size:27px;
-    cursor:pointer;
-    z-index:201
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:800px){
 
@@ -1082,56 +667,30 @@ footer{
         text-align:center
     }
 
-    .hero p{
-        margin:auto
-    }
+    .hero p{margin:auto}
 
-    .hero-logo{
-        min-height:300px
-    }
+    .about{grid-template-columns:1fr}
 
-    .about{
-        grid-template-columns:1fr
-    }
-
-    .features,
-    .steps{
+    .features,.steps{
         grid-template-columns:1fr 1fr
     }
 
     .footer-grid{
         grid-template-columns:1fr 1fr
-    }
-
-    .links{
-        gap:12px
-    }
-
-    .links a:nth-child(n+4){
-        display:none
     }
 
     .contact-grid{
         grid-template-columns:1fr 1fr
     }
-
 }
 
 @media(max-width:500px){
 
-    .features,
-    .steps,
-    .footer-grid{
+    .features,.steps,.footer-grid{
         grid-template-columns:1fr
     }
 
-    .links{
-        display:none
-    }
-
-    .hero h1{
-        font-size:45px
-    }
+    .hero h1{font-size:45px}
 
     .contact-grid{
         grid-template-columns:1fr
@@ -1143,35 +702,26 @@ footer{
     }
 
     .gallery{
-        grid-template-columns:
-            repeat(2,1fr)
+        grid-template-columns:repeat(2,1fr)
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
-
-<!-- =======================================================
-     NAV
-======================================================== -->
 
 <nav>
 
 <div class="brand">
-    Working Model of <span>Heart</span>
+Working Model of <span>Heart</span>
 </div>
 
-
 <button
-    class="settings-btn"
-    aria-label="Open settings"
-    onclick="toggleSettings()"
+class="settings-btn"
+onclick="toggleSettings()"
+aria-label="Settings"
 >
 
 <span></span>
@@ -1183,64 +733,47 @@ footer{
 </nav>
 
 
-<!-- =======================================================
-     HERO
-======================================================== -->
-
-<header
-    class="hero"
-    id="home"
->
+<header class="hero" id="home">
 
 <div>
 
 <div class="eyebrow">
-    SCIENCE EXHIBITION 2026
+SCIENCE EXHIBITION 2026
 </div>
 
-
 <h1>
-    Working Model<br>
-    of the <span>Human Heart</span>
+Working Model<br>
+of the <span>Human Heart</span>
 </h1>
 
-
 <p>
-    This project demonstrates the working
-    of the human heart and how it pumps
-    blood throughout the body.
+This project demonstrates the working
+of the human heart and how it pumps
+blood throughout the body.
 </p>
 
-
-<a
-    class="btn"
-    href="#model"
->
-    Explore the Model ↓
+<a class="btn" href="#model">
+Explore the Model ↓
 </a>
 
-
 <a
-    class="btn live-link"
-    href="https://working-model-of-heart-251c4.web.app"
-    target="_blank"
-    rel="noopener"
+class="btn live-link"
+href="https://working-model-of-heart-251c4.web.app"
+target="_blank"
+rel="noopener"
 >
-    🌐 Open Public Website
+🌐 Open Public Website
 </a>
-
 
 <div class="bpm">
 
-<div class="pulse">
-    ♥
-</div>
+<div class="pulse">♥</div>
 
 <div>
-    Heartbeat<br>
-    <strong>
-        <span id="bpm">72</span> BPM
-    </strong>
+Heartbeat<br>
+<strong>
+<span id="bpm">72</span> BPM
+</strong>
 </div>
 
 </div>
@@ -1251,89 +784,31 @@ footer{
 <div class="ecg">
 
 <svg
-    viewBox="0 0 1200 100"
-    preserveAspectRatio="none"
+viewBox="0 0 1200 100"
+preserveAspectRatio="none"
 >
 
-<polyline
-points="
-0,52
-70,52
-88,52
-98,45
-108,52
-126,52
-138,38
-146,65
-154,52
-175,52
-188,52
-202,52
-212,18
-222,82
-232,52
-252,52
-275,52
-290,52
-302,43
-314,52
-330,52
-345,52
-360,52
-370,52
-380,52
-390,52
-400,52
-414,18
-424,82
-434,52
-454,52
-480,52
-505,52
-520,52
-534,52
-548,52
-560,52
-574,38
-582,65
-590,52
-612,52
-630,52
-645,52
-660,52
-670,18
-680,82
-690,52
-710,52
-735,52
-760,52
-775,52
-788,45
-798,52
-816,52
-830,38
-838,65
-846,52
-870,52
-900,52
-930,52
-945,52
-958,18
-968,82
-978,52
-1000,52
-1030,52
-1060,52
-1080,52
-1092,45
-1100,52
-1120,52
-1134,38
-1142,65
-1150,52
-1200,52
-"
-></polyline>
+<polyline points="
+0,52 70,52 88,52 98,45 108,52
+126,52 138,38 146,65 154,52
+175,52 188,52 202,52 212,18
+222,82 232,52 252,52 275,52
+290,52 302,43 314,52 330,52
+345,52 360,52 370,52 380,52
+390,52 400,52 414,18 424,82
+434,52 454,52 480,52 505,52
+520,52 534,52 548,52 560,52
+574,38 582,65 590,52 612,52
+630,52 645,52 660,52 670,18
+680,82 690,52 710,52 735,52
+760,52 775,52 788,45 798,52
+816,52 830,38 838,65 846,52
+870,52 900,52 930,52 945,52
+958,18 968,82 978,52 1000,52
+1030,52 1060,52 1080,52 1092,45
+1100,52 1120,52 1134,38 1142,65
+1150,52 1200,52
+"></polyline>
 
 </svg>
 
@@ -1342,98 +817,60 @@ points="
 </header>
 
 
-<!-- =======================================================
-     BAR
-======================================================== -->
-
 <div class="bar">
 
-<span>
-    Science Exhibition 2026
-</span>
+<span>Science Exhibition 2026</span>
 
 <b>|</b>
 
 Aayushman Jha
 
-<span>
-    (Leader)
-</span>
+<span>(Leader)</span>
 
 </div>
 
 
-<!-- =======================================================
-     SETTINGS MENU
-======================================================== -->
-
-<div
-    id="settingsMenu"
-    class="settings-menu"
->
+<div id="settingsMenu" class="settings-menu">
 
 <div class="settings-head">
 
-<h3>
-    Settings
-</h3>
+<h3>Settings</h3>
 
-<button
-    onclick="toggleSettings()"
->
-    ×
-</button>
+<button onclick="toggleSettings()">×</button>
 
 </div>
-
 
 <div class="settings-card">
 
-<div class="settings-icon">
-    🔐
-</div>
-
+<div>🔐</div>
 
 <div style="width:100%">
 
-<h4>
-    Host Editor
-</h4>
-
+<h4>Host Editor</h4>
 
 <p>
-    Enter the host password to open
-    the Firebase media editor.
+Enter the host password to open
+the Firebase media editor.
 </p>
-
 
 <div class="settings-password">
 
-<label
-    for="settingsPassword"
->
-    HOST PASSWORD
-</label>
-
+<label>HOST PASSWORD</label>
 
 <input
-    id="settingsPassword"
-    type="password"
-    placeholder="Enter password"
+id="settingsPassword"
+type="password"
+placeholder="Enter password"
 >
-
 
 <button
-    class="settings-action"
-    onclick="unlockFromSettings()"
+class="settings-action"
+onclick="unlockFromSettings()"
 >
-    Open Editor
+Open Editor
 </button>
 
-
-<div
-    id="settingsPasswordMessage"
-></div>
+<div id="settingsPasswordMessage"></div>
 
 </div>
 
@@ -1443,37 +880,25 @@ Aayushman Jha
 
 </div>
 
+</div>
 
-<!-- =======================================================
-     TEAM
-======================================================== -->
 
-<section
-    id="team"
-    class="reveal"
->
+<section id="team" class="reveal">
 
 <h2 class="title">
-    <span>Aayushman Jha</span>
+<span>Aayushman Jha</span>
 </h2>
 
-
 <p class="sub">
-    Project Leader · Team Red Diamond ·
-    Science Exhibition 2026
+Project Leader · Team Red Diamond ·
+Science Exhibition 2026
 </p>
-
 
 <div style="text-align:center">
 
 <div class="leader">
-
-    Project Leader
-
-    <span>
-        Leader
-    </span>
-
+Project Leader
+<span>Leader</span>
 </div>
 
 </div>
@@ -1481,106 +906,51 @@ Aayushman Jha
 </section>
 
 
-<!-- =======================================================
-     MODEL
-======================================================== -->
-
-<section
-    id="model"
-    class="reveal"
->
+<section id="model" class="reveal">
 
 <div class="about">
 
-<div class="logo-card"></div>
-
+<div></div>
 
 <div>
 
 <h2>
-    About the <span>Heart</span>
+About the <span>Heart</span>
 </h2>
 
-
 <p>
-    The human heart is a muscular organ
-    that continuously pumps blood throughout
-    the body. Our working model demonstrates
-    this pumping action in a simple and
-    practical way.
+The human heart is a muscular organ
+that continuously pumps blood throughout
+the body. Our working model demonstrates
+this pumping action in a simple and
+practical way.
 </p>
-
 
 <div class="features">
 
+<div class="feature">
+<div class="icon">♥</div>
+<h3>Realistic Action</h3>
+<p>Pumping demonstration</p>
+</div>
 
 <div class="feature">
-
-<div class="icon">
-    ♥
+<div class="icon">◉</div>
+<h3>Blood Flow</h3>
+<p>Shows circulation</p>
 </div>
-
-<h3>
-    Realistic Action
-</h3>
-
-<p>
-    Pumping demonstration
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="icon">
-    ◉
+<div class="icon">⚙</div>
+<h3>Mechanism</h3>
+<p>Easy to understand</p>
 </div>
-
-<h3>
-    Blood Flow
-</h3>
-
-<p>
-    Shows circulation
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="icon">
-    ⚙
+<div class="icon">▣</div>
+<h3>Educational</h3>
+<p>Science project</p>
 </div>
-
-<h3>
-    Mechanism
-</h3>
-
-<p>
-    Easy to understand
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-    ▣
-</div>
-
-<h3>
-    Educational
-</h3>
-
-<p>
-    Science project
-</p>
-
-</div>
-
 
 </div>
 
@@ -1591,103 +961,85 @@ Aayushman Jha
 </section>
 
 
-<!-- =======================================================
-     MEDIA
-======================================================== -->
-
-<section
-    id="media"
-    class="reveal"
->
+<section id="media" class="reveal">
 
 <h2 class="title">
-    <span>Photo & Video</span>
-    of Project
+<span>Photo & Video</span>
+of Project
 </h2>
 
-
 <p class="sub">
-    Everyone can view the project gallery.
-    The host can manage image and video links
-    from the editor.
+Everyone can view the project gallery.
+The host can manage image and video links
+from the editor.
 </p>
-
 
 <div class="media-view-buttons">
 
 <button
-    class="media-filter active"
-    onclick="filterMedia('all',this)"
+class="media-filter active"
+onclick="filterMedia('all',this)"
 >
-    👀 See All
+👀 See All
 </button>
-
 
 <button
-    class="media-filter"
-    onclick="filterMedia('photo',this)"
+class="media-filter"
+onclick="filterMedia('photo',this)"
 >
-    📸 Photos
+📸 Photos
 </button>
-
 
 <button
-    class="media-filter"
-    onclick="filterMedia('video',this)"
+class="media-filter"
+onclick="filterMedia('video',this)"
 >
-    🎬 Videos
+🎬 Videos
 </button>
 
 </div>
 
 
 <div
-    id="firebaseStatus"
-    class="firebase-status"
+id="firebaseStatus"
+class="firebase-status"
 >
-    ☁️ Connecting to Firebase...
+☁️ Connecting to Firebase...
+</div>
+
+
+<div id="gallery" class="gallery"></div>
+
+
+<div
+id="galleryEmpty"
+class="gallery-empty"
+style="display:none"
+>
+No photos or videos have been added yet.
 </div>
 
 
 <div
-    id="gallery"
-    class="gallery"
-></div>
-
-
-<div
-    id="galleryEmpty"
-    class="gallery-empty"
-    style="display:none"
->
-    No photos or videos have been added yet.
-</div>
-
-
-<div
-    id="sectionViewer"
-    class="section-viewer"
+id="sectionViewer"
+class="section-viewer"
 >
 
 <div class="section-viewer-head">
 
 <h3 id="sectionViewerTitle">
-    Preview
+Preview
 </h3>
 
-
-<button
-    onclick="closeSectionViewer()"
->
-    ×
+<button onclick="closeSectionViewer()">
+×
 </button>
 
 </div>
 
-
 <div
-    id="sectionViewerContent"
-    class="section-viewer-content"
+id="sectionViewerContent"
+class="section-viewer-content"
 ></div>
 
 </div>
@@ -1695,47 +1047,31 @@ Aayushman Jha
 </section>
 
 
-<!-- =======================================================
-     WORKING
-======================================================== -->
-
-<section
-    id="working"
-    class="reveal"
->
+<section id="working" class="reveal">
 
 <h2 class="title">
-    About the
-    <span>Function of the Heart</span>
+About the
+<span>Function of the Heart</span>
 </h2>
 
-
 <p class="sub">
-    Learn the main functions of the heart
-    and how blood moves through the chambers.
+Learn the main functions of the heart
+and how blood moves through the chambers.
 </p>
-
 
 <div class="steps">
 
-
 <div class="step">
 
-<div class="num">
-    1
-</div>
+<div class="num">1</div>
 
-<div class="icon">
-    ⏻
-</div>
+<div class="icon">⏻</div>
 
-<h3>
-    Receives Blood
-</h3>
+<h3>Receives Blood</h3>
 
 <p>
-    The atria receive blood returning
-    to the heart.
+The atria receive blood returning
+to the heart.
 </p>
 
 </div>
@@ -1743,21 +1079,15 @@ Aayushman Jha
 
 <div class="step">
 
-<div class="num">
-    2
-</div>
+<div class="num">2</div>
 
-<div class="icon">
-    ♥
-</div>
+<div class="icon">♥</div>
 
-<h3>
-    Pumps Blood
-</h3>
+<h3>Pumps Blood</h3>
 
 <p>
-    The ventricles contract and pump
-    blood to the lungs and body.
+The ventricles contract and pump
+blood to the lungs and body.
 </p>
 
 </div>
@@ -1765,21 +1095,15 @@ Aayushman Jha
 
 <div class="step">
 
-<div class="num">
-    3
-</div>
+<div class="num">3</div>
 
-<div class="icon">
-    ◆
-</div>
+<div class="icon">◆</div>
 
-<h3>
-    Blood Circulation
-</h3>
+<h3>Blood Circulation</h3>
 
 <p>
-    Blood travels through pulmonary
-    and systemic circulation.
+Blood travels through pulmonary
+and systemic circulation.
 </p>
 
 </div>
@@ -1787,71 +1111,50 @@ Aayushman Jha
 
 <div class="step">
 
-<div class="num">
-    4
-</div>
+<div class="num">4</div>
 
-<div class="icon">
-    ↻
-</div>
+<div class="icon">↻</div>
 
-<h3>
-    Continuous Cycle
-</h3>
+<h3>Continuous Cycle</h3>
 
 <p>
-    The heart repeatedly contracts
-    and relaxes to maintain circulation.
+The heart repeatedly contracts
+and relaxes to maintain circulation.
 </p>
 
 </div>
-
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
-     CONTACT
-======================================================== -->
-
-<section
-    id="contact"
-    class="reveal"
->
+<section id="contact" class="reveal">
 
 <h2 class="title">
-    Contact <span>Us</span>
+Contact <span>Us</span>
 </h2>
 
-
 <p class="sub">
-    Get in touch with Team Red Diamond
-    about our Working Model of the Human Heart.
+Get in touch with Team Red Diamond
+about our Working Model of the Human Heart.
 </p>
-
 
 <div class="contact-grid">
 
-
 <a
-    class="contact-card"
-    href="mailto:aayushmanjha1108@gmail.com"
+class="contact-card"
+href="mailto:aayushmanjha1108@gmail.com"
 >
 
-<div class="contact-icon">
-    ✉
-</div>
+<div class="contact-icon">✉</div>
 
 <div>
 
-<h3>
-    Email
-</h3>
+<h3>Email</h3>
 
 <p>
-    aayushmanjha1108@gmail.com
+aayushmanjha1108@gmail.com
 </p>
 
 </div>
@@ -1860,23 +1163,17 @@ Aayushman Jha
 
 
 <a
-    class="contact-card"
-    href="tel:+919931203827"
+class="contact-card"
+href="tel:+919931203827"
 >
 
-<div class="contact-icon">
-    ☎
-</div>
+<div class="contact-icon">☎</div>
 
 <div>
 
-<h3>
-    Phone
-</h3>
+<h3>Phone</h3>
 
-<p>
-    +91 99312 03827
-</p>
+<p>+91 99312 03827</p>
 
 </div>
 
@@ -1885,1261 +1182,638 @@ Aayushman Jha
 
 <div class="contact-card">
 
-<div class="contact-icon">
-    ◆
-</div>
+<div class="contact-icon">◆</div>
 
 <div>
 
-<h3>
-    Team
-</h3>
+<h3>Team</h3>
 
-<p>
-    Team Red Diamond
-</p>
+<p>Team Red Diamond</p>
 
 </div>
 
 </div>
-
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================== -->
-
 <footer>
 
 <div class="footer-grid">
 
-
 <div>
 
-<h3>
-    About
-</h3>
+<h3>About</h3>
 
 <p>
-    Educational project to understand
-    the structure and working of the
-    human heart.
+Educational project to understand
+the structure and working of the
+human heart.
 </p>
 
 </div>
 
-
 <div>
 
-<h3>
-    Team
-</h3>
+<h3>Team</h3>
 
 <p class="leader">
-
 Team Red Diamond
-
-<span>
-    Project Leader · Leader
-</span>
-
+<span>Project Leader · Leader</span>
 </p>
 
 </div>
 
-
 <div>
 
-<h3>
-    Contact
-</h3>
+<h3>Contact</h3>
 
 <p>
 
 <a
-    href="mailto:aayushmanjha1108@gmail.com"
-    style="color:#aaa;text-decoration:none"
+href="mailto:aayushmanjha1108@gmail.com"
+style="color:#aaa;text-decoration:none"
 >
-    aayushmanjha1108@gmail.com
+aayushmanjha1108@gmail.com
 </a>
 
 <br>
 
 <a
-    href="tel:+919931203827"
-    style="color:#aaa;text-decoration:none"
+href="tel:+919931203827"
+style="color:#aaa;text-decoration:none"
 >
-    +91 99312 03827
++91 99312 03827
 </a>
 
 </p>
 
 </div>
 
-
 </div>
 
 
 <div class="copy">
-
 © 2026 Working Model of Heart
 · Team Red Diamond
-
 </div>
 
 </footer>
 
 
-<!-- =======================================================
-     LIGHTBOX
-======================================================== -->
-
-<div
-    id="mediaLightbox"
-    class="media-lightbox"
-    onclick="closeMediaLightbox(event)"
->
-
-<button
-    class="lb-close"
-    onclick="closeMediaLightbox()"
->
-    ×
-</button>
-
-
-<div
-    id="lightboxContent"
-></div>
-
-</div>
-
-
-<!-- =======================================================
-     BASIC JAVASCRIPT
-======================================================== -->
-
 <script>
 
-"use strict";
-
-
-/* =========================================================
-   BPM
-========================================================= */
-
 const bpm =
-    document.getElementById("bpm");
-
+document.getElementById("bpm");
 
 setInterval(
-
-    () => {
-
-        if(bpm){
-
-            bpm.textContent =
-                70 +
-                Math.floor(
-                    Math.random() * 7
-                );
-
-        }
-
-    },
-
-    1200
-
+()=>{
+    bpm.textContent =
+        70 + Math.floor(Math.random()*7);
+},
+1200
 );
 
 
-/* =========================================================
-   REVEAL
-========================================================= */
-
 const obs =
-    new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(
-
-                entry => {
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target
-                            .classList
-                            .add("show");
-
-                    }
-
-                }
-
-            );
-
-        },
-
-        {
-            threshold:.12
+new IntersectionObserver(
+entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
         }
-
-    );
+    });
+},
+{threshold:.12}
+);
 
 
 document
-    .querySelectorAll(".reveal")
-    .forEach(
+.querySelectorAll(".reveal")
+.forEach(element=>{
+    obs.observe(element);
+});
 
-        element => {
 
-            obs.observe(element);
+window.toggleSettings =
+function(){
 
-        }
+    document
+    .getElementById("settingsMenu")
+    .classList.toggle("show");
 
+};
+
+
+const HOST_PASSWORD =
+"aayushman";
+
+
+window.unlockFromSettings =
+function(){
+
+    const input =
+    document.getElementById(
+        "settingsPassword"
     );
+
+    const msg =
+    document.getElementById(
+        "settingsPasswordMessage"
+    );
+
+    if(
+        input.value === HOST_PASSWORD
+    ){
+
+        msg.textContent =
+        "✓ Access granted. Opening editor...";
+
+        msg.style.color =
+        "#69e58a";
+
+        setTimeout(()=>{
+            location.href="edit.html";
+        },500);
+
+    }else{
+
+        msg.textContent =
+        "Incorrect password.";
+
+        msg.style.color =
+        "#ff5262";
+
+    }
+
+};
 
 </script>
 
 
-<!-- =======================================================
-     FIREBASE FIRESTORE GALLERY
-     
-     IMPORTANT:
-     This reads:
-     
-     heartProjectMedia
-     
-     It does NOT use Firebase Storage.
-     It reads Cloudinary URL from:
-     
-     data.url
-======================================================== -->
+<!-- =====================================================
+     FIREBASE ONLY
+===================================================== -->
 
 <script type="module">
 
-"use strict";
-
-
-/* =========================================================
-   FIREBASE
-========================================================= */
+import {
+    initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-    db
-} from "./firebase-config.js";
-
-
-import {
+    getFirestore,
     collection,
     getDocs
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   CONFIGURATION
-========================================================= */
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyDdYdMXyUU52kvja7a8jE3-8Bh1ahY3sjU",
+
+    authDomain:
+    "working-heart.firebaseapp.com",
+
+    projectId:
+    "working-heart",
+
+    storageBucket:
+    "working-heart.firebasestorage.app",
+
+    messagingSenderId:
+    "583684499453",
+
+    appId:
+    "1:583684499453:web:8793e7149555af3a711b94"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
 
 const COLLECTION_NAME =
-    "heartProjectMedia";
+"heartProjectMedia";
 
 
-const REFRESH_TIME =
-    10000;
+const gallery =
+document.getElementById("gallery");
 
+const empty =
+document.getElementById("galleryEmpty");
 
-/* =========================================================
-   STATE
-========================================================= */
+const status =
+document.getElementById("firebaseStatus");
+
 
 let mediaStore = [];
 
-let currentMediaFilter =
-    "all";
+let currentFilter =
+"all";
 
-
-let loadingGallery =
-    false;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const gallery =
-    document.getElementById(
-        "gallery"
-    );
-
-
-const galleryEmpty =
-    document.getElementById(
-        "galleryEmpty"
-    );
-
-
-const firebaseStatus =
-    document.getElementById(
-        "firebaseStatus"
-    );
-
-
-/* =========================================================
-   STATUS
-========================================================= */
 
 function setStatus(
     text,
-    type=""
+    live=false
 ){
 
-    if(!firebaseStatus){
-        return;
-    }
+    status.textContent =
+    text;
 
-
-    firebaseStatus.textContent =
-        text;
-
-
-    firebaseStatus.classList.remove(
+    status.classList.toggle(
         "live",
-        "error"
+        live
     );
 
-
-    if(type){
-
-        firebaseStatus.classList.add(
-            type
-        );
-
-    }
-
 }
 
-
-/* =========================================================
-   FIREBASE ERROR
-========================================================= */
-
-function showFirebaseError(
-    error
-){
-
-    console.error(
-        "Firebase gallery error:",
-        error
-    );
-
-
-    let message =
-        "☁️ Firebase gallery could not be loaded.";
-
-
-    if(
-        error &&
-        error.code ===
-        "permission-denied"
-    ){
-
-        message =
-            "❌ Firestore permission denied.";
-
-    }
-
-
-    if(
-        error &&
-        error.message &&
-        String(
-            error.message
-        )
-        .toLowerCase()
-        .includes("permission")
-    ){
-
-        message =
-            "❌ Firestore permission denied.";
-
-    }
-
-
-    setStatus(
-        message,
-        "error"
-    );
-
-
-    if(gallery){
-
-        gallery.innerHTML = "";
-
-    }
-
-
-    if(galleryEmpty){
-
-        galleryEmpty.style.display =
-            "block";
-
-
-        galleryEmpty.className =
-            "gallery-error";
-
-
-        if(
-            message.includes(
-                "permission"
-            )
-        ){
-
-            galleryEmpty.innerHTML =
-                "Firestore is connected, but its rules are blocking public reads.<br><br>" +
-                "Check Firestore Rules.";
-
-        }else{
-
-            galleryEmpty.textContent =
-                "Please check Firebase configuration and Firestore.";
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   TYPE NORMALIZATION
-========================================================= */
-
-function normalizeType(
-    data
-){
-
-    if(!data){
-
-        return "";
-
-    }
-
-
-    /*
-       First check explicit type.
-    */
-
-    let type =
-        String(
-            data.type ||
-            ""
-        )
-        .trim()
-        .toLowerCase();
-
-
-    /*
-       image -> photo
-    */
-
-    if(
-        type === "image" ||
-        type === "photo" ||
-        type === "picture" ||
-        type === "img"
-    ){
-
-        return "photo";
-
-    }
-
-
-    /*
-       video variants
-    */
-
-    if(
-        type === "video" ||
-        type === "movie" ||
-        type === "vid"
-    ){
-
-        return "video";
-
-    }
-
-
-    /*
-       Cloudinary resourceType
-    */
-
-    const resourceType =
-        String(
-            data.resourceType ||
-            ""
-        )
-        .trim()
-        .toLowerCase();
-
-
-    if(
-        resourceType === "video"
-    ){
-
-        return "video";
-
-    }
-
-
-    if(
-        resourceType === "image"
-    ){
-
-        return "photo";
-
-    }
-
-
-    /*
-       Check format.
-    */
-
-    const format =
-        String(
-            data.format ||
-            ""
-        )
-        .trim()
-        .toLowerCase();
-
-
-    if(
-        [
-            "mp4",
-            "webm",
-            "mov",
-            "m4v",
-            "ogg"
-        ]
-        .includes(format)
-    ){
-
-        return "video";
-
-    }
-
-
-    if(
-        [
-            "jpg",
-            "jpeg",
-            "png",
-            "gif",
-            "webp",
-            "avif",
-            "bmp"
-        ]
-        .includes(format)
-    ){
-
-        return "photo";
-
-    }
-
-
-    /*
-       Last fallback:
-       detect from URL.
-    */
-
-    const url =
-        String(
-            data.url ||
-            ""
-        )
-        .split("?")[0]
-        .split("#")[0]
-        .toLowerCase();
-
-
-    if(
-        /\.(mp4|webm|mov|m4v|ogg)$/i
-        .test(url)
-    ){
-
-        return "video";
-
-    }
-
-
-    if(
-        /\.(jpg|jpeg|png|gif|webp|avif|bmp)$/i
-        .test(url)
-    ){
-
-        return "photo";
-
-    }
-
-
-    return "";
-
-}
-
-
-/* =========================================================
-   CREATED TIME
-========================================================= */
-
-function getCreatedTime(
-    timestamp
-){
-
-    if(!timestamp){
-
-        return 0;
-
-    }
-
-
-    /*
-       Firestore Timestamp
-    */
-
-    if(
-        typeof timestamp.toMillis ===
-        "function"
-    ){
-
-        return timestamp.toMillis();
-
-    }
-
-
-    /*
-       Firestore timestamp object
-    */
-
-    if(
-        timestamp.seconds !== undefined
-    ){
-
-        return (
-            Number(
-                timestamp.seconds
-            ) * 1000
-        );
-
-    }
-
-
-    /*
-       Date
-    */
-
-    if(
-        timestamp instanceof Date
-    ){
-
-        return timestamp.getTime();
-
-    }
-
-
-    /*
-       Number
-    */
-
-    if(
-        typeof timestamp ===
-        "number"
-    ){
-
-        return timestamp;
-
-    }
-
-
-    /*
-       String date
-    */
-
-    if(
-        typeof timestamp ===
-        "string"
-    ){
-
-        const time =
-            Date.parse(timestamp);
-
-
-        if(!Number.isNaN(time)){
-
-            return time;
-
-        }
-
-    }
-
-
-    return 0;
-
-}
-
-
-/* =========================================================
-   CLOUDINARY URL CHECK
-========================================================= */
-
-function isValidMediaUrl(
-    url
-){
-
-    if(!url){
-
-        return false;
-
-    }
-
-
-    try{
-
-        const parsed =
-            new URL(url);
-
-
-        return (
-            parsed.protocol ===
-            "http:" ||
-
-            parsed.protocol ===
-            "https:"
-        );
-
-    }catch(error){
-
-        return false;
-
-    }
-
-}
-
-
-/* =========================================================
-   LOAD FIRESTORE
-========================================================= */
 
 async function loadFirebaseMedia(){
-
-    if(loadingGallery){
-
-        return;
-
-    }
-
-
-    loadingGallery =
-        true;
-
 
     try{
 
         setStatus(
-            "☁️ Loading project gallery..."
+            "☁️ Reading Firebase..."
         );
 
 
-        /*
-           IMPORTANT:
-
-           No orderBy() is used.
-
-           This avoids failures when some
-           older documents don't have
-           createdAt.
-        */
-
-        const snapshot =
-            await getDocs(
-
-                collection(
-                    db,
-                    COLLECTION_NAME
-                )
-
-            );
+        const snap =
+        await getDocs(
+            collection(
+                db,
+                COLLECTION_NAME
+            )
+        );
 
 
-        const newMedia = [];
+        mediaStore = [];
 
 
-        snapshot.forEach(
-
-            documentSnapshot => {
+        snap.forEach(
+            docSnap=>{
 
                 const data =
-                    documentSnapshot.data();
+                docSnap.data();
 
 
-                if(!data){
+                console.log(
+                    "Firebase document:",
+                    docSnap.id,
+                    data
+                );
 
+
+                const url =
+                data.url ||
+                data.link ||
+                data.mediaUrl ||
+                data.secure_url;
+
+
+                if(!url){
                     return;
-
                 }
 
 
-                /*
-                   The editor saves the
-                   Cloudinary URL here.
-                */
-
-                const url =
-                    String(
-                        data.url ||
-                        ""
-                    )
-                    .trim();
+                let type =
+                String(
+                    data.type ||
+                    data.mediaType ||
+                    ""
+                ).toLowerCase();
 
 
                 if(
-                    !isValidMediaUrl(url)
+                    type==="image" ||
+                    type==="photo" ||
+                    type==="photos"
                 ){
 
-                    console.warn(
-                        "Skipping document without valid URL:",
-                        documentSnapshot.id,
-                        data
-                    );
-
-                    return;
+                    type="photo";
 
                 }
 
 
-                const type =
-                    normalizeType(
-                        data
-                    );
+                if(
+                    type==="video" ||
+                    type==="videos"
+                ){
 
-
-                if(!type){
-
-                    console.warn(
-                        "Could not determine media type:",
-                        documentSnapshot.id,
-                        data
-                    );
-
-                    return;
+                    type="video";
 
                 }
 
 
-                newMedia.push({
+                if(
+                    type!=="photo" &&
+                    type!=="video"
+                ){
 
-                    id:
-                        documentSnapshot.id,
+                    const u =
+                    url
+                    .split("?")[0]
+                    .toLowerCase();
+
+
+                    if(
+                        /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
+                    ){
+
+                        type="photo";
+
+                    }else if(
+                        /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
+                    ){
+
+                        type="video";
+
+                    }else{
+
+                        return;
+
+                    }
+
+                }
+
+
+                mediaStore.push({
+
+                    id:docSnap.id,
 
                     name:
-                        String(
-                            data.name ||
-                            data.title ||
-                            "Project Media"
-                        ),
+                    data.name ||
+                    data.title ||
+                    "Project Media",
 
-                    url:
-                        url,
+                    url:url,
 
-                    type:
-                        type,
-
-                    createdAt:
-                        data.createdAt ||
-                        null,
-
-                    publicId:
-                        data.publicId ||
-                        "",
-
-                    resourceType:
-                        data.resourceType ||
-                        "",
-
-                    format:
-                        data.format ||
-                        ""
+                    type:type
 
                 });
 
             }
-
         );
-
-
-        /*
-           Newest first.
-
-           If createdAt is missing,
-           the item is kept.
-        */
-
-        newMedia.sort(
-
-            (a,b) => {
-
-                const aTime =
-                    getCreatedTime(
-                        a.createdAt
-                    );
-
-
-                const bTime =
-                    getCreatedTime(
-                        b.createdAt
-                    );
-
-
-                return bTime - aTime;
-
-            }
-
-        );
-
-
-        mediaStore =
-            newMedia;
 
 
         setStatus(
-            "☁️ Live project gallery connected",
-            "live"
+            "☁️ Firebase connected • " +
+            mediaStore.length +
+            " media loaded",
+            true
         );
 
 
-        renderMedia(
-            currentMediaFilter
-        );
+        renderMedia();
 
+    }
+    catch(error){
 
-        console.log(
-            "✓ Firestore connected"
-        );
-
-
-        console.log(
-            "✓ Collection:",
-            COLLECTION_NAME
-        );
-
-
-        console.log(
-            "✓ Media loaded:",
-            mediaStore
-        );
-
-
-    }catch(error){
-
-        showFirebaseError(
+        console.error(
+            "Firebase error:",
             error
         );
 
-    }finally{
 
-        loadingGallery =
-            false;
+        setStatus(
+            "❌ Firebase error"
+        );
+
+
+        gallery.innerHTML="";
+
+        empty.style.display="block";
+
+
+        if(
+            error.code==="permission-denied"
+        ){
+
+            empty.textContent =
+            "❌ Firestore permission denied. Check your rules.";
+
+        }else{
+
+            empty.textContent =
+            "❌ Firebase could not load media: " +
+            error.message;
+
+        }
 
     }
 
 }
 
 
-/* =========================================================
-   RENDER MEDIA
-========================================================= */
+function renderMedia(){
 
-function renderMedia(
-    filter="all"
-){
-
-    if(!gallery){
-
-        return;
-
-    }
+    gallery.innerHTML="";
 
 
-    gallery.innerHTML =
-        "";
+    const items =
+    mediaStore.filter(
+        item=>{
 
+            return(
+                currentFilter==="all" ||
+                item.type===currentFilter
+            );
 
-    let items =
-        mediaStore.filter(
-
-            item => {
-
-                if(
-                    filter === "all"
-                ){
-
-                    return true;
-
-                }
-
-
-                return (
-                    item.type ===
-                    filter
-                );
-
-            }
-
-        );
+        }
+    );
 
 
     if(!items.length){
 
-        if(galleryEmpty){
+        empty.style.display="block";
 
-            galleryEmpty.style.display =
-                "block";
-
-
-            galleryEmpty.className =
-                "gallery-empty";
-
-
-            if(
-                mediaStore.length ===
-                0
-            ){
-
-                galleryEmpty.textContent =
-                    "No photos or videos have been added yet.";
-
-            }else{
-
-                galleryEmpty.textContent =
-                    "No media found for this category.";
-
-            }
-
-        }
-
+        empty.textContent =
+        mediaStore.length
+        ? "No media found."
+        : "No photos or videos have been added yet.";
 
         return;
 
     }
 
 
-    if(galleryEmpty){
-
-        galleryEmpty.style.display =
-            "none";
-
-    }
+    empty.style.display="none";
 
 
     items.forEach(
+        item=>{
 
-        item => {
+            const card =
+            document.createElement("div");
 
-            createMediaCard(
-                item
-            );
+
+            card.className =
+            "gallery-item";
+
+
+            let media;
+
+
+            if(
+                item.type==="video"
+            ){
+
+                media =
+                document.createElement("video");
+
+                media.controls=false;
+                media.muted=true;
+                media.playsInline=true;
+                media.preload="metadata";
+
+            }else{
+
+                media =
+                document.createElement("img");
+
+                media.loading="lazy";
+
+            }
+
+
+            media.src =
+            item.url;
+
+
+            media.alt =
+            item.name;
+
+
+            media.onerror =
+            function(){
+
+                console.error(
+                    "Media failed:",
+                    item.url
+                );
+
+            };
+
+
+            const caption =
+            document.createElement("div");
+
+
+            caption.className =
+            "gallery-caption";
+
+
+            caption.textContent =
+            item.name;
+
+
+            card.appendChild(media);
+
+            card.appendChild(caption);
+
+
+            card.onclick =
+            ()=>{
+                openViewer(item);
+            };
+
+
+            gallery.appendChild(card);
 
         }
-
     );
 
 }
 
 
-/* =========================================================
-   CREATE MEDIA CARD
-========================================================= */
+function openViewer(item){
 
-function createMediaCard(
-    item
-){
+    const viewer =
+    document.getElementById(
+        "sectionViewer"
+    );
 
-    const card =
-        document.createElement(
-            "div"
-        );
+    const title =
+    document.getElementById(
+        "sectionViewerTitle"
+    );
+
+    const content =
+    document.getElementById(
+        "sectionViewerContent"
+    );
 
 
-    card.className =
-        "gallery-item";
+    content.innerHTML="";
 
-
-    card.dataset.id =
-        item.id;
+    title.textContent =
+    item.name;
 
 
     let media;
 
 
     if(
-        item.type ===
-        "video"
+        item.type==="video"
     ){
 
         media =
-            document.createElement(
-                "video"
-            );
+        document.createElement("video");
 
-
-        media.controls =
-            false;
-
-
-        media.playsInline =
-            true;
-
-
-        media.preload =
-            "metadata";
-
+        media.controls=true;
+        media.autoplay=true;
+        media.playsInline=true;
 
     }else{
 
         media =
-            document.createElement(
-                "img"
-            );
+        document.createElement("img");
 
     }
 
 
     media.src =
-        item.url;
+    item.url;
 
 
-    media.alt =
-        item.name;
+    media.className =
+    "section-view-media";
 
 
-    /*
-       Don't allow clicking the
-       media itself to accidentally
-       navigate away.
-    */
+    content.appendChild(media);
 
-    media.draggable =
-        false;
+    viewer.classList.add("show");
 
-
-    /*
-       Media loading error
-    */
-
-    media.addEventListener(
-        "error",
-        function(){
-
-            card.classList.add(
-                "media-broken"
-            );
-
-
-            media.style.display =
-                "none";
-
-
-            const errorText =
-                document.createElement(
-                    "div"
-                );
-
-
-            errorText.style.height =
-                "125px";
-
-
-            errorText.style.display =
-                "grid";
-
-
-            errorText.style.placeItems =
-                "center";
-
-
-            errorText.style.color =
-                "#777";
-
-
-            errorText.style.fontSize =
-                "12px";
-
-
-            errorText.textContent =
-                "Media unavailable";
-
-
-            card.insertBefore(
-                errorText,
-                card.firstChild
-            );
-
-        }
-    );
-
-
-    const caption =
-        document.createElement(
-            "div"
-        );
-
-
-    caption.className =
-        "gallery-caption";
-
-
-    caption.textContent =
-        item.name;
-
-
-    card.appendChild(
-        media
-    );
-
-
-    card.appendChild(
-        caption
-    );
-
-
-    card.addEventListener(
-        "click",
-        function(){
-
-            showMediaInsideSection(
-                item
-            );
-
-        }
-    );
-
-
-    gallery.appendChild(
-        card
-    );
+    viewer.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
 
 }
 
 
-/* =========================================================
-   FILTER
-========================================================= */
+window.closeSectionViewer =
+function(){
+
+    document
+    .getElementById("sectionViewer")
+    .classList.remove("show");
+
+    document
+    .getElementById("sectionViewerContent")
+    .innerHTML="";
+
+};
+
 
 window.filterMedia =
 function(
@@ -3147,511 +1821,38 @@ function(
     button
 ){
 
-    currentMediaFilter =
-        filter;
+    currentFilter =
+    filter;
 
 
     document
-        .querySelectorAll(
-            ".media-filter"
-        )
-        .forEach(
-
-            btn => {
-
-                btn.classList.remove(
-                    "active"
-                );
-
-            }
-
-        );
+    .querySelectorAll(".media-filter")
+    .forEach(
+        btn=>{
+            btn.classList.remove("active");
+        }
+    );
 
 
     if(button){
-
-        button.classList.add(
-            "active"
-        );
-
+        button.classList.add("active");
     }
 
 
-    renderMedia(
-        filter
-    );
+    renderMedia();
 
 };
 
-
-/* =========================================================
-   SECTION VIEWER
-========================================================= */
-
-window.showMediaInsideSection =
-function(item){
-
-    const viewer =
-        document.getElementById(
-            "sectionViewer"
-        );
-
-
-    const content =
-        document.getElementById(
-            "sectionViewerContent"
-        );
-
-
-    const title =
-        document.getElementById(
-            "sectionViewerTitle"
-        );
-
-
-    if(
-        !viewer ||
-        !content ||
-        !title
-    ){
-
-        return;
-
-    }
-
-
-    content.innerHTML =
-        "";
-
-
-    title.textContent =
-        item.name ||
-        "Project Media";
-
-
-    let media;
-
-
-    if(
-        item.type ===
-        "video"
-    ){
-
-        media =
-            document.createElement(
-                "video"
-            );
-
-
-        media.controls =
-            true;
-
-
-        media.autoplay =
-            true;
-
-
-        media.playsInline =
-            true;
-
-
-        media.preload =
-            "metadata";
-
-    }else{
-
-        media =
-            document.createElement(
-                "img"
-            );
-
-    }
-
-
-    media.src =
-        item.url;
-
-
-    media.alt =
-        item.name ||
-        "Project Media";
-
-
-    media.className =
-        "section-view-media";
-
-
-    content.appendChild(
-        media
-    );
-
-
-    viewer.classList.add(
-        "show"
-    );
-
-
-    viewer.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"center"
-
-    });
-
-};
-
-
-/* =========================================================
-   CLOSE SECTION VIEWER
-========================================================= */
-
-window.closeSectionViewer =
-function(){
-
-    const viewer =
-        document.getElementById(
-            "sectionViewer"
-        );
-
-
-    const content =
-        document.getElementById(
-            "sectionViewerContent"
-        );
-
-
-    if(viewer){
-
-        viewer.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    if(content){
-
-        content.innerHTML =
-            "";
-
-    }
-
-};
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-window.openMediaLightbox =
-function(item){
-
-    const box =
-        document.getElementById(
-            "mediaLightbox"
-        );
-
-
-    const content =
-        document.getElementById(
-            "lightboxContent"
-        );
-
-
-    if(
-        !box ||
-        !content
-    ){
-
-        return;
-
-    }
-
-
-    content.innerHTML =
-        "";
-
-
-    let media;
-
-
-    if(
-        item.type ===
-        "video"
-    ){
-
-        media =
-            document.createElement(
-                "video"
-            );
-
-
-        media.controls =
-            true;
-
-
-        media.autoplay =
-            true;
-
-
-        media.playsInline =
-            true;
-
-    }else{
-
-        media =
-            document.createElement(
-                "img"
-            );
-
-    }
-
-
-    media.src =
-        item.url;
-
-
-    content.appendChild(
-        media
-    );
-
-
-    box.classList.add(
-        "show"
-    );
-
-};
-
-
-/* =========================================================
-   CLOSE LIGHTBOX
-========================================================= */
-
-window.closeMediaLightbox =
-function(event){
-
-    if(
-        event &&
-        event.target &&
-        event.target.closest(
-            "#lightboxContent"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const box =
-        document.getElementById(
-            "mediaLightbox"
-        );
-
-
-    const content =
-        document.getElementById(
-            "lightboxContent"
-        );
-
-
-    if(box){
-
-        box.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    if(content){
-
-        content.innerHTML =
-            "";
-
-    }
-
-};
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-window.toggleSettings =
-function(){
-
-    const menu =
-        document.getElementById(
-            "settingsMenu"
-        );
-
-
-    if(!menu){
-
-        return;
-
-    }
-
-
-    menu.classList.toggle(
-        "show"
-    );
-
-};
-
-
-/* =========================================================
-   ADMIN PASSWORD
-========================================================= */
-
-const HOST_PASSWORD =
-    "aayushman";
-
-
-window.unlockFromSettings =
-function(){
-
-    const input =
-        document.getElementById(
-            "settingsPassword"
-        );
-
-
-    const msg =
-        document.getElementById(
-            "settingsPasswordMessage"
-        );
-
-
-    if(
-        !input ||
-        !msg
-    ){
-
-        return;
-
-    }
-
-
-    const password =
-        input.value;
-
-
-    if(
-        password ===
-        HOST_PASSWORD
-    ){
-
-        msg.textContent =
-            "✓ Access granted. Opening editor...";
-
-
-        msg.style.color =
-            "#69e58a";
-
-
-        setTimeout(
-
-            () => {
-
-                window.location.href =
-                    "edit.html";
-
-            },
-
-            500
-
-        );
-
-    }else{
-
-        msg.textContent =
-            "Incorrect password.";
-
-
-        msg.style.color =
-            "#ff5262";
-
-    }
-
-};
-
-
-/* =========================================================
-   CLOSE SETTINGS OUTSIDE
-========================================================= */
-
-document.addEventListener(
-
-    "click",
-
-    function(event){
-
-        const menu =
-            document.getElementById(
-                "settingsMenu"
-            );
-
-
-        const button =
-            document.querySelector(
-                ".settings-btn"
-            );
-
-
-        if(
-            menu &&
-            menu.classList.contains(
-                "show"
-            ) &&
-            !menu.contains(
-                event.target
-            ) &&
-            button &&
-            !button.contains(
-                event.target
-            )
-        ){
-
-            menu.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-
-);
-
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
 
 loadFirebaseMedia();
 
 
-/* =========================================================
-   AUTO REFRESH
-========================================================= */
-
 setInterval(
-
-    () => {
-
-        loadFirebaseMedia();
-
-    },
-
-    REFRESH_TIME
-
+    loadFirebaseMedia,
+    10000
 );
 
 </script>
 
-
 </body>
-
 </html>
