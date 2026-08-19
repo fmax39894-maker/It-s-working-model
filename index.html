@@ -12,46 +12,106 @@
 
 <title>Working Model of Heart</title>
 
-<head>
-
-<meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
->
-
-<title>Working Model of Heart</title>
 
 <!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
-<meta property="og:title" content="Working Model of Heart">
-<meta property="og:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta property="og:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:secure_url" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Working Model of Heart">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://its-working-heart.vercel.app/">
+
+<meta
+    property="og:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    property="og:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:secure_url"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:type"
+    content="image/png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:url"
+    content="https://its-working-heart.vercel.app/"
+>
+
 
 <!-- TWITTER / X COVER -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Working Model of Heart">
-<meta name="twitter:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta name="twitter:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta name="twitter:image:alt" content="Working Model of Heart">
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    name="twitter:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    name="twitter:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    name="twitter:image:alt"
+    content="Working Model of Heart"
+>
+
 
 <!-- BROWSER ICON -->
-<link rel="icon" type="image/png" href="/cover.png">
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/cover.png"
+>
+
 
 <style>
 
-<style>
+*{
+    box-sizing:border-box
+}
 
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth
+}
 
 body{
     margin:0;
@@ -59,6 +119,11 @@ body{
     color:#fff;
     font-family:Arial,sans-serif
 }
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 nav{
     height:64px;
@@ -79,7 +144,9 @@ nav{
     font-weight:700
 }
 
-.brand span,h1 span,.red{
+.brand span,
+h1 span,
+.red{
     color:#ff2638
 }
 
@@ -94,7 +161,14 @@ nav{
     font-size:14px
 }
 
-.links a:hover{color:#ff2638}
+.links a:hover{
+    color:#ff2638
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
     min-height:600px;
@@ -104,6 +178,7 @@ nav{
     align-items:center;
     position:relative;
     overflow:hidden;
+
     background:
     radial-gradient(
         circle at 80% 35%,
@@ -117,6 +192,7 @@ nav{
     position:absolute;
     inset:0;
     opacity:.18;
+
     background-image:
     linear-gradient(
         #ff263812 1px,
@@ -127,10 +203,13 @@ nav{
         #ff263812 1px,
         transparent 1px
     );
+
     background-size:42px 42px
 }
 
-.hero>*{position:relative}
+.hero>*{
+    position:relative
+}
 
 .eyebrow{
     font-size:12px;
@@ -165,7 +244,9 @@ nav{
     transition:.25s
 }
 
-.btn:hover{transform:translateY(-3px)}
+.btn:hover{
+    transform:translateY(-3px)
+}
 
 .live-link{
     margin-left:10px;
@@ -173,15 +254,24 @@ nav{
     border:1px solid #ff2638
 }
 
-.live-link:hover{background:#ff2638}
+.live-link:hover{
+    background:#ff2638
+}
+
+
+/* =====================================================
+   HEARTBEAT
+===================================================== */
 
 .bpm{
     margin-top:22px;
     width:170px;
     padding:12px;
+
     border:1px solid #383a40;
     border-radius:10px;
     background:#111317;
+
     display:flex;
     gap:10px;
     align-items:center
@@ -191,18 +281,28 @@ nav{
     width:31px;
     height:31px;
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
+
     animation:pulse 1s infinite
 }
 
 @keyframes pulse{
+
     50%{
         transform:scale(1.15);
         box-shadow:0 0 25px #ff263888
     }
+
 }
+
+
+/* =====================================================
+   ECG
+===================================================== */
 
 .ecg{
     position:absolute;
@@ -223,23 +323,41 @@ nav{
     stroke-width:3;
     stroke-linecap:round;
     stroke-linejoin:round;
+
     stroke-dasharray:900;
     stroke-dashoffset:900;
+
     animation:ecg 2.2s linear infinite;
-    filter:drop-shadow(0 0 7px #ff2638)
+
+    filter:drop-shadow(
+        0 0 7px #ff2638
+    )
 }
 
 @keyframes ecg{
-    to{stroke-dashoffset:0}
+
+    to{
+        stroke-dashoffset:0
+    }
+
 }
+
+
+/* =====================================================
+   BAR
+===================================================== */
 
 .bar{
     width:86%;
     margin:auto;
     padding:14px;
+
     text-align:center;
+
     background:#111317;
+
     border:1px solid #303238;
+
     color:#aaa
 }
 
@@ -253,6 +371,11 @@ nav{
     color:#555
 }
 
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
 section{
     padding:80px 7%;
     border-top:1px solid #202126
@@ -263,59 +386,88 @@ section{
     font-size:38px
 }
 
-.title span{color:#ff2638}
+.title span{
+    color:#ff2638
+}
 
 .sub{
     max-width:700px;
     margin:0 auto 42px;
+
     text-align:center;
+
     color:#aeb1b8;
+
     line-height:1.6
 }
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
 
 .about{
     max-width:1100px;
     margin:auto;
+
     display:grid;
     grid-template-columns:1fr 1.2fr;
+
     gap:50px;
+
     align-items:center
 }
 
-.about h2{font-size:34px}
+.about h2{
+    font-size:34px
+}
 
 .about p{
     color:#c5c7cc;
     line-height:1.7
 }
 
-.features,.steps{
+
+/* =====================================================
+   FEATURES / STEPS
+===================================================== */
+
+.features,
+.steps{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px
 }
 
-.feature,.step{
+.feature,
+.step{
     padding:22px;
+
     border:1px solid #34363c;
     border-radius:13px;
+
     background:#111317;
+
     text-align:center;
+
     transition:.3s
 }
 
-.feature:hover,.step:hover{
+.feature:hover,
+.step:hover{
     transform:translateY(-6px);
     border-color:#ff2638
 }
 
-.feature .icon,.step .icon{
+.feature .icon,
+.step .icon{
     font-size:29px;
     color:#ff2638;
     margin-bottom:10px
 }
 
-.feature p,.step p{
+.feature p,
+.step p{
     color:#aaa;
     font-size:13px;
     line-height:1.5
@@ -324,32 +476,50 @@ section{
 .num{
     width:30px;
     height:30px;
+
     border-radius:50%;
+
     background:#ff2638;
+
     display:grid;
     place-items:center;
+
     margin:0 auto 17px;
+
     font-weight:bold
 }
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
 
 .contact-grid{
     max-width:950px;
     margin:auto;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
+
     gap:18px
 }
 
 .contact-card{
     display:flex;
     align-items:center;
+
     gap:15px;
+
     padding:24px;
+
     border:1px solid #34363c;
     border-radius:14px;
+
     background:#111317;
+
     text-decoration:none;
     color:#fff;
+
     transition:.3s
 }
 
@@ -361,40 +531,60 @@ section{
 .contact-icon{
     width:45px;
     height:45px;
+
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
     color:#fff;
+
     font-size:22px;
+
     flex:none
 }
 
-.contact-card h3{margin:0 0 6px}
+.contact-card h3{
+    margin:0 0 6px
+}
 
 .contact-card p{
     margin:0;
     color:#aaa;
+
     word-break:break-word;
+
     font-size:13px;
     line-height:1.45
 }
 
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
 footer{
     padding:45px 7% 20px;
+
     border-top:1px solid #292a30;
+
     background:#090a0c
 }
 
 .footer-grid{
     max-width:1100px;
     margin:auto;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
+
     gap:35px
 }
 
-.footer-grid h3{color:#ff2638}
+.footer-grid h3{
+    color:#ff2638
+}
 
 .footer-grid p{
     color:#aaa;
@@ -409,23 +599,38 @@ footer{
 
 .leader span{
     display:block;
+
     color:#ff2638;
+
     font-size:13px;
+
     margin-top:5px
 }
 
 .copy{
     text-align:center;
+
     color:#666;
+
     border-top:1px solid #222;
+
     margin-top:30px;
+
     padding-top:18px;
+
     font-size:12px
 }
 
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
 .reveal{
     opacity:0;
+
     transform:translateY(25px);
+
     transition:.7s
 }
 
@@ -434,22 +639,37 @@ footer{
     transform:none
 }
 
+
+/* =====================================================
+   MEDIA
+===================================================== */
+
 .media-view-buttons{
     display:flex;
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:10px;
+
     margin:0 auto 28px
 }
 
 .media-filter{
     border:1px solid #3a3c42;
+
     background:#111317;
+
     color:#fff;
+
     padding:11px 17px;
+
     border-radius:9px;
+
     cursor:pointer;
+
     font-weight:700;
+
     transition:.25s
 }
 
@@ -461,25 +681,35 @@ footer{
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(
+
+    grid-template-columns:
+    repeat(
         auto-fit,
         minmax(150px,190px)
     );
+
     justify-content:center;
+
     gap:15px
 }
 
 .gallery-item{
     background:#111317;
+
     border:1px solid #34363c;
+
     border-radius:13px;
+
     overflow:hidden;
+
     cursor:pointer;
+
     animation:galleryIn .45s
 }
 
 .gallery-item:hover{
     border-color:#ff2638;
+
     transform:translateY(-3px)
 }
 
@@ -487,213 +717,600 @@ footer{
 .gallery-item video{
     width:100%;
     height:125px;
+
     display:block;
+
     object-fit:cover
 }
 
 .gallery-caption{
     padding:9px;
+
     color:#aaa;
+
     font-size:12px;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis
 }
 
 .gallery-empty{
     text-align:center;
+
     color:#777;
+
     padding:35px
 }
 
 @keyframes galleryIn{
+
     from{
         opacity:0;
         transform:translateY(15px)
     }
+
     to{
         opacity:1;
         transform:none
     }
+
 }
+
+
+/* =====================================================
+   FIREBASE STATUS
+===================================================== */
 
 .firebase-status{
     text-align:center;
+
     margin:-8px auto 24px;
+
     color:#777;
+
     font-size:11px
 }
 
-.firebase-status.live{color:#69e58a}
+.firebase-status.live{
+    color:#69e58a
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 .settings-btn{
     width:38px;
     height:38px;
+
     border:1px solid #383a40;
+
     border-radius:9px;
+
     background:#111317;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     gap:5px;
+
     cursor:pointer
 }
 
 .settings-btn span{
     display:block;
+
     width:18px;
     height:2px;
+
     background:#fff;
+
     border-radius:3px
 }
 
 .settings-menu{
     position:fixed;
+
     top:76px;
     right:6%;
+
     width:min(340px,88vw);
+
     z-index:100;
+
     display:none;
+
     padding:18px;
+
     border:1px solid #3a3c42;
+
     border-radius:16px;
+
     background:#101114;
+
     box-shadow:0 20px 60px #000b
 }
 
-.settings-menu.show{display:block}
+.settings-menu.show{
+    display:block
+}
 
 .settings-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:15px
 }
 
 .settings-head h3{
     margin:0;
+
     color:#ff2638
 }
 
 .settings-head button{
     border:0;
+
     background:none;
+
     color:#fff;
+
     font-size:25px;
+
     cursor:pointer
 }
 
 .settings-card{
     display:flex;
+
     gap:14px;
+
     padding:17px;
+
     border:1px solid #34363c;
+
     border-radius:12px;
+
     background:#111317
 }
 
-.settings-card h4{margin:0 0 5px}
+.settings-card h4{
+    margin:0 0 5px
+}
 
 .settings-card p{
     margin:0 0 12px;
+
     color:#aaa;
+
     font-size:12px;
+
     line-height:1.5
 }
 
 .settings-password{
     margin-top:12px;
+
     padding-top:12px;
+
     border-top:1px solid #292b31
 }
 
 .settings-password label{
     display:block;
+
     font-size:9px;
+
     letter-spacing:1.8px;
+
     color:#ff6b76;
+
     font-weight:800;
+
     margin-bottom:7px
 }
 
 .settings-password input{
     width:100%;
+
     padding:10px 11px;
+
     background:#08090b;
+
     border:1px solid #383a40;
+
     border-radius:8px;
+
     color:#fff;
+
     outline:none
 }
 
 .settings-action{
     width:100%;
+
     margin-top:8px;
+
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     border-radius:8px;
+
     padding:10px;
+
     font-weight:700;
+
     cursor:pointer
 }
 
 #settingsPasswordMessage{
     font-size:11px;
+
     margin-top:7px;
+
     min-height:14px
 }
 
+
+/* =====================================================
+   SECTION VIEWER
+===================================================== */
+
 .section-viewer{
     display:none;
+
     margin:28px auto 0;
+
     max-width:760px;
+
     border:1px solid #ff2638;
+
     border-radius:16px;
+
     background:#0d0f12;
+
     padding:14px
 }
 
-.section-viewer.show{display:block}
+.section-viewer.show{
+    display:block
+}
 
 .section-viewer-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:2px 4px 12px
 }
 
 .section-viewer-head h3{
     margin:0;
+
     color:#ff2638;
+
     font-size:16px
 }
 
 .section-viewer-head button{
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     width:32px;
     height:32px;
+
     border-radius:50%;
+
     font-size:21px;
+
     cursor:pointer
 }
 
 .section-viewer-content{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     min-height:180px
 }
 
 .section-view-media{
     max-width:100%;
+
     max-height:500px;
+
     border-radius:10px;
+
     display:block
 }
+
+
+/* =====================================================
+   ⭐ RATING WIDGET
+===================================================== */
+
+.rating-widget{
+
+    position:fixed;
+
+    top:76px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    translateY(-20px);
+
+    z-index:90;
+
+    width:min(430px,92vw);
+
+    padding:12px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:14px;
+
+    background:rgba(16,17,20,.94);
+
+    border:1px solid #3a3c42;
+
+    border-radius:16px;
+
+    box-shadow:
+    0 15px 45px #000b,
+    0 0 25px #ff26381c;
+
+    backdrop-filter:blur(14px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    animation:
+    ratingWidgetIn .7s ease forwards;
+
+    animation-delay:.8s
+}
+
+@keyframes ratingWidgetIn{
+
+    from{
+        opacity:0;
+
+        transform:
+        translateX(-50%)
+        translateY(-20px)
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+        translateX(-50%)
+        translateY(0)
+    }
+
+}
+
+.rating-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0
+}
+
+.rating-heart{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    font-size:20px;
+
+    animation:
+    ratingHeartPulse 1.4s infinite
+}
+
+@keyframes ratingHeartPulse{
+
+    50%{
+        transform:scale(1.12);
+
+        box-shadow:
+        0 0 25px #ff263866
+    }
+
+}
+
+.rating-info{
+    min-width:0
+}
+
+.rating-title{
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    white-space:nowrap
+}
+
+.rating-total{
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    color:#888b92;
+
+    white-space:nowrap
+}
+
+.rating-stars{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:2px
+}
+
+.rating-star{
+
+    border:0;
+
+    background:none;
+
+    padding:2px;
+
+    color:#4a4c52;
+
+    font-size:22px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:
+    transform .18s ease,
+    color .18s ease,
+    filter .18s ease
+}
+
+.rating-star:hover{
+
+    transform:scale(1.3);
+
+    color:#ffd43b
+}
+
+.rating-star.active{
+
+    color:#ffd43b;
+
+    filter:
+    drop-shadow(
+        0 0 5px #ffd43b88
+    )
+}
+
+.rating-star.pop{
+
+    animation:
+    ratingStarPop .35s ease
+}
+
+@keyframes ratingStarPop{
+
+    0%{
+        transform:scale(.7)
+    }
+
+    55%{
+        transform:scale(1.35)
+    }
+
+    100%{
+        transform:scale(1)
+    }
+
+}
+
+.rating-widget.submitted{
+
+    border-color:#69e58a
+}
+
+.rating-widget.submitted
+.rating-title{
+
+    color:#69e58a
+}
+
+.rating-message{
+
+    position:absolute;
+
+    left:50%;
+
+    top:calc(100% + 8px);
+
+    transform:translateX(-50%);
+
+    width:max-content;
+
+    max-width:90vw;
+
+    padding:7px 12px;
+
+    border-radius:9px;
+
+    background:#111317;
+
+    border:1px solid #34363c;
+
+    color:#aaa;
+
+    font-size:10px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s
+}
+
+.rating-message.show{
+
+    opacity:1
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
 @media(max-width:800px){
 
@@ -702,11 +1319,16 @@ footer{
         text-align:center
     }
 
-    .hero p{margin:auto}
+    .hero p{
+        margin:auto
+    }
 
-    .about{grid-template-columns:1fr}
+    .about{
+        grid-template-columns:1fr
+    }
 
-    .features,.steps{
+    .features,
+    .steps{
         grid-template-columns:1fr 1fr
     }
 
@@ -717,15 +1339,21 @@ footer{
     .contact-grid{
         grid-template-columns:1fr 1fr
     }
+
 }
+
 
 @media(max-width:500px){
 
-    .features,.steps,.footer-grid{
+    .features,
+    .steps,
+    .footer-grid{
         grid-template-columns:1fr
     }
 
-    .hero h1{font-size:45px}
+    .hero h1{
+        font-size:45px
+    }
 
     .contact-grid{
         grid-template-columns:1fr
@@ -733,19 +1361,143 @@ footer{
 
     .live-link{
         margin-left:0;
+
         margin-top:10px
     }
 
     .gallery{
         grid-template-columns:repeat(2,1fr)
     }
+
+
+    /* MOBILE RATING */
+
+    .rating-widget{
+
+        padding:10px 12px;
+
+        gap:7px;
+
+        width:min(400px,94vw)
+    }
+
+    .rating-heart{
+
+        width:34px;
+        height:34px;
+
+        font-size:17px
+    }
+
+    .rating-title{
+        font-size:10px
+    }
+
+    .rating-total{
+        font-size:9px
+    }
+
+    .rating-star{
+
+        font-size:19px;
+
+        padding:1px
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     ⭐ FLOATING RATING WIDGET
+===================================================== -->
+
+<div
+    id="ratingWidget"
+    class="rating-widget"
+    aria-label="Rate this project"
+>
+
+    <div class="rating-left">
+
+        <div class="rating-heart">
+            ♥
+        </div>
+
+        <div class="rating-info">
+
+            <div class="rating-title">
+                Rate Our Project
+            </div>
+
+            <div
+                id="ratingTotal"
+                class="rating-total"
+            >
+                ⭐ Loading ratings...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="ratingStars"
+        class="rating-stars"
+        aria-label="Choose rating"
+    >
+
+        <button
+            class="rating-star"
+            data-rating="1"
+            aria-label="1 star"
+        >★</button>
+
+        <button
+            class="rating-star"
+            data-rating="2"
+            aria-label="2 stars"
+        >★</button>
+
+        <button
+            class="rating-star"
+            data-rating="3"
+            aria-label="3 stars"
+        >★</button>
+
+        <button
+            class="rating-star"
+            data-rating="4"
+            aria-label="4 stars"
+        >★</button>
+
+        <button
+            class="rating-star"
+            data-rating="5"
+            aria-label="5 stars"
+        >★</button>
+
+    </div>
+
+
+    <div
+        id="ratingMessage"
+        class="rating-message"
+    ></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAV
+===================================================== -->
 
 <nav>
 
@@ -767,6 +1519,10 @@ aria-label="Settings"
 
 </nav>
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <header class="hero" id="home">
 
@@ -806,9 +1562,11 @@ rel="noopener"
 
 <div>
 Heartbeat<br>
+
 <strong>
 <span id="bpm">72</span> BPM
 </strong>
+
 </div>
 
 </div>
@@ -852,6 +1610,10 @@ preserveAspectRatio="none"
 </header>
 
 
+<!-- =====================================================
+     BAR
+===================================================== -->
+
 <div class="bar">
 
 <span>Science Exhibition 2026</span>
@@ -865,15 +1627,25 @@ Aayushman Jha
 </div>
 
 
-<div id="settingsMenu" class="settings-menu">
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<div
+id="settingsMenu"
+class="settings-menu"
+>
 
 <div class="settings-head">
 
 <h3>Settings</h3>
 
-<button onclick="toggleSettings()">×</button>
+<button onclick="toggleSettings()">
+×
+</button>
 
 </div>
+
 
 <div class="settings-card">
 
@@ -890,7 +1662,9 @@ the Firebase media editor.
 
 <div class="settings-password">
 
-<label>HOST PASSWORD</label>
+<label>
+HOST PASSWORD
+</label>
 
 <input
 id="settingsPassword"
@@ -918,7 +1692,14 @@ Open Editor
 </div>
 
 
-<section id="team" class="reveal">
+<!-- =====================================================
+     TEAM
+===================================================== -->
+
+<section
+id="team"
+class="reveal"
+>
 
 <h2 class="title">
 <span>Aayushman Jha</span>
@@ -941,7 +1722,14 @@ Project Leader
 </section>
 
 
-<section id="model" class="reveal">
+<!-- =====================================================
+     MODEL
+===================================================== -->
+
+<section
+id="model"
+class="reveal"
+>
 
 <div class="about">
 
@@ -964,27 +1752,70 @@ practical way.
 <div class="features">
 
 <div class="feature">
-<div class="icon">♥</div>
-<h3>Realistic Action</h3>
-<p>Pumping demonstration</p>
+
+<div class="icon">
+♥
 </div>
 
-<div class="feature">
-<div class="icon">◉</div>
-<h3>Blood Flow</h3>
-<p>Shows circulation</p>
+<h3>
+Realistic Action
+</h3>
+
+<p>
+Pumping demonstration
+</p>
+
 </div>
 
-<div class="feature">
-<div class="icon">⚙</div>
-<h3>Mechanism</h3>
-<p>Easy to understand</p>
-</div>
 
 <div class="feature">
-<div class="icon">▣</div>
-<h3>Educational</h3>
-<p>Science project</p>
+
+<div class="icon">
+◉
+</div>
+
+<h3>
+Blood Flow
+</h3>
+
+<p>
+Shows circulation
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+⚙
+</div>
+
+<h3>
+Mechanism
+</h3>
+
+<p>
+Easy to understand
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+▣
+</div>
+
+<h3>
+Educational
+</h3>
+
+<p>
+Science project
+</p>
+
 </div>
 
 </div>
@@ -996,7 +1827,14 @@ practical way.
 </section>
 
 
-<section id="media" class="reveal">
+<!-- =====================================================
+     MEDIA
+===================================================== -->
+
+<section
+id="media"
+class="reveal"
+>
 
 <h2 class="title">
 <span>Photo & Video</span>
@@ -1008,6 +1846,7 @@ Everyone can view the project gallery.
 The host can manage image and video links
 from the editor.
 </p>
+
 
 <div class="media-view-buttons">
 
@@ -1043,7 +1882,10 @@ class="firebase-status"
 </div>
 
 
-<div id="gallery" class="gallery"></div>
+<div
+id="gallery"
+class="gallery"
+></div>
 
 
 <div
@@ -1072,6 +1914,7 @@ Preview
 
 </div>
 
+
 <div
 id="sectionViewerContent"
 class="section-viewer-content"
@@ -1082,7 +1925,14 @@ class="section-viewer-content"
 </section>
 
 
-<section id="working" class="reveal">
+<!-- =====================================================
+     WORKING
+===================================================== -->
+
+<section
+id="working"
+class="reveal"
+>
 
 <h2 class="title">
 About the
@@ -1094,15 +1944,23 @@ Learn the main functions of the heart
 and how blood moves through the chambers.
 </p>
 
+
 <div class="steps">
+
 
 <div class="step">
 
-<div class="num">1</div>
+<div class="num">
+1
+</div>
 
-<div class="icon">⏻</div>
+<div class="icon">
+⏻
+</div>
 
-<h3>Receives Blood</h3>
+<h3>
+Receives Blood
+</h3>
 
 <p>
 The atria receive blood returning
@@ -1114,11 +1972,17 @@ to the heart.
 
 <div class="step">
 
-<div class="num">2</div>
+<div class="num">
+2
+</div>
 
-<div class="icon">♥</div>
+<div class="icon">
+♥
+</div>
 
-<h3>Pumps Blood</h3>
+<h3>
+Pumps Blood
+</h3>
 
 <p>
 The ventricles contract and pump
@@ -1130,11 +1994,17 @@ blood to the lungs and body.
 
 <div class="step">
 
-<div class="num">3</div>
+<div class="num">
+3
+</div>
 
-<div class="icon">◆</div>
+<div class="icon">
+◆
+</div>
 
-<h3>Blood Circulation</h3>
+<h3>
+Blood Circulation
+</h3>
 
 <p>
 Blood travels through pulmonary
@@ -1146,11 +2016,17 @@ and systemic circulation.
 
 <div class="step">
 
-<div class="num">4</div>
+<div class="num">
+4
+</div>
 
-<div class="icon">↻</div>
+<div class="icon">
+↻
+</div>
 
-<h3>Continuous Cycle</h3>
+<h3>
+Continuous Cycle
+</h3>
 
 <p>
 The heart repeatedly contracts
@@ -1164,7 +2040,14 @@ and relaxes to maintain circulation.
 </section>
 
 
-<section id="contact" class="reveal">
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+id="contact"
+class="reveal"
+>
 
 <h2 class="title">
 Contact <span>Us</span>
@@ -1175,18 +2058,24 @@ Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
 </p>
 
+
 <div class="contact-grid">
+
 
 <a
 class="contact-card"
 href="mailto:aayushmanjha1108@gmail.com"
 >
 
-<div class="contact-icon">✉</div>
+<div class="contact-icon">
+✉
+</div>
 
 <div>
 
-<h3>Email</h3>
+<h3>
+Email
+</h3>
 
 <p>
 aayushmanjha1108@gmail.com
@@ -1202,13 +2091,19 @@ class="contact-card"
 href="tel:+919931203827"
 >
 
-<div class="contact-icon">☎</div>
+<div class="contact-icon">
+☎
+</div>
 
 <div>
 
-<h3>Phone</h3>
+<h3>
+Phone
+</h3>
 
-<p>+91 99312 03827</p>
+<p>
++91 99312 03827
+</p>
 
 </div>
 
@@ -1217,13 +2112,19 @@ href="tel:+919931203827"
 
 <div class="contact-card">
 
-<div class="contact-icon">◆</div>
+<div class="contact-icon">
+◆
+</div>
 
 <div>
 
-<h3>Team</h3>
+<h3>
+Team
+</h3>
 
-<p>Team Red Diamond</p>
+<p>
+Team Red Diamond
+</p>
 
 </div>
 
@@ -1234,13 +2135,20 @@ href="tel:+919931203827"
 </section>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
 <div class="footer-grid">
 
+
 <div>
 
-<h3>About</h3>
+<h3>
+About
+</h3>
 
 <p>
 Educational project to understand
@@ -1250,20 +2158,31 @@ human heart.
 
 </div>
 
+
 <div>
 
-<h3>Team</h3>
+<h3>
+Team
+</h3>
 
 <p class="leader">
+
 Team Red Diamond
-<span>Project Leader · Leader</span>
+
+<span>
+Project Leader · Leader
+</span>
+
 </p>
 
 </div>
 
+
 <div>
 
-<h3>Contact</h3>
+<h3>
+Contact
+</h3>
 
 <p>
 
@@ -1291,53 +2210,91 @@ style="color:#aaa;text-decoration:none"
 
 
 <div class="copy">
+
 © 2026 Working Model of Heart
 · Team Red Diamond
+
 </div>
 
 </footer>
 
+
+<!-- =====================================================
+     BASIC JAVASCRIPT
+===================================================== -->
 
 <script>
 
 const bpm =
 document.getElementById("bpm");
 
+
 setInterval(
 ()=>{
+
     bpm.textContent =
-        70 + Math.floor(Math.random()*7);
+        70 +
+        Math.floor(
+            Math.random()*7
+        );
+
 },
 1200
 );
 
 
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
 const obs =
 new IntersectionObserver(
 entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
+
+    entries.forEach(
+        entry=>{
+
+            if(
+                entry.isIntersecting
+            ){
+
+                entry.target
+                    .classList
+                    .add("show");
+
+            }
+
         }
-    });
+    );
+
 },
-{threshold:.12}
-);
+{
+    threshold:.12
+});
 
 
 document
 .querySelectorAll(".reveal")
-.forEach(element=>{
+.forEach(
+element=>{
     obs.observe(element);
 });
 
+
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 window.toggleSettings =
 function(){
 
     document
-    .getElementById("settingsMenu")
-    .classList.toggle("show");
+    .getElementById(
+        "settingsMenu"
+    )
+    .classList.toggle(
+        "show"
+    );
 
 };
 
@@ -1354,13 +2311,16 @@ function(){
         "settingsPassword"
     );
 
+
     const msg =
     document.getElementById(
         "settingsPasswordMessage"
     );
 
+
     if(
-        input.value === HOST_PASSWORD
+        input.value ===
+        HOST_PASSWORD
     ){
 
         msg.textContent =
@@ -1369,11 +2329,19 @@ function(){
         msg.style.color =
         "#69e58a";
 
-        setTimeout(()=>{
-            location.href="edit.html";
-        },500);
 
-    }else{
+        setTimeout(
+            ()=>{
+
+                location.href =
+                "edit.html";
+
+            },
+            500
+        );
+
+    }
+    else{
 
         msg.textContent =
         "Incorrect password.";
@@ -1385,27 +2353,340 @@ function(){
 
 };
 
+
+/* =====================================================
+   ⭐ RATING UI
+===================================================== */
+
+const ratingStars =
+document.querySelectorAll(
+    ".rating-star"
+);
+
+
+const ratingWidget =
+document.getElementById(
+    "ratingWidget"
+);
+
+
+const ratingMessage =
+document.getElementById(
+    "ratingMessage"
+);
+
+
+let selectedRating = 0;
+
+
+const alreadyRated =
+localStorage.getItem(
+    "heartProjectRated"
+) === "true";
+
+
+function updateRatingStars(
+    value
+){
+
+    ratingStars.forEach(
+        (star,index)=>{
+
+            star.classList.toggle(
+                "active",
+                index < value
+            );
+
+        }
+    );
+
+}
+
+
+function showRatingMessage(
+    text
+){
+
+    ratingMessage.textContent =
+    text;
+
+
+    ratingMessage.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        ()=>{
+
+            ratingMessage.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+/* =====================================================
+   STAR HOVER
+===================================================== */
+
+ratingStars.forEach(
+star=>{
+
+
+    star.addEventListener(
+        "mouseenter",
+        ()=>{
+
+            if(
+                localStorage.getItem(
+                    "heartProjectRated"
+                ) === "true"
+            ){
+
+                return;
+
+            }
+
+
+            updateRatingStars(
+                Number(
+                    star.dataset.rating
+                )
+            );
+
+        }
+    );
+
+
+    star.addEventListener(
+        "click",
+        ()=>{
+
+            if(
+                localStorage.getItem(
+                    "heartProjectRated"
+                ) === "true"
+            ){
+
+                showRatingMessage(
+                    "You have already rated this project ⭐"
+                );
+
+                return;
+
+            }
+
+
+            selectedRating =
+            Number(
+                star.dataset.rating
+            );
+
+
+            updateRatingStars(
+                selectedRating
+            );
+
+
+            ratingStars.forEach(
+                s=>{
+                    s.classList.remove(
+                        "pop"
+                    );
+                }
+            );
+
+
+            star.classList.add(
+                "pop"
+            );
+
+
+            submitRating(
+                selectedRating
+            );
+
+        }
+    );
+
+});
+
+
+document
+.getElementById(
+    "ratingStars"
+)
+.addEventListener(
+    "mouseleave",
+    ()=>{
+
+        if(
+            selectedRating
+        ){
+
+            updateRatingStars(
+                selectedRating
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RATING DISPLAY
+===================================================== */
+
+window.updateRatingDisplay =
+function(
+    average,
+    count
+){
+
+    const total =
+    document.getElementById(
+        "ratingTotal"
+    );
+
+
+    if(!count){
+
+        total.textContent =
+        "⭐ No ratings yet";
+
+        return;
+
+    }
+
+
+    total.innerHTML =
+    "⭐ <strong>" +
+    average.toFixed(1) +
+    "</strong> / 5 · " +
+    count +
+    (
+        count === 1
+        ? " rating"
+        : " ratings"
+    );
+
+};
+
+
+/* =====================================================
+   RATING SUBMITTED
+===================================================== */
+
+window.setRatingSubmitted =
+function(){
+
+    localStorage.setItem(
+        "heartProjectRated",
+        "true"
+    );
+
+
+    ratingWidget.classList.add(
+        "submitted"
+    );
+
+
+    ratingStars.forEach(
+        star=>{
+
+            star.style.cursor =
+            "default";
+
+        }
+    );
+
+
+    showRatingMessage(
+        "Thank you for rating our project! ❤️"
+    );
+
+};
+
+
+/* =====================================================
+   CLOSE SETTINGS WHEN CLICKING OUTSIDE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    event=>{
+
+        const menu =
+        document.getElementById(
+            "settingsMenu"
+        );
+
+
+        const button =
+        document.querySelector(
+            ".settings-btn"
+        );
+
+
+        if(
+            menu.classList.contains(
+                "show"
+            ) &&
+            !menu.contains(
+                event.target
+            ) &&
+            !button.contains(
+                event.target
+            )
+        ){
+
+            menu.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
 </script>
 
 
 <!-- =====================================================
-     FIREBASE ONLY
+     FIREBASE
+     EXISTING CONFIGURATION UNCHANGED
 ===================================================== -->
 
 <script type="module">
 
 import {
     initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
     getFirestore,
     collection,
-    getDocs
-} from
+    getDocs,
+    addDoc,
+    serverTimestamp
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =====================================================
+   YOUR ORIGINAL FIREBASE CONFIGURATION
+   DO NOT CHANGE
+===================================================== */
 
 const firebaseConfig = {
 
@@ -1431,27 +2712,203 @@ const firebaseConfig = {
 
 
 const app =
-initializeApp(firebaseConfig);
+initializeApp(
+    firebaseConfig
+);
+
 
 const db =
-getFirestore(app);
+getFirestore(
+    app
+);
 
+
+/* =====================================================
+   ⭐ RATING SYSTEM
+   SEPARATE COLLECTION
+===================================================== */
+
+const RATING_COLLECTION =
+"heartProjectRatings";
+
+
+async function loadRatings(){
+
+    try{
+
+        const snap =
+        await getDocs(
+            collection(
+                db,
+                RATING_COLLECTION
+            )
+        );
+
+
+        let total = 0;
+
+        let count = 0;
+
+
+        snap.forEach(
+            docSnap=>{
+
+                const data =
+                docSnap.data();
+
+
+                const rating =
+                Number(
+                    data.rating
+                );
+
+
+                if(
+                    rating >= 1 &&
+                    rating <= 5
+                ){
+
+                    total += rating;
+
+                    count++;
+
+                }
+
+            }
+        );
+
+
+        const average =
+        count
+        ? total / count
+        : 0;
+
+
+        window.updateRatingDisplay(
+            average,
+            count
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Rating loading error:",
+            error
+        );
+
+
+        document
+        .getElementById(
+            "ratingTotal"
+        )
+        .textContent =
+        "⭐ Ratings unavailable";
+
+    }
+
+}
+
+
+/* =====================================================
+   ⭐ SUBMIT RATING
+===================================================== */
+
+async function submitRating(
+    rating
+){
+
+    if(
+        rating < 1 ||
+        rating > 5
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        localStorage.getItem(
+            "heartProjectRated"
+        ) === "true"
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        await addDoc(
+            collection(
+                db,
+                RATING_COLLECTION
+            ),
+            {
+
+                rating:
+                rating,
+
+                createdAt:
+                serverTimestamp()
+
+            }
+        );
+
+
+        window.setRatingSubmitted();
+
+
+        await loadRatings();
+
+    }
+    catch(error){
+
+        console.error(
+            "Rating submission error:",
+            error
+        );
+
+
+        showRatingMessage(
+            "Could not save rating. Please try again."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ORIGINAL MEDIA SYSTEM
+===================================================== */
 
 const COLLECTION_NAME =
 "heartProjectMedia";
 
 
 const gallery =
-document.getElementById("gallery");
+document.getElementById(
+    "gallery"
+);
+
 
 const empty =
-document.getElementById("galleryEmpty");
+document.getElementById(
+    "galleryEmpty"
+);
+
 
 const status =
-document.getElementById("firebaseStatus");
+document.getElementById(
+    "firebaseStatus"
+);
 
 
 let mediaStore = [];
+
 
 let currentFilter =
 "all";
@@ -1464,6 +2921,7 @@ function setStatus(
 
     status.textContent =
     text;
+
 
     status.classList.toggle(
         "live",
@@ -1516,7 +2974,9 @@ async function loadFirebaseMedia(){
 
 
                 if(!url){
+
                     return;
+
                 }
 
 
@@ -1525,33 +2985,36 @@ async function loadFirebaseMedia(){
                     data.type ||
                     data.mediaType ||
                     ""
-                ).toLowerCase();
+                )
+                .toLowerCase();
 
 
                 if(
-                    type==="image" ||
-                    type==="photo" ||
-                    type==="photos"
+                    type === "image" ||
+                    type === "photo" ||
+                    type === "photos"
                 ){
 
-                    type="photo";
+                    type =
+                    "photo";
 
                 }
 
 
                 if(
-                    type==="video" ||
-                    type==="videos"
+                    type === "video" ||
+                    type === "videos"
                 ){
 
-                    type="video";
+                    type =
+                    "video";
 
                 }
 
 
                 if(
-                    type!=="photo" &&
-                    type!=="video"
+                    type !== "photo" &&
+                    type !== "video"
                 ){
 
                     const u =
@@ -1561,18 +3024,24 @@ async function loadFirebaseMedia(){
 
 
                     if(
-                        /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
+                        /\.(jpg|jpeg|png|gif|webp|avif)$/
+                        .test(u)
                     ){
 
-                        type="photo";
+                        type =
+                        "photo";
 
-                    }else if(
-                        /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
+                    }
+                    else if(
+                        /\.(mp4|webm|mov|m4v|ogg)$/
+                        .test(u)
                     ){
 
-                        type="video";
+                        type =
+                        "video";
 
-                    }else{
+                    }
+                    else{
 
                         return;
 
@@ -1583,16 +3052,19 @@ async function loadFirebaseMedia(){
 
                 mediaStore.push({
 
-                    id:docSnap.id,
+                    id:
+                    docSnap.id,
 
                     name:
                     data.name ||
                     data.title ||
                     "Project Media",
 
-                    url:url,
+                    url:
+                    url,
 
-                    type:type
+                    type:
+                    type
 
                 });
 
@@ -1624,19 +3096,24 @@ async function loadFirebaseMedia(){
         );
 
 
-        gallery.innerHTML="";
+        gallery.innerHTML =
+        "";
 
-        empty.style.display="block";
+
+        empty.style.display =
+        "block";
 
 
         if(
-            error.code==="permission-denied"
+            error.code ===
+            "permission-denied"
         ){
 
             empty.textContent =
             "❌ Firestore permission denied. Check your rules.";
 
-        }else{
+        }
+        else{
 
             empty.textContent =
             "❌ Firebase could not load media: " +
@@ -1649,9 +3126,14 @@ async function loadFirebaseMedia(){
 }
 
 
+/* =====================================================
+   RENDER MEDIA
+===================================================== */
+
 function renderMedia(){
 
-    gallery.innerHTML="";
+    gallery.innerHTML =
+    "";
 
 
     const items =
@@ -1659,8 +3141,8 @@ function renderMedia(){
         item=>{
 
             return(
-                currentFilter==="all" ||
-                item.type===currentFilter
+                currentFilter === "all" ||
+                item.type === currentFilter
             );
 
         }
@@ -1669,26 +3151,32 @@ function renderMedia(){
 
     if(!items.length){
 
-        empty.style.display="block";
+        empty.style.display =
+        "block";
+
 
         empty.textContent =
         mediaStore.length
         ? "No media found."
         : "No photos or videos have been added yet.";
 
+
         return;
 
     }
 
 
-    empty.style.display="none";
+    empty.style.display =
+    "none";
 
 
     items.forEach(
         item=>{
 
             const card =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
             card.className =
@@ -1699,23 +3187,41 @@ function renderMedia(){
 
 
             if(
-                item.type==="video"
+                item.type === "video"
             ){
 
                 media =
-                document.createElement("video");
+                document.createElement(
+                    "video"
+                );
 
-                media.controls=false;
-                media.muted=true;
-                media.playsInline=true;
-                media.preload="metadata";
 
-            }else{
+                media.controls =
+                false;
+
+
+                media.muted =
+                true;
+
+
+                media.playsInline =
+                true;
+
+
+                media.preload =
+                "metadata";
+
+            }
+            else{
 
                 media =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
-                media.loading="lazy";
+
+                media.loading =
+                "lazy";
 
             }
 
@@ -1740,7 +3246,9 @@ function renderMedia(){
 
 
             const caption =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
             caption.className =
@@ -1751,18 +3259,29 @@ function renderMedia(){
             item.name;
 
 
-            card.appendChild(media);
+            card.appendChild(
+                media
+            );
 
-            card.appendChild(caption);
+
+            card.appendChild(
+                caption
+            );
 
 
             card.onclick =
             ()=>{
-                openViewer(item);
+
+                openViewer(
+                    item
+                );
+
             };
 
 
-            gallery.appendChild(card);
+            gallery.appendChild(
+                card
+            );
 
         }
     );
@@ -1770,17 +3289,25 @@ function renderMedia(){
 }
 
 
-function openViewer(item){
+/* =====================================================
+   VIEWER
+===================================================== */
+
+function openViewer(
+    item
+){
 
     const viewer =
     document.getElementById(
         "sectionViewer"
     );
 
+
     const title =
     document.getElementById(
         "sectionViewerTitle"
     );
+
 
     const content =
     document.getElementById(
@@ -1788,7 +3315,9 @@ function openViewer(item){
     );
 
 
-    content.innerHTML="";
+    content.innerHTML =
+    "";
+
 
     title.textContent =
     item.name;
@@ -1798,20 +3327,33 @@ function openViewer(item){
 
 
     if(
-        item.type==="video"
+        item.type === "video"
     ){
 
         media =
-        document.createElement("video");
+        document.createElement(
+            "video"
+        );
 
-        media.controls=true;
-        media.autoplay=true;
-        media.playsInline=true;
 
-    }else{
+        media.controls =
+        true;
+
+
+        media.autoplay =
+        true;
+
+
+        media.playsInline =
+        true;
+
+    }
+    else{
 
         media =
-        document.createElement("img");
+        document.createElement(
+            "img"
+        );
 
     }
 
@@ -1824,9 +3366,15 @@ function openViewer(item){
     "section-view-media";
 
 
-    content.appendChild(media);
+    content.appendChild(
+        media
+    );
 
-    viewer.classList.add("show");
+
+    viewer.classList.add(
+        "show"
+    );
+
 
     viewer.scrollIntoView({
         behavior:"smooth",
@@ -1836,19 +3384,35 @@ function openViewer(item){
 }
 
 
+/* =====================================================
+   CLOSE VIEWER
+===================================================== */
+
 window.closeSectionViewer =
 function(){
 
     document
-    .getElementById("sectionViewer")
-    .classList.remove("show");
+    .getElementById(
+        "sectionViewer"
+    )
+    .classList.remove(
+        "show"
+    );
+
 
     document
-    .getElementById("sectionViewerContent")
-    .innerHTML="";
+    .getElementById(
+        "sectionViewerContent"
+    )
+    .innerHTML =
+    "";
 
 };
 
+
+/* =====================================================
+   FILTER MEDIA
+===================================================== */
 
 window.filterMedia =
 function(
@@ -1861,16 +3425,26 @@ function(
 
 
     document
-    .querySelectorAll(".media-filter")
+    .querySelectorAll(
+        ".media-filter"
+    )
     .forEach(
         btn=>{
-            btn.classList.remove("active");
+
+            btn.classList.remove(
+                "active"
+            );
+
         }
     );
 
 
     if(button){
-        button.classList.add("active");
+
+        button.classList.add(
+            "active"
+        );
+
     }
 
 
@@ -1879,8 +3453,24 @@ function(
 };
 
 
+/* =====================================================
+   START EVERYTHING
+===================================================== */
+
+loadRatings();
+
 loadFirebaseMedia();
 
+
+/* Refresh ratings every 15 seconds */
+
+setInterval(
+    loadRatings,
+    15000
+);
+
+
+/* Refresh existing media every 10 seconds */
 
 setInterval(
     loadFirebaseMedia,
@@ -1889,5 +3479,7 @@ setInterval(
 
 </script>
 
+
 </body>
+
 </html>
