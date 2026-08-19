@@ -128,14 +128,20 @@ body{
 nav{
     height:64px;
     padding:0 6%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:#090a0cdd;
+
     border-bottom:1px solid #292a2e;
+
     position:sticky;
     top:0;
+
     z-index:20;
+
     backdrop-filter:blur(10px)
 }
 
@@ -172,10 +178,14 @@ h1 span,
 
 .hero{
     min-height:600px;
+
     padding:70px 7%;
+
     display:grid;
     grid-template-columns:1fr 1fr;
+
     align-items:center;
+
     position:relative;
     overflow:hidden;
 
@@ -189,8 +199,10 @@ h1 span,
 
 .hero:before{
     content:"";
+
     position:absolute;
     inset:0;
+
     opacity:.18;
 
     background-image:
@@ -214,48 +226,54 @@ h1 span,
 .eyebrow{
     font-size:12px;
     letter-spacing:3px;
+
     color:#ff6b76;
+
     font-weight:bold
 }
 
 .hero h1{
     font-size:clamp(48px,6vw,78px);
+
     line-height:.98;
+
     margin:18px 0
 }
 
 .hero p{
     max-width:560px;
+
     color:#cfd0d5;
+
     font-size:18px;
+
     line-height:1.65
 }
 
 .btn{
     display:inline-block;
+
     margin-top:25px;
+
     padding:14px 22px;
+
     background:#ff2638;
+
     border-radius:9px;
+
     color:#fff;
+
     text-decoration:none;
+
     font-weight:bold;
+
     box-shadow:0 12px 30px #ff263833;
+
     transition:.25s
 }
 
 .btn:hover{
     transform:translateY(-3px)
-}
-
-.live-link{
-    margin-left:10px;
-    background:#111317;
-    border:1px solid #ff2638
-}
-
-.live-link:hover{
-    background:#ff2638
 }
 
 
@@ -265,21 +283,28 @@ h1 span,
 
 .bpm{
     margin-top:22px;
+
     width:170px;
+
     padding:12px;
 
     border:1px solid #383a40;
+
     border-radius:10px;
+
     background:#111317;
 
     display:flex;
+
     gap:10px;
+
     align-items:center
 }
 
 .pulse{
     width:31px;
     height:31px;
+
     border-radius:50%;
 
     display:grid;
@@ -294,7 +319,9 @@ h1 span,
 
     50%{
         transform:scale(1.15);
-        box-shadow:0 0 25px #ff263888
+
+        box-shadow:
+        0 0 25px #ff263888
     }
 
 }
@@ -306,8 +333,10 @@ h1 span,
 
 .ecg{
     position:absolute;
+
     bottom:18px;
     left:0;
+
     width:100%;
     height:75px
 }
@@ -319,17 +348,23 @@ h1 span,
 
 .ecg polyline{
     fill:none;
+
     stroke:#ff2638;
+
     stroke-width:3;
+
     stroke-linecap:round;
     stroke-linejoin:round;
 
     stroke-dasharray:900;
+
     stroke-dashoffset:900;
 
-    animation:ecg 2.2s linear infinite;
+    animation:
+    ecg 2.2s linear infinite;
 
-    filter:drop-shadow(
+    filter:
+    drop-shadow(
         0 0 7px #ff2638
     )
 }
@@ -349,7 +384,9 @@ h1 span,
 
 .bar{
     width:86%;
+
     margin:auto;
+
     padding:14px;
 
     text-align:center;
@@ -363,11 +400,13 @@ h1 span,
 
 .bar span{
     color:#ff2638;
+
     font-weight:bold
 }
 
 .bar b{
     margin:0 15px;
+
     color:#555
 }
 
@@ -378,11 +417,13 @@ h1 span,
 
 section{
     padding:80px 7%;
+
     border-top:1px solid #202126
 }
 
 .title{
     text-align:center;
+
     font-size:38px
 }
 
@@ -392,6 +433,7 @@ section{
 
 .sub{
     max-width:700px;
+
     margin:0 auto 42px;
 
     text-align:center;
@@ -408,10 +450,13 @@ section{
 
 .about{
     max-width:1100px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:1fr 1.2fr;
+
+    grid-template-columns:
+    1fr 1.2fr;
 
     gap:50px;
 
@@ -424,6 +469,7 @@ section{
 
 .about p{
     color:#c5c7cc;
+
     line-height:1.7
 }
 
@@ -435,7 +481,10 @@ section{
 .features,
 .steps{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:15px
 }
 
@@ -444,6 +493,7 @@ section{
     padding:22px;
 
     border:1px solid #34363c;
+
     border-radius:13px;
 
     background:#111317;
@@ -456,20 +506,25 @@ section{
 .feature:hover,
 .step:hover{
     transform:translateY(-6px);
+
     border-color:#ff2638
 }
 
 .feature .icon,
 .step .icon{
     font-size:29px;
+
     color:#ff2638;
+
     margin-bottom:10px
 }
 
 .feature p,
 .step p{
     color:#aaa;
+
     font-size:13px;
+
     line-height:1.5
 }
 
@@ -482,6 +537,7 @@ section{
     background:#ff2638;
 
     display:grid;
+
     place-items:center;
 
     margin:0 auto 17px;
@@ -496,16 +552,20 @@ section{
 
 .contact-grid{
     max-width:950px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
 
     gap:18px
 }
 
 .contact-card{
     display:flex;
+
     align-items:center;
 
     gap:15px;
@@ -513,11 +573,13 @@ section{
     padding:24px;
 
     border:1px solid #34363c;
+
     border-radius:14px;
 
     background:#111317;
 
     text-decoration:none;
+
     color:#fff;
 
     transition:.3s
@@ -525,6 +587,7 @@ section{
 
 .contact-card:hover{
     transform:translateY(-5px);
+
     border-color:#ff2638
 }
 
@@ -535,9 +598,11 @@ section{
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
+
     color:#fff;
 
     font-size:22px;
@@ -551,11 +616,13 @@ section{
 
 .contact-card p{
     margin:0;
+
     color:#aaa;
 
     word-break:break-word;
 
     font-size:13px;
+
     line-height:1.45
 }
 
@@ -574,10 +641,13 @@ footer{
 
 .footer-grid{
     max-width:1100px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
 
     gap:35px
 }
@@ -588,12 +658,15 @@ footer{
 
 .footer-grid p{
     color:#aaa;
+
     line-height:1.7
 }
 
 .leader{
     font-size:20px;
+
     color:#fff;
+
     font-weight:bold
 }
 
@@ -636,6 +709,7 @@ footer{
 
 .reveal.show{
     opacity:1;
+
     transform:none
 }
 
@@ -646,6 +720,7 @@ footer{
 
 .media-view-buttons{
     display:flex;
+
     justify-content:center;
 
     flex-wrap:wrap;
@@ -676,6 +751,7 @@ footer{
 .media-filter:hover,
 .media-filter.active{
     background:#ff2638;
+
     border-color:#ff2638
 }
 
@@ -716,6 +792,7 @@ footer{
 .gallery-item img,
 .gallery-item video{
     width:100%;
+
     height:125px;
 
     display:block;
@@ -749,11 +826,13 @@ footer{
 
     from{
         opacity:0;
+
         transform:translateY(15px)
     }
 
     to{
         opacity:1;
+
         transform:none
     }
 
@@ -1063,7 +1142,7 @@ footer{
     translateX(-50%)
     translateY(-20px);
 
-    z-index:90;
+    z-index:1000;
 
     width:min(430px,92vw);
 
@@ -1077,7 +1156,7 @@ footer{
 
     gap:14px;
 
-    background:rgba(16,17,20,.94);
+    background:rgba(16,17,20,.96);
 
     border:1px solid #3a3c42;
 
@@ -1091,7 +1170,13 @@ footer{
 
     opacity:0;
 
-    pointer-events:none;
+    /*
+       IMPORTANT:
+       The old version had pointer-events:none,
+       which prevented the stars from being clicked.
+    */
+
+    pointer-events:auto;
 
     animation:
     ratingWidgetIn .7s ease forwards;
@@ -1147,6 +1232,8 @@ footer{
 
     font-size:20px;
 
+    flex:none;
+
     animation:
     ratingHeartPulse 1.4s infinite
 }
@@ -1154,10 +1241,12 @@ footer{
 @keyframes ratingHeartPulse{
 
     50%{
+
         transform:scale(1.12);
 
         box-shadow:
         0 0 25px #ff263866
+
     }
 
 }
@@ -1194,24 +1283,32 @@ footer{
 
     align-items:center;
 
-    gap:2px
+    gap:2px;
+
+    flex:none
 }
 
 .rating-star{
 
     border:0;
 
-    background:none;
+    background:transparent;
 
-    padding:2px;
+    padding:4px;
+
+    margin:0;
 
     color:#4a4c52;
 
-    font-size:22px;
+    font-size:25px;
 
     line-height:1;
 
     cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+
+    touch-action:manipulation;
 
     transition:
     transform .18s ease,
@@ -1221,9 +1318,14 @@ footer{
 
 .rating-star:hover{
 
-    transform:scale(1.3);
+    transform:scale(1.25);
 
     color:#ffd43b
+}
+
+.rating-star:active{
+
+    transform:scale(.85)
 }
 
 .rating-star.active{
@@ -1260,7 +1362,11 @@ footer{
 
 .rating-widget.submitted{
 
-    border-color:#69e58a
+    border-color:#69e58a;
+
+    box-shadow:
+    0 15px 45px #000b,
+    0 0 25px #69e58a22
 }
 
 .rating-widget.submitted
@@ -1283,7 +1389,7 @@ footer{
 
     max-width:90vw;
 
-    padding:7px 12px;
+    padding:8px 13px;
 
     border-radius:9px;
 
@@ -1316,6 +1422,7 @@ footer{
 
     .hero{
         grid-template-columns:1fr;
+
         text-align:center
     }
 
@@ -1359,12 +1466,6 @@ footer{
         grid-template-columns:1fr
     }
 
-    .live-link{
-        margin-left:0;
-
-        margin-top:10px
-    }
-
     .gallery{
         grid-template-columns:repeat(2,1fr)
     }
@@ -1374,19 +1475,21 @@ footer{
 
     .rating-widget{
 
-        padding:10px 12px;
+        top:76px;
 
-        gap:7px;
+        width:calc(100vw - 40px);
 
-        width:min(400px,94vw)
+        padding:10px 11px;
+
+        gap:6px
     }
 
     .rating-heart{
 
-        width:34px;
-        height:34px;
+        width:36px;
+        height:36px;
 
-        font-size:17px
+        font-size:18px
     }
 
     .rating-title{
@@ -1399,9 +1502,9 @@ footer{
 
     .rating-star{
 
-        font-size:19px;
+        font-size:21px;
 
-        padding:1px
+        padding:3px
     }
 
 }
@@ -1455,30 +1558,35 @@ footer{
     >
 
         <button
+            type="button"
             class="rating-star"
             data-rating="1"
             aria-label="1 star"
         >★</button>
 
         <button
+            type="button"
             class="rating-star"
             data-rating="2"
             aria-label="2 stars"
         >★</button>
 
         <button
+            type="button"
             class="rating-star"
             data-rating="3"
             aria-label="3 stars"
         >★</button>
 
         <button
+            type="button"
             class="rating-star"
             data-rating="4"
             aria-label="4 stars"
         >★</button>
 
         <button
+            type="button"
             class="rating-star"
             data-rating="5"
             aria-label="5 stars"
@@ -1496,7 +1604,7 @@ footer{
 
 
 <!-- =====================================================
-     NAV
+     NAVIGATION
 ===================================================== -->
 
 <nav>
@@ -1524,7 +1632,10 @@ aria-label="Settings"
      HERO
 ===================================================== -->
 
-<header class="hero" id="home">
+<header
+class="hero"
+id="home"
+>
 
 <div>
 
@@ -1543,24 +1654,25 @@ of the human heart and how it pumps
 blood throughout the body.
 </p>
 
-<a class="btn" href="#model">
+<a
+class="btn"
+href="#model"
+>
 Explore the Model ↓
 </a>
 
-<a
-class="btn live-link"
-href="https://working-model-of-heart-251c4.web.app"
-target="_blank"
-rel="noopener"
->
-🌐 Open Public Website
-</a>
+
+<!-- OPEN PUBLIC WEBSITE BUTTON REMOVED -->
+
 
 <div class="bpm">
 
-<div class="pulse">♥</div>
+<div class="pulse">
+♥
+</div>
 
 <div>
+
 Heartbeat<br>
 
 <strong>
@@ -1638,9 +1750,13 @@ class="settings-menu"
 
 <div class="settings-head">
 
-<h3>Settings</h3>
+<h3>
+Settings
+</h3>
 
-<button onclick="toggleSettings()">
+<button
+onclick="toggleSettings()"
+>
 ×
 </button>
 
@@ -1649,11 +1765,15 @@ class="settings-menu"
 
 <div class="settings-card">
 
-<div>🔐</div>
+<div>
+🔐
+</div>
 
 <div style="width:100%">
 
-<h4>Host Editor</h4>
+<h4>
+Host Editor
+</h4>
 
 <p>
 Enter the host password to open
@@ -1679,7 +1799,9 @@ onclick="unlockFromSettings()"
 Open Editor
 </button>
 
-<div id="settingsPasswordMessage"></div>
+<div
+id="settingsPasswordMessage"
+></div>
 
 </div>
 
@@ -1713,8 +1835,13 @@ Science Exhibition 2026
 <div style="text-align:center">
 
 <div class="leader">
+
 Project Leader
-<span>Leader</span>
+
+<span>
+Leader
+</span>
+
 </div>
 
 </div>
@@ -1749,7 +1876,9 @@ this pumping action in a simple and
 practical way.
 </p>
 
+
 <div class="features">
+
 
 <div class="feature">
 
@@ -1818,6 +1947,7 @@ Science project
 
 </div>
 
+
 </div>
 
 </div>
@@ -1837,14 +1967,21 @@ class="reveal"
 >
 
 <h2 class="title">
-<span>Photo & Video</span>
+
+<span>
+Photo & Video
+</span>
+
 of Project
+
 </h2>
 
 <p class="sub">
+
 Everyone can view the project gallery.
 The host can manage image and video links
 from the editor.
+
 </p>
 
 
@@ -1908,7 +2045,9 @@ class="section-viewer"
 Preview
 </h3>
 
-<button onclick="closeSectionViewer()">
+<button
+onclick="closeSectionViewer()"
+>
 ×
 </button>
 
@@ -1935,13 +2074,20 @@ class="reveal"
 >
 
 <h2 class="title">
+
 About the
-<span>Function of the Heart</span>
+
+<span>
+Function of the Heart
+</span>
+
 </h2>
 
 <p class="sub">
+
 Learn the main functions of the heart
 and how blood moves through the chambers.
+
 </p>
 
 
@@ -2035,6 +2181,7 @@ and relaxes to maintain circulation.
 
 </div>
 
+
 </div>
 
 </section>
@@ -2050,12 +2197,16 @@ class="reveal"
 >
 
 <h2 class="title">
+
 Contact <span>Us</span>
+
 </h2>
 
 <p class="sub">
+
 Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
+
 </p>
 
 
@@ -2129,6 +2280,7 @@ Team Red Diamond
 </div>
 
 </div>
+
 
 </div>
 
@@ -2206,6 +2358,7 @@ style="color:#aaa;text-decoration:none"
 
 </div>
 
+
 </div>
 
 
@@ -2220,23 +2373,30 @@ style="color:#aaa;text-decoration:none"
 
 
 <!-- =====================================================
-     BASIC JAVASCRIPT
+     NORMAL JAVASCRIPT
 ===================================================== -->
 
 <script>
 
+
+/* =====================================================
+   BPM
+===================================================== */
+
 const bpm =
-document.getElementById("bpm");
+document.getElementById(
+    "bpm"
+);
 
 
 setInterval(
 ()=>{
 
     bpm.textContent =
-        70 +
-        Math.floor(
-            Math.random()*7
-        );
+    70 +
+    Math.floor(
+        Math.random()*7
+    );
 
 },
 1200
@@ -2252,20 +2412,19 @@ new IntersectionObserver(
 entries=>{
 
     entries.forEach(
-        entry=>{
+    entry=>{
 
-            if(
-                entry.isIntersecting
-            ){
+        if(
+            entry.isIntersecting
+        ){
 
-                entry.target
-                    .classList
-                    .add("show");
-
-            }
+            entry.target
+            .classList
+            .add("show");
 
         }
-    );
+
+    });
 
 },
 {
@@ -2292,9 +2451,8 @@ function(){
     .getElementById(
         "settingsMenu"
     )
-    .classList.toggle(
-        "show"
-    );
+    .classList
+    .toggle("show");
 
 };
 
@@ -2331,13 +2489,13 @@ function(){
 
 
         setTimeout(
-            ()=>{
+        ()=>{
 
-                location.href =
-                "edit.html";
+            location.href =
+            "edit.html";
 
-            },
-            500
+        },
+        500
         );
 
     }
@@ -2355,7 +2513,7 @@ function(){
 
 
 /* =====================================================
-   ⭐ RATING UI
+   ⭐ RATING SYSTEM
 ===================================================== */
 
 const ratingStars =
@@ -2379,29 +2537,30 @@ document.getElementById(
 let selectedRating = 0;
 
 
-const alreadyRated =
-localStorage.getItem(
-    "heartProjectRated"
-) === "true";
-
+/* =====================================================
+   UPDATE STARS
+===================================================== */
 
 function updateRatingStars(
     value
 ){
 
     ratingStars.forEach(
-        (star,index)=>{
+    (star,index)=>{
 
-            star.classList.toggle(
-                "active",
-                index < value
-            );
+        star.classList.toggle(
+            "active",
+            index < value
+        );
 
-        }
-    );
+    });
 
 }
 
+
+/* =====================================================
+   RATING MESSAGE
+===================================================== */
 
 function showRatingMessage(
     text
@@ -2416,22 +2575,43 @@ function showRatingMessage(
     );
 
 
+    clearTimeout(
+        window.ratingMessageTimer
+    );
+
+
+    window.ratingMessageTimer =
     setTimeout(
-        ()=>{
+    ()=>{
 
-            ratingMessage.classList.remove(
-                "show"
-            );
+        ratingMessage.classList.remove(
+            "show"
+        );
 
-        },
-        3000
+    },
+    3000
     );
 
 }
 
 
 /* =====================================================
-   STAR HOVER
+   CHECK RATING STATUS
+===================================================== */
+
+function hasAlreadyRated(){
+
+    return(
+        localStorage.getItem(
+            "heartProjectRated"
+        ) === "true"
+    );
+
+}
+
+
+/* =====================================================
+   STAR CLICK
 ===================================================== */
 
 ratingStars.forEach(
@@ -2443,9 +2623,7 @@ star=>{
         ()=>{
 
             if(
-                localStorage.getItem(
-                    "heartProjectRated"
-                ) === "true"
+                hasAlreadyRated()
             ){
 
                 return;
@@ -2465,12 +2643,15 @@ star=>{
 
     star.addEventListener(
         "click",
-        ()=>{
+        async event=>{
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
 
             if(
-                localStorage.getItem(
-                    "heartProjectRated"
-                ) === "true"
+                hasAlreadyRated()
             ){
 
                 showRatingMessage(
@@ -2482,24 +2663,42 @@ star=>{
             }
 
 
-            selectedRating =
+            const rating =
             Number(
                 star.dataset.rating
             );
 
 
+            if(
+                rating < 1 ||
+                rating > 5
+            ){
+
+                return;
+
+            }
+
+
+            selectedRating =
+            rating;
+
+
             updateRatingStars(
-                selectedRating
+                rating
             );
 
 
             ratingStars.forEach(
-                s=>{
-                    s.classList.remove(
-                        "pop"
-                    );
-                }
-            );
+            s=>{
+
+                s.classList.remove(
+                    "pop"
+                );
+
+            });
+
+
+            void star.offsetWidth;
 
 
             star.classList.add(
@@ -2507,9 +2706,29 @@ star=>{
             );
 
 
-            submitRating(
-                selectedRating
-            );
+            /*
+               IMPORTANT:
+               The Firebase function is now
+               exposed as window.submitRating.
+            */
+
+            if(
+                typeof window.submitRating ===
+                "function"
+            ){
+
+                await window.submitRating(
+                    rating
+                );
+
+            }
+            else{
+
+                showRatingMessage(
+                    "Connecting to Firebase..."
+                );
+
+            }
 
         }
     );
@@ -2517,30 +2736,28 @@ star=>{
 });
 
 
-document
-.getElementById(
-    "ratingStars"
-)
-.addEventListener(
-    "mouseleave",
-    ()=>{
+/* =====================================================
+   MOBILE TOUCH SUPPORT
+===================================================== */
 
-        if(
-            selectedRating
-        ){
+ratingStars.forEach(
+star=>{
 
-            updateRatingStars(
-                selectedRating
-            );
-
+    star.addEventListener(
+        "touchend",
+        ()=>{
+            star.click();
+        },
+        {
+            passive:true
         }
+    );
 
-    }
-);
+});
 
 
 /* =====================================================
-   RATING DISPLAY
+   STAR DISPLAY FROM FIREBASE
 ===================================================== */
 
 window.updateRatingDisplay =
@@ -2555,7 +2772,9 @@ function(
     );
 
 
-    if(!count){
+    if(
+        !count
+    ){
 
         total.textContent =
         "⭐ No ratings yet";
@@ -2597,16 +2816,6 @@ function(){
     );
 
 
-    ratingStars.forEach(
-        star=>{
-
-            star.style.cursor =
-            "default";
-
-        }
-    );
-
-
     showRatingMessage(
         "Thank you for rating our project! ❤️"
     );
@@ -2615,7 +2824,22 @@ function(){
 
 
 /* =====================================================
-   CLOSE SETTINGS WHEN CLICKING OUTSIDE
+   ALREADY RATED STATE
+===================================================== */
+
+if(
+    hasAlreadyRated()
+){
+
+    ratingWidget.classList.add(
+        "submitted"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE SETTINGS OUTSIDE CLICK
 ===================================================== */
 
 document.addEventListener(
@@ -2660,10 +2884,14 @@ document.addEventListener(
 
 <!-- =====================================================
      FIREBASE
-     EXISTING CONFIGURATION UNCHANGED
 ===================================================== -->
 
 <script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
 
 import {
     initializeApp
@@ -2685,7 +2913,7 @@ from
 
 /* =====================================================
    YOUR ORIGINAL FIREBASE CONFIGURATION
-   DO NOT CHANGE
+   UNCHANGED
 ===================================================== */
 
 const firebaseConfig = {
@@ -2724,13 +2952,16 @@ getFirestore(
 
 
 /* =====================================================
-   ⭐ RATING SYSTEM
-   SEPARATE COLLECTION
+   ⭐ RATING COLLECTION
 ===================================================== */
 
 const RATING_COLLECTION =
 "heartProjectRatings";
 
+
+/* =====================================================
+   LOAD RATINGS
+===================================================== */
 
 async function loadRatings(){
 
@@ -2751,35 +2982,34 @@ async function loadRatings(){
 
 
         snap.forEach(
-            docSnap=>{
+        docSnap=>{
 
-                const data =
-                docSnap.data();
-
-
-                const rating =
-                Number(
-                    data.rating
-                );
+            const data =
+            docSnap.data();
 
 
-                if(
-                    rating >= 1 &&
-                    rating <= 5
-                ){
+            const rating =
+            Number(
+                data.rating
+            );
 
-                    total += rating;
 
-                    count++;
+            if(
+                rating >= 1 &&
+                rating <= 5
+            ){
 
-                }
+                total += rating;
+
+                count++;
 
             }
-        );
+
+        });
 
 
         const average =
-        count
+        count > 0
         ? total / count
         : 0;
 
@@ -2812,9 +3042,11 @@ async function loadRatings(){
 
 /* =====================================================
    ⭐ SUBMIT RATING
+   EXPOSED TO WINDOW SO THE UI CAN CALL IT
 ===================================================== */
 
-async function submitRating(
+window.submitRating =
+async function(
     rating
 ){
 
@@ -2834,6 +3066,10 @@ async function submitRating(
         ) === "true"
     ){
 
+        window.showRatingMessage?.(
+            "You have already rated this project ⭐"
+        );
+
         return;
 
     }
@@ -2849,7 +3085,7 @@ async function submitRating(
             {
 
                 rating:
-                rating,
+                Number(rating),
 
                 createdAt:
                 serverTimestamp()
@@ -2872,13 +3108,33 @@ async function submitRating(
         );
 
 
-        showRatingMessage(
-            "Could not save rating. Please try again."
+        /*
+           If Firebase rejects the rating,
+           remove the selected stars so the
+           user knows it was not saved.
+        */
+
+        document
+        .querySelectorAll(
+            ".rating-star"
+        )
+        .forEach(
+        star=>{
+
+            star.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        window.showRatingMessage?.(
+            "Could not save rating. Check Firebase rules."
         );
 
     }
 
-}
+};
 
 
 /* =====================================================
@@ -2953,123 +3209,124 @@ async function loadFirebaseMedia(){
 
 
         snap.forEach(
-            docSnap=>{
+        docSnap=>{
 
-                const data =
-                docSnap.data();
-
-
-                console.log(
-                    "Firebase document:",
-                    docSnap.id,
-                    data
-                );
+            const data =
+            docSnap.data();
 
 
-                const url =
-                data.url ||
-                data.link ||
-                data.mediaUrl ||
-                data.secure_url;
+            console.log(
+                "Firebase document:",
+                docSnap.id,
+                data
+            );
 
 
-                if(!url){
+            const url =
+            data.url ||
+            data.link ||
+            data.mediaUrl ||
+            data.secure_url;
 
-                    return;
 
-                }
+            if(
+                !url
+            ){
+
+                return;
+
+            }
 
 
-                let type =
-                String(
-                    data.type ||
-                    data.mediaType ||
-                    ""
-                )
+            let type =
+            String(
+                data.type ||
+                data.mediaType ||
+                ""
+            )
+            .toLowerCase();
+
+
+            if(
+                type === "image" ||
+                type === "photo" ||
+                type === "photos"
+            ){
+
+                type =
+                "photo";
+
+            }
+
+
+            if(
+                type === "video" ||
+                type === "videos"
+            ){
+
+                type =
+                "video";
+
+            }
+
+
+            if(
+                type !== "photo" &&
+                type !== "video"
+            ){
+
+                const u =
+                url
+                .split("?")[0]
                 .toLowerCase();
 
 
                 if(
-                    type === "image" ||
-                    type === "photo" ||
-                    type === "photos"
+                    /\.(jpg|jpeg|png|gif|webp|avif)$/
+                    .test(u)
                 ){
 
                     type =
                     "photo";
 
                 }
-
-
-                if(
-                    type === "video" ||
-                    type === "videos"
+                else if(
+                    /\.(mp4|webm|mov|m4v|ogg)$/
+                    .test(u)
                 ){
 
                     type =
                     "video";
 
                 }
+                else{
 
-
-                if(
-                    type !== "photo" &&
-                    type !== "video"
-                ){
-
-                    const u =
-                    url
-                    .split("?")[0]
-                    .toLowerCase();
-
-
-                    if(
-                        /\.(jpg|jpeg|png|gif|webp|avif)$/
-                        .test(u)
-                    ){
-
-                        type =
-                        "photo";
-
-                    }
-                    else if(
-                        /\.(mp4|webm|mov|m4v|ogg)$/
-                        .test(u)
-                    ){
-
-                        type =
-                        "video";
-
-                    }
-                    else{
-
-                        return;
-
-                    }
+                    return;
 
                 }
 
-
-                mediaStore.push({
-
-                    id:
-                    docSnap.id,
-
-                    name:
-                    data.name ||
-                    data.title ||
-                    "Project Media",
-
-                    url:
-                    url,
-
-                    type:
-                    type
-
-                });
-
             }
-        );
+
+
+            mediaStore.push({
+
+                id:
+                docSnap.id,
+
+                name:
+                data.name ||
+                data.title ||
+                "Project Media",
+
+                url:
+                url,
+
+                type:
+                type
+
+            });
+
+        });
 
 
         setStatus(
@@ -3138,18 +3395,19 @@ function renderMedia(){
 
     const items =
     mediaStore.filter(
-        item=>{
+    item=>{
 
-            return(
-                currentFilter === "all" ||
-                item.type === currentFilter
-            );
+        return(
+            currentFilter === "all" ||
+            item.type === currentFilter
+        );
 
-        }
-    );
+    });
 
 
-    if(!items.length){
+    if(
+        !items.length
+    ){
 
         empty.style.display =
         "block";
@@ -3171,126 +3429,125 @@ function renderMedia(){
 
 
     items.forEach(
-        item=>{
+    item=>{
 
-            const card =
+        const card =
+        document.createElement(
+            "div"
+        );
+
+
+        card.className =
+        "gallery-item";
+
+
+        let media;
+
+
+        if(
+            item.type === "video"
+        ){
+
+            media =
             document.createElement(
-                "div"
+                "video"
             );
 
 
-            card.className =
-            "gallery-item";
+            media.controls =
+            false;
 
 
-            let media;
+            media.muted =
+            true;
 
 
-            if(
-                item.type === "video"
-            ){
-
-                media =
-                document.createElement(
-                    "video"
-                );
+            media.playsInline =
+            true;
 
 
-                media.controls =
-                false;
-
-
-                media.muted =
-                true;
-
-
-                media.playsInline =
-                true;
-
-
-                media.preload =
-                "metadata";
-
-            }
-            else{
-
-                media =
-                document.createElement(
-                    "img"
-                );
-
-
-                media.loading =
-                "lazy";
-
-            }
-
-
-            media.src =
-            item.url;
-
-
-            media.alt =
-            item.name;
-
-
-            media.onerror =
-            function(){
-
-                console.error(
-                    "Media failed:",
-                    item.url
-                );
-
-            };
-
-
-            const caption =
-            document.createElement(
-                "div"
-            );
-
-
-            caption.className =
-            "gallery-caption";
-
-
-            caption.textContent =
-            item.name;
-
-
-            card.appendChild(
-                media
-            );
-
-
-            card.appendChild(
-                caption
-            );
-
-
-            card.onclick =
-            ()=>{
-
-                openViewer(
-                    item
-                );
-
-            };
-
-
-            gallery.appendChild(
-                card
-            );
+            media.preload =
+            "metadata";
 
         }
-    );
+        else{
+
+            media =
+            document.createElement(
+                "img"
+            );
+
+
+            media.loading =
+            "lazy";
+
+        }
+
+
+        media.src =
+        item.url;
+
+
+        media.alt =
+        item.name;
+
+
+        media.onerror =
+        function(){
+
+            console.error(
+                "Media failed:",
+                item.url
+            );
+
+        };
+
+
+        const caption =
+        document.createElement(
+            "div"
+        );
+
+
+        caption.className =
+        "gallery-caption";
+
+
+        caption.textContent =
+        item.name;
+
+
+        card.appendChild(
+            media
+        );
+
+
+        card.appendChild(
+            caption
+        );
+
+
+        card.onclick =
+        ()=>{
+
+            openViewer(
+                item
+            );
+
+        };
+
+
+        gallery.appendChild(
+            card
+        );
+
+    });
 
 }
 
 
 /* =====================================================
-   VIEWER
+   OPEN VIEWER
 ===================================================== */
 
 function openViewer(
@@ -3429,17 +3686,18 @@ function(
         ".media-filter"
     )
     .forEach(
-        btn=>{
+    btn=>{
 
-            btn.classList.remove(
-                "active"
-            );
+        btn.classList.remove(
+            "active"
+        );
 
-        }
-    );
+    });
 
 
-    if(button){
+    if(
+        button
+    ){
 
         button.classList.add(
             "active"
@@ -3454,7 +3712,7 @@ function(
 
 
 /* =====================================================
-   START EVERYTHING
+   START FIREBASE
 ===================================================== */
 
 loadRatings();
@@ -3462,7 +3720,7 @@ loadRatings();
 loadFirebaseMedia();
 
 
-/* Refresh ratings every 15 seconds */
+/* Refresh ratings */
 
 setInterval(
     loadRatings,
@@ -3470,7 +3728,7 @@ setInterval(
 );
 
 
-/* Refresh existing media every 10 seconds */
+/* Refresh media */
 
 setInterval(
     loadFirebaseMedia,
