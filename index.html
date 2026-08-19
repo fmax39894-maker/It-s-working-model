@@ -13,7 +13,9 @@
 <title>Working Model of Heart</title>
 
 
-<!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
+<!-- =====================================================
+     WEBSITE COVER / LINK PREVIEW IMAGE
+===================================================== -->
 
 <meta
     property="og:title"
@@ -105,6 +107,10 @@
 
 <style>
 
+/* =====================================================
+   BASIC
+===================================================== */
+
 *{
     box-sizing:border-box
 }
@@ -122,15 +128,18 @@ body{
 
 
 /* =====================================================
-   NAVIGATION
+   NAV
 ===================================================== */
 
 nav{
     height:64px;
+
     padding:0 6%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     background:#090a0cdd;
@@ -138,6 +147,7 @@ nav{
     border-bottom:1px solid #292a2e;
 
     position:sticky;
+
     top:0;
 
     z-index:20;
@@ -177,16 +187,19 @@ h1 span,
 ===================================================== */
 
 .hero{
+
     min-height:600px;
 
     padding:70px 7%;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     align-items:center;
 
     position:relative;
+
     overflow:hidden;
 
     background:
@@ -198,9 +211,11 @@ h1 span,
 }
 
 .hero:before{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
     opacity:.18;
@@ -224,7 +239,9 @@ h1 span,
 }
 
 .eyebrow{
+
     font-size:12px;
+
     letter-spacing:3px;
 
     color:#ff6b76;
@@ -233,7 +250,13 @@ h1 span,
 }
 
 .hero h1{
-    font-size:clamp(48px,6vw,78px);
+
+    font-size:
+    clamp(
+        48px,
+        6vw,
+        78px
+    );
 
     line-height:.98;
 
@@ -241,6 +264,7 @@ h1 span,
 }
 
 .hero p{
+
     max-width:560px;
 
     color:#cfd0d5;
@@ -251,6 +275,7 @@ h1 span,
 }
 
 .btn{
+
     display:inline-block;
 
     margin-top:25px;
@@ -267,7 +292,8 @@ h1 span,
 
     font-weight:bold;
 
-    box-shadow:0 12px 30px #ff263833;
+    box-shadow:
+    0 12px 30px #ff263833;
 
     transition:.25s
 }
@@ -282,6 +308,7 @@ h1 span,
 ===================================================== */
 
 .bpm{
+
     margin-top:22px;
 
     width:170px;
@@ -302,12 +329,15 @@ h1 span,
 }
 
 .pulse{
+
     width:31px;
+
     height:31px;
 
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
@@ -318,10 +348,12 @@ h1 span,
 @keyframes pulse{
 
     50%{
+
         transform:scale(1.15);
 
         box-shadow:
         0 0 25px #ff263888
+
     }
 
 }
@@ -332,21 +364,27 @@ h1 span,
 ===================================================== */
 
 .ecg{
+
     position:absolute;
 
     bottom:18px;
+
     left:0;
 
     width:100%;
+
     height:75px
 }
 
 .ecg svg{
+
     width:100%;
+
     height:100%
 }
 
 .ecg polyline{
+
     fill:none;
 
     stroke:#ff2638;
@@ -354,6 +392,7 @@ h1 span,
     stroke-width:3;
 
     stroke-linecap:round;
+
     stroke-linejoin:round;
 
     stroke-dasharray:900;
@@ -383,6 +422,7 @@ h1 span,
 ===================================================== */
 
 .bar{
+
     width:86%;
 
     margin:auto;
@@ -399,12 +439,14 @@ h1 span,
 }
 
 .bar span{
+
     color:#ff2638;
 
     font-weight:bold
 }
 
 .bar b{
+
     margin:0 15px;
 
     color:#555
@@ -416,12 +458,14 @@ h1 span,
 ===================================================== */
 
 section{
+
     padding:80px 7%;
 
     border-top:1px solid #202126
 }
 
 .title{
+
     text-align:center;
 
     font-size:38px
@@ -432,9 +476,11 @@ section{
 }
 
 .sub{
+
     max-width:700px;
 
-    margin:0 auto 42px;
+    margin:
+    0 auto 42px;
 
     text-align:center;
 
@@ -449,6 +495,7 @@ section{
 ===================================================== */
 
 .about{
+
     max-width:1100px;
 
     margin:auto;
@@ -468,6 +515,7 @@ section{
 }
 
 .about p{
+
     color:#c5c7cc;
 
     line-height:1.7
@@ -480,6 +528,7 @@ section{
 
 .features,
 .steps{
+
     display:grid;
 
     grid-template-columns:
@@ -490,6 +539,7 @@ section{
 
 .feature,
 .step{
+
     padding:22px;
 
     border:1px solid #34363c;
@@ -505,6 +555,7 @@ section{
 
 .feature:hover,
 .step:hover{
+
     transform:translateY(-6px);
 
     border-color:#ff2638
@@ -512,6 +563,7 @@ section{
 
 .feature .icon,
 .step .icon{
+
     font-size:29px;
 
     color:#ff2638;
@@ -521,6 +573,7 @@ section{
 
 .feature p,
 .step p{
+
     color:#aaa;
 
     font-size:13px;
@@ -529,7 +582,9 @@ section{
 }
 
 .num{
+
     width:30px;
+
     height:30px;
 
     border-radius:50%;
@@ -540,7 +595,8 @@ section{
 
     place-items:center;
 
-    margin:0 auto 17px;
+    margin:
+    0 auto 17px;
 
     font-weight:bold
 }
@@ -551,6 +607,7 @@ section{
 ===================================================== */
 
 .contact-grid{
+
     max-width:950px;
 
     margin:auto;
@@ -564,6 +621,7 @@ section{
 }
 
 .contact-card{
+
     display:flex;
 
     align-items:center;
@@ -586,13 +644,16 @@ section{
 }
 
 .contact-card:hover{
+
     transform:translateY(-5px);
 
     border-color:#ff2638
 }
 
 .contact-icon{
+
     width:45px;
+
     height:45px;
 
     border-radius:50%;
@@ -615,6 +676,7 @@ section{
 }
 
 .contact-card p{
+
     margin:0;
 
     color:#aaa;
@@ -632,6 +694,7 @@ section{
 ===================================================== */
 
 footer{
+
     padding:45px 7% 20px;
 
     border-top:1px solid #292a30;
@@ -640,6 +703,7 @@ footer{
 }
 
 .footer-grid{
+
     max-width:1100px;
 
     margin:auto;
@@ -657,12 +721,14 @@ footer{
 }
 
 .footer-grid p{
+
     color:#aaa;
 
     line-height:1.7
 }
 
 .leader{
+
     font-size:20px;
 
     color:#fff;
@@ -671,6 +737,7 @@ footer{
 }
 
 .leader span{
+
     display:block;
 
     color:#ff2638;
@@ -681,6 +748,7 @@ footer{
 }
 
 .copy{
+
     text-align:center;
 
     color:#666;
@@ -700,6 +768,7 @@ footer{
 ===================================================== */
 
 .reveal{
+
     opacity:0;
 
     transform:translateY(25px);
@@ -708,6 +777,7 @@ footer{
 }
 
 .reveal.show{
+
     opacity:1;
 
     transform:none
@@ -719,6 +789,7 @@ footer{
 ===================================================== */
 
 .media-view-buttons{
+
     display:flex;
 
     justify-content:center;
@@ -727,10 +798,12 @@ footer{
 
     gap:10px;
 
-    margin:0 auto 28px
+    margin:
+    0 auto 28px
 }
 
 .media-filter{
+
     border:1px solid #3a3c42;
 
     background:#111317;
@@ -750,12 +823,14 @@ footer{
 
 .media-filter:hover,
 .media-filter.active{
+
     background:#ff2638;
 
     border-color:#ff2638
 }
 
 .gallery{
+
     display:grid;
 
     grid-template-columns:
@@ -770,6 +845,7 @@ footer{
 }
 
 .gallery-item{
+
     background:#111317;
 
     border:1px solid #34363c;
@@ -780,10 +856,12 @@ footer{
 
     cursor:pointer;
 
-    animation:galleryIn .45s
+    animation:
+    galleryIn .45s
 }
 
 .gallery-item:hover{
+
     border-color:#ff2638;
 
     transform:translateY(-3px)
@@ -791,6 +869,7 @@ footer{
 
 .gallery-item img,
 .gallery-item video{
+
     width:100%;
 
     height:125px;
@@ -801,6 +880,7 @@ footer{
 }
 
 .gallery-caption{
+
     padding:9px;
 
     color:#aaa;
@@ -815,6 +895,7 @@ footer{
 }
 
 .gallery-empty{
+
     text-align:center;
 
     color:#777;
@@ -825,12 +906,14 @@ footer{
 @keyframes galleryIn{
 
     from{
+
         opacity:0;
 
         transform:translateY(15px)
     }
 
     to{
+
         opacity:1;
 
         transform:none
@@ -844,9 +927,11 @@ footer{
 ===================================================== */
 
 .firebase-status{
+
     text-align:center;
 
-    margin:-8px auto 24px;
+    margin:
+    -8px auto 24px;
 
     color:#777;
 
@@ -863,7 +948,9 @@ footer{
 ===================================================== */
 
 .settings-btn{
+
     width:38px;
+
     height:38px;
 
     border:1px solid #383a40;
@@ -886,9 +973,11 @@ footer{
 }
 
 .settings-btn span{
+
     display:block;
 
     width:18px;
+
     height:2px;
 
     background:#fff;
@@ -897,12 +986,17 @@ footer{
 }
 
 .settings-menu{
+
     position:fixed;
 
     top:76px;
+
     right:6%;
 
-    width:min(340px,88vw);
+    width:min(
+        340px,
+        88vw
+    );
 
     z-index:100;
 
@@ -916,7 +1010,8 @@ footer{
 
     background:#101114;
 
-    box-shadow:0 20px 60px #000b
+    box-shadow:
+    0 20px 60px #000b
 }
 
 .settings-menu.show{
@@ -924,6 +1019,7 @@ footer{
 }
 
 .settings-head{
+
     display:flex;
 
     align-items:center;
@@ -934,12 +1030,14 @@ footer{
 }
 
 .settings-head h3{
+
     margin:0;
 
     color:#ff2638
 }
 
 .settings-head button{
+
     border:0;
 
     background:none;
@@ -952,6 +1050,7 @@ footer{
 }
 
 .settings-card{
+
     display:flex;
 
     gap:14px;
@@ -970,7 +1069,9 @@ footer{
 }
 
 .settings-card p{
-    margin:0 0 12px;
+
+    margin:
+    0 0 12px;
 
     color:#aaa;
 
@@ -980,6 +1081,7 @@ footer{
 }
 
 .settings-password{
+
     margin-top:12px;
 
     padding-top:12px;
@@ -988,6 +1090,7 @@ footer{
 }
 
 .settings-password label{
+
     display:block;
 
     font-size:9px;
@@ -1002,6 +1105,7 @@ footer{
 }
 
 .settings-password input{
+
     width:100%;
 
     padding:10px 11px;
@@ -1018,6 +1122,7 @@ footer{
 }
 
 .settings-action{
+
     width:100%;
 
     margin-top:8px;
@@ -1038,6 +1143,7 @@ footer{
 }
 
 #settingsPasswordMessage{
+
     font-size:11px;
 
     margin-top:7px;
@@ -1051,9 +1157,11 @@ footer{
 ===================================================== */
 
 .section-viewer{
+
     display:none;
 
-    margin:28px auto 0;
+    margin:
+    28px auto 0;
 
     max-width:760px;
 
@@ -1071,6 +1179,7 @@ footer{
 }
 
 .section-viewer-head{
+
     display:flex;
 
     align-items:center;
@@ -1081,6 +1190,7 @@ footer{
 }
 
 .section-viewer-head h3{
+
     margin:0;
 
     color:#ff2638;
@@ -1089,6 +1199,7 @@ footer{
 }
 
 .section-viewer-head button{
+
     border:0;
 
     background:#ff2638;
@@ -1096,6 +1207,7 @@ footer{
     color:#fff;
 
     width:32px;
+
     height:32px;
 
     border-radius:50%;
@@ -1106,6 +1218,7 @@ footer{
 }
 
 .section-viewer-content{
+
     display:flex;
 
     justify-content:center;
@@ -1116,6 +1229,7 @@ footer{
 }
 
 .section-view-media{
+
     max-width:100%;
 
     max-height:500px;
@@ -1142,9 +1256,12 @@ footer{
     translateX(-50%)
     translateY(-20px);
 
-    z-index:1000;
+    z-index:90;
 
-    width:min(430px,92vw);
+    width:min(
+        430px,
+        92vw
+    );
 
     padding:12px 16px;
 
@@ -1154,9 +1271,15 @@ footer{
 
     justify-content:space-between;
 
-    gap:14px;
+    gap:12px;
 
-    background:rgba(16,17,20,.96);
+    background:
+    rgba(
+        16,
+        17,
+        20,
+        .96
+    );
 
     border:1px solid #3a3c42;
 
@@ -1170,12 +1293,8 @@ footer{
 
     opacity:0;
 
-    /*
-       IMPORTANT:
-       The old version had pointer-events:none,
-       which prevented the stars from being clicked.
-    */
-
+    /* IMPORTANT:
+       the widget itself is clickable */
     pointer-events:auto;
 
     animation:
@@ -1184,9 +1303,11 @@ footer{
     animation-delay:.8s
 }
 
+
 @keyframes ratingWidgetIn{
 
     from{
+
         opacity:0;
 
         transform:
@@ -1195,6 +1316,7 @@ footer{
     }
 
     to{
+
         opacity:1;
 
         transform:
@@ -1203,6 +1325,7 @@ footer{
     }
 
 }
+
 
 .rating-left{
 
@@ -1215,10 +1338,14 @@ footer{
     min-width:0
 }
 
+
 .rating-heart{
 
     width:38px;
+
     height:38px;
+
+    flex:none;
 
     border-radius:50%;
 
@@ -1232,11 +1359,10 @@ footer{
 
     font-size:20px;
 
-    flex:none;
-
     animation:
     ratingHeartPulse 1.4s infinite
 }
+
 
 @keyframes ratingHeartPulse{
 
@@ -1246,10 +1372,10 @@ footer{
 
         box-shadow:
         0 0 25px #ff263866
-
     }
 
 }
+
 
 .rating-info{
     min-width:0
@@ -1277,6 +1403,11 @@ footer{
     white-space:nowrap
 }
 
+
+/* =====================================================
+   RATING STARS
+===================================================== */
+
 .rating-stars{
 
     display:flex;
@@ -1285,30 +1416,26 @@ footer{
 
     gap:2px;
 
-    flex:none
+    transition:
+    opacity .25s,
+    transform .25s
 }
 
 .rating-star{
 
     border:0;
 
-    background:transparent;
+    background:none;
 
-    padding:4px;
-
-    margin:0;
+    padding:2px;
 
     color:#4a4c52;
 
-    font-size:25px;
+    font-size:22px;
 
     line-height:1;
 
     cursor:pointer;
-
-    -webkit-tap-highlight-color:transparent;
-
-    touch-action:manipulation;
 
     transition:
     transform .18s ease,
@@ -1318,14 +1445,9 @@ footer{
 
 .rating-star:hover{
 
-    transform:scale(1.25);
+    transform:scale(1.3);
 
     color:#ffd43b
-}
-
-.rating-star:active{
-
-    transform:scale(.85)
 }
 
 .rating-star.active{
@@ -1360,20 +1482,100 @@ footer{
 
 }
 
-.rating-widget.submitted{
+
+/* =====================================================
+   CONFIRM BUTTON
+===================================================== */
+
+.rating-confirm{
+
+    display:none;
+
+    border:1px solid #ff2638;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    padding:7px 11px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 5px 15px #ff263844;
+
+    animation:
+    confirmIn .3s ease
+}
+
+.rating-confirm.show{
+    display:block
+}
+
+.rating-confirm:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+    0 7px 20px #ff263866
+}
+
+.rating-confirm:active{
+
+    transform:scale(.95)
+}
+
+.rating-confirm:disabled{
+    opacity:1
+}
+
+.rating-confirm.confirmed{
+
+    background:#1d3927;
 
     border-color:#69e58a;
 
-    box-shadow:
-    0 15px 45px #000b,
-    0 0 25px #69e58a22
+    color:#69e58a;
+
+    cursor:default;
+
+    box-shadow:none
 }
 
-.rating-widget.submitted
-.rating-title{
+@keyframes confirmIn{
 
-    color:#69e58a
+    from{
+
+        opacity:0;
+
+        transform:
+        scale(.8)
+        translateY(5px)
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1)
+        translateY(0)
+    }
+
 }
+
+
+/* =====================================================
+   RATING MESSAGE
+===================================================== */
 
 .rating-message{
 
@@ -1381,15 +1583,18 @@ footer{
 
     left:50%;
 
-    top:calc(100% + 8px);
+    top:calc(
+        100% + 8px
+    );
 
-    transform:translateX(-50%);
+    transform:
+    translateX(-50%);
 
     width:max-content;
 
     max-width:90vw;
 
-    padding:8px 13px;
+    padding:7px 12px;
 
     border-radius:9px;
 
@@ -1409,8 +1614,18 @@ footer{
 }
 
 .rating-message.show{
-
     opacity:1
+}
+
+.rating-widget.submitted{
+
+    border-color:#69e58a
+}
+
+.rating-widget.submitted
+.rating-title{
+
+    color:#69e58a
 }
 
 
@@ -1421,6 +1636,7 @@ footer{
 @media(max-width:800px){
 
     .hero{
+
         grid-template-columns:1fr;
 
         text-align:center
@@ -1436,15 +1652,21 @@ footer{
 
     .features,
     .steps{
-        grid-template-columns:1fr 1fr
+
+        grid-template-columns:
+        1fr 1fr
     }
 
     .footer-grid{
-        grid-template-columns:1fr 1fr
+
+        grid-template-columns:
+        1fr 1fr
     }
 
     .contact-grid{
-        grid-template-columns:1fr 1fr
+
+        grid-template-columns:
+        1fr 1fr
     }
 
 }
@@ -1455,6 +1677,7 @@ footer{
     .features,
     .steps,
     .footer-grid{
+
         grid-template-columns:1fr
     }
 
@@ -1467,7 +1690,9 @@ footer{
     }
 
     .gallery{
-        grid-template-columns:repeat(2,1fr)
+
+        grid-template-columns:
+        repeat(2,1fr)
     }
 
 
@@ -1475,21 +1700,23 @@ footer{
 
     .rating-widget{
 
-        top:76px;
+        padding:10px 12px;
 
-        width:calc(100vw - 40px);
+        gap:7px;
 
-        padding:10px 11px;
-
-        gap:6px
+        width:min(
+            400px,
+            94vw
+        )
     }
 
     .rating-heart{
 
-        width:36px;
-        height:36px;
+        width:34px;
 
-        font-size:18px
+        height:34px;
+
+        font-size:17px
     }
 
     .rating-title{
@@ -1502,9 +1729,16 @@ footer{
 
     .rating-star{
 
-        font-size:21px;
+        font-size:19px;
 
-        padding:3px
+        padding:1px
+    }
+
+    .rating-confirm{
+
+        font-size:9px;
+
+        padding:6px 9px
     }
 
 }
@@ -1554,45 +1788,48 @@ footer{
     <div
         id="ratingStars"
         class="rating-stars"
-        aria-label="Choose rating"
     >
 
         <button
-            type="button"
             class="rating-star"
             data-rating="1"
-            aria-label="1 star"
+            type="button"
         >★</button>
 
         <button
-            type="button"
             class="rating-star"
             data-rating="2"
-            aria-label="2 stars"
+            type="button"
         >★</button>
 
         <button
-            type="button"
             class="rating-star"
             data-rating="3"
-            aria-label="3 stars"
+            type="button"
         >★</button>
 
         <button
-            type="button"
             class="rating-star"
             data-rating="4"
-            aria-label="4 stars"
+            type="button"
         >★</button>
 
         <button
-            type="button"
             class="rating-star"
             data-rating="5"
-            aria-label="5 stars"
+            type="button"
         >★</button>
 
     </div>
+
+
+    <button
+        id="ratingConfirm"
+        class="rating-confirm"
+        type="button"
+    >
+        Confirm
+    </button>
 
 
     <div
@@ -1604,7 +1841,7 @@ footer{
 
 
 <!-- =====================================================
-     NAVIGATION
+     NAV
 ===================================================== -->
 
 <nav>
@@ -1644,15 +1881,21 @@ SCIENCE EXHIBITION 2026
 </div>
 
 <h1>
+
 Working Model<br>
+
 of the <span>Human Heart</span>
+
 </h1>
 
 <p>
+
 This project demonstrates the working
 of the human heart and how it pumps
 blood throughout the body.
+
 </p>
+
 
 <a
 class="btn"
@@ -1660,9 +1903,6 @@ href="#model"
 >
 Explore the Model ↓
 </a>
-
-
-<!-- OPEN PUBLIC WEBSITE BUTTON REMOVED -->
 
 
 <div class="bpm">
@@ -1676,7 +1916,13 @@ Explore the Model ↓
 Heartbeat<br>
 
 <strong>
-<span id="bpm">72</span> BPM
+
+<span id="bpm">
+72
+</span>
+
+BPM
+
 </strong>
 
 </div>
@@ -1728,13 +1974,17 @@ preserveAspectRatio="none"
 
 <div class="bar">
 
-<span>Science Exhibition 2026</span>
+<span>
+Science Exhibition 2026
+</span>
 
 <b>|</b>
 
 Aayushman Jha
 
-<span>(Leader)</span>
+<span>
+(Leader)
+</span>
 
 </div>
 
@@ -1776,9 +2026,12 @@ Host Editor
 </h4>
 
 <p>
+
 Enter the host password to open
 the Firebase media editor.
+
 </p>
+
 
 <div class="settings-password">
 
@@ -1824,12 +2077,18 @@ class="reveal"
 >
 
 <h2 class="title">
-<span>Aayushman Jha</span>
+
+<span>
+Aayushman Jha
+</span>
+
 </h2>
 
 <p class="sub">
+
 Project Leader · Team Red Diamond ·
 Science Exhibition 2026
+
 </p>
 
 <div style="text-align:center">
@@ -1869,11 +2128,13 @@ About the <span>Heart</span>
 </h2>
 
 <p>
+
 The human heart is a muscular organ
 that continuously pumps blood throughout
 the body. Our working model demonstrates
 this pumping action in a simple and
 practical way.
+
 </p>
 
 
@@ -1947,7 +2208,6 @@ Science project
 
 </div>
 
-
 </div>
 
 </div>
@@ -1991,21 +2251,29 @@ from the editor.
 class="media-filter active"
 onclick="filterMedia('all',this)"
 >
+
 👀 See All
+
 </button>
+
 
 <button
 class="media-filter"
 onclick="filterMedia('photo',this)"
 >
+
 📸 Photos
+
 </button>
+
 
 <button
 class="media-filter"
 onclick="filterMedia('video',this)"
 >
+
 🎬 Videos
+
 </button>
 
 </div>
@@ -2015,7 +2283,9 @@ onclick="filterMedia('video',this)"
 id="firebaseStatus"
 class="firebase-status"
 >
+
 ☁️ Connecting to Firebase...
+
 </div>
 
 
@@ -2030,7 +2300,9 @@ id="galleryEmpty"
 class="gallery-empty"
 style="display:none"
 >
+
 No photos or videos have been added yet.
+
 </div>
 
 
@@ -2041,7 +2313,9 @@ class="section-viewer"
 
 <div class="section-viewer-head">
 
-<h3 id="sectionViewerTitle">
+<h3
+id="sectionViewerTitle"
+>
 Preview
 </h3>
 
@@ -2083,6 +2357,7 @@ Function of the Heart
 
 </h2>
 
+
 <p class="sub">
 
 Learn the main functions of the heart
@@ -2109,8 +2384,10 @@ Receives Blood
 </h3>
 
 <p>
+
 The atria receive blood returning
 to the heart.
+
 </p>
 
 </div>
@@ -2131,8 +2408,10 @@ Pumps Blood
 </h3>
 
 <p>
+
 The ventricles contract and pump
 blood to the lungs and body.
+
 </p>
 
 </div>
@@ -2153,8 +2432,10 @@ Blood Circulation
 </h3>
 
 <p>
+
 Blood travels through pulmonary
 and systemic circulation.
+
 </p>
 
 </div>
@@ -2175,12 +2456,13 @@ Continuous Cycle
 </h3>
 
 <p>
+
 The heart repeatedly contracts
 and relaxes to maintain circulation.
+
 </p>
 
 </div>
-
 
 </div>
 
@@ -2201,6 +2483,7 @@ class="reveal"
 Contact <span>Us</span>
 
 </h2>
+
 
 <p class="sub">
 
@@ -2281,7 +2564,6 @@ Team Red Diamond
 
 </div>
 
-
 </div>
 
 </section>
@@ -2303,9 +2585,11 @@ About
 </h3>
 
 <p>
+
 Educational project to understand
 the structure and working of the
 human heart.
+
 </p>
 
 </div>
@@ -2342,7 +2626,9 @@ Contact
 href="mailto:aayushmanjha1108@gmail.com"
 style="color:#aaa;text-decoration:none"
 >
+
 aayushmanjha1108@gmail.com
+
 </a>
 
 <br>
@@ -2351,13 +2637,14 @@ aayushmanjha1108@gmail.com
 href="tel:+919931203827"
 style="color:#aaa;text-decoration:none"
 >
+
 +91 99312 03827
+
 </a>
 
 </p>
 
 </div>
-
 
 </div>
 
@@ -2373,11 +2660,10 @@ style="color:#aaa;text-decoration:none"
 
 
 <!-- =====================================================
-     NORMAL JAVASCRIPT
+     BASIC JAVASCRIPT
 ===================================================== -->
 
 <script>
-
 
 /* =====================================================
    BPM
@@ -2390,16 +2676,16 @@ document.getElementById(
 
 
 setInterval(
-()=>{
+    ()=>{
 
-    bpm.textContent =
-    70 +
-    Math.floor(
-        Math.random()*7
-    );
+        bpm.textContent =
+        70 +
+        Math.floor(
+            Math.random()*7
+        );
 
-},
-1200
+    },
+    1200
 );
 
 
@@ -2409,35 +2695,38 @@ setInterval(
 
 const obs =
 new IntersectionObserver(
-entries=>{
+    entries=>{
 
-    entries.forEach(
-    entry=>{
+        entries.forEach(
+            entry=>{
 
-        if(
-            entry.isIntersecting
-        ){
+                if(
+                    entry.isIntersecting
+                ){
 
-            entry.target
-            .classList
-            .add("show");
+                    entry.target
+                    .classList
+                    .add("show");
 
-        }
+                }
 
-    });
+            }
+        );
 
-},
-{
-    threshold:.12
-});
+    },
+    {
+        threshold:.12
+    }
+);
 
 
 document
 .querySelectorAll(".reveal")
 .forEach(
-element=>{
-    obs.observe(element);
-});
+    element=>{
+        obs.observe(element);
+    }
+);
 
 
 /* =====================================================
@@ -2451,8 +2740,9 @@ function(){
     .getElementById(
         "settingsMenu"
     )
-    .classList
-    .toggle("show");
+    .classList.toggle(
+        "show"
+    );
 
 };
 
@@ -2489,13 +2779,13 @@ function(){
 
 
         setTimeout(
-        ()=>{
+            ()=>{
 
-            location.href =
-            "edit.html";
+                location.href =
+                "edit.html";
 
-        },
-        500
+            },
+            500
         );
 
     }
@@ -2513,7 +2803,7 @@ function(){
 
 
 /* =====================================================
-   ⭐ RATING SYSTEM
+   ⭐ RATING SYSTEM UI
 ===================================================== */
 
 const ratingStars =
@@ -2528,13 +2818,20 @@ document.getElementById(
 );
 
 
+const ratingConfirm =
+document.getElementById(
+    "ratingConfirm"
+);
+
+
 const ratingMessage =
 document.getElementById(
     "ratingMessage"
 );
 
 
-let selectedRating = 0;
+let selectedRating =
+0;
 
 
 /* =====================================================
@@ -2546,20 +2843,21 @@ function updateRatingStars(
 ){
 
     ratingStars.forEach(
-    (star,index)=>{
+        (star,index)=>{
 
-        star.classList.toggle(
-            "active",
-            index < value
-        );
+            star.classList.toggle(
+                "active",
+                index < value
+            );
 
-    });
+        }
+    );
 
 }
 
 
 /* =====================================================
-   RATING MESSAGE
+   MESSAGE
 ===================================================== */
 
 function showRatingMessage(
@@ -2575,36 +2873,15 @@ function showRatingMessage(
     );
 
 
-    clearTimeout(
-        window.ratingMessageTimer
-    );
-
-
-    window.ratingMessageTimer =
     setTimeout(
-    ()=>{
+        ()=>{
 
-        ratingMessage.classList.remove(
-            "show"
-        );
+            ratingMessage.classList.remove(
+                "show"
+            );
 
-    },
-    3000
-    );
-
-}
-
-
-/* =====================================================
-   CHECK RATING STATUS
-===================================================== */
-
-function hasAlreadyRated(){
-
-    return(
-        localStorage.getItem(
-            "heartProjectRated"
-        ) === "true"
+        },
+        3000
     );
 
 }
@@ -2615,149 +2892,120 @@ function hasAlreadyRated(){
 ===================================================== */
 
 ratingStars.forEach(
-star=>{
+    star=>{
+
+        star.addEventListener(
+            "click",
+            ()=>{
+
+                if(
+                    localStorage.getItem(
+                        "heartProjectRated"
+                    ) === "true"
+                ){
+
+                    showRatingMessage(
+                        "You have already rated this project ⭐"
+                    );
+
+                    return;
+
+                }
 
 
-    star.addEventListener(
-        "mouseenter",
-        ()=>{
-
-            if(
-                hasAlreadyRated()
-            ){
-
-                return;
-
-            }
-
-
-            updateRatingStars(
+                selectedRating =
                 Number(
                     star.dataset.rating
-                )
-            );
-
-        }
-    );
-
-
-    star.addEventListener(
-        "click",
-        async event=>{
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-
-            if(
-                hasAlreadyRated()
-            ){
-
-                showRatingMessage(
-                    "You have already rated this project ⭐"
                 );
 
-                return;
 
-            }
-
-
-            const rating =
-            Number(
-                star.dataset.rating
-            );
+                updateRatingStars(
+                    selectedRating
+                );
 
 
-            if(
-                rating < 1 ||
-                rating > 5
-            ){
-
-                return;
-
-            }
-
-
-            selectedRating =
-            rating;
+                ratingStars.forEach(
+                    s=>{
+                        s.classList.remove(
+                            "pop"
+                        );
+                    }
+                );
 
 
-            updateRatingStars(
-                rating
-            );
-
-
-            ratingStars.forEach(
-            s=>{
-
-                s.classList.remove(
+                star.classList.add(
                     "pop"
                 );
 
-            });
+
+                /*
+                   Hide all stars
+                   after selection
+                */
+
+                document
+                .getElementById(
+                    "ratingStars"
+                )
+                .style.display =
+                "none";
 
 
-            void star.offsetWidth;
+                /*
+                   Show confirmation
+                */
+
+                ratingConfirm.textContent =
+                "Confirm ★ " +
+                selectedRating;
 
 
-            star.classList.add(
-                "pop"
-            );
-
-
-            /*
-               IMPORTANT:
-               The Firebase function is now
-               exposed as window.submitRating.
-            */
-
-            if(
-                typeof window.submitRating ===
-                "function"
-            ){
-
-                await window.submitRating(
-                    rating
+                ratingConfirm.classList.add(
+                    "show"
                 );
 
             }
-            else{
+        );
 
-                showRatingMessage(
-                    "Connecting to Firebase..."
-                );
-
-            }
-
-        }
-    );
-
-});
+    }
+);
 
 
 /* =====================================================
-   MOBILE TOUCH SUPPORT
+   CONFIRM RATING
 ===================================================== */
 
-ratingStars.forEach(
-star=>{
+ratingConfirm.addEventListener(
+    "click",
+    async ()=>{
 
-    star.addEventListener(
-        "touchend",
-        ()=>{
-            star.click();
-        },
-        {
-            passive:true
+        if(
+            !selectedRating
+        ){
+
+            return;
+
         }
-    );
 
-});
+
+        ratingConfirm.disabled =
+        true;
+
+
+        ratingConfirm.textContent =
+        "Saving...";
+
+
+        await submitRating(
+            selectedRating
+        );
+
+    }
+);
 
 
 /* =====================================================
-   STAR DISPLAY FROM FIREBASE
+   DISPLAY TOTAL RATING
 ===================================================== */
 
 window.updateRatingDisplay =
@@ -2799,7 +3047,7 @@ function(
 
 
 /* =====================================================
-   RATING SUBMITTED
+   SUCCESS
 ===================================================== */
 
 window.setRatingSubmitted =
@@ -2816,26 +3064,24 @@ function(){
     );
 
 
+    ratingConfirm.disabled =
+    true;
+
+
+    ratingConfirm.textContent =
+    "✓ Rated";
+
+
+    ratingConfirm.classList.add(
+        "confirmed"
+    );
+
+
     showRatingMessage(
         "Thank you for rating our project! ❤️"
     );
 
 };
-
-
-/* =====================================================
-   ALREADY RATED STATE
-===================================================== */
-
-if(
-    hasAlreadyRated()
-){
-
-    ratingWidget.classList.add(
-        "submitted"
-    );
-
-}
 
 
 /* =====================================================
@@ -2884,14 +3130,10 @@ document.addEventListener(
 
 <!-- =====================================================
      FIREBASE
+     ORIGINAL CONFIGURATION UNCHANGED
 ===================================================== -->
 
 <script type="module">
-
-
-/* =====================================================
-   FIREBASE IMPORTS
-===================================================== */
 
 import {
     initializeApp
@@ -2912,8 +3154,8 @@ from
 
 
 /* =====================================================
-   YOUR ORIGINAL FIREBASE CONFIGURATION
-   UNCHANGED
+   ORIGINAL FIREBASE CONFIGURATION
+   DO NOT CHANGE
 ===================================================== */
 
 const firebaseConfig = {
@@ -2952,16 +3194,12 @@ getFirestore(
 
 
 /* =====================================================
-   ⭐ RATING COLLECTION
+   ⭐ RATING FIREBASE
 ===================================================== */
 
 const RATING_COLLECTION =
 "heartProjectRatings";
 
-
-/* =====================================================
-   LOAD RATINGS
-===================================================== */
 
 async function loadRatings(){
 
@@ -2976,40 +3214,45 @@ async function loadRatings(){
         );
 
 
-        let total = 0;
+        let total =
+        0;
 
-        let count = 0;
+
+        let count =
+        0;
 
 
         snap.forEach(
-        docSnap=>{
+            docSnap=>{
 
-            const data =
-            docSnap.data();
-
-
-            const rating =
-            Number(
-                data.rating
-            );
+                const data =
+                docSnap.data();
 
 
-            if(
-                rating >= 1 &&
-                rating <= 5
-            ){
+                const rating =
+                Number(
+                    data.rating
+                );
 
-                total += rating;
 
-                count++;
+                if(
+                    rating >= 1 &&
+                    rating <= 5
+                ){
+
+                    total +=
+                    rating;
+
+                    count++;
+
+                }
 
             }
-
-        });
+        );
 
 
         const average =
-        count > 0
+        count
         ? total / count
         : 0;
 
@@ -3042,11 +3285,9 @@ async function loadRatings(){
 
 /* =====================================================
    ⭐ SUBMIT RATING
-   EXPOSED TO WINDOW SO THE UI CAN CALL IT
 ===================================================== */
 
-window.submitRating =
-async function(
+async function submitRating(
     rating
 ){
 
@@ -3066,10 +3307,6 @@ async function(
         ) === "true"
     ){
 
-        window.showRatingMessage?.(
-            "You have already rated this project ⭐"
-        );
-
         return;
 
     }
@@ -3085,7 +3322,7 @@ async function(
             {
 
                 rating:
-                Number(rating),
+                rating,
 
                 createdAt:
                 serverTimestamp()
@@ -3109,32 +3346,39 @@ async function(
 
 
         /*
-           If Firebase rejects the rating,
-           remove the selected stars so the
-           user knows it was not saved.
+           If saving fails,
+           restore stars so user
+           can try again.
         */
 
         document
-        .querySelectorAll(
-            ".rating-star"
+        .getElementById(
+            "ratingStars"
         )
-        .forEach(
-        star=>{
-
-            star.classList.remove(
-                "active"
-            );
-
-        });
+        .style.display =
+        "flex";
 
 
-        window.showRatingMessage?.(
-            "Could not save rating. Check Firebase rules."
+        ratingConfirm.disabled =
+        false;
+
+
+        ratingConfirm.classList.remove(
+            "show"
+        );
+
+
+        ratingConfirm.textContent =
+        "Confirm";
+
+
+        showRatingMessage(
+            "Could not save rating. Please try again."
         );
 
     }
 
-};
+}
 
 
 /* =====================================================
@@ -3163,7 +3407,8 @@ document.getElementById(
 );
 
 
-let mediaStore = [];
+let mediaStore =
+[];
 
 
 let currentFilter =
@@ -3205,135 +3450,140 @@ async function loadFirebaseMedia(){
         );
 
 
-        mediaStore = [];
+        mediaStore =
+        [];
 
 
         snap.forEach(
-        docSnap=>{
+            docSnap=>{
 
-            const data =
-            docSnap.data();
-
-
-            console.log(
-                "Firebase document:",
-                docSnap.id,
-                data
-            );
+                const data =
+                docSnap.data();
 
 
-            const url =
-            data.url ||
-            data.link ||
-            data.mediaUrl ||
-            data.secure_url;
+                console.log(
+                    "Firebase document:",
+                    docSnap.id,
+                    data
+                );
 
 
-            if(
-                !url
-            ){
-
-                return;
-
-            }
+                const url =
+                data.url ||
+                data.link ||
+                data.mediaUrl ||
+                data.secure_url;
 
 
-            let type =
-            String(
-                data.type ||
-                data.mediaType ||
-                ""
-            )
-            .toLowerCase();
+                if(
+                    !url
+                ){
+
+                    return;
+
+                }
 
 
-            if(
-                type === "image" ||
-                type === "photo" ||
-                type === "photos"
-            ){
-
-                type =
-                "photo";
-
-            }
-
-
-            if(
-                type === "video" ||
-                type === "videos"
-            ){
-
-                type =
-                "video";
-
-            }
-
-
-            if(
-                type !== "photo" &&
-                type !== "video"
-            ){
-
-                const u =
-                url
-                .split("?")[0]
+                let type =
+                String(
+                    data.type ||
+                    data.mediaType ||
+                    ""
+                )
                 .toLowerCase();
 
 
                 if(
-                    /\.(jpg|jpeg|png|gif|webp|avif)$/
-                    .test(u)
+                    type === "image" ||
+                    type === "photo" ||
+                    type === "photos"
                 ){
 
                     type =
                     "photo";
 
                 }
-                else if(
-                    /\.(mp4|webm|mov|m4v|ogg)$/
-                    .test(u)
+
+
+                if(
+                    type === "video" ||
+                    type === "videos"
                 ){
 
                     type =
                     "video";
 
                 }
-                else{
 
-                    return;
+
+                if(
+                    type !== "photo" &&
+                    type !== "video"
+                ){
+
+                    const u =
+                    url
+                    .split("?")[0]
+                    .toLowerCase();
+
+
+                    if(
+                        /\.(jpg|jpeg|png|gif|webp|avif)$/
+                        .test(u)
+                    ){
+
+                        type =
+                        "photo";
+
+                    }
+                    else if(
+                        /\.(mp4|webm|mov|m4v|ogg)$/
+                        .test(u)
+                    ){
+
+                        type =
+                        "video";
+
+                    }
+                    else{
+
+                        return;
+
+                    }
 
                 }
 
+
+                mediaStore.push({
+
+                    id:
+                    docSnap.id,
+
+                    name:
+                    data.name ||
+                    data.title ||
+                    "Project Media",
+
+                    url:
+                    url,
+
+                    type:
+                    type
+
+                });
+
             }
-
-
-            mediaStore.push({
-
-                id:
-                docSnap.id,
-
-                name:
-                data.name ||
-                data.title ||
-                "Project Media",
-
-                url:
-                url,
-
-                type:
-                type
-
-            });
-
-        });
+        );
 
 
         setStatus(
+
             "☁️ Firebase connected • " +
             mediaStore.length +
             " media loaded",
+
             true
+
         );
 
 
@@ -3395,14 +3645,15 @@ function renderMedia(){
 
     const items =
     mediaStore.filter(
-    item=>{
+        item=>{
 
-        return(
-            currentFilter === "all" ||
-            item.type === currentFilter
-        );
+            return(
+                currentFilter === "all" ||
+                item.type === currentFilter
+            );
 
-    });
+        }
+    );
 
 
     if(
@@ -3429,125 +3680,126 @@ function renderMedia(){
 
 
     items.forEach(
-    item=>{
+        item=>{
 
-        const card =
-        document.createElement(
-            "div"
-        );
-
-
-        card.className =
-        "gallery-item";
-
-
-        let media;
-
-
-        if(
-            item.type === "video"
-        ){
-
-            media =
+            const card =
             document.createElement(
-                "video"
+                "div"
             );
 
 
-            media.controls =
-            false;
+            card.className =
+            "gallery-item";
 
 
-            media.muted =
-            true;
+            let media;
 
 
-            media.playsInline =
-            true;
+            if(
+                item.type === "video"
+            ){
+
+                media =
+                document.createElement(
+                    "video"
+                );
 
 
-            media.preload =
-            "metadata";
+                media.controls =
+                false;
+
+
+                media.muted =
+                true;
+
+
+                media.playsInline =
+                true;
+
+
+                media.preload =
+                "metadata";
+
+            }
+            else{
+
+                media =
+                document.createElement(
+                    "img"
+                );
+
+
+                media.loading =
+                "lazy";
+
+            }
+
+
+            media.src =
+            item.url;
+
+
+            media.alt =
+            item.name;
+
+
+            media.onerror =
+            function(){
+
+                console.error(
+                    "Media failed:",
+                    item.url
+                );
+
+            };
+
+
+            const caption =
+            document.createElement(
+                "div"
+            );
+
+
+            caption.className =
+            "gallery-caption";
+
+
+            caption.textContent =
+            item.name;
+
+
+            card.appendChild(
+                media
+            );
+
+
+            card.appendChild(
+                caption
+            );
+
+
+            card.onclick =
+            ()=>{
+
+                openViewer(
+                    item
+                );
+
+            };
+
+
+            gallery.appendChild(
+                card
+            );
 
         }
-        else{
-
-            media =
-            document.createElement(
-                "img"
-            );
-
-
-            media.loading =
-            "lazy";
-
-        }
-
-
-        media.src =
-        item.url;
-
-
-        media.alt =
-        item.name;
-
-
-        media.onerror =
-        function(){
-
-            console.error(
-                "Media failed:",
-                item.url
-            );
-
-        };
-
-
-        const caption =
-        document.createElement(
-            "div"
-        );
-
-
-        caption.className =
-        "gallery-caption";
-
-
-        caption.textContent =
-        item.name;
-
-
-        card.appendChild(
-            media
-        );
-
-
-        card.appendChild(
-            caption
-        );
-
-
-        card.onclick =
-        ()=>{
-
-            openViewer(
-                item
-            );
-
-        };
-
-
-        gallery.appendChild(
-            card
-        );
-
-    });
+    );
 
 }
 
 
 /* =====================================================
-   OPEN VIEWER
+   VIEWER
 ===================================================== */
 
 function openViewer(
@@ -3634,8 +3886,11 @@ function openViewer(
 
 
     viewer.scrollIntoView({
+
         behavior:"smooth",
+
         block:"center"
+
     });
 
 }
@@ -3686,13 +3941,14 @@ function(
         ".media-filter"
     )
     .forEach(
-    btn=>{
+        btn=>{
 
-        btn.classList.remove(
-            "active"
-        );
+            btn.classList.remove(
+                "active"
+            );
 
-    });
+        }
+    );
 
 
     if(
@@ -3712,7 +3968,7 @@ function(
 
 
 /* =====================================================
-   START FIREBASE
+   START
 ===================================================== */
 
 loadRatings();
@@ -3720,7 +3976,7 @@ loadRatings();
 loadFirebaseMedia();
 
 
-/* Refresh ratings */
+/* Update rating total */
 
 setInterval(
     loadRatings,
@@ -3728,7 +3984,7 @@ setInterval(
 );
 
 
-/* Refresh media */
+/* Update existing media */
 
 setInterval(
     loadFirebaseMedia,
