@@ -15,90 +15,58 @@
 
 <!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
 
-<meta
-    property="og:title"
-    content="Working Model of Heart"
->
+<meta property="og:title"
+      content="Working Model of Heart">
 
-<meta
-    property="og:description"
-    content="Working Model of the Human Heart — Science Exhibition 2026"
->
+<meta property="og:description"
+      content="Working Model of the Human Heart — Science Exhibition 2026">
 
-<meta
-    property="og:image"
-    content="https://its-working-heart.vercel.app/cover.png"
->
+<meta property="og:image"
+      content="https://its-working-heart.vercel.app/cover.png">
 
-<meta
-    property="og:image:secure_url"
-    content="https://its-working-heart.vercel.app/cover.png"
->
+<meta property="og:image:secure_url"
+      content="https://its-working-heart.vercel.app/cover.png">
 
-<meta
-    property="og:image:type"
-    content="image/png"
->
+<meta property="og:image:type"
+      content="image/png">
 
-<meta
-    property="og:image:width"
-    content="1200"
->
+<meta property="og:image:width"
+      content="1200">
 
-<meta
-    property="og:image:height"
-    content="630"
->
+<meta property="og:image:height"
+      content="630">
 
-<meta
-    property="og:image:alt"
-    content="Working Model of Heart"
->
+<meta property="og:image:alt"
+      content="Working Model of Heart">
 
-<meta
-    property="og:type"
-    content="website"
->
+<meta property="og:type"
+      content="website">
 
-<meta
-    property="og:url"
-    content="https://its-working-heart.vercel.app/"
->
+<meta property="og:url"
+      content="https://its-working-heart.vercel.app/">
 
 
-<!-- TWITTER / X COVER -->
+<!-- TWITTER / X -->
 
-<meta
-    name="twitter:card"
-    content="summary_large_image"
->
+<meta name="twitter:card"
+      content="summary_large_image">
 
-<meta
-    name="twitter:title"
-    content="Working Model of Heart"
->
+<meta name="twitter:title"
+      content="Working Model of Heart">
 
-<meta
-    name="twitter:description"
-    content="Working Model of the Human Heart — Science Exhibition 2026"
->
+<meta name="twitter:description"
+      content="Working Model of the Human Heart — Science Exhibition 2026">
 
-<meta
-    name="twitter:image"
-    content="https://its-working-heart.vercel.app/cover.png"
->
+<meta name="twitter:image"
+      content="https://its-working-heart.vercel.app/cover.png">
 
-<meta
-    name="twitter:image:alt"
-    content="Working Model of Heart"
->
+<meta name="twitter:image:alt"
+      content="Working Model of Heart">
 
 
-<link
-    rel="icon"
-    type="image/png"
-    href="/cover.png"
->
+<link rel="icon"
+      type="image/png"
+      href="/cover.png">
 
 
 <style>
@@ -108,18 +76,18 @@
 ===================================================== */
 
 *{
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth
+    scroll-behavior:smooth;
 }
 
 body{
     margin:0;
     background:#08090b;
     color:#fff;
-    font-family:Arial,sans-serif
+    font-family:Arial,sans-serif;
 }
 
 
@@ -133,38 +101,42 @@ nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:#090a0cdd;
+
     border-bottom:1px solid #292a2e;
+
     position:sticky;
     top:0;
     z-index:20;
-    backdrop-filter:blur(10px)
+
+    backdrop-filter:blur(10px);
 }
 
 .brand{
     font-size:19px;
-    font-weight:700
+    font-weight:700;
 }
 
 .brand span,
 h1 span,
 .red{
-    color:#ff2638
+    color:#ff2638;
 }
 
 .links{
     display:flex;
-    gap:28px
+    gap:28px;
 }
 
 .links a{
     color:#eee;
     text-decoration:none;
-    font-size:14px
+    font-size:14px;
 }
 
 .links a:hover{
-    color:#ff2638
+    color:#ff2638;
 }
 
 
@@ -175,9 +147,12 @@ h1 span,
 .hero{
     min-height:600px;
     padding:70px 7%;
+
     display:grid;
     grid-template-columns:1fr 1fr;
+
     align-items:center;
+
     position:relative;
     overflow:hidden;
 
@@ -186,7 +161,7 @@ h1 span,
         circle at 80% 35%,
         #420b12,
         transparent 40%
-    )
+    );
 }
 
 .hero:before{
@@ -206,48 +181,58 @@ h1 span,
         transparent 1px
     );
 
-    background-size:42px 42px
+    background-size:42px 42px;
 }
 
 .hero>*{
-    position:relative
+    position:relative;
 }
 
 .eyebrow{
     font-size:12px;
     letter-spacing:3px;
     color:#ff6b76;
-    font-weight:bold
+    font-weight:bold;
 }
 
 .hero h1{
     font-size:clamp(48px,6vw,78px);
     line-height:.98;
-    margin:18px 0
+    margin:18px 0;
 }
 
 .hero p{
     max-width:560px;
     color:#cfd0d5;
     font-size:18px;
-    line-height:1.65
+    line-height:1.65;
 }
 
 .btn{
     display:inline-block;
+
     margin-top:25px;
+
     padding:14px 22px;
+
     background:#ff2638;
+
     border-radius:9px;
+
     color:#fff;
+
     text-decoration:none;
+
     font-weight:bold;
-    box-shadow:0 12px 30px #ff263833;
-    transition:.25s
+
+    box-shadow:
+    0 12px 30px #ff263833;
+
+    transition:.25s;
 }
 
 .btn:hover{
-    transform:translateY(-3px)
+    transform:translateY(-3px);
 }
 
 
@@ -257,38 +242,46 @@ h1 span,
 
 .bpm{
     margin-top:22px;
+
     width:170px;
+
     padding:12px;
 
     border:1px solid #383a40;
+
     border-radius:10px;
 
     background:#111317;
 
     display:flex;
+
     gap:10px;
-    align-items:center
+
+    align-items:center;
 }
 
 .pulse{
     width:31px;
     height:31px;
+
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
 
-    animation:pulse 1s infinite
+    animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
 
     50%{
         transform:scale(1.15);
+
         box-shadow:
-        0 0 25px #ff263888
+        0 0 25px #ff263888;
     }
 
 }
@@ -300,21 +293,26 @@ h1 span,
 
 .ecg{
     position:absolute;
+
     bottom:18px;
     left:0;
+
     width:100%;
-    height:75px
+    height:75px;
 }
 
 .ecg svg{
     width:100%;
-    height:100%
+    height:100%;
 }
 
 .ecg polyline{
     fill:none;
+
     stroke:#ff2638;
+
     stroke-width:3;
+
     stroke-linecap:round;
     stroke-linejoin:round;
 
@@ -327,13 +325,13 @@ h1 span,
     filter:
     drop-shadow(
         0 0 7px #ff2638
-    )
+    );
 }
 
 @keyframes ecg{
 
     to{
-        stroke-dashoffset:0
+        stroke-dashoffset:0;
     }
 
 }
@@ -345,24 +343,30 @@ h1 span,
 
 .bar{
     width:86%;
+
     margin:auto;
+
     padding:14px;
+
     text-align:center;
 
     background:#111317;
+
     border:1px solid #303238;
 
-    color:#aaa
+    color:#aaa;
 }
 
 .bar span{
     color:#ff2638;
-    font-weight:bold
+
+    font-weight:bold;
 }
 
 .bar b{
     margin:0 15px;
-    color:#555
+
+    color:#555;
 }
 
 
@@ -372,24 +376,30 @@ h1 span,
 
 section{
     padding:80px 7%;
-    border-top:1px solid #202126
+
+    border-top:1px solid #202126;
 }
 
 .title{
     text-align:center;
-    font-size:38px
+
+    font-size:38px;
 }
 
 .title span{
-    color:#ff2638
+    color:#ff2638;
 }
 
 .sub{
     max-width:700px;
+
     margin:0 auto 42px;
+
     text-align:center;
+
     color:#aeb1b8;
-    line-height:1.6
+
+    line-height:1.6;
 }
 
 
@@ -399,34 +409,41 @@ section{
 
 .about{
     max-width:1100px;
+
     margin:auto;
 
     display:grid;
+
     grid-template-columns:1fr 1.2fr;
 
     gap:50px;
-    align-items:center
+
+    align-items:center;
 }
 
 .about h2{
-    font-size:34px
+    font-size:34px;
 }
 
 .about p{
     color:#c5c7cc;
-    line-height:1.7
+
+    line-height:1.7;
 }
 
 
 /* =====================================================
-   FEATURES
+   FEATURES / STEPS
 ===================================================== */
 
 .features,
 .steps{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
 }
 
 .feature,
@@ -434,48 +451,56 @@ section{
     padding:22px;
 
     border:1px solid #34363c;
+
     border-radius:13px;
 
     background:#111317;
 
     text-align:center;
 
-    transition:.3s
+    transition:.3s;
 }
 
 .feature:hover,
 .step:hover{
     transform:translateY(-6px);
-    border-color:#ff2638
+
+    border-color:#ff2638;
 }
 
 .feature .icon,
 .step .icon{
     font-size:29px;
+
     color:#ff2638;
-    margin-bottom:10px
+
+    margin-bottom:10px;
 }
 
 .feature p,
 .step p{
     color:#aaa;
+
     font-size:13px;
-    line-height:1.5
+
+    line-height:1.5;
 }
 
 .num{
     width:30px;
     height:30px;
+
     border-radius:50%;
 
     background:#ff2638;
 
     display:grid;
+
     place-items:center;
 
     margin:0 auto 17px;
 
-    font-weight:bold
+    font-weight:bold;
 }
 
 
@@ -485,64 +510,78 @@ section{
 
 .contact-grid{
     max-width:950px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
 
-    gap:18px
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
 }
 
 .contact-card{
     display:flex;
+
     align-items:center;
 
     gap:15px;
+
     padding:24px;
 
     border:1px solid #34363c;
+
     border-radius:14px;
 
     background:#111317;
 
     text-decoration:none;
+
     color:#fff;
 
-    transition:.3s
+    transition:.3s;
 }
 
 .contact-card:hover{
     transform:translateY(-5px);
-    border-color:#ff2638
+
+    border-color:#ff2638;
 }
 
 .contact-icon{
     width:45px;
     height:45px;
+
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
+
     color:#fff;
 
     font-size:22px;
-    flex:none
+
+    flex:none;
 }
 
 .contact-card h3{
-    margin:0 0 6px
+    margin:0 0 6px;
 }
 
 .contact-card p{
     margin:0;
+
     color:#aaa;
 
     word-break:break-word;
 
     font-size:13px;
-    line-height:1.45
+
+    line-height:1.45;
 }
 
 
@@ -555,32 +594,38 @@ footer{
 
     border-top:1px solid #292a30;
 
-    background:#090a0c
+    background:#090a0c;
 }
 
 .footer-grid{
     max-width:1100px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
 
-    gap:35px
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:35px;
 }
 
 .footer-grid h3{
-    color:#ff2638
+    color:#ff2638;
 }
 
 .footer-grid p{
     color:#aaa;
-    line-height:1.7
+
+    line-height:1.7;
 }
 
 .leader{
     font-size:20px;
+
     color:#fff;
-    font-weight:bold
+
+    font-weight:bold;
 }
 
 .leader span{
@@ -590,7 +635,7 @@ footer{
 
     font-size:13px;
 
-    margin-top:5px
+    margin-top:5px;
 }
 
 .copy{
@@ -604,7 +649,7 @@ footer{
 
     padding-top:18px;
 
-    font-size:12px
+    font-size:12px;
 }
 
 
@@ -614,13 +659,16 @@ footer{
 
 .reveal{
     opacity:0;
+
     transform:translateY(25px);
-    transition:.7s
+
+    transition:.7s;
 }
 
 .reveal.show{
     opacity:1;
-    transform:none
+
+    transform:none;
 }
 
 
@@ -630,12 +678,14 @@ footer{
 
 .media-view-buttons{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
 
     gap:10px;
 
-    margin:0 auto 28px
+    margin:0 auto 28px;
 }
 
 .media-filter{
@@ -653,13 +703,14 @@ footer{
 
     font-weight:700;
 
-    transition:.25s
+    transition:.25s;
 }
 
 .media-filter:hover,
 .media-filter.active{
     background:#ff2638;
-    border-color:#ff2638
+
+    border-color:#ff2638;
 }
 
 .gallery{
@@ -673,7 +724,7 @@ footer{
 
     justify-content:center;
 
-    gap:15px
+    gap:15px;
 }
 
 .gallery-item{
@@ -687,22 +738,24 @@ footer{
 
     cursor:pointer;
 
-    animation:galleryIn .45s
+    animation:galleryIn .45s;
 }
 
 .gallery-item:hover{
     border-color:#ff2638;
-    transform:translateY(-3px)
+
+    transform:translateY(-3px);
 }
 
 .gallery-item img,
 .gallery-item video{
     width:100%;
+
     height:125px;
 
     display:block;
 
-    object-fit:cover
+    object-fit:cover;
 }
 
 .gallery-caption{
@@ -716,7 +769,7 @@ footer{
 
     overflow:hidden;
 
-    text-overflow:ellipsis
+    text-overflow:ellipsis;
 }
 
 .gallery-empty{
@@ -724,19 +777,21 @@ footer{
 
     color:#777;
 
-    padding:35px
+    padding:35px;
 }
 
 @keyframes galleryIn{
 
     from{
         opacity:0;
-        transform:translateY(15px)
+
+        transform:translateY(15px);
     }
 
     to{
         opacity:1;
-        transform:none
+
+        transform:none;
     }
 
 }
@@ -753,11 +808,11 @@ footer{
 
     color:#777;
 
-    font-size:11px
+    font-size:11px;
 }
 
 .firebase-status.live{
-    color:#69e58a
+    color:#69e58a;
 }
 
 
@@ -785,7 +840,7 @@ footer{
 
     gap:5px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .settings-btn span{
@@ -796,7 +851,7 @@ footer{
 
     background:#fff;
 
-    border-radius:3px
+    border-radius:3px;
 }
 
 .settings-menu{
@@ -819,11 +874,11 @@ footer{
 
     background:#101114;
 
-    box-shadow:0 20px 60px #000b
+    box-shadow:0 20px 60px #000b;
 }
 
 .settings-menu.show{
-    display:block
+    display:block;
 }
 
 .settings-head{
@@ -833,13 +888,13 @@ footer{
 
     justify-content:space-between;
 
-    margin-bottom:15px
+    margin-bottom:15px;
 }
 
 .settings-head h3{
     margin:0;
 
-    color:#ff2638
+    color:#ff2638;
 }
 
 .settings-head button{
@@ -851,7 +906,7 @@ footer{
 
     font-size:25px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .settings-card{
@@ -865,11 +920,11 @@ footer{
 
     border-radius:12px;
 
-    background:#111317
+    background:#111317;
 }
 
 .settings-card h4{
-    margin:0 0 5px
+    margin:0 0 5px;
 }
 
 .settings-card p{
@@ -879,7 +934,7 @@ footer{
 
     font-size:12px;
 
-    line-height:1.5
+    line-height:1.5;
 }
 
 .settings-password{
@@ -887,7 +942,7 @@ footer{
 
     padding-top:12px;
 
-    border-top:1px solid #292b31
+    border-top:1px solid #292b31;
 }
 
 .settings-password label{
@@ -901,7 +956,7 @@ footer{
 
     font-weight:800;
 
-    margin-bottom:7px
+    margin-bottom:7px;
 }
 
 .settings-password input{
@@ -917,7 +972,7 @@ footer{
 
     color:#fff;
 
-    outline:none
+    outline:none;
 }
 
 .settings-action{
@@ -937,7 +992,7 @@ footer{
 
     font-weight:700;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 #settingsPasswordMessage{
@@ -945,7 +1000,7 @@ footer{
 
     margin-top:7px;
 
-    min-height:14px
+    min-height:14px;
 }
 
 
@@ -966,11 +1021,11 @@ footer{
 
     background:#0d0f12;
 
-    padding:14px
+    padding:14px;
 }
 
 .section-viewer.show{
-    display:block
+    display:block;
 }
 
 .section-viewer-head{
@@ -980,7 +1035,7 @@ footer{
 
     justify-content:space-between;
 
-    padding:2px 4px 12px
+    padding:2px 4px 12px;
 }
 
 .section-viewer-head h3{
@@ -988,7 +1043,7 @@ footer{
 
     color:#ff2638;
 
-    font-size:16px
+    font-size:16px;
 }
 
 .section-viewer-head button{
@@ -1005,7 +1060,7 @@ footer{
 
     font-size:21px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .section-viewer-content{
@@ -1015,7 +1070,7 @@ footer{
 
     align-items:center;
 
-    min-height:180px
+    min-height:180px;
 }
 
 .section-view-media{
@@ -1025,13 +1080,20 @@ footer{
 
     border-radius:10px;
 
-    display:block
+    display:block;
 }
 
 
 /* =====================================================
-   ⭐ RATING FLOATING WIDGET
+   ⭐ RATING SYSTEM
 ===================================================== */
+
+/*
+   NEW USER RATING CARD
+
+   This is shown only when this browser
+   has NOT rated before.
+*/
 
 .rating-widget{
 
@@ -1039,17 +1101,15 @@ footer{
 
     top:76px;
 
-    left:50%;
-
-    transform:translateX(-50%);
+    left:14px;
 
     z-index:9999;
 
-    width:min(430px,92vw);
+    width:min(430px,calc(100vw - 28px));
 
     min-height:72px;
 
-    padding:12px 16px;
+    padding:12px 14px;
 
     display:flex;
 
@@ -1057,29 +1117,60 @@ footer{
 
     justify-content:space-between;
 
-    gap:12px;
+    gap:10px;
 
-    background:rgba(16,17,20,.98);
+    background:
+    rgba(16,17,20,.98);
 
     border:1px solid #3a3c42;
 
-    border-radius:16px;
+    border-radius:17px;
 
     box-shadow:
     0 15px 45px #000b,
-    0 0 25px #ff26381c;
+    0 0 30px #ff263825;
 
     backdrop-filter:blur(14px);
 
     transition:
     opacity .5s ease,
-    transform .5s ease
+    transform .5s ease;
 }
 
 
 /*
-   When rating is completed,
-   the entire floating menu disappears.
+   Animated entrance.
+*/
+
+.rating-widget.enter{
+
+    animation:
+    ratingEnter .7s ease;
+}
+
+@keyframes ratingEnter{
+
+    0%{
+        opacity:0;
+
+        transform:
+        translateX(-35px)
+        scale(.92);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+        translateX(0)
+        scale(1);
+    }
+
+}
+
+
+/*
+   Disappear after successful rating.
 */
 
 .rating-widget.hide{
@@ -1087,12 +1178,15 @@ footer{
     opacity:0;
 
     transform:
-    translateX(-50%)
-    translateY(-20px);
+    translateX(-40px);
 
-    pointer-events:none
+    pointer-events:none;
 }
 
+
+/* =====================================================
+   RATING LEFT
+===================================================== */
 
 .rating-left{
 
@@ -1102,13 +1196,13 @@ footer{
 
     gap:10px;
 
-    min-width:0
+    min-width:0;
 }
 
 .rating-heart{
 
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
 
     flex:none;
 
@@ -1125,22 +1219,23 @@ footer{
     font-size:20px;
 
     animation:
-    ratingHeartPulse 1.4s infinite
+    ratingHeartPulse 1.4s infinite;
 }
 
 @keyframes ratingHeartPulse{
 
     50%{
-        transform:scale(1.1);
+
+        transform:scale(1.09);
 
         box-shadow:
-        0 0 25px #ff263866
+        0 0 25px #ff263866;
     }
 
 }
 
 .rating-info{
-    min-width:0
+    min-width:0;
 }
 
 .rating-title{
@@ -1150,7 +1245,7 @@ footer{
 
     color:#fff;
 
-    white-space:nowrap
+    white-space:nowrap;
 }
 
 .rating-total{
@@ -1160,11 +1255,11 @@ footer{
 
     color:#888b92;
 
-    white-space:nowrap
+    white-space:nowrap;
 }
 
 .rating-total strong{
-    color:#ffd43b
+    color:#ffd43b;
 }
 
 
@@ -1178,9 +1273,9 @@ footer{
 
     align-items:center;
 
-    gap:2px;
+    gap:1px;
 
-    flex-shrink:0
+    flex-shrink:0;
 }
 
 .rating-star{
@@ -1191,7 +1286,7 @@ footer{
 
     padding:2px;
 
-    color:#4a4c52;
+    color:#44464d;
 
     font-size:22px;
 
@@ -1201,14 +1296,14 @@ footer{
 
     transition:
     transform .18s ease,
-    color .18s ease
+    color .18s ease;
 }
 
 .rating-star:hover{
 
     transform:scale(1.25);
 
-    color:#ffd43b
+    color:#ffd43b;
 }
 
 .rating-star.active{
@@ -1218,7 +1313,7 @@ footer{
     filter:
     drop-shadow(
         0 0 5px #ffd43b88
-    )
+    );
 }
 
 
@@ -1249,11 +1344,11 @@ footer{
     cursor:pointer;
 
     box-shadow:
-    0 5px 15px #ff263844
+    0 5px 15px #ff263844;
 }
 
 .rating-confirm.show{
-    display:block
+    display:block;
 }
 
 
@@ -1265,15 +1360,9 @@ footer{
 
     position:absolute;
 
-    left:50%;
+    left:0;
 
     top:calc(100% + 8px);
-
-    transform:translateX(-50%);
-
-    width:max-content;
-
-    max-width:90vw;
 
     padding:7px 12px;
 
@@ -1291,56 +1380,139 @@ footer{
 
     pointer-events:none;
 
-    transition:.25s
+    transition:.25s;
 }
 
 .rating-message.show{
-    opacity:1
+    opacity:1;
 }
 
 
 /* =====================================================
-   ⭐ STATIC FINAL RATING
+   ⭐ RETURNING USER RATING BADGE
 ===================================================== */
 
 /*
-   This is NOT fixed.
-   It stays in the normal document flow.
+   This is what a person who already rated sees.
+
+   It is small, animated and sits on the
+   TOP-LEFT of the screen.
+
+   No stars to click.
+   No rating menu.
 */
 
-.final-rating{
+.rating-badge{
+
+    position:fixed;
+
+    top:76px;
+
+    left:14px;
+
+    z-index:9998;
 
     display:none;
 
-    width:fit-content;
+    align-items:center;
 
-    max-width:92vw;
+    gap:8px;
 
-    margin:12px auto 0;
+    padding:8px 12px;
 
-    padding:7px 13px;
+    border-radius:13px;
 
-    border:1px solid #303238;
+    background:
+    rgba(17,19,23,.96);
 
-    border-radius:9px;
+    border:1px solid #34363c;
 
-    background:#111317;
+    box-shadow:
+    0 10px 30px #0009,
+    0 0 18px #ffd43b18;
+
+    backdrop-filter:blur(12px);
+
+    animation:
+    badgeEnter .65s ease,
+    badgeGlow 2.2s ease-in-out infinite;
+}
+
+.rating-badge.show{
+    display:flex;
+}
+
+@keyframes badgeEnter{
+
+    0%{
+        opacity:0;
+
+        transform:
+        translateX(-30px)
+        scale(.85);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+        translateX(0)
+        scale(1);
+    }
+
+}
+
+@keyframes badgeGlow{
+
+    0%,
+    100%{
+        box-shadow:
+        0 10px 30px #0009,
+        0 0 12px #ffd43b10;
+    }
+
+    50%{
+        box-shadow:
+        0 10px 30px #0009,
+        0 0 22px #ffd43b30;
+    }
+
+}
+
+.badge-star{
+
+    color:#ffd43b;
+
+    font-size:17px;
+
+    animation:
+    badgeStar 1.5s ease-in-out infinite;
+}
+
+@keyframes badgeStar{
+
+    50%{
+        transform:
+        scale(1.18)
+        rotate(8deg);
+    }
+
+}
+
+.badge-value{
+
+    color:#ffd43b;
+
+    font-weight:800;
+
+    font-size:11px;
+}
+
+.badge-text{
 
     color:#aaa;
 
-    text-align:center;
-
-    font-size:11px;
-
-    line-height:1.3
-}
-
-.final-rating.show{
-    display:block
-}
-
-.final-rating strong{
-    color:#ffd43b
+    font-size:10px;
 }
 
 
@@ -1352,28 +1524,29 @@ footer{
 
     .hero{
         grid-template-columns:1fr;
-        text-align:center
+
+        text-align:center;
     }
 
     .hero p{
-        margin:auto
+        margin:auto;
     }
 
     .about{
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
 
     .features,
     .steps{
-        grid-template-columns:1fr 1fr
+        grid-template-columns:1fr 1fr;
     }
 
     .footer-grid{
-        grid-template-columns:1fr 1fr
+        grid-template-columns:1fr 1fr;
     }
 
     .contact-grid{
-        grid-template-columns:1fr 1fr
+        grid-template-columns:1fr 1fr;
     }
 
 }
@@ -1384,64 +1557,92 @@ footer{
     .features,
     .steps,
     .footer-grid{
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
 
     .hero h1{
-        font-size:45px
+        font-size:45px;
     }
 
     .contact-grid{
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
 
     .gallery{
-        grid-template-columns:repeat(2,1fr)
+        grid-template-columns:repeat(2,1fr);
     }
 
 
+    /* Rating */
+
     .rating-widget{
 
-        top:76px;
+        top:74px;
 
-        width:94vw;
+        left:10px;
 
-        min-height:68px;
+        width:
+        calc(100vw - 20px);
 
-        padding:10px 11px;
+        min-height:67px;
 
-        gap:6px;
+        padding:9px 10px;
 
-        border-radius:15px
+        border-radius:15px;
+
+        gap:5px;
     }
 
     .rating-heart{
 
-        width:34px;
-        height:34px;
+        width:35px;
+        height:35px;
 
-        font-size:17px
+        font-size:17px;
     }
 
     .rating-title{
-        font-size:10px
+        font-size:10px;
     }
 
     .rating-total{
-        font-size:9px
+        font-size:9px;
     }
 
     .rating-star{
         font-size:19px;
 
-        padding:1px
+        padding:1px;
     }
 
     .rating-confirm{
-
         font-size:9px;
 
-        padding:6px 9px
+        padding:6px 9px;
+    }
+
+
+    .rating-badge{
+
+        top:74px;
+
+        left:10px;
+
+        padding:7px 10px;
+
+        border-radius:12px;
+    }
+
+    .badge-star{
+        font-size:15px;
+    }
+
+    .badge-value{
+        font-size:10px;
+    }
+
+    .badge-text{
+        font-size:9px;
     }
 
 }
@@ -1455,7 +1656,7 @@ footer{
 
 
 <!-- =====================================================
-     ⭐ RATING WIDGET
+     ⭐ NEW USER RATING WIDGET
 ===================================================== -->
 
 <div
@@ -1548,6 +1749,38 @@ Confirm
 id="ratingMessage"
 class="rating-message"
 ></div>
+
+</div>
+
+
+<!-- =====================================================
+     ⭐ RETURNING USER BADGE
+===================================================== -->
+
+<div
+id="ratingBadge"
+class="rating-badge"
+>
+
+<div class="badge-star">
+★
+</div>
+
+<div>
+<span
+id="badgeValue"
+class="badge-value"
+>
+0.0 / 5
+</span>
+
+<span
+id="badgeText"
+class="badge-text"
+>
+· 0 ratings
+</span>
+</div>
 
 </div>
 
@@ -1692,23 +1925,6 @@ Aayushman Jha
 (Leader)
 </span>
 
-</div>
-
-
-<!-- =====================================================
-     STATIC FINAL RATING
-     
-     IMPORTANT:
-     It is NOT fixed.
-     It is NOT floating.
-===================================================== -->
-
-<div
-id="finalRating"
-class="final-rating"
->
-⭐ <strong id="finalRatingValue">0.0</strong> / 5 ·
-<span id="finalRatingCount">0 ratings</span>
 </div>
 
 
@@ -2467,12 +2683,17 @@ function(){
 
 
 /* =====================================================
-   ⭐ RATING VARIABLES
+   RATING ELEMENTS
 ===================================================== */
 
 const ratingWidget =
 document.getElementById(
     "ratingWidget"
+);
+
+const ratingBadge =
+document.getElementById(
+    "ratingBadge"
 );
 
 const ratingStars =
@@ -2499,7 +2720,58 @@ let selectedRating = 0;
 
 
 /* =====================================================
-   SHOW MESSAGE
+   CHECK LOCAL RATING
+===================================================== */
+
+function hasAlreadyRated(){
+
+    return(
+        localStorage.getItem(
+            "heartProjectRated"
+        ) === "true"
+    );
+
+}
+
+
+/* =====================================================
+   SHOW RETURNING USER BADGE
+===================================================== */
+
+function showReturningBadge(){
+
+    ratingWidget.style.display =
+    "none";
+
+    ratingBadge.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   SHOW NEW USER WIDGET
+===================================================== */
+
+function showNewUserWidget(){
+
+    ratingBadge.classList.remove(
+        "show"
+    );
+
+    ratingWidget.style.display =
+    "flex";
+
+    ratingWidget.classList.add(
+        "enter"
+    );
+
+}
+
+
+/* =====================================================
+   MESSAGE
 ===================================================== */
 
 function showRatingMessage(
@@ -2541,7 +2813,7 @@ function showRatingMessage(
 
 
 /* =====================================================
-   UPDATE STARS
+   STARS
 ===================================================== */
 
 function updateRatingStars(
@@ -2574,14 +2846,10 @@ ratingStars.forEach(
             ()=>{
 
                 if(
-                    localStorage.getItem(
-                        "heartProjectRated"
-                    ) === "true"
+                    hasAlreadyRated()
                 ){
 
-                    showRatingMessage(
-                        "You have already rated this project ⭐"
-                    );
+                    showReturningBadge();
 
                     return;
 
@@ -2598,11 +2866,6 @@ ratingStars.forEach(
                     selectedRating
                 );
 
-
-                /*
-                   Hide stars temporarily
-                   and show Confirm.
-                */
 
                 ratingStarsBox.style.display =
                 "none";
@@ -2625,7 +2888,7 @@ ratingStars.forEach(
 
 
 /* =====================================================
-   CONFIRM RATING
+   CONFIRM
 ===================================================== */
 
 ratingConfirm.addEventListener(
@@ -2690,15 +2953,9 @@ function(){
     );
 
 
-    /*
-       Update button temporarily.
-    */
-
     ratingConfirm.textContent =
     "✓ Rated";
 
-    ratingConfirm.style.display =
-    "block";
 
     ratingConfirm.style.background =
     "#1d3927";
@@ -2717,9 +2974,7 @@ function(){
 
 
     /*
-       IMPORTANT:
-       After a few seconds the WHOLE
-       floating widget disappears.
+       Keep the result visible for 3 seconds.
     */
 
     setTimeout(
@@ -2730,16 +2985,25 @@ function(){
             );
 
 
-            /*
-               Completely remove it from
-               interaction after animation.
-            */
-
             setTimeout(
                 ()=>{
 
                     ratingWidget.style.display =
                     "none";
+
+                    ratingWidget.classList.remove(
+                        "hide"
+                    );
+
+                    /*
+                       After rating,
+                       show ONLY the small
+                       animated rating badge.
+                    */
+
+                    ratingBadge.classList.add(
+                        "show"
+                    );
 
                 },
                 550
@@ -2773,9 +3037,6 @@ function(error){
     "Confirm ★ " +
     selectedRating;
 
-
-    ratingConfirm.style.display =
-    "block";
 
     ratingConfirm.style.background =
     "#ff2638";
@@ -2824,7 +3085,7 @@ function(error){
 
 
 /* =====================================================
-   CLOSE SETTINGS OUTSIDE CLICK
+   OUTSIDE SETTINGS CLICK
 ===================================================== */
 
 document.addEventListener(
@@ -2862,6 +3123,25 @@ document.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   IMPORTANT:
+   IMMEDIATELY CHOOSE THE CORRECT RATING UI
+===================================================== */
+
+if(
+    hasAlreadyRated()
+){
+
+    showReturningBadge();
+
+}
+else{
+
+    showNewUserWidget();
+
+}
 
 </script>
 
@@ -2938,7 +3218,7 @@ const RATING_COLLECTION =
 
 
 /* =====================================================
-   UPDATE RATING DISPLAY
+   UPDATE RATING UI
 ===================================================== */
 
 async function loadRatings(){
@@ -2993,73 +3273,24 @@ async function loadRatings(){
         : 0;
 
 
-        const ratingText =
-        count
-        ? "⭐ " +
-          average.toFixed(1) +
-          " / 5 · " +
-          count +
-          (
-              count === 1
-              ? " rating"
-              : " ratings"
-          )
-        : "⭐ No ratings yet";
+        /* ---------------------------------------------
+           NEW USER WIDGET TOTAL
+        --------------------------------------------- */
 
-
-        /*
-           Floating widget display.
-        */
-
-        const floatingRating =
+        const ratingTotal =
         document.getElementById(
             "ratingTotal"
         );
 
-        floatingRating.innerHTML =
-        count
-        ? "⭐ <strong>" +
-          average.toFixed(1) +
-          "</strong> / 5 · " +
-          count +
-          (
-              count === 1
-              ? " rating"
-              : " ratings"
-          )
-        : "⭐ No ratings yet";
-
-
-        /*
-           Static rating display.
-
-           This one NEVER floats.
-        */
-
-        const finalRating =
-        document.getElementById(
-            "finalRating"
-        );
-
-        const finalValue =
-        document.getElementById(
-            "finalRatingValue"
-        );
-
-        const finalCount =
-        document.getElementById(
-            "finalRatingCount"
-        );
-
 
         if(
-            count > 0
+            count
         ){
 
-            finalValue.textContent =
-            average.toFixed(1);
-
-            finalCount.textContent =
+            ratingTotal.innerHTML =
+            "⭐ <strong>" +
+            average.toFixed(1) +
+            "</strong> / 5 · " +
             count +
             (
                 count === 1
@@ -3067,27 +3298,56 @@ async function loadRatings(){
                 : " ratings"
             );
 
-            /*
-               Show the static rating only
-               when floating widget is gone.
-            */
+        }
+        else{
 
-            if(
-                ratingWidgetHasFinished()
-            ){
+            ratingTotal.innerHTML =
+            "⭐ No ratings yet";
 
-                finalRating.classList.add(
-                    "show"
-                );
+        }
 
-            }
+
+        /* ---------------------------------------------
+           RETURNING USER BADGE
+        --------------------------------------------- */
+
+        const badgeValue =
+        document.getElementById(
+            "badgeValue"
+        );
+
+        const badgeText =
+        document.getElementById(
+            "badgeText"
+        );
+
+
+        if(
+            count
+        ){
+
+            badgeValue.textContent =
+            average.toFixed(1) +
+            " / 5";
+
+
+            badgeText.textContent =
+            " · " +
+            count +
+            (
+                count === 1
+                ? " rating"
+                : " ratings"
+            );
 
         }
         else{
 
-            finalRating.classList.remove(
-                "show"
-            );
+            badgeValue.textContent =
+            "0.0 / 5";
+
+            badgeText.textContent =
+            " · 0 ratings";
 
         }
 
@@ -3100,25 +3360,6 @@ async function loadRatings(){
         );
 
     }
-
-}
-
-
-/* =====================================================
-   CHECK IF FLOATING WIDGET IS FINISHED
-===================================================== */
-
-function ratingWidgetHasFinished(){
-
-    const widget =
-    document.getElementById(
-        "ratingWidget"
-    );
-
-    return(
-        widget.style.display ===
-        "none"
-    );
 
 }
 
@@ -3165,33 +3406,18 @@ async function(
 
 
         /*
-           Successful save.
+           Mark this browser as rated
+           ONLY after Firebase succeeds.
         */
 
         window.ratingSuccess();
 
 
         /*
-           Load latest total.
+           Refresh Firebase total.
         */
 
         await loadRatings();
-
-
-        /*
-           Wait until the floating widget
-           has disappeared, then show
-           the static rating.
-        */
-
-        setTimeout(
-            ()=>{
-
-                loadRatings();
-
-            },
-            3600
-        );
 
     }
     catch(error){
@@ -3212,8 +3438,7 @@ async function(
 
 
 /* =====================================================
-   ORIGINAL MEDIA COLLECTION
-   UNCHANGED
+   ORIGINAL MEDIA FIREBASE
 ===================================================== */
 
 const COLLECTION_NAME =
@@ -3257,10 +3482,6 @@ function setStatus(
 
 }
 
-
-/* =====================================================
-   LOAD FIREBASE MEDIA
-===================================================== */
 
 async function loadFirebaseMedia(){
 
@@ -3748,7 +3969,7 @@ function(
 
 
 /* =====================================================
-   START
+   INITIAL LOAD
 ===================================================== */
 
 loadRatings();
@@ -3756,9 +3977,9 @@ loadRatings();
 loadFirebaseMedia();
 
 
-/*
-   Refresh rating total periodically.
-*/
+/* =====================================================
+   REFRESH RATINGS
+===================================================== */
 
 setInterval(
     loadRatings,
@@ -3766,9 +3987,9 @@ setInterval(
 );
 
 
-/*
-   Refresh media periodically.
-*/
+/* =====================================================
+   REFRESH MEDIA
+===================================================== */
 
 setInterval(
     loadFirebaseMedia,
@@ -3777,7 +3998,5 @@ setInterval(
 
 </script>
 
-
 </body>
-
 </html>
