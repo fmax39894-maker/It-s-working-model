@@ -12,6 +12,7 @@
 
 <title>Working Model of Heart</title>
 
+
 <!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
 
 <meta
@@ -64,7 +65,8 @@
     content="https://its-working-heart.vercel.app/"
 >
 
-<!-- TWITTER / X -->
+
+<!-- TWITTER / X COVER -->
 
 <meta
     name="twitter:card"
@@ -91,6 +93,9 @@
     content="Working Model of Heart"
 >
 
+
+<!-- BROWSER ICON -->
+
 <link
     rel="icon"
     type="image/png"
@@ -99,10 +104,6 @@
 
 
 <style>
-
-/* =====================================================
-   BASIC
-===================================================== */
 
 *{
     box-sizing:border-box
@@ -243,11 +244,6 @@ h1 span,
 .btn:hover{
     transform:translateY(-3px)
 }
-
-
-/* =====================================================
-   BPM
-===================================================== */
 
 .bpm{
     margin-top:22px;
@@ -395,7 +391,7 @@ section{
 
 
 /* =====================================================
-   FEATURES / STEPS
+   FEATURES
 ===================================================== */
 
 .features,
@@ -805,7 +801,7 @@ footer{
 
 
 /* =====================================================
-   SECTION VIEWER
+   VIEWER
 ===================================================== */
 
 .section-viewer{
@@ -862,7 +858,7 @@ footer{
 
 
 /* =====================================================
-   ⭐ RATING WIDGET
+   ⭐ RATING
 ===================================================== */
 
 .rating-widget{
@@ -881,8 +877,6 @@ footer{
 
     width:min(430px,92vw);
 
-    min-height:76px;
-
     padding:12px 16px;
 
     display:flex;
@@ -893,7 +887,7 @@ footer{
 
     gap:12px;
 
-    background:rgba(16,17,20,.96);
+    background:rgba(16,17,20,.97);
 
     border:1px solid #3a3c42;
 
@@ -912,6 +906,7 @@ footer{
 
     animation-delay:.8s
 }
+
 
 @keyframes ratingWidgetIn{
 
@@ -937,6 +932,7 @@ footer{
 
 }
 
+
 .rating-left{
 
     display:flex;
@@ -947,6 +943,7 @@ footer{
 
     min-width:0
 }
+
 
 .rating-heart{
 
@@ -972,6 +969,7 @@ footer{
     ratingHeartPulse 1.4s infinite
 }
 
+
 @keyframes ratingHeartPulse{
 
     50%{
@@ -985,9 +983,11 @@ footer{
 
 }
 
+
 .rating-info{
     min-width:0
 }
+
 
 .rating-title{
 
@@ -999,6 +999,7 @@ footer{
 
     white-space:nowrap
 }
+
 
 .rating-total{
 
@@ -1012,20 +1013,15 @@ footer{
 }
 
 
-/* =====================================================
-   STARS
-===================================================== */
-
 .rating-stars{
 
     display:flex;
 
     align-items:center;
 
-    gap:2px;
-
-    transition:.25s
+    gap:2px
 }
+
 
 .rating-star{
 
@@ -1045,9 +1041,9 @@ footer{
 
     transition:
     transform .18s ease,
-    color .18s ease,
-    filter .18s ease
+    color .18s ease
 }
+
 
 .rating-star:hover{
 
@@ -1055,6 +1051,7 @@ footer{
 
     color:#ffd43b
 }
+
 
 .rating-star.active{
 
@@ -1066,32 +1063,6 @@ footer{
     )
 }
 
-.rating-star.pop{
-
-    animation:
-    ratingStarPop .35s ease
-}
-
-@keyframes ratingStarPop{
-
-    0%{
-        transform:scale(.7)
-    }
-
-    55%{
-        transform:scale(1.35)
-    }
-
-    100%{
-        transform:scale(1)
-    }
-
-}
-
-
-/* =====================================================
-   CONFIRM
-===================================================== */
 
 .rating-confirm{
 
@@ -1116,27 +1087,14 @@ footer{
     cursor:pointer;
 
     box-shadow:
-    0 5px 15px #ff263844;
-
-    animation:
-    confirmIn .3s ease
+    0 5px 15px #ff263844
 }
+
 
 .rating-confirm.show{
     display:block
 }
 
-.rating-confirm:hover{
-
-    transform:translateY(-1px);
-
-    box-shadow:
-    0 7px 20px #ff263866
-}
-
-.rating-confirm:active{
-    transform:scale(.95)
-}
 
 .rating-confirm.confirmed{
 
@@ -1151,34 +1109,6 @@ footer{
     box-shadow:none
 }
 
-@keyframes confirmIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        scale(.8)
-        translateY(5px)
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        scale(1)
-        translateY(0)
-
-    }
-
-}
-
-
-/* =====================================================
-   RATING MESSAGE
-===================================================== */
 
 .rating-message{
 
@@ -1213,23 +1143,16 @@ footer{
     transition:.25s
 }
 
+
 .rating-message.show{
     opacity:1
 }
+
 
 .rating-widget.submitted{
     border-color:#69e58a
 }
 
-.rating-widget.submitted
-.rating-title{
-    color:#69e58a
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
 @media(max-width:800px){
 
@@ -1260,6 +1183,7 @@ footer{
     }
 
 }
+
 
 @media(max-width:500px){
 
@@ -1310,8 +1234,7 @@ footer{
     }
 
     .rating-star{
-        font-size:19px;
-        padding:1px
+        font-size:19px
     }
 
     .rating-confirm{
@@ -1330,7 +1253,7 @@ footer{
 
 
 <!-- =====================================================
-     ⭐ RATING WIDGET
+     ⭐ FLOATING RATING
 ===================================================== -->
 
 <div
@@ -1338,91 +1261,91 @@ id="ratingWidget"
 class="rating-widget"
 >
 
-    <div class="rating-left">
+<div class="rating-left">
 
-        <div class="rating-heart">
-            ♥
-        </div>
+<div class="rating-heart">
+♥
+</div>
 
-        <div class="rating-info">
+<div class="rating-info">
 
-            <div class="rating-title">
-                Rate Our Project
-            </div>
+<div class="rating-title">
+Rate Our Project
+</div>
 
-            <div
-            id="ratingTotal"
-            class="rating-total"
-            >
-                ⭐ Loading ratings...
-            </div>
+<div
+id="ratingTotal"
+class="rating-total"
+>
+⭐ No ratings yet
+</div>
 
-        </div>
+</div>
 
-    </div>
-
-
-    <div
-    id="ratingStars"
-    class="rating-stars"
-    >
-
-        <button
-        class="rating-star"
-        data-rating="1"
-        type="button"
-        >
-            ★
-        </button>
-
-        <button
-        class="rating-star"
-        data-rating="2"
-        type="button"
-        >
-            ★
-        </button>
-
-        <button
-        class="rating-star"
-        data-rating="3"
-        type="button"
-        >
-            ★
-        </button>
-
-        <button
-        class="rating-star"
-        data-rating="4"
-        type="button"
-        >
-            ★
-        </button>
-
-        <button
-        class="rating-star"
-        data-rating="5"
-        type="button"
-        >
-            ★
-        </button>
-
-    </div>
+</div>
 
 
-    <button
-    id="ratingConfirm"
-    class="rating-confirm"
-    type="button"
-    >
-        Confirm
-    </button>
+<div
+id="ratingStars"
+class="rating-stars"
+>
+
+<button
+class="rating-star"
+data-rating="1"
+type="button"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="2"
+type="button"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="3"
+type="button"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="4"
+type="button"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="5"
+type="button"
+>
+★
+</button>
+
+</div>
 
 
-    <div
-    id="ratingMessage"
-    class="rating-message"
-    ></div>
+<button
+id="ratingConfirm"
+class="rating-confirm"
+type="button"
+>
+Confirm
+</button>
+
+
+<div
+id="ratingMessage"
+class="rating-message"
+></div>
 
 </div>
 
@@ -1434,11 +1357,8 @@ class="rating-widget"
 <nav>
 
 <div class="brand">
-
 Working Model of <span>Heart</span>
-
 </div>
-
 
 <button
 class="settings-btn"
@@ -1470,24 +1390,16 @@ id="home"
 SCIENCE EXHIBITION 2026
 </div>
 
-
 <h1>
-
 Working Model<br>
-
 of the <span>Human Heart</span>
-
 </h1>
 
-
 <p>
-
 This project demonstrates the working
 of the human heart and how it pumps
 blood throughout the body.
-
 </p>
-
 
 <a
 class="btn"
@@ -1504,7 +1416,6 @@ Explore the Model ↓
 </div>
 
 <div>
-
 Heartbeat<br>
 
 <strong>
@@ -1622,7 +1533,6 @@ Enter the host password to open
 the Firebase media editor.
 </p>
 
-
 <div class="settings-password">
 
 <label>
@@ -1667,32 +1577,19 @@ class="reveal"
 >
 
 <h2 class="title">
-
-<span>
-Aayushman Jha
-</span>
-
+<span>Aayushman Jha</span>
 </h2>
 
-
 <p class="sub">
-
 Project Leader · Team Red Diamond ·
 Science Exhibition 2026
-
 </p>
-
 
 <div style="text-align:center">
 
 <div class="leader">
-
 Project Leader
-
-<span>
-Leader
-</span>
-
+<span>Leader</span>
 </div>
 
 </div>
@@ -1719,20 +1616,16 @@ class="reveal"
 About the <span>Heart</span>
 </h2>
 
-
 <p>
-
 The human heart is a muscular organ
 that continuously pumps blood throughout
 the body. Our working model demonstrates
 this pumping action in a simple and
 practical way.
-
 </p>
 
 
 <div class="features">
-
 
 <div class="feature">
 
@@ -1801,7 +1694,6 @@ Science project
 
 </div>
 
-
 </div>
 
 </div>
@@ -1830,7 +1722,6 @@ of Project
 
 </h2>
 
-
 <p class="sub">
 
 Everyone can view the project gallery.
@@ -1849,14 +1740,12 @@ onclick="filterMedia('all',this)"
 👀 See All
 </button>
 
-
 <button
 class="media-filter"
 onclick="filterMedia('photo',this)"
 >
 📸 Photos
 </button>
-
 
 <button
 class="media-filter"
@@ -1898,20 +1787,15 @@ class="section-viewer"
 
 <div class="section-viewer-head">
 
-<h3
-id="sectionViewerTitle"
->
+<h3 id="sectionViewerTitle">
 Preview
 </h3>
 
-<button
-onclick="closeSectionViewer()"
->
+<button onclick="closeSectionViewer()">
 ×
 </button>
 
 </div>
-
 
 <div
 id="sectionViewerContent"
@@ -1935,13 +1819,9 @@ class="reveal"
 <h2 class="title">
 
 About the
-
-<span>
-Function of the Heart
-</span>
+<span>Function of the Heart</span>
 
 </h2>
-
 
 <p class="sub">
 
@@ -2056,17 +1936,12 @@ class="reveal"
 >
 
 <h2 class="title">
-
 Contact <span>Us</span>
-
 </h2>
 
-
 <p class="sub">
-
 Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
-
 </p>
 
 
@@ -2154,7 +2029,6 @@ Team Red Diamond
 
 <div class="footer-grid">
 
-
 <div>
 
 <h3>
@@ -2177,13 +2051,10 @@ Team
 </h3>
 
 <p class="leader">
-
 Team Red Diamond
-
 <span>
 Project Leader · Leader
 </span>
-
 </p>
 
 </div>
@@ -2236,71 +2107,43 @@ style="color:#aaa;text-decoration:none"
 
 <script>
 
-/* =====================================================
-   BPM
-===================================================== */
+/* BPM */
 
 const bpm =
 document.getElementById("bpm");
 
-
 setInterval(
-    ()=>{
-
-        bpm.textContent =
-        70 +
-        Math.floor(
-            Math.random()*7
-        );
-
-    },
-    1200
+()=>{
+    bpm.textContent =
+    70 + Math.floor(Math.random()*7);
+},
+1200
 );
 
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+/* REVEAL */
 
 const obs =
 new IntersectionObserver(
-    entries=>{
-
-        entries.forEach(
-            entry=>{
-
-                if(
-                    entry.isIntersecting
-                ){
-
-                    entry.target
-                    .classList
-                    .add("show");
-
-                }
-
-            }
-        );
-
-    },
-    {
-        threshold:.12
-    }
+entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},
+{threshold:.12}
 );
 
 
 document
 .querySelectorAll(".reveal")
-.forEach(
-    element=>{
-        obs.observe(element);
-    }
-);
+.forEach(element=>{
+    obs.observe(element);
+});
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* SETTINGS */
 
 window.toggleSettings =
 function(){
@@ -2324,16 +2167,13 @@ function(){
         "settingsPassword"
     );
 
-
     const msg =
     document.getElementById(
         "settingsPasswordMessage"
     );
 
-
     if(
-        input.value ===
-        HOST_PASSWORD
+        input.value === HOST_PASSWORD
     ){
 
         msg.textContent =
@@ -2342,16 +2182,9 @@ function(){
         msg.style.color =
         "#69e58a";
 
-
-        setTimeout(
-            ()=>{
-
-                location.href =
-                "edit.html";
-
-            },
-            500
-        );
+        setTimeout(()=>{
+            location.href="edit.html";
+        },500);
 
     }
     else{
@@ -2376,14 +2209,19 @@ document.querySelectorAll(
     ".rating-star"
 );
 
-const ratingWidget =
+const ratingStarsBox =
 document.getElementById(
-    "ratingWidget"
+    "ratingStars"
 );
 
 const ratingConfirm =
 document.getElementById(
     "ratingConfirm"
+);
+
+const ratingWidget =
+document.getElementById(
+    "ratingWidget"
 );
 
 const ratingMessage =
@@ -2394,56 +2232,7 @@ document.getElementById(
 let selectedRating = 0;
 
 
-/* =====================================================
-   SHOW MESSAGE
-===================================================== */
-
-function showRatingMessage(
-    text,
-    success=false
-){
-
-    ratingMessage.textContent =
-    text;
-
-    ratingMessage.style.color =
-    success
-    ? "#69e58a"
-    : "#aaa";
-
-    ratingMessage.style.borderColor =
-    success
-    ? "#69e58a"
-    : "#34363c";
-
-    ratingMessage.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        window.ratingMessageTimer
-    );
-
-
-    window.ratingMessageTimer =
-    setTimeout(
-        ()=>{
-
-            ratingMessage.classList.remove(
-                "show"
-            );
-
-        },
-        4000
-    );
-
-}
-
-
-/* =====================================================
-   UPDATE STAR DISPLAY
-===================================================== */
+/* UPDATE STARS */
 
 function updateRatingStars(
     value
@@ -2463,9 +2252,45 @@ function updateRatingStars(
 }
 
 
-/* =====================================================
-   STAR CLICK
-===================================================== */
+/* MESSAGE */
+
+function showRatingMessage(
+    text,
+    success=false
+){
+
+    ratingMessage.textContent =
+    text;
+
+    ratingMessage.style.color =
+    success
+    ? "#69e58a"
+    : "#aaa";
+
+    ratingMessage.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        window.ratingMessageTimer
+    );
+
+    window.ratingMessageTimer =
+    setTimeout(
+        ()=>{
+
+            ratingMessage.classList.remove(
+                "show"
+            );
+
+        },
+        4000
+    );
+
+}
+
+
+/* STAR CLICK */
 
 ratingStars.forEach(
     star=>{
@@ -2473,10 +2298,6 @@ ratingStars.forEach(
         star.addEventListener(
             "click",
             ()=>{
-
-                /*
-                 * Do not allow another rating
-                 */
 
                 if(
                     localStorage.getItem(
@@ -2505,43 +2326,20 @@ ratingStars.forEach(
 
 
                 /*
-                 * Animation
-                 */
+                   Hide stars
+                */
 
-                ratingStars.forEach(
-                    s=>{
-                        s.classList.remove(
-                            "pop"
-                        );
-                    }
-                );
-
-
-                star.classList.add(
-                    "pop"
-                );
-
-
-                /*
-                 * Hide stars
-                 */
-
-                document
-                .getElementById(
-                    "ratingStars"
-                )
-                .style.display =
+                ratingStarsBox.style.display =
                 "none";
 
 
                 /*
-                 * Show confirm
-                 */
+                   Show confirmation
+                */
 
                 ratingConfirm.textContent =
                 "Confirm ★ " +
                 selectedRating;
-
 
                 ratingConfirm.classList.add(
                     "show"
@@ -2554,9 +2352,7 @@ ratingStars.forEach(
 );
 
 
-/* =====================================================
-   CONFIRM CLICK
-===================================================== */
+/* CONFIRM */
 
 ratingConfirm.addEventListener(
     "click",
@@ -2565,73 +2361,57 @@ ratingConfirm.addEventListener(
         if(
             !selectedRating
         ){
+
             return;
+
         }
 
 
         ratingConfirm.disabled =
         true;
 
-
         ratingConfirm.textContent =
         "Saving...";
 
 
-        await submitRating(
-            selectedRating
-        );
+        /*
+           Firebase function exists
+           in module script below.
+        */
+
+        if(
+            typeof window.submitRatingFromUI ===
+            "function"
+        ){
+
+            await window.submitRatingFromUI(
+                selectedRating
+            );
+
+        }
+        else{
+
+            ratingConfirm.disabled =
+            false;
+
+            ratingConfirm.textContent =
+            "Confirm ★ " +
+            selectedRating;
+
+            showRatingMessage(
+                "Firebase is still loading. Try again."
+            );
+
+        }
 
     }
 );
 
 
-/* =====================================================
-   DISPLAY RATING
-===================================================== */
+/* SUCCESS */
 
-window.updateRatingDisplay =
-function(
-    average,
-    count
-){
-
-    const total =
-    document.getElementById(
-        "ratingTotal"
-    );
-
-
-    if(
-        !count
-    ){
-
-        total.textContent =
-        "⭐ No ratings yet";
-
-        return;
-
-    }
-
-
-    total.innerHTML =
-    "⭐ <strong>" +
-    average.toFixed(1) +
-    "</strong> / 5 · " +
-    count +
-    (
-        count === 1
-        ? " rating"
-        : " ratings"
-    );
-
-};
-
-
-/* =====================================================
-   SUCCESS
-===================================================== */
-
-function ratingSuccess(){
+window.ratingSuccess =
+function(){
 
     localStorage.setItem(
         "heartProjectRated",
@@ -2662,19 +2442,18 @@ function ratingSuccess(){
         true
     );
 
-}
+};
 
 
-/* =====================================================
-   FAILED RATING
-===================================================== */
+/* FAILURE */
 
-function ratingFailed(
+window.ratingFailure =
+function(
     error
 ){
 
     console.error(
-        "FULL RATING ERROR:",
+        "RATING ERROR:",
         error
     );
 
@@ -2688,21 +2467,13 @@ function ratingFailed(
     selectedRating;
 
 
-    /*
-     * Bring stars back
-     */
-
-    document
-    .getElementById(
-        "ratingStars"
-    )
-    .style.display =
-    "flex";
-
-
     ratingConfirm.classList.remove(
         "show"
     );
+
+
+    ratingStarsBox.style.display =
+    "flex";
 
 
     let message =
@@ -2716,17 +2487,7 @@ function ratingFailed(
     ){
 
         message =
-        "Firebase denied the rating. Check Firestore rules.";
-
-    }
-    else if(
-        error &&
-        error.code ===
-        "unavailable"
-    ){
-
-        message =
-        "Firebase is unavailable. Check your internet connection.";
+        "Firebase permission denied. Check Firestore Rules.";
 
     }
     else if(
@@ -2735,7 +2496,6 @@ function ratingFailed(
     ){
 
         message =
-        "Rating error: " +
         error.message;
 
     }
@@ -2745,12 +2505,10 @@ function ratingFailed(
         message
     );
 
-}
+};
 
 
-/* =====================================================
-   SETTINGS OUTSIDE CLICK
-===================================================== */
+/* OUTSIDE SETTINGS CLICK */
 
 document.addEventListener(
     "click",
@@ -2761,12 +2519,10 @@ document.addEventListener(
             "settingsMenu"
         );
 
-
         const button =
         document.querySelector(
             ".settings-btn"
         );
-
 
         if(
             menu.classList.contains("show") &&
@@ -2811,7 +2567,7 @@ from
 
 
 /* =====================================================
-   YOUR ORIGINAL FIREBASE CONFIGURATION
+   YOUR ORIGINAL FIREBASE CONFIG
    UNCHANGED
 ===================================================== */
 
@@ -2914,16 +2670,40 @@ async function loadRatings(){
         : 0;
 
 
-        window.updateRatingDisplay(
-            average,
-            count
+        const totalElement =
+        document.getElementById(
+            "ratingTotal"
         );
+
+
+        if(
+            count === 0
+        ){
+
+            totalElement.textContent =
+            "⭐ No ratings yet";
+
+        }
+        else{
+
+            totalElement.innerHTML =
+            "⭐ <strong>" +
+            average.toFixed(1) +
+            "</strong> / 5 · " +
+            count +
+            (
+                count === 1
+                ? " rating"
+                : " ratings"
+            );
+
+        }
 
     }
     catch(error){
 
         console.error(
-            "Rating READ ERROR:",
+            "RATING READ ERROR:",
             error
         );
 
@@ -2933,7 +2713,7 @@ async function loadRatings(){
             "ratingTotal"
         )
         .textContent =
-        "⭐ Ratings unavailable";
+        "⭐ No ratings yet";
 
     }
 
@@ -2944,26 +2724,26 @@ async function loadRatings(){
    ⭐ SAVE RATING
 ===================================================== */
 
-async function submitRating(
+window.submitRatingFromUI =
+async function(
     rating
 ){
 
     try{
 
         console.log(
-            "Starting Firebase rating save:",
+            "Saving rating:",
             rating
         );
 
 
         /*
-         * IMPORTANT:
-         * The timeout prevents the button
-         * from being stuck on Saving forever.
-         */
+           THIS IS THE SAME SIMPLE
+           FIREBASE addDoc METHOD.
+        */
 
-        const firebaseWrite =
-        addDoc(
+        const docRef =
+        await addDoc(
             collection(
                 db,
                 RATING_COLLECTION
@@ -2980,76 +2760,45 @@ async function submitRating(
         );
 
 
-        const timeout =
-        new Promise(
-            (_,reject)=>{
-
-                setTimeout(
-                    ()=>{
-
-                        const error =
-                        new Error(
-                            "Firebase write timed out after 10 seconds."
-                        );
-
-                        error.code =
-                        "timeout";
-
-                        reject(
-                            error
-                        );
-
-                    },
-                    10000
-                );
-
-            }
-        );
-
-
-        /*
-         * Whichever happens first:
-         * Firebase success OR 10-sec timeout
-         */
-
-        await Promise.race([
-            firebaseWrite,
-            timeout
-        ]);
-
-
         console.log(
-            "Rating saved successfully."
+            "RATING CREATED:",
+            docRef.id
         );
 
 
         /*
-         * SUCCESS
-         */
+           SUCCESS
+        */
 
-        ratingSuccess();
+        window.ratingSuccess();
 
 
         /*
-         * Reload totals
-         */
+           Refresh total
+        */
 
         await loadRatings();
 
     }
     catch(error){
 
-        ratingFailed(
+        console.error(
+            "FIREBASE RATING WRITE ERROR:",
+            error
+        );
+
+
+        window.ratingFailure(
             error
         );
 
     }
 
-}
+};
 
 
 /* =====================================================
-   ORIGINAL MEDIA SYSTEM
+   ORIGINAL MEDIA FIREBASE
 ===================================================== */
 
 const COLLECTION_NAME =
@@ -3122,13 +2871,6 @@ async function loadFirebaseMedia(){
                 docSnap.data();
 
 
-                console.log(
-                    "Firebase document:",
-                    docSnap.id,
-                    data
-                );
-
-
                 const url =
                 data.url ||
                 data.link ||
@@ -3136,12 +2878,8 @@ async function loadFirebaseMedia(){
                 data.secure_url;
 
 
-                if(
-                    !url
-                ){
-
+                if(!url){
                     return;
-
                 }
 
 
@@ -3154,31 +2892,29 @@ async function loadFirebaseMedia(){
 
 
                 if(
-                    type === "image" ||
-                    type === "photo" ||
-                    type === "photos"
+                    type==="image" ||
+                    type==="photo" ||
+                    type==="photos"
                 ){
 
-                    type =
-                    "photo";
+                    type="photo";
 
                 }
 
 
                 if(
-                    type === "video" ||
-                    type === "videos"
+                    type==="video" ||
+                    type==="videos"
                 ){
 
-                    type =
-                    "video";
+                    type="video";
 
                 }
 
 
                 if(
-                    type !== "photo" &&
-                    type !== "video"
+                    type!=="photo" &&
+                    type!=="video"
                 ){
 
                     const u =
@@ -3188,21 +2924,17 @@ async function loadFirebaseMedia(){
 
 
                     if(
-                        /\.(jpg|jpeg|png|gif|webp|avif)$/
-                        .test(u)
+                        /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
                     ){
 
-                        type =
-                        "photo";
+                        type="photo";
 
                     }
                     else if(
-                        /\.(mp4|webm|mov|m4v|ogg)$/
-                        .test(u)
+                        /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
                     ){
 
-                        type =
-                        "video";
+                        type="video";
 
                     }
                     else{
@@ -3224,11 +2956,9 @@ async function loadFirebaseMedia(){
                     data.title ||
                     "Project Media",
 
-                    url:
-                    url,
+                    url:url,
 
-                    type:
-                    type
+                    type:type
 
                 });
 
@@ -3250,7 +2980,7 @@ async function loadFirebaseMedia(){
     catch(error){
 
         console.error(
-            "Firebase media error:",
+            "Firebase error:",
             error
         );
 
@@ -3260,17 +2990,13 @@ async function loadFirebaseMedia(){
         );
 
 
-        gallery.innerHTML =
-        "";
+        gallery.innerHTML="";
 
-
-        empty.style.display =
-        "block";
+        empty.style.display="block";
 
 
         if(
-            error.code ===
-            "permission-denied"
+            error.code==="permission-denied"
         ){
 
             empty.textContent =
@@ -3296,8 +3022,7 @@ async function loadFirebaseMedia(){
 
 function renderMedia(){
 
-    gallery.innerHTML =
-    "";
+    gallery.innerHTML="";
 
 
     const items =
@@ -3305,44 +3030,36 @@ function renderMedia(){
         item=>{
 
             return(
-                currentFilter === "all" ||
-                item.type === currentFilter
+                currentFilter==="all" ||
+                item.type===currentFilter
             );
 
         }
     );
 
 
-    if(
-        !items.length
-    ){
+    if(!items.length){
 
-        empty.style.display =
-        "block";
-
+        empty.style.display="block";
 
         empty.textContent =
         mediaStore.length
         ? "No media found."
         : "No photos or videos have been added yet.";
 
-
         return;
 
     }
 
 
-    empty.style.display =
-    "none";
+    empty.style.display="none";
 
 
     items.forEach(
         item=>{
 
             const card =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
             card.className =
@@ -3353,43 +3070,30 @@ function renderMedia(){
 
 
             if(
-                item.type === "video"
+                item.type==="video"
             ){
 
                 media =
-                document.createElement(
-                    "video"
-                );
+                document.createElement("video");
 
-                media.controls =
-                false;
-
-                media.muted =
-                true;
-
-                media.playsInline =
-                true;
-
-                media.preload =
-                "metadata";
+                media.controls=false;
+                media.muted=true;
+                media.playsInline=true;
+                media.preload="metadata";
 
             }
             else{
 
                 media =
-                document.createElement(
-                    "img"
-                );
+                document.createElement("img");
 
-                media.loading =
-                "lazy";
+                media.loading="lazy";
 
             }
 
 
             media.src =
             item.url;
-
 
             media.alt =
             item.name;
@@ -3407,9 +3111,7 @@ function renderMedia(){
 
 
             const caption =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
             caption.className =
@@ -3420,29 +3122,18 @@ function renderMedia(){
             item.name;
 
 
-            card.appendChild(
-                media
-            );
+            card.appendChild(media);
 
-
-            card.appendChild(
-                caption
-            );
+            card.appendChild(caption);
 
 
             card.onclick =
             ()=>{
-
-                openViewer(
-                    item
-                );
-
+                openViewer(item);
             };
 
 
-            gallery.appendChild(
-                card
-            );
+            gallery.appendChild(card);
 
         }
     );
@@ -3454,21 +3145,17 @@ function renderMedia(){
    VIEWER
 ===================================================== */
 
-function openViewer(
-    item
-){
+function openViewer(item){
 
     const viewer =
     document.getElementById(
         "sectionViewer"
     );
 
-
     const title =
     document.getElementById(
         "sectionViewerTitle"
     );
-
 
     const content =
     document.getElementById(
@@ -3476,9 +3163,7 @@ function openViewer(
     );
 
 
-    content.innerHTML =
-    "";
-
+    content.innerHTML="";
 
     title.textContent =
     item.name;
@@ -3488,30 +3173,21 @@ function openViewer(
 
 
     if(
-        item.type === "video"
+        item.type==="video"
     ){
 
         media =
-        document.createElement(
-            "video"
-        );
+        document.createElement("video");
 
-        media.controls =
-        true;
-
-        media.autoplay =
-        true;
-
-        media.playsInline =
-        true;
+        media.controls=true;
+        media.autoplay=true;
+        media.playsInline=true;
 
     }
     else{
 
         media =
-        document.createElement(
-            "img"
-        );
+        document.createElement("img");
 
     }
 
@@ -3524,15 +3200,9 @@ function openViewer(
     "section-view-media";
 
 
-    content.appendChild(
-        media
-    );
+    content.appendChild(media);
 
-
-    viewer.classList.add(
-        "show"
-    );
-
+    viewer.classList.add("show");
 
     viewer.scrollIntoView({
         behavior:"smooth",
@@ -3542,35 +3212,19 @@ function openViewer(
 }
 
 
-/* =====================================================
-   CLOSE VIEWER
-===================================================== */
-
 window.closeSectionViewer =
 function(){
 
     document
-    .getElementById(
-        "sectionViewer"
-    )
-    .classList.remove(
-        "show"
-    );
-
+    .getElementById("sectionViewer")
+    .classList.remove("show");
 
     document
-    .getElementById(
-        "sectionViewerContent"
-    )
-    .innerHTML =
-    "";
+    .getElementById("sectionViewerContent")
+    .innerHTML="";
 
 };
 
-
-/* =====================================================
-   FILTER MEDIA
-===================================================== */
 
 window.filterMedia =
 function(
@@ -3583,28 +3237,16 @@ function(
 
 
     document
-    .querySelectorAll(
-        ".media-filter"
-    )
+    .querySelectorAll(".media-filter")
     .forEach(
         btn=>{
-
-            btn.classList.remove(
-                "active"
-            );
-
+            btn.classList.remove("active");
         }
     );
 
 
-    if(
-        button
-    ){
-
-        button.classList.add(
-            "active"
-        );
-
+    if(button){
+        button.classList.add("active");
     }
 
 
@@ -3614,7 +3256,7 @@ function(
 
 
 /* =====================================================
-   START EVERYTHING
+   START
 ===================================================== */
 
 loadRatings();
@@ -3622,19 +3264,11 @@ loadRatings();
 loadFirebaseMedia();
 
 
-/*
- * Refresh rating total every 15 seconds
- */
-
 setInterval(
     loadRatings,
     15000
 );
 
-
-/*
- * Refresh media every 10 seconds
- */
 
 setInterval(
     loadFirebaseMedia,
