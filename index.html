@@ -12,31 +12,100 @@
 
 <title>Working Model of Heart</title>
 
+
 <!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
 
-<meta property="og:title" content="Working Model of Heart">
-<meta property="og:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta property="og:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:secure_url" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Working Model of Heart">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://its-working-heart.vercel.app/">
+<meta
+    property="og:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    property="og:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:secure_url"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:type"
+    content="image/png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:url"
+    content="https://its-working-heart.vercel.app/"
+>
+
 
 <!-- TWITTER / X COVER -->
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Working Model of Heart">
-<meta name="twitter:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta name="twitter:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta name="twitter:image:alt" content="Working Model of Heart">
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
 
-<link rel="icon" type="image/png" href="/cover.png">
+<meta
+    name="twitter:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    name="twitter:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    name="twitter:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    name="twitter:image:alt"
+    content="Working Model of Heart"
+>
+
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/cover.png"
+>
 
 
 <style>
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 *{
     box-sizing:border-box
@@ -83,6 +152,21 @@ h1 span,
     color:#ff2638
 }
 
+.links{
+    display:flex;
+    gap:28px
+}
+
+.links a{
+    color:#eee;
+    text-decoration:none;
+    font-size:14px
+}
+
+.links a:hover{
+    color:#ff2638
+}
+
 
 /* =====================================================
    HERO
@@ -96,6 +180,7 @@ h1 span,
     align-items:center;
     position:relative;
     overflow:hidden;
+
     background:
     radial-gradient(
         circle at 80% 35%,
@@ -109,6 +194,7 @@ h1 span,
     position:absolute;
     inset:0;
     opacity:.18;
+
     background-image:
     linear-gradient(
         #ff263812 1px,
@@ -119,6 +205,7 @@ h1 span,
         #ff263812 1px,
         transparent 1px
     );
+
     background-size:42px 42px
 }
 
@@ -163,13 +250,21 @@ h1 span,
     transform:translateY(-3px)
 }
 
+
+/* =====================================================
+   BPM
+===================================================== */
+
 .bpm{
     margin-top:22px;
     width:170px;
     padding:12px;
+
     border:1px solid #383a40;
     border-radius:10px;
+
     background:#111317;
+
     display:flex;
     gap:10px;
     align-items:center
@@ -179,9 +274,12 @@ h1 span,
     width:31px;
     height:31px;
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
+
     animation:pulse 1s infinite
 }
 
@@ -189,7 +287,8 @@ h1 span,
 
     50%{
         transform:scale(1.15);
-        box-shadow:0 0 25px #ff263888
+        box-shadow:
+        0 0 25px #ff263888
     }
 
 }
@@ -218,10 +317,17 @@ h1 span,
     stroke-width:3;
     stroke-linecap:round;
     stroke-linejoin:round;
+
     stroke-dasharray:900;
     stroke-dashoffset:900;
-    animation:ecg 2.2s linear infinite;
-    filter:drop-shadow(0 0 7px #ff2638)
+
+    animation:
+    ecg 2.2s linear infinite;
+
+    filter:
+    drop-shadow(
+        0 0 7px #ff2638
+    )
 }
 
 @keyframes ecg{
@@ -242,8 +348,10 @@ h1 span,
     margin:auto;
     padding:14px;
     text-align:center;
+
     background:#111317;
     border:1px solid #303238;
+
     color:#aaa
 }
 
@@ -292,8 +400,10 @@ section{
 .about{
     max-width:1100px;
     margin:auto;
+
     display:grid;
     grid-template-columns:1fr 1.2fr;
+
     gap:50px;
     align-items:center
 }
@@ -309,7 +419,7 @@ section{
 
 
 /* =====================================================
-   FEATURES / STEPS
+   FEATURES
 ===================================================== */
 
 .features,
@@ -322,10 +432,14 @@ section{
 .feature,
 .step{
     padding:22px;
+
     border:1px solid #34363c;
     border-radius:13px;
+
     background:#111317;
+
     text-align:center;
+
     transition:.3s
 }
 
@@ -353,10 +467,14 @@ section{
     width:30px;
     height:30px;
     border-radius:50%;
+
     background:#ff2638;
+
     display:grid;
     place-items:center;
+
     margin:0 auto 17px;
+
     font-weight:bold
 }
 
@@ -368,21 +486,28 @@ section{
 .contact-grid{
     max-width:950px;
     margin:auto;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
+
     gap:18px
 }
 
 .contact-card{
     display:flex;
     align-items:center;
+
     gap:15px;
     padding:24px;
+
     border:1px solid #34363c;
     border-radius:14px;
+
     background:#111317;
+
     text-decoration:none;
     color:#fff;
+
     transition:.3s
 }
 
@@ -395,10 +520,13 @@ section{
     width:45px;
     height:45px;
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
     color:#fff;
+
     font-size:22px;
     flex:none
 }
@@ -410,7 +538,9 @@ section{
 .contact-card p{
     margin:0;
     color:#aaa;
+
     word-break:break-word;
+
     font-size:13px;
     line-height:1.45
 }
@@ -422,15 +552,19 @@ section{
 
 footer{
     padding:45px 7% 20px;
+
     border-top:1px solid #292a30;
+
     background:#090a0c
 }
 
 .footer-grid{
     max-width:1100px;
     margin:auto;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
+
     gap:35px
 }
 
@@ -451,17 +585,25 @@ footer{
 
 .leader span{
     display:block;
+
     color:#ff2638;
+
     font-size:13px;
+
     margin-top:5px
 }
 
 .copy{
     text-align:center;
+
     color:#666;
+
     border-top:1px solid #222;
+
     margin-top:30px;
+
     padding-top:18px;
+
     font-size:12px
 }
 
@@ -490,18 +632,27 @@ footer{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
+
     gap:10px;
+
     margin:0 auto 28px
 }
 
 .media-filter{
     border:1px solid #3a3c42;
+
     background:#111317;
+
     color:#fff;
+
     padding:11px 17px;
+
     border-radius:9px;
+
     cursor:pointer;
+
     font-weight:700;
+
     transition:.25s
 }
 
@@ -513,21 +664,29 @@ footer{
 
 .gallery{
     display:grid;
+
     grid-template-columns:
     repeat(
         auto-fit,
         minmax(150px,190px)
     );
+
     justify-content:center;
+
     gap:15px
 }
 
 .gallery-item{
     background:#111317;
+
     border:1px solid #34363c;
+
     border-radius:13px;
+
     overflow:hidden;
+
     cursor:pointer;
+
     animation:galleryIn .45s
 }
 
@@ -540,22 +699,31 @@ footer{
 .gallery-item video{
     width:100%;
     height:125px;
+
     display:block;
+
     object-fit:cover
 }
 
 .gallery-caption{
     padding:9px;
+
     color:#aaa;
+
     font-size:12px;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis
 }
 
 .gallery-empty{
     text-align:center;
+
     color:#777;
+
     padding:35px
 }
 
@@ -580,8 +748,11 @@ footer{
 
 .firebase-status{
     text-align:center;
+
     margin:-8px auto 24px;
+
     color:#777;
+
     font-size:11px
 }
 
@@ -597,36 +768,57 @@ footer{
 .settings-btn{
     width:38px;
     height:38px;
+
     border:1px solid #383a40;
+
     border-radius:9px;
+
     background:#111317;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     gap:5px;
+
     cursor:pointer
 }
 
 .settings-btn span{
     display:block;
+
     width:18px;
     height:2px;
+
     background:#fff;
+
     border-radius:3px
 }
 
 .settings-menu{
     position:fixed;
+
     top:76px;
     right:6%;
+
     width:min(340px,88vw);
+
     z-index:100;
+
     display:none;
+
     padding:18px;
+
     border:1px solid #3a3c42;
+
     border-radius:16px;
+
     background:#101114;
+
     box-shadow:0 20px 60px #000b
 }
 
@@ -636,30 +828,43 @@ footer{
 
 .settings-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:15px
 }
 
 .settings-head h3{
     margin:0;
+
     color:#ff2638
 }
 
 .settings-head button{
     border:0;
+
     background:none;
+
     color:#fff;
+
     font-size:25px;
+
     cursor:pointer
 }
 
 .settings-card{
     display:flex;
+
     gap:14px;
+
     padding:17px;
+
     border:1px solid #34363c;
+
     border-radius:12px;
+
     background:#111317
 }
 
@@ -669,51 +874,77 @@ footer{
 
 .settings-card p{
     margin:0 0 12px;
+
     color:#aaa;
+
     font-size:12px;
+
     line-height:1.5
 }
 
 .settings-password{
     margin-top:12px;
+
     padding-top:12px;
+
     border-top:1px solid #292b31
 }
 
 .settings-password label{
     display:block;
+
     font-size:9px;
+
     letter-spacing:1.8px;
+
     color:#ff6b76;
+
     font-weight:800;
+
     margin-bottom:7px
 }
 
 .settings-password input{
     width:100%;
+
     padding:10px 11px;
+
     background:#08090b;
+
     border:1px solid #383a40;
+
     border-radius:8px;
+
     color:#fff;
+
     outline:none
 }
 
 .settings-action{
     width:100%;
+
     margin-top:8px;
+
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     border-radius:8px;
+
     padding:10px;
+
     font-weight:700;
+
     cursor:pointer
 }
 
 #settingsPasswordMessage{
     font-size:11px;
+
     margin-top:7px;
+
     min-height:14px
 }
 
@@ -724,11 +955,17 @@ footer{
 
 .section-viewer{
     display:none;
+
     margin:28px auto 0;
+
     max-width:760px;
+
     border:1px solid #ff2638;
+
     border-radius:16px;
+
     background:#0d0f12;
+
     padding:14px
 }
 
@@ -738,62 +975,73 @@ footer{
 
 .section-viewer-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:2px 4px 12px
 }
 
 .section-viewer-head h3{
     margin:0;
+
     color:#ff2638;
+
     font-size:16px
 }
 
 .section-viewer-head button{
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     width:32px;
     height:32px;
+
     border-radius:50%;
+
     font-size:21px;
+
     cursor:pointer
 }
 
 .section-viewer-content{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     min-height:180px
 }
 
 .section-view-media{
     max-width:100%;
+
     max-height:500px;
+
     border-radius:10px;
+
     display:block
 }
 
 
 /* =====================================================
-   ⭐ RATING WIDGET
-   PERMANENTLY FIXED AT TOP
+   ⭐ RATING FLOATING WIDGET
 ===================================================== */
 
 .rating-widget{
 
     position:fixed;
 
-    /*
-       IMPORTANT:
-       Always stays at the top.
-    */
-
     top:76px;
+
     left:50%;
 
-    transform:
-    translateX(-50%);
+    transform:translateX(-50%);
 
     z-index:9999;
 
@@ -823,59 +1071,37 @@ footer{
 
     backdrop-filter:blur(14px);
 
-    /*
-       NEVER hide after rating.
-    */
-
-    opacity:1;
-
-    /*
-       Prevent movement while scrolling.
-    */
-
-    will-change:auto;
-
-    /*
-       Keep it visually stable.
-    */
-
     transition:
-    border-color .25s ease,
-    box-shadow .25s ease
+    opacity .5s ease,
+    transform .5s ease
 }
 
 
-/* subtle entrance only */
+/*
+   When rating is completed,
+   the entire floating menu disappears.
+*/
 
-.rating-widget.rating-loaded{
-    animation:
-    ratingAppear .5s ease
-}
+.rating-widget.hide{
 
-@keyframes ratingAppear{
+    opacity:0;
 
-    from{
-        opacity:0;
-        transform:
-        translateX(-50%)
-        translateY(-10px)
-    }
+    transform:
+    translateX(-50%)
+    translateY(-20px);
 
-    to{
-        opacity:1;
-        transform:
-        translateX(-50%)
-        translateY(0)
-    }
-
+    pointer-events:none
 }
 
 
 .rating-left{
 
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     min-width:0
 }
 
@@ -883,14 +1109,17 @@ footer{
 
     width:38px;
     height:38px;
+
     flex:none;
 
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
+
     color:#fff;
 
     font-size:20px;
@@ -903,30 +1132,34 @@ footer{
 
     50%{
         transform:scale(1.1);
+
         box-shadow:
         0 0 25px #ff263866
     }
 
 }
 
-
 .rating-info{
     min-width:0
 }
 
 .rating-title{
-
     font-size:12px;
+
     font-weight:800;
+
     color:#fff;
+
     white-space:nowrap
 }
 
 .rating-total{
-
     margin-top:3px;
+
     font-size:10px;
+
     color:#888b92;
+
     white-space:nowrap
 }
 
@@ -942,7 +1175,9 @@ footer{
 .rating-stars{
 
     display:flex;
+
     align-items:center;
+
     gap:2px;
 
     flex-shrink:0
@@ -951,6 +1186,7 @@ footer{
 .rating-star{
 
     border:0;
+
     background:none;
 
     padding:2px;
@@ -958,6 +1194,7 @@ footer{
     color:#4a4c52;
 
     font-size:22px;
+
     line-height:1;
 
     cursor:pointer;
@@ -970,6 +1207,7 @@ footer{
 .rating-star:hover{
 
     transform:scale(1.25);
+
     color:#ffd43b
 }
 
@@ -985,7 +1223,7 @@ footer{
 
 
 /* =====================================================
-   CONFIRM BUTTON
+   CONFIRM
 ===================================================== */
 
 .rating-confirm{
@@ -1019,29 +1257,8 @@ footer{
 }
 
 
-/*
-   AFTER SUCCESS:
-   KEEP BUTTON IN SAME POSITION.
-*/
-
-.rating-confirm.confirmed{
-
-    display:block;
-
-    background:#1d3927;
-
-    border-color:#69e58a;
-
-    color:#69e58a;
-
-    cursor:default;
-
-    box-shadow:none
-}
-
-
 /* =====================================================
-   MESSAGE
+   RATING MESSAGE
 ===================================================== */
 
 .rating-message{
@@ -1081,13 +1298,49 @@ footer{
     opacity:1
 }
 
-.rating-widget.submitted{
 
-    border-color:#69e58a;
+/* =====================================================
+   ⭐ STATIC FINAL RATING
+===================================================== */
 
-    box-shadow:
-    0 15px 45px #000b,
-    0 0 22px #69e58a22
+/*
+   This is NOT fixed.
+   It stays in the normal document flow.
+*/
+
+.final-rating{
+
+    display:none;
+
+    width:fit-content;
+
+    max-width:92vw;
+
+    margin:12px auto 0;
+
+    padding:7px 13px;
+
+    border:1px solid #303238;
+
+    border-radius:9px;
+
+    background:#111317;
+
+    color:#aaa;
+
+    text-align:center;
+
+    font-size:11px;
+
+    line-height:1.3
+}
+
+.final-rating.show{
+    display:block
+}
+
+.final-rating strong{
+    color:#ffd43b
 }
 
 
@@ -1147,10 +1400,6 @@ footer{
     }
 
 
-    /*
-       Mobile rating widget remains fixed.
-    */
-
     .rating-widget{
 
         top:76px;
@@ -1170,6 +1419,7 @@ footer{
 
         width:34px;
         height:34px;
+
         font-size:17px
     }
 
@@ -1183,6 +1433,7 @@ footer{
 
     .rating-star{
         font-size:19px;
+
         padding:1px
     }
 
@@ -1441,6 +1692,23 @@ Aayushman Jha
 (Leader)
 </span>
 
+</div>
+
+
+<!-- =====================================================
+     STATIC FINAL RATING
+     
+     IMPORTANT:
+     It is NOT fixed.
+     It is NOT floating.
+===================================================== -->
+
+<div
+id="finalRating"
+class="final-rating"
+>
+⭐ <strong id="finalRatingValue">0.0</strong> / 5 ·
+<span id="finalRatingCount">0 ratings</span>
 </div>
 
 
@@ -2069,7 +2337,9 @@ style="color:#aaa;text-decoration:none"
 
 <script>
 
-/* BPM */
+/* =====================================================
+   BPM
+===================================================== */
 
 const bpm =
 document.getElementById("bpm");
@@ -2077,52 +2347,69 @@ document.getElementById("bpm");
 setInterval(
 ()=>{
     bpm.textContent =
-    70 + Math.floor(Math.random()*7);
+    70 +
+    Math.floor(
+        Math.random()*7
+    );
 },
 1200
 );
 
 
-/* REVEAL */
+/* =====================================================
+   REVEAL
+===================================================== */
 
 const obs =
 new IntersectionObserver(
 entries=>{
 
-    entries.forEach(entry=>{
+    entries.forEach(
+        entry=>{
 
-        if(entry.isIntersecting){
+            if(
+                entry.isIntersecting
+            ){
 
-            entry.target.classList.add(
-                "show"
-            );
+                entry.target.classList.add(
+                    "show"
+                );
+
+            }
 
         }
-
-    });
+    );
 
 },
-{threshold:.12}
+{
+    threshold:.12
+}
 );
 
 
 document
 .querySelectorAll(".reveal")
-.forEach(element=>{
-
+.forEach(
+element=>{
     obs.observe(element);
+}
+);
 
-});
 
-
-/* SETTINGS */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 window.toggleSettings =
 function(){
 
     document
-    .getElementById("settingsMenu")
-    .classList.toggle("show");
+    .getElementById(
+        "settingsMenu"
+    )
+    .classList.toggle(
+        "show"
+    );
 
 };
 
@@ -2146,7 +2433,8 @@ function(){
 
 
     if(
-        input.value === HOST_PASSWORD
+        input.value ===
+        HOST_PASSWORD
     ){
 
         msg.textContent =
@@ -2158,7 +2446,8 @@ function(){
 
         setTimeout(
             ()=>{
-                location.href="edit.html";
+                location.href =
+                "edit.html";
             },
             500
         );
@@ -2178,8 +2467,13 @@ function(){
 
 
 /* =====================================================
-   ⭐ RATING
+   ⭐ RATING VARIABLES
 ===================================================== */
+
+const ratingWidget =
+document.getElementById(
+    "ratingWidget"
+);
 
 const ratingStars =
 document.querySelectorAll(
@@ -2196,11 +2490,6 @@ document.getElementById(
     "ratingConfirm"
 );
 
-const ratingWidget =
-document.getElementById(
-    "ratingWidget"
-);
-
 const ratingMessage =
 document.getElementById(
     "ratingMessage"
@@ -2209,42 +2498,8 @@ document.getElementById(
 let selectedRating = 0;
 
 
-/* Add entrance class */
-
-setTimeout(
-    ()=>{
-        ratingWidget.classList.add(
-            "rating-loaded"
-        );
-    },
-    50
-);
-
-
 /* =====================================================
-   STAR DISPLAY
-===================================================== */
-
-function updateRatingStars(
-    value
-){
-
-    ratingStars.forEach(
-        (star,index)=>{
-
-            star.classList.toggle(
-                "active",
-                index < value
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   MESSAGE
+   SHOW MESSAGE
 ===================================================== */
 
 function showRatingMessage(
@@ -2279,7 +2534,29 @@ function showRatingMessage(
             );
 
         },
-        4000
+        3000
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE STARS
+===================================================== */
+
+function updateRatingStars(
+    value
+){
+
+    ratingStars.forEach(
+        (star,index)=>{
+
+            star.classList.toggle(
+                "active",
+                index < value
+            );
+
+        }
     );
 
 }
@@ -2323,10 +2600,8 @@ ratingStars.forEach(
 
 
                 /*
-                   Hide only the stars.
-
-                   The rating widget itself
-                   NEVER disappears.
+                   Hide stars temporarily
+                   and show Confirm.
                 */
 
                 ratingStarsBox.style.display =
@@ -2350,7 +2625,7 @@ ratingStars.forEach(
 
 
 /* =====================================================
-   CONFIRM
+   CONFIRM RATING
 ===================================================== */
 
 ratingConfirm.addEventListener(
@@ -2403,7 +2678,7 @@ ratingConfirm.addEventListener(
 
 
 /* =====================================================
-   SUCCESS
+   RATING SUCCESS
 ===================================================== */
 
 window.ratingSuccess =
@@ -2416,40 +2691,23 @@ function(){
 
 
     /*
-       IMPORTANT:
-       The widget remains fixed at the top.
+       Update button temporarily.
     */
-
-    ratingWidget.classList.add(
-        "submitted"
-    );
-
-
-    /*
-       Keep button visible.
-    */
-
-    ratingConfirm.disabled =
-    true;
 
     ratingConfirm.textContent =
     "✓ Rated";
 
-    ratingConfirm.classList.add(
-        "show"
-    );
+    ratingConfirm.style.display =
+    "block";
 
-    ratingConfirm.classList.add(
-        "confirmed"
-    );
+    ratingConfirm.style.background =
+    "#1d3927";
 
+    ratingConfirm.style.borderColor =
+    "#69e58a";
 
-    /*
-       Stars stay hidden.
-    */
-
-    ratingStarsBox.style.display =
-    "none";
+    ratingConfirm.style.color =
+    "#69e58a";
 
 
     showRatingMessage(
@@ -2457,11 +2715,45 @@ function(){
         true
     );
 
+
+    /*
+       IMPORTANT:
+       After a few seconds the WHOLE
+       floating widget disappears.
+    */
+
+    setTimeout(
+        ()=>{
+
+            ratingWidget.classList.add(
+                "hide"
+            );
+
+
+            /*
+               Completely remove it from
+               interaction after animation.
+            */
+
+            setTimeout(
+                ()=>{
+
+                    ratingWidget.style.display =
+                    "none";
+
+                },
+                550
+            );
+
+        },
+        3000
+    );
+
 };
 
 
 /* =====================================================
-   FAILURE
+   RATING FAILURE
 ===================================================== */
 
 window.ratingFailure =
@@ -2482,9 +2774,17 @@ function(error){
     selectedRating;
 
 
-    ratingConfirm.classList.remove(
-        "show"
-    );
+    ratingConfirm.style.display =
+    "block";
+
+    ratingConfirm.style.background =
+    "#ff2638";
+
+    ratingConfirm.style.borderColor =
+    "#ff2638";
+
+    ratingConfirm.style.color =
+    "#fff";
 
 
     ratingStarsBox.style.display =
@@ -2524,7 +2824,7 @@ function(error){
 
 
 /* =====================================================
-   CLOSE SETTINGS WHEN CLICKING OUTSIDE
+   CLOSE SETTINGS OUTSIDE CLICK
 ===================================================== */
 
 document.addEventListener(
@@ -2543,9 +2843,15 @@ document.addEventListener(
 
 
         if(
-            menu.classList.contains("show") &&
-            !menu.contains(event.target) &&
-            !button.contains(event.target)
+            menu.classList.contains(
+                "show"
+            ) &&
+            !menu.contains(
+                event.target
+            ) &&
+            !button.contains(
+                event.target
+            )
         ){
 
             menu.classList.remove(
@@ -2585,7 +2891,7 @@ from
 
 
 /* =====================================================
-   YOUR ORIGINAL FIREBASE CONFIG
+   ORIGINAL FIREBASE CONFIG
    UNCHANGED
 ===================================================== */
 
@@ -2624,7 +2930,7 @@ getFirestore(
 
 
 /* =====================================================
-   ⭐ RATING COLLECTION
+   RATING COLLECTION
 ===================================================== */
 
 const RATING_COLLECTION =
@@ -2632,7 +2938,7 @@ const RATING_COLLECTION =
 
 
 /* =====================================================
-   LOAD RATINGS
+   UPDATE RATING DISPLAY
 ===================================================== */
 
 async function loadRatings(){
@@ -2687,31 +2993,100 @@ async function loadRatings(){
         : 0;
 
 
-        const totalElement =
+        const ratingText =
+        count
+        ? "⭐ " +
+          average.toFixed(1) +
+          " / 5 · " +
+          count +
+          (
+              count === 1
+              ? " rating"
+              : " ratings"
+          )
+        : "⭐ No ratings yet";
+
+
+        /*
+           Floating widget display.
+        */
+
+        const floatingRating =
         document.getElementById(
             "ratingTotal"
         );
 
+        floatingRating.innerHTML =
+        count
+        ? "⭐ <strong>" +
+          average.toFixed(1) +
+          "</strong> / 5 · " +
+          count +
+          (
+              count === 1
+              ? " rating"
+              : " ratings"
+          )
+        : "⭐ No ratings yet";
+
+
+        /*
+           Static rating display.
+
+           This one NEVER floats.
+        */
+
+        const finalRating =
+        document.getElementById(
+            "finalRating"
+        );
+
+        const finalValue =
+        document.getElementById(
+            "finalRatingValue"
+        );
+
+        const finalCount =
+        document.getElementById(
+            "finalRatingCount"
+        );
+
 
         if(
-            count === 0
+            count > 0
         ){
 
-            totalElement.textContent =
-            "⭐ No ratings yet";
+            finalValue.textContent =
+            average.toFixed(1);
 
-        }
-        else{
-
-            totalElement.innerHTML =
-            "⭐ <strong>" +
-            average.toFixed(1) +
-            "</strong> / 5 · " +
+            finalCount.textContent =
             count +
             (
                 count === 1
                 ? " rating"
                 : " ratings"
+            );
+
+            /*
+               Show the static rating only
+               when floating widget is gone.
+            */
+
+            if(
+                ratingWidgetHasFinished()
+            ){
+
+                finalRating.classList.add(
+                    "show"
+                );
+
+            }
+
+        }
+        else{
+
+            finalRating.classList.remove(
+                "show"
             );
 
         }
@@ -2730,7 +3105,26 @@ async function loadRatings(){
 
 
 /* =====================================================
-   ⭐ SAVE RATING
+   CHECK IF FLOATING WIDGET IS FINISHED
+===================================================== */
+
+function ratingWidgetHasFinished(){
+
+    const widget =
+    document.getElementById(
+        "ratingWidget"
+    );
+
+    return(
+        widget.style.display ===
+        "none"
+    );
+
+}
+
+
+/* =====================================================
+   SAVE RATING
 ===================================================== */
 
 window.submitRatingFromUI =
@@ -2771,17 +3165,33 @@ async function(
 
 
         /*
-           Mark successful.
+           Successful save.
         */
 
         window.ratingSuccess();
 
 
         /*
-           Update displayed average.
+           Load latest total.
         */
 
         await loadRatings();
+
+
+        /*
+           Wait until the floating widget
+           has disappeared, then show
+           the static rating.
+        */
+
+        setTimeout(
+            ()=>{
+
+                loadRatings();
+
+            },
+            3600
+        );
 
     }
     catch(error){
@@ -2802,7 +3212,8 @@ async function(
 
 
 /* =====================================================
-   ORIGINAL MEDIA FIREBASE
+   ORIGINAL MEDIA COLLECTION
+   UNCHANGED
 ===================================================== */
 
 const COLLECTION_NAME =
@@ -2847,6 +3258,10 @@ function setStatus(
 }
 
 
+/* =====================================================
+   LOAD FIREBASE MEDIA
+===================================================== */
+
 async function loadFirebaseMedia(){
 
     try{
@@ -2873,6 +3288,13 @@ async function loadFirebaseMedia(){
 
                 const data =
                 docSnap.data();
+
+
+                console.log(
+                    "Firebase document:",
+                    docSnap.id,
+                    data
+                );
 
 
                 const url =
@@ -2996,11 +3418,13 @@ async function loadFirebaseMedia(){
 
         gallery.innerHTML="";
 
-        empty.style.display="block";
+        empty.style.display =
+        "block";
 
 
         if(
-            error.code==="permission-denied"
+            error.code ===
+            "permission-denied"
         ){
 
             empty.textContent =
@@ -3034,36 +3458,46 @@ function renderMedia(){
         item=>{
 
             return(
-                currentFilter==="all" ||
-                item.type===currentFilter
+                currentFilter ===
+                "all" ||
+                item.type ===
+                currentFilter
             );
 
         }
     );
 
 
-    if(!items.length){
+    if(
+        !items.length
+    ){
 
-        empty.style.display="block";
+        empty.style.display =
+        "block";
+
 
         empty.textContent =
         mediaStore.length
         ? "No media found."
         : "No photos or videos have been added yet.";
 
+
         return;
 
     }
 
 
-    empty.style.display="none";
+    empty.style.display =
+    "none";
 
 
     items.forEach(
         item=>{
 
             const card =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
             card.className =
@@ -3074,24 +3508,37 @@ function renderMedia(){
 
 
             if(
-                item.type==="video"
+                item.type ===
+                "video"
             ){
 
                 media =
-                document.createElement("video");
+                document.createElement(
+                    "video"
+                );
 
-                media.controls=false;
-                media.muted=true;
-                media.playsInline=true;
-                media.preload="metadata";
+                media.controls =
+                false;
+
+                media.muted =
+                true;
+
+                media.playsInline =
+                true;
+
+                media.preload =
+                "metadata";
 
             }
             else{
 
                 media =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
-                media.loading="lazy";
+                media.loading =
+                "lazy";
 
             }
 
@@ -3115,7 +3562,9 @@ function renderMedia(){
 
 
             const caption =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
             caption.className =
@@ -3183,21 +3632,31 @@ function openViewer(item){
 
 
     if(
-        item.type==="video"
+        item.type ===
+        "video"
     ){
 
         media =
-        document.createElement("video");
+        document.createElement(
+            "video"
+        );
 
-        media.controls=true;
-        media.autoplay=true;
-        media.playsInline=true;
+        media.controls =
+        true;
+
+        media.autoplay =
+        true;
+
+        media.playsInline =
+        true;
 
     }
     else{
 
         media =
-        document.createElement("img");
+        document.createElement(
+            "img"
+        );
 
     }
 
@@ -3289,7 +3748,7 @@ function(
 
 
 /* =====================================================
-   START FIREBASE
+   START
 ===================================================== */
 
 loadRatings();
@@ -3298,7 +3757,7 @@ loadFirebaseMedia();
 
 
 /*
-   Keep rating total updated.
+   Refresh rating total periodically.
 */
 
 setInterval(
@@ -3308,7 +3767,7 @@ setInterval(
 
 
 /*
-   Keep media updated.
+   Refresh media periodically.
 */
 
 setInterval(
