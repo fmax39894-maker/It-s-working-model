@@ -64,9 +64,13 @@
       content="Working Model of Heart">
 
 
-<link rel="icon"
-      type="image/png"
-      href="/cover.png">
+<!-- BROWSER ICON -->
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/cover.png"
+>
 
 
 <style>
@@ -98,6 +102,7 @@ body{
 nav{
     height:64px;
     padding:0 6%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -168,6 +173,7 @@ h1 span,
     content:"";
     position:absolute;
     inset:0;
+
     opacity:.18;
 
     background-image:
@@ -191,20 +197,27 @@ h1 span,
 .eyebrow{
     font-size:12px;
     letter-spacing:3px;
+
     color:#ff6b76;
+
     font-weight:bold;
 }
 
 .hero h1{
     font-size:clamp(48px,6vw,78px);
+
     line-height:.98;
+
     margin:18px 0;
 }
 
 .hero p{
     max-width:560px;
+
     color:#cfd0d5;
+
     font-size:18px;
+
     line-height:1.65;
 }
 
@@ -278,10 +291,12 @@ h1 span,
 @keyframes pulse{
 
     50%{
+
         transform:scale(1.15);
 
         box-shadow:
         0 0 25px #ff263888;
+
     }
 
 }
@@ -317,6 +332,7 @@ h1 span,
     stroke-linejoin:round;
 
     stroke-dasharray:900;
+
     stroke-dashoffset:900;
 
     animation:
@@ -505,6 +521,63 @@ section{
 
 
 /* =====================================================
+   TEAM MEMBER CARDS
+===================================================== */
+
+.team-grid{
+
+    max-width:850px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.team-member{
+
+    padding:20px;
+
+    border:1px solid #34363c;
+
+    border-radius:13px;
+
+    background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.team-member:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#ff2638;
+
+    box-shadow:
+    0 10px 30px #ff263818;
+
+}
+
+.team-member h3{
+
+    margin:0;
+
+    color:#fff;
+
+    font-size:17px;
+
+}
+
+
+/* =====================================================
    CONTACT
 ===================================================== */
 
@@ -626,16 +699,6 @@ footer{
     color:#fff;
 
     font-weight:bold;
-}
-
-.leader span{
-    display:block;
-
-    color:#ff2638;
-
-    font-size:13px;
-
-    margin-top:5px;
 }
 
 .copy{
@@ -783,15 +846,19 @@ footer{
 @keyframes galleryIn{
 
     from{
+
         opacity:0;
 
         transform:translateY(15px);
+
     }
 
     to{
+
         opacity:1;
 
         transform:none;
+
     }
 
 }
@@ -1085,15 +1152,8 @@ footer{
 
 
 /* =====================================================
-   ⭐ RATING SYSTEM
+   RATING SYSTEM
 ===================================================== */
-
-/*
-   NEW USER RATING CARD
-
-   This is shown only when this browser
-   has NOT rated before.
-*/
 
 .rating-widget{
 
@@ -1137,13 +1197,7 @@ footer{
     transform .5s ease;
 }
 
-
-/*
-   Animated entrance.
-*/
-
 .rating-widget.enter{
-
     animation:
     ratingEnter .7s ease;
 }
@@ -1167,11 +1221,6 @@ footer{
     }
 
 }
-
-
-/*
-   Disappear after successful rating.
-*/
 
 .rating-widget.hide{
 
@@ -1230,6 +1279,7 @@ footer{
 
         box-shadow:
         0 0 25px #ff263866;
+
     }
 
 }
@@ -1239,6 +1289,7 @@ footer{
 }
 
 .rating-title{
+
     font-size:12px;
 
     font-weight:800;
@@ -1249,6 +1300,7 @@ footer{
 }
 
 .rating-total{
+
     margin-top:3px;
 
     font-size:10px;
@@ -1389,18 +1441,8 @@ footer{
 
 
 /* =====================================================
-   ⭐ RETURNING USER RATING BADGE
+   RETURNING USER BADGE
 ===================================================== */
-
-/*
-   This is what a person who already rated sees.
-
-   It is small, animated and sits on the
-   TOP-LEFT of the screen.
-
-   No stars to click.
-   No rating menu.
-*/
 
 .rating-badge{
 
@@ -1466,15 +1508,19 @@ footer{
 
     0%,
     100%{
+
         box-shadow:
         0 10px 30px #0009,
         0 0 12px #ffd43b10;
+
     }
 
     50%{
+
         box-shadow:
         0 10px 30px #0009,
         0 0 22px #ffd43b30;
+
     }
 
 }
@@ -1492,9 +1538,11 @@ footer{
 @keyframes badgeStar{
 
     50%{
+
         transform:
         scale(1.18)
         rotate(8deg);
+
     }
 
 }
@@ -1523,9 +1571,11 @@ footer{
 @media(max-width:800px){
 
     .hero{
+
         grid-template-columns:1fr;
 
         text-align:center;
+
     }
 
     .hero p{
@@ -1538,15 +1588,31 @@ footer{
 
     .features,
     .steps{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+        1fr 1fr;
+
     }
 
     .footer-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+        1fr 1fr;
+
     }
 
     .contact-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+    .team-grid{
+
+        grid-template-columns:
+        1fr 1fr;
+
     }
 
 }
@@ -1557,7 +1623,10 @@ footer{
     .features,
     .steps,
     .footer-grid{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+        1fr;
+
     }
 
     .hero h1{
@@ -1565,11 +1634,24 @@ footer{
     }
 
     .contact-grid{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+    .team-grid{
+
+        grid-template-columns:
+        1fr;
+
     }
 
     .gallery{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+        repeat(2,1fr);
+
     }
 
 
@@ -1591,6 +1673,7 @@ footer{
         border-radius:15px;
 
         gap:5px;
+
     }
 
     .rating-heart{
@@ -1599,6 +1682,7 @@ footer{
         height:35px;
 
         font-size:17px;
+
     }
 
     .rating-title{
@@ -1610,17 +1694,20 @@ footer{
     }
 
     .rating-star{
+
         font-size:19px;
 
         padding:1px;
+
     }
 
     .rating-confirm{
+
         font-size:9px;
 
         padding:6px 9px;
-    }
 
+    }
 
     .rating-badge{
 
@@ -1631,6 +1718,7 @@ footer{
         padding:7px 10px;
 
         border-radius:12px;
+
     }
 
     .badge-star{
@@ -1656,7 +1744,7 @@ footer{
 
 
 <!-- =====================================================
-     ⭐ NEW USER RATING WIDGET
+     NEW USER RATING WIDGET
 ===================================================== -->
 
 <div
@@ -1754,7 +1842,7 @@ class="rating-message"
 
 
 <!-- =====================================================
-     ⭐ RETURNING USER BADGE
+     RETURNING USER RATING BADGE
 ===================================================== -->
 
 <div
@@ -1767,6 +1855,7 @@ class="rating-badge"
 </div>
 
 <div>
+
 <span
 id="badgeValue"
 class="badge-value"
@@ -1780,6 +1869,7 @@ class="badge-text"
 >
 · 0 ratings
 </span>
+
 </div>
 
 </div>
@@ -1792,8 +1882,11 @@ class="badge-text"
 <nav>
 
 <div class="brand">
+
 Working Model of <span>Heart</span>
+
 </div>
+
 
 <button
 class="settings-btn"
@@ -1825,16 +1918,24 @@ id="home"
 SCIENCE EXHIBITION 2026
 </div>
 
+
 <h1>
+
 Working Model<br>
+
 of the <span>Human Heart</span>
+
 </h1>
 
+
 <p>
+
 This project demonstrates the working
 of the human heart and how it pumps
 blood throughout the body.
+
 </p>
+
 
 <a
 class="btn"
@@ -1921,10 +2022,6 @@ Science Exhibition 2026
 
 Aayushman Jha
 
-<span>
-(Leader)
-</span>
-
 </div>
 
 
@@ -1969,11 +2066,13 @@ Enter the host password to open
 the Firebase media editor.
 </p>
 
+
 <div class="settings-password">
 
 <label>
 HOST PASSWORD
 </label>
+
 
 <input
 id="settingsPassword"
@@ -1981,12 +2080,14 @@ type="password"
 placeholder="Enter password"
 >
 
+
 <button
 class="settings-action"
 onclick="unlockFromSettings()"
 >
 Open Editor
 </button>
+
 
 <div
 id="settingsPasswordMessage"
@@ -2013,25 +2114,87 @@ class="reveal"
 >
 
 <h2 class="title">
-<span>Aayushman Jha</span>
-</h2>
-
-<p class="sub">
-Project Leader · Team Red Diamond ·
-Science Exhibition 2026
-</p>
-
-<div style="text-align:center">
-
-<div class="leader">
-
-Project Leader
 
 <span>
-Leader
+Team Members
 </span>
 
+</h2>
+
+
+<p class="sub">
+
+Team Red Diamond ·
+Science Exhibition 2026
+
+</p>
+
+
+<div class="team-grid">
+
+
+<div class="team-member">
+
+<h3>
+Aayushman Jha
+</h3>
+
 </div>
+
+
+<div class="team-member">
+
+<h3>
+Raushan Kumar
+</h3>
+
+</div>
+
+
+<div class="team-member">
+
+<h3>
+Dayansh Shekhar Singh
+</h3>
+
+</div>
+
+
+<div class="team-member">
+
+<h3>
+Harsh Kumar
+</h3>
+
+</div>
+
+
+<div class="team-member">
+
+<h3>
+Divya Kumar
+</h3>
+
+</div>
+
+
+<div class="team-member">
+
+<h3>
+Abhishek Kumar
+</h3>
+
+</div>
+
+
+<div class="team-member">
+
+<h3>
+Sankalp Krishna
+</h3>
+
+</div>
+
 
 </div>
 
@@ -2051,18 +2214,22 @@ class="reveal"
 
 <div></div>
 
+
 <div>
 
 <h2>
 About the <span>Heart</span>
 </h2>
 
+
 <p>
+
 The human heart is a muscular organ
 that continuously pumps blood throughout
 the body. Our working model demonstrates
 this pumping action in a simple and
 practical way.
+
 </p>
 
 
@@ -2136,6 +2303,7 @@ Science project
 
 </div>
 
+
 </div>
 
 </div>
@@ -2164,6 +2332,7 @@ of Project
 
 </h2>
 
+
 <p class="sub">
 
 Everyone can view the project gallery.
@@ -2182,12 +2351,14 @@ onclick="filterMedia('all',this)"
 👀 See All
 </button>
 
+
 <button
 class="media-filter"
 onclick="filterMedia('photo',this)"
 >
 📸 Photos
 </button>
+
 
 <button
 class="media-filter"
@@ -2229,15 +2400,21 @@ class="section-viewer"
 
 <div class="section-viewer-head">
 
-<h3 id="sectionViewerTitle">
+<h3
+id="sectionViewerTitle"
+>
 Preview
 </h3>
 
-<button onclick="closeSectionViewer()">
+
+<button
+onclick="closeSectionViewer()"
+>
 ×
 </button>
 
 </div>
+
 
 <div
 id="sectionViewerContent"
@@ -2264,6 +2441,7 @@ About the
 <span>Function of the Heart</span>
 
 </h2>
+
 
 <p class="sub">
 
@@ -2378,12 +2556,17 @@ class="reveal"
 >
 
 <h2 class="title">
+
 Contact <span>Us</span>
+
 </h2>
 
+
 <p class="sub">
+
 Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
+
 </p>
 
 
@@ -2398,6 +2581,7 @@ href="mailto:aayushmanjha1108@gmail.com"
 <div class="contact-icon">
 ✉
 </div>
+
 
 <div>
 
@@ -2423,6 +2607,7 @@ href="tel:+919931203827"
 ☎
 </div>
 
+
 <div>
 
 <h3>
@@ -2443,6 +2628,7 @@ Phone
 <div class="contact-icon">
 ◆
 </div>
+
 
 <div>
 
@@ -2479,13 +2665,17 @@ About
 </h3>
 
 <p>
+
 Educational project to understand
 the structure and working of the
 human heart.
+
 </p>
 
 </div>
 
+
+<!-- TEAM -->
 
 <div>
 
@@ -2493,18 +2683,40 @@ human heart.
 Team
 </h3>
 
+
 <p class="leader">
-
 Team Red Diamond
+</p>
 
-<span>
-Project Leader · Leader
-</span>
+
+<p
+style="
+color:#aaa;
+line-height:1.8;
+margin-top:12px;
+"
+>
+
+Aayushman Jha<br>
+
+Raushan Kumar<br>
+
+Dayansh Shekhar Singh<br>
+
+Harsh Kumar<br>
+
+Divya Kumar<br>
+
+Abhishek Kumar<br>
+
+Sankalp Krishna
 
 </p>
 
 </div>
 
+
+<!-- CONTACT -->
 
 <div>
 
@@ -2512,27 +2724,41 @@ Project Leader · Leader
 Contact
 </h3>
 
+
 <p>
 
 <a
 href="mailto:aayushmanjha1108@gmail.com"
-style="color:#aaa;text-decoration:none"
+style="
+color:#aaa;
+text-decoration:none
+"
 >
+
 aayushmanjha1108@gmail.com
+
 </a>
+
 
 <br>
 
+
 <a
 href="tel:+919931203827"
-style="color:#aaa;text-decoration:none"
+style="
+color:#aaa;
+text-decoration:none
+"
 >
+
 +91 99312 03827
+
 </a>
 
 </p>
 
 </div>
+
 
 </div>
 
@@ -2560,13 +2786,16 @@ style="color:#aaa;text-decoration:none"
 const bpm =
 document.getElementById("bpm");
 
+
 setInterval(
 ()=>{
+
     bpm.textContent =
     70 +
     Math.floor(
         Math.random()*7
     );
+
 },
 1200
 );
@@ -2607,7 +2836,9 @@ document
 .querySelectorAll(".reveal")
 .forEach(
 element=>{
+
     obs.observe(element);
+
 }
 );
 
@@ -2642,6 +2873,7 @@ function(){
         "settingsPassword"
     );
 
+
     const msg =
     document.getElementById(
         "settingsPasswordMessage"
@@ -2662,8 +2894,10 @@ function(){
 
         setTimeout(
             ()=>{
+
                 location.href =
                 "edit.html";
+
             },
             500
         );
@@ -2691,30 +2925,36 @@ document.getElementById(
     "ratingWidget"
 );
 
+
 const ratingBadge =
 document.getElementById(
     "ratingBadge"
 );
+
 
 const ratingStars =
 document.querySelectorAll(
     ".rating-star"
 );
 
+
 const ratingStarsBox =
 document.getElementById(
     "ratingStars"
 );
+
 
 const ratingConfirm =
 document.getElementById(
     "ratingConfirm"
 );
 
+
 const ratingMessage =
 document.getElementById(
     "ratingMessage"
 );
+
 
 let selectedRating = 0;
 
@@ -2735,13 +2975,14 @@ function hasAlreadyRated(){
 
 
 /* =====================================================
-   SHOW RETURNING USER BADGE
+   RETURNING USER BADGE
 ===================================================== */
 
 function showReturningBadge(){
 
     ratingWidget.style.display =
     "none";
+
 
     ratingBadge.classList.add(
         "show"
@@ -2751,7 +2992,7 @@ function showReturningBadge(){
 
 
 /* =====================================================
-   SHOW NEW USER WIDGET
+   NEW USER WIDGET
 ===================================================== */
 
 function showNewUserWidget(){
@@ -2760,8 +3001,10 @@ function showNewUserWidget(){
         "show"
     );
 
+
     ratingWidget.style.display =
     "flex";
+
 
     ratingWidget.classList.add(
         "enter"
@@ -2771,7 +3014,7 @@ function showNewUserWidget(){
 
 
 /* =====================================================
-   MESSAGE
+   RATING MESSAGE
 ===================================================== */
 
 function showRatingMessage(
@@ -2782,10 +3025,12 @@ function showRatingMessage(
     ratingMessage.textContent =
     text;
 
+
     ratingMessage.style.color =
     success
     ? "#69e58a"
     : "#aaa";
+
 
     ratingMessage.classList.add(
         "show"
@@ -2813,7 +3058,7 @@ function showRatingMessage(
 
 
 /* =====================================================
-   STARS
+   UPDATE STARS
 ===================================================== */
 
 function updateRatingStars(
@@ -2888,7 +3133,7 @@ ratingStars.forEach(
 
 
 /* =====================================================
-   CONFIRM
+   CONFIRM RATING
 ===================================================== */
 
 ratingConfirm.addEventListener(
@@ -2906,6 +3151,7 @@ ratingConfirm.addEventListener(
 
         ratingConfirm.disabled =
         true;
+
 
         ratingConfirm.textContent =
         "Saving...";
@@ -2926,9 +3172,11 @@ ratingConfirm.addEventListener(
             ratingConfirm.disabled =
             false;
 
+
             ratingConfirm.textContent =
             "Confirm ★ " +
             selectedRating;
+
 
             showRatingMessage(
                 "Firebase is still loading. Try again."
@@ -2960,8 +3208,10 @@ function(){
     ratingConfirm.style.background =
     "#1d3927";
 
+
     ratingConfirm.style.borderColor =
     "#69e58a";
+
 
     ratingConfirm.style.color =
     "#69e58a";
@@ -2974,7 +3224,8 @@ function(){
 
 
     /*
-       Keep the result visible for 3 seconds.
+       Keep confirmation visible
+       for 3 seconds.
     */
 
     setTimeout(
@@ -2991,14 +3242,15 @@ function(){
                     ratingWidget.style.display =
                     "none";
 
+
                     ratingWidget.classList.remove(
                         "hide"
                     );
 
+
                     /*
-                       After rating,
-                       show ONLY the small
-                       animated rating badge.
+                       Only the small total
+                       rating badge remains.
                     */
 
                     ratingBadge.classList.add(
@@ -3041,8 +3293,10 @@ function(error){
     ratingConfirm.style.background =
     "#ff2638";
 
+
     ratingConfirm.style.borderColor =
     "#ff2638";
+
 
     ratingConfirm.style.color =
     "#fff";
@@ -3085,7 +3339,7 @@ function(error){
 
 
 /* =====================================================
-   OUTSIDE SETTINGS CLICK
+   CLOSE SETTINGS OUTSIDE
 ===================================================== */
 
 document.addEventListener(
@@ -3097,6 +3351,7 @@ document.addEventListener(
             "settingsMenu"
         );
 
+
         const button =
         document.querySelector(
             ".settings-btn"
@@ -3107,9 +3362,11 @@ document.addEventListener(
             menu.classList.contains(
                 "show"
             ) &&
+
             !menu.contains(
                 event.target
             ) &&
+
             !button.contains(
                 event.target
             )
@@ -3126,8 +3383,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   IMPORTANT:
-   IMMEDIATELY CHOOSE THE CORRECT RATING UI
+   INITIAL RATING UI
 ===================================================== */
 
 if(
@@ -3171,7 +3427,7 @@ from
 
 
 /* =====================================================
-   ORIGINAL FIREBASE CONFIG
+   YOUR ORIGINAL FIREBASE CONFIG
    UNCHANGED
 ===================================================== */
 
@@ -3203,6 +3459,7 @@ initializeApp(
     firebaseConfig
 );
 
+
 const db =
 getFirestore(
     app
@@ -3218,7 +3475,7 @@ const RATING_COLLECTION =
 
 
 /* =====================================================
-   UPDATE RATING UI
+   LOAD RATINGS
 ===================================================== */
 
 async function loadRatings(){
@@ -3274,7 +3531,7 @@ async function loadRatings(){
 
 
         /* ---------------------------------------------
-           NEW USER WIDGET TOTAL
+           NEW USER TOTAL
         --------------------------------------------- */
 
         const ratingTotal =
@@ -3283,9 +3540,7 @@ async function loadRatings(){
         );
 
 
-        if(
-            count
-        ){
+        if(count){
 
             ratingTotal.innerHTML =
             "⭐ <strong>" +
@@ -3316,15 +3571,14 @@ async function loadRatings(){
             "badgeValue"
         );
 
+
         const badgeText =
         document.getElementById(
             "badgeText"
         );
 
 
-        if(
-            count
-        ){
+        if(count){
 
             badgeValue.textContent =
             average.toFixed(1) +
@@ -3345,6 +3599,7 @@ async function loadRatings(){
 
             badgeValue.textContent =
             "0.0 / 5";
+
 
             badgeText.textContent =
             " · 0 ratings";
@@ -3406,16 +3661,13 @@ async function(
 
 
         /*
-           Mark this browser as rated
-           ONLY after Firebase succeeds.
+           Only mark the browser as rated
+           after Firebase successfully creates
+           the document.
         */
 
         window.ratingSuccess();
 
-
-        /*
-           Refresh Firebase total.
-        */
 
         await loadRatings();
 
@@ -3438,7 +3690,7 @@ async function(
 
 
 /* =====================================================
-   ORIGINAL MEDIA FIREBASE
+   ORIGINAL MEDIA COLLECTION
 ===================================================== */
 
 const COLLECTION_NAME =
@@ -3450,10 +3702,12 @@ document.getElementById(
     "gallery"
 );
 
+
 const empty =
 document.getElementById(
     "galleryEmpty"
 );
+
 
 const status =
 document.getElementById(
@@ -3475,6 +3729,7 @@ function setStatus(
     status.textContent =
     text;
 
+
     status.classList.toggle(
         "live",
         live
@@ -3482,6 +3737,10 @@ function setStatus(
 
 }
 
+
+/* =====================================================
+   LOAD MEDIA
+===================================================== */
 
 async function loadFirebaseMedia(){
 
@@ -3526,7 +3785,9 @@ async function loadFirebaseMedia(){
 
 
                 if(!url){
+
                     return;
+
                 }
 
 
@@ -3539,29 +3800,29 @@ async function loadFirebaseMedia(){
 
 
                 if(
-                    type==="image" ||
-                    type==="photo" ||
-                    type==="photos"
+                    type === "image" ||
+                    type === "photo" ||
+                    type === "photos"
                 ){
 
-                    type="photo";
+                    type = "photo";
 
                 }
 
 
                 if(
-                    type==="video" ||
-                    type==="videos"
+                    type === "video" ||
+                    type === "videos"
                 ){
 
-                    type="video";
+                    type = "video";
 
                 }
 
 
                 if(
-                    type!=="photo" &&
-                    type!=="video"
+                    type !== "photo" &&
+                    type !== "video"
                 ){
 
                     const u =
@@ -3574,14 +3835,16 @@ async function loadFirebaseMedia(){
                         /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
                     ){
 
-                        type="photo";
+                        type =
+                        "photo";
 
                     }
                     else if(
                         /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
                     ){
 
-                        type="video";
+                        type =
+                        "video";
 
                     }
                     else{
@@ -3603,9 +3866,11 @@ async function loadFirebaseMedia(){
                     data.title ||
                     "Project Media",
 
-                    url:url,
+                    url:
+                    url,
 
-                    type:type
+                    type:
+                    type
 
                 });
 
@@ -3637,7 +3902,9 @@ async function loadFirebaseMedia(){
         );
 
 
-        gallery.innerHTML="";
+        gallery.innerHTML =
+        "";
+
 
         empty.style.display =
         "block";
@@ -3671,7 +3938,8 @@ async function loadFirebaseMedia(){
 
 function renderMedia(){
 
-    gallery.innerHTML="";
+    gallery.innerHTML =
+    "";
 
 
     const items =
@@ -3681,6 +3949,7 @@ function renderMedia(){
             return(
                 currentFilter ===
                 "all" ||
+
                 item.type ===
                 currentFilter
             );
@@ -3738,14 +4007,18 @@ function renderMedia(){
                     "video"
                 );
 
+
                 media.controls =
                 false;
+
 
                 media.muted =
                 true;
 
+
                 media.playsInline =
                 true;
+
 
                 media.preload =
                 "metadata";
@@ -3758,6 +4031,7 @@ function renderMedia(){
                     "img"
                 );
 
+
                 media.loading =
                 "lazy";
 
@@ -3766,6 +4040,7 @@ function renderMedia(){
 
             media.src =
             item.url;
+
 
             media.alt =
             item.name;
@@ -3800,6 +4075,7 @@ function renderMedia(){
                 media
             );
 
+
             card.appendChild(
                 caption
             );
@@ -3822,7 +4098,7 @@ function renderMedia(){
 
 
 /* =====================================================
-   VIEWER
+   OPEN VIEWER
 ===================================================== */
 
 function openViewer(item){
@@ -3832,10 +4108,12 @@ function openViewer(item){
         "sectionViewer"
     );
 
+
     const title =
     document.getElementById(
         "sectionViewerTitle"
     );
+
 
     const content =
     document.getElementById(
@@ -3843,7 +4121,9 @@ function openViewer(item){
     );
 
 
-    content.innerHTML="";
+    content.innerHTML =
+    "";
+
 
     title.textContent =
     item.name;
@@ -3862,11 +4142,14 @@ function openViewer(item){
             "video"
         );
 
+
         media.controls =
         true;
 
+
         media.autoplay =
         true;
+
 
         media.playsInline =
         true;
@@ -3901,12 +4184,19 @@ function openViewer(item){
 
 
     viewer.scrollIntoView({
+
         behavior:"smooth",
+
         block:"center"
+
     });
 
 }
 
+
+/* =====================================================
+   CLOSE VIEWER
+===================================================== */
 
 window.closeSectionViewer =
 function(){
@@ -3924,10 +4214,15 @@ function(){
     .getElementById(
         "sectionViewerContent"
     )
-    .innerHTML="";
+    .innerHTML =
+    "";
 
 };
 
+
+/* =====================================================
+   FILTER MEDIA
+===================================================== */
 
 window.filterMedia =
 function(
