@@ -46,8 +46,6 @@ content="website">
 content="https://its-working-heart.vercel.app/">
 
 
-<!-- TWITTER / X -->
-
 <meta name="twitter:card"
 content="summary_large_image">
 
@@ -118,21 +116,6 @@ h1 span,
     color:#ff2638;
 }
 
-.links{
-    display:flex;
-    gap:28px;
-}
-
-.links a{
-    color:#eee;
-    text-decoration:none;
-    font-size:14px;
-}
-
-.links a:hover{
-    color:#ff2638;
-}
-
 
 /* =====================================================
    HERO
@@ -198,6 +181,11 @@ h1 span,
     font-size:18px;
     line-height:1.65;
 }
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .btn{
     display:inline-block;
@@ -367,7 +355,7 @@ section{
 
 
 /* =====================================================
-   FEATURES / STEPS
+   FEATURES
 ===================================================== */
 
 .features,
@@ -420,6 +408,63 @@ section{
 
 
 /* =====================================================
+   HEART AWARENESS
+===================================================== */
+
+.awareness-section{
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.awareness-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    margin-top:35px;
+}
+
+.awareness-card{
+    padding:22px 24px;
+    background:#111317;
+    border:1px solid #34363c;
+    border-radius:14px;
+    transition:.3s;
+    min-height:105px;
+}
+
+.awareness-card:hover{
+    transform:translateY(-5px);
+    border-color:#ff2638;
+    box-shadow:0 12px 30px #ff263818;
+}
+
+.awareness-number{
+    display:inline-grid;
+    place-items:center;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#ff2638;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.awareness-card h3{
+    margin:0 0 7px;
+    font-size:17px;
+    color:#fff;
+}
+
+.awareness-card p{
+    margin:0;
+    color:#aaa;
+    line-height:1.55;
+    font-size:13px;
+}
+
+
+/* =====================================================
    TEAM
 ===================================================== */
 
@@ -452,9 +497,6 @@ section{
     font-size:17px;
 }
 
-
-/* LEADER CARD */
-
 .team-leader{
     grid-column:1 / -1;
     padding:25px 20px;
@@ -482,127 +524,6 @@ section{
     font-size:24px;
     font-weight:800;
     color:#fff;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-grid{
-    max-width:950px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.contact-card{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:24px;
-    border:1px solid #34363c;
-    border-radius:14px;
-    background:#111317;
-    text-decoration:none;
-    color:#fff;
-    transition:.3s;
-}
-
-.contact-card:hover{
-    transform:translateY(-5px);
-    border-color:#ff2638;
-}
-
-.contact-icon{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:#ff2638;
-    color:#fff;
-    font-size:22px;
-    flex:none;
-}
-
-.contact-card h3{
-    margin:0 0 6px;
-}
-
-.contact-card p{
-    margin:0;
-    color:#aaa;
-    word-break:break-word;
-    font-size:13px;
-    line-height:1.45;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    padding:45px 7% 20px;
-    border-top:1px solid #292a30;
-    background:#090a0c;
-}
-
-.footer-grid{
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:35px;
-}
-
-.footer-grid h3{
-    color:#ff2638;
-}
-
-.footer-grid p{
-    color:#aaa;
-    line-height:1.7;
-}
-
-.footer-credit{
-    font-size:18px;
-    color:#fff !important;
-    font-weight:bold;
-}
-
-.footer-credit span{
-    display:block;
-    color:#ff2638;
-    font-size:13px;
-    margin-top:5px;
-}
-
-.copy{
-    text-align:center;
-    color:#666;
-    border-top:1px solid #222;
-    margin-top:30px;
-    padding-top:18px;
-    font-size:12px;
-}
-
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-.reveal{
-    opacity:0;
-    transform:translateY(25px);
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:none;
 }
 
 
@@ -711,6 +632,198 @@ footer{
 
 .firebase-status.live{
     color:#69e58a;
+}
+
+
+/* =====================================================
+   VIEWER
+===================================================== */
+
+.section-viewer{
+    display:none;
+    margin:28px auto 0;
+    max-width:760px;
+    border:1px solid #ff2638;
+    border-radius:16px;
+    background:#0d0f12;
+    padding:14px;
+}
+
+.section-viewer.show{
+    display:block;
+}
+
+.section-viewer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 4px 12px;
+}
+
+.section-viewer-head h3{
+    margin:0;
+    color:#ff2638;
+    font-size:16px;
+}
+
+.section-viewer-head button{
+    border:0;
+    background:#ff2638;
+    color:#fff;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    font-size:21px;
+    cursor:pointer;
+}
+
+.section-viewer-content{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:180px;
+}
+
+.section-view-media{
+    max-width:100%;
+    max-height:500px;
+    border-radius:10px;
+    display:block;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-grid{
+    max-width:950px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.contact-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:24px;
+    border:1px solid #34363c;
+    border-radius:14px;
+    background:#111317;
+    text-decoration:none;
+    color:#fff;
+    transition:.3s;
+}
+
+.contact-card:hover{
+    transform:translateY(-5px);
+    border-color:#ff2638;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#ff2638;
+    color:#fff;
+    font-size:22px;
+    flex:none;
+}
+
+.contact-card h3{
+    margin:0 0 6px;
+}
+
+.contact-card p{
+    margin:0;
+    color:#aaa;
+    word-break:break-word;
+    font-size:13px;
+    line-height:1.45;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:55px 7% 20px;
+    border-top:1px solid #292a30;
+    background:#090a0c;
+}
+
+.footer-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:55px;
+    align-items:start;
+}
+
+.footer-grid h3{
+    color:#ff2638;
+    margin-top:0;
+    font-size:22px;
+}
+
+.footer-grid p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+.footer-credit{
+    font-size:17px;
+    color:#fff !important;
+    font-weight:bold;
+    line-height:1.7 !important;
+}
+
+.credit-label{
+    display:block;
+    color:#ff2638;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:14px;
+}
+
+.credit-name{
+    display:block;
+    color:#fff;
+    font-size:19px;
+    font-weight:800;
+    margin-top:2px;
+    white-space:normal;
+}
+
+.copy{
+    text-align:center;
+    color:#666;
+    border-top:1px solid #222;
+    margin-top:35px;
+    padding-top:18px;
+    font-size:12px;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
 }
 
 
@@ -839,63 +952,6 @@ footer{
     font-size:11px;
     margin-top:7px;
     min-height:14px;
-}
-
-
-/* =====================================================
-   VIEWER
-===================================================== */
-
-.section-viewer{
-    display:none;
-    margin:28px auto 0;
-    max-width:760px;
-    border:1px solid #ff2638;
-    border-radius:16px;
-    background:#0d0f12;
-    padding:14px;
-}
-
-.section-viewer.show{
-    display:block;
-}
-
-.section-viewer-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:2px 4px 12px;
-}
-
-.section-viewer-head h3{
-    margin:0;
-    color:#ff2638;
-    font-size:16px;
-}
-
-.section-viewer-head button{
-    border:0;
-    background:#ff2638;
-    color:#fff;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    font-size:21px;
-    cursor:pointer;
-}
-
-.section-viewer-content{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:180px;
-}
-
-.section-view-media{
-    max-width:100%;
-    max-height:500px;
-    border-radius:10px;
-    display:block;
 }
 
 
@@ -1047,7 +1103,6 @@ footer{
     font-weight:800;
     white-space:nowrap;
     cursor:pointer;
-    box-shadow:0 5px 15px #ff263844;
 }
 
 .rating-confirm.show{
@@ -1136,18 +1191,6 @@ footer{
 .badge-star{
     color:#ffd43b;
     font-size:17px;
-    animation:
-    badgeStar 1.5s ease-in-out infinite;
-}
-
-@keyframes badgeStar{
-
-    50%{
-        transform:
-        scale(1.18)
-        rotate(8deg);
-    }
-
 }
 
 .badge-value{
@@ -1187,7 +1230,8 @@ footer{
     }
 
     .footer-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
+        gap:35px;
     }
 
     .contact-grid{
@@ -1196,6 +1240,10 @@ footer{
 
     .team-grid{
         grid-template-columns:1fr 1fr;
+    }
+
+    .awareness-grid{
+        grid-template-columns:1fr;
     }
 
 }
@@ -1265,16 +1313,16 @@ footer{
         border-radius:12px;
     }
 
-    .badge-star{
-        font-size:15px;
-    }
-
     .badge-value{
         font-size:10px;
     }
 
     .badge-text{
         font-size:9px;
+    }
+
+    .awareness-card{
+        padding:20px;
     }
 
 }
@@ -1375,7 +1423,7 @@ class="rating-message"
 </div>
 
 
-<!-- RETURNING USER BADGE -->
+<!-- RETURNING USER -->
 
 <div
 id="ratingBadge"
@@ -1458,12 +1506,16 @@ of the human heart and how it pumps
 blood throughout the body.
 </p>
 
+
+<!-- CHANGED BUTTON -->
+
 <a
 class="btn"
-href="#model"
+href="#media"
 >
-Explore the Model ↓
+Explore Images & Videos ↓
 </a>
+
 
 <div class="bpm">
 
@@ -1520,10 +1572,6 @@ preserveAspectRatio="none"
 
 </header>
 
-
-<!-- =====================================================
-     BAR
-===================================================== -->
 
 <div class="bar">
 
@@ -1613,7 +1661,7 @@ id="settingsPasswordMessage"
 
 
 <!-- =====================================================
-     TEAM MEMBERS
+     TEAM
 ===================================================== -->
 
 <section
@@ -1633,8 +1681,6 @@ Team Red Diamond · Science Exhibition 2026
 <div class="team-grid">
 
 
-<!-- LEADER -->
-
 <div class="team-leader">
 
 <div class="team-leader-label">
@@ -1648,59 +1694,28 @@ Aayushman Jha
 </div>
 
 
-<!-- OTHER MEMBERS -->
-
 <div class="team-member">
-
-<h3>
-Raushan Kumar
-</h3>
-
+<h3>Raushan Kumar</h3>
 </div>
 
-
 <div class="team-member">
-
-<h3>
-Dayansh Shekhar Singh
-</h3>
-
+<h3>Dayansh Shekhar Singh</h3>
 </div>
 
-
 <div class="team-member">
-
-<h3>
-Harsh Kumar
-</h3>
-
+<h3>Harsh Kumar</h3>
 </div>
 
-
 <div class="team-member">
-
-<h3>
-Divya Kumar
-</h3>
-
+<h3>Divya Kumar</h3>
 </div>
 
-
 <div class="team-member">
-
-<h3>
-Abhishek Kumar
-</h3>
-
+<h3>Abhishek Kumar</h3>
 </div>
 
-
 <div class="team-member">
-
-<h3>
-Sankalp Krishna
-</h3>
-
+<h3>Sankalp Krishna</h3>
 </div>
 
 
@@ -1710,7 +1725,7 @@ Sankalp Krishna
 
 
 <!-- =====================================================
-     MODEL
+     ABOUT HEART
 ===================================================== -->
 
 <section
@@ -1808,6 +1823,214 @@ Science project
 
 
 </div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     HEART AWARENESS
+===================================================== -->
+
+<div
+class="awareness-section"
+style="margin-top:80px"
+>
+
+<h2 class="title">
+Why <span>Heart Awareness</span> Is Important
+</h2>
+
+<p class="sub">
+Understanding heart health helps people
+recognize important risk factors and
+the value of prevention and early care.
+</p>
+
+
+<div class="awareness-grid">
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+1
+</div>
+
+<h3>
+Hypertension
+</h3>
+
+<p>
+High blood pressure can increase the risk
+of heart disease and stroke.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+2
+</div>
+
+<h3>
+Heart Disease & Death
+</h3>
+
+<p>
+Cardiovascular diseases are a leading
+cause of death worldwide.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+3
+</div>
+
+<h3>
+Early Detection
+</h3>
+
+<p>
+Knowing your health risks can help identify
+problems earlier.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+4
+</div>
+
+<h3>
+Blood Pressure Matters
+</h3>
+
+<p>
+Regular blood-pressure checks can help
+detect hypertension.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+5
+</div>
+
+<h3>
+Healthy Eating
+</h3>
+
+<p>
+A balanced diet with less excess salt
+supports cardiovascular health.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+6
+</div>
+
+<h3>
+Stay Physically Active
+</h3>
+
+<p>
+Regular physical activity is an important
+part of cardiovascular health.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+7
+</div>
+
+<h3>
+Avoid Tobacco
+</h3>
+
+<p>
+Tobacco use increases the risk of
+cardiovascular disease.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+8
+</div>
+
+<h3>
+Know the Warning Signs
+</h3>
+
+<p>
+Learning common warning signs can help
+people seek urgent medical attention.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+9
+</div>
+
+<h3>
+Protect Your Future
+</h3>
+
+<p>
+Healthy habits and risk awareness can
+help reduce preventable cardiovascular risk.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<div class="awareness-number">
+10
+</div>
+
+<h3>
+Spread Awareness
+</h3>
+
+<p>
+Sharing reliable heart-health information
+can encourage healthier communities.
+</p>
+
+</div>
+
 
 </div>
 
@@ -1922,7 +2145,7 @@ class="section-viewer-content"
 
 
 <!-- =====================================================
-     WORKING
+     FUNCTION
 ===================================================== -->
 
 <section
@@ -2131,6 +2354,7 @@ Team Red Diamond
 
 </div>
 
+
 </div>
 
 </section>
@@ -2144,8 +2368,6 @@ Team Red Diamond
 
 <div class="footer-grid">
 
-
-<!-- ABOUT -->
 
 <div>
 
@@ -2162,8 +2384,6 @@ human heart.
 </div>
 
 
-<!-- CREDITS -->
-
 <div>
 
 <h3>
@@ -2172,18 +2392,27 @@ Credits
 
 <p class="footer-credit">
 
-Lead by Aayushman Jha
+<span class="credit-label">
+Lead by
+</span>
 
-<span>
-Website by Raushan Kumar
+<span class="credit-name">
+Aayushman Jha
+</span>
+
+
+<span class="credit-label">
+Website by
+</span>
+
+<span class="credit-name">
+Raushan Kumar
 </span>
 
 </p>
 
 </div>
 
-
-<!-- CONTACT -->
 
 <div>
 
@@ -2203,7 +2432,7 @@ text-decoration:none
 aayushmanjha1108@gmail.com
 </a>
 
-<br>
+<br><br>
 
 <a
 href="tel:+919931203827"
@@ -2234,7 +2463,7 @@ text-decoration:none
 
 
 <!-- =====================================================
-     NORMAL JAVASCRIPT
+     JAVASCRIPT
 ===================================================== -->
 
 <script>
@@ -2614,6 +2843,7 @@ function(){
     ratingConfirm.style.color =
     "#69e58a";
 
+
     showRatingMessage(
         "Thank you for rating our project! ❤️",
         true
@@ -2825,7 +3055,7 @@ getFirestore(
 
 
 /* =====================================================
-   RATING COLLECTION
+   RATINGS
 ===================================================== */
 
 const RATING_COLLECTION =
@@ -2845,7 +3075,6 @@ async function loadRatings(){
         );
 
         let total = 0;
-
         let count = 0;
 
 
@@ -2866,7 +3095,6 @@ async function loadRatings(){
                 ){
 
                     total += rating;
-
                     count++;
 
                 }
@@ -2965,12 +3193,6 @@ async function(
 ){
 
     try{
-
-        console.log(
-            "Saving rating:",
-            rating
-        );
-
 
         const docRef =
         await addDoc(
@@ -3098,9 +3320,7 @@ async function loadFirebaseMedia(){
 
 
                 if(!url){
-
                     return;
-
                 }
 
 
