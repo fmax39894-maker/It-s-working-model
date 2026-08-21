@@ -12,64 +12,31 @@
 
 <title>Working Model of Heart</title>
 
+<meta property="og:title" content="Working Model of Heart">
+<meta property="og:description" content="Working Model of the Human Heart — Science Exhibition 2026">
+<meta property="og:image" content="https://its-working-heart.vercel.app/cover.png">
+<meta property="og:image:secure_url" content="https://its-working-heart.vercel.app/cover.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Working Model of Heart">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://its-working-heart.vercel.app/">
 
-<!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Working Model of Heart">
+<meta name="twitter:description" content="Working Model of the Human Heart — Science Exhibition 2026">
+<meta name="twitter:image" content="https://its-working-heart.vercel.app/cover.png">
+<meta name="twitter:image:alt" content="Working Model of Heart">
 
-<meta property="og:title"
-content="Working Model of Heart">
-
-<meta property="og:description"
-content="Working Model of the Human Heart — Science Exhibition 2026">
-
-<meta property="og:image"
-content="https://its-working-heart.vercel.app/cover.png">
-
-<meta property="og:image:secure_url"
-content="https://its-working-heart.vercel.app/cover.png">
-
-<meta property="og:image:type"
-content="image/png">
-
-<meta property="og:image:width"
-content="1200">
-
-<meta property="og:image:height"
-content="630">
-
-<meta property="og:image:alt"
-content="Working Model of Heart">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:url"
-content="https://its-working-heart.vercel.app/">
-
-
-<meta name="twitter:card"
-content="summary_large_image">
-
-<meta name="twitter:title"
-content="Working Model of Heart">
-
-<meta name="twitter:description"
-content="Working Model of the Human Heart — Science Exhibition 2026">
-
-<meta name="twitter:image"
-content="https://its-working-heart.vercel.app/cover.png">
-
-<meta name="twitter:image:alt"
-content="Working Model of Heart">
-
-
-<link
-rel="icon"
-type="image/png"
-href="/cover.png"
->
+<link rel="icon" type="image/png" href="/cover.png">
 
 
 <style>
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 *{
     box-sizing:border-box;
@@ -409,58 +376,65 @@ section{
 
 /* =====================================================
    HEART AWARENESS
+   COMPACT POINTS
 ===================================================== */
 
 .awareness-section{
-    max-width:1100px;
-    margin:0 auto;
+    max-width:1000px;
+    margin:65px auto 0;
 }
 
-.awareness-grid{
+.awareness-section .title{
+    margin-bottom:12px;
+}
+
+.awareness-section .sub{
+    margin-bottom:28px;
+}
+
+.awareness-list{
+    max-width:900px;
+    margin:auto;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-    margin-top:35px;
+    grid-template-columns:1fr 1fr;
+    column-gap:45px;
+    row-gap:13px;
 }
 
-.awareness-card{
-    padding:22px 24px;
-    background:#111317;
-    border:1px solid #34363c;
-    border-radius:14px;
-    transition:.3s;
-    min-height:105px;
+.awareness-point{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    color:#c7c9ce;
+    font-size:14px;
+    line-height:1.5;
 }
 
-.awareness-card:hover{
-    transform:translateY(-5px);
-    border-color:#ff2638;
-    box-shadow:0 12px 30px #ff263818;
-}
-
-.awareness-number{
-    display:inline-grid;
-    place-items:center;
-    width:30px;
-    height:30px;
+.awareness-dot{
+    width:7px;
+    height:7px;
+    min-width:7px;
+    margin-top:6px;
     border-radius:50%;
     background:#ff2638;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:10px;
+    box-shadow:0 0 9px #ff263855;
 }
 
-.awareness-card h3{
-    margin:0 0 7px;
-    font-size:17px;
+.awareness-point strong{
     color:#fff;
 }
 
-.awareness-card p{
-    margin:0;
-    color:#aaa;
-    line-height:1.55;
-    font-size:13px;
+@media(max-width:650px){
+
+    .awareness-list{
+        grid-template-columns:1fr;
+        row-gap:11px;
+    }
+
+    .awareness-section{
+        margin-top:50px;
+    }
+
 }
 
 
@@ -488,7 +462,6 @@ section{
 .team-member:hover{
     transform:translateY(-5px);
     border-color:#ff2638;
-    box-shadow:0 10px 30px #ff263818;
 }
 
 .team-member h3{
@@ -502,12 +475,7 @@ section{
     padding:25px 20px;
     border:1px solid #ff2638;
     border-radius:15px;
-    background:
-    linear-gradient(
-        145deg,
-        #15171b,
-        #101114
-    );
+    background:#111317;
     text-align:center;
     box-shadow:0 12px 35px #ff263818;
 }
@@ -523,7 +491,6 @@ section{
 .team-leader-name{
     font-size:24px;
     font-weight:800;
-    color:#fff;
 }
 
 
@@ -614,6 +581,79 @@ section{
     to{
         opacity:1;
         transform:none;
+    }
+
+}
+
+
+/* =====================================================
+   PRESENTATION
+===================================================== */
+
+.presentation-section{
+    padding-top:65px;
+    padding-bottom:65px;
+}
+
+.presentation-box{
+    max-width:950px;
+    margin:0 auto;
+}
+
+.presentation-video{
+    width:100%;
+    max-height:560px;
+    display:block;
+    background:#000;
+    border:1px solid #34363c;
+    border-radius:16px;
+    box-shadow:0 15px 45px #0008;
+}
+
+.presentation-pdf{
+    width:100%;
+    height:650px;
+    display:block;
+    margin-top:22px;
+    border:1px solid #34363c;
+    border-radius:16px;
+    background:#111317;
+}
+
+.presentation-file{
+    margin-top:18px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.presentation-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:11px 18px;
+    border:1px solid #34363c;
+    border-radius:9px;
+    background:#111317;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.presentation-link:hover{
+    background:#ff2638;
+    border-color:#ff2638;
+    transform:translateY(-2px);
+}
+
+@media(max-width:600px){
+
+    .presentation-pdf{
+        height:500px;
     }
 
 }
@@ -1242,12 +1282,7 @@ footer{
         grid-template-columns:1fr 1fr;
     }
 
-    .awareness-grid{
-        grid-template-columns:1fr;
-    }
-
 }
-
 
 @media(max-width:500px){
 
@@ -1319,10 +1354,6 @@ footer{
 
     .badge-text{
         font-size:9px;
-    }
-
-    .awareness-card{
-        padding:20px;
     }
 
 }
@@ -1423,7 +1454,7 @@ class="rating-message"
 </div>
 
 
-<!-- RETURNING USER -->
+<!-- RETURNING USER RATING -->
 
 <div
 id="ratingBadge"
@@ -1507,8 +1538,6 @@ blood throughout the body.
 </p>
 
 
-<!-- CHANGED BUTTON -->
-
 <a
 class="btn"
 href="#media"
@@ -1524,6 +1553,7 @@ Explore Images & Videos ↓
 </div>
 
 <div>
+
 Heartbeat<br>
 
 <strong>
@@ -1830,12 +1860,11 @@ Science project
 
 
 <!-- =====================================================
-     HEART AWARENESS
+     COMPACT HEART AWARENESS
 ===================================================== -->
 
 <div
 class="awareness-section"
-style="margin-top:80px"
 >
 
 <h2 class="title">
@@ -1849,186 +1878,86 @@ the value of prevention and early care.
 </p>
 
 
-<div class="awareness-grid">
+<div class="awareness-list">
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-1
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Hypertension</strong> — High blood pressure can increase the risk of heart disease and stroke.
 </div>
-
-<h3>
-Hypertension
-</h3>
-
-<p>
-High blood pressure can increase the risk
-of heart disease and stroke.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-2
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Heart disease</strong> — Cardiovascular diseases are a major cause of death worldwide.
 </div>
-
-<h3>
-Heart Disease & Death
-</h3>
-
-<p>
-Cardiovascular diseases are a leading
-cause of death worldwide.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-3
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Early detection</strong> — Knowing health risks can help identify problems earlier.
 </div>
-
-<h3>
-Early Detection
-</h3>
-
-<p>
-Knowing your health risks can help identify
-problems earlier.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-4
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Blood pressure</strong> — Regular checks can help detect high blood pressure.
 </div>
-
-<h3>
-Blood Pressure Matters
-</h3>
-
-<p>
-Regular blood-pressure checks can help
-detect hypertension.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-5
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Healthy eating</strong> — A balanced diet supports cardiovascular health.
 </div>
-
-<h3>
-Healthy Eating
-</h3>
-
-<p>
-A balanced diet with less excess salt
-supports cardiovascular health.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-6
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Physical activity</strong> — Staying active is important for a healthy heart.
 </div>
-
-<h3>
-Stay Physically Active
-</h3>
-
-<p>
-Regular physical activity is an important
-part of cardiovascular health.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-7
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Avoid tobacco</strong> — Tobacco use increases cardiovascular health risks.
 </div>
-
-<h3>
-Avoid Tobacco
-</h3>
-
-<p>
-Tobacco use increases the risk of
-cardiovascular disease.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-8
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Warning signs</strong> — Knowing important symptoms can help people seek urgent care.
 </div>
-
-<h3>
-Know the Warning Signs
-</h3>
-
-<p>
-Learning common warning signs can help
-people seek urgent medical attention.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-9
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Healthy future</strong> — Good habits can help reduce preventable cardiovascular risks.
 </div>
-
-<h3>
-Protect Your Future
-</h3>
-
-<p>
-Healthy habits and risk awareness can
-help reduce preventable cardiovascular risk.
-</p>
-
 </div>
 
 
-<div class="awareness-card">
-
-<div class="awareness-number">
-10
+<div class="awareness-point">
+<span class="awareness-dot"></span>
+<div>
+<strong>Spread awareness</strong> — Reliable information can encourage healthier communities.
 </div>
-
-<h3>
-Spread Awareness
-</h3>
-
-<p>
-Sharing reliable heart-health information
-can encourage healthier communities.
-</p>
-
 </div>
 
 
@@ -2065,6 +1994,7 @@ The host can manage image and video links
 from the editor.
 
 </p>
+
 
 <div class="media-view-buttons">
 
@@ -2138,6 +2068,88 @@ onclick="closeSectionViewer()"
 id="sectionViewerContent"
 class="section-viewer-content"
 ></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     NEW PRESENTATION SECTION
+===================================================== -->
+
+<section
+id="presentation"
+class="presentation-section reveal"
+>
+
+<h2 class="title">
+<span>Presentation</span>
+</h2>
+
+<p class="sub">
+Watch the animated presentation or view
+the project presentation PDF.
+</p>
+
+
+<div class="presentation-box">
+
+
+<!-- ANIMATED VIDEO -->
+
+<video
+class="presentation-video"
+controls
+playsinline
+preload="metadata"
+>
+
+<source
+src="1.mp4"
+type="video/mp4"
+>
+
+Your browser does not support video playback.
+
+</video>
+
+
+<!-- PDF -->
+
+<iframe
+class="presentation-pdf"
+src="1.pdf"
+title="Working Model of Heart Presentation"
+loading="lazy"
+></iframe>
+
+
+<!-- FALLBACK / OPEN BUTTONS -->
+
+<div class="presentation-file">
+
+<a
+class="presentation-link"
+href="1.mp4"
+target="_blank"
+rel="noopener"
+>
+🎬 Open Video
+</a>
+
+
+<a
+class="presentation-link"
+href="1.pdf"
+target="_blank"
+rel="noopener"
+>
+📄 Open PDF
+</a>
+
+</div>
+
 
 </div>
 
@@ -2424,10 +2436,7 @@ Contact
 
 <a
 href="mailto:aayushmanjha1108@gmail.com"
-style="
-color:#aaa;
-text-decoration:none
-"
+style="color:#aaa;text-decoration:none"
 >
 aayushmanjha1108@gmail.com
 </a>
@@ -2436,10 +2445,7 @@ aayushmanjha1108@gmail.com
 
 <a
 href="tel:+919931203827"
-style="
-color:#aaa;
-text-decoration:none
-"
+style="color:#aaa;text-decoration:none"
 >
 +91 99312 03827
 </a>
@@ -2463,7 +2469,7 @@ text-decoration:none
 
 
 <!-- =====================================================
-     JAVASCRIPT
+     NORMAL JAVASCRIPT
 ===================================================== -->
 
 <script>
@@ -2491,7 +2497,7 @@ setInterval(
 
 
 /* =====================================================
-   REVEAL
+   SCROLL REVEAL
 ===================================================== */
 
 const obs =
@@ -2517,8 +2523,7 @@ entries=>{
 },
 {
     threshold:.12
-}
-);
+});
 
 
 document
@@ -2528,8 +2533,7 @@ element=>{
 
     obs.observe(element);
 
-}
-);
+});
 
 
 /* =====================================================
@@ -2909,6 +2913,7 @@ function(error){
     ratingStarsBox.style.display =
     "flex";
 
+
     let message =
     "Could not save rating.";
 
@@ -2931,6 +2936,7 @@ function(error){
         error.message;
 
     }
+
 
     showRatingMessage(
         message
@@ -3736,7 +3742,7 @@ function(
 
 
 /* =====================================================
-   START
+   START FIREBASE
 ===================================================== */
 
 loadRatings();
@@ -3756,6 +3762,7 @@ setInterval(
 );
 
 </script>
+
 
 </body>
 </html>
