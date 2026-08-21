@@ -12,24 +12,88 @@
 
 <title>Working Model of Heart</title>
 
-<meta property="og:title" content="Working Model of Heart">
-<meta property="og:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta property="og:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:secure_url" content="https://its-working-heart.vercel.app/cover.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Working Model of Heart">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://its-working-heart.vercel.app/">
+<meta
+    property="og:title"
+    content="Working Model of Heart"
+>
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Working Model of Heart">
-<meta name="twitter:description" content="Working Model of the Human Heart — Science Exhibition 2026">
-<meta name="twitter:image" content="https://its-working-heart.vercel.app/cover.png">
-<meta name="twitter:image:alt" content="Working Model of Heart">
+<meta
+    property="og:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
 
-<link rel="icon" type="image/png" href="/cover.png">
+<meta
+    property="og:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:secure_url"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:type"
+    content="image/png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:url"
+    content="https://its-working-heart.vercel.app/"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    name="twitter:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    name="twitter:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/cover.png"
+>
+
+
+<!-- PDF.JS -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+></script>
 
 
 <style>
@@ -53,6 +117,11 @@ body{
     font-family:Arial,sans-serif;
 }
 
+img,
+video{
+    max-width:100%;
+}
+
 
 /* =====================================================
    NAV
@@ -64,11 +133,16 @@ nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:#090a0cdd;
+
     border-bottom:1px solid #292a2e;
+
     position:sticky;
     top:0;
+
     z-index:20;
+
     backdrop-filter:blur(10px);
 }
 
@@ -90,11 +164,16 @@ h1 span,
 
 .hero{
     min-height:600px;
+
     padding:70px 7%;
+
     display:grid;
     grid-template-columns:1fr 1fr;
+
     align-items:center;
+
     position:relative;
+
     overflow:hidden;
 
     background:
@@ -107,8 +186,10 @@ h1 span,
 
 .hero:before{
     content:"";
+
     position:absolute;
     inset:0;
+
     opacity:.18;
 
     background-image:
@@ -156,14 +237,23 @@ h1 span,
 
 .btn{
     display:inline-block;
+
     margin-top:25px;
+
     padding:14px 22px;
+
     background:#ff2638;
+
     border-radius:9px;
+
     color:#fff;
+
     text-decoration:none;
+
     font-weight:bold;
+
     box-shadow:0 12px 30px #ff263833;
+
     transition:.25s;
 }
 
@@ -178,23 +268,35 @@ h1 span,
 
 .bpm{
     margin-top:22px;
+
     width:170px;
+
     padding:12px;
+
     border:1px solid #383a40;
+
     border-radius:10px;
+
     background:#111317;
+
     display:flex;
+
     gap:10px;
+
     align-items:center;
 }
 
 .pulse{
     width:31px;
     height:31px;
+
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
+
     animation:pulse 1s infinite;
 }
 
@@ -202,7 +304,9 @@ h1 span,
 
     50%{
         transform:scale(1.15);
-        box-shadow:0 0 25px #ff263888;
+
+        box-shadow:
+        0 0 25px #ff263888;
     }
 
 }
@@ -214,8 +318,10 @@ h1 span,
 
 .ecg{
     position:absolute;
+
     bottom:18px;
     left:0;
+
     width:100%;
     height:75px;
 }
@@ -227,14 +333,24 @@ h1 span,
 
 .ecg polyline{
     fill:none;
+
     stroke:#ff2638;
+
     stroke-width:3;
+
     stroke-linecap:round;
     stroke-linejoin:round;
+
     stroke-dasharray:900;
     stroke-dashoffset:900;
-    animation:ecg 2.2s linear infinite;
-    filter:drop-shadow(0 0 7px #ff2638);
+
+    animation:
+    ecg 2.2s linear infinite;
+
+    filter:
+    drop-shadow(
+        0 0 7px #ff2638
+    );
 }
 
 @keyframes ecg{
@@ -252,11 +368,17 @@ h1 span,
 
 .bar{
     width:86%;
+
     margin:auto;
+
     padding:14px;
+
     text-align:center;
+
     background:#111317;
+
     border:1px solid #303238;
+
     color:#aaa;
 }
 
@@ -291,9 +413,14 @@ section{
 
 .sub{
     max-width:700px;
-    margin:0 auto 42px;
+
+    margin:
+    0 auto 42px;
+
     text-align:center;
+
     color:#aeb1b8;
+
     line-height:1.6;
 }
 
@@ -304,10 +431,16 @@ section{
 
 .about{
     max-width:1100px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:1fr 1.2fr;
+
+    grid-template-columns:
+    1fr 1.2fr;
+
     gap:50px;
+
     align-items:center;
 }
 
@@ -328,60 +461,80 @@ section{
 .features,
 .steps{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:15px;
 }
 
 .feature,
 .step{
     padding:22px;
+
     border:1px solid #34363c;
+
     border-radius:13px;
+
     background:#111317;
+
     text-align:center;
+
     transition:.3s;
 }
 
 .feature:hover,
 .step:hover{
     transform:translateY(-6px);
+
     border-color:#ff2638;
 }
 
 .feature .icon,
 .step .icon{
     font-size:29px;
+
     color:#ff2638;
+
     margin-bottom:10px;
 }
 
 .feature p,
 .step p{
     color:#aaa;
+
     font-size:13px;
+
     line-height:1.5;
 }
 
 .num{
     width:30px;
     height:30px;
+
     border-radius:50%;
+
     background:#ff2638;
+
     display:grid;
     place-items:center;
-    margin:0 auto 17px;
+
+    margin:
+    0 auto 17px;
+
     font-weight:bold;
 }
 
 
 /* =====================================================
    HEART AWARENESS
-   COMPACT POINTS
 ===================================================== */
 
 .awareness-section{
     max-width:1000px;
-    margin:65px auto 0;
+
+    margin:
+    65px auto 0;
 }
 
 .awareness-section .title{
@@ -394,47 +547,51 @@ section{
 
 .awareness-list{
     max-width:900px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     column-gap:45px;
+
     row-gap:13px;
 }
 
 .awareness-point{
     display:flex;
+
     align-items:flex-start;
+
     gap:10px;
+
     color:#c7c9ce;
+
     font-size:14px;
+
     line-height:1.5;
 }
 
 .awareness-dot{
     width:7px;
     height:7px;
+
     min-width:7px;
+
     margin-top:6px;
+
     border-radius:50%;
+
     background:#ff2638;
-    box-shadow:0 0 9px #ff263855;
+
+    box-shadow:
+    0 0 9px #ff263855;
 }
 
 .awareness-point strong{
     color:#fff;
-}
-
-@media(max-width:650px){
-
-    .awareness-list{
-        grid-template-columns:1fr;
-        row-gap:11px;
-    }
-
-    .awareness-section{
-        margin-top:50px;
-    }
-
 }
 
 
@@ -444,52 +601,77 @@ section{
 
 .team-grid{
     max-width:850px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+    repeat(2,1fr);
+
     gap:15px;
 }
 
 .team-member{
     padding:20px;
+
     border:1px solid #34363c;
+
     border-radius:13px;
+
     background:#111317;
+
     text-align:center;
+
     transition:.3s;
 }
 
 .team-member:hover{
     transform:translateY(-5px);
+
     border-color:#ff2638;
 }
 
 .team-member h3{
     margin:0;
+
     color:#fff;
+
     font-size:17px;
 }
 
 .team-leader{
     grid-column:1 / -1;
+
     padding:25px 20px;
+
     border:1px solid #ff2638;
+
     border-radius:15px;
+
     background:#111317;
+
     text-align:center;
-    box-shadow:0 12px 35px #ff263818;
+
+    box-shadow:
+    0 12px 35px #ff263818;
 }
 
 .team-leader-label{
     color:#ff2638;
+
     font-size:12px;
+
     letter-spacing:2px;
+
     font-weight:800;
+
     margin-bottom:8px;
 }
 
 .team-leader-name{
     font-size:24px;
+
     font-weight:800;
 }
 
@@ -500,74 +682,106 @@ section{
 
 .media-view-buttons{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:10px;
-    margin:0 auto 28px;
+
+    margin:
+    0 auto 28px;
 }
 
 .media-filter{
     border:1px solid #3a3c42;
+
     background:#111317;
+
     color:#fff;
+
     padding:11px 17px;
+
     border-radius:9px;
+
     cursor:pointer;
+
     font-weight:700;
+
     transition:.25s;
 }
 
 .media-filter:hover,
 .media-filter.active{
     background:#ff2638;
+
     border-color:#ff2638;
 }
 
 .gallery{
     display:grid;
+
     grid-template-columns:
     repeat(
         auto-fit,
         minmax(150px,190px)
     );
+
     justify-content:center;
+
     gap:15px;
 }
 
 .gallery-item{
     background:#111317;
+
     border:1px solid #34363c;
+
     border-radius:13px;
+
     overflow:hidden;
+
     cursor:pointer;
+
     animation:galleryIn .45s;
 }
 
 .gallery-item:hover{
     border-color:#ff2638;
+
     transform:translateY(-3px);
 }
 
 .gallery-item img,
 .gallery-item video{
     width:100%;
+
     height:125px;
+
     display:block;
+
     object-fit:cover;
 }
 
 .gallery-caption{
     padding:9px;
+
     color:#aaa;
+
     font-size:12px;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
 .gallery-empty{
     text-align:center;
+
     color:#777;
+
     padding:35px;
 }
 
@@ -575,11 +789,14 @@ section{
 
     from{
         opacity:0;
-        transform:translateY(15px);
+
+        transform:
+        translateY(15px);
     }
 
     to{
         opacity:1;
+
         transform:none;
     }
 
@@ -592,86 +809,311 @@ section{
 
 .presentation-section{
     padding-top:65px;
-    padding-bottom:65px;
+    padding-bottom:70px;
 }
 
 .presentation-box{
-    max-width:950px;
+    max-width:1000px;
     margin:0 auto;
 }
 
+
+/* VIDEO */
+
 .presentation-video{
     width:100%;
-    max-height:560px;
+
+    max-height:600px;
+
     display:block;
+
     background:#000;
-    border:1px solid #34363c;
+
+    border:
+    1px solid #34363c;
+
     border-radius:16px;
-    box-shadow:0 15px 45px #0008;
+
+    box-shadow:
+    0 15px 45px #0008;
 }
 
-.presentation-pdf{
+
+/* =====================================================
+   PDF READER
+===================================================== */
+
+.pdf-reader{
     width:100%;
-    height:650px;
-    display:block;
-    margin-top:22px;
-    border:1px solid #34363c;
-    border-radius:16px;
-    background:#111317;
+
+    margin-top:30px;
+
+    border:
+    1px solid #34363c;
+
+    border-radius:17px;
+
+    overflow:hidden;
+
+    background:#191a1d;
+
+    box-shadow:
+    0 15px 45px #0008;
 }
 
-.presentation-file{
-    margin-top:18px;
+
+/* PDF HEADER */
+
+.pdf-header{
+    padding:13px 15px;
+
     display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-}
 
-.presentation-link{
-    display:inline-flex;
     align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:11px 18px;
-    border:1px solid #34363c;
-    border-radius:9px;
+
+    justify-content:space-between;
+
+    gap:12px;
+
     background:#111317;
+
+    border-bottom:
+    1px solid #34363c;
+}
+
+.pdf-title{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    font-weight:800;
+
+    font-size:14px;
+}
+
+.pdf-title-icon{
+    color:#ff2638;
+
+    font-size:20px;
+}
+
+
+/* PDF CONTROLS */
+
+.pdf-controls{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+    padding:10px;
+
+    background:#0d0f12;
+
+    border-bottom:
+    1px solid #292b30;
+}
+
+.pdf-control{
+    border:
+    1px solid #3a3c42;
+
+    background:#181a1e;
+
     color:#fff;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:bold;
-    transition:.25s;
+
+    min-width:38px;
+
+    height:36px;
+
+    padding:
+    0 11px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
 }
 
-.presentation-link:hover{
+.pdf-control:hover{
     background:#ff2638;
+
     border-color:#ff2638;
-    transform:translateY(-2px);
 }
 
-@media(max-width:600px){
+.pdf-page-info{
+    min-width:110px;
 
-    .presentation-pdf{
-        height:500px;
+    text-align:center;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+
+/* PDF CANVAS AREA */
+
+.pdf-canvas-container{
+    width:100%;
+
+    min-height:300px;
+
+    max-height:850px;
+
+    overflow:auto;
+
+    background:
+    #292a2d;
+
+    padding:20px;
+
+    text-align:center;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+
+/* EACH PAGE */
+
+.pdf-page{
+    position:relative;
+
+    display:block;
+
+    margin:
+    0 auto 20px;
+
+    background:#fff;
+
+    box-shadow:
+    0 5px 25px #0009;
+
+    max-width:none;
+}
+
+.pdf-page:last-child{
+    margin-bottom:0;
+}
+
+
+/* LOADING */
+
+.pdf-loading{
+    min-height:250px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#aaa;
+
+    gap:12px;
+}
+
+.pdf-spinner{
+    width:36px;
+    height:36px;
+
+    border:
+    3px solid #34363c;
+
+    border-top-color:
+    #ff2638;
+
+    border-radius:50%;
+
+    animation:
+    pdfSpin .8s linear infinite;
+}
+
+@keyframes pdfSpin{
+
+    to{
+        transform:rotate(360deg);
     }
 
 }
 
 
-/* =====================================================
-   FIREBASE STATUS
-===================================================== */
+/* PDF ERROR */
 
-.firebase-status{
+.pdf-error{
+    padding:45px 20px;
+
     text-align:center;
-    margin:-8px auto 24px;
-    color:#777;
-    font-size:11px;
+
+    color:#ff7a84;
 }
 
-.firebase-status.live{
-    color:#69e58a;
+
+/* =====================================================
+   PRESENTATION LINKS
+===================================================== */
+
+.presentation-file{
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.presentation-link{
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:11px 18px;
+
+    border:
+    1px solid #34363c;
+
+    border-radius:9px;
+
+    background:#111317;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.presentation-link:hover{
+    background:#ff2638;
+
+    border-color:#ff2638;
+
+    transform:translateY(-2px);
 }
 
 
@@ -681,11 +1123,19 @@ section{
 
 .section-viewer{
     display:none;
-    margin:28px auto 0;
+
+    margin:
+    28px auto 0;
+
     max-width:760px;
-    border:1px solid #ff2638;
+
+    border:
+    1px solid #ff2638;
+
     border-radius:16px;
+
     background:#0d0f12;
+
     padding:14px;
 }
 
@@ -695,39 +1145,57 @@ section{
 
 .section-viewer-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    padding:2px 4px 12px;
+
+    padding:
+    2px 4px 12px;
 }
 
 .section-viewer-head h3{
     margin:0;
+
     color:#ff2638;
+
     font-size:16px;
 }
 
 .section-viewer-head button{
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     width:32px;
     height:32px;
+
     border-radius:50%;
+
     font-size:21px;
+
     cursor:pointer;
 }
 
 .section-viewer-content{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     min-height:180px;
 }
 
 .section-view-media{
     max-width:100%;
+
     max-height:500px;
+
     border-radius:10px;
+
     display:block;
 }
 
@@ -738,51 +1206,78 @@ section{
 
 .contact-grid{
     max-width:950px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:18px;
 }
 
 .contact-card{
     display:flex;
+
     align-items:center;
+
     gap:15px;
+
     padding:24px;
-    border:1px solid #34363c;
+
+    border:
+    1px solid #34363c;
+
     border-radius:14px;
+
     background:#111317;
+
     text-decoration:none;
+
     color:#fff;
+
     transition:.3s;
 }
 
 .contact-card:hover{
     transform:translateY(-5px);
+
     border-color:#ff2638;
 }
 
 .contact-icon{
     width:45px;
     height:45px;
+
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
+
     color:#fff;
+
     font-size:22px;
+
     flex:none;
 }
 
 .contact-card h3{
-    margin:0 0 6px;
+    margin:
+    0 0 6px;
 }
 
 .contact-card p{
     margin:0;
+
     color:#aaa;
+
     word-break:break-word;
+
     font-size:13px;
+
     line-height:1.45;
 }
 
@@ -792,61 +1287,92 @@ section{
 ===================================================== */
 
 footer{
-    padding:55px 7% 20px;
-    border-top:1px solid #292a30;
+    padding:
+    55px 7% 20px;
+
+    border-top:
+    1px solid #292a30;
+
     background:#090a0c;
 }
 
 .footer-grid{
     max-width:1100px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:1.2fr 1fr 1fr;
+
+    grid-template-columns:
+    1.2fr 1fr 1fr;
+
     gap:55px;
+
     align-items:start;
 }
 
 .footer-grid h3{
     color:#ff2638;
+
     margin-top:0;
+
     font-size:22px;
 }
 
 .footer-grid p{
     color:#aaa;
+
     line-height:1.7;
 }
 
 .footer-credit{
     font-size:17px;
+
     color:#fff !important;
+
     font-weight:bold;
+
     line-height:1.7 !important;
 }
 
 .credit-label{
     display:block;
+
     color:#ff2638;
+
     font-size:14px;
+
     font-weight:bold;
+
     margin-top:14px;
 }
 
 .credit-name{
     display:block;
+
     color:#fff;
+
     font-size:19px;
+
     font-weight:800;
+
     margin-top:2px;
+
     white-space:normal;
 }
 
 .copy{
     text-align:center;
+
     color:#666;
-    border-top:1px solid #222;
+
+    border-top:
+    1px solid #222;
+
     margin-top:35px;
+
     padding-top:18px;
+
     font-size:12px;
 }
 
@@ -857,12 +1383,16 @@ footer{
 
 .reveal{
     opacity:0;
-    transform:translateY(25px);
+
+    transform:
+    translateY(25px);
+
     transition:.7s;
 }
 
 .reveal.show{
     opacity:1;
+
     transform:none;
 }
 
@@ -874,37 +1404,62 @@ footer{
 .settings-btn{
     width:38px;
     height:38px;
-    border:1px solid #383a40;
+
+    border:
+    1px solid #383a40;
+
     border-radius:9px;
+
     background:#111317;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     gap:5px;
+
     cursor:pointer;
 }
 
 .settings-btn span{
     display:block;
+
     width:18px;
     height:2px;
+
     background:#fff;
+
     border-radius:3px;
 }
 
 .settings-menu{
     position:fixed;
+
     top:76px;
     right:6%;
-    width:min(340px,88vw);
+
+    width:
+    min(340px,88vw);
+
     z-index:100;
+
     display:none;
+
     padding:18px;
-    border:1px solid #3a3c42;
+
+    border:
+    1px solid #3a3c42;
+
     border-radius:16px;
+
     background:#101114;
-    box-shadow:0 20px 60px #000b;
+
+    box-shadow:
+    0 20px 60px #000b;
 }
 
 .settings-menu.show{
@@ -913,84 +1468,128 @@ footer{
 
 .settings-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:15px;
 }
 
 .settings-head h3{
     margin:0;
+
     color:#ff2638;
 }
 
 .settings-head button{
     border:0;
+
     background:none;
+
     color:#fff;
+
     font-size:25px;
+
     cursor:pointer;
 }
 
 .settings-card{
     display:flex;
+
     gap:14px;
+
     padding:17px;
-    border:1px solid #34363c;
+
+    border:
+    1px solid #34363c;
+
     border-radius:12px;
+
     background:#111317;
 }
 
 .settings-card h4{
-    margin:0 0 5px;
+    margin:
+    0 0 5px;
 }
 
 .settings-card p{
-    margin:0 0 12px;
+    margin:
+    0 0 12px;
+
     color:#aaa;
+
     font-size:12px;
+
     line-height:1.5;
 }
 
 .settings-password{
     margin-top:12px;
+
     padding-top:12px;
-    border-top:1px solid #292b31;
+
+    border-top:
+    1px solid #292b31;
 }
 
 .settings-password label{
     display:block;
+
     font-size:9px;
+
     letter-spacing:1.8px;
+
     color:#ff6b76;
+
     font-weight:800;
+
     margin-bottom:7px;
 }
 
 .settings-password input{
     width:100%;
+
     padding:10px 11px;
+
     background:#08090b;
-    border:1px solid #383a40;
+
+    border:
+    1px solid #383a40;
+
     border-radius:8px;
+
     color:#fff;
+
     outline:none;
 }
 
 .settings-action{
     width:100%;
+
     margin-top:8px;
+
     border:0;
+
     background:#ff2638;
+
     color:#fff;
+
     border-radius:8px;
+
     padding:10px;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
 #settingsPasswordMessage{
     font-size:11px;
+
     margin-top:7px;
+
     min-height:14px;
 }
 
@@ -1001,36 +1600,57 @@ footer{
 
 .rating-widget{
     position:fixed;
+
     top:76px;
     left:14px;
+
     z-index:9999;
-    width:min(430px,calc(100vw - 28px));
+
+    width:
+    min(430px,calc(100vw - 28px));
+
     min-height:72px;
-    padding:12px 14px;
+
+    padding:
+    12px 14px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:10px;
-    background:rgba(16,17,20,.98);
-    border:1px solid #3a3c42;
+
+    background:
+    rgba(16,17,20,.98);
+
+    border:
+    1px solid #3a3c42;
+
     border-radius:17px;
+
     box-shadow:
     0 15px 45px #000b,
     0 0 30px #ff263825;
+
     backdrop-filter:blur(14px);
+
     transition:
     opacity .5s ease,
     transform .5s ease;
 }
 
 .rating-widget.enter{
-    animation:ratingEnter .7s ease;
+    animation:
+    ratingEnter .7s ease;
 }
 
 @keyframes ratingEnter{
 
     0%{
         opacity:0;
+
         transform:
         translateX(-35px)
         scale(.92);
@@ -1038,6 +1658,7 @@ footer{
 
     100%{
         opacity:1;
+
         transform:
         translateX(0)
         scale(1);
@@ -1047,35 +1668,51 @@ footer{
 
 .rating-widget.hide{
     opacity:0;
-    transform:translateX(-40px);
+
+    transform:
+    translateX(-40px);
+
     pointer-events:none;
 }
 
 .rating-left{
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     min-width:0;
 }
 
 .rating-heart{
     width:40px;
     height:40px;
+
     flex:none;
+
     border-radius:50%;
+
     display:grid;
     place-items:center;
+
     background:#ff2638;
+
     color:#fff;
+
     font-size:20px;
-    animation:ratingHeartPulse 1.4s infinite;
+
+    animation:
+    ratingHeartPulse 1.4s infinite;
 }
 
 @keyframes ratingHeartPulse{
 
     50%{
         transform:scale(1.09);
-        box-shadow:0 0 25px #ff263866;
+
+        box-shadow:
+        0 0 25px #ff263866;
     }
 
 }
@@ -1086,15 +1723,21 @@ footer{
 
 .rating-title{
     font-size:12px;
+
     font-weight:800;
+
     color:#fff;
+
     white-space:nowrap;
 }
 
 .rating-total{
     margin-top:3px;
+
     font-size:10px;
+
     color:#888b92;
+
     white-space:nowrap;
 }
 
@@ -1104,19 +1747,29 @@ footer{
 
 .rating-stars{
     display:flex;
+
     align-items:center;
+
     gap:1px;
+
     flex-shrink:0;
 }
 
 .rating-star{
     border:0;
+
     background:none;
+
     padding:2px;
+
     color:#44464d;
+
     font-size:22px;
+
     line-height:1;
+
     cursor:pointer;
+
     transition:
     transform .18s ease,
     color .18s ease;
@@ -1124,24 +1777,39 @@ footer{
 
 .rating-star:hover{
     transform:scale(1.25);
+
     color:#ffd43b;
 }
 
 .rating-star.active{
     color:#ffd43b;
-    filter:drop-shadow(0 0 5px #ffd43b88);
+
+    filter:
+    drop-shadow(
+        0 0 5px #ffd43b88
+    );
 }
 
 .rating-confirm{
     display:none;
-    border:1px solid #ff2638;
+
+    border:
+    1px solid #ff2638;
+
     background:#ff2638;
+
     color:#fff;
+
     padding:7px 11px;
+
     border-radius:8px;
+
     font-size:10px;
+
     font-weight:800;
+
     white-space:nowrap;
+
     cursor:pointer;
 }
 
@@ -1151,16 +1819,29 @@ footer{
 
 .rating-message{
     position:absolute;
+
     left:0;
-    top:calc(100% + 8px);
+
+    top:
+    calc(100% + 8px);
+
     padding:7px 12px;
+
     border-radius:9px;
+
     background:#111317;
-    border:1px solid #34363c;
+
+    border:
+    1px solid #34363c;
+
     color:#aaa;
+
     font-size:10px;
+
     opacity:0;
+
     pointer-events:none;
+
     transition:.25s;
 }
 
@@ -1170,20 +1851,34 @@ footer{
 
 .rating-badge{
     position:fixed;
+
     top:76px;
     left:14px;
+
     z-index:9998;
+
     display:none;
+
     align-items:center;
+
     gap:8px;
+
     padding:8px 12px;
+
     border-radius:13px;
-    background:rgba(17,19,23,.96);
-    border:1px solid #34363c;
+
+    background:
+    rgba(17,19,23,.96);
+
+    border:
+    1px solid #34363c;
+
     box-shadow:
     0 10px 30px #0009,
     0 0 18px #ffd43b18;
+
     backdrop-filter:blur(12px);
+
     animation:
     badgeEnter .65s ease,
     badgeGlow 2.2s ease-in-out infinite;
@@ -1197,6 +1892,7 @@ footer{
 
     0%{
         opacity:0;
+
         transform:
         translateX(-30px)
         scale(.85);
@@ -1204,6 +1900,7 @@ footer{
 
     100%{
         opacity:1;
+
         transform:
         translateX(0)
         scale(1);
@@ -1230,17 +1927,21 @@ footer{
 
 .badge-star{
     color:#ffd43b;
+
     font-size:17px;
 }
 
 .badge-value{
     color:#ffd43b;
+
     font-weight:800;
+
     font-size:11px;
 }
 
 .badge-text{
     color:#aaa;
+
     font-size:10px;
 }
 
@@ -1253,6 +1954,7 @@ footer{
 
     .hero{
         grid-template-columns:1fr;
+
         text-align:center;
     }
 
@@ -1266,23 +1968,32 @@ footer{
 
     .features,
     .steps{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+        1fr 1fr;
     }
 
     .footer-grid{
         grid-template-columns:1fr;
+
         gap:35px;
     }
 
     .contact-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+        1fr 1fr;
     }
 
     .team-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+        1fr 1fr;
     }
 
 }
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
 @media(max-width:500px){
 
@@ -1304,22 +2015,73 @@ footer{
     }
 
     .gallery{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+        repeat(2,1fr);
     }
+
+
+    /* PDF MOBILE */
+
+    .pdf-header{
+        padding:11px;
+    }
+
+    .pdf-title{
+        font-size:12px;
+    }
+
+    .pdf-controls{
+        gap:5px;
+
+        padding:8px;
+    }
+
+    .pdf-control{
+        min-width:34px;
+
+        height:34px;
+
+        padding:
+        0 8px;
+
+        font-size:12px;
+    }
+
+    .pdf-page-info{
+        min-width:80px;
+
+        font-size:10px;
+    }
+
+    .pdf-canvas-container{
+        padding:10px 6px;
+    }
+
+
+    /* RATING */
 
     .rating-widget{
         top:74px;
+
         left:10px;
-        width:calc(100vw - 20px);
+
+        width:
+        calc(100vw - 20px);
+
         min-height:67px;
-        padding:9px 10px;
+
+        padding:
+        9px 10px;
+
         border-radius:15px;
+
         gap:5px;
     }
 
     .rating-heart{
         width:35px;
         height:35px;
+
         font-size:17px;
     }
 
@@ -1333,18 +2095,25 @@ footer{
 
     .rating-star{
         font-size:19px;
+
         padding:1px;
     }
 
     .rating-confirm{
         font-size:9px;
-        padding:6px 9px;
+
+        padding:
+        6px 9px;
     }
 
     .rating-badge{
         top:74px;
+
         left:10px;
-        padding:7px 10px;
+
+        padding:
+        7px 10px;
+
         border-radius:12px;
     }
 
@@ -1367,7 +2136,7 @@ footer{
 
 
 <!-- =====================================================
-     RATING WIDGET
+     RATING
 ===================================================== -->
 
 <div
@@ -1408,31 +2177,41 @@ class="rating-stars"
 class="rating-star"
 data-rating="1"
 type="button"
->★</button>
+>
+★
+</button>
 
 <button
 class="rating-star"
 data-rating="2"
 type="button"
->★</button>
+>
+★
+</button>
 
 <button
 class="rating-star"
 data-rating="3"
 type="button"
->★</button>
+>
+★
+</button>
 
 <button
 class="rating-star"
 data-rating="4"
 type="button"
->★</button>
+>
+★
+</button>
 
 <button
 class="rating-star"
 data-rating="5"
 type="button"
->★</button>
+>
+★
+</button>
 
 </div>
 
@@ -1453,8 +2232,6 @@ class="rating-message"
 
 </div>
 
-
-<!-- RETURNING USER RATING -->
 
 <div
 id="ratingBadge"
@@ -1781,6 +2558,7 @@ this pumping action in a simple and
 practical way.
 </p>
 
+
 <div class="features">
 
 
@@ -1860,7 +2638,7 @@ Science project
 
 
 <!-- =====================================================
-     COMPACT HEART AWARENESS
+     AWARENESS
 ===================================================== -->
 
 <div
@@ -1883,81 +2661,101 @@ the value of prevention and early care.
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Hypertension</strong> — High blood pressure can increase the risk of heart disease and stroke.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Heart disease</strong> — Cardiovascular diseases are a major cause of death worldwide.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Early detection</strong> — Knowing health risks can help identify problems earlier.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Blood pressure</strong> — Regular checks can help detect high blood pressure.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Healthy eating</strong> — A balanced diet supports cardiovascular health.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Physical activity</strong> — Staying active is important for a healthy heart.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Avoid tobacco</strong> — Tobacco use increases cardiovascular health risks.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Warning signs</strong> — Knowing important symptoms can help people seek urgent care.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Healthy future</strong> — Good habits can help reduce preventable cardiovascular risks.
 </div>
+
 </div>
 
 
 <div class="awareness-point">
 <span class="awareness-dot"></span>
+
 <div>
 <strong>Spread awareness</strong> — Reliable information can encourage healthier communities.
 </div>
+
 </div>
 
 
@@ -1969,7 +2767,7 @@ the value of prevention and early care.
 
 
 <!-- =====================================================
-     MEDIA
+     PHOTO & VIDEO
 ===================================================== -->
 
 <section
@@ -2075,7 +2873,7 @@ class="section-viewer-content"
 
 
 <!-- =====================================================
-     NEW PRESENTATION SECTION
+     PRESENTATION
 ===================================================== -->
 
 <section
@@ -2088,15 +2886,17 @@ class="presentation-section reveal"
 </h2>
 
 <p class="sub">
-Watch the animated presentation or view
-the project presentation PDF.
+Watch the animated presentation or read
+the complete project presentation below.
 </p>
 
 
 <div class="presentation-box">
 
 
-<!-- ANIMATED VIDEO -->
+<!-- =================================================
+     ANIMATED VIDEO
+================================================= -->
 
 <video
 class="presentation-video"
@@ -2115,19 +2915,118 @@ Your browser does not support video playback.
 </video>
 
 
-<!-- PDF -->
+<!-- =================================================
+     PDF READER
+================================================= -->
 
-<iframe
-class="presentation-pdf"
-src="1.pdf"
-title="Working Model of Heart Presentation"
-loading="lazy"
-></iframe>
+<div class="pdf-reader">
 
 
-<!-- FALLBACK / OPEN BUTTONS -->
+<div class="pdf-header">
+
+<div class="pdf-title">
+
+<span class="pdf-title-icon">
+📄
+</span>
+
+<span>
+Project Presentation
+</span>
+
+</div>
+
+</div>
+
+
+<!-- PDF CONTROLS -->
+
+<div class="pdf-controls">
+
+
+<button
+id="pdfPrev"
+class="pdf-control"
+type="button"
+>
+←
+</button>
+
+
+<div
+id="pdfPageInfo"
+class="pdf-page-info"
+>
+Loading PDF...
+</div>
+
+
+<button
+id="pdfNext"
+class="pdf-control"
+type="button"
+>
+→
+</button>
+
+
+<button
+id="pdfZoomOut"
+class="pdf-control"
+type="button"
+>
+−
+</button>
+
+
+<button
+id="pdfZoomIn"
+class="pdf-control"
+type="button"
+>
++
+</button>
+
+
+<button
+id="pdfFit"
+class="pdf-control"
+type="button"
+>
+Fit
+</button>
+
+
+</div>
+
+
+<!-- PDF CANVAS -->
+
+<div
+id="pdfCanvasContainer"
+class="pdf-canvas-container"
+>
+
+<div class="pdf-loading">
+
+<div class="pdf-spinner"></div>
+
+<div>
+Loading presentation...
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- PDF BUTTONS -->
 
 <div class="presentation-file">
+
 
 <a
 class="presentation-link"
@@ -2147,6 +3046,7 @@ rel="noopener"
 >
 📄 Open PDF
 </a>
+
 
 </div>
 
@@ -2571,6 +3471,7 @@ function(){
         "settingsPasswordMessage"
     );
 
+
     if(
         input.value ===
         HOST_PASSWORD
@@ -2581,6 +3482,7 @@ function(){
 
         msg.style.color =
         "#69e58a";
+
 
         setTimeout(
             ()=>{
@@ -2753,21 +3655,26 @@ ratingStars.forEach(
 
                 }
 
+
                 selectedRating =
                 Number(
                     star.dataset.rating
                 );
 
+
                 updateRatingStars(
                     selectedRating
                 );
 
+
                 ratingStarsBox.style.display =
                 "none";
+
 
                 ratingConfirm.textContent =
                 "Confirm ★ " +
                 selectedRating;
+
 
                 ratingConfirm.classList.add(
                     "show"
@@ -2792,11 +3699,14 @@ ratingConfirm.addEventListener(
 
         }
 
+
         ratingConfirm.disabled =
         true;
 
+
         ratingConfirm.textContent =
         "Saving...";
+
 
         if(
             typeof window.submitRatingFromUI ===
@@ -2835,14 +3745,18 @@ function(){
         "true"
     );
 
+
     ratingConfirm.textContent =
     "✓ Rated";
+
 
     ratingConfirm.style.background =
     "#1d3927";
 
+
     ratingConfirm.style.borderColor =
     "#69e58a";
+
 
     ratingConfirm.style.color =
     "#69e58a";
@@ -2861,15 +3775,18 @@ function(){
                 "hide"
             );
 
+
             setTimeout(
                 ()=>{
 
                     ratingWidget.style.display =
                     "none";
 
+
                     ratingWidget.classList.remove(
                         "hide"
                     );
+
 
                     ratingBadge.classList.add(
                         "show"
@@ -2894,21 +3811,27 @@ function(error){
         error
     );
 
+
     ratingConfirm.disabled =
     false;
+
 
     ratingConfirm.textContent =
     "Confirm ★ " +
     selectedRating;
 
+
     ratingConfirm.style.background =
     "#ff2638";
+
 
     ratingConfirm.style.borderColor =
     "#ff2638";
 
+
     ratingConfirm.style.color =
     "#fff";
+
 
     ratingStarsBox.style.display =
     "flex";
@@ -2916,6 +3839,7 @@ function(error){
 
     let message =
     "Could not save rating.";
+
 
     if(
         error &&
@@ -2959,6 +3883,7 @@ document.addEventListener(
             ".settings-btn"
         );
 
+
         if(
             menu.classList.contains(
                 "show"
@@ -2994,6 +3919,700 @@ else{
 
 }
 
+
+</script>
+
+
+<!-- =====================================================
+     PDF.JS READER
+===================================================== -->
+
+<script>
+
+/*
+==========================================================
+   PDF READER
+
+   IMPORTANT:
+   Keep 1.pdf in the same folder as this HTML file.
+==========================================================
+*/
+
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const PDF_FILE =
+"1.pdf";
+
+
+const pdfContainer =
+document.getElementById(
+    "pdfCanvasContainer"
+);
+
+const pdfPageInfo =
+document.getElementById(
+    "pdfPageInfo"
+);
+
+const pdfPrev =
+document.getElementById(
+    "pdfPrev"
+);
+
+const pdfNext =
+document.getElementById(
+    "pdfNext"
+);
+
+const pdfZoomIn =
+document.getElementById(
+    "pdfZoomIn"
+);
+
+const pdfZoomOut =
+document.getElementById(
+    "pdfZoomOut"
+);
+
+const pdfFit =
+document.getElementById(
+    "pdfFit"
+);
+
+
+let pdfDocument = null;
+
+let pdfPageCount = 0;
+
+let pdfCurrentPage = 1;
+
+let pdfZoom = 1;
+
+
+/*
+==========================================================
+   GET FIT WIDTH
+==========================================================
+*/
+
+function calculateFitZoom(
+    page
+){
+
+    const viewport =
+    page.getViewport({
+        scale:1
+    });
+
+
+    const availableWidth =
+    pdfContainer.clientWidth
+    - 20;
+
+
+    return (
+        availableWidth /
+        viewport.width
+    );
+
+}
+
+
+/*
+==========================================================
+   RENDER PAGE
+==========================================================
+*/
+
+async function renderPDFPage(
+    pageNumber
+){
+
+    if(
+        !pdfDocument
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        pageNumber < 1
+    ){
+
+        pageNumber = 1;
+
+    }
+
+
+    if(
+        pageNumber > pdfPageCount
+    ){
+
+        pageNumber =
+        pdfPageCount;
+
+    }
+
+
+    pdfCurrentPage =
+    pageNumber;
+
+
+    pdfPageInfo.textContent =
+    "Page " +
+    pdfCurrentPage +
+    " / " +
+    pdfPageCount;
+
+
+    const page =
+    await pdfDocument.getPage(
+        pdfCurrentPage
+    );
+
+
+    /*
+       When zoom is 0, automatically
+       calculate the best width.
+    */
+
+    let actualZoom =
+    pdfZoom;
+
+
+    if(
+        actualZoom <= 0
+    ){
+
+        actualZoom =
+        calculateFitZoom(
+            page
+        );
+
+    }
+
+
+    const viewport =
+    page.getViewport({
+        scale:actualZoom
+    });
+
+
+    pdfContainer.innerHTML =
+    "";
+
+
+    const canvas =
+    document.createElement(
+        "canvas"
+    );
+
+
+    canvas.className =
+    "pdf-page";
+
+
+    const context =
+    canvas.getContext(
+        "2d",
+        {
+            alpha:false
+        }
+    );
+
+
+    /*
+       High-DPI rendering.
+
+       This makes the PDF much sharper
+       on phones and high-resolution screens.
+    */
+
+    const devicePixelRatio =
+    Math.min(
+        window.devicePixelRatio || 1,
+        2.5
+    );
+
+
+    canvas.width =
+    Math.floor(
+        viewport.width *
+        devicePixelRatio
+    );
+
+
+    canvas.height =
+    Math.floor(
+        viewport.height *
+        devicePixelRatio
+    );
+
+
+    canvas.style.width =
+    Math.floor(
+        viewport.width
+    ) +
+    "px";
+
+
+    canvas.style.height =
+    Math.floor(
+        viewport.height
+    ) +
+    "px";
+
+
+    pdfContainer.appendChild(
+        canvas
+    );
+
+
+    const renderContext = {
+
+        canvasContext:
+        context,
+
+        viewport:
+        viewport,
+
+        transform:
+        devicePixelRatio !== 1
+        ? [
+            devicePixelRatio,
+            0,
+            0,
+            devicePixelRatio,
+            0,
+            0
+        ]
+        : null
+
+    };
+
+
+    await page.render(
+        renderContext
+    ).promise;
+
+
+    /*
+       Put the page at the top.
+    */
+
+    pdfContainer.scrollTop =
+    0;
+
+
+    pdfContainer.scrollLeft =
+    0;
+
+}
+
+
+/*
+==========================================================
+   LOAD PDF
+==========================================================
+*/
+
+async function loadPDF(){
+
+    try{
+
+        pdfPageInfo.textContent =
+        "Loading PDF...";
+
+
+        const loadingTask =
+        pdfjsLib.getDocument({
+            url:PDF_FILE
+        });
+
+
+        pdfDocument =
+        await loadingTask.promise;
+
+
+        pdfPageCount =
+        pdfDocument.numPages;
+
+
+        /*
+           Start at page 1 and fit
+           it to the device width.
+        */
+
+        pdfZoom =
+        0;
+
+
+        await renderPDFPage(
+            1
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            "PDF ERROR:",
+            error
+        );
+
+
+        pdfPageInfo.textContent =
+        "PDF error";
+
+
+        pdfContainer.innerHTML = `
+
+            <div class="pdf-error">
+
+                <div
+                    style="
+                    font-size:42px;
+                    margin-bottom:12px;
+                    "
+                >
+                    ⚠️
+                </div>
+
+                <strong>
+                    Unable to display 1.pdf
+                </strong>
+
+                <br><br>
+
+                Make sure
+                <b>1.pdf</b>
+                is in the same folder
+                as this HTML file.
+
+                <br><br>
+
+                <a
+                    href="1.pdf"
+                    target="_blank"
+                    style="
+                    color:#ff2638;
+                    font-weight:bold;
+                    "
+                >
+                    Open PDF directly
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/*
+==========================================================
+   PREVIOUS PAGE
+==========================================================
+*/
+
+pdfPrev.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            !pdfDocument ||
+            pdfCurrentPage <= 1
+        ){
+
+            return;
+
+        }
+
+
+        await renderPDFPage(
+            pdfCurrentPage - 1
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   NEXT PAGE
+==========================================================
+*/
+
+pdfNext.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            !pdfDocument ||
+            pdfCurrentPage >= pdfPageCount
+        ){
+
+            return;
+
+        }
+
+
+        await renderPDFPage(
+            pdfCurrentPage + 1
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   ZOOM IN
+==========================================================
+*/
+
+pdfZoomIn.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            !pdfDocument
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            pdfZoom <= 0
+        ){
+
+            const page =
+            await pdfDocument.getPage(
+                pdfCurrentPage
+            );
+
+            pdfZoom =
+            calculateFitZoom(
+                page
+            );
+
+        }
+
+
+        pdfZoom =
+        Math.min(
+            pdfZoom + .25,
+            3
+        );
+
+
+        await renderPDFPage(
+            pdfCurrentPage
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   ZOOM OUT
+==========================================================
+*/
+
+pdfZoomOut.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            !pdfDocument
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            pdfZoom <= 0
+        ){
+
+            const page =
+            await pdfDocument.getPage(
+                pdfCurrentPage
+            );
+
+            pdfZoom =
+            calculateFitZoom(
+                page
+            );
+
+        }
+
+
+        pdfZoom =
+        Math.max(
+            pdfZoom - .25,
+            .5
+        );
+
+
+        await renderPDFPage(
+            pdfCurrentPage
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   FIT WIDTH
+==========================================================
+*/
+
+pdfFit.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            !pdfDocument
+        ){
+
+            return;
+
+        }
+
+
+        pdfZoom =
+        0;
+
+
+        await renderPDFPage(
+            pdfCurrentPage
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   KEYBOARD
+==========================================================
+*/
+
+document.addEventListener(
+    "keydown",
+    async event=>{
+
+        if(
+            !pdfDocument
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            if(
+                pdfCurrentPage > 1
+            ){
+
+                await renderPDFPage(
+                    pdfCurrentPage - 1
+                );
+
+            }
+
+        }
+
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ){
+
+            if(
+                pdfCurrentPage <
+                pdfPageCount
+            ){
+
+                await renderPDFPage(
+                    pdfCurrentPage + 1
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/*
+==========================================================
+   RESIZE
+==========================================================
+*/
+
+let resizeTimer;
+
+
+window.addEventListener(
+    "resize",
+    ()=>{
+
+        clearTimeout(
+            resizeTimer
+        );
+
+
+        resizeTimer =
+        setTimeout(
+            async ()=>{
+
+                if(
+                    pdfDocument &&
+                    pdfZoom <= 0
+                ){
+
+                    await renderPDFPage(
+                        pdfCurrentPage
+                    );
+
+                }
+
+            },
+            300
+        );
+
+    }
+);
+
+
+/*
+==========================================================
+   LOAD
+==========================================================
+*/
+
+loadPDF();
+
 </script>
 
 
@@ -3023,7 +4642,6 @@ from
 
 /* =====================================================
    FIREBASE CONFIGURATION
-   UNCHANGED
 ===================================================== */
 
 const firebaseConfig = {
@@ -3054,6 +4672,7 @@ initializeApp(
     firebaseConfig
 );
 
+
 const db =
 getFirestore(
     app
@@ -3080,7 +4699,9 @@ async function loadRatings(){
             )
         );
 
+
         let total = 0;
+
         let count = 0;
 
 
@@ -3090,10 +4711,12 @@ async function loadRatings(){
                 const data =
                 docSnap.data();
 
+
                 const rating =
                 Number(
                     data.rating
                 );
+
 
                 if(
                     rating >= 1 &&
@@ -3101,6 +4724,7 @@ async function loadRatings(){
                 ){
 
                     total += rating;
+
                     count++;
 
                 }
@@ -3148,6 +4772,7 @@ async function loadRatings(){
             "badgeValue"
         );
 
+
         const badgeText =
         document.getElementById(
             "badgeText"
@@ -3159,6 +4784,7 @@ async function loadRatings(){
             badgeValue.textContent =
             average.toFixed(1) +
             " / 5";
+
 
             badgeText.textContent =
             " · " +
@@ -3174,6 +4800,7 @@ async function loadRatings(){
 
             badgeValue.textContent =
             "0.0 / 5";
+
 
             badgeText.textContent =
             " · 0 ratings";
@@ -3226,6 +4853,7 @@ async function(
 
         window.ratingSuccess();
 
+
         await loadRatings();
 
     }
@@ -3235,6 +4863,7 @@ async function(
             "FIREBASE RATING WRITE ERROR:",
             error
         );
+
 
         window.ratingFailure(
             error
@@ -3258,17 +4887,21 @@ document.getElementById(
     "gallery"
 );
 
+
 const empty =
 document.getElementById(
     "galleryEmpty"
 );
+
 
 const status =
 document.getElementById(
     "firebaseStatus"
 );
 
+
 let mediaStore = [];
+
 
 let currentFilter =
 "all";
@@ -3281,6 +4914,7 @@ function setStatus(
 
     status.textContent =
     text;
+
 
     status.classList.toggle(
         "live",
@@ -3326,7 +4960,9 @@ async function loadFirebaseMedia(){
 
 
                 if(!url){
+
                     return;
+
                 }
 
 
@@ -3339,29 +4975,31 @@ async function loadFirebaseMedia(){
 
 
                 if(
-                    type==="image" ||
-                    type==="photo" ||
-                    type==="photos"
+                    type === "image" ||
+                    type === "photo" ||
+                    type === "photos"
                 ){
 
-                    type="photo";
+                    type =
+                    "photo";
 
                 }
 
 
                 if(
-                    type==="video" ||
-                    type==="videos"
+                    type === "video" ||
+                    type === "videos"
                 ){
 
-                    type="video";
+                    type =
+                    "video";
 
                 }
 
 
                 if(
-                    type!=="photo" &&
-                    type!=="video"
+                    type !== "photo" &&
+                    type !== "video"
                 ){
 
                     const u =
@@ -3374,14 +5012,16 @@ async function loadFirebaseMedia(){
                         /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
                     ){
 
-                        type="photo";
+                        type =
+                        "photo";
 
                     }
                     else if(
                         /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
                     ){
 
-                        type="video";
+                        type =
+                        "video";
 
                     }
                     else{
@@ -3433,19 +5073,23 @@ async function loadFirebaseMedia(){
             error
         );
 
+
         setStatus(
             "❌ Firebase error"
         );
 
+
         gallery.innerHTML =
         "";
+
 
         empty.style.display =
         "block";
 
 
         if(
-            error.code==="permission-denied"
+            error.code ===
+            "permission-denied"
         ){
 
             empty.textContent =
@@ -3476,23 +5120,29 @@ function renderMedia(){
         item=>{
 
             return(
-                currentFilter==="all" ||
-                item.type===currentFilter
+                currentFilter ===
+                "all" ||
+                item.type ===
+                currentFilter
             );
 
         }
     );
 
 
-    if(!items.length){
+    if(
+        !items.length
+    ){
 
         empty.style.display =
         "block";
+
 
         empty.textContent =
         mediaStore.length
         ? "No media found."
         : "No photos or videos have been added yet.";
+
 
         return;
 
@@ -3511,6 +5161,7 @@ function renderMedia(){
                 "div"
             );
 
+
             card.className =
             "gallery-item";
 
@@ -3519,7 +5170,8 @@ function renderMedia(){
 
 
             if(
-                item.type==="video"
+                item.type ===
+                "video"
             ){
 
                 media =
@@ -3527,10 +5179,21 @@ function renderMedia(){
                     "video"
                 );
 
-                media.controls=false;
-                media.muted=true;
-                media.playsInline=true;
-                media.preload="metadata";
+
+                media.controls =
+                false;
+
+
+                media.muted =
+                true;
+
+
+                media.playsInline =
+                true;
+
+
+                media.preload =
+                "metadata";
 
             }
             else{
@@ -3540,7 +5203,9 @@ function renderMedia(){
                     "img"
                 );
 
-                media.loading="lazy";
+
+                media.loading =
+                "lazy";
 
             }
 
@@ -3548,19 +5213,9 @@ function renderMedia(){
             media.src =
             item.url;
 
+
             media.alt =
             item.name;
-
-
-            media.onerror =
-            function(){
-
-                console.error(
-                    "Media failed:",
-                    item.url
-                );
-
-            };
 
 
             const caption =
@@ -3568,8 +5223,10 @@ function renderMedia(){
                 "div"
             );
 
+
             caption.className =
             "gallery-caption";
+
 
             caption.textContent =
             item.name;
@@ -3578,6 +5235,7 @@ function renderMedia(){
             card.appendChild(
                 media
             );
+
 
             card.appendChild(
                 caption
@@ -3607,10 +5265,12 @@ function openViewer(item){
         "sectionViewer"
     );
 
+
     const title =
     document.getElementById(
         "sectionViewerTitle"
     );
+
 
     const content =
     document.getElementById(
@@ -3621,6 +5281,7 @@ function openViewer(item){
     content.innerHTML =
     "";
 
+
     title.textContent =
     item.name;
 
@@ -3629,7 +5290,8 @@ function openViewer(item){
 
 
     if(
-        item.type==="video"
+        item.type ===
+        "video"
     ){
 
         media =
@@ -3637,9 +5299,17 @@ function openViewer(item){
             "video"
         );
 
-        media.controls=true;
-        media.autoplay=true;
-        media.playsInline=true;
+
+        media.controls =
+        true;
+
+
+        media.autoplay =
+        true;
+
+
+        media.playsInline =
+        true;
 
     }
     else{
@@ -3654,6 +5324,7 @@ function openViewer(item){
 
     media.src =
     item.url;
+
 
     media.className =
     "section-view-media";
@@ -3671,9 +5342,11 @@ function openViewer(item){
 
     viewer.scrollIntoView({
 
-        behavior:"smooth",
+        behavior:
+        "smooth",
 
-        block:"center"
+        block:
+        "center"
 
     });
 
@@ -3765,4 +5438,5 @@ setInterval(
 
 
 </body>
+
 </html>
