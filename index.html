@@ -1,18 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1"
+    content="width=device-width, initial-scale=1.0"
 >
 
 <title>Working Model of Heart</title>
 
-<!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
+<meta
+    name="description"
+    content="Working Model of the Human Heart - Science Exhibition 2026"
+>
 
 <meta
     property="og:title"
@@ -30,76 +33,21 @@
 >
 
 <meta
-    property="og:image:secure_url"
-    content="https://its-working-heart.vercel.app/cover.png"
->
-
-<meta
-    property="og:image:type"
-    content="image/png"
->
-
-<meta
-    property="og:image:width"
-    content="1200"
->
-
-<meta
-    property="og:image:height"
-    content="630"
->
-
-<meta
-    property="og:image:alt"
-    content="Working Model of Heart"
->
-
-<meta
     property="og:type"
     content="website"
 >
 
-<meta
-    property="og:url"
-    content="https://its-working-heart.vercel.app/"
->
-
-
-<!-- TWITTER / X -->
-
-<meta
-    name="twitter:card"
-    content="summary_large_image"
->
-
-<meta
-    name="twitter:title"
-    content="Working Model of Heart"
->
-
-<meta
-    name="twitter:description"
-    content="Working Model of the Human Heart — Science Exhibition 2026"
->
-
-<meta
-    name="twitter:image"
-    content="https://its-working-heart.vercel.app/cover.png"
->
-
-
 <link
     rel="icon"
-    type="image/png"
     href="/cover.png"
 >
 
 
 <style>
 
-/* =====================================================
-   BASIC
-===================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -110,104 +58,73 @@ html{
 }
 
 body{
-
     margin:0;
-
     background:#08090b;
-
     color:#fff;
-
     font-family:
         Arial,
+        Helvetica,
         sans-serif;
-
     overflow-x:hidden;
 }
 
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 nav{
-
     height:64px;
 
-    padding:0 6%;
+    padding:
+        0
+        6%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     background:#090a0cdd;
 
-    border-bottom:1px solid #292a2e;
+    border-bottom:
+        1px solid
+        #292a2e;
 
     position:sticky;
-
     top:0;
 
-    z-index:200;
+    z-index:500;
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+        blur(12px);
 }
 
-
 .brand{
-
-    font-size:19px;
-
+    font-size:20px;
     font-weight:700;
 }
 
-
-.brand span,
-h1 span,
-.red{
-
+.brand span{
     color:#ff2638;
 }
 
 
-.links{
-
-    display:flex;
-
-    gap:28px;
-}
-
-
-.links a{
-
-    color:#eee;
-
-    text-decoration:none;
-
-    font-size:14px;
-}
-
-
-.links a:hover{
-
-    color:#ff2638;
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* MENU BUTTON */
 
 .settings-btn{
+    width:40px;
+    height:40px;
 
-    width:38px;
+    border:
+        1px solid
+        #383a40;
 
-    height:38px;
-
-    border:1px solid #383a40;
-
-    border-radius:9px;
+    border-radius:10px;
 
     background:#111317;
 
@@ -224,13 +141,8 @@ h1 span,
     cursor:pointer;
 }
 
-
 .settings-btn span{
-
-    display:block;
-
-    width:18px;
-
+    width:19px;
     height:2px;
 
     background:#fff;
@@ -239,97 +151,92 @@ h1 span,
 }
 
 
-.settings-menu{
+/* =========================================================
+   SETTINGS
+========================================================= */
 
+.settings-menu{
     position:fixed;
 
     top:76px;
-
     right:6%;
 
-    width:min(340px,88vw);
+    width:
+        min(
+            340px,
+            88vw
+        );
 
-    z-index:500;
+    z-index:1000;
 
     display:none;
 
     padding:18px;
 
-    border:1px solid #3a3c42;
+    border:
+        1px solid
+        #3a3c42;
 
     border-radius:16px;
 
     background:#101114;
 
-    box-shadow:0 20px 60px #000b;
+    box-shadow:
+        0 20px 60px #000b;
 }
 
-
 .settings-menu.show{
-
     display:block;
 }
 
-
 .settings-head{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:15px;
 }
 
-
 .settings-head h3{
-
     margin:0;
-
     color:#ff2638;
 }
 
-
 .settings-head button{
-
     border:0;
-
     background:none;
-
     color:#fff;
-
     font-size:25px;
-
     cursor:pointer;
 }
 
-
 .settings-card{
-
     display:flex;
-
     gap:14px;
 
-    padding:17px;
+    padding:16px;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
     border-radius:12px;
 
     background:#111317;
 }
 
-
 .settings-card h4{
-
-    margin:0 0 5px;
+    margin:
+        0
+        0
+        5px;
 }
 
-
 .settings-card p{
-
-    margin:0 0 12px;
+    margin:
+        0
+        0
+        12px;
 
     color:#aaa;
 
@@ -338,19 +245,15 @@ h1 span,
     line-height:1.5;
 }
 
-
 .settings-password{
-
-    margin-top:12px;
-
     padding-top:12px;
 
-    border-top:1px solid #292b31;
+    border-top:
+        1px solid
+        #292b31;
 }
 
-
 .settings-password label{
-
     display:block;
 
     font-size:9px;
@@ -364,16 +267,16 @@ h1 span,
     margin-bottom:7px;
 }
 
-
 .settings-password input{
-
     width:100%;
 
-    padding:10px 11px;
+    padding:10px;
 
     background:#08090b;
 
-    border:1px solid #383a40;
+    border:
+        1px solid
+        #383a40;
 
     border-radius:8px;
 
@@ -382,9 +285,7 @@ h1 span,
     outline:none;
 }
 
-
 .settings-action{
-
     width:100%;
 
     margin-top:8px;
@@ -404,27 +305,16 @@ h1 span,
     cursor:pointer;
 }
 
-
 #settingsPasswordMessage{
-
     font-size:11px;
-
     margin-top:7px;
-
     min-height:14px;
 }
 
 
-/* =====================================================
-   RATING SYSTEM
-===================================================== */
-
-/*
-   Compact total-rating badge.
-
-   It is fixed so the rating information stays available
-   without changing the document flow or pushing content.
-*/
+/* =========================================================
+   COMPACT RATING BADGE
+========================================================= */
 
 .rating-badge{
 
@@ -432,174 +322,137 @@ h1 span,
 
     left:18px;
 
-    top:152px;
+    top:150px;
 
-    z-index:150;
+    z-index:400;
+
+    width:auto;
+
+    max-width:275px;
+
+    min-width:0;
 
     display:flex;
 
     align-items:center;
 
-    gap:8px;
+    gap:7px;
 
-    padding:12px 16px;
+    padding:
+        10px
+        13px;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
     border-radius:18px;
 
     background:#111317ee;
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:
+        blur(12px);
 
     box-shadow:
         0 10px 35px #0008,
         0 0 25px #ff263820;
 
-    color:#fff;
-
     font-size:13px;
 
     font-weight:700;
 
-    transition:
-        transform .35s ease,
-        opacity .35s ease,
-        box-shadow .35s ease;
-}
-
-
-.rating-badge.animate{
+    white-space:nowrap;
 
     animation:
-        ratingBadgeIn .65s ease,
-        ratingGlow 2.5s ease-in-out infinite;
+        ratingBadgeIn
+        .65s ease;
 }
 
+.rating-star-small{
+    color:#ffd52a;
+    font-size:20px;
+    line-height:1;
+}
+
+.rating-average{
+    color:#ffd52a;
+    font-weight:800;
+}
+
+.rating-count{
+    color:#aaa;
+    font-weight:400;
+}
 
 @keyframes ratingBadgeIn{
 
     from{
-
         opacity:0;
-
         transform:
             translateX(-25px)
             scale(.9);
-
     }
 
     to{
-
         opacity:1;
-
         transform:
             translateX(0)
             scale(1);
-
     }
-
 }
 
 
-@keyframes ratingGlow{
-
-    0%,
-    100%{
-
-        box-shadow:
-            0 10px 35px #0008,
-            0 0 18px #ff263815;
-
-    }
-
-    50%{
-
-        box-shadow:
-            0 10px 35px #0008,
-            0 0 28px #ff263835;
-
-    }
-
-}
-
-
-.rating-star-small{
-
-    color:#ffd52a;
-
-    font-size:20px;
-
-    line-height:1;
-}
-
-
-.rating-average{
-
-    color:#ffd52a;
-
-    font-weight:800;
-}
-
-
-.rating-count{
-
-    color:#aaa;
-
-    font-weight:400;
-}
-
-
-/*
-   Rating prompt.
-
-   It appears near the top without taking up permanent
-   page space.
-*/
+/* =========================================================
+   RATING PROMPT
+========================================================= */
 
 .rating-prompt{
 
     position:fixed;
 
-    left:20px;
-
-    right:20px;
+    left:50%;
 
     top:76px;
 
-    max-width:650px;
+    transform:
+        translateX(-50%);
 
-    margin:auto;
+    z-index:600;
 
-    z-index:300;
+    width:
+        min(
+            410px,
+            calc(100vw - 30px)
+        );
 
     display:flex;
 
     align-items:center;
 
-    gap:15px;
+    gap:10px;
 
-    padding:14px 17px;
+    padding:
+        11px
+        13px;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
-    border-radius:18px;
+    border-radius:16px;
 
-    background:#111317f5;
+    background:#111317f7;
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:
+        blur(15px);
 
     box-shadow:
-        0 20px 60px #000b,
-        0 0 35px #ff263820;
+        0 20px 60px #000b;
 
     transition:
-
         opacity .4s ease,
-
         transform .4s ease;
 }
-
 
 .rating-prompt.hidden{
 
@@ -608,93 +461,67 @@ h1 span,
     pointer-events:none;
 
     transform:
-        translateY(-20px)
+        translateX(-50%)
+        translateY(-18px)
         scale(.96);
 }
 
-
 .rating-heart{
 
-    width:55px;
-
-    height:55px;
+    width:45px;
+    height:45px;
 
     flex:none;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
 
     background:#ff2638;
 
-    font-size:27px;
+    font-size:22px;
 
     box-shadow:
         0 0 25px #ff263866;
 
     animation:
-        ratingHeartPulse 1.5s infinite;
+        heartPulse
+        1.5s
+        infinite;
 }
 
-
-@keyframes ratingHeartPulse{
-
-    0%,
-    100%{
-
-        transform:scale(1);
-
-    }
+@keyframes heartPulse{
 
     50%{
-
         transform:scale(1.08);
 
         box-shadow:
-            0 0 35px #ff263888;
-
+            0 0 32px
+            #ff263888;
     }
-
 }
 
-
 .rating-info{
-
-    min-width:130px;
-
+    min-width:100px;
     flex:1;
 }
 
-
 .rating-title{
-
+    font-size:13px;
     font-weight:800;
-
-    font-size:14px;
-
-    margin-bottom:5px;
+    margin-bottom:4px;
 }
 
-
 .rating-current{
-
-    font-size:12px;
-
+    font-size:11px;
     color:#aaa;
 }
 
-
 .rating-stars{
-
     display:flex;
-
-    gap:4px;
-
-    align-items:center;
+    gap:1px;
 }
-
 
 .rating-star{
 
@@ -706,132 +533,121 @@ h1 span,
 
     color:#383a42;
 
-    font-size:30px;
+    font-size:25px;
 
     cursor:pointer;
 
     line-height:1;
 
-    transition:
-
-        transform .15s ease,
-
-        color .15s ease;
+    transition:.15s;
 }
 
-
 .rating-star:hover{
-
     transform:scale(1.15);
-
     color:#ffd52a;
 }
 
-
 .rating-star.active{
-
     color:#ffd52a;
 
     text-shadow:
-        0 0 12px #ffd52a88;
+        0 0 12px
+        #ffd52a88;
 }
-
 
 .rating-confirm{
 
     display:none;
 
-    margin-top:6px;
+    margin-top:4px;
 
-    padding:6px 10px;
+    padding:
+        5px
+        9px;
 
-    border:1px solid #ff2638;
+    border:0;
 
-    border-radius:7px;
+    border-radius:6px;
 
     background:#ff2638;
 
     color:#fff;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
     cursor:pointer;
 }
 
-
 .rating-confirm.show{
-
     display:inline-block;
 }
 
-
 .rating-saving{
-
     display:none;
 
-    padding:8px 12px;
+    padding:
+        7px
+        10px;
 
-    border-radius:8px;
+    border-radius:7px;
 
     background:#ff2638;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:800;
-
-    white-space:nowrap;
-
 }
-
 
 .rating-saving.show{
-
     display:block;
-
 }
 
-
 .rating-rated{
-
     display:none;
 
-    padding:8px 12px;
+    padding:
+        7px
+        10px;
 
-    border-radius:9px;
+    border-radius:8px;
 
     background:#183820;
 
-    border:1px solid #4bba69;
+    border:
+        1px solid
+        #4bba69;
 
     color:#75e993;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:800;
 }
 
-
 .rating-rated.show{
-
     display:block;
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero{
 
     min-height:600px;
 
-    padding:70px 7%;
+    padding:
+        70px
+        7%;
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 
     align-items:center;
 
@@ -847,7 +663,6 @@ h1 span,
         );
 }
 
-
 .hero:before{
 
     content:"";
@@ -856,7 +671,7 @@ h1 span,
 
     inset:0;
 
-    opacity:.18;
+    opacity:.16;
 
     background-image:
 
@@ -874,12 +689,9 @@ h1 span,
     background-size:42px 42px;
 }
 
-
-.hero>*{
-
+.hero > *{
     position:relative;
 }
-
 
 .eyebrow{
 
@@ -892,7 +704,6 @@ h1 span,
     font-weight:bold;
 }
 
-
 .hero h1{
 
     font-size:
@@ -904,9 +715,14 @@ h1 span,
 
     line-height:.98;
 
-    margin:18px 0;
+    margin:
+        18px
+        0;
 }
 
+.hero h1 span{
+    color:#ff2638;
+}
 
 .hero p{
 
@@ -919,14 +735,15 @@ h1 span,
     line-height:1.65;
 }
 
-
 .btn{
 
     display:inline-block;
 
     margin-top:25px;
 
-    padding:14px 22px;
+    padding:
+        14px
+        22px;
 
     background:#ff2638;
 
@@ -939,7 +756,8 @@ h1 span,
     font-weight:bold;
 
     box-shadow:
-        0 12px 30px #ff263833;
+        0 12px 30px
+        #ff263833;
 
     transition:.25s;
 
@@ -948,16 +766,14 @@ h1 span,
     cursor:pointer;
 }
 
-
 .btn:hover{
-
     transform:translateY(-3px);
 }
 
 
-/* =====================================================
+/* =========================================================
    HEARTBEAT
-===================================================== */
+========================================================= */
 
 .bpm{
 
@@ -967,7 +783,9 @@ h1 span,
 
     padding:12px;
 
-    border:1px solid #383a40;
+    border:
+        1px solid
+        #383a40;
 
     border-radius:10px;
 
@@ -980,64 +798,53 @@ h1 span,
     align-items:center;
 }
 
-
 .pulse{
 
     width:31px;
-
     height:31px;
 
     border-radius:50%;
 
     display:grid;
-
     place-items:center;
 
     background:#ff2638;
 
-    animation:pulse 1s infinite;
+    animation:
+        pulse 1s infinite;
 }
-
 
 @keyframes pulse{
 
     50%{
-
         transform:scale(1.15);
 
         box-shadow:
-            0 0 25px #ff263888;
-
+            0 0 25px
+            #ff263888;
     }
-
 }
 
 
-/* =====================================================
+/* =========================================================
    ECG
-===================================================== */
+========================================================= */
 
 .ecg{
 
     position:absolute;
 
     bottom:18px;
-
     left:0;
 
     width:100%;
-
     height:75px;
 }
 
-
 .ecg svg{
-
     width:100%;
-
     height:100%;
 }
-
 
 .ecg polyline{
 
@@ -1056,29 +863,29 @@ h1 span,
     stroke-dashoffset:900;
 
     animation:
-        ecg 2.2s linear infinite;
+        ecg
+        2.2s
+        linear
+        infinite;
 
     filter:
         drop-shadow(
-            0 0 7px #ff2638
+            0 0 7px
+            #ff2638
         );
 }
-
 
 @keyframes ecg{
 
     to{
-
         stroke-dashoffset:0;
-
     }
-
 }
 
 
-/* =====================================================
+/* =========================================================
    INFO BAR
-===================================================== */
+========================================================= */
 
 .bar{
 
@@ -1092,39 +899,41 @@ h1 span,
 
     background:#111317;
 
-    border:1px solid #303238;
+    border:
+        1px solid
+        #303238;
 
     color:#aaa;
 }
 
-
 .bar span{
-
     color:#ff2638;
-
     font-weight:bold;
 }
 
-
 .bar b{
-
-    margin:0 15px;
+    margin:
+        0
+        15px;
 
     color:#555;
 }
 
 
-/* =====================================================
+/* =========================================================
    SECTIONS
-===================================================== */
+========================================================= */
 
 section{
 
-    padding:80px 7%;
+    padding:
+        80px
+        7%;
 
-    border-top:1px solid #202126;
+    border-top:
+        1px solid
+        #202126;
 }
-
 
 .title{
 
@@ -1133,18 +942,18 @@ section{
     font-size:38px;
 }
 
-
 .title span{
-
     color:#ff2638;
 }
-
 
 .sub{
 
     max-width:700px;
 
-    margin:0 auto 42px;
+    margin:
+        0
+        auto
+        42px;
 
     text-align:center;
 
@@ -1154,9 +963,99 @@ section{
 }
 
 
-/* =====================================================
+/* =========================================================
+   TEAM
+========================================================= */
+
+.team-members{
+    max-width:1100px;
+    margin:auto;
+}
+
+.team-members-list{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.leader-box{
+
+    text-align:center;
+
+    margin:
+        0
+        auto
+        35px;
+}
+
+.leader-label{
+
+    color:#ff2638;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+.leader-name{
+
+    font-size:26px;
+
+    font-weight:800;
+}
+
+.member-card{
+
+    padding:21px;
+
+    border:
+        1px solid
+        #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-align:center;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.member-card:first-child{
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 25px
+        #ff263820;
+}
+
+.member-card:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:#ff2638;
+}
+
+
+/* =========================================================
    ABOUT
-===================================================== */
+========================================================= */
 
 .about{
 
@@ -1164,126 +1063,117 @@ section{
 
     margin:auto;
 
-    display:grid;
-
-    grid-template-columns:1fr 1.2fr;
-
-    gap:50px;
-
-    align-items:center;
+    display:block;
 }
-
 
 .about h2{
 
     font-size:34px;
+
+    margin-bottom:18px;
 }
 
+.about h2 span{
+    color:#ff2638;
+}
 
 .about p{
 
     color:#c5c7cc;
 
     line-height:1.7;
+
+    font-size:17px;
+
+    max-width:900px;
 }
 
 
-/* =====================================================
-   FEATURES
-===================================================== */
+/* =========================================================
+   SMALL HEART POINTS
+========================================================= */
 
-.features,
-.steps{
+/*
+   These replace the four large cards.
+*/
+
+.heart-points{
+
+    max-width:900px;
+
+    margin:
+        28px
+        auto
+        0;
 
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        1fr
+        1fr;
 
-    gap:15px;
+    gap:
+        0
+        35px;
 }
 
+.heart-point{
 
-.feature,
-.step{
+    display:flex;
 
-    padding:22px;
+    align-items:flex-start;
 
-    border:1px solid #34363c;
+    gap:12px;
 
-    border-radius:13px;
+    padding:
+        13px
+        0;
 
-    background:#111317;
+    border-bottom:
+        1px solid
+        #202126;
 
-    text-align:center;
+    color:#bfc1c7;
 
-    transition:.3s;
+    font-size:14px;
+
+    line-height:1.55;
 }
 
-
-.feature:hover,
-.step:hover{
-
-    transform:translateY(-6px);
-
-    border-color:#ff2638;
-}
-
-
-.feature .icon,
-.step .icon{
-
-    font-size:29px;
+.heart-point-icon{
 
     color:#ff2638;
 
-    margin-bottom:10px;
+    font-size:17px;
+
+    flex:none;
+
+    margin-top:1px;
+}
+
+.heart-point strong{
+
+    color:#fff;
+
+    display:block;
+
+    margin-bottom:2px;
 }
 
 
-.feature p,
-.step p{
-
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-
-.num{
-
-    width:30px;
-
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:0 auto 17px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   HEART AWARENESS
-   SMALL POINTS - NOT BUTTONS
-===================================================== */
+/* =========================================================
+   AWARENESS
+========================================================= */
 
 .awareness{
 
     max-width:1100px;
 
-    margin:70px auto 0;
+    margin:
+        70px
+        auto
+        0;
 }
-
 
 .awareness h2{
 
@@ -1299,18 +1189,18 @@ section{
     margin-bottom:18px;
 }
 
-
 .awareness h2 span{
-
     color:#ff2638;
 }
-
 
 .awareness-intro{
 
     max-width:760px;
 
-    margin:0 auto 35px;
+    margin:
+        0
+        auto
+        35px;
 
     text-align:center;
 
@@ -1319,21 +1209,22 @@ section{
     line-height:1.7;
 }
 
-
 .awareness-list{
 
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        1fr
+        1fr;
 
-    gap:12px 30px;
+    gap:
+        12px
+        30px;
 
     max-width:950px;
 
     margin:auto;
 }
-
 
 .awareness-point{
 
@@ -1351,9 +1242,10 @@ section{
 
     line-height:1.55;
 
-    border-bottom:1px solid #202126;
+    border-bottom:
+        1px solid
+        #202126;
 }
-
 
 .awareness-point:before{
 
@@ -1362,7 +1254,6 @@ section{
     position:absolute;
 
     left:3px;
-
     top:10px;
 
     color:#ff2638;
@@ -1370,111 +1261,14 @@ section{
     font-size:13px;
 }
 
-
 .awareness-point strong{
-
     color:#fff;
 }
 
 
-/* =====================================================
-   TEAM MEMBERS
-===================================================== */
-
-.team-members{
-
-    max-width:1100px;
-
-    margin:auto;
-}
-
-
-.team-members-list{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:15px;
-
-    max-width:900px;
-
-    margin:auto;
-}
-
-
-.member-card{
-
-    padding:23px;
-
-    border:1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:700;
-
-    transition:.3s;
-}
-
-
-.member-card:first-child{
-
-    border-color:#ff2638;
-
-    box-shadow:
-        0 0 25px #ff263820;
-}
-
-
-.member-card:hover{
-
-    transform:translateY(-4px);
-
-    border-color:#ff2638;
-}
-
-
-.leader-box{
-
-    text-align:center;
-
-    margin:
-        0
-        auto
-        40px;
-}
-
-
-.leader-label{
-
-    color:#ff2638;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-
-.leader-name{
-
-    font-size:26px;
-
-    font-weight:800;
-}
-
-
-/* =====================================================
+/* =========================================================
    MEDIA
-===================================================== */
+========================================================= */
 
 .media-view-buttons{
 
@@ -1486,19 +1280,25 @@ section{
 
     gap:10px;
 
-    margin:0 auto 28px;
+    margin:
+        0
+        auto
+        28px;
 }
-
 
 .media-filter{
 
-    border:1px solid #3a3c42;
+    border:
+        1px solid
+        #3a3c42;
 
     background:#111317;
 
     color:#fff;
 
-    padding:11px 17px;
+    padding:
+        10px
+        16px;
 
     border-radius:9px;
 
@@ -1509,7 +1309,6 @@ section{
     transition:.25s;
 }
 
-
 .media-filter:hover,
 .media-filter.active{
 
@@ -1518,6 +1317,23 @@ section{
     border-color:#ff2638;
 }
 
+.firebase-status{
+
+    text-align:center;
+
+    margin:
+        -8px
+        auto
+        24px;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+.firebase-status.live{
+    color:#69e58a;
+}
 
 .gallery{
 
@@ -1526,7 +1342,10 @@ section{
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(150px,190px)
+            minmax(
+                150px,
+                190px
+            )
         );
 
     justify-content:center;
@@ -1534,12 +1353,13 @@ section{
     gap:15px;
 }
 
-
 .gallery-item{
 
     background:#111317;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
     border-radius:13px;
 
@@ -1547,17 +1367,18 @@ section{
 
     cursor:pointer;
 
-    animation:galleryIn .45s;
+    animation:
+        galleryIn
+        .45s;
 }
-
 
 .gallery-item:hover{
 
     border-color:#ff2638;
 
-    transform:translateY(-3px);
+    transform:
+        translateY(-3px);
 }
-
 
 .gallery-item img,
 .gallery-item video{
@@ -1570,7 +1391,6 @@ section{
 
     object-fit:cover;
 }
-
 
 .gallery-caption{
 
@@ -1587,7 +1407,6 @@ section{
     text-overflow:ellipsis;
 }
 
-
 .gallery-empty{
 
     text-align:center;
@@ -1597,59 +1416,38 @@ section{
     padding:35px;
 }
 
-
 @keyframes galleryIn{
 
     from{
-
         opacity:0;
-
         transform:translateY(15px);
-
     }
 
     to{
-
         opacity:1;
-
         transform:none;
-
     }
-
 }
 
 
-.firebase-status{
-
-    text-align:center;
-
-    margin:-8px auto 24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-
-.firebase-status.live{
-
-    color:#69e58a;
-}
-
-
-/* =====================================================
-   VIEWER
-===================================================== */
+/* =========================================================
+   MEDIA VIEWER
+========================================================= */
 
 .section-viewer{
 
     display:none;
 
-    margin:28px auto 0;
+    margin:
+        28px
+        auto
+        0;
 
     max-width:760px;
 
-    border:1px solid #ff2638;
+    border:
+        1px solid
+        #ff2638;
 
     border-radius:16px;
 
@@ -1658,12 +1456,9 @@ section{
     padding:14px;
 }
 
-
 .section-viewer.show{
-
     display:block;
 }
-
 
 .section-viewer-head{
 
@@ -1673,9 +1468,11 @@ section{
 
     justify-content:space-between;
 
-    padding:2px 4px 12px;
+    padding:
+        2px
+        4px
+        12px;
 }
-
 
 .section-viewer-head h3{
 
@@ -1686,7 +1483,6 @@ section{
     font-size:16px;
 }
 
-
 .section-viewer-head button{
 
     border:0;
@@ -1696,7 +1492,6 @@ section{
     color:#fff;
 
     width:32px;
-
     height:32px;
 
     border-radius:50%;
@@ -1705,7 +1500,6 @@ section{
 
     cursor:pointer;
 }
-
 
 .section-viewer-content{
 
@@ -1717,7 +1511,6 @@ section{
 
     min-height:180px;
 }
-
 
 .section-view-media{
 
@@ -1731,9 +1524,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================================================
    PRESENTATION
-===================================================== */
+========================================================= */
 
 .presentation{
 
@@ -1742,29 +1535,29 @@ section{
     margin:auto;
 }
 
-
 .presentation-grid{
 
     display:grid;
 
     grid-template-columns:
-        1fr 1fr;
+        1fr
+        1fr;
 
     gap:25px;
 }
-
 
 .presentation-card{
 
     padding:18px;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
     border-radius:16px;
 
     background:#111317;
 }
-
 
 .presentation-card h3{
 
@@ -1777,7 +1570,6 @@ section{
 
     text-align:center;
 }
-
 
 .presentation-video{
 
@@ -1793,35 +1585,91 @@ section{
 }
 
 
-/*
-   Large PDF viewer so the document is actually readable.
-*/
+/* =========================================================
+   PDF READER
+========================================================= */
 
-.pdf-frame{
+.pdf-reader{
 
     width:100%;
 
     height:650px;
 
-    border:0;
+    background:#fff;
 
     border-radius:10px;
 
-    background:#fff;
+    overflow:hidden;
 
-    display:block;
+    position:relative;
 }
 
 
-.pdf-open{
+/*
+   Native browser PDF reader.
+   The object element is the main viewer.
+*/
+
+.pdf-reader object{
+
+    width:100%;
+
+    height:100%;
 
     display:block;
 
+    background:#fff;
+}
+
+
+/*
+   Fallback message.
+*/
+
+.pdf-fallback{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    padding:25px;
+
     text-align:center;
 
-    margin-top:12px;
+    background:#fff;
 
-    padding:11px;
+    color:#222;
+
+    z-index:0;
+}
+
+.pdf-fallback strong{
+    font-size:18px;
+}
+
+.pdf-fallback p{
+    margin:0;
+    color:#555;
+    font-size:13px;
+}
+
+.pdf-open{
+
+    display:inline-block;
+
+    padding:
+        11px
+        17px;
 
     background:#ff2638;
 
@@ -1832,12 +1680,109 @@ section{
     text-decoration:none;
 
     font-weight:700;
+
+    position:relative;
+
+    z-index:2;
 }
 
 
-/* =====================================================
+/*
+   Put the object above fallback when browser
+   supports PDF.
+*/
+
+.pdf-reader object{
+    position:relative;
+    z-index:1;
+}
+
+
+/* =========================================================
    FUNCTION
-===================================================== */
+========================================================= */
+
+.steps{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap:15px;
+}
+
+.step{
+
+    padding:22px;
+
+    border:
+        1px solid
+        #34363c;
+
+    border-radius:13px;
+
+    background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.step:hover{
+
+    transform:
+        translateY(-6px);
+
+    border-color:#ff2638;
+}
+
+.step .icon{
+
+    font-size:29px;
+
+    color:#ff2638;
+
+    margin-bottom:10px;
+}
+
+.step p{
+
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.num{
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    display:grid;
+
+    place-items:center;
+
+    margin:
+        0
+        auto
+        17px;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact-grid{
 
@@ -1848,11 +1793,13 @@ section{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            3,
+            1fr
+        );
 
     gap:18px;
 }
-
 
 .contact-card{
 
@@ -1864,7 +1811,9 @@ section{
 
     padding:24px;
 
-    border:1px solid #34363c;
+    border:
+        1px solid
+        #34363c;
 
     border-radius:14px;
 
@@ -1877,19 +1826,17 @@ section{
     transition:.3s;
 }
 
-
 .contact-card:hover{
 
-    transform:translateY(-5px);
+    transform:
+        translateY(-5px);
 
     border-color:#ff2638;
 }
 
-
 .contact-icon{
 
     width:45px;
-
     height:45px;
 
     border-radius:50%;
@@ -1907,12 +1854,13 @@ section{
     flex:none;
 }
 
-
 .contact-card h3{
 
-    margin:0 0 6px;
+    margin:
+        0
+        0
+        6px;
 }
-
 
 .contact-card p{
 
@@ -1928,19 +1876,23 @@ section{
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 footer{
 
-    padding:45px 7% 20px;
+    padding:
+        45px
+        7%
+        20px;
 
-    border-top:1px solid #292a30;
+    border-top:
+        1px solid
+        #292a30;
 
     background:#090a0c;
 }
-
 
 .footer-grid{
 
@@ -1951,17 +1903,17 @@ footer{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            3,
+            1fr
+        );
 
     gap:35px;
 }
 
-
 .footer-grid h3{
-
     color:#ff2638;
 }
-
 
 .footer-grid p{
 
@@ -1969,7 +1921,6 @@ footer{
 
     line-height:1.7;
 }
-
 
 .credit-name{
 
@@ -1982,7 +1933,6 @@ footer{
     line-height:1.5;
 }
 
-
 .credit-role{
 
     color:#ff2638;
@@ -1994,14 +1944,15 @@ footer{
     margin-top:8px;
 }
 
-
 .copy{
 
     text-align:center;
 
     color:#666;
 
-    border-top:1px solid #222;
+    border-top:
+        1px solid
+        #222;
 
     margin-top:30px;
 
@@ -2011,19 +1962,19 @@ footer{
 }
 
 
-/* =====================================================
+/* =========================================================
    REVEAL
-===================================================== */
+========================================================= */
 
 .reveal{
 
     opacity:0;
 
-    transform:translateY(25px);
+    transform:
+        translateY(25px);
 
     transition:.7s;
 }
-
 
 .reveal.show{
 
@@ -2033,9 +1984,9 @@ footer{
 }
 
 
-/* =====================================================
+/* =========================================================
    RESPONSIVE
-===================================================== */
+========================================================= */
 
 @media(max-width:800px){
 
@@ -2046,133 +1997,146 @@ footer{
         text-align:center;
     }
 
-
     .hero p{
-
         margin:auto;
     }
 
-
-    .about{
-
+    .heart-points{
         grid-template-columns:1fr;
     }
-
-
-    .features,
-    .steps{
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .footer-grid{
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .contact-grid{
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .presentation-grid{
-
-        grid-template-columns:1fr;
-    }
-
 
     .awareness-list{
-
         grid-template-columns:1fr;
     }
 
-
     .team-members-list{
-
         grid-template-columns:1fr;
+    }
+
+    .presentation-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:
+            1fr
+            1fr;
     }
 }
 
 
 @media(max-width:500px){
 
-    .features,
-    .steps,
-    .footer-grid{
-
-        grid-template-columns:1fr;
+    .brand{
+        font-size:18px;
     }
 
+    .hero{
+        padding:
+            60px
+            6%;
+    }
 
     .hero h1{
-
         font-size:45px;
     }
 
+    section{
+        padding:
+            65px
+            7%;
+    }
 
-    .contact-grid{
+    .title{
+        font-size:31px;
+    }
 
+    .contact-grid,
+    .steps,
+    .footer-grid{
         grid-template-columns:1fr;
     }
 
-
     .gallery{
-
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(
+                2,
+                1fr
+            );
     }
 
-
-    .rating-prompt{
-
-        left:12px;
-
-        right:12px;
-
-        padding:12px;
-
-        gap:10px;
-    }
-
-
-    .rating-heart{
-
-        width:48px;
-
-        height:48px;
-
-        font-size:23px;
-    }
-
-
-    .rating-star{
-
-        font-size:25px;
-    }
-
+    /*
+       Small rating badge on phones.
+    */
 
     .rating-badge{
 
         left:18px;
 
-        top:150px;
+        top:145px;
 
-        padding:10px 13px;
+        max-width:
+            255px;
+
+        padding:
+            9px
+            11px;
+
+        font-size:12px;
     }
 
+    .rating-star-small{
+        font-size:18px;
+    }
 
-    .pdf-frame{
+    /*
+       Rating prompt is also compact.
+    */
 
-        height:560px;
+    .rating-prompt{
+
+        width:
+            calc(
+                100vw - 28px
+            );
+
+        padding:
+            10px;
+
+        gap:8px;
+    }
+
+    .rating-heart{
+
+        width:42px;
+        height:42px;
+
+        font-size:20px;
+    }
+
+    .rating-star{
+        font-size:23px;
+    }
+
+    /*
+       PDF reader remains large enough
+       to read on mobile.
+    */
+
+    .pdf-reader{
+        height:600px;
     }
 }
-
 
 </style>
 
@@ -2183,7 +2147,7 @@ footer{
 
 
 <!-- =====================================================
-     NAV
+     NAVIGATION
 ===================================================== -->
 
 <nav>
@@ -2199,7 +2163,7 @@ Working Model of
 <button
     class="settings-btn"
     onclick="toggleSettings()"
-    aria-label="Settings"
+    aria-label="Menu"
 >
 
 <span></span>
@@ -2231,7 +2195,6 @@ Working Model of
 Rate Our Project
 </div>
 
-
 <div
     id="ratingCurrent"
     class="rating-current"
@@ -2252,7 +2215,6 @@ Rate Our Project
 <button
     class="rating-star"
     data-rating="1"
-    aria-label="1 star"
 >
 ★
 </button>
@@ -2260,7 +2222,6 @@ Rate Our Project
 <button
     class="rating-star"
     data-rating="2"
-    aria-label="2 stars"
 >
 ★
 </button>
@@ -2268,7 +2229,6 @@ Rate Our Project
 <button
     class="rating-star"
     data-rating="3"
-    aria-label="3 stars"
 >
 ★
 </button>
@@ -2276,7 +2236,6 @@ Rate Our Project
 <button
     class="rating-star"
     data-rating="4"
-    aria-label="4 stars"
 >
 ★
 </button>
@@ -2284,7 +2243,6 @@ Rate Our Project
 <button
     class="rating-star"
     data-rating="5"
-    aria-label="5 stars"
 >
 ★
 </button>
@@ -2321,12 +2279,12 @@ Saving...
 
 
 <!-- =====================================================
-     COMPACT RATING BADGE
+     COMPACT RATING TOTAL
 ===================================================== -->
 
 <div
     id="ratingBadge"
-    class="rating-badge animate"
+    class="rating-badge"
 >
 
 <span class="rating-star-small">
@@ -2351,7 +2309,7 @@ Saving...
 
 
 <!-- =====================================================
-     SETTINGS MENU
+     SETTINGS
 ===================================================== -->
 
 <div
@@ -2399,13 +2357,11 @@ the Firebase media editor.
 HOST PASSWORD
 </label>
 
-
 <input
     id="settingsPassword"
     type="password"
     placeholder="Enter password"
 >
-
 
 <button
     class="settings-action"
@@ -2413,7 +2369,6 @@ HOST PASSWORD
 >
 Open Editor
 </button>
-
 
 <div
     id="settingsPasswordMessage"
@@ -2458,15 +2413,15 @@ of the
 <p>
 
 This project demonstrates the working
-of the human heart and how it pumps
-blood throughout the body.
+of the human heart and how it pumps blood
+throughout the body.
 
 </p>
 
 
 <a
-    class="btn"
     href="#media"
+    class="btn"
     onclick="scrollToMedia(event)"
 >
 Explore the Images & Videos ↓
@@ -2478,7 +2433,6 @@ Explore the Images & Videos ↓
 <div class="pulse">
 ♥
 </div>
-
 
 <div>
 
@@ -2539,7 +2493,7 @@ BPM
 
 
 <!-- =====================================================
-     INFO BAR
+     INFO
 ===================================================== -->
 
 <div class="bar">
@@ -2562,7 +2516,7 @@ Aayushman Jha
 
 
 <!-- =====================================================
-     TEAM MEMBERS
+     TEAM
 ===================================================== -->
 
 <section
@@ -2649,102 +2603,106 @@ Sankalp Krishna
 
 <div class="about">
 
-<div></div>
-
-
-<div>
-
 <h2>
-
 About the
 <span>Heart</span>
-
 </h2>
 
 
 <p>
 
-The human heart is a muscular organ
-that continuously pumps blood throughout
-the body. Our working model demonstrates
-this pumping action in a simple and
-practical way.
+The human heart is a muscular organ that
+continuously pumps blood throughout the body.
+Our working model demonstrates this pumping
+action in a simple and practical way.
 
 </p>
 
 
-<div class="features">
+<!-- SMALL POINTS INSTEAD OF LARGE BUTTONS -->
+
+<div class="heart-points">
 
 
-<div class="feature">
+<div class="heart-point">
 
-<div class="icon">
+<div class="heart-point-icon">
 ♥
 </div>
 
-<h3>
+<div>
+
+<strong>
 Realistic Action
-</h3>
+</strong>
 
-<p>
-Pumping demonstration
-</p>
+Pumping demonstration of the heart's
+contraction and relaxation.
+
+</div>
 
 </div>
 
 
-<div class="feature">
+<div class="heart-point">
 
-<div class="icon">
-◉
+<div class="heart-point-icon">
+●
 </div>
 
-<h3>
+<div>
+
+<strong>
 Blood Flow
-</h3>
+</strong>
 
-<p>
-Shows circulation
-</p>
+Shows how blood moves through
+different parts of circulation.
+
+</div>
 
 </div>
 
 
-<div class="feature">
+<div class="heart-point">
 
-<div class="icon">
+<div class="heart-point-icon">
 ⚙
 </div>
 
-<h3>
-Mechanism
-</h3>
+<div>
 
-<p>
-Easy to understand
-</p>
+<strong>
+Mechanism
+</strong>
+
+A simple model helps explain
+how pumping takes place.
+
+</div>
 
 </div>
 
 
-<div class="feature">
+<div class="heart-point">
 
-<div class="icon">
+<div class="heart-point-icon">
 ▣
 </div>
 
-<h3>
+<div>
+
+<strong>
 Educational
-</h3>
+</strong>
 
-<p>
-Science project
-</p>
+Designed as a practical science
+exhibition demonstration.
+
+</div>
 
 </div>
 
-
-</div>
 
 </div>
 
@@ -2752,7 +2710,7 @@ Science project
 
 
 <!-- =====================================================
-     HEART AWARENESS
+     AWARENESS
 ===================================================== -->
 
 <div class="awareness">
@@ -2784,8 +2742,8 @@ value of prevention and early care.
 Hypertension:
 </strong>
 
-High blood pressure can place extra
-strain on the heart and blood vessels.
+High blood pressure can place extra strain
+on the heart and blood vessels.
 
 </div>
 
@@ -2927,9 +2885,8 @@ of Project
 
 <p class="sub">
 
-Everyone can view the project gallery.
-The host can manage image and video links
-from the editor.
+Explore photographs and videos of the
+Working Model of the Human Heart.
 
 </p>
 
@@ -2943,14 +2900,12 @@ from the editor.
 👀 See All
 </button>
 
-
 <button
     class="media-filter"
     onclick="filterMedia('photo',this)"
 >
 📸 Photos
 </button>
-
 
 <button
     class="media-filter"
@@ -2998,7 +2953,6 @@ No photos or videos have been added yet.
 Preview
 </h3>
 
-
 <button
     onclick="closeSectionViewer()"
 >
@@ -3041,7 +2995,7 @@ Presentation
 <p class="sub">
 
 Watch the animated presentation video
-and read the project presentation PDF.
+and read the complete project presentation.
 
 </p>
 
@@ -3049,7 +3003,9 @@ and read the project presentation PDF.
 <div class="presentation-grid">
 
 
-<!-- VIDEO -->
+<!-- =====================================================
+     VIDEO
+===================================================== -->
 
 <div class="presentation-card">
 
@@ -3071,7 +3027,9 @@ Your browser does not support video playback.
 </div>
 
 
-<!-- PDF -->
+<!-- =====================================================
+     PDF
+===================================================== -->
 
 <div class="presentation-card">
 
@@ -3080,12 +3038,18 @@ Your browser does not support video playback.
 </h3>
 
 
-<iframe
-    class="pdf-frame"
-    src="1.pdf#toolbar=1&navpanes=0&view=FitH"
-    title="Project Presentation PDF"
->
-</iframe>
+<div class="pdf-reader">
+
+<div class="pdf-fallback">
+
+<strong>
+📄 Project Presentation
+</strong>
+
+<p>
+If the built-in reader does not load,
+open the PDF directly.
+</p>
 
 
 <a
@@ -3094,7 +3058,29 @@ Your browser does not support video playback.
     target="_blank"
     rel="noopener"
 >
-📖 Open PDF for Full Reading
+📖 Open PDF
+</a>
+
+</div>
+
+
+<object
+    data="1.pdf#toolbar=1&navpanes=0&view=FitH"
+    type="application/pdf"
+>
+
+</object>
+
+</div>
+
+
+<a
+    class="pdf-open"
+    href="1.pdf"
+    target="_blank"
+    rel="noopener"
+>
+📖 Open PDF in Full Reader
 </a>
 
 </div>
@@ -3108,7 +3094,7 @@ Your browser does not support video playback.
 
 
 <!-- =====================================================
-     FUNCTION OF HEART
+     FUNCTION
 ===================================================== -->
 
 <section
@@ -3269,7 +3255,6 @@ about our Working Model of the Human Heart.
 ✉
 </div>
 
-
 <div>
 
 <h3>
@@ -3294,7 +3279,6 @@ aayushmanjha1108@gmail.com
 ☎
 </div>
 
-
 <div>
 
 <h3>
@@ -3315,7 +3299,6 @@ Phone
 <div class="contact-icon">
 ◆
 </div>
-
 
 <div>
 
@@ -3352,7 +3335,6 @@ Team Red Diamond
 About
 </h3>
 
-
 <p>
 
 Educational project to understand
@@ -3370,13 +3352,11 @@ human heart.
 Team
 </h3>
 
-
-<p class="leader">
+<p>
 
 Team Red Diamond
 
 </p>
-
 
 <p>
 
@@ -3432,21 +3412,21 @@ Raushan Kumar
 
 
 <!-- =====================================================
-     BASIC JAVASCRIPT
+     NORMAL JAVASCRIPT
 ===================================================== -->
 
 <script>
 
-/* =====================================================
+/* =========================================================
    HEARTBEAT
-===================================================== */
+========================================================= */
 
 const bpm =
     document.getElementById("bpm");
 
 
 setInterval(
-    () => {
+    function(){
 
         bpm.textContent =
             70 +
@@ -3459,16 +3439,16 @@ setInterval(
 );
 
 
-/* =====================================================
-   REVEAL ANIMATION
-===================================================== */
+/* =========================================================
+   REVEAL
+========================================================= */
 
-const obs =
+const revealObserver =
     new IntersectionObserver(
-        entries => {
+        function(entries){
 
             entries.forEach(
-                entry => {
+                function(entry){
 
                     if(
                         entry.isIntersecting
@@ -3485,7 +3465,7 @@ const obs =
 
         },
         {
-            threshold:.12
+            threshold:.1
         }
     );
 
@@ -3493,17 +3473,19 @@ const obs =
 document
     .querySelectorAll(".reveal")
     .forEach(
-        element => {
+        function(element){
 
-            obs.observe(element);
+            revealObserver.observe(
+                element
+            );
 
         }
     );
 
 
-/* =====================================================
+/* =========================================================
    SETTINGS
-===================================================== */
+========================================================= */
 
 window.toggleSettings =
 function(){
@@ -3512,9 +3494,8 @@ function(){
         .getElementById(
             "settingsMenu"
         )
-        .classList.toggle(
-            "show"
-        );
+        .classList
+        .toggle("show");
 
 };
 
@@ -3531,7 +3512,6 @@ function(){
             "settingsPassword"
         );
 
-
     const msg =
         document.getElementById(
             "settingsPasswordMessage"
@@ -3544,14 +3524,14 @@ function(){
     ){
 
         msg.textContent =
-            "✓ Access granted. Opening editor...";
+            "✓ Access granted.";
 
         msg.style.color =
             "#69e58a";
 
 
         setTimeout(
-            () => {
+            function(){
 
                 location.href =
                     "edit.html";
@@ -3575,33 +3555,28 @@ function(){
 };
 
 
-/* =====================================================
+/* =========================================================
    MEDIA SCROLL
-===================================================== */
+========================================================= */
 
 window.scrollToMedia =
 function(event){
 
     event.preventDefault();
 
-
-    const media =
-        document.getElementById(
-            "media"
-        );
-
-
-    media.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+    document
+        .getElementById("media")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
 
 };
 
 
-/* =====================================================
+/* =========================================================
    MEDIA VIEWER
-===================================================== */
+========================================================= */
 
 window.closeSectionViewer =
 function(){
@@ -3613,7 +3588,6 @@ function(){
         .classList
         .remove("show");
 
-
     document
         .getElementById(
             "sectionViewerContent"
@@ -3623,55 +3597,17 @@ function(){
 };
 
 
-/* =====================================================
-   MEDIA FILTER
-===================================================== */
+/* =========================================================
+   RATING
+========================================================= */
 
-window.filterMedia =
-function(
-    filter,
-    button
-){
-
-    currentFilter =
-        filter;
+let selectedRating = 0;
 
 
-    document
-        .querySelectorAll(
-            ".media-filter"
-        )
-        .forEach(
-            btn => {
-
-                btn.classList
-                    .remove(
-                        "active"
-                    );
-
-            }
-        );
-
-
-    if(button){
-
-        button.classList
-            .add("active");
-
-    }
-
-
-    renderMedia();
-
-};
-
-
-/* =====================================================
-   RATING UI
-===================================================== */
-
-let selectedRating =
-    0;
+const ratingPrompt =
+    document.getElementById(
+        "ratingPrompt"
+    );
 
 
 const ratingStars =
@@ -3683,12 +3619,6 @@ const ratingStars =
 const ratingConfirm =
     document.getElementById(
         "ratingConfirm"
-    );
-
-
-const ratingPrompt =
-    document.getElementById(
-        "ratingPrompt"
     );
 
 
@@ -3710,14 +3640,6 @@ const ratingCurrent =
     );
 
 
-/*
-   Use localStorage to remember that this browser
-   has already rated.
-
-   This prevents the same browser from repeatedly
-   submitting ratings after revisiting the website.
-*/
-
 function hasAlreadyRated(){
 
     return(
@@ -3725,15 +3647,6 @@ function hasAlreadyRated(){
             "workingHeartRated"
         ) === "yes"
     );
-
-}
-
-
-function showRatingControls(){
-
-    ratingPrompt
-        .classList
-        .remove("hidden");
 
 }
 
@@ -3747,11 +3660,6 @@ function hideRatingPrompt(){
 }
 
 
-/*
-   If this browser already rated, don't show the
-   star-selection controls again.
-*/
-
 if(
     hasAlreadyRated()
 ){
@@ -3761,16 +3669,14 @@ if(
 }
 
 
-/* =====================================================
-   STAR CLICK
-===================================================== */
+/* STAR SELECTION */
 
 ratingStars.forEach(
-    star => {
+    function(star){
 
         star.addEventListener(
             "click",
-            () => {
+            function(){
 
                 selectedRating =
                     Number(
@@ -3779,7 +3685,7 @@ ratingStars.forEach(
 
 
                 ratingStars.forEach(
-                    s => {
+                    function(s){
 
                         const value =
                             Number(
@@ -3808,13 +3714,11 @@ ratingStars.forEach(
 );
 
 
-/* =====================================================
-   CONFIRM RATING
-===================================================== */
+/* CONFIRM */
 
 ratingConfirm.addEventListener(
     "click",
-    async () => {
+    async function(){
 
         if(
             selectedRating < 1 ||
@@ -3838,10 +3742,9 @@ ratingConfirm.addEventListener(
 
 
         ratingStars.forEach(
-            star => {
+            function(star){
 
-                star.disabled =
-                    true;
+                star.disabled = true;
 
             }
         );
@@ -3859,7 +3762,7 @@ ratingConfirm.addEventListener(
 
         try{
 
-            await saveRating(
+            await window.saveRating(
                 selectedRating
             );
 
@@ -3880,17 +3783,13 @@ ratingConfirm.addEventListener(
                 .add("show");
 
 
-            /*
-               Show "Rated" briefly.
-            */
-
             setTimeout(
-                () => {
+                function(){
 
                     hideRatingPrompt();
 
                 },
-                1800
+                1500
             );
 
         }
@@ -3898,7 +3797,6 @@ ratingConfirm.addEventListener(
         catch(error){
 
             console.error(
-                "Rating save error:",
                 error
             );
 
@@ -3914,17 +3812,12 @@ ratingConfirm.addEventListener(
 
 
             ratingStars.forEach(
-                star => {
+                function(star){
 
                     star.disabled =
                         false;
 
                 }
-            );
-
-
-            alert(
-                "Could not save your rating. Please try again."
             );
 
         }
@@ -3933,31 +3826,29 @@ ratingConfirm.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    RATING DISPLAY
-===================================================== */
+========================================================= */
 
-function updateRatingDisplay(
+window.updateRatingDisplay =
+function(
     average,
     count
 ){
 
-    const ratingTotalText =
-        count
-        ? "⭐ " +
-          average.toFixed(1) +
-          " / 5 · " +
-          count +
-          (
-              count === 1
-              ? " rating"
-              : " ratings"
-          )
-        : "⭐ No ratings yet";
+    const averageText =
+        average.toFixed(1) +
+        " / 5";
 
 
-    ratingCurrent.textContent =
-        ratingTotalText;
+    const countText =
+        " · " +
+        count +
+        (
+            count === 1
+            ? " rating"
+            : " ratings"
+        );
 
 
     document
@@ -3965,8 +3856,7 @@ function updateRatingDisplay(
             "badgeValue"
         )
         .textContent =
-            average.toFixed(1) +
-            " / 5";
+            averageText;
 
 
     document
@@ -3974,29 +3864,71 @@ function updateRatingDisplay(
             "badgeText"
         )
         .textContent =
-            " · " +
-            count +
-            (
-                count === 1
-                ? " rating"
-                : " ratings"
-            );
-
-}
+            countText;
 
 
-/* =====================================================
-   KEEP SCROLL POSITION
-===================================================== */
+    ratingCurrent.textContent =
+        count
+        ? "⭐ " +
+          averageText +
+          countText
 
-/*
-   This helper records the current position and restores it
-   after Firebase changes the gallery.
-*/
+        : "⭐ No ratings yet";
 
-function saveScrollPosition(){
+};
 
-    return {
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+let currentFilter =
+    "all";
+
+
+window.filterMedia =
+function(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".media-filter"
+        )
+        .forEach(
+            function(btn){
+
+                btn.classList
+                    .remove(
+                        "active"
+                    );
+
+            }
+        );
+
+
+    button.classList
+        .add("active");
+
+
+    window.renderMedia();
+
+};
+
+
+/* =========================================================
+   PRESERVE SCROLL
+========================================================= */
+
+window.getScrollPosition =
+function(){
+
+    return{
 
         x:window.scrollX,
 
@@ -4004,12 +3936,11 @@ function saveScrollPosition(){
 
     };
 
-}
+};
 
 
-function restoreScrollPosition(
-    position
-){
+window.restoreScrollPosition =
+function(position){
 
     if(!position){
         return;
@@ -4017,18 +3948,17 @@ function restoreScrollPosition(
 
 
     requestAnimationFrame(
-        () => {
+        function(){
 
-            window.scrollTo({
-                left:position.x,
-                top:position.y,
-                behavior:"auto"
-            });
+            window.scrollTo(
+                position.x,
+                position.y
+            );
 
         }
     );
 
-}
+};
 
 </script>
 
@@ -4040,38 +3970,26 @@ function restoreScrollPosition(
 <script type="module">
 
 import {
-
     initializeApp
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-
     getFirestore,
-
     collection,
-
-    getDocs,
-
     addDoc,
-
     serverTimestamp,
-
     onSnapshot
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   SAME FIREBASE CONFIGURATION
-===================================================== */
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
 
@@ -4106,29 +4024,26 @@ const db =
     getFirestore(app);
 
 
-/* =====================================================
+/* =========================================================
    COLLECTIONS
-===================================================== */
+========================================================= */
 
-const COLLECTION_NAME =
+const MEDIA_COLLECTION =
     "heartProjectMedia";
 
-
-/*
-   Keep this rating collection name.
-
-   If your previous working rating code used a different
-   collection name, change ONLY this one value to that
-   existing collection name.
-*/
 
 const RATING_COLLECTION =
     "heartProjectRatings";
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* =========================================================
+   MEDIA VARIABLES
+========================================================= */
+
+let mediaStore = [];
+
+let lastSignature = "";
+
 
 const gallery =
     document.getElementById(
@@ -4148,49 +4063,14 @@ const status =
     );
 
 
-/* =====================================================
-   STORAGE
-===================================================== */
-
-let mediaStore = [];
-
-let currentFilter =
-    "all";
-
-
-let lastMediaSignature =
-    "";
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-function setStatus(
-    text,
-    live=false
-){
-
-    status.textContent =
-        text;
-
-
-    status.classList.toggle(
-        "live",
-        live
-    );
-
-}
-
-
-/* =====================================================
-   SAVE RATING
-===================================================== */
+/* =========================================================
+   RATING SAVE
+========================================================= */
 
 window.saveRating =
 async function(rating){
 
-    const ratingRef =
+    const ratingCollection =
         collection(
             db,
             RATING_COLLECTION
@@ -4198,7 +4078,7 @@ async function(rating){
 
 
     await addDoc(
-        ratingRef,
+        ratingCollection,
         {
 
             rating:
@@ -4216,13 +4096,13 @@ async function(rating){
 };
 
 
-/* =====================================================
-   REAL-TIME RATING LISTENER
-===================================================== */
+/* =========================================================
+   RATING REAL-TIME
+========================================================= */
 
 function listenForRatings(){
 
-    const ratingRef =
+    const ratingCollection =
         collection(
             db,
             RATING_COLLECTION
@@ -4231,9 +4111,9 @@ function listenForRatings(){
 
     onSnapshot(
 
-        ratingRef,
+        ratingCollection,
 
-        snapshot => {
+        function(snapshot){
 
             let total = 0;
 
@@ -4241,25 +4121,24 @@ function listenForRatings(){
 
 
             snapshot.forEach(
-                docSnap => {
+                function(docSnap){
 
                     const data =
                         docSnap.data();
 
 
-                    const rating =
+                    const value =
                         Number(
                             data.rating
                         );
 
 
                     if(
-                        rating >= 1 &&
-                        rating <= 5
+                        value >= 1 &&
+                        value <= 5
                     ){
 
-                        total +=
-                            rating;
+                        total += value;
 
                         count++;
 
@@ -4275,17 +4154,17 @@ function listenForRatings(){
                 : 0;
 
 
-            updateRatingDisplay(
+            window.updateRatingDisplay(
                 average,
                 count
             );
 
         },
 
-        error => {
+        function(error){
 
             console.error(
-                "Rating listener error:",
+                "Rating error:",
                 error
             );
 
@@ -4296,52 +4175,42 @@ function listenForRatings(){
 }
 
 
-/* =====================================================
-   MEDIA LISTENER
-===================================================== */
+/* =========================================================
+   MEDIA REAL-TIME
+========================================================= */
 
-function listenForFirebaseMedia(){
+function listenForMedia(){
 
-    const mediaRef =
+    const mediaCollection =
         collection(
             db,
-            COLLECTION_NAME
+            MEDIA_COLLECTION
         );
 
 
     onSnapshot(
 
-        mediaRef,
+        mediaCollection,
 
-        snapshot => {
+        function(snapshot){
 
             /*
                IMPORTANT:
-
-               Save the exact position before Firebase
-               changes anything.
+               Save the current position BEFORE rendering.
             */
 
-            const savedScroll =
-                saveScrollPosition();
+            const savedPosition =
+                window.getScrollPosition();
 
 
-            const newMediaStore =
-                [];
+            const newStore = [];
 
 
             snapshot.forEach(
-                docSnap => {
+                function(docSnap){
 
                     const data =
                         docSnap.data();
-
-
-                    console.log(
-                        "Firebase document:",
-                        docSnap.id,
-                        data
-                    );
 
 
                     const url =
@@ -4352,9 +4221,7 @@ function listenForFirebaseMedia(){
 
 
                     if(!url){
-
                         return;
-
                     }
 
 
@@ -4368,13 +4235,9 @@ function listenForFirebaseMedia(){
 
 
                     if(
-
                         type === "image" ||
-
                         type === "photo" ||
-
                         type === "photos"
-
                     ){
 
                         type =
@@ -4384,11 +4247,8 @@ function listenForFirebaseMedia(){
 
 
                     if(
-
                         type === "video" ||
-
                         type === "videos"
-
                     ){
 
                         type =
@@ -4397,12 +4257,14 @@ function listenForFirebaseMedia(){
                     }
 
 
+                    /*
+                       Detect automatically when type
+                       wasn't stored correctly.
+                    */
+
                     if(
-
                         type !== "photo" &&
-
                         type !== "video"
-
                     ){
 
                         const cleanUrl =
@@ -4412,12 +4274,10 @@ function listenForFirebaseMedia(){
 
 
                         if(
-
                             /\.(jpg|jpeg|png|gif|webp|avif)$/
-                                .test(
-                                    cleanUrl
-                                )
-
+                            .test(
+                                cleanUrl
+                            )
                         ){
 
                             type =
@@ -4426,12 +4286,10 @@ function listenForFirebaseMedia(){
                         }
 
                         else if(
-
                             /\.(mp4|webm|mov|m4v|ogg)$/
-                                .test(
-                                    cleanUrl
-                                )
-
+                            .test(
+                                cleanUrl
+                            )
                         ){
 
                             type =
@@ -4448,7 +4306,7 @@ function listenForFirebaseMedia(){
                     }
 
 
-                    newMediaStore.push({
+                    newStore.push({
 
                         id:
                             docSnap.id,
@@ -4467,90 +4325,90 @@ function listenForFirebaseMedia(){
                     });
 
                 }
-
             );
 
 
             /*
-               Create a simple signature.
-
-               If Firebase fires an event but the actual
-               media hasn't changed, don't rebuild the
-               gallery at all.
+               Check whether the actual media changed.
             */
 
-            const newSignature =
+            const signature =
                 JSON.stringify(
-                    newMediaStore
+                    newStore
                         .map(
-                            item => ({
+                            function(item){
 
-                                id:item.id,
+                                return{
 
-                                name:item.name,
+                                    id:item.id,
 
-                                url:item.url,
+                                    name:item.name,
 
-                                type:item.type
+                                    url:item.url,
 
-                            })
+                                    type:item.type
+
+                                };
+
+                            }
                         )
                         .sort(
-                            (a,b) =>
-                                a.id.localeCompare(
+                            function(a,b){
+
+                                return a.id.localeCompare(
                                     b.id
-                                )
+                                );
+
+                            }
                         )
                 );
 
 
             mediaStore =
-                newMediaStore;
+                newStore;
 
 
-            setStatus(
-
+            status.textContent =
                 "☁️ Firebase connected • " +
-
                 mediaStore.length +
+                " media loaded";
 
-                " media loaded",
 
-                true
-
+            status.classList.add(
+                "live"
             );
 
 
             /*
-               Only render when actual media data changed.
+               DON'T rebuild the gallery if nothing
+               actually changed.
             */
 
             if(
-                newSignature !==
-                lastMediaSignature
+                signature !==
+                lastSignature
             ){
 
-                lastMediaSignature =
-                    newSignature;
+                lastSignature =
+                    signature;
 
 
-                renderMedia();
+                window.renderMedia();
 
             }
 
 
             /*
-               Restore the exact location even when the
-               gallery was updated.
+               Restore the exact position.
             */
 
-            restoreScrollPosition(
-                savedScroll
+            window.restoreScrollPosition(
+                savedPosition
             );
 
         },
 
-        error => {
+        function(error){
 
             console.error(
                 "Firebase media error:",
@@ -4558,36 +4416,13 @@ function listenForFirebaseMedia(){
             );
 
 
-            setStatus(
-                "❌ Firebase error"
+            status.textContent =
+                "❌ Firebase error";
+
+
+            status.classList.remove(
+                "live"
             );
-
-
-            gallery.innerHTML =
-                "";
-
-
-            empty.style.display =
-                "block";
-
-
-            if(
-                error.code ===
-                "permission-denied"
-            ){
-
-                empty.textContent =
-                    "❌ Firestore permission denied. Check your rules.";
-
-            }
-
-            else{
-
-                empty.textContent =
-                    "❌ Firebase could not load media: " +
-                    error.message;
-
-            }
 
         }
 
@@ -4596,22 +4431,21 @@ function listenForFirebaseMedia(){
 }
 
 
-/* =====================================================
+/* =========================================================
    RENDER MEDIA
-===================================================== */
+========================================================= */
 
-function renderMedia(){
+window.renderMedia =
+function(){
 
-    gallery.innerHTML =
-        "";
+    gallery.innerHTML = "";
 
 
     const items =
         mediaStore.filter(
-            item => {
+            function(item){
 
                 return(
-
                     currentFilter ===
                     "all"
 
@@ -4619,7 +4453,6 @@ function renderMedia(){
 
                     item.type ===
                     currentFilter
-
                 );
 
             }
@@ -4631,17 +4464,10 @@ function renderMedia(){
         empty.style.display =
             "block";
 
-
         empty.textContent =
             mediaStore.length
-
-            ?
-
-            "No media found."
-
-            :
-
-            "No photos or videos have been added yet.";
+            ? "No media found."
+            : "No photos or videos have been added yet.";
 
         return;
 
@@ -4653,7 +4479,7 @@ function renderMedia(){
 
 
     items.forEach(
-        item => {
+        function(item){
 
             const card =
                 document.createElement(
@@ -4678,7 +4504,6 @@ function renderMedia(){
                         "video"
                     );
 
-
                 media.controls =
                     false;
 
@@ -4700,7 +4525,6 @@ function renderMedia(){
                         "img"
                     );
 
-
                 media.loading =
                     "lazy";
 
@@ -4713,17 +4537,6 @@ function renderMedia(){
 
             media.alt =
                 item.name;
-
-
-            media.onerror =
-                function(){
-
-                    console.error(
-                        "Media failed:",
-                        item.url
-                    );
-
-                };
 
 
             const caption =
@@ -4751,11 +4564,9 @@ function renderMedia(){
 
 
             card.onclick =
-                () => {
+                function(){
 
-                    openViewer(
-                        item
-                    );
+                    openViewer(item);
 
                 };
 
@@ -4767,16 +4578,14 @@ function renderMedia(){
         }
     );
 
-}
+};
 
 
-/* =====================================================
-   OPEN MEDIA VIEWER
-===================================================== */
+/* =========================================================
+   MEDIA VIEWER
+========================================================= */
 
-function openViewer(
-    item
-){
+function openViewer(item){
 
     const viewer =
         document.getElementById(
@@ -4816,7 +4625,6 @@ function openViewer(
             document.createElement(
                 "video"
             );
-
 
         media.controls =
             true;
@@ -4865,17 +4673,16 @@ function openViewer(
 }
 
 
-/* =====================================================
-   START REAL-TIME LISTENERS
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
 listenForRatings();
 
-listenForFirebaseMedia();
+listenForMedia();
 
 </script>
 
 
 </body>
-
 </html>
