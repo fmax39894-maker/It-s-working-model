@@ -1,21 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width,initial-scale=1"
 >
 
 <title>Working Model of Heart</title>
-
-<meta
-    name="description"
-    content="Working Model of the Human Heart - Science Exhibition 2026"
->
 
 <meta
     property="og:title"
@@ -33,21 +28,72 @@
 >
 
 <meta
+    property="og:image:secure_url"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:type"
+    content="image/png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="Working Model of Heart"
+>
+
+<meta
     property="og:type"
     content="website"
 >
 
+<meta
+    property="og:url"
+    content="https://its-working-heart.vercel.app/"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    name="twitter:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    name="twitter:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
 <link
     rel="icon"
+    type="image/png"
     href="/cover.png"
 >
 
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+/* =====================================================
+   BASIC
+===================================================== */
 
 *{
     box-sizing:border-box;
@@ -61,79 +107,60 @@ body{
     margin:0;
     background:#08090b;
     color:#fff;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family:Arial,sans-serif;
+}
+
+body.rating-open{
     overflow-x:hidden;
 }
 
-button,
-a{
-    -webkit-tap-highlight-color:transparent;
-}
 
-
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 nav{
     height:64px;
-
-    padding:
-        0
-        6%;
-
+    padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     background:#090a0cdd;
 
-    border-bottom:
-        1px solid
-        #292a2e;
+    border-bottom:1px solid #292a2e;
 
     position:sticky;
     top:0;
 
-    z-index:500;
+    z-index:100;
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter:blur(10px);
 }
 
 .brand{
-    font-size:20px;
+    font-size:19px;
     font-weight:700;
 }
 
-.brand span{
+.brand span,
+h1 span,
+.red{
     color:#ff2638;
 }
 
-
-/* MENU BUTTON */
-
 .settings-btn{
-    width:40px;
-    height:40px;
+    width:38px;
+    height:38px;
 
-    border:
-        1px solid
-        #383a40;
-
-    border-radius:10px;
+    border:1px solid #383a40;
+    border-radius:9px;
 
     background:#111317;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
 
     gap:5px;
@@ -142,18 +169,1354 @@ nav{
 }
 
 .settings-btn span{
-    width:19px;
+    display:block;
+    width:18px;
     height:2px;
 
     background:#fff;
-
     border-radius:3px;
 }
 
 
-/* =========================================================
+/* =====================================================
+   RATING DISPLAY
+===================================================== */
+
+.rating-area{
+    width:100%;
+    padding:20px 20px 0;
+
+    position:relative;
+    z-index:40;
+}
+
+.rating-card{
+    width:min(100%,760px);
+    margin:0 auto;
+
+    min-height:100px;
+
+    border:1px solid #303238;
+    border-radius:22px;
+
+    background:#101114;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 20px;
+
+    box-shadow:
+        0 10px 35px #0008;
+
+    transition:
+        .35s ease;
+
+    animation:
+        ratingAppear .55s ease;
+}
+
+.rating-card:hover{
+    border-color:#ff2638;
+}
+
+@keyframes ratingAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(-12px) scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+.rating-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.rating-heart{
+    width:64px;
+    height:64px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    display:grid;
+    place-items:center;
+
+    font-size:30px;
+
+    box-shadow:
+        0 0 25px #ff263855;
+
+    animation:
+        heartRatingPulse 1.8s infinite;
+}
+
+@keyframes heartRatingPulse{
+
+    50%{
+        transform:scale(1.06);
+        box-shadow:
+            0 0 38px #ff263866;
+    }
+
+}
+
+.rating-title{
+    font-weight:700;
+    font-size:16px;
+
+    margin-bottom:6px;
+}
+
+.rating-total{
+    color:#aaa;
+    font-size:13px;
+}
+
+.rating-total strong{
+    color:#ffd52a;
+}
+
+.rating-stars{
+    display:flex;
+    gap:5px;
+}
+
+.rating-star{
+    border:0;
+    background:none;
+
+    color:#3a3d45;
+
+    font-size:32px;
+
+    padding:0;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s,
+        color .2s;
+}
+
+.rating-star:hover,
+.rating-star.active{
+    color:#ffd52a;
+
+    transform:
+        scale(1.15);
+}
+
+.rating-star:active{
+    transform:
+        scale(.95);
+}
+
+
+/* =====================================================
+   SMALL FLOATING TOTAL
+===================================================== */
+
+.rating-mini{
+    position:fixed;
+
+    left:18px;
+    top:155px;
+
+    z-index:90;
+
+    padding:13px 17px;
+
+    border:1px solid #34363c;
+
+    border-radius:18px;
+
+    background:#111317ee;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 10px 35px #0009;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    animation:
+        miniRatingIn .6s ease;
+
+    transition:
+        box-shadow .3s,
+        transform .3s;
+}
+
+.rating-mini:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 14px 40px #ff263822;
+}
+
+.rating-mini .mini-star{
+    color:#ffd52a;
+    font-size:22px;
+}
+
+.rating-mini strong{
+    color:#ffd52a;
+}
+
+.rating-mini.hidden{
+    display:none;
+}
+
+@keyframes miniRatingIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateX(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:600px;
+
+    padding:70px 7%;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            #420b12,
+            transparent 40%
+        );
+}
+
+.hero:before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    opacity:.18;
+
+    background-image:
+        linear-gradient(
+            #ff263812 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            #ff263812 1px,
+            transparent 1px
+        );
+
+    background-size:42px 42px;
+}
+
+.hero>*{
+    position:relative;
+}
+
+.eyebrow{
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:#ff6b76;
+
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            78px
+        );
+
+    line-height:.98;
+
+    margin:
+        18px 0;
+}
+
+.hero p{
+    max-width:560px;
+
+    color:#cfd0d5;
+
+    font-size:18px;
+
+    line-height:1.65;
+}
+
+.btn{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 22px;
+
+    background:#ff2638;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 30px #ff263833;
+
+    transition:.25s;
+
+    border:0;
+
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:
+        translateY(-3px);
+}
+
+.bpm{
+    margin-top:22px;
+
+    width:170px;
+
+    padding:12px;
+
+    border:1px solid #383a40;
+
+    border-radius:10px;
+
+    background:#111317;
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:center;
+}
+
+.pulse{
+    width:31px;
+    height:31px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:#ff2638;
+
+    animation:
+        pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:
+            scale(1.15);
+
+        box-shadow:
+            0 0 25px #ff263888;
+    }
+
+}
+
+
+/* =====================================================
+   ECG
+===================================================== */
+
+.ecg{
+    position:absolute;
+
+    bottom:18px;
+    left:0;
+
+    width:100%;
+    height:75px;
+}
+
+.ecg svg{
+    width:100%;
+    height:100%;
+}
+
+.ecg polyline{
+    fill:none;
+
+    stroke:#ff2638;
+
+    stroke-width:3;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    stroke-dasharray:900;
+
+    stroke-dashoffset:900;
+
+    animation:
+        ecg 2.2s linear infinite;
+
+    filter:
+        drop-shadow(
+            0 0 7px #ff2638
+        );
+}
+
+@keyframes ecg{
+
+    to{
+        stroke-dashoffset:0;
+    }
+
+}
+
+
+/* =====================================================
+   BAR
+===================================================== */
+
+.bar{
+    width:86%;
+
+    margin:auto;
+
+    padding:14px;
+
+    text-align:center;
+
+    background:#111317;
+
+    border:1px solid #303238;
+
+    color:#aaa;
+}
+
+.bar span{
+    color:#ff2638;
+
+    font-weight:bold;
+}
+
+.bar b{
+    margin:
+        0 15px;
+
+    color:#555;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section{
+    padding:80px 7%;
+
+    border-top:
+        1px solid #202126;
+}
+
+.title{
+    text-align:center;
+
+    font-size:38px;
+}
+
+.title span{
+    color:#ff2638;
+}
+
+.sub{
+    max-width:700px;
+
+    margin:
+        0 auto 42px;
+
+    text-align:center;
+
+    color:#aeb1b8;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1.2fr;
+
+    gap:50px;
+
+    align-items:center;
+}
+
+.about h2{
+    font-size:34px;
+}
+
+.about p{
+    color:#c5c7cc;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FEATURES - COMPACT POINT STYLE
+===================================================== */
+
+.features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.feature{
+    padding:15px 18px;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:12px;
+
+    background:#111317;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    border-color:#ff2638;
+
+    transform:
+        translateX(4px);
+}
+
+.feature .icon{
+    font-size:22px;
+
+    color:#ff2638;
+
+    flex:none;
+}
+
+.feature h3{
+    margin:0;
+
+    font-size:15px;
+}
+
+.feature p{
+    margin:
+        3px 0 0;
+
+    color:#888;
+
+    font-size:11px;
+
+    line-height:1.3;
+}
+
+
+/* =====================================================
+   HEART AWARENESS
+===================================================== */
+
+.awareness{
+    max-width:1100px;
+
+    margin:
+        70px auto 0;
+
+    padding:
+        25px 0;
+}
+
+.awareness h2{
+    font-size:34px;
+
+    margin-bottom:15px;
+}
+
+.awareness h2 span{
+    color:#ff2638;
+}
+
+.awareness-intro{
+    color:#aaa;
+
+    line-height:1.6;
+
+    max-width:850px;
+}
+
+.awareness-points{
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px 35px;
+}
+
+.awareness-point{
+    color:#c7c8cc;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    padding:
+        7px 0;
+
+    border-bottom:
+        1px solid #202126;
+}
+
+.awareness-point::before{
+    content:"♥";
+
+    color:#ff2638;
+
+    margin-right:9px;
+}
+
+
+/* =====================================================
+   MEDIA
+===================================================== */
+
+.media-view-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:
+        0 auto 28px;
+}
+
+.media-filter{
+    border:
+        1px solid #3a3c42;
+
+    background:#111317;
+
+    color:#fff;
+
+    padding:
+        11px 17px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.media-filter:hover,
+.media-filter.active{
+    background:#ff2638;
+
+    border-color:#ff2638;
+}
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px,190px)
+        );
+
+    justify-content:center;
+
+    gap:15px;
+}
+
+.gallery-item{
+    background:#111317;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:13px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    animation:
+        galleryIn .45s;
+}
+
+.gallery-item:hover{
+    border-color:#ff2638;
+
+    transform:
+        translateY(-3px);
+}
+
+.gallery-item img,
+.gallery-item video{
+    width:100%;
+
+    height:125px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+.gallery-caption{
+    padding:9px;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.gallery-empty{
+    text-align:center;
+
+    color:#777;
+
+    padding:35px;
+}
+
+@keyframes galleryIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:none;
+    }
+
+}
+
+
+/* =====================================================
+   FIREBASE STATUS
+===================================================== */
+
+.firebase-status{
+    text-align:center;
+
+    margin:
+        -8px auto 24px;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+.firebase-status.live{
+    color:#69e58a;
+}
+
+
+/* =====================================================
+   VIEWER
+===================================================== */
+
+.section-viewer{
+    display:none;
+
+    margin:
+        28px auto 0;
+
+    max-width:760px;
+
+    border:
+        1px solid #ff2638;
+
+    border-radius:16px;
+
+    background:#0d0f12;
+
+    padding:14px;
+}
+
+.section-viewer.show{
+    display:block;
+}
+
+.section-viewer-head{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+        2px 4px 12px;
+}
+
+.section-viewer-head h3{
+    margin:0;
+
+    color:#ff2638;
+
+    font-size:16px;
+}
+
+.section-viewer-head button{
+    border:0;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+.section-viewer-content{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:180px;
+}
+
+.section-view-media{
+    max-width:100%;
+
+    max-height:500px;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+
+/* =====================================================
+   PRESENTATION
+===================================================== */
+
+.presentation{
+    max-width:900px;
+
+    margin:
+        60px auto 0;
+
+    padding:25px;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:18px;
+
+    background:#111317;
+
+    box-shadow:
+        0 15px 50px #0007;
+}
+
+.presentation h2{
+    text-align:center;
+
+    margin-top:0;
+
+    color:#ff2638;
+}
+
+.presentation-video{
+    width:100%;
+
+    max-height:500px;
+
+    background:#000;
+
+    border-radius:12px;
+
+    display:block;
+}
+
+.pdf-container{
+    margin-top:25px;
+}
+
+.pdf-container h3{
+    text-align:center;
+
+    color:#fff;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================================
+   PDF READER
+===================================================== */
+
+.pdf-frame-wrapper{
+    width:100%;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    border:
+        1px solid #444;
+}
+
+.pdf-frame{
+    display:block;
+
+    width:100%;
+
+    height:700px;
+
+    border:0;
+
+    background:#fff;
+}
+
+.pdf-actions{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.pdf-open-btn{
+    display:inline-block;
+
+    padding:
+        11px 18px;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    border:0;
+}
+
+.pdf-open-btn:hover{
+    background:#e51e30;
+}
+
+.pdf-note{
+    text-align:center;
+
+    color:#777;
+
+    font-size:11px;
+
+    margin-top:10px;
+}
+
+
+/* =====================================================
+   STEPS
+===================================================== */
+
+.steps{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.step{
+    padding:22px;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:13px;
+
+    background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.step:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:#ff2638;
+}
+
+.step .icon{
+    font-size:29px;
+
+    color:#ff2638;
+
+    margin-bottom:10px;
+}
+
+.step p{
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.num{
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    display:grid;
+
+    place-items:center;
+
+    margin:
+        0 auto 17px;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   TEAM
+===================================================== */
+
+.team-list{
+    max-width:900px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+}
+
+.team-card{
+    padding:22px;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.team-card:first-child{
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 30px #ff263822;
+}
+
+.team-card:hover{
+    transform:
+        translateY(-4px);
+
+    border-color:#ff2638;
+}
+
+.team-role{
+    display:block;
+
+    color:#ff2638;
+
+    font-size:13px;
+
+    margin-top:6px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-grid{
+    max-width:950px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.contact-card{
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:24px;
+
+    border:
+        1px solid #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    transition:.3s;
+}
+
+.contact-card:hover{
+    transform:
+        translateY(-5px);
+
+    border-color:#ff2638;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    font-size:22px;
+
+    flex:none;
+}
+
+.contact-card h3{
+    margin:
+        0 0 6px;
+}
+
+.contact-card p{
+    margin:0;
+
+    color:#aaa;
+
+    word-break:break-word;
+
+    font-size:13px;
+
+    line-height:1.45;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:
+        45px 7% 20px;
+
+    border-top:
+        1px solid #292a30;
+
+    background:#090a0c;
+}
+
+.footer-grid{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap:35px;
+}
+
+.footer-grid h3{
+    color:#ff2638;
+}
+
+.footer-grid p{
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+.credits{
+    padding-left:10px;
+}
+
+.credit-title{
+    color:#ff2638;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+.credit-name{
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    line-height:1.45;
+
+    margin-bottom:18px;
+}
+
+.copy{
+    text-align:center;
+
+    color:#666;
+
+    border-top:
+        1px solid #222;
+
+    margin-top:30px;
+
+    padding-top:18px;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
    SETTINGS
-========================================================= */
+===================================================== */
 
 .settings-menu{
     position:fixed;
@@ -161,21 +1524,19 @@ nav{
     top:76px;
     right:6%;
 
-    width:
-        min(
-            340px,
-            88vw
-        );
+    width:min(
+        340px,
+        88vw
+    );
 
-    z-index:1000;
+    z-index:200;
 
     display:none;
 
     padding:18px;
 
     border:
-        1px solid
-        #3a3c42;
+        1px solid #3a3c42;
 
     border-radius:16px;
 
@@ -191,7 +1552,9 @@ nav{
 
 .settings-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-bottom:15px;
@@ -199,26 +1562,31 @@ nav{
 
 .settings-head h3{
     margin:0;
+
     color:#ff2638;
 }
 
 .settings-head button{
     border:0;
+
     background:none;
+
     color:#fff;
+
     font-size:25px;
+
     cursor:pointer;
 }
 
 .settings-card{
     display:flex;
+
     gap:14px;
 
-    padding:16px;
+    padding:17px;
 
     border:
-        1px solid
-        #34363c;
+        1px solid #34363c;
 
     border-radius:12px;
 
@@ -227,16 +1595,12 @@ nav{
 
 .settings-card h4{
     margin:
-        0
-        0
-        5px;
+        0 0 5px;
 }
 
 .settings-card p{
     margin:
-        0
-        0
-        12px;
+        0 0 12px;
 
     color:#aaa;
 
@@ -246,11 +1610,12 @@ nav{
 }
 
 .settings-password{
+    margin-top:12px;
+
     padding-top:12px;
 
     border-top:
-        1px solid
-        #292b31;
+        1px solid #292b31;
 }
 
 .settings-password label{
@@ -270,13 +1635,13 @@ nav{
 .settings-password input{
     width:100%;
 
-    padding:10px;
+    padding:
+        10px 11px;
 
     background:#08090b;
 
     border:
-        1px solid
-        #383a40;
+        1px solid #383a40;
 
     border-radius:8px;
 
@@ -307,1691 +1672,41 @@ nav{
 
 #settingsPasswordMessage{
     font-size:11px;
+
     margin-top:7px;
+
     min-height:14px;
 }
 
 
-/* =========================================================
-   COMPACT RATING BADGE
-========================================================= */
-
-.rating-badge{
-
-    position:fixed;
-
-    left:18px;
-
-    top:150px;
-
-    z-index:400;
-
-    width:auto;
-
-    max-width:275px;
-
-    min-width:0;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    padding:
-        10px
-        13px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:18px;
-
-    background:#111317ee;
-
-    backdrop-filter:
-        blur(12px);
-
-    box-shadow:
-        0 10px 35px #0008,
-        0 0 25px #ff263820;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    animation:
-        ratingBadgeIn
-        .65s ease;
-}
-
-.rating-star-small{
-    color:#ffd52a;
-    font-size:20px;
-    line-height:1;
-}
-
-.rating-average{
-    color:#ffd52a;
-    font-weight:800;
-}
-
-.rating-count{
-    color:#aaa;
-    font-weight:400;
-}
-
-@keyframes ratingBadgeIn{
-
-    from{
-        opacity:0;
-        transform:
-            translateX(-25px)
-            scale(.9);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateX(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   RATING PROMPT
-========================================================= */
-
-.rating-prompt{
-
-    position:fixed;
-
-    left:50%;
-
-    top:76px;
-
-    transform:
-        translateX(-50%);
-
-    z-index:600;
-
-    width:
-        min(
-            410px,
-            calc(100vw - 30px)
-        );
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:
-        11px
-        13px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:16px;
-
-    background:#111317f7;
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 20px 60px #000b;
-
-    transition:
-        opacity .4s ease,
-        transform .4s ease;
-}
-
-.rating-prompt.hidden{
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transform:
-        translateX(-50%)
-        translateY(-18px)
-        scale(.96);
-}
-
-.rating-heart{
-
-    width:45px;
-    height:45px;
-
-    flex:none;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    font-size:22px;
-
-    box-shadow:
-        0 0 25px #ff263866;
-
-    animation:
-        heartPulse
-        1.5s
-        infinite;
-}
-
-@keyframes heartPulse{
-
-    50%{
-        transform:scale(1.08);
-
-        box-shadow:
-            0 0 32px
-            #ff263888;
-    }
-}
-
-.rating-info{
-    min-width:100px;
-    flex:1;
-}
-
-.rating-title{
-    font-size:13px;
-    font-weight:800;
-    margin-bottom:4px;
-}
-
-.rating-current{
-    font-size:11px;
-    color:#aaa;
-}
-
-.rating-stars{
-    display:flex;
-    gap:1px;
-}
-
-.rating-star{
-
-    border:0;
-
-    background:none;
-
-    padding:2px;
-
-    color:#383a42;
-
-    font-size:25px;
-
-    cursor:pointer;
-
-    line-height:1;
-
-    transition:.15s;
-}
-
-.rating-star:hover{
-    transform:scale(1.15);
-    color:#ffd52a;
-}
-
-.rating-star.active{
-    color:#ffd52a;
-
-    text-shadow:
-        0 0 12px
-        #ffd52a88;
-}
-
-.rating-confirm{
-
-    display:none;
-
-    margin-top:4px;
-
-    padding:
-        5px
-        9px;
-
-    border:0;
-
-    border-radius:6px;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    cursor:pointer;
-}
-
-.rating-confirm.show{
-    display:inline-block;
-}
-
-.rating-saving{
-    display:none;
-
-    padding:
-        7px
-        10px;
-
-    border-radius:7px;
-
-    background:#ff2638;
-
-    font-size:11px;
-
-    font-weight:800;
-}
-
-.rating-saving.show{
-    display:block;
-}
-
-.rating-rated{
-    display:none;
-
-    padding:
-        7px
-        10px;
-
-    border-radius:8px;
-
-    background:#183820;
-
-    border:
-        1px solid
-        #4bba69;
-
-    color:#75e993;
-
-    font-size:11px;
-
-    font-weight:800;
-}
-
-.rating-rated.show{
-    display:block;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-
-    min-height:600px;
-
-    padding:
-        70px
-        7%;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 80% 35%,
-            #420b12,
-            transparent 40%
-        );
-}
-
-.hero:before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    opacity:.16;
-
-    background-image:
-
-        linear-gradient(
-            #ff263812 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            #ff263812 1px,
-            transparent 1px
-        );
-
-    background-size:42px 42px;
-}
-
-.hero > *{
-    position:relative;
-}
-
-.eyebrow{
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    color:#ff6b76;
-
-    font-weight:bold;
-}
-
-.hero h1{
-
-    font-size:
-        clamp(
-            48px,
-            6vw,
-            78px
-        );
-
-    line-height:.98;
-
-    margin:
-        18px
-        0;
-}
-
-.hero h1 span{
-    color:#ff2638;
-}
-
-.hero p{
-
-    max-width:560px;
-
-    color:#cfd0d5;
-
-    font-size:18px;
-
-    line-height:1.65;
-}
-
-.btn{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:
-        14px
-        22px;
-
-    background:#ff2638;
-
-    border-radius:9px;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    box-shadow:
-        0 12px 30px
-        #ff263833;
-
-    transition:.25s;
-
-    border:0;
-
-    cursor:pointer;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-
-/* =========================================================
-   HEARTBEAT
-========================================================= */
-
-.bpm{
-
-    margin-top:22px;
-
-    width:170px;
-
-    padding:12px;
-
-    border:
-        1px solid
-        #383a40;
-
-    border-radius:10px;
-
-    background:#111317;
-
-    display:flex;
-
-    gap:10px;
-
-    align-items:center;
-}
-
-.pulse{
-
-    width:31px;
-    height:31px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#ff2638;
-
-    animation:
-        pulse 1s infinite;
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.15);
-
-        box-shadow:
-            0 0 25px
-            #ff263888;
-    }
-}
-
-
-/* =========================================================
-   ECG
-========================================================= */
-
-.ecg{
-
-    position:absolute;
-
-    bottom:18px;
-    left:0;
-
-    width:100%;
-    height:75px;
-}
-
-.ecg svg{
-    width:100%;
-    height:100%;
-}
-
-.ecg polyline{
-
-    fill:none;
-
-    stroke:#ff2638;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
-
-    stroke-dasharray:900;
-
-    stroke-dashoffset:900;
-
-    animation:
-        ecg
-        2.2s
-        linear
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            #ff2638
-        );
-}
-
-@keyframes ecg{
-
-    to{
-        stroke-dashoffset:0;
-    }
-}
-
-
-/* =========================================================
-   INFO BAR
-========================================================= */
-
-.bar{
-
-    width:86%;
-
-    margin:auto;
-
-    padding:14px;
-
-    text-align:center;
-
-    background:#111317;
-
-    border:
-        1px solid
-        #303238;
-
-    color:#aaa;
-}
-
-.bar span{
-    color:#ff2638;
-    font-weight:bold;
-}
-
-.bar b{
-    margin:
-        0
-        15px;
-
-    color:#555;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-section{
-
-    padding:
-        80px
-        7%;
-
-    border-top:
-        1px solid
-        #202126;
-}
-
-.title{
-
-    text-align:center;
-
-    font-size:38px;
-}
-
-.title span{
-    color:#ff2638;
-}
-
-.sub{
-
-    max-width:700px;
-
-    margin:
-        0
-        auto
-        42px;
-
-    text-align:center;
-
-    color:#aeb1b8;
-
-    line-height:1.6;
-}
-
-
-/* =========================================================
-   TEAM
-========================================================= */
-
-.team-members{
-    max-width:1100px;
-    margin:auto;
-}
-
-.team-members-list{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:15px;
-
-    max-width:900px;
-
-    margin:auto;
-}
-
-.leader-box{
-
-    text-align:center;
-
-    margin:
-        0
-        auto
-        35px;
-}
-
-.leader-label{
-
-    color:#ff2638;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-.leader-name{
-
-    font-size:26px;
-
-    font-weight:800;
-}
-
-.member-card{
-
-    padding:21px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-align:center;
-
-    font-size:19px;
-
-    font-weight:700;
-
-    transition:.3s;
-}
-
-.member-card:first-child{
-
-    border-color:#ff2638;
-
-    box-shadow:
-        0 0 25px
-        #ff263820;
-}
-
-.member-card:hover{
-
-    transform:
-        translateY(-4px);
-
-    border-color:#ff2638;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about{
-
-    max-width:1100px;
-
-    margin:auto;
-
-    display:block;
-}
-
-.about h2{
-
-    font-size:34px;
-
-    margin-bottom:18px;
-}
-
-.about h2 span{
-    color:#ff2638;
-}
-
-.about p{
-
-    color:#c5c7cc;
-
-    line-height:1.7;
-
-    font-size:17px;
-
-    max-width:900px;
-}
-
-
-/* =========================================================
-   SMALL HEART POINTS
-========================================================= */
-
-/*
-   These replace the four large cards.
-*/
-
-.heart-points{
-
-    max-width:900px;
-
-    margin:
-        28px
-        auto
-        0;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:
-        0
-        35px;
-}
-
-.heart-point{
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:12px;
-
-    padding:
-        13px
-        0;
-
-    border-bottom:
-        1px solid
-        #202126;
-
-    color:#bfc1c7;
-
-    font-size:14px;
-
-    line-height:1.55;
-}
-
-.heart-point-icon{
-
-    color:#ff2638;
-
-    font-size:17px;
-
-    flex:none;
-
-    margin-top:1px;
-}
-
-.heart-point strong{
-
-    color:#fff;
-
-    display:block;
-
-    margin-bottom:2px;
-}
-
-
-/* =========================================================
-   AWARENESS
-========================================================= */
-
-.awareness{
-
-    max-width:1100px;
-
-    margin:
-        70px
-        auto
-        0;
-}
-
-.awareness h2{
-
-    text-align:center;
-
-    font-size:
-        clamp(
-            30px,
-            5vw,
-            48px
-        );
-
-    margin-bottom:18px;
-}
-
-.awareness h2 span{
-    color:#ff2638;
-}
-
-.awareness-intro{
-
-    max-width:760px;
-
-    margin:
-        0
-        auto
-        35px;
-
-    text-align:center;
-
-    color:#aaa;
-
-    line-height:1.7;
-}
-
-.awareness-list{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:
-        12px
-        30px;
-
-    max-width:950px;
-
-    margin:auto;
-}
-
-.awareness-point{
-
-    position:relative;
-
-    padding:
-        10px
-        10px
-        10px
-        25px;
-
-    color:#c9cbd0;
-
-    font-size:14px;
-
-    line-height:1.55;
-
-    border-bottom:
-        1px solid
-        #202126;
-}
-
-.awareness-point:before{
-
-    content:"♥";
-
-    position:absolute;
-
-    left:3px;
-    top:10px;
-
-    color:#ff2638;
-
-    font-size:13px;
-}
-
-.awareness-point strong{
-    color:#fff;
-}
-
-
-/* =========================================================
-   MEDIA
-========================================================= */
-
-.media-view-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:
-        0
-        auto
-        28px;
-}
-
-.media-filter{
-
-    border:
-        1px solid
-        #3a3c42;
-
-    background:#111317;
-
-    color:#fff;
-
-    padding:
-        10px
-        16px;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    transition:.25s;
-}
-
-.media-filter:hover,
-.media-filter.active{
-
-    background:#ff2638;
-
-    border-color:#ff2638;
-}
-
-.firebase-status{
-
-    text-align:center;
-
-    margin:
-        -8px
-        auto
-        24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-.firebase-status.live{
-    color:#69e58a;
-}
-
-.gallery{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(
-                150px,
-                190px
-            )
-        );
-
-    justify-content:center;
-
-    gap:15px;
-}
-
-.gallery-item{
-
-    background:#111317;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:13px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    animation:
-        galleryIn
-        .45s;
-}
-
-.gallery-item:hover{
-
-    border-color:#ff2638;
-
-    transform:
-        translateY(-3px);
-}
-
-.gallery-item img,
-.gallery-item video{
-
-    width:100%;
-
-    height:125px;
-
-    display:block;
-
-    object-fit:cover;
-}
-
-.gallery-caption{
-
-    padding:9px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-}
-
-.gallery-empty{
-
-    text-align:center;
-
-    color:#777;
-
-    padding:35px;
-}
-
-@keyframes galleryIn{
-
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
-
-
-/* =========================================================
-   MEDIA VIEWER
-========================================================= */
-
-.section-viewer{
-
-    display:none;
-
-    margin:
-        28px
-        auto
-        0;
-
-    max-width:760px;
-
-    border:
-        1px solid
-        #ff2638;
-
-    border-radius:16px;
-
-    background:#0d0f12;
-
-    padding:14px;
-}
-
-.section-viewer.show{
-    display:block;
-}
-
-.section-viewer-head{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:
-        2px
-        4px
-        12px;
-}
-
-.section-viewer-head h3{
-
-    margin:0;
-
-    color:#ff2638;
-
-    font-size:16px;
-}
-
-.section-viewer-head button{
-
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    width:32px;
-    height:32px;
-
-    border-radius:50%;
-
-    font-size:21px;
-
-    cursor:pointer;
-}
-
-.section-viewer-content{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:180px;
-}
-
-.section-view-media{
-
-    max-width:100%;
-
-    max-height:500px;
-
-    border-radius:10px;
-
-    display:block;
-}
-
-
-/* =========================================================
-   PRESENTATION
-========================================================= */
-
-.presentation{
-
-    max-width:1100px;
-
-    margin:auto;
-}
-
-.presentation-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:25px;
-}
-
-.presentation-card{
-
-    padding:18px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:16px;
-
-    background:#111317;
-}
-
-.presentation-card h3{
-
-    margin:
-        0
-        0
-        15px;
-
-    color:#ff2638;
-
-    text-align:center;
-}
-
-.presentation-video{
-
-    width:100%;
-
-    aspect-ratio:16/9;
-
-    background:#000;
-
-    border-radius:10px;
-
-    display:block;
-}
-
-
-/* =========================================================
-   PDF READER
-========================================================= */
-
-.pdf-reader{
-
-    width:100%;
-
-    height:650px;
-
-    background:#fff;
-
-    border-radius:10px;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-
-/*
-   Native browser PDF reader.
-   The object element is the main viewer.
-*/
-
-.pdf-reader object{
-
-    width:100%;
-
-    height:100%;
-
-    display:block;
-
-    background:#fff;
-}
-
-
-/*
-   Fallback message.
-*/
-
-.pdf-fallback{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    gap:15px;
-
-    padding:25px;
-
-    text-align:center;
-
-    background:#fff;
-
-    color:#222;
-
-    z-index:0;
-}
-
-.pdf-fallback strong{
-    font-size:18px;
-}
-
-.pdf-fallback p{
-    margin:0;
-    color:#555;
-    font-size:13px;
-}
-
-.pdf-open{
-
-    display:inline-block;
-
-    padding:
-        11px
-        17px;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    border-radius:8px;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/*
-   Put the object above fallback when browser
-   supports PDF.
-*/
-
-.pdf-reader object{
-    position:relative;
-    z-index:1;
-}
-
-
-/* =========================================================
-   FUNCTION
-========================================================= */
-
-.steps{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
-
-    gap:15px;
-}
-
-.step{
-
-    padding:22px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:13px;
-
-    background:#111317;
-
-    text-align:center;
-
-    transition:.3s;
-}
-
-.step:hover{
-
-    transform:
-        translateY(-6px);
-
-    border-color:#ff2638;
-}
-
-.step .icon{
-
-    font-size:29px;
-
-    color:#ff2638;
-
-    margin-bottom:10px;
-}
-
-.step p{
-
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-.num{
-
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:
-        0
-        auto
-        17px;
-
-    font-weight:bold;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-grid{
-
-    max-width:950px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            1fr
-        );
-
-    gap:18px;
-}
-
-.contact-card{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:24px;
-
-    border:
-        1px solid
-        #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    transition:.3s;
-}
-
-.contact-card:hover{
-
-    transform:
-        translateY(-5px);
-
-    border-color:#ff2638;
-}
-
-.contact-icon{
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-size:22px;
-
-    flex:none;
-}
-
-.contact-card h3{
-
-    margin:
-        0
-        0
-        6px;
-}
-
-.contact-card p{
-
-    margin:0;
-
-    color:#aaa;
-
-    word-break:break-word;
-
-    font-size:13px;
-
-    line-height:1.45;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-    padding:
-        45px
-        7%
-        20px;
-
-    border-top:
-        1px solid
-        #292a30;
-
-    background:#090a0c;
-}
-
-.footer-grid{
-
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            1fr
-        );
-
-    gap:35px;
-}
-
-.footer-grid h3{
-    color:#ff2638;
-}
-
-.footer-grid p{
-
-    color:#aaa;
-
-    line-height:1.7;
-}
-
-.credit-name{
-
-    color:#fff;
-
-    font-size:21px;
-
-    font-weight:bold;
-
-    line-height:1.5;
-}
-
-.credit-role{
-
-    color:#ff2638;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    margin-top:8px;
-}
-
-.copy{
-
-    text-align:center;
-
-    color:#666;
-
-    border-top:
-        1px solid
-        #222;
-
-    margin-top:30px;
-
-    padding-top:18px;
-
-    font-size:12px;
-}
-
-
-/* =========================================================
+/* =====================================================
    REVEAL
-========================================================= */
+===================================================== */
 
 .reveal{
-
     opacity:0;
 
     transform:
         translateY(25px);
 
-    transition:.7s;
+    transition:
+        .7s;
 }
 
 .reveal.show{
-
     opacity:1;
 
     transform:none;
 }
 
 
-/* =========================================================
+/* =====================================================
    RESPONSIVE
-========================================================= */
+===================================================== */
 
 @media(max-width:800px){
 
     .hero{
-
         grid-template-columns:1fr;
 
         text-align:center;
@@ -2001,141 +1716,133 @@ footer{
         margin:auto;
     }
 
-    .heart-points{
+    .about{
         grid-template-columns:1fr;
     }
 
-    .awareness-list{
-        grid-template-columns:1fr;
-    }
-
-    .team-members-list{
-        grid-template-columns:1fr;
-    }
-
-    .presentation-grid{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr 1fr;
+    .features{
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .steps{
         grid-template-columns:
-            1fr
-            1fr;
+            1fr 1fr;
     }
 
     .footer-grid{
         grid-template-columns:
-            1fr
-            1fr;
+            1fr 1fr;
     }
+
+    .contact-grid{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .rating-card{
+        padding:15px;
+    }
+
+    .rating-heart{
+        width:54px;
+        height:54px;
+
+        font-size:25px;
+    }
+
+    .rating-star{
+        font-size:27px;
+    }
+
 }
 
 
 @media(max-width:500px){
 
-    .brand{
-        font-size:18px;
-    }
-
-    .hero{
-        padding:
-            60px
-            6%;
-    }
-
     .hero h1{
         font-size:45px;
     }
 
-    section{
-        padding:
-            65px
-            7%;
+    .features{
+        grid-template-columns:1fr;
     }
 
-    .title{
-        font-size:31px;
+    .steps{
+        grid-template-columns:1fr;
     }
 
-    .contact-grid,
-    .steps,
     .footer-grid{
         grid-template-columns:1fr;
     }
 
-    .gallery{
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
+    .contact-grid{
+        grid-template-columns:1fr;
     }
 
-    /*
-       Small rating badge on phones.
-    */
+    .team-list{
+        grid-template-columns:1fr;
+    }
 
-    .rating-badge{
+    .awareness-points{
+        grid-template-columns:1fr;
+    }
 
+    .rating-area{
+        padding:
+            14px 18px 0;
+    }
+
+    .rating-card{
+        min-height:86px;
+
+        border-radius:18px;
+    }
+
+    .rating-heart{
+        width:48px;
+        height:48px;
+
+        font-size:22px;
+    }
+
+    .rating-title{
+        font-size:14px;
+    }
+
+    .rating-star{
+        font-size:24px;
+    }
+
+    .rating-stars{
+        gap:1px;
+    }
+
+    .rating-mini{
         left:18px;
 
         top:145px;
 
-        max-width:
-            255px;
-
         padding:
-            9px
-            11px;
+            10px 13px;
 
         font-size:12px;
+
+        border-radius:16px;
     }
 
-    .rating-star-small{
-        font-size:18px;
+    .mini-star{
+        font-size:18px !important;
     }
 
-    /*
-       Rating prompt is also compact.
-    */
-
-    .rating-prompt{
-
-        width:
-            calc(
-                100vw - 28px
-            );
-
-        padding:
-            10px;
-
-        gap:8px;
-    }
-
-    .rating-heart{
-
-        width:42px;
-        height:42px;
-
-        font-size:20px;
-    }
-
-    .rating-star{
-        font-size:23px;
-    }
-
-    /*
-       PDF reader remains large enough
-       to read on mobile.
-    */
-
-    .pdf-reader{
+    .pdf-frame{
         height:600px;
     }
+
+    .presentation{
+        padding:15px;
+    }
+
 }
 
 </style>
@@ -2147,23 +1854,19 @@ footer{
 
 
 <!-- =====================================================
-     NAVIGATION
+     NAV
 ===================================================== -->
 
 <nav>
 
 <div class="brand">
-
-Working Model of
-<span>Heart</span>
-
+Working Model of <span>Heart</span>
 </div>
 
-
 <button
-    class="settings-btn"
-    onclick="toggleSettings()"
-    aria-label="Menu"
+class="settings-btn"
+onclick="toggleSettings()"
+aria-label="Settings"
 >
 
 <span></span>
@@ -2176,205 +1879,111 @@ Working Model of
 
 
 <!-- =====================================================
-     RATING PROMPT
+     SMALL TOTAL RATING
 ===================================================== -->
 
 <div
-    id="ratingPrompt"
-    class="rating-prompt"
+id="ratingMini"
+class="rating-mini"
 >
+
+<span class="mini-star">★</span>
+
+<strong id="miniAverage">
+0.0 / 5
+</strong>
+
+<span>·</span>
+
+<span id="miniCount">
+0 ratings
+</span>
+
+</div>
+
+
+<!-- =====================================================
+     RATING PANEL
+===================================================== -->
+
+<div
+id="ratingArea"
+class="rating-area"
+>
+
+<div class="rating-card">
+
+<div class="rating-left">
 
 <div class="rating-heart">
 ♥
 </div>
 
-
-<div class="rating-info">
+<div>
 
 <div class="rating-title">
 Rate Our Project
 </div>
 
 <div
-    id="ratingCurrent"
-    class="rating-current"
+class="rating-total"
+id="ratingTotalText"
 >
-⭐ No ratings yet
-</div>
-
-</div>
-
-
-<div>
-
-<div
-    id="ratingStars"
-    class="rating-stars"
->
-
-<button
-    class="rating-star"
-    data-rating="1"
->
-★
-</button>
-
-<button
-    class="rating-star"
-    data-rating="2"
->
-★
-</button>
-
-<button
-    class="rating-star"
-    data-rating="3"
->
-★
-</button>
-
-<button
-    class="rating-star"
-    data-rating="4"
->
-★
-</button>
-
-<button
-    class="rating-star"
-    data-rating="5"
->
-★
-</button>
-
-</div>
-
-
-<button
-    id="ratingConfirm"
-    class="rating-confirm"
->
-Confirm
-</button>
-
-</div>
-
-
-<div
-    id="ratingSaving"
-    class="rating-saving"
->
-Saving...
-</div>
-
-
-<div
-    id="ratingRated"
-    class="rating-rated"
->
-✓ Rated
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     COMPACT RATING TOTAL
-===================================================== -->
-
-<div
-    id="ratingBadge"
-    class="rating-badge"
->
-
-<span class="rating-star-small">
+<span style="color:#ffd52a">
 ★
 </span>
-
-<span
-    id="badgeValue"
-    class="rating-average"
->
-0.0 / 5
-</span>
-
-<span
-    id="badgeText"
-    class="rating-count"
->
-· 0 ratings
-</span>
+No ratings yet
+</div>
 
 </div>
 
+</div>
 
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
 
 <div
-    id="settingsMenu"
-    class="settings-menu"
->
-
-<div class="settings-head">
-
-<h3>
-Settings
-</h3>
-
-<button
-    onclick="toggleSettings()"
->
-×
-</button>
-
-</div>
-
-
-<div class="settings-card">
-
-<div>
-🔐
-</div>
-
-
-<div style="width:100%">
-
-<h4>
-Host Editor
-</h4>
-
-<p>
-Enter the host password to open
-the Firebase media editor.
-</p>
-
-
-<div class="settings-password">
-
-<label>
-HOST PASSWORD
-</label>
-
-<input
-    id="settingsPassword"
-    type="password"
-    placeholder="Enter password"
+class="rating-stars"
+id="ratingStars"
 >
 
 <button
-    class="settings-action"
-    onclick="unlockFromSettings()"
+class="rating-star"
+data-rating="1"
+aria-label="1 star"
 >
-Open Editor
+★
 </button>
 
-<div
-    id="settingsPasswordMessage"
-></div>
+<button
+class="rating-star"
+data-rating="2"
+aria-label="2 stars"
+>
+★
+</button>
 
-</div>
+<button
+class="rating-star"
+data-rating="3"
+aria-label="3 stars"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="4"
+aria-label="4 stars"
+>
+★
+</button>
+
+<button
+class="rating-star"
+data-rating="5"
+aria-label="5 stars"
+>
+★
+</button>
 
 </div>
 
@@ -2388,8 +1997,8 @@ Open Editor
 ===================================================== -->
 
 <header
-    class="hero"
-    id="home"
+class="hero"
+id="home"
 >
 
 <div>
@@ -2398,35 +2007,23 @@ Open Editor
 SCIENCE EXHIBITION 2026
 </div>
 
-
 <h1>
-
-Working Model
-<br>
-
-of the
-<span>Human Heart</span>
-
+Working Model<br>
+of the <span>Human Heart</span>
 </h1>
 
-
 <p>
-
 This project demonstrates the working
-of the human heart and how it pumps blood
-throughout the body.
-
+of the human heart and how it pumps
+blood throughout the body.
 </p>
 
-
 <a
-    href="#media"
-    class="btn"
-    onclick="scrollToMedia(event)"
+class="btn"
+href="#media"
 >
-Explore the Images & Videos ↓
+Explore Images & Videos ↓
 </a>
-
 
 <div class="bpm">
 
@@ -2435,18 +2032,10 @@ Explore the Images & Videos ↓
 </div>
 
 <div>
-
-Heartbeat
-<br>
+Heartbeat<br>
 
 <strong>
-
-<span id="bpm">
-72
-</span>
-
-BPM
-
+<span id="bpm">72</span> BPM
 </strong>
 
 </div>
@@ -2459,8 +2048,8 @@ BPM
 <div class="ecg">
 
 <svg
-    viewBox="0 0 1200 100"
-    preserveAspectRatio="none"
+viewBox="0 0 1200 100"
+preserveAspectRatio="none"
 >
 
 <polyline points="
@@ -2493,7 +2082,7 @@ BPM
 
 
 <!-- =====================================================
-     INFO
+     INFO BAR
 ===================================================== -->
 
 <div class="bar">
@@ -2502,15 +2091,80 @@ BPM
 Science Exhibition 2026
 </span>
 
-<b>
-|
-</b>
+<b>|</b>
 
 Aayushman Jha
 
-<span>
-(Leader)
-</span>
+</div>
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<div
+id="settingsMenu"
+class="settings-menu"
+>
+
+<div class="settings-head">
+
+<h3>
+Settings
+</h3>
+
+<button
+onclick="toggleSettings()"
+>
+×
+</button>
+
+</div>
+
+
+<div class="settings-card">
+
+<div>🔐</div>
+
+<div style="width:100%">
+
+<h4>
+Host Editor
+</h4>
+
+<p>
+Enter the host password to open
+the Firebase media editor.
+</p>
+
+<div class="settings-password">
+
+<label>
+HOST PASSWORD
+</label>
+
+<input
+id="settingsPassword"
+type="password"
+placeholder="Enter password"
+>
+
+<button
+class="settings-action"
+onclick="unlockFromSettings()"
+>
+Open Editor
+</button>
+
+<div
+id="settingsPasswordMessage"
+></div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -2520,71 +2174,53 @@ Aayushman Jha
 ===================================================== -->
 
 <section
-    id="team"
-    class="reveal"
+id="team"
+class="reveal"
 >
 
-<div class="team-members">
-
 <h2 class="title">
-
-<span>
-Team Members
-</span>
-
+<span>Team Members</span>
 </h2>
 
-
 <p class="sub">
-
 Team Red Diamond · Science Exhibition 2026
-
 </p>
 
 
-<div class="leader-box">
+<div class="team-list">
 
-<div class="leader-label">
+<div class="team-card">
+
 Leader
-</div>
 
-<div class="leader-name">
+<span class="team-role">
 Aayushman Jha
-</div>
+</span>
 
 </div>
 
-
-<div class="team-members-list">
-
-<div class="member-card">
-Aayushman Jha
-</div>
-
-<div class="member-card">
+<div class="team-card">
 Raushan Kumar
 </div>
 
-<div class="member-card">
+<div class="team-card">
 Dayansh Shekhar Singh
 </div>
 
-<div class="member-card">
+<div class="team-card">
 Harsh Kumar
 </div>
 
-<div class="member-card">
+<div class="team-card">
 Divya Kumar
 </div>
 
-<div class="member-card">
+<div class="team-card">
 Abhishek Kumar
 </div>
 
-<div class="member-card">
+<div class="team-card">
 Sankalp Krishna
-</div>
-
 </div>
 
 </div>
@@ -2597,112 +2233,115 @@ Sankalp Krishna
 ===================================================== -->
 
 <section
-    id="model"
-    class="reveal"
+id="model"
+class="reveal"
 >
 
 <div class="about">
 
+<div></div>
+
+<div>
+
 <h2>
-About the
-<span>Heart</span>
+About the <span>Heart</span>
 </h2>
 
-
 <p>
-
-The human heart is a muscular organ that
-continuously pumps blood throughout the body.
-Our working model demonstrates this pumping
-action in a simple and practical way.
-
+The human heart is a muscular organ
+that continuously pumps blood throughout
+the body. Our working model demonstrates
+this pumping action in a simple and
+practical way.
 </p>
 
 
-<!-- SMALL POINTS INSTEAD OF LARGE BUTTONS -->
+<div class="features">
 
-<div class="heart-points">
+<div class="feature">
 
-
-<div class="heart-point">
-
-<div class="heart-point-icon">
+<div class="icon">
 ♥
 </div>
 
 <div>
 
-<strong>
+<h3>
 Realistic Action
-</strong>
+</h3>
 
-Pumping demonstration of the heart's
-contraction and relaxation.
+<p>
+Pumping demonstration
+</p>
 
 </div>
 
 </div>
 
 
-<div class="heart-point">
+<div class="feature">
 
-<div class="heart-point-icon">
-●
+<div class="icon">
+◉
 </div>
 
 <div>
 
-<strong>
+<h3>
 Blood Flow
-</strong>
+</h3>
 
-Shows how blood moves through
-different parts of circulation.
+<p>
+Shows circulation
+</p>
 
 </div>
 
 </div>
 
 
-<div class="heart-point">
+<div class="feature">
 
-<div class="heart-point-icon">
+<div class="icon">
 ⚙
 </div>
 
 <div>
 
-<strong>
+<h3>
 Mechanism
-</strong>
+</h3>
 
-A simple model helps explain
-how pumping takes place.
+<p>
+Easy to understand
+</p>
 
 </div>
 
 </div>
 
 
-<div class="heart-point">
+<div class="feature">
 
-<div class="heart-point-icon">
+<div class="icon">
 ▣
 </div>
 
 <div>
 
-<strong>
+<h3>
 Educational
-</strong>
+</h3>
 
-Designed as a practical science
-exhibition demonstration.
+<p>
+Science project
+</p>
 
 </div>
 
 </div>
 
+</div>
 
 </div>
 
@@ -2710,151 +2349,64 @@ exhibition demonstration.
 
 
 <!-- =====================================================
-     AWARENESS
+     HEART AWARENESS
 ===================================================== -->
 
 <div class="awareness">
 
 <h2>
-
-Why
-<span>Heart Awareness</span>
+Why <span>Heart Awareness</span>
 Is Important
-
 </h2>
 
-
 <p class="awareness-intro">
-
 Understanding heart health helps people
 recognize important risk factors and the
 value of prevention and early care.
-
 </p>
 
 
-<div class="awareness-list">
-
-
-<div class="awareness-point">
-
-<strong>
-Hypertension:
-</strong>
-
-High blood pressure can place extra strain
-on the heart and blood vessels.
-
-</div>
-
+<div class="awareness-points">
 
 <div class="awareness-point">
-
-<strong>
-Heart disease:
-</strong>
-
-Awareness helps people understand
-important cardiovascular risk factors.
-
+Hypertension can increase the risk of heart disease.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Early detection:
-</strong>
-
-Recognizing warning signs can encourage
-timely medical attention.
-
+Heart disease is a major cause of death worldwide.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Healthy habits:
-</strong>
-
-Regular activity and balanced nutrition
-support overall heart health.
-
+Early awareness can help identify risk factors.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Smoking:
-</strong>
-
-Avoiding tobacco helps reduce
-cardiovascular health risks.
-
+Regular physical activity supports heart health.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Diabetes:
-</strong>
-
-Managing blood sugar is important
-for long-term cardiovascular health.
-
+A balanced diet can support healthy circulation.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Cholesterol:
-</strong>
-
-Healthy cholesterol levels can help
-protect blood vessels.
-
+Smoking can significantly harm cardiovascular health.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Regular check-ups:
-</strong>
-
-Health checks can identify certain
-risk factors before complications develop.
-
+Diabetes can increase cardiovascular risk.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Stress and sleep:
-</strong>
-
-Good sleep and healthy stress management
-support overall wellbeing.
-
+Knowing warning signs can encourage timely medical help.
 </div>
-
 
 <div class="awareness-point">
-
-<strong>
-Prevention saves lives:
-</strong>
-
-Heart-health awareness can encourage
-safer choices and earlier care.
-
+Regular health checks can help monitor blood pressure.
 </div>
 
+<div class="awareness-point">
+Heart health education encourages healthier choices.
+</div>
 
 </div>
 
@@ -2868,48 +2420,41 @@ safer choices and earlier care.
 ===================================================== -->
 
 <section
-    id="media"
-    class="reveal"
+id="media"
+class="reveal"
 >
 
 <h2 class="title">
-
-<span>
-Photo & Video
-</span>
-
+<span>Photo & Video</span>
 of Project
-
 </h2>
 
-
 <p class="sub">
-
-Explore photographs and videos of the
-Working Model of the Human Heart.
-
+Everyone can view the project gallery.
+The host can manage image and video links
+from the editor.
 </p>
 
 
 <div class="media-view-buttons">
 
 <button
-    class="media-filter active"
-    onclick="filterMedia('all',this)"
+class="media-filter active"
+onclick="filterMedia('all',this)"
 >
 👀 See All
 </button>
 
 <button
-    class="media-filter"
-    onclick="filterMedia('photo',this)"
+class="media-filter"
+onclick="filterMedia('photo',this)"
 >
 📸 Photos
 </button>
 
 <button
-    class="media-filter"
-    onclick="filterMedia('video',this)"
+class="media-filter"
+onclick="filterMedia('video',this)"
 >
 🎬 Videos
 </button>
@@ -2918,173 +2463,134 @@ Working Model of the Human Heart.
 
 
 <div
-    id="firebaseStatus"
-    class="firebase-status"
+id="firebaseStatus"
+class="firebase-status"
 >
 ☁️ Connecting to Firebase...
 </div>
 
 
 <div
-    id="gallery"
-    class="gallery"
+id="gallery"
+class="gallery"
 ></div>
 
 
 <div
-    id="galleryEmpty"
-    class="gallery-empty"
-    style="display:none"
+id="galleryEmpty"
+class="gallery-empty"
+style="display:none"
 >
 No photos or videos have been added yet.
 </div>
 
 
 <div
-    id="sectionViewer"
-    class="section-viewer"
+id="sectionViewer"
+class="section-viewer"
 >
 
 <div class="section-viewer-head">
 
 <h3
-    id="sectionViewerTitle"
+id="sectionViewerTitle"
 >
 Preview
 </h3>
 
 <button
-    onclick="closeSectionViewer()"
+onclick="closeSectionViewer()"
 >
 ×
 </button>
 
 </div>
 
-
 <div
-    id="sectionViewerContent"
-    class="section-viewer-content"
+id="sectionViewerContent"
+class="section-viewer-content"
 ></div>
 
 </div>
-
-</section>
 
 
 <!-- =====================================================
      PRESENTATION
 ===================================================== -->
 
-<section
-    id="presentation"
-    class="reveal"
+<div
+class="presentation"
 >
 
-<div class="presentation">
-
-<h2 class="title">
-
-<span>
-Presentation
-</span>
-
+<h2>
+📄 Project Presentation
 </h2>
 
 
-<p class="sub">
+<video
+class="presentation-video"
+controls
+playsinline
+preload="metadata"
+>
 
-Watch the animated presentation video
-and read the complete project presentation.
+<source
+src="./1.mp4"
+type="video/mp4"
+>
 
-</p>
+Your browser does not support video playback.
+
+</video>
 
 
-<div class="presentation-grid">
-
-
-<!-- =====================================================
-     VIDEO
-===================================================== -->
-
-<div class="presentation-card">
+<div class="pdf-container">
 
 <h3>
-🎬 Animated Presentation
+📖 Project Presentation PDF
 </h3>
 
 
-<video
-    class="presentation-video"
-    src="1.mp4"
-    controls
-    playsinline
-    preload="metadata"
->
-Your browser does not support video playback.
-</video>
+<div class="pdf-frame-wrapper">
+
+<iframe
+class="pdf-frame"
+id="pdfFrame"
+src="./1.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH"
+title="Project Presentation PDF"
+loading="lazy"
+></iframe>
 
 </div>
 
 
-<!-- =====================================================
-     PDF
-===================================================== -->
-
-<div class="presentation-card">
-
-<h3>
-📄 Project Presentation
-</h3>
-
-
-<div class="pdf-reader">
-
-<div class="pdf-fallback">
-
-<strong>
-📄 Project Presentation
-</strong>
-
-<p>
-If the built-in reader does not load,
-open the PDF directly.
-</p>
-
+<div class="pdf-actions">
 
 <a
-    class="pdf-open"
-    href="1.pdf"
-    target="_blank"
-    rel="noopener"
+href="./1.pdf"
+target="_blank"
+rel="noopener noreferrer"
+class="pdf-open-btn"
 >
 📖 Open PDF
 </a>
 
-</div>
-
-
-<object
-    data="1.pdf#toolbar=1&navpanes=0&view=FitH"
-    type="application/pdf"
->
-
-</object>
-
-</div>
-
 
 <a
-    class="pdf-open"
-    href="1.pdf"
-    target="_blank"
-    rel="noopener"
+href="./1.pdf"
+download="Project-Presentation.pdf"
+class="pdf-open-btn"
 >
-📖 Open PDF in Full Reader
+⬇️ Save PDF
 </a>
 
 </div>
 
+
+<p class="pdf-note">
+If the PDF preview does not appear in your browser,
+tap "Open PDF" to open it directly.
+</p>
 
 </div>
 
@@ -3098,25 +2604,18 @@ open the PDF directly.
 ===================================================== -->
 
 <section
-    id="working"
-    class="reveal"
+id="working"
+class="reveal"
 >
 
 <h2 class="title">
-
 About the
-<span>
-Function of the Heart
-</span>
-
+<span>Function of the Heart</span>
 </h2>
 
-
 <p class="sub">
-
 Learn the main functions of the heart
 and how blood moves through the chambers.
-
 </p>
 
 
@@ -3210,7 +2709,6 @@ and relaxes to maintain circulation.
 
 </div>
 
-
 </div>
 
 </section>
@@ -3221,25 +2719,17 @@ and relaxes to maintain circulation.
 ===================================================== -->
 
 <section
-    id="contact"
-    class="reveal"
+id="contact"
+class="reveal"
 >
 
 <h2 class="title">
-
-Contact
-<span>
-Us
-</span>
-
+Contact <span>Us</span>
 </h2>
 
-
 <p class="sub">
-
 Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
-
 </p>
 
 
@@ -3247,8 +2737,8 @@ about our Working Model of the Human Heart.
 
 
 <a
-    class="contact-card"
-    href="mailto:aayushmanjha1108@gmail.com"
+class="contact-card"
+href="mailto:aayushmanjha1108@gmail.com"
 >
 
 <div class="contact-icon">
@@ -3271,8 +2761,8 @@ aayushmanjha1108@gmail.com
 
 
 <a
-    class="contact-card"
-    href="tel:+919931203827"
+class="contact-card"
+href="tel:+919931203827"
 >
 
 <div class="contact-icon">
@@ -3314,7 +2804,6 @@ Team Red Diamond
 
 </div>
 
-
 </div>
 
 </section>
@@ -3336,11 +2825,9 @@ About
 </h3>
 
 <p>
-
 Educational project to understand
 the structure and working of the
 human heart.
-
 </p>
 
 </div>
@@ -3353,46 +2840,33 @@ Team
 </h3>
 
 <p>
-
 Team Red Diamond
-
-</p>
-
-<p>
-
-Aayushman Jha<br>
-Raushan Kumar<br>
-Dayansh Shekhar Singh<br>
-Harsh Kumar<br>
-Divya Kumar<br>
-Abhishek Kumar<br>
-Sankalp Krishna
-
 </p>
 
 </div>
 
 
-<div>
+<div class="credits">
 
 <h3>
 Credits
 </h3>
 
+<div class="credit-title">
+Lead by
+</div>
 
 <div class="credit-name">
-
-Lead by<br>
 Aayushman Jha
-
 </div>
 
 
-<div class="credit-role">
+<div class="credit-title">
+Website by
+</div>
 
-Website by<br>
+<div class="credit-name">
 Raushan Kumar
-
 </div>
 
 </div>
@@ -3417,105 +2891,96 @@ Raushan Kumar
 
 <script>
 
-/* =========================================================
-   HEARTBEAT
-========================================================= */
+
+/* =====================================================
+   BPM
+===================================================== */
 
 const bpm =
-    document.getElementById("bpm");
-
+document.getElementById("bpm");
 
 setInterval(
-    function(){
-
-        bpm.textContent =
-            70 +
-            Math.floor(
-                Math.random() * 7
-            );
-
-    },
-    1200
+()=>{
+    bpm.textContent =
+        70 +
+        Math.floor(
+            Math.random()*7
+        );
+},
+1200
 );
 
 
-/* =========================================================
-   REVEAL
-========================================================= */
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
 
-const revealObserver =
-    new IntersectionObserver(
-        function(entries){
+const obs =
+new IntersectionObserver(
+entries=>{
 
-            entries.forEach(
-                function(entry){
+    entries.forEach(
+    entry=>{
 
-                    if(
-                        entry.isIntersecting
-                    ){
+        if(
+            entry.isIntersecting
+        ){
 
-                        entry.target
-                            .classList
-                            .add("show");
+            entry.target
+                .classList
+                .add("show");
 
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.1
         }
-    );
+
+    });
+
+},
+{
+    threshold:.12
+});
 
 
 document
-    .querySelectorAll(".reveal")
-    .forEach(
-        function(element){
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
+.querySelectorAll(".reveal")
+.forEach(
+element=>{
+    obs.observe(element);
+});
 
 
-/* =========================================================
+/* =====================================================
    SETTINGS
-========================================================= */
+===================================================== */
 
 window.toggleSettings =
 function(){
 
     document
-        .getElementById(
-            "settingsMenu"
-        )
-        .classList
-        .toggle("show");
+    .getElementById(
+        "settingsMenu"
+    )
+    .classList
+    .toggle("show");
 
 };
 
 
 const HOST_PASSWORD =
-    "aayushman";
+"aayushman";
 
 
 window.unlockFromSettings =
 function(){
 
     const input =
-        document.getElementById(
-            "settingsPassword"
-        );
+    document.getElementById(
+        "settingsPassword"
+    );
 
     const msg =
-        document.getElementById(
-            "settingsPasswordMessage"
-        );
+    document.getElementById(
+        "settingsPasswordMessage"
+    );
 
 
     if(
@@ -3524,441 +2989,284 @@ function(){
     ){
 
         msg.textContent =
-            "✓ Access granted.";
+        "✓ Access granted. Opening editor...";
 
         msg.style.color =
-            "#69e58a";
+        "#69e58a";
 
 
         setTimeout(
-            function(){
+        ()=>{
 
-                location.href =
-                    "edit.html";
+            location.href =
+            "edit.html";
 
-            },
-            500
+        },
+        500
         );
 
-    }
 
-    else{
+    }else{
 
         msg.textContent =
-            "Incorrect password.";
+        "Incorrect password.";
 
         msg.style.color =
-            "#ff5262";
+        "#ff5262";
 
     }
 
 };
 
 
-/* =========================================================
-   MEDIA SCROLL
-========================================================= */
+/* =====================================================
+   RATING UI
+===================================================== */
 
-window.scrollToMedia =
-function(event){
+const ratingArea =
+document.getElementById(
+    "ratingArea"
+);
 
-    event.preventDefault();
-
-    document
-        .getElementById("media")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-
-};
-
-
-/* =========================================================
-   MEDIA VIEWER
-========================================================= */
-
-window.closeSectionViewer =
-function(){
-
-    document
-        .getElementById(
-            "sectionViewer"
-        )
-        .classList
-        .remove("show");
-
-    document
-        .getElementById(
-            "sectionViewerContent"
-        )
-        .innerHTML = "";
-
-};
-
-
-/* =========================================================
-   RATING
-========================================================= */
+const ratingStars =
+document.querySelectorAll(
+    ".rating-star"
+);
 
 let selectedRating = 0;
 
 
-const ratingPrompt =
-    document.getElementById(
-        "ratingPrompt"
-    );
+/*
+   This local ID means the same browser/device
+   won't be asked to rate repeatedly.
+*/
 
-
-const ratingStars =
-    document.querySelectorAll(
-        ".rating-star"
-    );
-
-
-const ratingConfirm =
-    document.getElementById(
-        "ratingConfirm"
-    );
-
-
-const ratingSaving =
-    document.getElementById(
-        "ratingSaving"
-    );
-
-
-const ratingRated =
-    document.getElementById(
-        "ratingRated"
-    );
-
-
-const ratingCurrent =
-    document.getElementById(
-        "ratingCurrent"
-    );
-
-
-function hasAlreadyRated(){
-
-    return(
-        localStorage.getItem(
-            "workingHeartRated"
-        ) === "yes"
-    );
-
-}
-
-
-function hideRatingPrompt(){
-
-    ratingPrompt
-        .classList
-        .add("hidden");
-
-}
-
-
-if(
-    hasAlreadyRated()
-){
-
-    hideRatingPrompt();
-
-}
-
-
-/* STAR SELECTION */
-
-ratingStars.forEach(
-    function(star){
-
-        star.addEventListener(
-            "click",
-            function(){
-
-                selectedRating =
-                    Number(
-                        star.dataset.rating
-                    );
-
-
-                ratingStars.forEach(
-                    function(s){
-
-                        const value =
-                            Number(
-                                s.dataset.rating
-                            );
-
-
-                        s.classList.toggle(
-                            "active",
-                            value <=
-                            selectedRating
-                        );
-
-                    }
-                );
-
-
-                ratingConfirm
-                    .classList
-                    .add("show");
-
-            }
-        );
-
-    }
+let voterId =
+localStorage.getItem(
+    "heartRatingVoterId"
 );
 
 
-/* CONFIRM */
+if(!voterId){
 
-ratingConfirm.addEventListener(
-    "click",
-    async function(){
+    voterId =
+        "voter_" +
+        Date.now() +
+        "_" +
+        Math.random()
+        .toString(36)
+        .substring(2);
 
-        if(
-            selectedRating < 1 ||
-            selectedRating > 5
-        ){
+    localStorage.setItem(
+        "heartRatingVoterId",
+        voterId
+    );
 
-            return;
+}
+
+
+const alreadyRated =
+localStorage.getItem(
+    "heartProjectRated"
+) === "yes";
+
+
+/* =====================================================
+   STAR HOVER
+===================================================== */
+
+ratingStars.forEach(
+star=>{
+
+    star.addEventListener(
+        "mouseenter",
+        ()=>{
+
+            const value =
+            Number(
+                star.dataset.rating
+            );
+
+            ratingStars.forEach(
+            s=>{
+
+                const n =
+                Number(
+                    s.dataset.rating
+                );
+
+                s.classList.toggle(
+                    "active",
+                    n <= value
+                );
+
+            });
 
         }
+    );
 
 
-        if(
-            hasAlreadyRated()
-        ){
+    star.addEventListener(
+        "mouseleave",
+        ()=>{
 
-            hideRatingPrompt();
+            ratingStars.forEach(
+            s=>{
 
-            return;
+                const n =
+                Number(
+                    s.dataset.rating
+                );
+
+                s.classList.toggle(
+                    "active",
+                    n <= selectedRating
+                );
+
+            });
 
         }
+    );
 
 
-        ratingStars.forEach(
-            function(star){
+    star.addEventListener(
+        "click",
+        ()=>{
 
-                star.disabled = true;
+            selectedRating =
+                Number(
+                    star.dataset.rating
+                );
 
-            }
-        );
+            ratingStars.forEach(
+            s=>{
+
+                const n =
+                Number(
+                    s.dataset.rating
+                );
+
+                s.classList.toggle(
+                    "active",
+                    n <= selectedRating
+                );
+
+            });
 
 
-        ratingConfirm
-            .classList
-            .remove("show");
-
-
-        ratingSaving
-            .classList
-            .add("show");
-
-
-        try{
-
-            await window.saveRating(
+            submitRating(
                 selectedRating
             );
 
-
-            localStorage.setItem(
-                "workingHeartRated",
-                "yes"
-            );
-
-
-            ratingSaving
-                .classList
-                .remove("show");
-
-
-            ratingRated
-                .classList
-                .add("show");
-
-
-            setTimeout(
-                function(){
-
-                    hideRatingPrompt();
-
-                },
-                1500
-            );
-
         }
+    );
 
-        catch(error){
-
-            console.error(
-                error
-            );
+});
 
 
-            ratingSaving
-                .classList
-                .remove("show");
+/* =====================================================
+   ALREADY RATED
+===================================================== */
+
+if(alreadyRated){
+
+    ratingArea.style.display =
+        "none";
+
+}
 
 
-            ratingConfirm
-                .classList
-                .add("show");
+/* =====================================================
+   SHOW/HIDE RATING PANEL
+===================================================== */
+
+function finishRating(){
+
+    localStorage.setItem(
+        "heartProjectRated",
+        "yes"
+    );
+
+    /*
+       Keep the total rating visible,
+       but remove the large rating panel.
+    */
+
+    setTimeout(
+    ()=>{
+
+        ratingArea.style.display =
+            "none";
+
+    },
+    1800
+    );
+
+}
 
 
-            ratingStars.forEach(
-                function(star){
+/* =====================================================
+   RATING NUMBER FORMAT
+===================================================== */
 
-                    star.disabled =
-                        false;
-
-                }
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   RATING DISPLAY
-========================================================= */
-
-window.updateRatingDisplay =
-function(
+function ratingText(
     average,
     count
 ){
 
-    const averageText =
+    if(!count){
+
+        return "★ No ratings yet";
+
+    }
+
+    return (
+        "★ " +
         average.toFixed(1) +
-        " / 5";
-
-
-    const countText =
-        " · " +
+        " / 5 · " +
         count +
         (
             count === 1
             ? " rating"
             : " ratings"
-        );
-
-
-    document
-        .getElementById(
-            "badgeValue"
         )
-        .textContent =
-            averageText;
-
-
-    document
-        .getElementById(
-            "badgeText"
-        )
-        .textContent =
-            countText;
-
-
-    ratingCurrent.textContent =
-        count
-        ? "⭐ " +
-          averageText +
-          countText
-
-        : "⭐ No ratings yet";
-
-};
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-let currentFilter =
-    "all";
-
-
-window.filterMedia =
-function(
-    filter,
-    button
-){
-
-    currentFilter =
-        filter;
-
-
-    document
-        .querySelectorAll(
-            ".media-filter"
-        )
-        .forEach(
-            function(btn){
-
-                btn.classList
-                    .remove(
-                        "active"
-                    );
-
-            }
-        );
-
-
-    button.classList
-        .add("active");
-
-
-    window.renderMedia();
-
-};
-
-
-/* =========================================================
-   PRESERVE SCROLL
-========================================================= */
-
-window.getScrollPosition =
-function(){
-
-    return{
-
-        x:window.scrollX,
-
-        y:window.scrollY
-
-    };
-
-};
-
-
-window.restoreScrollPosition =
-function(position){
-
-    if(!position){
-        return;
-    }
-
-
-    requestAnimationFrame(
-        function(){
-
-            window.scrollTo(
-                position.x,
-                position.y
-            );
-
-        }
     );
 
+}
+
+
+/* =====================================================
+   PDF OPEN FUNCTION
+===================================================== */
+
+window.openPresentationPDF =
+function(){
+
+    const pdf =
+        "./1.pdf";
+
+    const win =
+        window.open(
+            pdf,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+
+    /*
+       Some browsers block window.open.
+       In that case navigate directly.
+    */
+
+    if(!win){
+
+        location.href =
+            pdf;
+
+    }
+
 };
+
 
 </script>
 
@@ -3979,17 +3287,19 @@ from
 import {
     getFirestore,
     collection,
+    getDocs,
     addDoc,
-    serverTimestamp,
-    onSnapshot
+    query,
+    orderBy,
+    serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
+/* =====================================================
+   SAME FIREBASE CONFIGURATION
+===================================================== */
 
 const firebaseConfig = {
 
@@ -4015,454 +3325,289 @@ const firebaseConfig = {
 
 
 const app =
-    initializeApp(
-        firebaseConfig
-    );
-
+initializeApp(
+    firebaseConfig
+);
 
 const db =
-    getFirestore(app);
+getFirestore(app);
 
 
-/* =========================================================
+/* =====================================================
    COLLECTIONS
-========================================================= */
+===================================================== */
 
 const MEDIA_COLLECTION =
     "heartProjectMedia";
 
-
-const RATING_COLLECTION =
+const RATINGS_COLLECTION =
     "heartProjectRatings";
 
 
-/* =========================================================
-   MEDIA VARIABLES
-========================================================= */
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const gallery =
+document.getElementById(
+    "gallery"
+);
+
+const empty =
+document.getElementById(
+    "galleryEmpty"
+);
+
+const status =
+document.getElementById(
+    "firebaseStatus"
+);
+
+const miniAverage =
+document.getElementById(
+    "miniAverage"
+);
+
+const miniCount =
+document.getElementById(
+    "miniCount"
+);
+
+const ratingTotalText =
+document.getElementById(
+    "ratingTotalText"
+);
+
+const ratingMini =
+document.getElementById(
+    "ratingMini"
+);
+
+
+/* =====================================================
+   MEDIA
+===================================================== */
 
 let mediaStore = [];
 
-let lastSignature = "";
+let currentFilter =
+    "all";
 
 
-const gallery =
-    document.getElementById(
-        "gallery"
-    );
+function setStatus(
+    text,
+    live=false
+){
 
+    status.textContent =
+        text;
 
-const empty =
-    document.getElementById(
-        "galleryEmpty"
-    );
-
-
-const status =
-    document.getElementById(
-        "firebaseStatus"
-    );
-
-
-/* =========================================================
-   RATING SAVE
-========================================================= */
-
-window.saveRating =
-async function(rating){
-
-    const ratingCollection =
-        collection(
-            db,
-            RATING_COLLECTION
-        );
-
-
-    await addDoc(
-        ratingCollection,
-        {
-
-            rating:
-                Number(rating),
-
-            createdAt:
-                serverTimestamp(),
-
-            source:
-                "website"
-
-        }
-    );
-
-};
-
-
-/* =========================================================
-   RATING REAL-TIME
-========================================================= */
-
-function listenForRatings(){
-
-    const ratingCollection =
-        collection(
-            db,
-            RATING_COLLECTION
-        );
-
-
-    onSnapshot(
-
-        ratingCollection,
-
-        function(snapshot){
-
-            let total = 0;
-
-            let count = 0;
-
-
-            snapshot.forEach(
-                function(docSnap){
-
-                    const data =
-                        docSnap.data();
-
-
-                    const value =
-                        Number(
-                            data.rating
-                        );
-
-
-                    if(
-                        value >= 1 &&
-                        value <= 5
-                    ){
-
-                        total += value;
-
-                        count++;
-
-                    }
-
-                }
-            );
-
-
-            const average =
-                count
-                ? total / count
-                : 0;
-
-
-            window.updateRatingDisplay(
-                average,
-                count
-            );
-
-        },
-
-        function(error){
-
-            console.error(
-                "Rating error:",
-                error
-            );
-
-        }
-
+    status.classList.toggle(
+        "live",
+        live
     );
 
 }
 
 
-/* =========================================================
-   MEDIA REAL-TIME
-========================================================= */
+async function loadFirebaseMedia(){
 
-function listenForMedia(){
+    try{
 
-    const mediaCollection =
-        collection(
-            db,
-            MEDIA_COLLECTION
+        setStatus(
+            "☁️ Reading Firebase..."
         );
 
 
-    onSnapshot(
+        const snap =
+        await getDocs(
+            collection(
+                db,
+                MEDIA_COLLECTION
+            )
+        );
 
-        mediaCollection,
 
-        function(snapshot){
+        mediaStore = [];
 
-            /*
-               IMPORTANT:
-               Save the current position BEFORE rendering.
-            */
 
-            const savedPosition =
-                window.getScrollPosition();
+        snap.forEach(
+        docSnap=>{
 
+            const data =
+                docSnap.data();
 
-            const newStore = [];
 
+            const url =
+                data.url ||
+                data.link ||
+                data.mediaUrl ||
+                data.secure_url;
 
-            snapshot.forEach(
-                function(docSnap){
 
-                    const data =
-                        docSnap.data();
+            if(!url){
 
-
-                    const url =
-                        data.url ||
-                        data.link ||
-                        data.mediaUrl ||
-                        data.secure_url;
-
-
-                    if(!url){
-                        return;
-                    }
-
-
-                    let type =
-                        String(
-                            data.type ||
-                            data.mediaType ||
-                            ""
-                        )
-                        .toLowerCase();
-
-
-                    if(
-                        type === "image" ||
-                        type === "photo" ||
-                        type === "photos"
-                    ){
-
-                        type =
-                            "photo";
-
-                    }
-
-
-                    if(
-                        type === "video" ||
-                        type === "videos"
-                    ){
-
-                        type =
-                            "video";
-
-                    }
-
-
-                    /*
-                       Detect automatically when type
-                       wasn't stored correctly.
-                    */
-
-                    if(
-                        type !== "photo" &&
-                        type !== "video"
-                    ){
-
-                        const cleanUrl =
-                            url
-                                .split("?")[0]
-                                .toLowerCase();
-
-
-                        if(
-                            /\.(jpg|jpeg|png|gif|webp|avif)$/
-                            .test(
-                                cleanUrl
-                            )
-                        ){
-
-                            type =
-                                "photo";
-
-                        }
-
-                        else if(
-                            /\.(mp4|webm|mov|m4v|ogg)$/
-                            .test(
-                                cleanUrl
-                            )
-                        ){
-
-                            type =
-                                "video";
-
-                        }
-
-                        else{
-
-                            return;
-
-                        }
-
-                    }
-
-
-                    newStore.push({
-
-                        id:
-                            docSnap.id,
-
-                        name:
-                            data.name ||
-                            data.title ||
-                            "Project Media",
-
-                        url:
-                            url,
-
-                        type:
-                            type
-
-                    });
-
-                }
-            );
-
-
-            /*
-               Check whether the actual media changed.
-            */
-
-            const signature =
-                JSON.stringify(
-                    newStore
-                        .map(
-                            function(item){
-
-                                return{
-
-                                    id:item.id,
-
-                                    name:item.name,
-
-                                    url:item.url,
-
-                                    type:item.type
-
-                                };
-
-                            }
-                        )
-                        .sort(
-                            function(a,b){
-
-                                return a.id.localeCompare(
-                                    b.id
-                                );
-
-                            }
-                        )
-                );
-
-
-            mediaStore =
-                newStore;
-
-
-            status.textContent =
-                "☁️ Firebase connected • " +
-                mediaStore.length +
-                " media loaded";
-
-
-            status.classList.add(
-                "live"
-            );
-
-
-            /*
-               DON'T rebuild the gallery if nothing
-               actually changed.
-            */
-
-            if(
-                signature !==
-                lastSignature
-            ){
-
-                lastSignature =
-                    signature;
-
-
-                window.renderMedia();
+                return;
 
             }
 
 
-            /*
-               Restore the exact position.
-            */
-
-            window.restoreScrollPosition(
-                savedPosition
-            );
-
-        },
-
-        function(error){
-
-            console.error(
-                "Firebase media error:",
-                error
-            );
+            let type =
+                String(
+                    data.type ||
+                    data.mediaType ||
+                    ""
+                ).toLowerCase();
 
 
-            status.textContent =
-                "❌ Firebase error";
+            if(
+                type === "image" ||
+                type === "photo" ||
+                type === "photos"
+            ){
+
+                type =
+                    "photo";
+
+            }
 
 
-            status.classList.remove(
-                "live"
-            );
+            if(
+                type === "video" ||
+                type === "videos"
+            ){
 
-        }
+                type =
+                    "video";
 
-    );
+            }
+
+
+            if(
+                type !== "photo" &&
+                type !== "video"
+            ){
+
+                const u =
+                    url
+                    .split("?")[0]
+                    .toLowerCase();
+
+
+                if(
+                    /\.(jpg|jpeg|png|gif|webp|avif)$/
+                    .test(u)
+                ){
+
+                    type =
+                        "photo";
+
+                }
+                else if(
+                    /\.(mp4|webm|mov|m4v|ogg)$/
+                    .test(u)
+                ){
+
+                    type =
+                        "video";
+
+                }
+                else{
+
+                    return;
+
+                }
+
+            }
+
+
+            mediaStore.push({
+
+                id:
+                    docSnap.id,
+
+                name:
+                    data.name ||
+                    data.title ||
+                    "Project Media",
+
+                url:
+                    url,
+
+                type:
+                    type
+
+            });
+
+        });
+
+
+        setStatus(
+            "☁️ Firebase connected • " +
+            mediaStore.length +
+            " media loaded",
+            true
+        );
+
+
+        renderMedia();
+
+    }
+    catch(error){
+
+        console.error(
+            "Firebase media error:",
+            error
+        );
+
+
+        setStatus(
+            "❌ Firebase error"
+        );
+
+
+        gallery.innerHTML =
+            "";
+
+        empty.style.display =
+            "block";
+
+
+        empty.textContent =
+            "❌ Firebase could not load media.";
+
+    }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    RENDER MEDIA
-========================================================= */
+===================================================== */
 
-window.renderMedia =
-function(){
+function renderMedia(){
 
-    gallery.innerHTML = "";
+    gallery.innerHTML =
+        "";
 
 
     const items =
         mediaStore.filter(
-            function(item){
+        item=>{
 
-                return(
-                    currentFilter ===
-                    "all"
+            return(
+                currentFilter === "all" ||
+                item.type === currentFilter
+            );
 
-                    ||
-
-                    item.type ===
-                    currentFilter
-                );
-
-            }
-        );
+        });
 
 
     if(!items.length){
 
         empty.style.display =
             "block";
+
 
         empty.textContent =
             mediaStore.length
@@ -4479,125 +3624,123 @@ function(){
 
 
     items.forEach(
-        function(item){
+    item=>{
 
-            const card =
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "gallery-item";
+
+
+        let media;
+
+
+        if(
+            item.type === "video"
+        ){
+
+            media =
                 document.createElement(
-                    "div"
+                    "video"
                 );
 
+            media.controls =
+                false;
 
-            card.className =
-                "gallery-item";
+            media.muted =
+                true;
 
+            media.playsInline =
+                true;
 
-            let media;
-
-
-            if(
-                item.type ===
-                "video"
-            ){
-
-                media =
-                    document.createElement(
-                        "video"
-                    );
-
-                media.controls =
-                    false;
-
-                media.muted =
-                    true;
-
-                media.playsInline =
-                    true;
-
-                media.preload =
-                    "metadata";
-
-            }
-
-            else{
-
-                media =
-                    document.createElement(
-                        "img"
-                    );
-
-                media.loading =
-                    "lazy";
-
-            }
-
-
-            media.src =
-                item.url;
-
-
-            media.alt =
-                item.name;
-
-
-            const caption =
-                document.createElement(
-                    "div"
-                );
-
-
-            caption.className =
-                "gallery-caption";
-
-
-            caption.textContent =
-                item.name;
-
-
-            card.appendChild(
-                media
-            );
-
-
-            card.appendChild(
-                caption
-            );
-
-
-            card.onclick =
-                function(){
-
-                    openViewer(item);
-
-                };
-
-
-            gallery.appendChild(
-                card
-            );
+            media.preload =
+                "metadata";
 
         }
-    );
+        else{
 
-};
+            media =
+                document.createElement(
+                    "img"
+                );
+
+            media.loading =
+                "lazy";
+
+        }
 
 
-/* =========================================================
-   MEDIA VIEWER
-========================================================= */
+        media.src =
+            item.url;
 
-function openViewer(item){
+
+        media.alt =
+            item.name;
+
+
+        const caption =
+            document.createElement(
+                "div"
+            );
+
+
+        caption.className =
+            "gallery-caption";
+
+
+        caption.textContent =
+            item.name;
+
+
+        card.appendChild(
+            media
+        );
+
+        card.appendChild(
+            caption
+        );
+
+
+        card.onclick =
+        ()=>{
+
+            openViewer(
+                item
+            );
+
+        };
+
+
+        gallery.appendChild(
+            card
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   VIEWER
+===================================================== */
+
+function openViewer(
+    item
+){
 
     const viewer =
         document.getElementById(
             "sectionViewer"
         );
 
-
     const title =
         document.getElementById(
             "sectionViewerTitle"
         );
-
 
     const content =
         document.getElementById(
@@ -4608,7 +3751,6 @@ function openViewer(item){
     content.innerHTML =
         "";
 
-
     title.textContent =
         item.name;
 
@@ -4617,8 +3759,7 @@ function openViewer(item){
 
 
     if(
-        item.type ===
-        "video"
+        item.type === "video"
     ){
 
         media =
@@ -4636,7 +3777,6 @@ function openViewer(item){
             true;
 
     }
-
     else{
 
         media =
@@ -4649,7 +3789,6 @@ function openViewer(item){
 
     media.src =
         item.url;
-
 
     media.className =
         "section-view-media";
@@ -4673,16 +3812,352 @@ function openViewer(item){
 }
 
 
-/* =========================================================
-   START
-========================================================= */
+window.closeSectionViewer =
+function(){
 
-listenForRatings();
+    document
+    .getElementById(
+        "sectionViewer"
+    )
+    .classList.remove(
+        "show"
+    );
 
-listenForMedia();
+
+    document
+    .getElementById(
+        "sectionViewerContent"
+    )
+    .innerHTML =
+        "";
+
+};
+
+
+window.filterMedia =
+function(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+    .querySelectorAll(
+        ".media-filter"
+    )
+    .forEach(
+    btn=>{
+
+        btn.classList.remove(
+            "active"
+        );
+
+    });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    renderMedia();
+
+};
+
+
+/* =====================================================
+   RATINGS
+===================================================== */
+
+async function loadRatings(){
+
+    try{
+
+        const snap =
+            await getDocs(
+                collection(
+                    db,
+                    RATINGS_COLLECTION
+                )
+            );
+
+
+        let total =
+            0;
+
+        let count =
+            0;
+
+
+        snap.forEach(
+        docSnap=>{
+
+            const data =
+                docSnap.data();
+
+
+            const value =
+                Number(
+                    data.rating
+                );
+
+
+            if(
+                value >= 1 &&
+                value <= 5
+            ){
+
+                total +=
+                    value;
+
+                count++;
+
+            }
+
+        });
+
+
+        const average =
+            count
+            ? total / count
+            : 0;
+
+
+        updateRatingDisplay(
+            average,
+            count
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Rating loading error:",
+            error
+        );
+
+        /*
+           Don't break the website if
+           rating reading is unavailable.
+        */
+
+    }
+
+}
+
+
+/* =====================================================
+   RATING DISPLAY
+===================================================== */
+
+function updateRatingDisplay(
+    average,
+    count
+){
+
+    if(!count){
+
+        miniAverage.textContent =
+            "0.0 / 5";
+
+        miniCount.textContent =
+            "0 ratings";
+
+        ratingTotalText.innerHTML =
+            '<span style="color:#ffd52a">★</span> No ratings yet';
+
+        return;
+
+    }
+
+
+    miniAverage.textContent =
+        average.toFixed(1) +
+        " / 5";
+
+
+    miniCount.textContent =
+        count +
+        (
+            count === 1
+            ? " rating"
+            : " ratings"
+        );
+
+
+    ratingTotalText.innerHTML =
+        '<strong>★ ' +
+        average.toFixed(1) +
+        ' / 5</strong> · ' +
+        count +
+        (
+            count === 1
+            ? " rating"
+            : " ratings"
+        );
+
+}
+
+
+/* =====================================================
+   SUBMIT RATING
+===================================================== */
+
+async function submitRating(
+    rating
+){
+
+    if(
+        !rating ||
+        rating < 1 ||
+        rating > 5
+    ){
+
+        return;
+
+    }
+
+
+    const stars =
+        document.querySelectorAll(
+            ".rating-star"
+        );
+
+
+    stars.forEach(
+    star=>{
+
+        star.disabled =
+            true;
+
+    });
+
+
+    try{
+
+        /*
+           IMPORTANT:
+           This uses addDoc just like a normal
+           Firestore collection, so each rating
+           becomes a visible Firestore document.
+        */
+
+        await addDoc(
+            collection(
+                db,
+                RATINGS_COLLECTION
+            ),
+            {
+
+                rating:
+                    rating,
+
+                voterId:
+                    localStorage.getItem(
+                        "heartRatingVoterId"
+                    ) || "",
+
+                createdAt:
+                    serverTimestamp()
+
+            }
+        );
+
+
+        localStorage.setItem(
+            "heartProjectRated",
+            "yes"
+        );
+
+
+        /*
+           Refresh the total immediately
+           after successful write.
+        */
+
+        await loadRatings();
+
+
+        /*
+           Remove the large rating panel
+           shortly after successful rating.
+        */
+
+        setTimeout(
+        ()=>{
+
+            const area =
+                document.getElementById(
+                    "ratingArea"
+                );
+
+            if(area){
+
+                area.style.display =
+                    "none";
+
+            }
+
+        },
+        1800
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Rating save error:",
+            error
+        );
+
+
+        alert(
+            "Unable to save rating. Please check your internet connection and try again."
+        );
+
+
+        stars.forEach(
+        star=>{
+
+            star.disabled =
+                false;
+
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+/*
+   IMPORTANT:
+   There is intentionally NO setInterval()
+   for Firebase media.
+
+   This prevents the page from constantly
+   re-rendering while the visitor is scrolling.
+*/
+
+loadFirebaseMedia();
+
+loadRatings();
 
 </script>
 
 
 </body>
+
 </html>
