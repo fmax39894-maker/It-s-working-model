@@ -12,6 +12,8 @@
 
 <title>Working Model of Heart</title>
 
+<!-- WEBSITE COVER / LINK PREVIEW IMAGE -->
+
 <meta
     property="og:title"
     content="Working Model of Heart"
@@ -62,6 +64,9 @@
     content="https://its-working-heart.vercel.app/"
 >
 
+
+<!-- TWITTER / X -->
+
 <meta
     name="twitter:card"
     content="summary_large_image"
@@ -82,18 +87,12 @@
     content="https://its-working-heart.vercel.app/cover.png"
 >
 
+
 <link
     rel="icon"
     type="image/png"
     href="/cover.png"
 >
-
-
-<!-- PDF.JS -->
-
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
-></script>
 
 
 <style>
@@ -111,27 +110,35 @@ html{
 }
 
 body{
-    margin:0;
-    background:#08090b;
-    color:#fff;
-    font-family:Arial,sans-serif;
-}
 
-img,
-video{
-    max-width:100%;
+    margin:0;
+
+    background:#08090b;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    overflow-x:hidden;
 }
 
 
 /* =====================================================
-   NAV
+   NAVIGATION
 ===================================================== */
 
 nav{
+
     height:64px;
+
     padding:0 6%;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     background:#090a0cdd;
@@ -139,1261 +146,52 @@ nav{
     border-bottom:1px solid #292a2e;
 
     position:sticky;
+
     top:0;
 
-    z-index:20;
+    z-index:200;
 
     backdrop-filter:blur(10px);
 }
 
+
 .brand{
+
     font-size:19px;
+
     font-weight:700;
 }
+
 
 .brand span,
 h1 span,
 .red{
+
     color:#ff2638;
 }
 
 
-/* =====================================================
-   HERO
-===================================================== */
+.links{
 
-.hero{
-    min-height:600px;
+    display:flex;
 
-    padding:70px 7%;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-    radial-gradient(
-        circle at 80% 35%,
-        #420b12,
-        transparent 40%
-    );
-}
-
-.hero:before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    opacity:.18;
-
-    background-image:
-    linear-gradient(
-        #ff263812 1px,
-        transparent 1px
-    ),
-    linear-gradient(
-        90deg,
-        #ff263812 1px,
-        transparent 1px
-    );
-
-    background-size:42px 42px;
-}
-
-.hero>*{
-    position:relative;
-}
-
-.eyebrow{
-    font-size:12px;
-    letter-spacing:3px;
-    color:#ff6b76;
-    font-weight:bold;
-}
-
-.hero h1{
-    font-size:clamp(48px,6vw,78px);
-    line-height:.98;
-    margin:18px 0;
-}
-
-.hero p{
-    max-width:560px;
-    color:#cfd0d5;
-    font-size:18px;
-    line-height:1.65;
+    gap:28px;
 }
 
 
-/* =====================================================
-   BUTTON
-===================================================== */
+.links a{
 
-.btn{
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:14px 22px;
-
-    background:#ff2638;
-
-    border-radius:9px;
-
-    color:#fff;
+    color:#eee;
 
     text-decoration:none;
-
-    font-weight:bold;
-
-    box-shadow:0 12px 30px #ff263833;
-
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-
-/* =====================================================
-   BPM
-===================================================== */
-
-.bpm{
-    margin-top:22px;
-
-    width:170px;
-
-    padding:12px;
-
-    border:1px solid #383a40;
-
-    border-radius:10px;
-
-    background:#111317;
-
-    display:flex;
-
-    gap:10px;
-
-    align-items:center;
-}
-
-.pulse{
-    width:31px;
-    height:31px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#ff2638;
-
-    animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.15);
-
-        box-shadow:
-        0 0 25px #ff263888;
-    }
-
-}
-
-
-/* =====================================================
-   ECG
-===================================================== */
-
-.ecg{
-    position:absolute;
-
-    bottom:18px;
-    left:0;
-
-    width:100%;
-    height:75px;
-}
-
-.ecg svg{
-    width:100%;
-    height:100%;
-}
-
-.ecg polyline{
-    fill:none;
-
-    stroke:#ff2638;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
-
-    stroke-dasharray:900;
-    stroke-dashoffset:900;
-
-    animation:
-    ecg 2.2s linear infinite;
-
-    filter:
-    drop-shadow(
-        0 0 7px #ff2638
-    );
-}
-
-@keyframes ecg{
-
-    to{
-        stroke-dashoffset:0;
-    }
-
-}
-
-
-/* =====================================================
-   BAR
-===================================================== */
-
-.bar{
-    width:86%;
-
-    margin:auto;
-
-    padding:14px;
-
-    text-align:center;
-
-    background:#111317;
-
-    border:1px solid #303238;
-
-    color:#aaa;
-}
-
-.bar span{
-    color:#ff2638;
-    font-weight:bold;
-}
-
-.bar b{
-    margin:0 15px;
-    color:#555;
-}
-
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-section{
-    padding:80px 7%;
-    border-top:1px solid #202126;
-}
-
-.title{
-    text-align:center;
-    font-size:38px;
-}
-
-.title span{
-    color:#ff2638;
-}
-
-.sub{
-    max-width:700px;
-
-    margin:
-    0 auto 42px;
-
-    text-align:center;
-
-    color:#aeb1b8;
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1.2fr;
-
-    gap:50px;
-
-    align-items:center;
-}
-
-.about h2{
-    font-size:34px;
-}
-
-.about p{
-    color:#c5c7cc;
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   FEATURES
-===================================================== */
-
-.features,
-.steps{
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:15px;
-}
-
-.feature,
-.step{
-    padding:22px;
-
-    border:1px solid #34363c;
-
-    border-radius:13px;
-
-    background:#111317;
-
-    text-align:center;
-
-    transition:.3s;
-}
-
-.feature:hover,
-.step:hover{
-    transform:translateY(-6px);
-
-    border-color:#ff2638;
-}
-
-.feature .icon,
-.step .icon{
-    font-size:29px;
-
-    color:#ff2638;
-
-    margin-bottom:10px;
-}
-
-.feature p,
-.step p{
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-.num{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-    place-items:center;
-
-    margin:
-    0 auto 17px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   HEART AWARENESS
-===================================================== */
-
-.awareness-section{
-    max-width:1000px;
-
-    margin:
-    65px auto 0;
-}
-
-.awareness-section .title{
-    margin-bottom:12px;
-}
-
-.awareness-section .sub{
-    margin-bottom:28px;
-}
-
-.awareness-list{
-    max-width:900px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    column-gap:45px;
-
-    row-gap:13px;
-}
-
-.awareness-point{
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:10px;
-
-    color:#c7c9ce;
-
-    font-size:14px;
-
-    line-height:1.5;
-}
-
-.awareness-dot{
-    width:7px;
-    height:7px;
-
-    min-width:7px;
-
-    margin-top:6px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    box-shadow:
-    0 0 9px #ff263855;
-}
-
-.awareness-point strong{
-    color:#fff;
-}
-
-
-/* =====================================================
-   TEAM
-===================================================== */
-
-.team-grid{
-    max-width:850px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:15px;
-}
-
-.team-member{
-    padding:20px;
-
-    border:1px solid #34363c;
-
-    border-radius:13px;
-
-    background:#111317;
-
-    text-align:center;
-
-    transition:.3s;
-}
-
-.team-member:hover{
-    transform:translateY(-5px);
-
-    border-color:#ff2638;
-}
-
-.team-member h3{
-    margin:0;
-
-    color:#fff;
-
-    font-size:17px;
-}
-
-.team-leader{
-    grid-column:1 / -1;
-
-    padding:25px 20px;
-
-    border:1px solid #ff2638;
-
-    border-radius:15px;
-
-    background:#111317;
-
-    text-align:center;
-
-    box-shadow:
-    0 12px 35px #ff263818;
-}
-
-.team-leader-label{
-    color:#ff2638;
-
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    font-weight:800;
-
-    margin-bottom:8px;
-}
-
-.team-leader-name{
-    font-size:24px;
-
-    font-weight:800;
-}
-
-
-/* =====================================================
-   MEDIA
-===================================================== */
-
-.media-view-buttons{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:
-    0 auto 28px;
-}
-
-.media-filter{
-    border:1px solid #3a3c42;
-
-    background:#111317;
-
-    color:#fff;
-
-    padding:11px 17px;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    transition:.25s;
-}
-
-.media-filter:hover,
-.media-filter.active{
-    background:#ff2638;
-
-    border-color:#ff2638;
-}
-
-.gallery{
-    display:grid;
-
-    grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(150px,190px)
-    );
-
-    justify-content:center;
-
-    gap:15px;
-}
-
-.gallery-item{
-    background:#111317;
-
-    border:1px solid #34363c;
-
-    border-radius:13px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    animation:galleryIn .45s;
-}
-
-.gallery-item:hover{
-    border-color:#ff2638;
-
-    transform:translateY(-3px);
-}
-
-.gallery-item img,
-.gallery-item video{
-    width:100%;
-
-    height:125px;
-
-    display:block;
-
-    object-fit:cover;
-}
-
-.gallery-caption{
-    padding:9px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-}
-
-.gallery-empty{
-    text-align:center;
-
-    color:#777;
-
-    padding:35px;
-}
-
-@keyframes galleryIn{
-
-    from{
-        opacity:0;
-
-        transform:
-        translateY(15px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:none;
-    }
-
-}
-
-
-/* =====================================================
-   PRESENTATION
-===================================================== */
-
-.presentation-section{
-    padding-top:65px;
-    padding-bottom:70px;
-}
-
-.presentation-box{
-    max-width:1000px;
-    margin:0 auto;
-}
-
-
-/* VIDEO */
-
-.presentation-video{
-    width:100%;
-
-    max-height:600px;
-
-    display:block;
-
-    background:#000;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:16px;
-
-    box-shadow:
-    0 15px 45px #0008;
-}
-
-
-/* =====================================================
-   PDF READER
-===================================================== */
-
-.pdf-reader{
-    width:100%;
-
-    margin-top:30px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:17px;
-
-    overflow:hidden;
-
-    background:#191a1d;
-
-    box-shadow:
-    0 15px 45px #0008;
-}
-
-
-/* PDF HEADER */
-
-.pdf-header{
-    padding:13px 15px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:12px;
-
-    background:#111317;
-
-    border-bottom:
-    1px solid #34363c;
-}
-
-.pdf-title{
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    font-weight:800;
 
     font-size:14px;
 }
 
-.pdf-title-icon{
-    color:#ff2638;
 
-    font-size:20px;
-}
-
-
-/* PDF CONTROLS */
-
-.pdf-controls{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:6px;
-
-    flex-wrap:wrap;
-
-    padding:10px;
-
-    background:#0d0f12;
-
-    border-bottom:
-    1px solid #292b30;
-}
-
-.pdf-control{
-    border:
-    1px solid #3a3c42;
-
-    background:#181a1e;
-
-    color:#fff;
-
-    min-width:38px;
-
-    height:36px;
-
-    padding:
-    0 11px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.pdf-control:hover{
-    background:#ff2638;
-
-    border-color:#ff2638;
-}
-
-.pdf-page-info{
-    min-width:110px;
-
-    text-align:center;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    font-weight:700;
-}
-
-
-/* PDF CANVAS AREA */
-
-.pdf-canvas-container{
-    width:100%;
-
-    min-height:300px;
-
-    max-height:850px;
-
-    overflow:auto;
-
-    background:
-    #292a2d;
-
-    padding:20px;
-
-    text-align:center;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-
-/* EACH PAGE */
-
-.pdf-page{
-    position:relative;
-
-    display:block;
-
-    margin:
-    0 auto 20px;
-
-    background:#fff;
-
-    box-shadow:
-    0 5px 25px #0009;
-
-    max-width:none;
-}
-
-.pdf-page:last-child{
-    margin-bottom:0;
-}
-
-
-/* LOADING */
-
-.pdf-loading{
-    min-height:250px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    color:#aaa;
-
-    gap:12px;
-}
-
-.pdf-spinner{
-    width:36px;
-    height:36px;
-
-    border:
-    3px solid #34363c;
-
-    border-top-color:
-    #ff2638;
-
-    border-radius:50%;
-
-    animation:
-    pdfSpin .8s linear infinite;
-}
-
-@keyframes pdfSpin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-
-/* PDF ERROR */
-
-.pdf-error{
-    padding:45px 20px;
-
-    text-align:center;
-
-    color:#ff7a84;
-}
-
-
-/* =====================================================
-   PRESENTATION LINKS
-===================================================== */
-
-.presentation-file{
-    margin-top:18px;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-}
-
-.presentation-link{
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-    padding:11px 18px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:9px;
-
-    background:#111317;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    transition:.25s;
-}
-
-.presentation-link:hover{
-    background:#ff2638;
-
-    border-color:#ff2638;
-
-    transform:translateY(-2px);
-}
-
-
-/* =====================================================
-   VIEWER
-===================================================== */
-
-.section-viewer{
-    display:none;
-
-    margin:
-    28px auto 0;
-
-    max-width:760px;
-
-    border:
-    1px solid #ff2638;
-
-    border-radius:16px;
-
-    background:#0d0f12;
-
-    padding:14px;
-}
-
-.section-viewer.show{
-    display:block;
-}
-
-.section-viewer-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:
-    2px 4px 12px;
-}
-
-.section-viewer-head h3{
-    margin:0;
+.links a:hover{
 
     color:#ff2638;
-
-    font-size:16px;
-}
-
-.section-viewer-head button{
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    width:32px;
-    height:32px;
-
-    border-radius:50%;
-
-    font-size:21px;
-
-    cursor:pointer;
-}
-
-.section-viewer-content{
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:180px;
-}
-
-.section-view-media{
-    max-width:100%;
-
-    max-height:500px;
-
-    border-radius:10px;
-
-    display:block;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-grid{
-    max-width:950px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:18px;
-}
-
-.contact-card{
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:24px;
-
-    border:
-    1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    transition:.3s;
-}
-
-.contact-card:hover{
-    transform:translateY(-5px);
-
-    border-color:#ff2638;
-}
-
-.contact-icon{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-size:22px;
-
-    flex:none;
-}
-
-.contact-card h3{
-    margin:
-    0 0 6px;
-}
-
-.contact-card p{
-    margin:0;
-
-    color:#aaa;
-
-    word-break:break-word;
-
-    font-size:13px;
-
-    line-height:1.45;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    padding:
-    55px 7% 20px;
-
-    border-top:
-    1px solid #292a30;
-
-    background:#090a0c;
-}
-
-.footer-grid{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    1.2fr 1fr 1fr;
-
-    gap:55px;
-
-    align-items:start;
-}
-
-.footer-grid h3{
-    color:#ff2638;
-
-    margin-top:0;
-
-    font-size:22px;
-}
-
-.footer-grid p{
-    color:#aaa;
-
-    line-height:1.7;
-}
-
-.footer-credit{
-    font-size:17px;
-
-    color:#fff !important;
-
-    font-weight:bold;
-
-    line-height:1.7 !important;
-}
-
-.credit-label{
-    display:block;
-
-    color:#ff2638;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    margin-top:14px;
-}
-
-.credit-name{
-    display:block;
-
-    color:#fff;
-
-    font-size:19px;
-
-    font-weight:800;
-
-    margin-top:2px;
-
-    white-space:normal;
-}
-
-.copy{
-    text-align:center;
-
-    color:#666;
-
-    border-top:
-    1px solid #222;
-
-    margin-top:35px;
-
-    padding-top:18px;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-.reveal{
-    opacity:0;
-
-    transform:
-    translateY(25px);
-
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
 }
 
 
@@ -1402,11 +200,12 @@ footer{
 ===================================================== */
 
 .settings-btn{
+
     width:38px;
+
     height:38px;
 
-    border:
-    1px solid #383a40;
+    border:1px solid #383a40;
 
     border-radius:9px;
 
@@ -1425,10 +224,13 @@ footer{
     cursor:pointer;
 }
 
+
 .settings-btn span{
+
     display:block;
 
     width:18px;
+
     height:2px;
 
     background:#fff;
@@ -1436,37 +238,41 @@ footer{
     border-radius:3px;
 }
 
+
 .settings-menu{
+
     position:fixed;
 
     top:76px;
+
     right:6%;
 
-    width:
-    min(340px,88vw);
+    width:min(340px,88vw);
 
-    z-index:100;
+    z-index:500;
 
     display:none;
 
     padding:18px;
 
-    border:
-    1px solid #3a3c42;
+    border:1px solid #3a3c42;
 
     border-radius:16px;
 
     background:#101114;
 
-    box-shadow:
-    0 20px 60px #000b;
+    box-shadow:0 20px 60px #000b;
 }
 
+
 .settings-menu.show{
+
     display:block;
 }
 
+
 .settings-head{
+
     display:flex;
 
     align-items:center;
@@ -1476,13 +282,17 @@ footer{
     margin-bottom:15px;
 }
 
+
 .settings-head h3{
+
     margin:0;
 
     color:#ff2638;
 }
 
+
 .settings-head button{
+
     border:0;
 
     background:none;
@@ -1494,29 +304,32 @@ footer{
     cursor:pointer;
 }
 
+
 .settings-card{
+
     display:flex;
 
     gap:14px;
 
     padding:17px;
 
-    border:
-    1px solid #34363c;
+    border:1px solid #34363c;
 
     border-radius:12px;
 
     background:#111317;
 }
 
+
 .settings-card h4{
-    margin:
-    0 0 5px;
+
+    margin:0 0 5px;
 }
 
+
 .settings-card p{
-    margin:
-    0 0 12px;
+
+    margin:0 0 12px;
 
     color:#aaa;
 
@@ -1525,16 +338,19 @@ footer{
     line-height:1.5;
 }
 
+
 .settings-password{
+
     margin-top:12px;
 
     padding-top:12px;
 
-    border-top:
-    1px solid #292b31;
+    border-top:1px solid #292b31;
 }
 
+
 .settings-password label{
+
     display:block;
 
     font-size:9px;
@@ -1548,15 +364,16 @@ footer{
     margin-bottom:7px;
 }
 
+
 .settings-password input{
+
     width:100%;
 
     padding:10px 11px;
 
     background:#08090b;
 
-    border:
-    1px solid #383a40;
+    border:1px solid #383a40;
 
     border-radius:8px;
 
@@ -1565,7 +382,9 @@ footer{
     outline:none;
 }
 
+
 .settings-action{
+
     width:100%;
 
     margin-top:8px;
@@ -1585,7 +404,9 @@ footer{
     cursor:pointer;
 }
 
+
 #settingsPasswordMessage{
+
     font-size:11px;
 
     margin-top:7px;
@@ -1595,24 +416,1256 @@ footer{
 
 
 /* =====================================================
-   RATING
+   RATING SYSTEM
 ===================================================== */
 
-.rating-widget{
+/*
+   Compact total-rating badge.
+
+   It is fixed so the rating information stays available
+   without changing the document flow or pushing content.
+*/
+
+.rating-badge{
+
     position:fixed;
 
+    left:18px;
+
+    top:152px;
+
+    z-index:150;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 16px;
+
+    border:1px solid #34363c;
+
+    border-radius:18px;
+
+    background:#111317ee;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 10px 35px #0008,
+        0 0 25px #ff263820;
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.rating-badge.animate{
+
+    animation:
+        ratingBadgeIn .65s ease,
+        ratingGlow 2.5s ease-in-out infinite;
+}
+
+
+@keyframes ratingBadgeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateX(-25px)
+            scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateX(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes ratingGlow{
+
+    0%,
+    100%{
+
+        box-shadow:
+            0 10px 35px #0008,
+            0 0 18px #ff263815;
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 10px 35px #0008,
+            0 0 28px #ff263835;
+
+    }
+
+}
+
+
+.rating-star-small{
+
+    color:#ffd52a;
+
+    font-size:20px;
+
+    line-height:1;
+}
+
+
+.rating-average{
+
+    color:#ffd52a;
+
+    font-weight:800;
+}
+
+
+.rating-count{
+
+    color:#aaa;
+
+    font-weight:400;
+}
+
+
+/*
+   Rating prompt.
+
+   It appears near the top without taking up permanent
+   page space.
+*/
+
+.rating-prompt{
+
+    position:fixed;
+
+    left:20px;
+
+    right:20px;
+
     top:76px;
-    left:14px;
 
-    z-index:9999;
+    max-width:650px;
 
-    width:
-    min(430px,calc(100vw - 28px));
+    margin:auto;
 
-    min-height:72px;
+    z-index:300;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 17px;
+
+    border:1px solid #34363c;
+
+    border-radius:18px;
+
+    background:#111317f5;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 20px 60px #000b,
+        0 0 35px #ff263820;
+
+    transition:
+
+        opacity .4s ease,
+
+        transform .4s ease;
+}
+
+
+.rating-prompt.hidden{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translateY(-20px)
+        scale(.96);
+}
+
+
+.rating-heart{
+
+    width:55px;
+
+    height:55px;
+
+    flex:none;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    font-size:27px;
+
+    box-shadow:
+        0 0 25px #ff263866;
+
+    animation:
+        ratingHeartPulse 1.5s infinite;
+}
+
+
+@keyframes ratingHeartPulse{
+
+    0%,
+    100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+        box-shadow:
+            0 0 35px #ff263888;
+
+    }
+
+}
+
+
+.rating-info{
+
+    min-width:130px;
+
+    flex:1;
+}
+
+
+.rating-title{
+
+    font-weight:800;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+
+.rating-current{
+
+    font-size:12px;
+
+    color:#aaa;
+}
+
+
+.rating-stars{
+
+    display:flex;
+
+    gap:4px;
+
+    align-items:center;
+}
+
+
+.rating-star{
+
+    border:0;
+
+    background:none;
+
+    padding:2px;
+
+    color:#383a42;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    line-height:1;
+
+    transition:
+
+        transform .15s ease,
+
+        color .15s ease;
+}
+
+
+.rating-star:hover{
+
+    transform:scale(1.15);
+
+    color:#ffd52a;
+}
+
+
+.rating-star.active{
+
+    color:#ffd52a;
+
+    text-shadow:
+        0 0 12px #ffd52a88;
+}
+
+
+.rating-confirm{
+
+    display:none;
+
+    margin-top:6px;
+
+    padding:6px 10px;
+
+    border:1px solid #ff2638;
+
+    border-radius:7px;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+
+.rating-confirm.show{
+
+    display:inline-block;
+}
+
+
+.rating-saving{
+
+    display:none;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    background:#ff2638;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+.rating-saving.show{
+
+    display:block;
+
+}
+
+
+.rating-rated{
+
+    display:none;
+
+    padding:8px 12px;
+
+    border-radius:9px;
+
+    background:#183820;
+
+    border:1px solid #4bba69;
+
+    color:#75e993;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+.rating-rated.show{
+
+    display:block;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:600px;
+
+    padding:70px 7%;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            #420b12,
+            transparent 40%
+        );
+}
+
+
+.hero:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.18;
+
+    background-image:
+
+        linear-gradient(
+            #ff263812 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            #ff263812 1px,
+            transparent 1px
+        );
+
+    background-size:42px 42px;
+}
+
+
+.hero>*{
+
+    position:relative;
+}
+
+
+.eyebrow{
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:#ff6b76;
+
+    font-weight:bold;
+}
+
+
+.hero h1{
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            78px
+        );
+
+    line-height:.98;
+
+    margin:18px 0;
+}
+
+
+.hero p{
+
+    max-width:560px;
+
+    color:#cfd0d5;
+
+    font-size:18px;
+
+    line-height:1.65;
+}
+
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 22px;
+
+    background:#ff2638;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 30px #ff263833;
+
+    transition:.25s;
+
+    border:0;
+
+    cursor:pointer;
+}
+
+
+.btn:hover{
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   HEARTBEAT
+===================================================== */
+
+.bpm{
+
+    margin-top:22px;
+
+    width:170px;
+
+    padding:12px;
+
+    border:1px solid #383a40;
+
+    border-radius:10px;
+
+    background:#111317;
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:center;
+}
+
+
+.pulse{
+
+    width:31px;
+
+    height:31px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#ff2638;
+
+    animation:pulse 1s infinite;
+}
+
+
+@keyframes pulse{
+
+    50%{
+
+        transform:scale(1.15);
+
+        box-shadow:
+            0 0 25px #ff263888;
+
+    }
+
+}
+
+
+/* =====================================================
+   ECG
+===================================================== */
+
+.ecg{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:0;
+
+    width:100%;
+
+    height:75px;
+}
+
+
+.ecg svg{
+
+    width:100%;
+
+    height:100%;
+}
+
+
+.ecg polyline{
+
+    fill:none;
+
+    stroke:#ff2638;
+
+    stroke-width:3;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    stroke-dasharray:900;
+
+    stroke-dashoffset:900;
+
+    animation:
+        ecg 2.2s linear infinite;
+
+    filter:
+        drop-shadow(
+            0 0 7px #ff2638
+        );
+}
+
+
+@keyframes ecg{
+
+    to{
+
+        stroke-dashoffset:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   INFO BAR
+===================================================== */
+
+.bar{
+
+    width:86%;
+
+    margin:auto;
+
+    padding:14px;
+
+    text-align:center;
+
+    background:#111317;
+
+    border:1px solid #303238;
+
+    color:#aaa;
+}
+
+
+.bar span{
+
+    color:#ff2638;
+
+    font-weight:bold;
+}
+
+
+.bar b{
+
+    margin:0 15px;
+
+    color:#555;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section{
+
+    padding:80px 7%;
+
+    border-top:1px solid #202126;
+}
+
+
+.title{
+
+    text-align:center;
+
+    font-size:38px;
+}
+
+
+.title span{
+
+    color:#ff2638;
+}
+
+
+.sub{
+
+    max-width:700px;
+
+    margin:0 auto 42px;
+
+    text-align:center;
+
+    color:#aeb1b8;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1.2fr;
+
+    gap:50px;
+
+    align-items:center;
+}
+
+
+.about h2{
+
+    font-size:34px;
+}
+
+
+.about p{
+
+    color:#c5c7cc;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features,
+.steps{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+
+.feature,
+.step{
+
+    padding:22px;
+
+    border:1px solid #34363c;
+
+    border-radius:13px;
+
+    background:#111317;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+
+.feature:hover,
+.step:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#ff2638;
+}
+
+
+.feature .icon,
+.step .icon{
+
+    font-size:29px;
+
+    color:#ff2638;
+
+    margin-bottom:10px;
+}
+
+
+.feature p,
+.step p{
+
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+
+.num{
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:50%;
+
+    background:#ff2638;
+
+    display:grid;
+
+    place-items:center;
+
+    margin:0 auto 17px;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   HEART AWARENESS
+   SMALL POINTS - NOT BUTTONS
+===================================================== */
+
+.awareness{
+
+    max-width:1100px;
+
+    margin:70px auto 0;
+}
+
+
+.awareness h2{
+
+    text-align:center;
+
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            48px
+        );
+
+    margin-bottom:18px;
+}
+
+
+.awareness h2 span{
+
+    color:#ff2638;
+}
+
+
+.awareness-intro{
+
+    max-width:760px;
+
+    margin:0 auto 35px;
+
+    text-align:center;
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+
+.awareness-list{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px 30px;
+
+    max-width:950px;
+
+    margin:auto;
+}
+
+
+.awareness-point{
+
+    position:relative;
 
     padding:
-    12px 14px;
+        10px
+        10px
+        10px
+        25px;
+
+    color:#c9cbd0;
+
+    font-size:14px;
+
+    line-height:1.55;
+
+    border-bottom:1px solid #202126;
+}
+
+
+.awareness-point:before{
+
+    content:"♥";
+
+    position:absolute;
+
+    left:3px;
+
+    top:10px;
+
+    color:#ff2638;
+
+    font-size:13px;
+}
+
+
+.awareness-point strong{
+
+    color:#fff;
+}
+
+
+/* =====================================================
+   TEAM MEMBERS
+===================================================== */
+
+.team-members{
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+
+.team-members-list{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+
+.member-card{
+
+    padding:23px;
+
+    border:1px solid #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+
+.member-card:first-child{
+
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 25px #ff263820;
+}
+
+
+.member-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#ff2638;
+}
+
+
+.leader-box{
+
+    text-align:center;
+
+    margin:
+        0
+        auto
+        40px;
+}
+
+
+.leader-label{
+
+    color:#ff2638;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+
+.leader-name{
+
+    font-size:26px;
+
+    font-weight:800;
+}
+
+
+/* =====================================================
+   MEDIA
+===================================================== */
+
+.media-view-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:0 auto 28px;
+}
+
+
+.media-filter{
+
+    border:1px solid #3a3c42;
+
+    background:#111317;
+
+    color:#fff;
+
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+
+.media-filter:hover,
+.media-filter.active{
+
+    background:#ff2638;
+
+    border-color:#ff2638;
+}
+
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px,190px)
+        );
+
+    justify-content:center;
+
+    gap:15px;
+}
+
+
+.gallery-item{
+
+    background:#111317;
+
+    border:1px solid #34363c;
+
+    border-radius:13px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    animation:galleryIn .45s;
+}
+
+
+.gallery-item:hover{
+
+    border-color:#ff2638;
+
+    transform:translateY(-3px);
+}
+
+
+.gallery-item img,
+.gallery-item video{
+
+    width:100%;
+
+    height:125px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+
+.gallery-caption{
+
+    padding:9px;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.gallery-empty{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:35px;
+}
+
+
+@keyframes galleryIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+.firebase-status{
+
+    text-align:center;
+
+    margin:-8px auto 24px;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+
+.firebase-status.live{
+
+    color:#69e58a;
+}
+
+
+/* =====================================================
+   VIEWER
+===================================================== */
+
+.section-viewer{
+
+    display:none;
+
+    margin:28px auto 0;
+
+    max-width:760px;
+
+    border:1px solid #ff2638;
+
+    border-radius:16px;
+
+    background:#0d0f12;
+
+    padding:14px;
+}
+
+
+.section-viewer.show{
+
+    display:block;
+}
+
+
+.section-viewer-head{
 
     display:flex;
 
@@ -1620,512 +1673,506 @@ footer{
 
     justify-content:space-between;
 
-    gap:10px;
-
-    background:
-    rgba(16,17,20,.98);
-
-    border:
-    1px solid #3a3c42;
-
-    border-radius:17px;
-
-    box-shadow:
-    0 15px 45px #000b,
-    0 0 30px #ff263825;
-
-    backdrop-filter:blur(14px);
-
-    transition:
-    opacity .5s ease,
-    transform .5s ease;
+    padding:2px 4px 12px;
 }
 
-.rating-widget.enter{
-    animation:
-    ratingEnter .7s ease;
+
+.section-viewer-head h3{
+
+    margin:0;
+
+    color:#ff2638;
+
+    font-size:16px;
 }
 
-@keyframes ratingEnter{
 
-    0%{
-        opacity:0;
+.section-viewer-head button{
 
-        transform:
-        translateX(-35px)
-        scale(.92);
-    }
+    border:0;
 
-    100%{
-        opacity:1;
+    background:#ff2638;
 
-        transform:
-        translateX(0)
-        scale(1);
-    }
+    color:#fff;
 
+    width:32px;
+
+    height:32px;
+
+    border-radius:50%;
+
+    font-size:21px;
+
+    cursor:pointer;
 }
 
-.rating-widget.hide{
-    opacity:0;
 
-    transform:
-    translateX(-40px);
+.section-viewer-content{
 
-    pointer-events:none;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:180px;
 }
 
-.rating-left{
+
+.section-view-media{
+
+    max-width:100%;
+
+    max-height:500px;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+
+/* =====================================================
+   PRESENTATION
+===================================================== */
+
+.presentation{
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+
+.presentation-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:25px;
+}
+
+
+.presentation-card{
+
+    padding:18px;
+
+    border:1px solid #34363c;
+
+    border-radius:16px;
+
+    background:#111317;
+}
+
+
+.presentation-card h3{
+
+    margin:
+        0
+        0
+        15px;
+
+    color:#ff2638;
+
+    text-align:center;
+}
+
+
+.presentation-video{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    background:#000;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+
+/*
+   Large PDF viewer so the document is actually readable.
+*/
+
+.pdf-frame{
+
+    width:100%;
+
+    height:650px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    display:block;
+}
+
+
+.pdf-open{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:12px;
+
+    padding:11px;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   FUNCTION
+===================================================== */
+
+.contact-grid{
+
+    max-width:950px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.contact-card{
+
     display:flex;
 
     align-items:center;
 
-    gap:10px;
+    gap:15px;
 
-    min-width:0;
+    padding:24px;
+
+    border:1px solid #34363c;
+
+    border-radius:14px;
+
+    background:#111317;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    transition:.3s;
 }
 
-.rating-heart{
-    width:40px;
-    height:40px;
 
-    flex:none;
+.contact-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#ff2638;
+}
+
+
+.contact-icon{
+
+    width:45px;
+
+    height:45px;
 
     border-radius:50%;
 
     display:grid;
+
     place-items:center;
 
     background:#ff2638;
 
     color:#fff;
 
-    font-size:20px;
-
-    animation:
-    ratingHeartPulse 1.4s infinite;
-}
-
-@keyframes ratingHeartPulse{
-
-    50%{
-        transform:scale(1.09);
-
-        box-shadow:
-        0 0 25px #ff263866;
-    }
-
-}
-
-.rating-info{
-    min-width:0;
-}
-
-.rating-title{
-    font-size:12px;
-
-    font-weight:800;
-
-    color:#fff;
-
-    white-space:nowrap;
-}
-
-.rating-total{
-    margin-top:3px;
-
-    font-size:10px;
-
-    color:#888b92;
-
-    white-space:nowrap;
-}
-
-.rating-total strong{
-    color:#ffd43b;
-}
-
-.rating-stars{
-    display:flex;
-
-    align-items:center;
-
-    gap:1px;
-
-    flex-shrink:0;
-}
-
-.rating-star{
-    border:0;
-
-    background:none;
-
-    padding:2px;
-
-    color:#44464d;
-
     font-size:22px;
 
-    line-height:1;
-
-    cursor:pointer;
-
-    transition:
-    transform .18s ease,
-    color .18s ease;
+    flex:none;
 }
 
-.rating-star:hover{
-    transform:scale(1.25);
 
-    color:#ffd43b;
+.contact-card h3{
+
+    margin:0 0 6px;
 }
 
-.rating-star.active{
-    color:#ffd43b;
 
-    filter:
-    drop-shadow(
-        0 0 5px #ffd43b88
-    );
-}
+.contact-card p{
 
-.rating-confirm{
-    display:none;
-
-    border:
-    1px solid #ff2638;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    padding:7px 11px;
-
-    border-radius:8px;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    white-space:nowrap;
-
-    cursor:pointer;
-}
-
-.rating-confirm.show{
-    display:block;
-}
-
-.rating-message{
-    position:absolute;
-
-    left:0;
-
-    top:
-    calc(100% + 8px);
-
-    padding:7px 12px;
-
-    border-radius:9px;
-
-    background:#111317;
-
-    border:
-    1px solid #34363c;
+    margin:0;
 
     color:#aaa;
 
-    font-size:10px;
+    word-break:break-word;
 
-    opacity:0;
+    font-size:13px;
 
-    pointer-events:none;
-
-    transition:.25s;
-}
-
-.rating-message.show{
-    opacity:1;
-}
-
-.rating-badge{
-    position:fixed;
-
-    top:76px;
-    left:14px;
-
-    z-index:9998;
-
-    display:none;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:8px 12px;
-
-    border-radius:13px;
-
-    background:
-    rgba(17,19,23,.96);
-
-    border:
-    1px solid #34363c;
-
-    box-shadow:
-    0 10px 30px #0009,
-    0 0 18px #ffd43b18;
-
-    backdrop-filter:blur(12px);
-
-    animation:
-    badgeEnter .65s ease,
-    badgeGlow 2.2s ease-in-out infinite;
-}
-
-.rating-badge.show{
-    display:flex;
-}
-
-@keyframes badgeEnter{
-
-    0%{
-        opacity:0;
-
-        transform:
-        translateX(-30px)
-        scale(.85);
-    }
-
-    100%{
-        opacity:1;
-
-        transform:
-        translateX(0)
-        scale(1);
-    }
-
-}
-
-@keyframes badgeGlow{
-
-    0%,
-    100%{
-        box-shadow:
-        0 10px 30px #0009,
-        0 0 12px #ffd43b10;
-    }
-
-    50%{
-        box-shadow:
-        0 10px 30px #0009,
-        0 0 22px #ffd43b30;
-    }
-
-}
-
-.badge-star{
-    color:#ffd43b;
-
-    font-size:17px;
-}
-
-.badge-value{
-    color:#ffd43b;
-
-    font-weight:800;
-
-    font-size:11px;
-}
-
-.badge-text{
-    color:#aaa;
-
-    font-size:10px;
+    line-height:1.45;
 }
 
 
 /* =====================================================
-   MOBILE
+   FOOTER
+===================================================== */
+
+footer{
+
+    padding:45px 7% 20px;
+
+    border-top:1px solid #292a30;
+
+    background:#090a0c;
+}
+
+
+.footer-grid{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:35px;
+}
+
+
+.footer-grid h3{
+
+    color:#ff2638;
+}
+
+
+.footer-grid p{
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+
+.credit-name{
+
+    color:#fff;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    line-height:1.5;
+}
+
+
+.credit-role{
+
+    color:#ff2638;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-top:8px;
+}
+
+
+.copy{
+
+    text-align:center;
+
+    color:#666;
+
+    border-top:1px solid #222;
+
+    margin-top:30px;
+
+    padding-top:18px;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:.7s;
+}
+
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =====================================================
+   RESPONSIVE
 ===================================================== */
 
 @media(max-width:800px){
 
     .hero{
+
         grid-template-columns:1fr;
 
         text-align:center;
     }
 
+
     .hero p{
+
         margin:auto;
     }
 
+
     .about{
+
         grid-template-columns:1fr;
     }
+
 
     .features,
     .steps{
+
         grid-template-columns:
-        1fr 1fr;
+            1fr 1fr;
     }
+
 
     .footer-grid{
-        grid-template-columns:1fr;
 
-        gap:35px;
+        grid-template-columns:
+            1fr 1fr;
     }
+
 
     .contact-grid{
+
         grid-template-columns:
-        1fr 1fr;
+            1fr 1fr;
     }
 
-    .team-grid{
-        grid-template-columns:
-        1fr 1fr;
+
+    .presentation-grid{
+
+        grid-template-columns:1fr;
     }
 
+
+    .awareness-list{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .team-members-list{
+
+        grid-template-columns:1fr;
+    }
 }
 
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
 
 @media(max-width:500px){
 
     .features,
-    .steps{
+    .steps,
+    .footer-grid{
+
         grid-template-columns:1fr;
     }
 
+
     .hero h1{
+
         font-size:45px;
     }
 
+
     .contact-grid{
+
         grid-template-columns:1fr;
     }
 
-    .team-grid{
-        grid-template-columns:1fr;
-    }
 
     .gallery{
+
         grid-template-columns:
-        repeat(2,1fr);
+            repeat(2,1fr);
     }
 
 
-    /* PDF MOBILE */
+    .rating-prompt{
 
-    .pdf-header{
-        padding:11px;
+        left:12px;
+
+        right:12px;
+
+        padding:12px;
+
+        gap:10px;
     }
 
-    .pdf-title{
-        font-size:12px;
-    }
-
-    .pdf-controls{
-        gap:5px;
-
-        padding:8px;
-    }
-
-    .pdf-control{
-        min-width:34px;
-
-        height:34px;
-
-        padding:
-        0 8px;
-
-        font-size:12px;
-    }
-
-    .pdf-page-info{
-        min-width:80px;
-
-        font-size:10px;
-    }
-
-    .pdf-canvas-container{
-        padding:10px 6px;
-    }
-
-
-    /* RATING */
-
-    .rating-widget{
-        top:74px;
-
-        left:10px;
-
-        width:
-        calc(100vw - 20px);
-
-        min-height:67px;
-
-        padding:
-        9px 10px;
-
-        border-radius:15px;
-
-        gap:5px;
-    }
 
     .rating-heart{
-        width:35px;
-        height:35px;
 
-        font-size:17px;
+        width:48px;
+
+        height:48px;
+
+        font-size:23px;
     }
 
-    .rating-title{
-        font-size:10px;
-    }
-
-    .rating-total{
-        font-size:9px;
-    }
 
     .rating-star{
-        font-size:19px;
 
-        padding:1px;
+        font-size:25px;
     }
 
-    .rating-confirm{
-        font-size:9px;
-
-        padding:
-        6px 9px;
-    }
 
     .rating-badge{
-        top:74px;
 
-        left:10px;
+        left:18px;
 
-        padding:
-        7px 10px;
+        top:150px;
 
-        border-radius:12px;
+        padding:10px 13px;
     }
 
-    .badge-value{
-        font-size:10px;
-    }
 
-    .badge-text{
-        font-size:9px;
-    }
+    .pdf-frame{
 
+        height:560px;
+    }
 }
+
 
 </style>
 
@@ -2136,147 +2183,23 @@ footer{
 
 
 <!-- =====================================================
-     RATING
-===================================================== -->
-
-<div
-id="ratingWidget"
-class="rating-widget"
->
-
-<div class="rating-left">
-
-<div class="rating-heart">
-♥
-</div>
-
-<div class="rating-info">
-
-<div class="rating-title">
-Rate Our Project
-</div>
-
-<div
-id="ratingTotal"
-class="rating-total"
->
-⭐ No ratings yet
-</div>
-
-</div>
-
-</div>
-
-
-<div
-id="ratingStars"
-class="rating-stars"
->
-
-<button
-class="rating-star"
-data-rating="1"
-type="button"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="2"
-type="button"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="3"
-type="button"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="4"
-type="button"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="5"
-type="button"
->
-★
-</button>
-
-</div>
-
-
-<button
-id="ratingConfirm"
-class="rating-confirm"
-type="button"
->
-Confirm
-</button>
-
-
-<div
-id="ratingMessage"
-class="rating-message"
-></div>
-
-</div>
-
-
-<div
-id="ratingBadge"
-class="rating-badge"
->
-
-<div class="badge-star">
-★
-</div>
-
-<div>
-
-<span
-id="badgeValue"
-class="badge-value"
->
-0.0 / 5
-</span>
-
-<span
-id="badgeText"
-class="badge-text"
->
-· 0 ratings
-</span>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
      NAV
 ===================================================== -->
 
 <nav>
 
 <div class="brand">
-Working Model of <span>Heart</span>
+
+Working Model of
+<span>Heart</span>
+
 </div>
 
+
 <button
-class="settings-btn"
-onclick="toggleSettings()"
-aria-label="Settings"
+    class="settings-btn"
+    onclick="toggleSettings()"
+    aria-label="Settings"
 >
 
 <span></span>
@@ -2289,12 +2212,229 @@ aria-label="Settings"
 
 
 <!-- =====================================================
+     RATING PROMPT
+===================================================== -->
+
+<div
+    id="ratingPrompt"
+    class="rating-prompt"
+>
+
+<div class="rating-heart">
+♥
+</div>
+
+
+<div class="rating-info">
+
+<div class="rating-title">
+Rate Our Project
+</div>
+
+
+<div
+    id="ratingCurrent"
+    class="rating-current"
+>
+⭐ No ratings yet
+</div>
+
+</div>
+
+
+<div>
+
+<div
+    id="ratingStars"
+    class="rating-stars"
+>
+
+<button
+    class="rating-star"
+    data-rating="1"
+    aria-label="1 star"
+>
+★
+</button>
+
+<button
+    class="rating-star"
+    data-rating="2"
+    aria-label="2 stars"
+>
+★
+</button>
+
+<button
+    class="rating-star"
+    data-rating="3"
+    aria-label="3 stars"
+>
+★
+</button>
+
+<button
+    class="rating-star"
+    data-rating="4"
+    aria-label="4 stars"
+>
+★
+</button>
+
+<button
+    class="rating-star"
+    data-rating="5"
+    aria-label="5 stars"
+>
+★
+</button>
+
+</div>
+
+
+<button
+    id="ratingConfirm"
+    class="rating-confirm"
+>
+Confirm
+</button>
+
+</div>
+
+
+<div
+    id="ratingSaving"
+    class="rating-saving"
+>
+Saving...
+</div>
+
+
+<div
+    id="ratingRated"
+    class="rating-rated"
+>
+✓ Rated
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     COMPACT RATING BADGE
+===================================================== -->
+
+<div
+    id="ratingBadge"
+    class="rating-badge animate"
+>
+
+<span class="rating-star-small">
+★
+</span>
+
+<span
+    id="badgeValue"
+    class="rating-average"
+>
+0.0 / 5
+</span>
+
+<span
+    id="badgeText"
+    class="rating-count"
+>
+· 0 ratings
+</span>
+
+</div>
+
+
+<!-- =====================================================
+     SETTINGS MENU
+===================================================== -->
+
+<div
+    id="settingsMenu"
+    class="settings-menu"
+>
+
+<div class="settings-head">
+
+<h3>
+Settings
+</h3>
+
+<button
+    onclick="toggleSettings()"
+>
+×
+</button>
+
+</div>
+
+
+<div class="settings-card">
+
+<div>
+🔐
+</div>
+
+
+<div style="width:100%">
+
+<h4>
+Host Editor
+</h4>
+
+<p>
+Enter the host password to open
+the Firebase media editor.
+</p>
+
+
+<div class="settings-password">
+
+<label>
+HOST PASSWORD
+</label>
+
+
+<input
+    id="settingsPassword"
+    type="password"
+    placeholder="Enter password"
+>
+
+
+<button
+    class="settings-action"
+    onclick="unlockFromSettings()"
+>
+Open Editor
+</button>
+
+
+<div
+    id="settingsPasswordMessage"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
      HERO
 ===================================================== -->
 
 <header
-class="hero"
-id="home"
+    class="hero"
+    id="home"
 >
 
 <div>
@@ -2303,23 +2443,33 @@ id="home"
 SCIENCE EXHIBITION 2026
 </div>
 
+
 <h1>
-Working Model<br>
-of the <span>Human Heart</span>
+
+Working Model
+<br>
+
+of the
+<span>Human Heart</span>
+
 </h1>
 
+
 <p>
+
 This project demonstrates the working
 of the human heart and how it pumps
 blood throughout the body.
+
 </p>
 
 
 <a
-class="btn"
-href="#media"
+    class="btn"
+    href="#media"
+    onclick="scrollToMedia(event)"
 >
-Explore Images & Videos ↓
+Explore the Images & Videos ↓
 </a>
 
 
@@ -2329,12 +2479,20 @@ Explore Images & Videos ↓
 ♥
 </div>
 
+
 <div>
 
-Heartbeat<br>
+Heartbeat
+<br>
 
 <strong>
-<span id="bpm">72</span> BPM
+
+<span id="bpm">
+72
+</span>
+
+BPM
+
 </strong>
 
 </div>
@@ -2347,8 +2505,8 @@ Heartbeat<br>
 <div class="ecg">
 
 <svg
-viewBox="0 0 1200 100"
-preserveAspectRatio="none"
+    viewBox="0 0 1200 100"
+    preserveAspectRatio="none"
 >
 
 <polyline points="
@@ -2380,151 +2538,100 @@ preserveAspectRatio="none"
 </header>
 
 
+<!-- =====================================================
+     INFO BAR
+===================================================== -->
+
 <div class="bar">
 
 <span>
 Science Exhibition 2026
 </span>
 
-<b>|</b>
+<b>
+|
+</b>
 
 Aayushman Jha
 
-</div>
-
-
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
-
-<div
-id="settingsMenu"
-class="settings-menu"
->
-
-<div class="settings-head">
-
-<h3>
-Settings
-</h3>
-
-<button
-onclick="toggleSettings()"
->
-×
-</button>
-
-</div>
-
-<div class="settings-card">
-
-<div>
-🔐
-</div>
-
-<div style="width:100%">
-
-<h4>
-Host Editor
-</h4>
-
-<p>
-Enter the host password to open
-the Firebase media editor.
-</p>
-
-<div class="settings-password">
-
-<label>
-HOST PASSWORD
-</label>
-
-<input
-id="settingsPassword"
-type="password"
-placeholder="Enter password"
->
-
-<button
-class="settings-action"
-onclick="unlockFromSettings()"
->
-Open Editor
-</button>
-
-<div
-id="settingsPasswordMessage"
-></div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+<span>
+(Leader)
+</span>
 
 </div>
 
 
 <!-- =====================================================
-     TEAM
+     TEAM MEMBERS
 ===================================================== -->
 
 <section
-id="team"
-class="reveal"
+    id="team"
+    class="reveal"
 >
 
+<div class="team-members">
+
 <h2 class="title">
-<span>Team Members</span>
+
+<span>
+Team Members
+</span>
+
 </h2>
 
+
 <p class="sub">
+
 Team Red Diamond · Science Exhibition 2026
+
 </p>
 
 
-<div class="team-grid">
+<div class="leader-box">
 
-
-<div class="team-leader">
-
-<div class="team-leader-label">
-LEADER
+<div class="leader-label">
+Leader
 </div>
 
-<div class="team-leader-name">
+<div class="leader-name">
 Aayushman Jha
 </div>
 
 </div>
 
 
-<div class="team-member">
-<h3>Raushan Kumar</h3>
+<div class="team-members-list">
+
+<div class="member-card">
+Aayushman Jha
 </div>
 
-<div class="team-member">
-<h3>Dayansh Shekhar Singh</h3>
+<div class="member-card">
+Raushan Kumar
 </div>
 
-<div class="team-member">
-<h3>Harsh Kumar</h3>
+<div class="member-card">
+Dayansh Shekhar Singh
 </div>
 
-<div class="team-member">
-<h3>Divya Kumar</h3>
+<div class="member-card">
+Harsh Kumar
 </div>
 
-<div class="team-member">
-<h3>Abhishek Kumar</h3>
+<div class="member-card">
+Divya Kumar
 </div>
 
-<div class="team-member">
-<h3>Sankalp Krishna</h3>
+<div class="member-card">
+Abhishek Kumar
 </div>
 
+<div class="member-card">
+Sankalp Krishna
+</div>
+
+</div>
 
 </div>
 
@@ -2536,26 +2643,33 @@ Aayushman Jha
 ===================================================== -->
 
 <section
-id="model"
-class="reveal"
+    id="model"
+    class="reveal"
 >
 
 <div class="about">
 
 <div></div>
 
+
 <div>
 
 <h2>
-About the <span>Heart</span>
+
+About the
+<span>Heart</span>
+
 </h2>
 
+
 <p>
+
 The human heart is a muscular organ
 that continuously pumps blood throughout
 the body. Our working model demonstrates
 this pumping action in a simple and
 practical way.
+
 </p>
 
 
@@ -2638,21 +2752,26 @@ Science project
 
 
 <!-- =====================================================
-     AWARENESS
+     HEART AWARENESS
 ===================================================== -->
 
-<div
-class="awareness-section"
->
+<div class="awareness">
 
-<h2 class="title">
-Why <span>Heart Awareness</span> Is Important
+<h2>
+
+Why
+<span>Heart Awareness</span>
+Is Important
+
 </h2>
 
-<p class="sub">
+
+<p class="awareness-intro">
+
 Understanding heart health helps people
-recognize important risk factors and
-the value of prevention and early care.
+recognize important risk factors and the
+value of prevention and early care.
+
 </p>
 
 
@@ -2660,101 +2779,121 @@ the value of prevention and early care.
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Hypertension</strong> — High blood pressure can increase the risk of heart disease and stroke.
-</div>
+<strong>
+Hypertension:
+</strong>
 
-</div>
-
-
-<div class="awareness-point">
-<span class="awareness-dot"></span>
-
-<div>
-<strong>Heart disease</strong> — Cardiovascular diseases are a major cause of death worldwide.
-</div>
+High blood pressure can place extra
+strain on the heart and blood vessels.
 
 </div>
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Early detection</strong> — Knowing health risks can help identify problems earlier.
-</div>
+<strong>
+Heart disease:
+</strong>
 
-</div>
-
-
-<div class="awareness-point">
-<span class="awareness-dot"></span>
-
-<div>
-<strong>Blood pressure</strong> — Regular checks can help detect high blood pressure.
-</div>
+Awareness helps people understand
+important cardiovascular risk factors.
 
 </div>
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Healthy eating</strong> — A balanced diet supports cardiovascular health.
-</div>
+<strong>
+Early detection:
+</strong>
 
-</div>
-
-
-<div class="awareness-point">
-<span class="awareness-dot"></span>
-
-<div>
-<strong>Physical activity</strong> — Staying active is important for a healthy heart.
-</div>
+Recognizing warning signs can encourage
+timely medical attention.
 
 </div>
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Avoid tobacco</strong> — Tobacco use increases cardiovascular health risks.
-</div>
+<strong>
+Healthy habits:
+</strong>
 
-</div>
-
-
-<div class="awareness-point">
-<span class="awareness-dot"></span>
-
-<div>
-<strong>Warning signs</strong> — Knowing important symptoms can help people seek urgent care.
-</div>
+Regular activity and balanced nutrition
+support overall heart health.
 
 </div>
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Healthy future</strong> — Good habits can help reduce preventable cardiovascular risks.
-</div>
+<strong>
+Smoking:
+</strong>
+
+Avoiding tobacco helps reduce
+cardiovascular health risks.
 
 </div>
 
 
 <div class="awareness-point">
-<span class="awareness-dot"></span>
 
-<div>
-<strong>Spread awareness</strong> — Reliable information can encourage healthier communities.
+<strong>
+Diabetes:
+</strong>
+
+Managing blood sugar is important
+for long-term cardiovascular health.
+
 </div>
+
+
+<div class="awareness-point">
+
+<strong>
+Cholesterol:
+</strong>
+
+Healthy cholesterol levels can help
+protect blood vessels.
+
+</div>
+
+
+<div class="awareness-point">
+
+<strong>
+Regular check-ups:
+</strong>
+
+Health checks can identify certain
+risk factors before complications develop.
+
+</div>
+
+
+<div class="awareness-point">
+
+<strong>
+Stress and sleep:
+</strong>
+
+Good sleep and healthy stress management
+support overall wellbeing.
+
+</div>
+
+
+<div class="awareness-point">
+
+<strong>
+Prevention saves lives:
+</strong>
+
+Heart-health awareness can encourage
+safer choices and earlier care.
 
 </div>
 
@@ -2767,12 +2906,12 @@ the value of prevention and early care.
 
 
 <!-- =====================================================
-     PHOTO & VIDEO
+     MEDIA
 ===================================================== -->
 
 <section
-id="media"
-class="reveal"
+    id="media"
+    class="reveal"
 >
 
 <h2 class="title">
@@ -2784,6 +2923,7 @@ Photo & Video
 of Project
 
 </h2>
+
 
 <p class="sub">
 
@@ -2797,22 +2937,24 @@ from the editor.
 <div class="media-view-buttons">
 
 <button
-class="media-filter active"
-onclick="filterMedia('all',this)"
+    class="media-filter active"
+    onclick="filterMedia('all',this)"
 >
 👀 See All
 </button>
 
+
 <button
-class="media-filter"
-onclick="filterMedia('photo',this)"
+    class="media-filter"
+    onclick="filterMedia('photo',this)"
 >
 📸 Photos
 </button>
 
+
 <button
-class="media-filter"
-onclick="filterMedia('video',this)"
+    class="media-filter"
+    onclick="filterMedia('video',this)"
 >
 🎬 Videos
 </button>
@@ -2821,50 +2963,54 @@ onclick="filterMedia('video',this)"
 
 
 <div
-id="firebaseStatus"
-class="firebase-status"
+    id="firebaseStatus"
+    class="firebase-status"
 >
 ☁️ Connecting to Firebase...
 </div>
 
 
 <div
-id="gallery"
-class="gallery"
+    id="gallery"
+    class="gallery"
 ></div>
 
 
 <div
-id="galleryEmpty"
-class="gallery-empty"
-style="display:none"
+    id="galleryEmpty"
+    class="gallery-empty"
+    style="display:none"
 >
 No photos or videos have been added yet.
 </div>
 
 
 <div
-id="sectionViewer"
-class="section-viewer"
+    id="sectionViewer"
+    class="section-viewer"
 >
 
 <div class="section-viewer-head">
 
-<h3 id="sectionViewerTitle">
+<h3
+    id="sectionViewerTitle"
+>
 Preview
 </h3>
 
+
 <button
-onclick="closeSectionViewer()"
+    onclick="closeSectionViewer()"
 >
 ×
 </button>
 
 </div>
 
+
 <div
-id="sectionViewerContent"
-class="section-viewer-content"
+    id="sectionViewerContent"
+    class="section-viewer-content"
 ></div>
 
 </div>
@@ -2877,179 +3023,84 @@ class="section-viewer-content"
 ===================================================== -->
 
 <section
-id="presentation"
-class="presentation-section reveal"
+    id="presentation"
+    class="reveal"
 >
 
+<div class="presentation">
+
 <h2 class="title">
-<span>Presentation</span>
+
+<span>
+Presentation
+</span>
+
 </h2>
 
+
 <p class="sub">
-Watch the animated presentation or read
-the complete project presentation below.
+
+Watch the animated presentation video
+and read the project presentation PDF.
+
 </p>
 
 
-<div class="presentation-box">
+<div class="presentation-grid">
 
 
-<!-- =================================================
-     ANIMATED VIDEO
-================================================= -->
+<!-- VIDEO -->
+
+<div class="presentation-card">
+
+<h3>
+🎬 Animated Presentation
+</h3>
+
 
 <video
-class="presentation-video"
-controls
-playsinline
-preload="metadata"
+    class="presentation-video"
+    src="1.mp4"
+    controls
+    playsinline
+    preload="metadata"
 >
-
-<source
-src="1.mp4"
-type="video/mp4"
->
-
 Your browser does not support video playback.
-
 </video>
 
-
-<!-- =================================================
-     PDF READER
-================================================= -->
-
-<div class="pdf-reader">
-
-
-<div class="pdf-header">
-
-<div class="pdf-title">
-
-<span class="pdf-title-icon">
-📄
-</span>
-
-<span>
-Project Presentation
-</span>
-
-</div>
-
 </div>
 
 
-<!-- PDF CONTROLS -->
+<!-- PDF -->
 
-<div class="pdf-controls">
+<div class="presentation-card">
+
+<h3>
+📄 Project Presentation
+</h3>
 
 
-<button
-id="pdfPrev"
-class="pdf-control"
-type="button"
+<iframe
+    class="pdf-frame"
+    src="1.pdf#toolbar=1&navpanes=0&view=FitH"
+    title="Project Presentation PDF"
 >
-←
-</button>
-
-
-<div
-id="pdfPageInfo"
-class="pdf-page-info"
->
-Loading PDF...
-</div>
-
-
-<button
-id="pdfNext"
-class="pdf-control"
-type="button"
->
-→
-</button>
-
-
-<button
-id="pdfZoomOut"
-class="pdf-control"
-type="button"
->
-−
-</button>
-
-
-<button
-id="pdfZoomIn"
-class="pdf-control"
-type="button"
->
-+
-</button>
-
-
-<button
-id="pdfFit"
-class="pdf-control"
-type="button"
->
-Fit
-</button>
-
-
-</div>
-
-
-<!-- PDF CANVAS -->
-
-<div
-id="pdfCanvasContainer"
-class="pdf-canvas-container"
->
-
-<div class="pdf-loading">
-
-<div class="pdf-spinner"></div>
-
-<div>
-Loading presentation...
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- PDF BUTTONS -->
-
-<div class="presentation-file">
+</iframe>
 
 
 <a
-class="presentation-link"
-href="1.mp4"
-target="_blank"
-rel="noopener"
+    class="pdf-open"
+    href="1.pdf"
+    target="_blank"
+    rel="noopener"
 >
-🎬 Open Video
+📖 Open PDF for Full Reading
 </a>
-
-
-<a
-class="presentation-link"
-href="1.pdf"
-target="_blank"
-rel="noopener"
->
-📄 Open PDF
-</a>
-
 
 </div>
 
+
+</div>
 
 </div>
 
@@ -3057,20 +3108,23 @@ rel="noopener"
 
 
 <!-- =====================================================
-     FUNCTION
+     FUNCTION OF HEART
 ===================================================== -->
 
 <section
-id="working"
-class="reveal"
+    id="working"
+    class="reveal"
 >
 
 <h2 class="title">
 
 About the
-<span>Function of the Heart</span>
+<span>
+Function of the Heart
+</span>
 
 </h2>
+
 
 <p class="sub">
 
@@ -3181,17 +3235,25 @@ and relaxes to maintain circulation.
 ===================================================== -->
 
 <section
-id="contact"
-class="reveal"
+    id="contact"
+    class="reveal"
 >
 
 <h2 class="title">
-Contact <span>Us</span>
+
+Contact
+<span>
+Us
+</span>
+
 </h2>
 
+
 <p class="sub">
+
 Get in touch with Team Red Diamond
 about our Working Model of the Human Heart.
+
 </p>
 
 
@@ -3199,13 +3261,14 @@ about our Working Model of the Human Heart.
 
 
 <a
-class="contact-card"
-href="mailto:aayushmanjha1108@gmail.com"
+    class="contact-card"
+    href="mailto:aayushmanjha1108@gmail.com"
 >
 
 <div class="contact-icon">
 ✉
 </div>
+
 
 <div>
 
@@ -3223,13 +3286,14 @@ aayushmanjha1108@gmail.com
 
 
 <a
-class="contact-card"
-href="tel:+919931203827"
+    class="contact-card"
+    href="tel:+919931203827"
 >
 
 <div class="contact-icon">
 ☎
 </div>
+
 
 <div>
 
@@ -3251,6 +3315,7 @@ Phone
 <div class="contact-icon">
 ◆
 </div>
+
 
 <div>
 
@@ -3287,10 +3352,42 @@ Team Red Diamond
 About
 </h3>
 
+
 <p>
+
 Educational project to understand
 the structure and working of the
 human heart.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Team
+</h3>
+
+
+<p class="leader">
+
+Team Red Diamond
+
+</p>
+
+
+<p>
+
+Aayushman Jha<br>
+Raushan Kumar<br>
+Dayansh Shekhar Singh<br>
+Harsh Kumar<br>
+Divya Kumar<br>
+Abhishek Kumar<br>
+Sankalp Krishna
+
 </p>
 
 </div>
@@ -3302,55 +3399,21 @@ human heart.
 Credits
 </h3>
 
-<p class="footer-credit">
 
-<span class="credit-label">
-Lead by
-</span>
+<div class="credit-name">
 
-<span class="credit-name">
+Lead by<br>
 Aayushman Jha
-</span>
-
-
-<span class="credit-label">
-Website by
-</span>
-
-<span class="credit-name">
-Raushan Kumar
-</span>
-
-</p>
 
 </div>
 
 
-<div>
+<div class="credit-role">
 
-<h3>
-Contact
-</h3>
+Website by<br>
+Raushan Kumar
 
-<p>
-
-<a
-href="mailto:aayushmanjha1108@gmail.com"
-style="color:#aaa;text-decoration:none"
->
-aayushmanjha1108@gmail.com
-</a>
-
-<br><br>
-
-<a
-href="tel:+919931203827"
-style="color:#aaa;text-decoration:none"
->
-+91 99312 03827
-</a>
-
-</p>
+</div>
 
 </div>
 
@@ -3369,71 +3432,73 @@ style="color:#aaa;text-decoration:none"
 
 
 <!-- =====================================================
-     NORMAL JAVASCRIPT
+     BASIC JAVASCRIPT
 ===================================================== -->
 
 <script>
 
-
 /* =====================================================
-   BPM
+   HEARTBEAT
 ===================================================== */
 
 const bpm =
-document.getElementById("bpm");
+    document.getElementById("bpm");
+
 
 setInterval(
-()=>{
+    () => {
 
-    bpm.textContent =
-    70 +
-    Math.floor(
-        Math.random()*7
-    );
+        bpm.textContent =
+            70 +
+            Math.floor(
+                Math.random() * 7
+            );
 
-},
-1200
+    },
+    1200
 );
 
 
 /* =====================================================
-   SCROLL REVEAL
+   REVEAL ANIMATION
 ===================================================== */
 
 const obs =
-new IntersectionObserver(
-entries=>{
+    new IntersectionObserver(
+        entries => {
 
-    entries.forEach(
-        entry=>{
+            entries.forEach(
+                entry => {
 
-            if(
-                entry.isIntersecting
-            ){
+                    if(
+                        entry.isIntersecting
+                    ){
 
-                entry.target.classList.add(
-                    "show"
-                );
+                        entry.target
+                            .classList
+                            .add("show");
 
-            }
+                    }
 
+                }
+            );
+
+        },
+        {
+            threshold:.12
         }
     );
 
-},
-{
-    threshold:.12
-});
-
 
 document
-.querySelectorAll(".reveal")
-.forEach(
-element=>{
+    .querySelectorAll(".reveal")
+    .forEach(
+        element => {
 
-    obs.observe(element);
+            obs.observe(element);
 
-});
+        }
+    );
 
 
 /* =====================================================
@@ -3444,32 +3509,33 @@ window.toggleSettings =
 function(){
 
     document
-    .getElementById(
-        "settingsMenu"
-    )
-    .classList.toggle(
-        "show"
-    );
+        .getElementById(
+            "settingsMenu"
+        )
+        .classList.toggle(
+            "show"
+        );
 
 };
 
 
 const HOST_PASSWORD =
-"aayushman";
+    "aayushman";
 
 
 window.unlockFromSettings =
 function(){
 
     const input =
-    document.getElementById(
-        "settingsPassword"
-    );
+        document.getElementById(
+            "settingsPassword"
+        );
+
 
     const msg =
-    document.getElementById(
-        "settingsPasswordMessage"
-    );
+        document.getElementById(
+            "settingsPasswordMessage"
+        );
 
 
     if(
@@ -3478,30 +3544,31 @@ function(){
     ){
 
         msg.textContent =
-        "✓ Access granted. Opening editor...";
+            "✓ Access granted. Opening editor...";
 
         msg.style.color =
-        "#69e58a";
+            "#69e58a";
 
 
         setTimeout(
-            ()=>{
+            () => {
 
                 location.href =
-                "edit.html";
+                    "edit.html";
 
             },
             500
         );
 
     }
+
     else{
 
         msg.textContent =
-        "Incorrect password.";
+            "Incorrect password.";
 
         msg.style.color =
-        "#ff5262";
+            "#ff5262";
 
     }
 
@@ -3509,1109 +3576,459 @@ function(){
 
 
 /* =====================================================
-   RATING
+   MEDIA SCROLL
 ===================================================== */
 
-const ratingWidget =
-document.getElementById(
-    "ratingWidget"
-);
+window.scrollToMedia =
+function(event){
 
-const ratingBadge =
-document.getElementById(
-    "ratingBadge"
-);
+    event.preventDefault();
+
+
+    const media =
+        document.getElementById(
+            "media"
+        );
+
+
+    media.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+};
+
+
+/* =====================================================
+   MEDIA VIEWER
+===================================================== */
+
+window.closeSectionViewer =
+function(){
+
+    document
+        .getElementById(
+            "sectionViewer"
+        )
+        .classList
+        .remove("show");
+
+
+    document
+        .getElementById(
+            "sectionViewerContent"
+        )
+        .innerHTML = "";
+
+};
+
+
+/* =====================================================
+   MEDIA FILTER
+===================================================== */
+
+window.filterMedia =
+function(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".media-filter"
+        )
+        .forEach(
+            btn => {
+
+                btn.classList
+                    .remove(
+                        "active"
+                    );
+
+            }
+        );
+
+
+    if(button){
+
+        button.classList
+            .add("active");
+
+    }
+
+
+    renderMedia();
+
+};
+
+
+/* =====================================================
+   RATING UI
+===================================================== */
+
+let selectedRating =
+    0;
+
 
 const ratingStars =
-document.querySelectorAll(
-    ".rating-star"
-);
+    document.querySelectorAll(
+        ".rating-star"
+    );
 
-const ratingStarsBox =
-document.getElementById(
-    "ratingStars"
-);
 
 const ratingConfirm =
-document.getElementById(
-    "ratingConfirm"
-);
+    document.getElementById(
+        "ratingConfirm"
+    );
 
-const ratingMessage =
-document.getElementById(
-    "ratingMessage"
-);
 
-let selectedRating = 0;
+const ratingPrompt =
+    document.getElementById(
+        "ratingPrompt"
+    );
 
+
+const ratingSaving =
+    document.getElementById(
+        "ratingSaving"
+    );
+
+
+const ratingRated =
+    document.getElementById(
+        "ratingRated"
+    );
+
+
+const ratingCurrent =
+    document.getElementById(
+        "ratingCurrent"
+    );
+
+
+/*
+   Use localStorage to remember that this browser
+   has already rated.
+
+   This prevents the same browser from repeatedly
+   submitting ratings after revisiting the website.
+*/
 
 function hasAlreadyRated(){
 
     return(
         localStorage.getItem(
-            "heartProjectRated"
-        ) === "true"
+            "workingHeartRated"
+        ) === "yes"
     );
 
 }
 
 
-function showReturningBadge(){
+function showRatingControls(){
 
-    ratingWidget.style.display =
-    "none";
-
-    ratingBadge.classList.add(
-        "show"
-    );
+    ratingPrompt
+        .classList
+        .remove("hidden");
 
 }
 
 
-function showNewUserWidget(){
+function hideRatingPrompt(){
 
-    ratingBadge.classList.remove(
-        "show"
-    );
-
-    ratingWidget.style.display =
-    "flex";
-
-    ratingWidget.classList.add(
-        "enter"
-    );
+    ratingPrompt
+        .classList
+        .add("hidden");
 
 }
 
 
-function showRatingMessage(
-    text,
-    success=false
-){
-
-    ratingMessage.textContent =
-    text;
-
-    ratingMessage.style.color =
-    success
-    ? "#69e58a"
-    : "#aaa";
-
-    ratingMessage.classList.add(
-        "show"
-    );
-
-    clearTimeout(
-        window.ratingMessageTimer
-    );
-
-    window.ratingMessageTimer =
-    setTimeout(
-        ()=>{
-
-            ratingMessage.classList.remove(
-                "show"
-            );
-
-        },
-        3000
-    );
-
-}
-
-
-function updateRatingStars(
-    value
-){
-
-    ratingStars.forEach(
-        (star,index)=>{
-
-            star.classList.toggle(
-                "active",
-                index < value
-            );
-
-        }
-    );
-
-}
-
-
-ratingStars.forEach(
-    star=>{
-
-        star.addEventListener(
-            "click",
-            ()=>{
-
-                if(
-                    hasAlreadyRated()
-                ){
-
-                    showReturningBadge();
-
-                    return;
-
-                }
-
-
-                selectedRating =
-                Number(
-                    star.dataset.rating
-                );
-
-
-                updateRatingStars(
-                    selectedRating
-                );
-
-
-                ratingStarsBox.style.display =
-                "none";
-
-
-                ratingConfirm.textContent =
-                "Confirm ★ " +
-                selectedRating;
-
-
-                ratingConfirm.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-ratingConfirm.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !selectedRating
-        ){
-
-            return;
-
-        }
-
-
-        ratingConfirm.disabled =
-        true;
-
-
-        ratingConfirm.textContent =
-        "Saving...";
-
-
-        if(
-            typeof window.submitRatingFromUI ===
-            "function"
-        ){
-
-            await window.submitRatingFromUI(
-                selectedRating
-            );
-
-        }
-        else{
-
-            ratingConfirm.disabled =
-            false;
-
-            ratingConfirm.textContent =
-            "Confirm ★ " +
-            selectedRating;
-
-            showRatingMessage(
-                "Firebase is still loading. Try again."
-            );
-
-        }
-
-    }
-);
-
-
-window.ratingSuccess =
-function(){
-
-    localStorage.setItem(
-        "heartProjectRated",
-        "true"
-    );
-
-
-    ratingConfirm.textContent =
-    "✓ Rated";
-
-
-    ratingConfirm.style.background =
-    "#1d3927";
-
-
-    ratingConfirm.style.borderColor =
-    "#69e58a";
-
-
-    ratingConfirm.style.color =
-    "#69e58a";
-
-
-    showRatingMessage(
-        "Thank you for rating our project! ❤️",
-        true
-    );
-
-
-    setTimeout(
-        ()=>{
-
-            ratingWidget.classList.add(
-                "hide"
-            );
-
-
-            setTimeout(
-                ()=>{
-
-                    ratingWidget.style.display =
-                    "none";
-
-
-                    ratingWidget.classList.remove(
-                        "hide"
-                    );
-
-
-                    ratingBadge.classList.add(
-                        "show"
-                    );
-
-                },
-                550
-            );
-
-        },
-        3000
-    );
-
-};
-
-
-window.ratingFailure =
-function(error){
-
-    console.error(
-        "RATING ERROR:",
-        error
-    );
-
-
-    ratingConfirm.disabled =
-    false;
-
-
-    ratingConfirm.textContent =
-    "Confirm ★ " +
-    selectedRating;
-
-
-    ratingConfirm.style.background =
-    "#ff2638";
-
-
-    ratingConfirm.style.borderColor =
-    "#ff2638";
-
-
-    ratingConfirm.style.color =
-    "#fff";
-
-
-    ratingStarsBox.style.display =
-    "flex";
-
-
-    let message =
-    "Could not save rating.";
-
-
-    if(
-        error &&
-        error.code ===
-        "permission-denied"
-    ){
-
-        message =
-        "Firebase permission denied. Check Firestore Rules.";
-
-    }
-    else if(
-        error &&
-        error.message
-    ){
-
-        message =
-        error.message;
-
-    }
-
-
-    showRatingMessage(
-        message
-    );
-
-};
-
-
-document.addEventListener(
-    "click",
-    event=>{
-
-        const menu =
-        document.getElementById(
-            "settingsMenu"
-        );
-
-        const button =
-        document.querySelector(
-            ".settings-btn"
-        );
-
-
-        if(
-            menu.classList.contains(
-                "show"
-            ) &&
-            !menu.contains(
-                event.target
-            ) &&
-            !button.contains(
-                event.target
-            )
-        ){
-
-            menu.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
+/*
+   If this browser already rated, don't show the
+   star-selection controls again.
+*/
 
 if(
     hasAlreadyRated()
 ){
 
-    showReturningBadge();
-
-}
-else{
-
-    showNewUserWidget();
+    hideRatingPrompt();
 
 }
 
 
-</script>
+/* =====================================================
+   STAR CLICK
+===================================================== */
+
+ratingStars.forEach(
+    star => {
+
+        star.addEventListener(
+            "click",
+            () => {
+
+                selectedRating =
+                    Number(
+                        star.dataset.rating
+                    );
 
 
-<!-- =====================================================
-     PDF.JS READER
-===================================================== -->
+                ratingStars.forEach(
+                    s => {
 
-<script>
-
-/*
-==========================================================
-   PDF READER
-
-   IMPORTANT:
-   Keep 1.pdf in the same folder as this HTML file.
-==========================================================
-*/
+                        const value =
+                            Number(
+                                s.dataset.rating
+                            );
 
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+                        s.classList.toggle(
+                            "active",
+                            value <=
+                            selectedRating
+                        );
+
+                    }
+                );
 
 
-const PDF_FILE =
-"1.pdf";
+                ratingConfirm
+                    .classList
+                    .add("show");
 
-
-const pdfContainer =
-document.getElementById(
-    "pdfCanvasContainer"
-);
-
-const pdfPageInfo =
-document.getElementById(
-    "pdfPageInfo"
-);
-
-const pdfPrev =
-document.getElementById(
-    "pdfPrev"
-);
-
-const pdfNext =
-document.getElementById(
-    "pdfNext"
-);
-
-const pdfZoomIn =
-document.getElementById(
-    "pdfZoomIn"
-);
-
-const pdfZoomOut =
-document.getElementById(
-    "pdfZoomOut"
-);
-
-const pdfFit =
-document.getElementById(
-    "pdfFit"
-);
-
-
-let pdfDocument = null;
-
-let pdfPageCount = 0;
-
-let pdfCurrentPage = 1;
-
-let pdfZoom = 1;
-
-
-/*
-==========================================================
-   GET FIT WIDTH
-==========================================================
-*/
-
-function calculateFitZoom(
-    page
-){
-
-    const viewport =
-    page.getViewport({
-        scale:1
-    });
-
-
-    const availableWidth =
-    pdfContainer.clientWidth
-    - 20;
-
-
-    return (
-        availableWidth /
-        viewport.width
-    );
-
-}
-
-
-/*
-==========================================================
-   RENDER PAGE
-==========================================================
-*/
-
-async function renderPDFPage(
-    pageNumber
-){
-
-    if(
-        !pdfDocument
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        pageNumber < 1
-    ){
-
-        pageNumber = 1;
-
-    }
-
-
-    if(
-        pageNumber > pdfPageCount
-    ){
-
-        pageNumber =
-        pdfPageCount;
-
-    }
-
-
-    pdfCurrentPage =
-    pageNumber;
-
-
-    pdfPageInfo.textContent =
-    "Page " +
-    pdfCurrentPage +
-    " / " +
-    pdfPageCount;
-
-
-    const page =
-    await pdfDocument.getPage(
-        pdfCurrentPage
-    );
-
-
-    /*
-       When zoom is 0, automatically
-       calculate the best width.
-    */
-
-    let actualZoom =
-    pdfZoom;
-
-
-    if(
-        actualZoom <= 0
-    ){
-
-        actualZoom =
-        calculateFitZoom(
-            page
+            }
         );
 
     }
+);
 
 
-    const viewport =
-    page.getViewport({
-        scale:actualZoom
-    });
+/* =====================================================
+   CONFIRM RATING
+===================================================== */
 
+ratingConfirm.addEventListener(
+    "click",
+    async () => {
 
-    pdfContainer.innerHTML =
-    "";
+        if(
+            selectedRating < 1 ||
+            selectedRating > 5
+        ){
 
+            return;
 
-    const canvas =
-    document.createElement(
-        "canvas"
-    );
-
-
-    canvas.className =
-    "pdf-page";
-
-
-    const context =
-    canvas.getContext(
-        "2d",
-        {
-            alpha:false
         }
-    );
 
 
-    /*
-       High-DPI rendering.
+        if(
+            hasAlreadyRated()
+        ){
 
-       This makes the PDF much sharper
-       on phones and high-resolution screens.
-    */
+            hideRatingPrompt();
 
-    const devicePixelRatio =
-    Math.min(
-        window.devicePixelRatio || 1,
-        2.5
-    );
+            return;
+
+        }
 
 
-    canvas.width =
-    Math.floor(
-        viewport.width *
-        devicePixelRatio
-    );
+        ratingStars.forEach(
+            star => {
+
+                star.disabled =
+                    true;
+
+            }
+        );
 
 
-    canvas.height =
-    Math.floor(
-        viewport.height *
-        devicePixelRatio
-    );
+        ratingConfirm
+            .classList
+            .remove("show");
 
 
-    canvas.style.width =
-    Math.floor(
-        viewport.width
-    ) +
-    "px";
+        ratingSaving
+            .classList
+            .add("show");
 
 
-    canvas.style.height =
-    Math.floor(
-        viewport.height
-    ) +
-    "px";
+        try{
+
+            await saveRating(
+                selectedRating
+            );
 
 
-    pdfContainer.appendChild(
-        canvas
-    );
+            localStorage.setItem(
+                "workingHeartRated",
+                "yes"
+            );
 
 
-    const renderContext = {
+            ratingSaving
+                .classList
+                .remove("show");
 
-        canvasContext:
-        context,
 
-        viewport:
-        viewport,
+            ratingRated
+                .classList
+                .add("show");
 
-        transform:
-        devicePixelRatio !== 1
-        ? [
-            devicePixelRatio,
-            0,
-            0,
-            devicePixelRatio,
-            0,
-            0
-        ]
-        : null
+
+            /*
+               Show "Rated" briefly.
+            */
+
+            setTimeout(
+                () => {
+
+                    hideRatingPrompt();
+
+                },
+                1800
+            );
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Rating save error:",
+                error
+            );
+
+
+            ratingSaving
+                .classList
+                .remove("show");
+
+
+            ratingConfirm
+                .classList
+                .add("show");
+
+
+            ratingStars.forEach(
+                star => {
+
+                    star.disabled =
+                        false;
+
+                }
+            );
+
+
+            alert(
+                "Could not save your rating. Please try again."
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RATING DISPLAY
+===================================================== */
+
+function updateRatingDisplay(
+    average,
+    count
+){
+
+    const ratingTotalText =
+        count
+        ? "⭐ " +
+          average.toFixed(1) +
+          " / 5 · " +
+          count +
+          (
+              count === 1
+              ? " rating"
+              : " ratings"
+          )
+        : "⭐ No ratings yet";
+
+
+    ratingCurrent.textContent =
+        ratingTotalText;
+
+
+    document
+        .getElementById(
+            "badgeValue"
+        )
+        .textContent =
+            average.toFixed(1) +
+            " / 5";
+
+
+    document
+        .getElementById(
+            "badgeText"
+        )
+        .textContent =
+            " · " +
+            count +
+            (
+                count === 1
+                ? " rating"
+                : " ratings"
+            );
+
+}
+
+
+/* =====================================================
+   KEEP SCROLL POSITION
+===================================================== */
+
+/*
+   This helper records the current position and restores it
+   after Firebase changes the gallery.
+*/
+
+function saveScrollPosition(){
+
+    return {
+
+        x:window.scrollX,
+
+        y:window.scrollY
 
     };
 
-
-    await page.render(
-        renderContext
-    ).promise;
-
-
-    /*
-       Put the page at the top.
-    */
-
-    pdfContainer.scrollTop =
-    0;
-
-
-    pdfContainer.scrollLeft =
-    0;
-
 }
 
 
-/*
-==========================================================
-   LOAD PDF
-==========================================================
-*/
+function restoreScrollPosition(
+    position
+){
 
-async function loadPDF(){
-
-    try{
-
-        pdfPageInfo.textContent =
-        "Loading PDF...";
-
-
-        const loadingTask =
-        pdfjsLib.getDocument({
-            url:PDF_FILE
-        });
-
-
-        pdfDocument =
-        await loadingTask.promise;
-
-
-        pdfPageCount =
-        pdfDocument.numPages;
-
-
-        /*
-           Start at page 1 and fit
-           it to the device width.
-        */
-
-        pdfZoom =
-        0;
-
-
-        await renderPDFPage(
-            1
-        );
-
-
+    if(!position){
+        return;
     }
-    catch(error){
-
-        console.error(
-            "PDF ERROR:",
-            error
-        );
 
 
-        pdfPageInfo.textContent =
-        "PDF error";
+    requestAnimationFrame(
+        () => {
 
+            window.scrollTo({
+                left:position.x,
+                top:position.y,
+                behavior:"auto"
+            });
 
-        pdfContainer.innerHTML = `
-
-            <div class="pdf-error">
-
-                <div
-                    style="
-                    font-size:42px;
-                    margin-bottom:12px;
-                    "
-                >
-                    ⚠️
-                </div>
-
-                <strong>
-                    Unable to display 1.pdf
-                </strong>
-
-                <br><br>
-
-                Make sure
-                <b>1.pdf</b>
-                is in the same folder
-                as this HTML file.
-
-                <br><br>
-
-                <a
-                    href="1.pdf"
-                    target="_blank"
-                    style="
-                    color:#ff2638;
-                    font-weight:bold;
-                    "
-                >
-                    Open PDF directly
-                </a>
-
-            </div>
-
-        `;
-
-    }
+        }
+    );
 
 }
-
-
-/*
-==========================================================
-   PREVIOUS PAGE
-==========================================================
-*/
-
-pdfPrev.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !pdfDocument ||
-            pdfCurrentPage <= 1
-        ){
-
-            return;
-
-        }
-
-
-        await renderPDFPage(
-            pdfCurrentPage - 1
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   NEXT PAGE
-==========================================================
-*/
-
-pdfNext.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !pdfDocument ||
-            pdfCurrentPage >= pdfPageCount
-        ){
-
-            return;
-
-        }
-
-
-        await renderPDFPage(
-            pdfCurrentPage + 1
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   ZOOM IN
-==========================================================
-*/
-
-pdfZoomIn.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        if(
-            pdfZoom <= 0
-        ){
-
-            const page =
-            await pdfDocument.getPage(
-                pdfCurrentPage
-            );
-
-            pdfZoom =
-            calculateFitZoom(
-                page
-            );
-
-        }
-
-
-        pdfZoom =
-        Math.min(
-            pdfZoom + .25,
-            3
-        );
-
-
-        await renderPDFPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   ZOOM OUT
-==========================================================
-*/
-
-pdfZoomOut.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        if(
-            pdfZoom <= 0
-        ){
-
-            const page =
-            await pdfDocument.getPage(
-                pdfCurrentPage
-            );
-
-            pdfZoom =
-            calculateFitZoom(
-                page
-            );
-
-        }
-
-
-        pdfZoom =
-        Math.max(
-            pdfZoom - .25,
-            .5
-        );
-
-
-        await renderPDFPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   FIT WIDTH
-==========================================================
-*/
-
-pdfFit.addEventListener(
-    "click",
-    async ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        pdfZoom =
-        0;
-
-
-        await renderPDFPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   KEYBOARD
-==========================================================
-*/
-
-document.addEventListener(
-    "keydown",
-    async event=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        if(
-            event.key ===
-            "ArrowLeft"
-        ){
-
-            if(
-                pdfCurrentPage > 1
-            ){
-
-                await renderPDFPage(
-                    pdfCurrentPage - 1
-                );
-
-            }
-
-        }
-
-
-        if(
-            event.key ===
-            "ArrowRight"
-        ){
-
-            if(
-                pdfCurrentPage <
-                pdfPageCount
-            ){
-
-                await renderPDFPage(
-                    pdfCurrentPage + 1
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/*
-==========================================================
-   RESIZE
-==========================================================
-*/
-
-let resizeTimer;
-
-
-window.addEventListener(
-    "resize",
-    ()=>{
-
-        clearTimeout(
-            resizeTimer
-        );
-
-
-        resizeTimer =
-        setTimeout(
-            async ()=>{
-
-                if(
-                    pdfDocument &&
-                    pdfZoom <= 0
-                ){
-
-                    await renderPDFPage(
-                        pdfCurrentPage
-                    );
-
-                }
-
-            },
-            300
-        );
-
-    }
-);
-
-
-/*
-==========================================================
-   LOAD
-==========================================================
-*/
-
-loadPDF();
 
 </script>
 
@@ -4623,25 +4040,37 @@ loadPDF();
 <script type="module">
 
 import {
+
     initializeApp
+
 }
+
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
+
     getFirestore,
+
     collection,
+
     getDocs,
+
     addDoc,
-    serverTimestamp
+
+    serverTimestamp,
+
+    onSnapshot
+
 }
+
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 /* =====================================================
-   FIREBASE CONFIGURATION
+   SAME FIREBASE CONFIGURATION
 ===================================================== */
 
 const firebaseConfig = {
@@ -4668,244 +4097,74 @@ const firebaseConfig = {
 
 
 const app =
-initializeApp(
-    firebaseConfig
-);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const db =
-getFirestore(
-    app
-);
+    getFirestore(app);
 
 
 /* =====================================================
-   RATINGS
-===================================================== */
-
-const RATING_COLLECTION =
-"heartProjectRatings";
-
-
-async function loadRatings(){
-
-    try{
-
-        const snap =
-        await getDocs(
-            collection(
-                db,
-                RATING_COLLECTION
-            )
-        );
-
-
-        let total = 0;
-
-        let count = 0;
-
-
-        snap.forEach(
-            docSnap=>{
-
-                const data =
-                docSnap.data();
-
-
-                const rating =
-                Number(
-                    data.rating
-                );
-
-
-                if(
-                    rating >= 1 &&
-                    rating <= 5
-                ){
-
-                    total += rating;
-
-                    count++;
-
-                }
-
-            }
-        );
-
-
-        const average =
-        count
-        ? total / count
-        : 0;
-
-
-        const ratingTotal =
-        document.getElementById(
-            "ratingTotal"
-        );
-
-
-        if(count){
-
-            ratingTotal.innerHTML =
-            "⭐ <strong>" +
-            average.toFixed(1) +
-            "</strong> / 5 · " +
-            count +
-            (
-                count === 1
-                ? " rating"
-                : " ratings"
-            );
-
-        }
-        else{
-
-            ratingTotal.innerHTML =
-            "⭐ No ratings yet";
-
-        }
-
-
-        const badgeValue =
-        document.getElementById(
-            "badgeValue"
-        );
-
-
-        const badgeText =
-        document.getElementById(
-            "badgeText"
-        );
-
-
-        if(count){
-
-            badgeValue.textContent =
-            average.toFixed(1) +
-            " / 5";
-
-
-            badgeText.textContent =
-            " · " +
-            count +
-            (
-                count === 1
-                ? " rating"
-                : " ratings"
-            );
-
-        }
-        else{
-
-            badgeValue.textContent =
-            "0.0 / 5";
-
-
-            badgeText.textContent =
-            " · 0 ratings";
-
-        }
-
-    }
-    catch(error){
-
-        console.error(
-            "RATING READ ERROR:",
-            error
-        );
-
-    }
-
-}
-
-
-window.submitRatingFromUI =
-async function(
-    rating
-){
-
-    try{
-
-        const docRef =
-        await addDoc(
-            collection(
-                db,
-                RATING_COLLECTION
-            ),
-            {
-
-                rating:
-                Number(rating),
-
-                createdAt:
-                serverTimestamp()
-
-            }
-        );
-
-
-        console.log(
-            "RATING CREATED:",
-            docRef.id
-        );
-
-
-        window.ratingSuccess();
-
-
-        await loadRatings();
-
-    }
-    catch(error){
-
-        console.error(
-            "FIREBASE RATING WRITE ERROR:",
-            error
-        );
-
-
-        window.ratingFailure(
-            error
-        );
-
-    }
-
-};
-
-
-/* =====================================================
-   MEDIA
+   COLLECTIONS
 ===================================================== */
 
 const COLLECTION_NAME =
-"heartProjectMedia";
+    "heartProjectMedia";
 
+
+/*
+   Keep this rating collection name.
+
+   If your previous working rating code used a different
+   collection name, change ONLY this one value to that
+   existing collection name.
+*/
+
+const RATING_COLLECTION =
+    "heartProjectRatings";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const gallery =
-document.getElementById(
-    "gallery"
-);
+    document.getElementById(
+        "gallery"
+    );
 
 
 const empty =
-document.getElementById(
-    "galleryEmpty"
-);
+    document.getElementById(
+        "galleryEmpty"
+    );
 
 
 const status =
-document.getElementById(
-    "firebaseStatus"
-);
+    document.getElementById(
+        "firebaseStatus"
+    );
 
+
+/* =====================================================
+   STORAGE
+===================================================== */
 
 let mediaStore = [];
 
-
 let currentFilter =
-"all";
+    "all";
 
+
+let lastMediaSignature =
+    "";
+
+
+/* =====================================================
+   STATUS
+===================================================== */
 
 function setStatus(
     text,
@@ -4913,7 +4172,7 @@ function setStatus(
 ){
 
     status.textContent =
-    text;
+        text;
 
 
     status.classList.toggle(
@@ -4924,225 +4183,465 @@ function setStatus(
 }
 
 
-async function loadFirebaseMedia(){
+/* =====================================================
+   SAVE RATING
+===================================================== */
 
-    try{
+window.saveRating =
+async function(rating){
 
-        setStatus(
-            "☁️ Reading Firebase..."
+    const ratingRef =
+        collection(
+            db,
+            RATING_COLLECTION
         );
 
 
-        const snap =
-        await getDocs(
-            collection(
-                db,
-                COLLECTION_NAME
-            )
+    await addDoc(
+        ratingRef,
+        {
+
+            rating:
+                Number(rating),
+
+            createdAt:
+                serverTimestamp(),
+
+            source:
+                "website"
+
+        }
+    );
+
+};
+
+
+/* =====================================================
+   REAL-TIME RATING LISTENER
+===================================================== */
+
+function listenForRatings(){
+
+    const ratingRef =
+        collection(
+            db,
+            RATING_COLLECTION
         );
 
 
-        mediaStore = [];
+    onSnapshot(
+
+        ratingRef,
+
+        snapshot => {
+
+            let total = 0;
+
+            let count = 0;
 
 
-        snap.forEach(
-            docSnap=>{
+            snapshot.forEach(
+                docSnap => {
 
-                const data =
-                docSnap.data();
-
-
-                const url =
-                data.url ||
-                data.link ||
-                data.mediaUrl ||
-                data.secure_url;
+                    const data =
+                        docSnap.data();
 
 
-                if(!url){
-
-                    return;
-
-                }
-
-
-                let type =
-                String(
-                    data.type ||
-                    data.mediaType ||
-                    ""
-                ).toLowerCase();
-
-
-                if(
-                    type === "image" ||
-                    type === "photo" ||
-                    type === "photos"
-                ){
-
-                    type =
-                    "photo";
-
-                }
-
-
-                if(
-                    type === "video" ||
-                    type === "videos"
-                ){
-
-                    type =
-                    "video";
-
-                }
-
-
-                if(
-                    type !== "photo" &&
-                    type !== "video"
-                ){
-
-                    const u =
-                    url
-                    .split("?")[0]
-                    .toLowerCase();
+                    const rating =
+                        Number(
+                            data.rating
+                        );
 
 
                     if(
-                        /\.(jpg|jpeg|png|gif|webp|avif)$/.test(u)
+                        rating >= 1 &&
+                        rating <= 5
                     ){
 
-                        type =
-                        "photo";
+                        total +=
+                            rating;
+
+                        count++;
 
                     }
-                    else if(
-                        /\.(mp4|webm|mov|m4v|ogg)$/.test(u)
-                    ){
 
-                        type =
-                        "video";
+                }
+            );
 
-                    }
-                    else{
+
+            const average =
+                count
+                ? total / count
+                : 0;
+
+
+            updateRatingDisplay(
+                average,
+                count
+            );
+
+        },
+
+        error => {
+
+            console.error(
+                "Rating listener error:",
+                error
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   MEDIA LISTENER
+===================================================== */
+
+function listenForFirebaseMedia(){
+
+    const mediaRef =
+        collection(
+            db,
+            COLLECTION_NAME
+        );
+
+
+    onSnapshot(
+
+        mediaRef,
+
+        snapshot => {
+
+            /*
+               IMPORTANT:
+
+               Save the exact position before Firebase
+               changes anything.
+            */
+
+            const savedScroll =
+                saveScrollPosition();
+
+
+            const newMediaStore =
+                [];
+
+
+            snapshot.forEach(
+                docSnap => {
+
+                    const data =
+                        docSnap.data();
+
+
+                    console.log(
+                        "Firebase document:",
+                        docSnap.id,
+                        data
+                    );
+
+
+                    const url =
+                        data.url ||
+                        data.link ||
+                        data.mediaUrl ||
+                        data.secure_url;
+
+
+                    if(!url){
 
                         return;
 
                     }
 
+
+                    let type =
+                        String(
+                            data.type ||
+                            data.mediaType ||
+                            ""
+                        )
+                        .toLowerCase();
+
+
+                    if(
+
+                        type === "image" ||
+
+                        type === "photo" ||
+
+                        type === "photos"
+
+                    ){
+
+                        type =
+                            "photo";
+
+                    }
+
+
+                    if(
+
+                        type === "video" ||
+
+                        type === "videos"
+
+                    ){
+
+                        type =
+                            "video";
+
+                    }
+
+
+                    if(
+
+                        type !== "photo" &&
+
+                        type !== "video"
+
+                    ){
+
+                        const cleanUrl =
+                            url
+                                .split("?")[0]
+                                .toLowerCase();
+
+
+                        if(
+
+                            /\.(jpg|jpeg|png|gif|webp|avif)$/
+                                .test(
+                                    cleanUrl
+                                )
+
+                        ){
+
+                            type =
+                                "photo";
+
+                        }
+
+                        else if(
+
+                            /\.(mp4|webm|mov|m4v|ogg)$/
+                                .test(
+                                    cleanUrl
+                                )
+
+                        ){
+
+                            type =
+                                "video";
+
+                        }
+
+                        else{
+
+                            return;
+
+                        }
+
+                    }
+
+
+                    newMediaStore.push({
+
+                        id:
+                            docSnap.id,
+
+                        name:
+                            data.name ||
+                            data.title ||
+                            "Project Media",
+
+                        url:
+                            url,
+
+                        type:
+                            type
+
+                    });
+
                 }
 
+            );
 
-                mediaStore.push({
 
-                    id:
-                    docSnap.id,
+            /*
+               Create a simple signature.
 
-                    name:
-                    data.name ||
-                    data.title ||
-                    "Project Media",
+               If Firebase fires an event but the actual
+               media hasn't changed, don't rebuild the
+               gallery at all.
+            */
 
-                    url:
-                    url,
+            const newSignature =
+                JSON.stringify(
+                    newMediaStore
+                        .map(
+                            item => ({
 
-                    type:
-                    type
+                                id:item.id,
 
-                });
+                                name:item.name,
+
+                                url:item.url,
+
+                                type:item.type
+
+                            })
+                        )
+                        .sort(
+                            (a,b) =>
+                                a.id.localeCompare(
+                                    b.id
+                                )
+                        )
+                );
+
+
+            mediaStore =
+                newMediaStore;
+
+
+            setStatus(
+
+                "☁️ Firebase connected • " +
+
+                mediaStore.length +
+
+                " media loaded",
+
+                true
+
+            );
+
+
+            /*
+               Only render when actual media data changed.
+            */
+
+            if(
+                newSignature !==
+                lastMediaSignature
+            ){
+
+                lastMediaSignature =
+                    newSignature;
+
+
+                renderMedia();
+
+            }
+
+
+            /*
+               Restore the exact location even when the
+               gallery was updated.
+            */
+
+            restoreScrollPosition(
+                savedScroll
+            );
+
+        },
+
+        error => {
+
+            console.error(
+                "Firebase media error:",
+                error
+            );
+
+
+            setStatus(
+                "❌ Firebase error"
+            );
+
+
+            gallery.innerHTML =
+                "";
+
+
+            empty.style.display =
+                "block";
+
+
+            if(
+                error.code ===
+                "permission-denied"
+            ){
+
+                empty.textContent =
+                    "❌ Firestore permission denied. Check your rules.";
+
+            }
+
+            else{
+
+                empty.textContent =
+                    "❌ Firebase could not load media: " +
+                    error.message;
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   RENDER MEDIA
+===================================================== */
+
+function renderMedia(){
+
+    gallery.innerHTML =
+        "";
+
+
+    const items =
+        mediaStore.filter(
+            item => {
+
+                return(
+
+                    currentFilter ===
+                    "all"
+
+                    ||
+
+                    item.type ===
+                    currentFilter
+
+                );
 
             }
         );
 
 
-        setStatus(
-            "☁️ Firebase connected • " +
-            mediaStore.length +
-            " media loaded",
-            true
-        );
-
-
-        renderMedia();
-
-    }
-    catch(error){
-
-        console.error(
-            "Firebase error:",
-            error
-        );
-
-
-        setStatus(
-            "❌ Firebase error"
-        );
-
-
-        gallery.innerHTML =
-        "";
-
+    if(!items.length){
 
         empty.style.display =
-        "block";
-
-
-        if(
-            error.code ===
-            "permission-denied"
-        ){
-
-            empty.textContent =
-            "❌ Firestore permission denied. Check your rules.";
-
-        }
-        else{
-
-            empty.textContent =
-            "❌ Firebase could not load media: " +
-            error.message;
-
-        }
-
-    }
-
-}
-
-
-function renderMedia(){
-
-    gallery.innerHTML =
-    "";
-
-
-    const items =
-    mediaStore.filter(
-        item=>{
-
-            return(
-                currentFilter ===
-                "all" ||
-                item.type ===
-                currentFilter
-            );
-
-        }
-    );
-
-
-    if(
-        !items.length
-    ){
-
-        empty.style.display =
-        "block";
+            "block";
 
 
         empty.textContent =
-        mediaStore.length
-        ? "No media found."
-        : "No photos or videos have been added yet.";
+            mediaStore.length
 
+            ?
+
+            "No media found."
+
+            :
+
+            "No photos or videos have been added yet.";
 
         return;
 
@@ -5150,20 +4649,20 @@ function renderMedia(){
 
 
     empty.style.display =
-    "none";
+        "none";
 
 
     items.forEach(
-        item=>{
+        item => {
 
             const card =
-            document.createElement(
-                "div"
-            );
+                document.createElement(
+                    "div"
+                );
 
 
             card.className =
-            "gallery-item";
+                "gallery-item";
 
 
             let media;
@@ -5175,61 +4674,70 @@ function renderMedia(){
             ){
 
                 media =
-                document.createElement(
-                    "video"
-                );
+                    document.createElement(
+                        "video"
+                    );
 
 
                 media.controls =
-                false;
-
+                    false;
 
                 media.muted =
-                true;
-
+                    true;
 
                 media.playsInline =
-                true;
-
+                    true;
 
                 media.preload =
-                "metadata";
+                    "metadata";
 
             }
+
             else{
 
                 media =
-                document.createElement(
-                    "img"
-                );
+                    document.createElement(
+                        "img"
+                    );
 
 
                 media.loading =
-                "lazy";
+                    "lazy";
 
             }
 
 
             media.src =
-            item.url;
+                item.url;
 
 
             media.alt =
-            item.name;
+                item.name;
+
+
+            media.onerror =
+                function(){
+
+                    console.error(
+                        "Media failed:",
+                        item.url
+                    );
+
+                };
 
 
             const caption =
-            document.createElement(
-                "div"
-            );
+                document.createElement(
+                    "div"
+                );
 
 
             caption.className =
-            "gallery-caption";
+                "gallery-caption";
 
 
             caption.textContent =
-            item.name;
+                item.name;
 
 
             card.appendChild(
@@ -5243,9 +4751,13 @@ function renderMedia(){
 
 
             card.onclick =
-            ()=>{
-                openViewer(item);
-            };
+                () => {
+
+                    openViewer(
+                        item
+                    );
+
+                };
 
 
             gallery.appendChild(
@@ -5258,32 +4770,38 @@ function renderMedia(){
 }
 
 
-function openViewer(item){
+/* =====================================================
+   OPEN MEDIA VIEWER
+===================================================== */
+
+function openViewer(
+    item
+){
 
     const viewer =
-    document.getElementById(
-        "sectionViewer"
-    );
+        document.getElementById(
+            "sectionViewer"
+        );
 
 
     const title =
-    document.getElementById(
-        "sectionViewerTitle"
-    );
+        document.getElementById(
+            "sectionViewerTitle"
+        );
 
 
     const content =
-    document.getElementById(
-        "sectionViewerContent"
-    );
+        document.getElementById(
+            "sectionViewerContent"
+        );
 
 
     content.innerHTML =
-    "";
+        "";
 
 
     title.textContent =
-    item.name;
+        item.name;
 
 
     let media;
@@ -5295,39 +4813,38 @@ function openViewer(item){
     ){
 
         media =
-        document.createElement(
-            "video"
-        );
+            document.createElement(
+                "video"
+            );
 
 
         media.controls =
-        true;
-
+            true;
 
         media.autoplay =
-        true;
-
+            true;
 
         media.playsInline =
-        true;
+            true;
 
     }
+
     else{
 
         media =
-        document.createElement(
-            "img"
-        );
+            document.createElement(
+                "img"
+            );
 
     }
 
 
     media.src =
-    item.url;
+        item.url;
 
 
     media.className =
-    "section-view-media";
+        "section-view-media";
 
 
     content.appendChild(
@@ -5341,98 +4858,20 @@ function openViewer(item){
 
 
     viewer.scrollIntoView({
-
-        behavior:
-        "smooth",
-
-        block:
-        "center"
-
+        behavior:"smooth",
+        block:"center"
     });
 
 }
 
 
-window.closeSectionViewer =
-function(){
-
-    document
-    .getElementById(
-        "sectionViewer"
-    )
-    .classList.remove(
-        "show"
-    );
-
-
-    document
-    .getElementById(
-        "sectionViewerContent"
-    )
-    .innerHTML =
-    "";
-
-};
-
-
-window.filterMedia =
-function(
-    filter,
-    button
-){
-
-    currentFilter =
-    filter;
-
-
-    document
-    .querySelectorAll(
-        ".media-filter"
-    )
-    .forEach(
-        btn=>{
-
-            btn.classList.remove(
-                "active"
-            );
-
-        }
-    );
-
-
-    if(button){
-
-        button.classList.add(
-            "active"
-        );
-
-    }
-
-
-    renderMedia();
-
-};
-
-
 /* =====================================================
-   START FIREBASE
+   START REAL-TIME LISTENERS
 ===================================================== */
 
-loadRatings();
+listenForRatings();
 
-loadFirebaseMedia();
-
-
-setInterval(
-    loadRatings,
-    15000
-);
-
-
-setInterval(
-    loadFirebaseMedia,
-    10000
-);
+listenForFirebaseMedia();
 
 </script>
 
