@@ -1,324 +1,344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+    name="viewport"
+    content="width=device-width,initial-scale=1"
 >
 
 <title>Working Model of Heart</title>
 
 <meta
-name="description"
-content="Working Model of the Human Heart — Science Exhibition 2026"
+    property="og:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    property="og:image"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:secure_url"
+    content="https://its-working-heart.vercel.app/cover.png"
+>
+
+<meta
+    property="og:image:type"
+    content="image/png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="Working Model of Heart"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:url"
+    content="https://its-working-heart.vercel.app/"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="Working Model of Heart"
+>
+
+<meta
+    name="twitter:description"
+    content="Working Model of the Human Heart — Science Exhibition 2026"
+>
+
+<meta
+    name="twitter:image"
+    content="https://its-working-heart.vercel.app/cover.png"
 >
 
 <link
-rel="icon"
-type="image/png"
-href="/cover.png"
+    rel="icon"
+    type="image/png"
+    href="/cover.png"
 >
+
+
+<!-- PDF.JS -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
+    type="module"
+></script>
 
 
 <style>
 
 /* =====================================================
-   RESET
+   BASIC
 ===================================================== */
 
 *{
-    box-sizing:border-box;
+    box-sizing:border-box
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior:smooth
 }
 
 body{
     margin:0;
     background:#08090b;
     color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden
 }
 
-button,
-a{
-    -webkit-tap-highlight-color:transparent;
+body.pdf-open{
+    overflow:hidden
 }
 
 
 /* =====================================================
-   NAVIGATION
+   NAV
 ===================================================== */
 
 nav{
     height:64px;
-
     padding:0 6%;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    background:#090a0c;
-
+    background:#090a0cdd;
     border-bottom:1px solid #292a2e;
-
     position:sticky;
     top:0;
-
-    z-index:1000;
-
-    backdrop-filter:blur(12px);
+    z-index:900;
+    backdrop-filter:blur(10px)
 }
 
 .brand{
-    font-size:20px;
-    font-weight:700;
+    font-size:19px;
+    font-weight:700
 }
 
-.brand span{
-    color:#ff2638;
+.brand span,
+h1 span,
+.red{
+    color:#ff2638
 }
 
-.settings-btn{
-    width:40px;
-    height:40px;
-
-    border:1px solid #383a40;
-    border-radius:10px;
-
-    background:#111317;
-
+.links{
     display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:5px;
-
-    cursor:pointer;
+    gap:28px
 }
 
-.settings-btn span{
-    width:20px;
-    height:2px;
+.links a{
+    color:#eee;
+    text-decoration:none;
+    font-size:14px
+}
 
-    background:#fff;
-
-    border-radius:5px;
+.links a:hover{
+    color:#ff2638
 }
 
 
 /* =====================================================
-   RATING PANEL
+   SMALL RATING WIDGET
 ===================================================== */
 
-/*
-   IMPORTANT:
-   Hidden BEFORE JavaScript loads.
-
-   This prevents the rating buttons from flashing
-   on screen when a returning visitor opens the site.
-*/
-
-.rating-area{
-    display:none;
-
-    width:100%;
-
-    padding:20px 20px 0;
-
-    position:relative;
-
-    z-index:500;
-}
-
-.rating-card{
-    width:min(100%,760px);
-
-    margin:auto;
-
-    min-height:100px;
-
-    padding:18px 20px;
-
-    border:1px solid #303238;
-
-    border-radius:22px;
-
-    background:#101114;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    box-shadow:
-        0 10px 35px #0008;
-}
-
-.rating-left{
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-}
-
-.rating-heart{
-    width:64px;
-    height:64px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-    place-items:center;
-
-    font-size:30px;
-
-    box-shadow:
-        0 0 25px #ff263855;
-
-    animation:
-        ratingPulse 1.8s infinite;
-}
-
-@keyframes ratingPulse{
-
-    50%{
-        transform:scale(1.06);
-
-        box-shadow:
-            0 0 38px #ff263866;
-    }
-
-}
-
-.rating-title{
-    font-size:16px;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-}
-
-.rating-total{
-    color:#aaa;
-
-    font-size:13px;
-}
-
-.rating-total strong{
-    color:#ffd52a;
-}
-
-.rating-stars{
-    display:flex;
-
-    gap:3px;
-}
-
-.rating-star{
-    border:0;
-
-    background:transparent;
-
-    color:#3a3d45;
-
-    font-size:31px;
-
-    padding:0;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.rating-star:hover,
-.rating-star.active{
-    color:#ffd52a;
-
-    transform:scale(1.12);
-}
-
-.rating-star:disabled{
-    cursor:default;
-}
-
-
-/* =====================================================
-   SMALL TOTAL RATING
-===================================================== */
-
-.rating-mini{
+.rating-widget{
     position:fixed;
 
-    left:18px;
-    top:155px;
+    /*
+       Keeps it near the very top,
+       just underneath the sticky navigation.
+    */
+    top:76px;
+    left:12px;
 
-    z-index:900;
+    width:auto;
+    max-width:calc(100vw - 24px);
 
-    padding:12px 17px;
+    min-height:52px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:9px 13px;
+
+    background:rgba(17,19,23,.97);
 
     border:1px solid #34363c;
 
     border-radius:18px;
 
-    background:#111317ee;
-
-    backdrop-filter:blur(12px);
-
     box-shadow:
-        0 10px 35px #0009;
+        0 12px 35px #0008,
+        0 0 25px #ff263822;
 
+    z-index:1000;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        width .35s ease
+}
+
+.rating-widget.rating-hidden{
+    opacity:0;
+    transform:translateY(-15px);
+    pointer-events:none
+}
+
+.rating-summary{
     display:flex;
-
     align-items:center;
-
     gap:8px;
+    white-space:nowrap
+}
 
+.rating-star-summary{
+    color:#ffd52a;
+    font-size:25px;
+    line-height:1
+}
+
+.rating-score{
+    color:#ffd52a;
+    font-weight:800;
+    font-size:16px
+}
+
+.rating-separator{
+    color:#777
+}
+
+.rating-count{
     color:#aaa;
-
-    font-size:13px;
-
-    pointer-events:none;
-
-    animation:
-        miniRatingIn .5s ease;
+    font-size:14px
 }
 
-.rating-mini .mini-star{
+.rating-action-area{
+    display:flex;
+    align-items:center;
+    gap:5px
+}
+
+.rating-stars{
+    display:flex;
+    align-items:center;
+    gap:2px
+}
+
+.rating-star-btn{
+    border:0;
+    background:none;
+
+    color:#373a43;
+
+    font-size:26px;
+    line-height:1;
+
+    padding:1px;
+
+    cursor:pointer;
+
+    transition:
+        transform .15s ease,
+        color .15s ease
+}
+
+.rating-star-btn:hover,
+.rating-star-btn.selected{
     color:#ffd52a;
-
-    font-size:23px;
+    transform:scale(1.12)
 }
 
-.rating-mini strong{
-    color:#ffd52a;
+.rating-confirm{
+    display:none;
+
+    border:1px solid #ff2638;
+
+    background:#ff2638;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    padding:7px 10px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+    animation:confirmIn .25s ease
 }
 
-@keyframes miniRatingIn{
+.rating-confirm.show{
+    display:block
+}
 
+.rating-confirm:disabled{
+    opacity:.65;
+    cursor:default
+}
+
+@keyframes confirmIn{
     from{
         opacity:0;
-
-        transform:
-            translateX(-20px);
+        transform:scale(.85)
     }
 
     to{
         opacity:1;
+        transform:scale(1)
+    }
+}
 
-        transform:none;
+.rating-widget.rating-pulse{
+    animation:ratingPulse .45s ease
+}
+
+@keyframes ratingPulse{
+
+    40%{
+        transform:scale(1.04)
+    }
+
+    100%{
+        transform:scale(1)
     }
 
 }
@@ -330,97 +350,70 @@ nav{
 
 .hero{
     min-height:600px;
-
-    padding:
-        70px 7%;
-
+    padding:70px 7%;
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     align-items:center;
-
     position:relative;
-
     overflow:hidden;
 
     background:
-        radial-gradient(
-            circle at 80% 35%,
-            #420b12,
-            transparent 40%
-        );
+    radial-gradient(
+        circle at 80% 35%,
+        #420b12,
+        transparent 40%
+    )
 }
 
 .hero:before{
     content:"";
-
     position:absolute;
-
     inset:0;
-
-    opacity:.16;
+    opacity:.18;
 
     background-image:
-        linear-gradient(
-            #ff263812 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            #ff263812 1px,
-            transparent 1px
-        );
+    linear-gradient(
+        #ff263812 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        #ff263812 1px,
+        transparent 1px
+    );
 
-    background-size:42px 42px;
+    background-size:42px 42px
 }
 
-.hero > *{
-    position:relative;
+.hero>*{
+    position:relative
 }
 
 .eyebrow{
-    color:#ff6b76;
-
     font-size:12px;
-
     letter-spacing:3px;
-
-    font-weight:bold;
+    color:#ff6b76;
+    font-weight:bold
 }
 
 .hero h1{
-    font-size:
-        clamp(48px,6vw,78px);
-
+    font-size:clamp(48px,6vw,78px);
     line-height:.98;
-
-    margin:
-        18px 0;
-}
-
-.hero h1 span{
-    color:#ff2638;
+    margin:18px 0
 }
 
 .hero p{
     max-width:560px;
-
     color:#cfd0d5;
-
     font-size:18px;
-
-    line-height:1.65;
+    line-height:1.65
 }
 
 .btn{
     display:inline-block;
-
     margin-top:25px;
 
-    padding:
-        15px 24px;
+    padding:14px 22px;
 
     background:#ff2638;
 
@@ -432,30 +425,34 @@ nav{
 
     font-weight:bold;
 
-    border:0;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 12px 30px #ff263833;
+    box-shadow:0 12px 30px #ff263833;
 
     transition:.25s;
+
+    border:0;
+
+    cursor:pointer
 }
 
 .btn:hover{
-    transform:translateY(-3px);
+    transform:translateY(-3px)
 }
+
+
+/* =====================================================
+   HEARTBEAT
+===================================================== */
 
 .bpm{
     margin-top:22px;
 
-    width:175px;
+    width:170px;
 
     padding:12px;
 
     border:1px solid #383a40;
 
-    border-radius:11px;
+    border-radius:10px;
 
     background:#111317;
 
@@ -463,12 +460,12 @@ nav{
 
     gap:10px;
 
-    align-items:center;
+    align-items:center
 }
 
 .pulse{
-    width:32px;
-    height:32px;
+    width:31px;
+    height:31px;
 
     border-radius:50%;
 
@@ -477,8 +474,7 @@ nav{
 
     background:#ff2638;
 
-    animation:
-        pulse 1s infinite;
+    animation:pulse 1s infinite
 }
 
 @keyframes pulse{
@@ -487,7 +483,7 @@ nav{
         transform:scale(1.15);
 
         box-shadow:
-            0 0 25px #ff263888;
+        0 0 25px #ff263888
     }
 
 }
@@ -504,12 +500,12 @@ nav{
     left:0;
 
     width:100%;
-    height:75px;
+    height:75px
 }
 
 .ecg svg{
     width:100%;
-    height:100%;
+    height:100%
 }
 
 .ecg polyline{
@@ -520,7 +516,6 @@ nav{
     stroke-width:3;
 
     stroke-linecap:round;
-
     stroke-linejoin:round;
 
     stroke-dasharray:900;
@@ -528,25 +523,25 @@ nav{
     stroke-dashoffset:900;
 
     animation:
-        ecg 2.2s linear infinite;
+    ecg 2.2s linear infinite;
 
     filter:
-        drop-shadow(
-            0 0 7px #ff2638
-        );
+    drop-shadow(
+        0 0 7px #ff2638
+    )
 }
 
 @keyframes ecg{
 
     to{
-        stroke-dashoffset:0;
+        stroke-dashoffset:0
     }
 
 }
 
 
 /* =====================================================
-   INFORMATION BAR
+   BAR
 ===================================================== */
 
 .bar{
@@ -554,7 +549,7 @@ nav{
 
     margin:auto;
 
-    padding:16px;
+    padding:14px;
 
     text-align:center;
 
@@ -562,35 +557,17 @@ nav{
 
     border:1px solid #303238;
 
-    color:#aaa;
-
-    font-size:16px;
+    color:#aaa
 }
 
-.bar .event-name{
+.bar span{
     color:#ff2638;
-
-    font-weight:700;
-}
-
-.bar .big-name{
-    display:inline-block;
-
-    color:#fff;
-
-    font-size:22px;
-
-    font-weight:800;
-
-    white-space:nowrap;
-
-    margin-left:6px;
+    font-weight:bold
 }
 
 .bar b{
     margin:0 15px;
-
-    color:#555;
+    color:#555
 }
 
 
@@ -599,93 +576,29 @@ nav{
 ===================================================== */
 
 section{
-    padding:
-        80px 7%;
-
-    border-top:
-        1px solid #202126;
+    padding:80px 7%;
+    border-top:1px solid #202126
 }
 
 .title{
     text-align:center;
-
-    font-size:38px;
+    font-size:38px
 }
 
 .title span{
-    color:#ff2638;
+    color:#ff2638
 }
 
 .sub{
     max-width:700px;
 
-    margin:
-        0 auto 42px;
+    margin:0 auto 42px;
 
     text-align:center;
 
     color:#aeb1b8;
 
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   TEAM
-===================================================== */
-
-.team-list{
-    max-width:900px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:14px;
-}
-
-.team-card{
-    padding:22px;
-
-    border:1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.team-card:first-child{
-    border-color:#ff2638;
-
-    box-shadow:
-        0 0 30px #ff263822;
-}
-
-.team-card:hover{
-    transform:translateY(-4px);
-
-    border-color:#ff2638;
-}
-
-.team-role{
-    display:block;
-
-    color:#ff2638;
-
-    font-size:16px;
-
-    margin-top:7px;
+    line-height:1.6
 }
 
 
@@ -700,151 +613,155 @@ section{
 
     display:grid;
 
-    grid-template-columns:
-        1fr 1.2fr;
+    grid-template-columns:1fr 1.2fr;
 
     gap:50px;
 
-    align-items:center;
+    align-items:center
 }
 
 .about h2{
-    font-size:34px;
-}
-
-.about h2 span{
-    color:#ff2638;
+    font-size:34px
 }
 
 .about p{
     color:#c5c7cc;
-
-    line-height:1.7;
+    line-height:1.7
 }
 
 
 /* =====================================================
-   COMPACT HEART POINTS
+   FEATURES AS SMALL POINTS
 ===================================================== */
 
-.features{
+.features,
+.steps{
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+    repeat(4,1fr);
 
-    gap:12px;
-
-    margin-top:25px;
+    gap:15px
 }
 
-.feature{
-    padding:15px 18px;
+.feature,
+.step{
+    padding:22px;
 
     border:1px solid #34363c;
 
-    border-radius:12px;
+    border-radius:13px;
 
     background:#111317;
 
-    display:flex;
+    text-align:center;
 
-    align-items:center;
-
-    gap:12px;
-
-    transition:.3s;
+    transition:.3s
 }
 
-.feature:hover{
-    border-color:#ff2638;
+.feature:hover,
+.step:hover{
+    transform:translateY(-6px);
 
-    transform:translateX(4px);
+    border-color:#ff2638
 }
 
-.feature .icon{
+.feature .icon,
+.step .icon{
+    font-size:29px;
+
     color:#ff2638;
 
-    font-size:22px;
-
-    flex:none;
+    margin-bottom:10px
 }
 
-.feature h3{
-    margin:0;
+.feature p,
+.step p{
+    color:#aaa;
 
-    font-size:15px;
+    font-size:13px;
+
+    line-height:1.5
 }
 
-.feature p{
-    margin:
-        3px 0 0;
+.num{
+    width:30px;
+    height:30px;
 
-    color:#888;
+    border-radius:50%;
 
-    font-size:11px;
+    background:#ff2638;
+
+    display:grid;
+    place-items:center;
+
+    margin:0 auto 17px;
+
+    font-weight:bold
 }
 
 
 /* =====================================================
-   AWARENESS
+   HEART AWARENESS
 ===================================================== */
 
 .awareness{
     max-width:1100px;
 
-    margin:
-        70px auto 0;
+    margin:70px auto 0
 }
 
 .awareness h2{
-    font-size:34px;
+    text-align:center;
 
-    margin-bottom:15px;
+    font-size:38px;
+
+    margin-bottom:18px
 }
 
 .awareness h2 span{
-    color:#ff2638;
+    color:#ff2638
 }
 
 .awareness-intro{
+    text-align:center;
+
+    max-width:760px;
+
+    margin:0 auto 30px;
+
     color:#aaa;
 
-    line-height:1.6;
-
-    max-width:850px;
+    line-height:1.6
 }
 
-.awareness-points{
-    margin-top:25px;
-
+.awareness-list{
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+    repeat(2,1fr);
 
-    gap:10px 35px;
+    gap:12px 30px
 }
 
 .awareness-point{
-    color:#c7c8cc;
+    display:flex;
 
-    font-size:14px;
+    gap:12px;
+
+    padding:10px 0;
+
+    color:#cfd0d5;
 
     line-height:1.5;
 
-    padding:7px 0;
-
-    border-bottom:
-        1px solid #202126;
+    border-bottom:1px solid #202126
 }
 
-.awareness-point::before{
-    content:"♥";
-
+.awareness-point b{
     color:#ff2638;
 
-    margin-right:9px;
+    flex:none
 }
 
 
@@ -861,8 +778,7 @@ section{
 
     gap:10px;
 
-    margin:
-        0 auto 28px;
+    margin:0 auto 28px
 }
 
 .media-filter{
@@ -872,50 +788,36 @@ section{
 
     color:#fff;
 
-    padding:
-        11px 17px;
+    padding:11px 17px;
 
     border-radius:9px;
 
     cursor:pointer;
 
     font-weight:700;
+
+    transition:.25s
 }
 
-.media-filter.active,
-.media-filter:hover{
+.media-filter:hover,
+.media-filter.active{
     background:#ff2638;
 
-    border-color:#ff2638;
-}
-
-.firebase-status{
-    text-align:center;
-
-    margin:
-        -8px auto 24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-.firebase-status.live{
-    color:#69e58a;
+    border-color:#ff2638
 }
 
 .gallery{
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px,190px)
-        );
+    repeat(
+        auto-fit,
+        minmax(150px,190px)
+    );
 
     justify-content:center;
 
-    gap:15px;
+    gap:15px
 }
 
 .gallery-item{
@@ -929,13 +831,13 @@ section{
 
     cursor:pointer;
 
-    transition:.25s;
+    animation:galleryIn .45s
 }
 
 .gallery-item:hover{
     border-color:#ff2638;
 
-    transform:translateY(-3px);
+    transform:translateY(-3px)
 }
 
 .gallery-item img,
@@ -944,9 +846,9 @@ section{
 
     height:125px;
 
-    object-fit:cover;
-
     display:block;
+
+    object-fit:cover
 }
 
 .gallery-caption{
@@ -960,7 +862,7 @@ section{
 
     overflow:hidden;
 
-    text-overflow:ellipsis;
+    text-overflow:ellipsis
 }
 
 .gallery-empty{
@@ -968,34 +870,65 @@ section{
 
     color:#777;
 
-    padding:35px;
+    padding:35px
+}
+
+@keyframes galleryIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px)
+    }
+
+    to{
+        opacity:1;
+        transform:none
+    }
+
 }
 
 
 /* =====================================================
-   MEDIA VIEWER
+   FIREBASE STATUS
+===================================================== */
+
+.firebase-status{
+    text-align:center;
+
+    margin:-8px auto 24px;
+
+    color:#777;
+
+    font-size:11px
+}
+
+.firebase-status.live{
+    color:#69e58a
+}
+
+
+/* =====================================================
+   VIEWER
 ===================================================== */
 
 .section-viewer{
     display:none;
 
-    margin:
-        28px auto 0;
+    margin:28px auto 0;
 
     max-width:760px;
 
-    border:
-        1px solid #ff2638;
+    border:1px solid #ff2638;
 
     border-radius:16px;
 
     background:#0d0f12;
 
-    padding:14px;
+    padding:14px
 }
 
 .section-viewer.show{
-    display:block;
+    display:block
 }
 
 .section-viewer-head{
@@ -1005,8 +938,7 @@ section{
 
     justify-content:space-between;
 
-    padding:
-        2px 4px 12px;
+    padding:2px 4px 12px
 }
 
 .section-viewer-head h3{
@@ -1014,7 +946,7 @@ section{
 
     color:#ff2638;
 
-    font-size:16px;
+    font-size:16px
 }
 
 .section-viewer-head button{
@@ -1031,7 +963,7 @@ section{
 
     font-size:21px;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 .section-viewer-content{
@@ -1040,6 +972,8 @@ section{
     justify-content:center;
 
     align-items:center;
+
+    min-height:180px
 }
 
 .section-view-media{
@@ -1048,6 +982,8 @@ section{
     max-height:500px;
 
     border-radius:10px;
+
+    display:block
 }
 
 
@@ -1056,158 +992,57 @@ section{
 ===================================================== */
 
 .presentation{
-    max-width:900px;
+    max-width:1100px;
 
-    margin:
-        60px auto 0;
+    margin:0 auto;
 
-    padding:25px;
+    padding:30px;
 
-    border:
-        1px solid #34363c;
+    border:1px solid #34363c;
 
     border-radius:18px;
 
     background:#111317;
 
-    box-shadow:
-        0 15px 50px #0007;
+    text-align:center
 }
 
 .presentation h2{
-    text-align:center;
-
-    margin-top:0;
-
     color:#ff2638;
+
+    margin-top:0
 }
 
 .presentation-video{
     width:100%;
 
-    max-height:500px;
-
-    background:#000;
+    max-height:600px;
 
     border-radius:12px;
 
-    display:block;
+    background:#000;
+
+    margin-bottom:30px
 }
-
-
-/* =====================================================
-   PDF READER
-===================================================== */
-
-/*
-   No iframe.
-   No download link.
-   No direct PDF navigation.
-
-   PDF.js renders the PDF directly into canvases.
-*/
 
 .pdf-container{
-    margin-top:28px;
-}
+    position:relative;
 
-.pdf-container h3{
-    text-align:center;
+    width:100%;
 
-    margin:
-        0 0 15px;
+    max-width:900px;
 
-    color:#fff;
-}
+    margin:auto;
 
-.pdf-reader-box{
-    background:#17191d;
+    background:#202126;
 
-    border:
-        1px solid #34363c;
+    border-radius:12px;
 
-    border-radius:14px;
+    padding:15px;
 
-    overflow:hidden;
-}
+    min-height:500px;
 
-.pdf-toolbar{
-    min-height:55px;
-
-    padding:
-        10px 12px;
-
-    background:#0d0f12;
-
-    border-bottom:
-        1px solid #34363c;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:8px;
-
-    flex-wrap:wrap;
-}
-
-.pdf-toolbar-left,
-.pdf-toolbar-right{
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-}
-
-.pdf-toolbar button{
-    border:1px solid #3a3c42;
-
-    background:#191b20;
-
-    color:#fff;
-
-    min-width:38px;
-
-    height:36px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-}
-
-.pdf-toolbar button:hover{
-    border-color:#ff2638;
-
-    background:#ff2638;
-}
-
-.pdf-page-info{
-    color:#aaa;
-
-    font-size:12px;
-
-    min-width:80px;
-
-    text-align:center;
-}
-
-.pdf-scroll{
-    height:
-        min(
-            75vh,
-            850px
-        );
-
-    overflow:auto;
-
-    background:#282a2e;
-
-    padding:20px 10px;
+    overflow:auto
 }
 
 .pdf-pages{
@@ -1217,144 +1052,128 @@ section{
 
     align-items:center;
 
-    gap:18px;
+    gap:18px
 }
 
 .pdf-page{
-    background:#fff;
-
-    box-shadow:
-        0 8px 25px #0008;
-
     max-width:100%;
 
     height:auto;
 
-    display:block;
+    background:#fff;
+
+    box-shadow:
+    0 8px 25px #0008
 }
 
-.pdf-loading{
-    min-height:300px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    color:#aaa;
-
-    padding:30px;
-}
-
+.pdf-loading,
 .pdf-error{
-    min-height:250px;
+    min-height:450px;
 
     display:flex;
 
     flex-direction:column;
 
+    justify-content:center;
+
     align-items:center;
 
-    justify-content:center;
+    color:#aaa;
 
     text-align:center;
 
-    padding:30px;
+    padding:30px
+}
 
-    color:#ff6b76;
+.pdf-error strong{
+    color:#ff5262;
+
+    font-size:18px
 }
 
 .pdf-error button{
-    margin-top:15px;
-
-    padding:
-        11px 18px;
+    margin-top:20px;
 
     border:0;
-
-    border-radius:8px;
 
     background:#ff2638;
 
     color:#fff;
 
+    border-radius:8px;
+
+    padding:10px 18px;
+
     font-weight:bold;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 .pdf-status{
-    text-align:center;
+    margin:10px 0 18px;
 
-    color:#777;
+    color:#888;
 
-    font-size:11px;
-
-    margin-top:9px;
+    font-size:12px
 }
 
 
 /* =====================================================
-   FUNCTION
+   TEAM
 ===================================================== */
 
-.steps{
+.team-list{
+    max-width:950px;
+
+    margin:auto;
+
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+    repeat(2,1fr);
 
-    gap:15px;
+    gap:18px
 }
 
-.step{
-    padding:22px;
+.team-member{
+    padding:28px;
 
-    border:
-        1px solid #34363c;
+    border:1px solid #34363c;
 
-    border-radius:13px;
+    border-radius:14px;
 
     background:#111317;
 
     text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    transition:.3s
 }
 
-.step .icon{
-    font-size:29px;
+.team-member:hover{
+    transform:translateY(-4px);
+
+    border-color:#ff2638
+}
+
+.team-member.leader{
+    border-color:#ff2638;
+
+    box-shadow:
+    0 0 30px #ff263822
+}
+
+.team-member.leader small{
+    display:block;
 
     color:#ff2638;
 
-    margin-bottom:10px;
-}
+    font-size:14px;
 
-.step p{
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-.num{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:
-        0 auto 17px;
-
-    font-weight:bold;
+    margin-top:8px
 }
 
 
@@ -1370,9 +1189,9 @@ section{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
-    gap:18px;
+    gap:18px
 }
 
 .contact-card{
@@ -1384,8 +1203,7 @@ section{
 
     padding:24px;
 
-    border:
-        1px solid #34363c;
+    border:1px solid #34363c;
 
     border-radius:14px;
 
@@ -1394,12 +1212,14 @@ section{
     text-decoration:none;
 
     color:#fff;
+
+    transition:.3s
 }
 
 .contact-card:hover{
-    border-color:#ff2638;
+    transform:translateY(-5px);
 
-    transform:translateY(-4px);
+    border-color:#ff2638
 }
 
 .contact-icon{
@@ -1414,12 +1234,15 @@ section{
 
     background:#ff2638;
 
-    flex:none;
+    color:#fff;
+
+    font-size:22px;
+
+    flex:none
 }
 
 .contact-card h3{
-    margin:
-        0 0 6px;
+    margin:0 0 6px
 }
 
 .contact-card p{
@@ -1430,6 +1253,8 @@ section{
     word-break:break-word;
 
     font-size:13px;
+
+    line-height:1.45
 }
 
 
@@ -1438,13 +1263,11 @@ section{
 ===================================================== */
 
 footer{
-    padding:
-        45px 7% 20px;
+    padding:45px 7% 20px;
 
-    border-top:
-        1px solid #292a30;
+    border-top:1px solid #292a30;
 
-    background:#090a0c;
+    background:#090a0c
 }
 
 .footer-grid{
@@ -1455,39 +1278,57 @@ footer{
     display:grid;
 
     grid-template-columns:
-        1fr 1fr 1fr;
+    1.2fr .8fr .8fr;
 
-    gap:35px;
+    gap:50px
 }
 
 .footer-grid h3{
-    color:#ff2638;
+    color:#ff2638
 }
 
 .footer-grid p{
     color:#aaa;
 
-    line-height:1.7;
+    line-height:1.7
 }
 
-.credit-title{
+.credits-title{
     color:#ff2638;
-
-    font-weight:bold;
-
-    margin-bottom:5px;
-}
-
-.credit-name{
-    color:#fff;
 
     font-size:18px;
 
     font-weight:bold;
 
-    line-height:1.45;
+    margin-bottom:12px
+}
 
-    margin-bottom:18px;
+.credit-line{
+    margin-bottom:20px
+}
+
+.credit-label{
+    display:block;
+
+    color:#ff2638;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-bottom:5px
+}
+
+.credit-name{
+    display:block;
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    line-height:1.5
 }
 
 .copy{
@@ -1495,14 +1336,32 @@ footer{
 
     color:#666;
 
-    border-top:
-        1px solid #222;
+    border-top:1px solid #222;
 
     margin-top:30px;
 
     padding-top:18px;
 
-    font-size:12px;
+    font-size:12px
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:.7s
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:none
 }
 
 
@@ -1510,36 +1369,67 @@ footer{
    SETTINGS
 ===================================================== */
 
+.settings-btn{
+    width:38px;
+    height:38px;
+
+    border:1px solid #383a40;
+
+    border-radius:9px;
+
+    background:#111317;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+
+    cursor:pointer
+}
+
+.settings-btn span{
+    display:block;
+
+    width:18px;
+
+    height:2px;
+
+    background:#fff;
+
+    border-radius:3px
+}
+
 .settings-menu{
     position:fixed;
 
     top:76px;
+
     right:6%;
 
-    width:min(
-        340px,
-        88vw
-    );
+    width:min(340px,88vw);
 
-    z-index:2000;
+    z-index:1001;
 
     display:none;
 
     padding:18px;
 
-    border:
-        1px solid #3a3c42;
+    border:1px solid #3a3c42;
 
     border-radius:16px;
 
     background:#101114;
 
-    box-shadow:
-        0 20px 60px #000b;
+    box-shadow:0 20px 60px #000b
 }
 
 .settings-menu.show{
-    display:block;
+    display:block
 }
 
 .settings-head{
@@ -1549,13 +1439,13 @@ footer{
 
     justify-content:space-between;
 
-    margin-bottom:15px;
+    margin-bottom:15px
 }
 
 .settings-head h3{
     margin:0;
 
-    color:#ff2638;
+    color:#ff2638
 }
 
 .settings-head button{
@@ -1567,7 +1457,7 @@ footer{
 
     font-size:25px;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 .settings-card{
@@ -1577,28 +1467,25 @@ footer{
 
     padding:17px;
 
-    border:
-        1px solid #34363c;
+    border:1px solid #34363c;
 
     border-radius:12px;
 
-    background:#111317;
+    background:#111317
 }
 
 .settings-card h4{
-    margin:
-        0 0 5px;
+    margin:0 0 5px
 }
 
 .settings-card p{
-    margin:
-        0 0 12px;
+    margin:0 0 12px;
 
     color:#aaa;
 
     font-size:12px;
 
-    line-height:1.5;
+    line-height:1.5
 }
 
 .settings-password{
@@ -1606,8 +1493,7 @@ footer{
 
     padding-top:12px;
 
-    border-top:
-        1px solid #292b31;
+    border-top:1px solid #292b31
 }
 
 .settings-password label{
@@ -1621,25 +1507,23 @@ footer{
 
     font-weight:800;
 
-    margin-bottom:7px;
+    margin-bottom:7px
 }
 
 .settings-password input{
     width:100%;
 
-    padding:
-        10px 11px;
+    padding:10px 11px;
 
     background:#08090b;
 
-    border:
-        1px solid #383a40;
+    border:1px solid #383a40;
 
     border-radius:8px;
 
     color:#fff;
 
-    outline:none;
+    outline:none
 }
 
 .settings-action{
@@ -1659,27 +1543,15 @@ footer{
 
     font-weight:700;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
+#settingsPasswordMessage{
+    font-size:11px;
 
-/* =====================================================
-   REVEAL
-===================================================== */
+    margin-top:7px;
 
-.reveal{
-    opacity:0;
-
-    transform:
-        translateY(25px);
-
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
+    min-height:14px
 }
 
 
@@ -1692,128 +1564,110 @@ footer{
     .hero{
         grid-template-columns:1fr;
 
-        text-align:center;
+        text-align:center
     }
 
     .hero p{
-        margin:auto;
+        margin:auto
     }
 
     .about{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr
     }
 
+    .features,
     .steps{
         grid-template-columns:
-            1fr 1fr;
+        1fr 1fr
     }
 
     .contact-grid{
         grid-template-columns:
-            1fr 1fr;
+        1fr 1fr
     }
 
     .footer-grid{
         grid-template-columns:
-            1fr 1fr;
+        1fr 1fr
     }
 
-    .rating-card{
-        padding:15px;
+    .team-list{
+        grid-template-columns:
+        1fr
     }
 
-    .rating-heart{
-        width:54px;
-        height:54px;
-
-        font-size:25px;
-    }
-
-    .rating-star{
-        font-size:27px;
+    .awareness-list{
+        grid-template-columns:
+        1fr
     }
 
 }
 
-
 @media(max-width:500px){
 
-    .hero h1{
-        font-size:45px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
+    .features,
     .steps{
-        grid-template-columns:1fr;
+        grid-template-columns:
+        1fr
+    }
+
+    .hero h1{
+        font-size:45px
     }
 
     .contact-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:
+        1fr
     }
 
     .footer-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:
+        1fr
     }
 
-    .team-list{
-        grid-template-columns:1fr;
+    .gallery{
+        grid-template-columns:
+        repeat(2,1fr)
     }
 
-    .awareness-points{
-        grid-template-columns:1fr;
+    .rating-widget{
+        top:72px;
+
+        left:10px;
+
+        padding:8px 10px;
+
+        border-radius:16px
     }
 
-    .rating-area{
-        padding:
-            14px 18px 0;
+    .rating-star-summary{
+        font-size:22px
     }
 
-    .rating-stars{
-        gap:0;
+    .rating-score{
+        font-size:14px
     }
 
-    .rating-star{
-        font-size:24px;
+    .rating-count{
+        font-size:12px
     }
 
-    .rating-mini{
-        left:18px;
-
-        top:145px;
-
-        padding:
-            10px 13px;
+    .rating-star-btn{
+        font-size:23px
     }
 
-    .bar{
-        font-size:14px;
-    }
+    .rating-confirm{
+        font-size:11px;
 
-    .bar .big-name{
-        font-size:20px;
-    }
-
-    .bar b{
-        margin:
-            0 8px;
-    }
-
-    .pdf-scroll{
-        height:70vh;
-
-        padding:
-            12px 5px;
-    }
-
-    .pdf-toolbar{
-        justify-content:center;
+        padding:6px 8px
     }
 
     .presentation{
-        padding:15px;
+        padding:15px
+    }
+
+    .pdf-container{
+        padding:8px
     }
 
 }
@@ -1827,254 +1681,132 @@ footer{
 
 
 <!-- =====================================================
-     NAVIGATION
+     RATING WIDGET
+===================================================== -->
+
+<div
+    id="ratingWidget"
+    class="rating-widget"
+>
+
+    <div class="rating-summary">
+
+        <span class="rating-star-summary">
+            ★
+        </span>
+
+        <span
+            id="ratingScore"
+            class="rating-score"
+        >
+            0.0 / 5
+        </span>
+
+        <span class="rating-separator">
+            ·
+        </span>
+
+        <span
+            id="ratingCount"
+            class="rating-count"
+        >
+            No ratings
+        </span>
+
+    </div>
+
+
+    <div
+        id="ratingActionArea"
+        class="rating-action-area"
+    >
+
+        <div
+            id="ratingStars"
+            class="rating-stars"
+        >
+
+            <button
+                class="rating-star-btn"
+                data-rating="1"
+                aria-label="Rate 1 star"
+            >
+                ★
+            </button>
+
+            <button
+                class="rating-star-btn"
+                data-rating="2"
+                aria-label="Rate 2 stars"
+            >
+                ★
+            </button>
+
+            <button
+                class="rating-star-btn"
+                data-rating="3"
+                aria-label="Rate 3 stars"
+            >
+                ★
+            </button>
+
+            <button
+                class="rating-star-btn"
+                data-rating="4"
+                aria-label="Rate 4 stars"
+            >
+                ★
+            </button>
+
+            <button
+                class="rating-star-btn"
+                data-rating="5"
+                aria-label="Rate 5 stars"
+            >
+                ★
+            </button>
+
+        </div>
+
+
+        <button
+            id="ratingConfirm"
+            class="rating-confirm"
+        >
+            Confirm
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAV
 ===================================================== -->
 
 <nav>
 
-<div class="brand">
-Working Model of <span>Heart</span>
-</div>
+    <div class="brand">
+        Working Model of <span>Heart</span>
+    </div>
 
-<button
-class="settings-btn"
-onclick="toggleSettings()"
-aria-label="Settings"
->
 
-<span></span>
-<span></span>
-<span></span>
+    <button
+        class="settings-btn"
+        onclick="toggleSettings()"
+        aria-label="Settings"
+    >
 
-</button>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
 
 </nav>
 
-
-<!-- =====================================================
-     TOTAL RATING
-===================================================== -->
-
-<div
-id="ratingMini"
-class="rating-mini"
->
-
-<span class="mini-star">
-★
-</span>
-
-<strong id="miniAverage">
-0.0 / 5
-</strong>
-
-<span>·</span>
-
-<span id="miniCount">
-0 ratings
-</span>
-
-</div>
-
-
-<!-- =====================================================
-     RATING PANEL
-===================================================== -->
-
-<!--
-     display:none is intentional.
-     JavaScript will show it ONLY if this visitor
-     has not already rated.
--->
-
-<div
-id="ratingArea"
-class="rating-area"
-style="display:none"
->
-
-<div class="rating-card">
-
-<div class="rating-left">
-
-<div class="rating-heart">
-♥
-</div>
-
-<div>
-
-<div class="rating-title">
-Rate Our Project
-</div>
-
-<div
-class="rating-total"
-id="ratingTotalText"
->
-<span style="color:#ffd52a">
-★
-</span>
-No ratings yet
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="rating-stars"
-id="ratingStars"
->
-
-<button
-class="rating-star"
-data-rating="1"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="2"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="3"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="4"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="5"
->
-★
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<header
-class="hero"
-id="home"
->
-
-<div>
-
-<div class="eyebrow">
-SCIENCE EXHIBITION 2026
-</div>
-
-<h1>
-Working Model<br>
-of the <span>Human Heart</span>
-</h1>
-
-<p>
-This project demonstrates the working
-of the human heart and how it pumps
-blood throughout the body.
-</p>
-
-<a
-class="btn"
-href="#media"
->
-Explore Images & Videos ↓
-</a>
-
-<div class="bpm">
-
-<div class="pulse">
-♥
-</div>
-
-<div>
-Heartbeat<br>
-
-<strong>
-<span id="bpm">72</span> BPM
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="ecg">
-
-<svg
-viewBox="0 0 1200 100"
-preserveAspectRatio="none"
->
-
-<polyline points="
-0,52 70,52 88,52 98,45 108,52
-126,52 138,38 146,65 154,52
-175,52 188,52 202,52 212,18
-222,82 232,52 252,52 275,52
-290,52 302,43 314,52 330,52
-345,52 360,52 370,52 380,52
-390,52 400,52 414,18 424,82
-434,52 454,52 480,52 505,52
-520,52 534,52 548,52 560,52
-574,38 582,65 590,52 612,52
-630,52 645,52 660,52 670,18
-680,82 690,52 710,52 735,52
-760,52 775,52 788,45 798,52
-816,52 830,38 838,65 846,52
-870,52 900,52 930,52 945,52
-958,18 968,82 978,52 1000,52
-1030,52 1060,52 1080,52 1092,45
-1100,52 1120,52 1134,38 1142,65
-1150,52 1200,52
-"></polyline>
-
-</svg>
-
-</div>
-
-</header>
-
-
-<!-- =====================================================
-     INFO BAR
-===================================================== -->
-
-<div class="bar">
-
-<span class="event-name">
-Science Exhibition 2026
-</span>
-
-<b>|</b>
-
-<span class="big-name">
-Aayushman Jha
-</span>
-
-</div>
 
 
 <!-- =====================================================
@@ -2082,131 +1814,197 @@ Aayushman Jha
 ===================================================== -->
 
 <div
-id="settingsMenu"
-class="settings-menu"
+    id="settingsMenu"
+    class="settings-menu"
 >
 
-<div class="settings-head">
+    <div class="settings-head">
 
-<h3>
-Settings
-</h3>
+        <h3>Settings</h3>
 
-<button
-onclick="toggleSettings()"
->
-×
-</button>
+        <button
+            onclick="toggleSettings()"
+        >
+            ×
+        </button>
 
-</div>
+    </div>
 
 
-<div class="settings-card">
+    <div class="settings-card">
 
-<div>
-🔐
-</div>
+        <div>🔐</div>
 
-<div style="width:100%">
+        <div style="width:100%">
 
-<h4>
-Host Editor
-</h4>
+            <h4>
+                Host Editor
+            </h4>
 
-<p>
-Enter the host password to open
-the Firebase media editor.
-</p>
+            <p>
+                Enter the host password to open
+                the Firebase media editor.
+            </p>
 
-<div class="settings-password">
 
-<label>
-HOST PASSWORD
-</label>
+            <div class="settings-password">
 
-<input
-id="settingsPassword"
-type="password"
-placeholder="Enter password"
->
+                <label>
+                    HOST PASSWORD
+                </label>
 
-<button
-class="settings-action"
-onclick="unlockFromSettings()"
->
-Open Editor
-</button>
+                <input
+                    id="settingsPassword"
+                    type="password"
+                    placeholder="Enter password"
+                >
 
-<div
-id="settingsPasswordMessage"
-></div>
+                <button
+                    class="settings-action"
+                    onclick="unlockFromSettings()"
+                >
+                    Open Editor
+                </button>
 
-</div>
+                <div
+                    id="settingsPasswordMessage"
+                ></div>
 
-</div>
+            </div>
 
-</div>
+        </div>
+
+    </div>
 
 </div>
+
 
 
 <!-- =====================================================
-     TEAM
+     HERO
 ===================================================== -->
 
-<section
-id="team"
-class="reveal"
+<header
+    class="hero"
+    id="home"
 >
 
-<h2 class="title">
-<span>Team Members</span>
-</h2>
+    <div>
 
-<p class="sub">
-Team Red Diamond · Science Exhibition 2026
-</p>
+        <div class="eyebrow">
+            SCIENCE EXHIBITION 2026
+        </div>
 
 
-<div class="team-list">
+        <h1>
 
-<div class="team-card">
+            Working Model<br>
 
-Leader
+            of the
+            <span>Human Heart</span>
 
-<span class="team-role">
-Aayushman Jha
-</span>
+        </h1>
+
+
+        <p>
+            This project demonstrates the working
+            of the human heart and how it pumps
+            blood throughout the body.
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="goToMedia()"
+        >
+            Explore Images &amp; Videos ↓
+        </button>
+
+
+        <div class="bpm">
+
+            <div class="pulse">
+                ♥
+            </div>
+
+            <div>
+
+                Heartbeat<br>
+
+                <strong>
+
+                    <span id="bpm">
+                        72
+                    </span>
+
+                    BPM
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ecg">
+
+        <svg
+            viewBox="0 0 1200 100"
+            preserveAspectRatio="none"
+        >
+
+            <polyline points="
+            0,52 70,52 88,52 98,45 108,52
+            126,52 138,38 146,65 154,52
+            175,52 188,52 202,52 212,18
+            222,82 232,52 252,52 275,52
+            290,52 302,43 314,52 330,52
+            345,52 360,52 370,52 380,52
+            390,52 400,52 414,18 424,82
+            434,52 454,52 480,52 505,52
+            520,52 534,52 548,52 560,52
+            574,38 582,65 590,52 612,52
+            630,52 645,52 660,52 670,18
+            680,82 690,52 710,52 735,52
+            760,52 775,52 788,45 798,52
+            816,52 830,38 838,65 846,52
+            870,52 900,52 930,52 945,52
+            958,18 968,82 978,52 1000,52
+            1030,52 1060,52 1080,52 1092,45
+            1100,52 1120,52 1134,38 1142,65
+            1150,52 1200,52
+            "></polyline>
+
+        </svg>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     BAR
+===================================================== -->
+
+<div class="bar">
+
+    <span>
+        Science Exhibition 2026
+    </span>
+
+    <b>|</b>
+
+    Aayushman Jha
+
+    <span>
+        (Leader)
+    </span>
 
 </div>
 
-<div class="team-card">
-Raushan Kumar
-</div>
-
-<div class="team-card">
-Dayansh Shekhar Singh
-</div>
-
-<div class="team-card">
-Harsh Kumar
-</div>
-
-<div class="team-card">
-Divya Kumar
-</div>
-
-<div class="team-card">
-Abhishek Kumar
-</div>
-
-<div class="team-card">
-Sankalp Krishna
-</div>
-
-</div>
-
-</section>
 
 
 <!-- =====================================================
@@ -2214,186 +2012,209 @@ Sankalp Krishna
 ===================================================== -->
 
 <section
-id="model"
-class="reveal"
+    id="model"
+    class="reveal"
 >
 
-<div class="about">
+    <div class="about">
 
-<div></div>
+        <div></div>
 
-<div>
+        <div>
 
-<h2>
-About the <span>Heart</span>
-</h2>
+            <h2>
+                About the <span>Heart</span>
+            </h2>
 
-<p>
-The human heart is a muscular organ
-that continuously pumps blood throughout
-the body. Our working model demonstrates
-this pumping action in a simple and
-practical way.
-</p>
-
-
-<div class="features">
-
-<div class="feature">
-
-<div class="icon">
-♥
-</div>
-
-<div>
-
-<h3>
-Realistic Action
-</h3>
-
-<p>
-Pumping demonstration
-</p>
-
-</div>
-
-</div>
+            <p>
+                The human heart is a muscular organ
+                that continuously pumps blood throughout
+                the body. Our working model demonstrates
+                this pumping action in a simple and
+                practical way.
+            </p>
 
 
-<div class="feature">
+            <div class="features">
 
-<div class="icon">
-◉
-</div>
+                <div class="feature">
 
-<div>
+                    <div class="icon">
+                        ♥
+                    </div>
 
-<h3>
-Blood Flow
-</h3>
+                    <h3>
+                        Realistic Action
+                    </h3>
 
-<p>
-Shows circulation
-</p>
+                    <p>
+                        Pumping demonstration
+                    </p>
 
-</div>
-
-</div>
+                </div>
 
 
-<div class="feature">
+                <div class="feature">
 
-<div class="icon">
-⚙
-</div>
+                    <div class="icon">
+                        ◉
+                    </div>
 
-<div>
+                    <h3>
+                        Blood Flow
+                    </h3>
 
-<h3>
-Mechanism
-</h3>
+                    <p>
+                        Shows circulation
+                    </p>
 
-<p>
-Easy to understand
-</p>
-
-</div>
-
-</div>
+                </div>
 
 
-<div class="feature">
+                <div class="feature">
 
-<div class="icon">
-▣
-</div>
+                    <div class="icon">
+                        ⚙
+                    </div>
 
-<div>
+                    <h3>
+                        Mechanism
+                    </h3>
 
-<h3>
-Educational
-</h3>
+                    <p>
+                        Easy to understand
+                    </p>
 
-<p>
-Science project
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+                </div>
 
 
-<!-- =====================================================
-     HEART AWARENESS
-===================================================== -->
+                <div class="feature">
 
-<div class="awareness">
+                    <div class="icon">
+                        ▣
+                    </div>
 
-<h2>
-Why <span>Heart Awareness</span>
-Is Important
-</h2>
+                    <h3>
+                        Educational
+                    </h3>
 
-<p class="awareness-intro">
-Understanding heart health helps people
-recognize important risk factors and the
-value of prevention and early care.
-</p>
+                    <p>
+                        Science project
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
-<div class="awareness-points">
+    <!-- HEART AWARENESS -->
 
-<div class="awareness-point">
-Hypertension can increase the risk of heart disease.
-</div>
+    <div class="awareness">
 
-<div class="awareness-point">
-Heart disease is a major cause of death worldwide.
-</div>
+        <h2>
+            Why <span>Heart Awareness</span>
+            Is Important
+        </h2>
 
-<div class="awareness-point">
-Early awareness can help identify risk factors.
-</div>
+        <p class="awareness-intro">
+            Understanding heart health helps people
+            recognize important risk factors and the
+            value of prevention and early care.
+        </p>
 
-<div class="awareness-point">
-Regular physical activity supports heart health.
-</div>
 
-<div class="awareness-point">
-A balanced diet can support healthy circulation.
-</div>
+        <div class="awareness-list">
 
-<div class="awareness-point">
-Smoking can significantly harm cardiovascular health.
-</div>
+            <div class="awareness-point">
+                <b>01.</b>
+                <span>
+                    Hypertension can put extra strain
+                    on the heart and blood vessels.
+                </span>
+            </div>
 
-<div class="awareness-point">
-Diabetes can increase cardiovascular risk.
-</div>
+            <div class="awareness-point">
+                <b>02.</b>
+                <span>
+                    Heart disease can become a serious
+                    health problem if ignored.
+                </span>
+            </div>
 
-<div class="awareness-point">
-Knowing warning signs can encourage timely medical help.
-</div>
+            <div class="awareness-point">
+                <b>03.</b>
+                <span>
+                    Early awareness can encourage
+                    healthier daily choices.
+                </span>
+            </div>
 
-<div class="awareness-point">
-Regular health checks can help monitor blood pressure.
-</div>
+            <div class="awareness-point">
+                <b>04.</b>
+                <span>
+                    Regular health checks can help
+                    identify important risk factors.
+                </span>
+            </div>
 
-<div class="awareness-point">
-Heart health education encourages healthier choices.
-</div>
+            <div class="awareness-point">
+                <b>05.</b>
+                <span>
+                    Physical activity supports overall
+                    cardiovascular health.
+                </span>
+            </div>
 
-</div>
+            <div class="awareness-point">
+                <b>06.</b>
+                <span>
+                    Balanced nutrition contributes to
+                    a healthier heart.
+                </span>
+            </div>
 
-</div>
+            <div class="awareness-point">
+                <b>07.</b>
+                <span>
+                    Avoiding tobacco helps protect the
+                    heart and blood vessels.
+                </span>
+            </div>
+
+            <div class="awareness-point">
+                <b>08.</b>
+                <span>
+                    Learning warning signs can encourage
+                    timely medical attention.
+                </span>
+            </div>
+
+            <div class="awareness-point">
+                <b>09.</b>
+                <span>
+                    Good sleep and stress management
+                    support general heart health.
+                </span>
+            </div>
+
+            <div class="awareness-point">
+                <b>10.</b>
+                <span>
+                    Heart awareness can help reduce
+                    preventable illness and death.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2401,353 +2222,373 @@ Heart health education encourages healthier choices.
 ===================================================== -->
 
 <section
-id="media"
-class="reveal"
+    id="media"
+    class="reveal"
 >
 
-<h2 class="title">
-<span>Photo & Video</span>
-of Project
-</h2>
+    <h2 class="title">
 
-<p class="sub">
-Explore photographs and videos of the
-Working Model of the Human Heart.
-</p>
+        <span>
+            Photo &amp; Video
+        </span>
 
+        of Project
 
-<div class="media-view-buttons">
-
-<button
-class="media-filter active"
-onclick="filterMedia('all',this)"
->
-👀 See All
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('photo',this)"
->
-📸 Photos
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('video',this)"
->
-🎬 Videos
-</button>
-
-</div>
+    </h2>
 
 
-<div
-id="firebaseStatus"
-class="firebase-status"
->
-☁️ Connecting to Firebase...
-</div>
+    <p class="sub">
+
+        Everyone can view the project gallery.
+        The host can manage image and video links
+        from the editor.
+
+    </p>
 
 
-<div
-id="gallery"
-class="gallery"
-></div>
+    <div class="media-view-buttons">
+
+        <button
+            class="media-filter active"
+            onclick="filterMedia('all',this)"
+        >
+            👀 See All
+        </button>
 
 
-<div
-id="galleryEmpty"
-class="gallery-empty"
-style="display:none"
->
-No photos or videos have been added yet.
-</div>
+        <button
+            class="media-filter"
+            onclick="filterMedia('photo',this)"
+        >
+            📸 Photos
+        </button>
 
 
-<div
-id="sectionViewer"
-class="section-viewer"
->
+        <button
+            class="media-filter"
+            onclick="filterMedia('video',this)"
+        >
+            🎬 Videos
+        </button>
 
-<div class="section-viewer-head">
+    </div>
 
-<h3 id="sectionViewerTitle">
-Preview
-</h3>
 
-<button
-onclick="closeSectionViewer()"
->
-×
-</button>
+    <div
+        id="firebaseStatus"
+        class="firebase-status"
+    >
+        ☁️ Connecting to Firebase...
+    </div>
 
-</div>
 
-<div
-id="sectionViewerContent"
-class="section-viewer-content"
-></div>
+    <div
+        id="gallery"
+        class="gallery"
+    ></div>
 
-</div>
+
+    <div
+        id="galleryEmpty"
+        class="gallery-empty"
+        style="display:none"
+    >
+        No photos or videos have been added yet.
+    </div>
+
+
+    <div
+        id="sectionViewer"
+        class="section-viewer"
+    >
+
+        <div class="section-viewer-head">
+
+            <h3 id="sectionViewerTitle">
+                Preview
+            </h3>
+
+            <button
+                onclick="closeSectionViewer()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="sectionViewerContent"
+            class="section-viewer-content"
+        ></div>
+
+    </div>
+
+</section>
+
 
 
 <!-- =====================================================
      PRESENTATION
 ===================================================== -->
 
-<div class="presentation">
-
-<h2>
-📄 Project Presentation
-</h2>
-
-
-<!-- VIDEO -->
-
-<video
-class="presentation-video"
-controls
-playsinline
-preload="metadata"
+<section
+    id="presentation"
+    class="reveal"
 >
 
-<source
-src="./1.mp4"
-type="video/mp4"
->
+    <div class="presentation">
 
-Your browser does not support video playback.
-
-</video>
+        <h2>
+            📄 Project Presentation
+        </h2>
 
 
-<!-- =================================================
-     PDF
-================================================= -->
-
-<div class="pdf-container">
-
-<h3>
-📖 Project Presentation PDF
-</h3>
+        <p class="sub">
+            View the project presentation and
+            animated project video.
+        </p>
 
 
-<div class="pdf-reader-box">
+        <!-- VIDEO -->
+
+        <video
+            class="presentation-video"
+            controls
+            playsinline
+            preload="metadata"
+        >
+
+            <source
+                src="/1.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support
+            video playback.
+
+        </video>
 
 
-<div class="pdf-toolbar">
+        <!-- PDF -->
+
+        <div
+            id="pdfStatus"
+            class="pdf-status"
+        >
+            📖 Preparing presentation...
+        </div>
 
 
-<div class="pdf-toolbar-left">
+        <div class="pdf-container">
 
-<button
-id="pdfPrev"
-type="button"
->
-‹
-</button>
+            <div
+                id="pdfPages"
+                class="pdf-pages"
+            >
 
-<button
-id="pdfNext"
-type="button"
->
-›
-</button>
+                <div class="pdf-loading">
+                    📖 Loading Project Presentation...
+                </div>
 
-<span
-id="pdfPageInfo"
-class="pdf-page-info"
->
-Loading...
-</span>
+            </div>
 
-</div>
+        </div>
 
-
-<div class="pdf-toolbar-right">
-
-<button
-id="pdfZoomOut"
-type="button"
->
-−
-</button>
-
-<button
-id="pdfZoomReset"
-type="button"
->
-100%
-</button>
-
-<button
-id="pdfZoomIn"
-type="button"
->
-+
-</button>
-
-<button
-id="pdfFullscreen"
-type="button"
->
-⛶
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="pdfScroll"
-class="pdf-scroll"
->
-
-<div
-id="pdfPages"
-class="pdf-pages"
->
-
-<div class="pdf-loading">
-📖 Loading Project Presentation...
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-id="pdfStatus"
-class="pdf-status"
->
-PDF reader ready
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
+
 
 
 <!-- =====================================================
-     FUNCTION
+     WORKING
 ===================================================== -->
 
 <section
-id="working"
-class="reveal"
+    id="working"
+    class="reveal"
 >
 
-<h2 class="title">
-About the
-<span>Function of the Heart</span>
-</h2>
+    <h2 class="title">
 
-<p class="sub">
-Learn the main functions of the heart
-and how blood moves through the chambers.
-</p>
+        About the
 
+        <span>
+            Function of the Heart
+        </span>
 
-<div class="steps">
+    </h2>
 
 
-<div class="step">
+    <p class="sub">
 
-<div class="num">
-1
-</div>
+        Learn the main functions of the heart
+        and how blood moves through the chambers.
 
-<div class="icon">
-⏻
-</div>
-
-<h3>
-Receives Blood
-</h3>
-
-<p>
-The atria receive blood returning
-to the heart.
-</p>
-
-</div>
+    </p>
 
 
-<div class="step">
+    <div class="steps">
 
-<div class="num">
-2
-</div>
+        <div class="step">
 
-<div class="icon">
-♥
-</div>
+            <div class="num">
+                1
+            </div>
 
-<h3>
-Pumps Blood
-</h3>
+            <div class="icon">
+                ⏻
+            </div>
 
-<p>
-The ventricles contract and pump
-blood to the lungs and body.
-</p>
+            <h3>
+                Receives Blood
+            </h3>
 
-</div>
+            <p>
+                The atria receive blood returning
+                to the heart.
+            </p>
 
-
-<div class="step">
-
-<div class="num">
-3
-</div>
-
-<div class="icon">
-◆
-</div>
-
-<h3>
-Blood Circulation
-</h3>
-
-<p>
-Blood travels through pulmonary
-and systemic circulation.
-</p>
-
-</div>
+        </div>
 
 
-<div class="step">
+        <div class="step">
 
-<div class="num">
-4
-</div>
+            <div class="num">
+                2
+            </div>
 
-<div class="icon">
-↻
-</div>
+            <div class="icon">
+                ♥
+            </div>
 
-<h3>
-Continuous Cycle
-</h3>
+            <h3>
+                Pumps Blood
+            </h3>
 
-<p>
-The heart repeatedly contracts
-and relaxes to maintain circulation.
-</p>
+            <p>
+                The ventricles contract and pump
+                blood to the lungs and body.
+            </p>
 
-</div>
+        </div>
 
-</div>
+
+        <div class="step">
+
+            <div class="num">
+                3
+            </div>
+
+            <div class="icon">
+                ◆
+            </div>
+
+            <h3>
+                Blood Circulation
+            </h3>
+
+            <p>
+                Blood travels through pulmonary
+                and systemic circulation.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="num">
+                4
+            </div>
+
+            <div class="icon">
+                ↻
+            </div>
+
+            <h3>
+                Continuous Cycle
+            </h3>
+
+            <p>
+                The heart repeatedly contracts
+                and relaxes to maintain circulation.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
+
+
+
+<!-- =====================================================
+     TEAM
+===================================================== -->
+
+<section
+    id="team"
+    class="reveal"
+>
+
+    <h2 class="title">
+        <span>Team Members</span>
+    </h2>
+
+
+    <p class="sub">
+        Team Red Diamond · Science Exhibition 2026
+    </p>
+
+
+    <div class="team-list">
+
+        <div class="team-member leader">
+
+            Leader
+
+            <small>
+                Aayushman Jha
+            </small>
+
+        </div>
+
+
+        <div class="team-member">
+            Raushan Kumar
+        </div>
+
+
+        <div class="team-member">
+            Dayansh Shekhar Singh
+        </div>
+
+
+        <div class="team-member">
+            Harsh Kumar
+        </div>
+
+
+        <div class="team-member">
+            Divya Kumar
+        </div>
+
+
+        <div class="team-member">
+            Abhishek Kumar
+        </div>
+
+
+        <div class="team-member">
+            Sankalp Krishna
+        </div>
+
+    </div>
+
+</section>
+
 
 
 <!-- =====================================================
@@ -2755,94 +2596,97 @@ and relaxes to maintain circulation.
 ===================================================== -->
 
 <section
-id="contact"
-class="reveal"
+    id="contact"
+    class="reveal"
 >
 
-<h2 class="title">
-Contact <span>Us</span>
-</h2>
-
-<p class="sub">
-Get in touch with Team Red Diamond
-about our Working Model of the Human Heart.
-</p>
+    <h2 class="title">
+        Contact <span>Us</span>
+    </h2>
 
 
-<div class="contact-grid">
+    <p class="sub">
+
+        Get in touch with Team Red Diamond
+        about our Working Model of the Human Heart.
+
+    </p>
 
 
-<a
-class="contact-card"
-href="mailto:aayushmanjha1108@gmail.com"
->
+    <div class="contact-grid">
 
-<div class="contact-icon">
-✉
-</div>
+        <a
+            class="contact-card"
+            href="mailto:aayushmanjha1108@gmail.com"
+        >
 
-<div>
+            <div class="contact-icon">
+                ✉
+            </div>
 
-<h3>
-Email
-</h3>
+            <div>
 
-<p>
-aayushmanjha1108@gmail.com
-</p>
+                <h3>
+                    Email
+                </h3>
 
-</div>
+                <p>
+                    aayushmanjha1108@gmail.com
+                </p>
 
-</a>
+            </div>
 
-
-<a
-class="contact-card"
-href="tel:+919931203827"
->
-
-<div class="contact-icon">
-☎
-</div>
-
-<div>
-
-<h3>
-Phone
-</h3>
-
-<p>
-+91 99312 03827
-</p>
-
-</div>
-
-</a>
+        </a>
 
 
-<div class="contact-card">
+        <a
+            class="contact-card"
+            href="tel:+919931203827"
+        >
 
-<div class="contact-icon">
-◆
-</div>
+            <div class="contact-icon">
+                ☎
+            </div>
 
-<div>
+            <div>
 
-<h3>
-Team
-</h3>
+                <h3>
+                    Phone
+                </h3>
 
-<p>
-Team Red Diamond
-</p>
+                <p>
+                    +91 99312 03827
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </a>
 
-</div>
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                ◆
+            </div>
+
+            <div>
+
+                <h3>
+                    Team
+                </h3>
+
+                <p>
+                    Team Red Diamond
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2851,73 +2695,106 @@ Team Red Diamond
 
 <footer>
 
-<div class="footer-grid">
+    <div class="footer-grid">
 
 
-<div>
+        <div>
 
-<h3>
-About
-</h3>
+            <h3>
+                About
+            </h3>
 
-<p>
-Educational project to understand
-the structure and working of the
-human heart.
-</p>
+            <p>
+                Educational project to understand
+                the structure and working of the
+                human heart.
+            </p>
 
-</div>
-
-
-<div>
-
-<h3>
-Team
-</h3>
-
-<p>
-Team Red Diamond
-</p>
-
-</div>
+        </div>
 
 
-<div>
+        <div>
 
-<h3>
-Credits
-</h3>
-
-<div class="credit-title">
-Lead by
-</div>
-
-<div class="credit-name">
-Aayushman Jha
-</div>
-
-<div class="credit-title">
-Website by
-</div>
-
-<div class="credit-name">
-Raushan Kumar
-</div>
-
-</div>
+            <div class="credits-title">
+                Credits
+            </div>
 
 
-</div>
+            <div class="credit-line">
+
+                <span class="credit-label">
+                    Lead by
+                </span>
+
+                <span class="credit-name">
+                    Aayushman Jha
+                </span>
+
+            </div>
 
 
-<div class="copy">
+            <div class="credit-line">
 
-© 2026 Working Model of Heart
-· Team Red Diamond
+                <span class="credit-label">
+                    Website by
+                </span>
 
-</div>
+                <span class="credit-name">
+                    Raushan Kumar
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+
+                <a
+                    href="mailto:aayushmanjha1108@gmail.com"
+                    style="
+                        color:#aaa;
+                        text-decoration:none
+                    "
+                >
+                    aayushmanjha1108@gmail.com
+                </a>
+
+                <br><br>
+
+                <a
+                    href="tel:+919931203827"
+                    style="
+                        color:#aaa;
+                        text-decoration:none
+                    "
+                >
+                    +91 99312 03827
+                </a>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copy">
+
+        © 2026 Working Model of Heart
+        · Team Red Diamond
+
+    </div>
 
 </footer>
+
 
 
 <!-- =====================================================
@@ -2934,50 +2811,55 @@ const bpm =
 document.getElementById("bpm");
 
 setInterval(
-()=>{
-    bpm.textContent =
-        70 +
-        Math.floor(
-            Math.random()*7
-        );
-},
-1200
+    ()=>{
+        bpm.textContent =
+            70 +
+            Math.floor(
+                Math.random()*7
+            );
+    },
+    1200
 );
 
 
 /* =====================================================
-   SCROLL REVEAL
+   REVEAL
 ===================================================== */
 
-const revealObserver =
+const obs =
 new IntersectionObserver(
-entries=>{
+    entries=>{
 
-    entries.forEach(
-    entry=>{
+        entries.forEach(
+            entry=>{
 
-        if(entry.isIntersecting){
+                if(
+                    entry.isIntersecting
+                ){
 
-            entry.target
-                .classList
-                .add("show");
+                    entry.target
+                        .classList
+                        .add("show");
 
-        }
+                }
 
-    });
+            }
+        );
 
-},
-{
-    threshold:.12
-});
+    },
+    {
+        threshold:.12
+    }
+);
 
 
 document
 .querySelectorAll(".reveal")
 .forEach(
-element=>{
-    revealObserver.observe(element);
-});
+    element=>{
+        obs.observe(element);
+    }
+);
 
 
 /* =====================================================
@@ -3014,31 +2896,26 @@ function(){
         "settingsPasswordMessage"
     );
 
-
     if(
         input.value ===
         HOST_PASSWORD
     ){
 
         msg.textContent =
-        "✓ Access granted.";
+        "✓ Access granted. Opening editor...";
 
         msg.style.color =
         "#69e58a";
 
-
         setTimeout(
-        ()=>{
-
-            location.href =
+            ()=>{
+                location.href =
                 "edit.html";
-
-        },
-        400
+            },
+            500
         );
 
-    }
-    else{
+    }else{
 
         msg.textContent =
         "Incorrect password.";
@@ -3052,384 +2929,716 @@ function(){
 
 
 /* =====================================================
-   MEDIA FILTER
+   MEDIA SCROLL
 ===================================================== */
 
-let currentFilter =
-"all";
-
-
-window.filterMedia =
-function(
-    filter,
-    button
-){
-
-    currentFilter =
-        filter;
-
-
-    document
-    .querySelectorAll(
-        ".media-filter"
-    )
-    .forEach(
-    btn=>{
-        btn.classList.remove(
-            "active"
-        );
-    });
-
-
-    if(button){
-        button.classList.add(
-            "active"
-        );
-    }
-
-
-    if(
-        typeof window.renderMedia
-        === "function"
-    ){
-
-        window.renderMedia();
-
-    }
-
-};
-
-
-/* =====================================================
-   MEDIA VIEWER
-===================================================== */
-
-window.closeSectionViewer =
+window.goToMedia =
 function(){
 
-    const viewer =
+    const media =
     document.getElementById(
-        "sectionViewer"
+        "media"
     );
 
-    const content =
-    document.getElementById(
-        "sectionViewerContent"
-    );
+    if(media){
 
+        media.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
 
-    viewer.classList.remove(
-        "show"
-    );
-
-    content.innerHTML =
-        "";
+    }
 
 };
 
 
 /* =====================================================
-   RATING LOCAL STORAGE
+   RATING
 ===================================================== */
+
+const RATING_COLLECTION =
+"heartProjectRatings";
+
 
 /*
-   Two storage methods are used.
+ * This key remembers the rating on this browser.
+ *
+ * It prevents the star buttons from returning
+ * every time the visitor revisits the website.
+ */
+const LOCAL_RATING_KEY =
+"workingHeart_hasRated_v2";
+
+
+const ratingWidget =
+document.getElementById(
+    "ratingWidget"
+);
+
+const ratingStars =
+document.querySelectorAll(
+    ".rating-star-btn"
+);
+
+const ratingConfirm =
+document.getElementById(
+    "ratingConfirm"
+);
+
+const ratingScore =
+document.getElementById(
+    "ratingScore"
+);
+
+const ratingCount =
+document.getElementById(
+    "ratingCount"
+);
 
-   localStorage:
-   normal persistent browser storage.
-
-   cookie:
-   second local fallback.
-
-   The rating panel is HIDDEN in HTML first,
-   so it can never flash during page startup.
-*/
-
-function hasLocalRating(){
-
-    try{
-
-        if(
-            localStorage.getItem(
-                "heartProjectRated"
-            ) === "yes"
-        ){
-
-            return true;
-
-        }
-
-    }
-    catch(e){}
-
-
-    const cookies =
-        document.cookie
-        .split(";")
-        .map(
-            item=>item.trim()
-        );
-
-
-    return cookies.includes(
-        "heartProjectRated=yes"
-    );
-
-}
-
-
-function saveLocalRating(){
-
-    try{
-
-        localStorage.setItem(
-            "heartProjectRated",
-            "yes"
-        );
-
-    }
-    catch(e){}
-
-
-    /*
-       Cookie lasts for one year.
-    */
-
-    document.cookie =
-        "heartProjectRated=yes; max-age=31536000; path=/; SameSite=Lax";
-
-}
-
-
-/* =====================================================
-   VOTER ID
-===================================================== */
-
-function getVoterId(){
-
-    let id = null;
-
-
-    try{
-
-        id =
-        localStorage.getItem(
-            "heartRatingVoterId"
-        );
-
-    }
-    catch(e){}
-
-
-    if(!id){
-
-        id =
-            "voter_" +
-            Date.now() +
-            "_" +
-            Math.random()
-            .toString(36)
-            .slice(2);
-
-
-        try{
-
-            localStorage.setItem(
-                "heartRatingVoterId",
-                id
-            );
-
-        }
-        catch(e){}
-
-    }
-
-
-    return id;
-
-}
-
-
-window.heartVoterId =
-    getVoterId();
-
-
-/* =====================================================
-   RATING PANEL DECISION
-===================================================== */
-
-window.showRatingPanel =
-function(){
-
-    if(hasLocalRating()){
-
-        return;
-
-    }
-
-
-    const area =
-    document.getElementById(
-        "ratingArea"
-    );
-
-
-    if(area){
-
-        area.style.display =
-            "block";
-
-    }
-
-};
-
-
-window.hideRatingPanel =
-function(){
-
-    const area =
-    document.getElementById(
-        "ratingArea"
-    );
-
-
-    if(area){
-
-        area.style.display =
-            "none";
-
-    }
-
-};
-
-
-/* =====================================================
-   STAR UI
-===================================================== */
 
 let selectedRating =
 0;
 
 
-document
-.querySelectorAll(
-    ".rating-star"
-)
-.forEach(
-star=>{
+/*
+ * Hide the rating controls after
+ * the visitor has already rated.
+ */
+function hideRatingControls(){
+
+    document
+    .getElementById(
+        "ratingActionArea"
+    )
+    .style.display =
+    "none";
+
+}
 
 
-    star.addEventListener(
-        "mouseenter",
-        ()=>{
+/*
+ * Show rating controls.
+ */
+function showRatingControls(){
 
-            const value =
-            Number(
-                star.dataset.rating
-            );
+    document
+    .getElementById(
+        "ratingActionArea"
+    )
+    .style.display =
+    "flex";
 
-
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
-
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= value
-                );
-
-            });
-
-        }
-    );
+}
 
 
-    star.addEventListener(
-        "mouseleave",
-        ()=>{
+/*
+ * Local browser check.
+ */
+function hasRatedLocally(){
 
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
+    try{
 
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= selectedRating
-                );
+        return (
+            localStorage.getItem(
+                LOCAL_RATING_KEY
+            ) === "1"
+        );
 
-            });
+    }catch(error){
 
-        }
-    );
+        return false;
+
+    }
+
+}
 
 
-    star.addEventListener(
-        "click",
-        ()=>{
+/*
+ * Mark this browser as rated.
+ */
+function markRatedLocally(){
 
-            selectedRating =
+    try{
+
+        localStorage.setItem(
+            LOCAL_RATING_KEY,
+            "1"
+        );
+
+    }catch(error){
+
+        console.warn(
+            "Could not save local rating state."
+        );
+
+    }
+
+}
+
+
+/*
+ * Star selection.
+ */
+ratingStars.forEach(
+    star=>{
+
+        star.addEventListener(
+            "click",
+            ()=>{
+
+                selectedRating =
                 Number(
                     star.dataset.rating
                 );
 
 
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
+                ratingStars.forEach(
+                    item=>{
 
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= selectedRating
+                        const value =
+                        Number(
+                            item.dataset.rating
+                        );
+
+                        item.classList.toggle(
+                            "selected",
+                            value <=
+                            selectedRating
+                        );
+
+                    }
                 );
 
-            });
+
+                ratingConfirm
+                    .classList
+                    .add("show");
+
+            }
+        );
+
+    }
+);
 
 
-            if(
-                typeof window.submitRating
-                === "function"
+/*
+ * Confirm rating.
+ */
+ratingConfirm.addEventListener(
+    "click",
+    async ()=>{
+
+        if(
+            selectedRating < 1 ||
+            selectedRating > 5
+        ){
+
+            return;
+
+        }
+
+
+        ratingConfirm.disabled =
+        true;
+
+        ratingConfirm.textContent =
+        "Saving...";
+
+
+        try{
+
+            await saveRating(
+                selectedRating
+            );
+
+
+            markRatedLocally();
+
+
+            /*
+             * Update total immediately.
+             */
+            await loadRatingSummary();
+
+
+            /*
+             * Remove star buttons after
+             * a short confirmation animation.
+             */
+            ratingConfirm.textContent =
+            "✓ Saved";
+
+
+            setTimeout(
+                ()=>{
+
+                    hideRatingControls();
+
+                    ratingWidget
+                        .classList
+                        .add("rating-pulse");
+
+                    setTimeout(
+                        ()=>{
+                            ratingWidget
+                                .classList
+                                .remove(
+                                    "rating-pulse"
+                                );
+                        },
+                        500
+                    );
+
+                },
+                650
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "Rating save error:",
+                error
+            );
+
+
+            ratingConfirm.disabled =
+            false;
+
+            ratingConfirm.textContent =
+            "Try Again";
+
+        }
+
+    }
+);
+
+
+/*
+ * Update visual total.
+ */
+function displayRatingSummary(
+    average,
+    count
+){
+
+    const safeAverage =
+    Number.isFinite(average)
+    ? average
+    : 0;
+
+
+    ratingScore.textContent =
+    safeAverage.toFixed(1) +
+    " / 5";
+
+
+    ratingCount.textContent =
+    count > 0
+    ? count + (
+        count === 1
+        ? " rating"
+        : " ratings"
+    )
+    : "No ratings";
+
+}
+
+
+/*
+ * Start state.
+ *
+ * The controls stay hidden if this
+ * browser already rated.
+ */
+if(
+    hasRatedLocally()
+){
+
+    hideRatingControls();
+
+}
+
+
+/*
+ * Firebase rating functions are defined
+ * below in the Firebase module.
+ */
+
+
+/* =====================================================
+   PDF
+===================================================== */
+
+const PDF_URL =
+"/1.pdf";
+
+
+const pdfPages =
+document.getElementById(
+    "pdfPages"
+);
+
+const pdfStatus =
+document.getElementById(
+    "pdfStatus"
+);
+
+
+let pdfDocument =
+null;
+
+
+function setPdfStatus(
+    text
+){
+
+    pdfStatus.textContent =
+    text;
+
+}
+
+
+/*
+ * Render every PDF page.
+ */
+async function renderAllPdfPages(){
+
+    if(!pdfDocument){
+        return;
+    }
+
+
+    pdfPages.innerHTML =
+    "";
+
+
+    for(
+        let pageNumber = 1;
+        pageNumber <=
+        pdfDocument.numPages;
+        pageNumber++
+    ){
+
+        const page =
+        await pdfDocument.getPage(
+            pageNumber
+        );
+
+
+        const viewport =
+        page.getViewport({
+            scale:1.35
+        });
+
+
+        const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+        canvas.className =
+        "pdf-page";
+
+
+        const context =
+        canvas.getContext(
+            "2d"
+        );
+
+
+        const outputScale =
+        window.devicePixelRatio ||
+        1;
+
+
+        canvas.width =
+        Math.floor(
+            viewport.width *
+            outputScale
+        );
+
+
+        canvas.height =
+        Math.floor(
+            viewport.height *
+            outputScale
+        );
+
+
+        canvas.style.width =
+        viewport.width +
+        "px";
+
+
+        canvas.style.height =
+        viewport.height +
+        "px";
+
+
+        pdfPages.appendChild(
+            canvas
+        );
+
+
+        await page.render({
+
+            canvasContext:
+                context,
+
+            viewport:
+                viewport,
+
+            transform:
+                outputScale !== 1
+                ? [
+                    outputScale,
+                    0,
+                    0,
+                    outputScale,
+                    0,
+                    0
+                ]
+                : null
+
+        }).promise;
+
+    }
+
+}
+
+
+/*
+ * Load PDF after page is ready.
+ */
+async function loadPDF(){
+
+    try{
+
+        setPdfStatus(
+            "📖 Loading Project Presentation..."
+        );
+
+
+        pdfPages.innerHTML = `
+            <div class="pdf-loading">
+                📖 Opening Project Presentation...
+            </div>
+        `;
+
+
+        /*
+         * Verify the file exists.
+         */
+        const response =
+        await fetch(
+            PDF_URL,
+            {
+                method:"GET",
+                cache:"no-store"
+            }
+        );
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+                "PDF HTTP error: " +
+                response.status
+            );
+
+        }
+
+
+        const pdfBytes =
+        await response.arrayBuffer();
+
+
+        if(
+            !pdfBytes ||
+            pdfBytes.byteLength === 0
+        ){
+
+            throw new Error(
+                "PDF file is empty."
+            );
+
+        }
+
+
+        /*
+         * Wait for PDF.js.
+         */
+        if(
+            !window.pdfjsLib
+        ){
+
+            /*
+             * pdf.js module exposes its
+             * library asynchronously.
+             */
+            let attempts = 0;
+
+            while(
+                !window.pdfjsLib &&
+                attempts < 50
             ){
 
-                window.submitRating(
-                    selectedRating
+                await new Promise(
+                    resolve =>
+                    setTimeout(
+                        resolve,
+                        100
+                    )
                 );
+
+                attempts++;
 
             }
 
         }
-    );
 
-});
+
+        if(
+            !window.pdfjsLib
+        ){
+
+            throw new Error(
+                "PDF viewer library did not load."
+            );
+
+        }
+
+
+        pdfDocument =
+        await window.pdfjsLib
+        .getDocument({
+            data:
+                new Uint8Array(
+                    pdfBytes
+                )
+        })
+        .promise;
+
+
+        await renderAllPdfPages();
+
+
+        setPdfStatus(
+            "✓ Presentation loaded • " +
+            pdfDocument.numPages +
+            " pages"
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "PDF loading error:",
+            error
+        );
+
+
+        pdfPages.innerHTML = `
+
+            <div class="pdf-error">
+
+                <strong>
+                    Unable to display the PDF.
+                </strong>
+
+                <div style="
+                    margin-top:10px;
+                    color:#aaa;
+                    line-height:1.6;
+                ">
+
+                    Make sure
+                    <b>1.pdf</b>
+                    is uploaded to the
+                    same public folder as
+                    <b>index.html</b>.
+
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="loadPDF()"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+        `;
+
+
+        setPdfStatus(
+            "❌ PDF could not be loaded"
+        );
+
+    }
+
+}
+
+
+/*
+ * Use dynamic PDF.js import so the page
+ * doesn't depend on window globals.
+ */
+(async function(){
+
+    try{
+
+        const pdfModule =
+        await import(
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
+        );
+
+
+        window.pdfjsLib =
+        pdfModule;
+
+
+        /*
+         * Worker.
+         */
+        pdfModule.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+
+
+        loadPDF();
+
+    }
+    catch(error){
+
+        console.error(
+            "PDF.js error:",
+            error
+        );
+
+        setPdfStatus(
+            "❌ PDF viewer could not load"
+        );
+
+    }
+
+})();
 
 
 </script>
 
 
+
 <!-- =====================================================
-     FIREBASE + PDF.JS
+     FIREBASE
 ===================================================== -->
 
 <script type="module">
-
-
-/* =====================================================
-   FIREBASE
-===================================================== */
 
 import {
     initializeApp
@@ -3443,9 +3652,6 @@ import {
     collection,
     getDocs,
     addDoc,
-    query,
-    where,
-    limit,
     serverTimestamp
 }
 from
@@ -3453,20 +3659,7 @@ from
 
 
 /* =====================================================
-   PDF.JS
-===================================================== */
-
-import * as pdfjsLib
-from
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.2.108/pdf.min.mjs";
-
-
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.2.108/pdf.worker.min.mjs";
-
-
-/* =====================================================
-   FIREBASE CONFIG
+   SAME FIREBASE CONFIGURATION
 ===================================================== */
 
 const firebaseConfig = {
@@ -3497,72 +3690,168 @@ initializeApp(
     firebaseConfig
 );
 
+
 const db =
 getFirestore(app);
 
 
-const MEDIA_COLLECTION =
-"heartProjectMedia";
 
-const RATINGS_COLLECTION =
+/* =====================================================
+   RATING
+===================================================== */
+
+const RATING_COLLECTION =
 "heartProjectRatings";
 
 
+async function saveRating(
+    rating
+){
+
+    /*
+     * IMPORTANT:
+     * Every confirmed rating becomes a new
+     * Firestore document.
+     *
+     * Existing rating documents are not changed.
+     */
+
+    await addDoc(
+        collection(
+            db,
+            RATING_COLLECTION
+        ),
+        {
+
+            rating:
+                Number(rating),
+
+            createdAt:
+                serverTimestamp(),
+
+            source:
+                "website"
+
+        }
+    );
+
+}
+
+
+async function loadRatingSummary(){
+
+    try{
+
+        const snap =
+        await getDocs(
+            collection(
+                db,
+                RATING_COLLECTION
+            )
+        );
+
+
+        let total = 0;
+
+        let count = 0;
+
+
+        snap.forEach(
+            docSnap=>{
+
+                const data =
+                docSnap.data();
+
+
+                const value =
+                Number(
+                    data.rating
+                );
+
+
+                /*
+                 * Accept the rating field.
+                 */
+                if(
+                    value >= 1 &&
+                    value <= 5
+                ){
+
+                    total += value;
+
+                    count++;
+
+                }
+
+            }
+        );
+
+
+        const average =
+        count > 0
+        ? total / count
+        : 0;
+
+
+        displayRatingSummary(
+            average,
+            count
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Rating read error:",
+            error
+        );
+
+    }
+
+}
+
+
+
 /* =====================================================
-   ELEMENTS
+   MEDIA
 ===================================================== */
+
+const COLLECTION_NAME =
+"heartProjectMedia";
+
 
 const gallery =
 document.getElementById(
     "gallery"
 );
 
-const galleryEmpty =
+const empty =
 document.getElementById(
     "galleryEmpty"
 );
 
-const firebaseStatus =
+const status =
 document.getElementById(
     "firebaseStatus"
 );
 
-const miniAverage =
-document.getElementById(
-    "miniAverage"
-);
-
-const miniCount =
-document.getElementById(
-    "miniCount"
-);
-
-const ratingTotalText =
-document.getElementById(
-    "ratingTotalText"
-);
-
-
-/* =====================================================
-   MEDIA STORAGE
-===================================================== */
 
 let mediaStore = [];
 
+let currentFilter =
+"all";
 
-/* =====================================================
-   FIREBASE STATUS
-===================================================== */
 
-function setFirebaseStatus(
+function setStatus(
     text,
     live=false
 ){
 
-    firebaseStatus.textContent =
-        text;
+    status.textContent =
+    text;
 
-    firebaseStatus.classList.toggle(
+    status.classList.toggle(
         "live",
         live
     );
@@ -3570,141 +3859,159 @@ function setFirebaseStatus(
 }
 
 
-/* =====================================================
-   LOAD MEDIA
-===================================================== */
-
 async function loadFirebaseMedia(){
+
+    /*
+     * IMPORTANT:
+     *
+     * This function NEVER reloads
+     * the page.
+     *
+     * It only updates the gallery.
+     *
+     * Therefore the user's current
+     * scroll position remains untouched.
+     */
 
     try{
 
-        setFirebaseStatus(
+        setStatus(
             "☁️ Reading Firebase..."
         );
 
 
-        const snapshot =
+        const snap =
         await getDocs(
             collection(
                 db,
-                MEDIA_COLLECTION
+                COLLECTION_NAME
             )
         );
 
 
-        mediaStore = [];
+        const newMedia = [];
 
 
-        snapshot.forEach(
-        documentSnapshot=>{
+        snap.forEach(
+            docSnap=>{
 
-            const data =
-                documentSnapshot.data();
+                const data =
+                docSnap.data();
 
 
-            const url =
+                const url =
                 data.url ||
                 data.link ||
                 data.mediaUrl ||
                 data.secure_url;
 
 
-            if(!url){
-                return;
-            }
+                if(!url){
+                    return;
+                }
 
 
-            let type =
+                let type =
                 String(
                     data.type ||
                     data.mediaType ||
                     ""
-                ).toLowerCase();
+                )
+                .toLowerCase();
 
 
-            if(
-                type === "image" ||
-                type === "photo" ||
-                type === "photos"
-            ){
+                if(
+                    type === "image" ||
+                    type === "photo" ||
+                    type === "photos"
+                ){
 
-                type =
+                    type =
                     "photo";
 
-            }
+                }
 
 
-            if(
-                type === "video" ||
-                type === "videos"
-            ){
+                if(
+                    type === "video" ||
+                    type === "videos"
+                ){
 
-                type =
+                    type =
                     "video";
 
-            }
+                }
 
 
-            if(
-                type !== "photo" &&
-                type !== "video"
-            ){
+                if(
+                    type !== "photo" &&
+                    type !== "video"
+                ){
 
-                const clean =
+                    const u =
                     url
                     .split("?")[0]
                     .toLowerCase();
 
 
-                if(
-                    /\.(jpg|jpeg|png|gif|webp|avif)$/
-                    .test(clean)
-                ){
+                    if(
+                        /\.(jpg|jpeg|png|gif|webp|avif)$/
+                        .test(u)
+                    ){
 
-                    type =
+                        type =
                         "photo";
 
-                }
-                else if(
-                    /\.(mp4|webm|mov|m4v|ogg)$/
-                    .test(clean)
-                ){
+                    }
+                    else if(
+                        /\.(mp4|webm|mov|m4v|ogg)$/
+                        .test(u)
+                    ){
 
-                    type =
+                        type =
                         "video";
 
-                }
-                else{
+                    }
+                    else{
 
-                    return;
+                        return;
+
+                    }
 
                 }
+
+
+                newMedia.push({
+
+                    id:
+                        docSnap.id,
+
+                    name:
+                        data.name ||
+                        data.title ||
+                        "Project Media",
+
+                    url:
+                        url,
+
+                    type:
+                        type
+
+                });
 
             }
+        );
 
 
-            mediaStore.push({
-
-                id:
-                    documentSnapshot.id,
-
-                name:
-                    data.name ||
-                    data.title ||
-                    "Project Media",
-
-                url:
-                    url,
-
-                type:
-                    type
-
-            });
-
-        });
+        /*
+         * Only replace the array.
+         * No page reload.
+         */
+        mediaStore =
+        newMedia;
 
 
-        setFirebaseStatus(
+        setStatus(
             "☁️ Firebase connected • " +
             mediaStore.length +
             " media loaded",
@@ -3718,173 +4025,163 @@ async function loadFirebaseMedia(){
     catch(error){
 
         console.error(
+            "Firebase error:",
             error
         );
 
 
-        setFirebaseStatus(
+        setStatus(
             "❌ Firebase error"
         );
-
-
-        gallery.innerHTML =
-            "";
-
-        galleryEmpty.style.display =
-            "block";
-
-        galleryEmpty.textContent =
-            "Unable to load project media.";
 
     }
 
 }
 
 
-/* =====================================================
-   RENDER MEDIA
-===================================================== */
-
-window.renderMedia =
-function(){
+function renderMedia(){
 
     gallery.innerHTML =
-        "";
+    "";
 
 
-    const filtered =
+    const items =
     mediaStore.filter(
-    item=>{
+        item=>{
 
-        return(
-            currentFilter === "all" ||
-            item.type === currentFilter
-        );
+            return(
+                currentFilter ===
+                "all" ||
+                item.type ===
+                currentFilter
+            );
 
-    });
+        }
+    );
 
 
-    if(!filtered.length){
+    if(
+        !items.length
+    ){
 
-        galleryEmpty.style.display =
-            "block";
+        empty.style.display =
+        "block";
 
-        galleryEmpty.textContent =
-            mediaStore.length
-            ? "No media found."
-            : "No photos or videos have been added yet.";
+        empty.textContent =
+        mediaStore.length
+        ? "No media found."
+        : "No photos or videos have been added yet.";
 
         return;
 
     }
 
 
-    galleryEmpty.style.display =
-        "none";
+    empty.style.display =
+    "none";
 
 
-    filtered.forEach(
-    item=>{
+    items.forEach(
+        item=>{
 
-        const card =
-        document.createElement(
-            "div"
-        );
+            const card =
+            document.createElement(
+                "div"
+            );
 
-        card.className =
+
+            card.className =
             "gallery-item";
 
 
-        let media;
+            let media;
 
 
-        if(
-            item.type === "video"
-        ){
-
-            media =
-            document.createElement(
+            if(
+                item.type ===
                 "video"
-            );
+            ){
 
-            media.controls =
+                media =
+                document.createElement(
+                    "video"
+                );
+
+                media.controls =
                 false;
 
-            media.muted =
+                media.muted =
                 true;
 
-            media.playsInline =
+                media.playsInline =
                 true;
 
-            media.preload =
+                media.preload =
                 "metadata";
 
-        }
-        else{
+            }
+            else{
 
-            media =
-            document.createElement(
-                "img"
-            );
+                media =
+                document.createElement(
+                    "img"
+                );
 
-            media.loading =
+                media.loading =
                 "lazy";
 
-        }
+            }
 
 
-        media.src =
+            media.src =
             item.url;
 
-        media.alt =
+
+            media.alt =
             item.name;
 
 
-        const caption =
-        document.createElement(
-            "div"
-        );
-
-        caption.className =
-            "gallery-caption";
-
-        caption.textContent =
-            item.name;
-
-
-        card.appendChild(
-            media
-        );
-
-        card.appendChild(
-            caption
-        );
-
-
-        card.onclick =
-        ()=>{
-
-            openMediaViewer(
-                item
+            const caption =
+            document.createElement(
+                "div"
             );
 
-        };
+
+            caption.className =
+            "gallery-caption";
 
 
-        gallery.appendChild(
-            card
-        );
-
-    });
-
-};
+            caption.textContent =
+            item.name;
 
 
-/* =====================================================
-   MEDIA VIEWER
-===================================================== */
+            card.appendChild(
+                media
+            );
 
-function openMediaViewer(
+
+            card.appendChild(
+                caption
+            );
+
+
+            card.onclick =
+            ()=>{
+                openViewer(item);
+            };
+
+
+            gallery.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+function openViewer(
     item
 ){
 
@@ -3893,10 +4190,12 @@ function openMediaViewer(
         "sectionViewer"
     );
 
+
     const title =
     document.getElementById(
         "sectionViewerTitle"
     );
+
 
     const content =
     document.getElementById(
@@ -3905,17 +4204,19 @@ function openMediaViewer(
 
 
     content.innerHTML =
-        "";
+    "";
+
 
     title.textContent =
-        item.name;
+    item.name;
 
 
     let media;
 
 
     if(
-        item.type === "video"
+        item.type ===
+        "video"
     ){
 
         media =
@@ -3924,13 +4225,13 @@ function openMediaViewer(
         );
 
         media.controls =
-            true;
+        true;
 
         media.autoplay =
-            true;
+        true;
 
         media.playsInline =
-            true;
+        true;
 
     }
     else{
@@ -3944,10 +4245,11 @@ function openMediaViewer(
 
 
     media.src =
-        item.url;
+    item.url;
+
 
     media.className =
-        "section-view-media";
+    "section-view-media";
 
 
     content.appendChild(
@@ -3968,1062 +4270,94 @@ function openMediaViewer(
 }
 
 
-/* =====================================================
-   RATING DATA
-===================================================== */
+window.closeSectionViewer =
+function(){
 
-function updateRatingDisplay(
-    average,
-    count
+    document
+    .getElementById(
+        "sectionViewer"
+    )
+    .classList
+    .remove("show");
+
+
+    document
+    .getElementById(
+        "sectionViewerContent"
+    )
+    .innerHTML =
+    "";
+
+};
+
+
+window.filterMedia =
+function(
+    filter,
+    button
 ){
 
-    miniAverage.textContent =
-        average.toFixed(1) +
-        " / 5";
+    currentFilter =
+    filter;
 
 
-    miniCount.textContent =
-        count +
-        (
-            count === 1
-            ? " rating"
-            : " ratings"
-        );
-
-
-    if(count){
-
-        ratingTotalText.innerHTML =
-            "<strong>★ " +
-            average.toFixed(1) +
-            " / 5</strong> · " +
-            count +
-            (
-                count === 1
-                ? " rating"
-                : " ratings"
+    document
+    .querySelectorAll(
+        ".media-filter"
+    )
+    .forEach(
+        btn=>{
+            btn.classList.remove(
+                "active"
             );
-
-    }
-    else{
-
-        ratingTotalText.innerHTML =
-            '<span style="color:#ffd52a">★</span> No ratings yet';
-
-    }
-
-}
-
-
-/* =====================================================
-   LOAD ALL RATINGS
-===================================================== */
-
-async function loadRatings(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            )
-        );
-
-
-        let total = 0;
-
-        let count = 0;
-
-
-        snapshot.forEach(
-        documentSnapshot=>{
-
-            const data =
-                documentSnapshot.data();
-
-
-            const rating =
-                Number(
-                    data.rating
-                );
-
-
-            if(
-                rating >= 1 &&
-                rating <= 5
-            ){
-
-                total +=
-                    rating;
-
-                count++;
-
-            }
-
-        });
-
-
-        const average =
-            count
-            ? total / count
-            : 0;
-
-
-        updateRatingDisplay(
-            average,
-            count
-        );
-
-
-        /*
-           CRITICAL FIX:
-
-           Check Firebase too.
-
-           So even if the page's local storage
-           is lost, the same browser/device is
-           recognized from its voterId.
-        */
-
-        await checkWhetherAlreadyRated();
-
-    }
-    catch(error){
-
-        console.error(
-            "Rating load error:",
-            error
-        );
-
-
-        /*
-           If Firebase cannot be checked,
-           use local storage.
-        */
-
-        if(
-            hasLocalRating()
-        ){
-
-            hideRatingPanel();
-
         }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-
-}
-
-
-/* =====================================================
-   CHECK WHETHER THIS VOTER ALREADY RATED
-===================================================== */
-
-async function checkWhetherAlreadyRated(){
-
-    if(
-        hasLocalRating()
-    ){
-
-        hideRatingPanel();
-
-        return;
-
-    }
-
-
-    const voterId =
-        window.heartVoterId;
-
-
-    if(!voterId){
-
-        showRatingPanel();
-
-        return;
-
-    }
-
-
-    try{
-
-        const q =
-        query(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            ),
-
-            where(
-                "voterId",
-                "==",
-                voterId
-            ),
-
-            limit(1)
-        );
-
-
-        const result =
-        await getDocs(q);
-
-
-        if(
-            !result.empty
-        ){
-
-            /*
-               Firebase confirms that this browser
-               already rated.
-
-               Save locally too so the rating panel
-               stays hidden immediately on future visits.
-            */
-
-            saveLocalRating();
-
-            hideRatingPanel();
-
-        }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-    catch(error){
-
-        console.error(
-            "Voter check error:",
-            error
-        );
-
-
-        /*
-           Don't show rating if local storage
-           already says rated.
-        */
-
-        if(
-            hasLocalRating()
-        ){
-
-            hideRatingPanel();
-
-        }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-
-}
-
-
-/* =====================================================
-   SUBMIT RATING
-===================================================== */
-
-window.submitRating =
-async function(
-    rating
-){
-
-    if(
-        rating < 1 ||
-        rating > 5
-    ){
-
-        return;
-
-    }
-
-
-    const stars =
-    document.querySelectorAll(
-        ".rating-star"
     );
 
 
-    stars.forEach(
-    star=>{
-        star.disabled =
-            true;
-    });
+    if(button){
 
-
-    try{
-
-        await addDoc(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            ),
-            {
-
-                rating:
-                    Number(rating),
-
-                voterId:
-                    window.heartVoterId,
-
-                createdAt:
-                    serverTimestamp()
-
-            }
-        );
-
-
-        /*
-           Mark immediately.
-
-           This prevents the panel from returning
-           when the page is revisited.
-        */
-
-        saveLocalRating();
-
-
-        await loadRatings();
-
-
-        /*
-           Hide the large rating panel shortly
-           after the successful submission.
-        */
-
-        setTimeout(
-        ()=>{
-
-            hideRatingPanel();
-
-        },
-        1500
+        button.classList.add(
+            "active"
         );
 
     }
-    catch(error){
-
-        console.error(
-            "Rating save error:",
-            error
-        );
 
 
-        stars.forEach(
-        star=>{
-            star.disabled =
-                false;
-        });
-
-
-        alert(
-            "Unable to save rating. Please check your internet connection."
-        );
-
-    }
+    renderMedia();
 
 };
 
 
 /* =====================================================
-   PDF READER
+   INITIAL LOAD
 ===================================================== */
 
-const PDF_URL =
-"./1.pdf";
-
-
-const pdfPages =
-document.getElementById(
-    "pdfPages"
-);
-
-const pdfScroll =
-document.getElementById(
-    "pdfScroll"
-);
-
-const pdfPageInfo =
-document.getElementById(
-    "pdfPageInfo"
-);
-
-const pdfStatus =
-document.getElementById(
-    "pdfStatus"
-);
-
-const pdfPrev =
-document.getElementById(
-    "pdfPrev"
-);
-
-const pdfNext =
-document.getElementById(
-    "pdfNext"
-);
-
-const pdfZoomIn =
-document.getElementById(
-    "pdfZoomIn"
-);
-
-const pdfZoomOut =
-document.getElementById(
-    "pdfZoomOut"
-);
-
-const pdfZoomReset =
-document.getElementById(
-    "pdfZoomReset"
-);
-
-const pdfFullscreen =
-document.getElementById(
-    "pdfFullscreen"
-);
-
-
-let pdfDocument =
-null;
-
-let pdfCurrentPage =
-1;
-
-let pdfScale =
-1.25;
-
-
-/* =====================================================
-   PDF STATUS
-===================================================== */
-
-function setPdfStatus(
-    text
-){
-
-    pdfStatus.textContent =
-        text;
-
-}
-
-
-/* =====================================================
-   LOAD PDF
-===================================================== */
-
-async function loadPDF(){
-
-    try{
-
-        setPdfStatus(
-            "📖 Loading 1.pdf..."
-        );
-
-
-        pdfPages.innerHTML =
-            `
-            <div class="pdf-loading">
-                📖 Opening Project Presentation...
-            </div>
-            `;
-
-
-        /*
-           PDF.js loads the actual PDF bytes.
-           It does NOT navigate to the PDF URL,
-           so Android's download prompt is avoided.
-        */
-
-        pdfDocument =
-        await pdfjsLib.getDocument({
-            url:PDF_URL,
-            disableAutoFetch:false,
-            disableStream:false
-        }).promise;
-
-
-        pdfPages.innerHTML =
-            "";
-
-
-        setPdfStatus(
-            "✓ PDF loaded • " +
-            pdfDocument.numPages +
-            " pages"
-        );
-
-
-        await renderAllPdfPages();
-
-
-        updatePdfPageInfo();
-
-    }
-    catch(error){
-
-        console.error(
-            "PDF error:",
-            error
-        );
-
-
-        pdfPages.innerHTML =
-            `
-            <div class="pdf-error">
-
-                <strong>
-                    Unable to display the PDF.
-                </strong>
-
-                <div style="margin-top:8px;color:#aaa">
-                    Please make sure <b>1.pdf</b>
-                    is in the same folder as index.html.
-                </div>
-
-                <button
-                    type="button"
-                    onclick="location.reload()"
-                >
-                    Try Again
-                </button>
-
-            </div>
-            `;
-
-
-        setPdfStatus(
-            "❌ PDF could not be loaded"
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   RENDER ALL PDF PAGES
-===================================================== */
-
-async function renderAllPdfPages(){
-
-    if(!pdfDocument){
-        return;
-    }
-
-
-    pdfPages.innerHTML =
-        "";
-
-
-    for(
-        let pageNumber = 1;
-        pageNumber <= pdfDocument.numPages;
-        pageNumber++
-    ){
-
-        await renderPdfPage(
-            pageNumber
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   RENDER ONE PAGE
-===================================================== */
-
-async function renderPdfPage(
-    pageNumber
-){
-
-    const page =
-        await pdfDocument.getPage(
-            pageNumber
-        );
-
-
-    const viewport =
-        page.getViewport({
-            scale:pdfScale
-        });
-
-
-    const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-    canvas.className =
-        "pdf-page";
-
-
-    const context =
-        canvas.getContext(
-            "2d",
-            {
-                alpha:false
-            }
-        );
-
-
-    const outputScale =
-        window.devicePixelRatio || 1;
-
-
-    canvas.width =
-        Math.floor(
-            viewport.width *
-            outputScale
-        );
-
-
-    canvas.height =
-        Math.floor(
-            viewport.height *
-            outputScale
-        );
-
-
-    canvas.style.width =
-        Math.floor(
-            viewport.width
-        ) +
-        "px";
-
-
-    canvas.style.height =
-        Math.floor(
-            viewport.height
-        ) +
-        "px";
-
-
-    const transform =
-        outputScale !== 1
-        ? [
-            outputScale,
-            0,
-            0,
-            outputScale,
-            0,
-            0
-        ]
-        : null;
-
-
-    await page.render({
-
-        canvasContext:
-            context,
-
-        transform:
-            transform,
-
-        viewport:
-            viewport
-
-    }).promise;
-
-
-    canvas.dataset.page =
-        pageNumber;
-
-
-    pdfPages.appendChild(
-        canvas
-    );
-
-}
-
-
-/* =====================================================
-   PDF PAGE INFO
-===================================================== */
-
-function updatePdfPageInfo(){
-
-    if(!pdfDocument){
-
-        pdfPageInfo.textContent =
-            "PDF";
-
-        return;
-
-    }
-
-
-    pdfPageInfo.textContent =
-        pdfCurrentPage +
-        " / " +
-        pdfDocument.numPages;
-
-}
-
-
-/* =====================================================
-   FIND CURRENT PDF PAGE
-===================================================== */
-
-function findCurrentPdfPage(){
-
-    const canvases =
-        pdfPages.querySelectorAll(
-            ".pdf-page"
-        );
-
-
-    let closestPage =
-        1;
-
-    let smallestDistance =
-        Infinity;
-
-
-    const scrollTop =
-        pdfScroll.scrollTop;
-
-
-    canvases.forEach(
-    canvas=>{
-
-        const distance =
-            Math.abs(
-                canvas.offsetTop -
-                scrollTop -
-                25
-            );
-
-
-        if(
-            distance <
-            smallestDistance
-        ){
-
-            smallestDistance =
-                distance;
-
-            closestPage =
-                Number(
-                    canvas.dataset.page
-                );
-
-        }
-
-    });
-
-
-    pdfCurrentPage =
-        closestPage;
-
-
-    updatePdfPageInfo();
-
-}
-
-
-/* =====================================================
-   PDF SCROLL
-===================================================== */
-
-pdfScroll.addEventListener(
-    "scroll",
-    ()=>{
-        findCurrentPdfPage();
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* =====================================================
-   PDF NEXT
-===================================================== */
-
-pdfNext.addEventListener(
-    "click",
-    ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        pdfCurrentPage =
-            Math.min(
-                pdfCurrentPage + 1,
-                pdfDocument.numPages
-            );
-
-
-        scrollToPdfPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/* =====================================================
-   PDF PREVIOUS
-===================================================== */
-
-pdfPrev.addEventListener(
-    "click",
-    ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        pdfCurrentPage =
-            Math.max(
-                pdfCurrentPage - 1,
-                1
-            );
-
-
-        scrollToPdfPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SCROLL TO PAGE
-===================================================== */
-
-function scrollToPdfPage(
-    pageNumber
-){
-
-    const canvas =
-        pdfPages.querySelector(
-            `.pdf-page[data-page="${pageNumber}"]`
-        );
-
-
-    if(!canvas){
-        return;
-    }
-
-
-    pdfScroll.scrollTo({
-
-        top:
-            canvas.offsetTop - 20,
-
-        behavior:
-            "smooth"
-
-    });
-
-
-    updatePdfPageInfo();
-
-}
-
-
-/* =====================================================
-   PDF ZOOM
-===================================================== */
-
-async function rebuildPdfZoom(){
-
-    if(!pdfDocument){
-
-        return;
-
-    }
-
-
-    const oldPage =
-        pdfCurrentPage;
-
-
-    setPdfStatus(
-        "🔄 Adjusting PDF..."
-    );
-
-
-    await renderAllPdfPages();
-
-
-    pdfCurrentPage =
-        oldPage;
-
-
-    setTimeout(
-    ()=>{
-
-        scrollToPdfPage(
-            oldPage
-        );
-
-        setPdfStatus(
-            "✓ PDF ready"
-        );
-
-    },
-    50
-    );
-
-}
-
-
-pdfZoomIn.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            Math.min(
-                pdfScale + .15,
-                2.5
-            );
-
-
-        pdfZoomReset.textContent =
-            Math.round(
-                pdfScale * 80
-            ) +
-            "%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-pdfZoomOut.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            Math.max(
-                pdfScale - .15,
-                .6
-            );
-
-
-        pdfZoomReset.textContent =
-            Math.round(
-                pdfScale * 80
-            ) +
-            "%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-pdfZoomReset.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            1.25;
-
-
-        pdfZoomReset.textContent =
-            "100%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-/* =====================================================
-   PDF FULLSCREEN
-===================================================== */
-
-pdfFullscreen.addEventListener(
-    "click",
-    async()=>{
-
-        const reader =
-        document.querySelector(
-            ".pdf-reader-box"
-        );
-
-
-        if(
-            !document.fullscreenElement
-        ){
-
-            try{
-
-                await reader.requestFullscreen();
-
-            }
-            catch(error){
-
-                console.log(
-                    error
-                );
-
-            }
-
-        }
-        else{
-
-            await document.exitFullscreen();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
-
-/*
-   IMPORTANT:
-   These are called only once.
-
-   There is NO 10-second reload.
-   There is NO automatic page refresh.
-   There is NO repeated gallery replacement.
-
-   Therefore scrolling position will remain stable.
-*/
+loadRatingSummary();
 
 loadFirebaseMedia();
 
-loadRatings();
 
-loadPDF();
+/*
+ * Refresh media periodically WITHOUT
+ * reloading the website.
+ *
+ * 60 seconds is deliberately used instead
+ * of a very fast 10-second reload.
+ */
+setInterval(
+    loadFirebaseMedia,
+    60000
+);
+
+
+/*
+ * Refresh rating summary periodically,
+ * also without moving the page.
+ */
+setInterval(
+    loadRatingSummary,
+    60000
+);
 
 </script>
 
