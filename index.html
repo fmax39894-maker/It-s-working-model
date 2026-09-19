@@ -286,10 +286,10 @@ main{padding-bottom:105px}
 }
 .drawer-backdrop.show{display:block}
 .drawer{
-  position:fixed;top:0;right:0;bottom:0;z-index:1900;width:min(520px,52vw);
-  min-width:340px;transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  position:fixed;top:0;left:0;bottom:0;z-index:1900;width:min(520px,52vw);
+  min-width:340px;transform:translateX(-102%);transition:transform .30s cubic-bezier(.2,.8,.2,1);
   background:linear-gradient(180deg,rgba(8,15,28,.98),rgba(5,9,17,.98));
-  border-left:1px solid var(--line);box-shadow:-25px 0 90px #0009;padding:28px;overflow:auto
+  border-right:1px solid var(--line);box-shadow:25px 0 90px #0009;padding:28px;overflow:auto
 }
 .drawer.show{transform:none}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
@@ -345,15 +345,120 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
   .contact-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
+  .topbar{justify-content:flex-start}
+  .top-left{gap:9px}
+  .menu-btn{width:42px;height:42px}
+  .pulse-stage{height:330px;border-radius:24px}
+  .pulse-graph{inset:55px 8px 70px;width:calc(100% - 16px);height:215px}
+  .pulse-caption{left:18px;right:18px}
+  .pulse-caption span{font-size:24px}
+  .pulse-caption small{font-size:10px}
+
   .topbar{height:64px;padding:0 16px}.page{padding:30px 16px 15px}
   .hero{min-height:auto;padding:25px 0 45px}.hero h1{font-size:54px;letter-spacing:-3px}
   .hero-heart{min-height:330px}.heart-orbit{width:310px}.big-heart{font-size:170px}
   .info-strip,.card-grid,.steps,.team-grid{grid-template-columns:1fr}
   .media-head{display:block}.media-head h1{font-size:40px}
-  .drawer{width:88vw;min-width:0;padding:22px}.bottom-nav{bottom:8px;border-radius:20px}
+  .drawer{left:0;right:auto;width:88vw;min-width:0;padding:22px}.bottom-nav{bottom:8px;border-radius:20px}
   .nav-btn{min-height:54px}.nav-btn .nav-icon{font-size:18px}.nav-btn span{font-size:9px}
   .rating-mini{top:76px;left:10px}
 }
+
+/* ---------- FINAL POLISH / TOUCH STABILITY ---------- */
+.top-left{display:flex;align-items:center;gap:12px;min-width:0}
+.top-left .brand{min-width:0}
+.top-left .brand-text{min-width:0}
+.top-left .brand-text strong,.top-left .brand-text span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu-btn{flex:none}
+
+/* Running pulse graph */
+.pulse-stage{
+  position:relative;
+  width:min(720px,100%);
+  height:390px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:32px;
+  border:1px solid rgba(56,168,255,.18);
+  background:
+    radial-gradient(circle at 50% 50%,rgba(22,119,255,.10),transparent 55%),
+    linear-gradient(180deg,rgba(9,19,35,.58),rgba(5,9,20,.25));
+  box-shadow:inset 0 0 80px rgba(22,119,255,.07),0 25px 70px rgba(0,0,0,.25);
+}
+.pulse-stage:before{
+  content:"";
+  position:absolute;inset:0;opacity:.25;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.pulse-glow{
+  position:absolute;width:55%;height:55%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,35,69,.20),rgba(22,119,255,.06),transparent 70%);
+  filter:blur(25px);animation:pulseGlow 1.2s ease-in-out infinite;
+}
+.pulse-label{
+  position:absolute;top:24px;left:26px;z-index:2;
+  color:#9ecbff;font-size:11px;letter-spacing:3px;font-weight:900;
+}
+.pulse-graph{position:absolute;inset:60px 18px 70px;width:calc(100% - 36px);height:260px;overflow:visible}
+.pulse-line{fill:none;stroke:url(#pulseGradient);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.pulse-line-back{opacity:.15;filter:blur(10px)}
+.pulse-line-front{
+  stroke-dasharray:1050 1050;
+  stroke-dashoffset:1050;
+  animation:pulseRun 2.1s linear infinite;
+  filter:drop-shadow(0 0 7px #ff2345) drop-shadow(0 0 15px #1677ff);
+}
+.pulse-caption{
+  position:absolute;left:26px;right:26px;bottom:21px;
+  display:flex;justify-content:space-between;align-items:end;gap:15px;z-index:2
+}
+.pulse-caption span{font-size:28px;font-weight:900}
+.pulse-caption span b{color:#fff}
+.pulse-caption small{color:#8f9bad;font-size:11px}
+@keyframes pulseRun{to{stroke-dashoffset:0}}
+@keyframes pulseGlow{50%{transform:scale(1.15);opacity:.75}}
+
+.bottom-nav{
+  grid-template-columns:repeat(4,1fr);
+  padding:7px;
+}
+.nav-btn{
+  min-height:62px;
+  padding:10px 6px;
+}
+.nav-btn .nav-icon{font-size:22px}
+.nav-btn span{font-size:13px;letter-spacing:.1px}
+.nav-btn.active{
+  background:linear-gradient(135deg,rgba(22,119,255,.96),rgba(255,35,69,.96));
+}
+
+.menu-link .menu-title{font-size:17px}
+.menu-link .menu-sub{font-size:12px}
+.theme-btn{font-size:16px}
+.password-box input{font-size:16px}
+.password-box button{font-size:16px}
+
+/* Reduce expensive visual effects while preserving the look. */
+.vfx-heart{will-change:transform;animation-duration:22s}
+.vfx:before{will-change:transform}
+.bottom-nav,.drawer,.rating-overlay,.media-viewer{will-change:transform}
+@media (pointer:coarse){
+  .topbar,.drawer,.bottom-nav,.rating-modal,.media-card,.panel,.stat{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+  .drawer-backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .vfx-grid{opacity:.09}
+  .vfx-heart{animation-duration:28s;opacity:.13}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+
 </style>
 </head>
 
@@ -366,16 +471,18 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
 </div>
 
 <header class="topbar">
-  <a class="brand" href="#home" data-page="home">
-    <div class="brand-heart">♥</div>
-    <div class="brand-text">
-      <strong>It's Working <span style="color:var(--red2)">Heart</span></strong>
-      <span>Science Exhibition 2026</span>
-    </div>
-  </a>
-  <button class="menu-btn" id="menuOpen" aria-label="Open menu">
-    <span class="menu-icon"><i></i><i></i><i></i></span>
-  </button>
+  <div class="top-left">
+    <button class="menu-btn" id="menuOpen" aria-label="Open menu">
+      <span class="menu-icon"><i></i><i></i><i></i></span>
+    </button>
+    <a class="brand" href="#home" data-page="home">
+      <div class="brand-heart">♥</div>
+      <div class="brand-text">
+        <strong>It's Working <span style="color:var(--red2)">Heart</span></strong>
+        <span>Science Exhibition 2026</span>
+      </div>
+    </a>
+  </div>
 </header>
 
 <div class="rating-mini" id="ratingMini">
@@ -401,8 +508,24 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
       </div>
     </div>
     <div class="hero-heart">
-      <div class="heart-orbit">
-        <div class="big-heart">♥<small>Heartbeat • Blood Flow • Circulation</small></div>
+      <div class="pulse-stage">
+        <div class="pulse-glow"></div>
+        <div class="pulse-label">LIVE HEARTBEAT</div>
+        <svg class="pulse-graph" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="Running pulse graph">
+          <defs>
+            <linearGradient id="pulseGradient" x1="0" x2="1">
+              <stop offset="0" stop-color="#1677ff"/>
+              <stop offset=".52" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#ff2345"/>
+            </linearGradient>
+          </defs>
+          <polyline class="pulse-line pulse-line-back" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+          <polyline class="pulse-line pulse-line-front" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+        </svg>
+        <div class="pulse-caption">
+          <span><b id="liveBpm">72</b> BPM</span>
+          <small>Continuous pulse animation</small>
+        </div>
       </div>
     </div>
   </div>
@@ -542,7 +665,6 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
   <button class="nav-btn" data-page="images"><div class="nav-icon">▧</div><span>Images</span></button>
   <button class="nav-btn" data-page="videos"><div class="nav-icon">▶</div><span>Videos</span></button>
   <button class="nav-btn" data-page="contact"><div class="nav-icon">◎</div><span>Contact</span></button>
-  <button class="nav-btn" id="menuBottom"><div class="nav-icon">☰</div><span>Menu</span></button>
 </nav>
 
 <!-- MENU -->
@@ -659,7 +781,6 @@ const drawer=$("#drawer"),backdrop=$("#drawerBackdrop");
 function openMenu(){drawer.classList.add("show");backdrop.classList.add("show")}
 function closeMenu(){drawer.classList.remove("show");backdrop.classList.remove("show")}
 $("#menuOpen").onclick=openMenu;
-$("#menuBottom").onclick=openMenu;
 $("#menuClose").onclick=closeMenu;
 backdrop.onclick=closeMenu;
 
@@ -690,7 +811,11 @@ $("#openEditor").onclick=()=>{
 $("#editorPassword").addEventListener("keydown",e=>{if(e.key==="Enter")$("#openEditor").click()});
 
 /* ---------- BPM ---------- */
-setInterval(()=>{$("#miniAverage").style.opacity="1"},1000);
+setInterval(()=>{
+  const bpm=70+Math.floor(Math.random()*7);
+  const el=$("#liveBpm");
+  if(el)el.textContent=bpm;
+},1200);
 
 /* ---------- media ---------- */
 let mediaStore=[];
