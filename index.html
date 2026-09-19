@@ -459,6 +459,177 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
 }
 
+
+/* ===== COMPACT HEADER + NAV + SIMPLE BACKGROUND ===== */
+
+/* Header: wider visual area, less vertical height */
+.topbar{
+  min-height:58px !important;
+  height:58px !important;
+  padding:7px 14px !important;
+  width:100% !important;
+  max-width:none !important;
+  border-radius:0 0 18px 18px !important;
+}
+
+.brand-heart{
+  width:42px !important;
+  height:42px !important;
+  border-radius:12px !important;
+  font-size:21px !important;
+}
+
+.brand-text strong{
+  font-size:18px !important;
+  line-height:1.05 !important;
+}
+
+.brand-text span{
+  font-size:11px !important;
+  line-height:1.05 !important;
+}
+
+.menu-btn{
+  width:42px !important;
+  height:42px !important;
+}
+
+/* Bottom navigation ~25% shorter */
+.bottom-nav{
+  min-height:52px !important;
+  height:52px !important;
+  padding:4px 6px !important;
+  gap:3px !important;
+  border-radius:18px 18px 0 0 !important;
+}
+
+.nav-btn{
+  min-height:44px !important;
+  height:44px !important;
+  padding:4px 5px !important;
+  gap:1px !important;
+  border-radius:12px !important;
+}
+
+.nav-btn .nav-icon{
+  font-size:18px !important;
+  line-height:18px !important;
+}
+
+.nav-btn span{
+  font-size:11px !important;
+  line-height:12px !important;
+  font-weight:800 !important;
+}
+
+/* Simple stable blue/red gradient background.
+   No moving VFX layers behind the page. */
+body{
+  background:
+    radial-gradient(circle at 15% 15%, rgba(22,119,255,.13), transparent 34%),
+    radial-gradient(circle at 88% 72%, rgba(255,35,69,.12), transparent 36%),
+    linear-gradient(145deg,#050b18 0%,#08152d 48%,#140812 100%) !important;
+  background-attachment:scroll !important;
+}
+
+/* Disable the heavy animated background layers that can stutter on fast scrolling. */
+.vfx,
+.vfx-grid,
+.vfx-heart,
+.ambient,
+.particles,
+.background-vfx,
+.hero:before,
+.hero:after{
+  animation:none !important;
+  transform:none !important;
+  transition:none !important;
+  filter:none !important;
+}
+
+/* Keep content/card effects but remove expensive backdrop blur on touch. */
+@media (pointer:coarse){
+  *{
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .topbar,
+  .bottom-nav,
+  .drawer,
+  .rating-overlay,
+  .panel,
+  .media-card,
+  .stat,
+  .hero-card{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+
+  .bottom-nav{
+    box-shadow:0 -8px 28px rgba(0,0,0,.30) !important;
+  }
+}
+
+/* Fast-scroll stability */
+html{
+  overscroll-behavior-y:none;
+}
+
+body{
+  overscroll-behavior-y:none;
+}
+
+section,
+.hero,
+.page{
+  contain:layout paint;
+}
+
+/* Mobile compact header */
+@media(max-width:600px){
+  .topbar{
+    min-height:54px !important;
+    height:54px !important;
+    padding:6px 10px !important;
+  }
+
+  .brand-heart{
+    width:38px !important;
+    height:38px !important;
+  }
+
+  .brand-text strong{
+    font-size:16px !important;
+  }
+
+  .brand-text span{
+    font-size:10px !important;
+  }
+
+  .menu-btn{
+    width:38px !important;
+    height:38px !important;
+  }
+
+  .bottom-nav{
+    height:50px !important;
+    min-height:50px !important;
+  }
+
+  .nav-btn{
+    height:42px !important;
+    min-height:42px !important;
+  }
+
+  .nav-btn .nav-icon{
+    font-size:17px !important;
+  }
+
+  .nav-btn span{
+    font-size:10px !important;
+  }
+}
+
 </style>
 </head>
 
