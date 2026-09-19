@@ -630,6 +630,77 @@ section,
   }
 }
 
+
+/* ===== FINAL MENU VISIBILITY / SLIDE FIX ===== */
+.menu-link{
+  width:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  font-family:inherit;
+  font-size:inherit;
+  text-align:left;
+  cursor:pointer;
+  background:rgba(13,22,39,.88) !important;
+  color:#f4f7ff !important;
+  border:1px solid rgba(120,150,190,.18) !important;
+  box-shadow:0 5px 18px rgba(0,0,0,.16);
+}
+.menu-link:hover,
+.menu-link:focus-visible,
+.menu-link.active{
+  background:linear-gradient(90deg,rgba(22,119,255,.20),rgba(255,35,69,.12)) !important;
+  color:#ffffff !important;
+  border-color:rgba(56,168,255,.42) !important;
+  outline:none;
+}
+.menu-link .mi{
+  color:#ffffff !important;
+  background:linear-gradient(135deg,rgba(22,119,255,.28),rgba(255,35,69,.22)) !important;
+  border:1px solid rgba(255,255,255,.10);
+  flex:none;
+}
+.menu-title{
+  color:#ffffff !important;
+  font-size:18px !important;
+  line-height:1.2;
+}
+.menu-sub{
+  color:#aebbd0 !important;
+  font-size:12px !important;
+  line-height:1.35;
+}
+/* Prevent the bright/white-looking slide during drawer opening. */
+.drawer-backdrop{
+  background:rgba(1,5,14,.72) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.drawer{
+  background:#070d19 !important;
+  isolation:isolate;
+  box-shadow:20px 0 70px rgba(0,0,0,.72) !important;
+  will-change:transform;
+}
+.drawer *{color-scheme:dark}
+.drawer-close{
+  appearance:none;
+  -webkit-appearance:none;
+  background:#101a2a !important;
+  color:#ffffff !important;
+}
+/* Keep theme/password controls readable too. */
+.theme-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  font-family:inherit;
+  color:#ffffff !important;
+  background:#0d1625 !important;
+  cursor:pointer;
+}
+.theme-btn.active{background:linear-gradient(135deg,rgba(22,119,255,.18),rgba(255,35,69,.12)) !important}
+.password-box input{background:#02050b !important;color:#ffffff !important}
+.password-box button{color:#ffffff !important}
+
 </style>
 </head>
 
@@ -1121,11 +1192,11 @@ async function loadRatings(){
     const avg=count?total/count:0;
     $("#miniAverage").textContent=avg.toFixed(1)+" / 5";
     $("#miniCount").textContent=count+(count===1?" rating":" ratings");
-    if(!hasRated())setTimeout(openRating,1000);
+    if(!hasRated())setTimeout(openRating,20000);
     else await checkVoter();
   }catch(e){
     console.error(e);
-    if(!hasRated())setTimeout(openRating,1000);
+    if(!hasRated())setTimeout(openRating,20000);
   }
 }
 async function checkVoter(){
