@@ -1,5033 +1,845 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>Working Model of Heart</title>
-
-<meta
-name="description"
-content="Working Model of the Human Heart — Science Exhibition 2026"
->
-
-<link
-rel="icon"
-type="image/png"
-href="/cover.png"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07101f">
+<meta name="description" content="It's Working Heart — Science Exhibition 2026">
+<title>It's Working Heart | Science Exhibition 2026</title>
+<link rel="icon" type="image/png" href="/cover.png">
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-    box-sizing:border-box;
+:root{
+  --blue:#1677ff;
+  --blue2:#38a8ff;
+  --red:#ff2345;
+  --red2:#ff5870;
+  --bg:#050914;
+  --panel:rgba(11,17,30,.78);
+  --panel2:rgba(17,25,43,.72);
+  --text:#f7f9ff;
+  --muted:#9da8bc;
+  --line:rgba(125,154,201,.20);
+  --accent:var(--blue);
+  --accent2:var(--red);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
 }
-
-html{
-    scroll-behavior:smooth;
+body.red-theme{
+  --accent:var(--red);
+  --accent2:var(--blue);
 }
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    margin:0;
-    background:#08090b;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 15%,rgba(22,119,255,.16),transparent 32%),
+    radial-gradient(circle at 85% 20%,rgba(255,35,69,.15),transparent 30%),
+    linear-gradient(135deg,#040710,#081120 48%,#060a14);
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
+button,a{font:inherit;-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
 
-button,
-a{
-    -webkit-tap-highlight-color:transparent;
+/* ---------- HEART VFX ---------- */
+.vfx{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.vfx:before{
+  content:"";
+  position:absolute;inset:-20%;
+  background:
+    radial-gradient(circle at 30% 35%,rgba(22,119,255,.10),transparent 20%),
+    radial-gradient(circle at 70% 50%,rgba(255,35,69,.10),transparent 22%);
+  animation:aurora 12s ease-in-out infinite alternate;
 }
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-nav{
-    height:64px;
-
-    padding:0 6%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:#090a0c;
-
-    border-bottom:1px solid #292a2e;
-
-    position:sticky;
-    top:0;
-
-    z-index:1000;
-
-    backdrop-filter:blur(12px);
+.vfx-grid{
+  position:absolute;inset:0;opacity:.14;
+  background-image:
+    linear-gradient(rgba(56,168,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,35,69,.09) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 92%);
 }
-
-.brand{
-    font-size:20px;
-    font-weight:700;
+.vfx-heart{
+  position:absolute;
+  color:var(--accent2);
+  font-size:clamp(20px,3vw,44px);
+  filter:drop-shadow(0 0 18px currentColor);
+  opacity:.22;
+  animation:floatHeart linear infinite;
 }
-
-.brand span{
-    color:#ff2638;
+.vfx-heart:nth-child(2){left:8%;top:18%;animation-duration:14s}
+.vfx-heart:nth-child(3){left:82%;top:22%;animation-duration:17s;color:var(--accent)}
+.vfx-heart:nth-child(4){left:18%;top:72%;animation-duration:18s;color:var(--accent)}
+.vfx-heart:nth-child(5){left:72%;top:78%;animation-duration:15s}
+.vfx-heart:nth-child(6){left:48%;top:14%;animation-duration:20s;color:var(--accent)}
+.vfx-heart:nth-child(7){left:92%;top:60%;animation-duration:16s;color:var(--accent)}
+.ecg-bg{
+  position:absolute;left:-5%;right:-5%;top:46%;height:130px;opacity:.18;
+  background:linear-gradient(90deg,transparent 0 3%,var(--accent) 16%,var(--accent2) 48%,var(--accent) 82%,transparent 97%);
+  clip-path:polygon(0 55%,12% 55%,15% 50%,18% 55%,24% 55%,27% 18%,29% 88%,31% 55%,42% 55%,45% 45%,47% 55%,56% 55%,60% 15%,62% 90%,64% 55%,78% 55%,81% 45%,83% 55%,100% 55%,100% 58%,0 58%);
+  filter:drop-shadow(0 0 12px var(--accent));
+  animation:ecgMove 5s linear infinite;
 }
+@keyframes floatHeart{0%,100%{transform:translateY(20px) scale(.85) rotate(-8deg);opacity:.08}50%{transform:translateY(-30px) scale(1.08) rotate(8deg);opacity:.30}}
+@keyframes aurora{to{transform:translate3d(2%,3%,0) scale(1.06)}}
+@keyframes ecgMove{to{transform:translateX(4%)}}
 
-.settings-btn{
-    width:40px;
-    height:40px;
-
-    border:1px solid #383a40;
-    border-radius:10px;
-
-    background:#111317;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:5px;
-
-    cursor:pointer;
+/* ---------- TOP BAR ---------- */
+.topbar{
+  position:sticky;top:0;z-index:1000;
+  height:72px;padding:0 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,9,20,.76);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(22px);
 }
-
-.settings-btn span{
-    width:20px;
-    height:2px;
-
-    background:#fff;
-
-    border-radius:5px;
+.brand{display:flex;align-items:center;gap:11px}
+.brand-heart{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--blue),var(--red));
+  box-shadow:0 0 28px rgba(22,119,255,.30),0 0 28px rgba(255,35,69,.20);
+  animation:heartPulse 1.5s infinite;
 }
-
-
-/* =====================================================
-   RATING PANEL
-===================================================== */
-
-/*
-   IMPORTANT:
-   Hidden BEFORE JavaScript loads.
-
-   This prevents the rating buttons from flashing
-   on screen when a returning visitor opens the site.
-*/
-
-.rating-area{
-    display:none;
-
-    width:100%;
-
-    padding:20px 20px 0;
-
-    position:relative;
-
-    z-index:500;
+.brand-text strong{display:block;font-size:18px;letter-spacing:-.4px}
+.brand-text span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.menu-btn{
+  width:44px;height:44px;border:1px solid var(--line);border-radius:14px;
+  color:#fff;background:rgba(255,255,255,.05);display:grid;place-items:center;
 }
-
-.rating-card{
-    width:min(100%,760px);
-
-    margin:auto;
-
-    min-height:100px;
-
-    padding:18px 20px;
-
-    border:1px solid #303238;
-
-    border-radius:22px;
-
-    background:#101114;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    box-shadow:
-        0 10px 35px #0008;
-}
-
-.rating-left{
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-}
-
-.rating-heart{
-    width:64px;
-    height:64px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-    place-items:center;
-
-    font-size:30px;
-
-    box-shadow:
-        0 0 25px #ff263855;
-
-    animation:
-        ratingPulse 1.8s infinite;
-}
-
-@keyframes ratingPulse{
-
-    50%{
-        transform:scale(1.06);
-
-        box-shadow:
-            0 0 38px #ff263866;
-    }
-
-}
-
-.rating-title{
-    font-size:16px;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-}
-
-.rating-total{
-    color:#aaa;
-
-    font-size:13px;
-}
-
-.rating-total strong{
-    color:#ffd52a;
-}
-
-.rating-stars{
-    display:flex;
-
-    gap:3px;
-}
-
-.rating-star{
-    border:0;
-
-    background:transparent;
-
-    color:#3a3d45;
-
-    font-size:31px;
-
-    padding:0;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.rating-star:hover,
-.rating-star.active{
-    color:#ffd52a;
-
-    transform:scale(1.12);
-}
-
-.rating-star:disabled{
-    cursor:default;
-}
-
-
-/* =====================================================
-   SMALL TOTAL RATING
-===================================================== */
-
-.rating-mini{
-    position:fixed;
-
-    left:18px;
-    top:155px;
-
-    z-index:900;
-
-    padding:12px 17px;
-
-    border:1px solid #34363c;
-
-    border-radius:18px;
-
-    background:#111317ee;
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:
-        0 10px 35px #0009;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    color:#aaa;
-
-    font-size:13px;
-
-    pointer-events:none;
-
-    animation:
-        miniRatingIn .5s ease;
-}
-
-.rating-mini .mini-star{
-    color:#ffd52a;
-
-    font-size:23px;
-}
-
-.rating-mini strong{
-    color:#ffd52a;
-}
-
-@keyframes miniRatingIn{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateX(-20px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:none;
-    }
-
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    min-height:600px;
-
-    padding:
-        70px 7%;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 80% 35%,
-            #420b12,
-            transparent 40%
-        );
-}
-
-.hero:before{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    opacity:.16;
-
-    background-image:
-        linear-gradient(
-            #ff263812 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            #ff263812 1px,
-            transparent 1px
-        );
-
-    background-size:42px 42px;
-}
-
-.hero > *{
-    position:relative;
-}
-
+.menu-btn:hover{border-color:var(--accent);box-shadow:0 0 25px color-mix(in srgb,var(--accent) 30%,transparent)}
+.menu-icon{width:20px;display:grid;gap:4px}
+.menu-icon i{height:2px;border-radius:4px;background:#fff;display:block}
+@keyframes heartPulse{50%{transform:scale(1.07);box-shadow:0 0 36px rgba(22,119,255,.38),0 0 30px rgba(255,35,69,.30)}}
+
+/* ---------- APP PAGES ---------- */
+main{padding-bottom:105px}
+.page{display:none;min-height:calc(100vh - 72px);padding:48px 6% 20px;position:relative}
+.page.active{display:block}
+.container{width:min(1160px,100%);margin:auto}
 .eyebrow{
-    color:#ff6b76;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    font-weight:bold;
+  color:#9ecbff;text-transform:uppercase;letter-spacing:4px;font-size:11px;font-weight:800;
 }
-
+.hero{
+  min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center;
+}
 .hero h1{
-    font-size:
-        clamp(48px,6vw,78px);
-
-    line-height:.98;
-
-    margin:
-        18px 0;
+  margin:15px 0 18px;font-size:clamp(48px,7vw,88px);line-height:.93;letter-spacing:-4px;
 }
-
 .hero h1 span{
-    color:#ff2638;
-}
-
-.hero p{
-    max-width:560px;
-
-    color:#cfd0d5;
-
-    font-size:18px;
-
-    line-height:1.65;
-}
-
-.btn{
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:
-        15px 24px;
-
-    background:#ff2638;
-
-    border-radius:9px;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    border:0;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 12px 30px #ff263833;
-
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-.bpm{
-    margin-top:22px;
-
-    width:175px;
-
-    padding:12px;
-
-    border:1px solid #383a40;
-
-    border-radius:11px;
-
-    background:#111317;
-
-    display:flex;
-
-    gap:10px;
-
-    align-items:center;
-}
-
-.pulse{
-    width:32px;
-    height:32px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#ff2638;
-
-    animation:
-        pulse 1s infinite;
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.15);
-
-        box-shadow:
-            0 0 25px #ff263888;
-    }
-
-}
-
-
-/* =====================================================
-   ECG
-===================================================== */
-
-.ecg{
-    position:absolute;
-
-    bottom:18px;
-    left:0;
-
-    width:100%;
-    height:75px;
-}
-
-.ecg svg{
-    width:100%;
-    height:100%;
-}
-
-.ecg polyline{
-    fill:none;
-
-    stroke:#ff2638;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
-
-    stroke-dasharray:900;
-
-    stroke-dashoffset:900;
-
-    animation:
-        ecg 2.2s linear infinite;
-
-    filter:
-        drop-shadow(
-            0 0 7px #ff2638
-        );
-}
-
-@keyframes ecg{
-
-    to{
-        stroke-dashoffset:0;
-    }
-
-}
-
-
-/* =====================================================
-   INFORMATION BAR
-===================================================== */
-
-.bar{
-    width:86%;
-
-    margin:auto;
-
-    padding:16px;
-
-    text-align:center;
-
-    background:#111317;
-
-    border:1px solid #303238;
-
-    color:#aaa;
-
-    font-size:16px;
-}
-
-.bar .event-name{
-    color:#ff2638;
-
-    font-weight:700;
-}
-
-.bar .big-name{
-    display:inline-block;
-
-    color:#fff;
-
-    font-size:22px;
-
-    font-weight:800;
-
-    white-space:nowrap;
-
-    margin-left:6px;
-}
-
-.bar b{
-    margin:0 15px;
-
-    color:#555;
-}
-
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-section{
-    padding:
-        80px 7%;
-
-    border-top:
-        1px solid #202126;
-}
-
-.title{
-    text-align:center;
-
-    font-size:38px;
-}
-
-.title span{
-    color:#ff2638;
-}
-
-.sub{
-    max-width:700px;
-
-    margin:
-        0 auto 42px;
-
-    text-align:center;
-
-    color:#aeb1b8;
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   TEAM
-===================================================== */
-
-.team-list{
-    max-width:900px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:14px;
-}
-
-.team-card{
-    padding:22px;
-
-    border:1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.team-card:first-child{
-    border-color:#ff2638;
-
-    box-shadow:
-        0 0 30px #ff263822;
-}
-
-.team-card:hover{
-    transform:translateY(-4px);
-
-    border-color:#ff2638;
-}
-
-.team-role{
-    display:block;
-
-    color:#ff2638;
-
-    font-size:16px;
-
-    margin-top:7px;
-}
-
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1.2fr;
-
-    gap:50px;
-
-    align-items:center;
-}
-
-.about h2{
-    font-size:34px;
-}
-
-.about h2 span{
-    color:#ff2638;
-}
-
-.about p{
-    color:#c5c7cc;
-
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   COMPACT HEART POINTS
-===================================================== */
-
-.features{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:12px;
-
-    margin-top:25px;
-}
-
-.feature{
-    padding:15px 18px;
-
-    border:1px solid #34363c;
-
-    border-radius:12px;
-
-    background:#111317;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    transition:.3s;
-}
-
-.feature:hover{
-    border-color:#ff2638;
-
-    transform:translateX(4px);
-}
-
-.feature .icon{
-    color:#ff2638;
-
-    font-size:22px;
-
-    flex:none;
-}
-
-.feature h3{
-    margin:0;
-
-    font-size:15px;
-}
-
-.feature p{
-    margin:
-        3px 0 0;
-
-    color:#888;
-
-    font-size:11px;
-}
-
-
-/* =====================================================
-   AWARENESS
-===================================================== */
-
-.awareness{
-    max-width:1100px;
-
-    margin:
-        70px auto 0;
-}
-
-.awareness h2{
-    font-size:34px;
-
-    margin-bottom:15px;
-}
-
-.awareness h2 span{
-    color:#ff2638;
-}
-
-.awareness-intro{
-    color:#aaa;
-
-    line-height:1.6;
-
-    max-width:850px;
-}
-
-.awareness-points{
-    margin-top:25px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:10px 35px;
-}
-
-.awareness-point{
-    color:#c7c8cc;
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    padding:7px 0;
-
-    border-bottom:
-        1px solid #202126;
-}
-
-.awareness-point::before{
-    content:"♥";
-
-    color:#ff2638;
-
-    margin-right:9px;
-}
-
-
-/* =====================================================
-   MEDIA
-===================================================== */
-
-.media-view-buttons{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:
-        0 auto 28px;
-}
-
-.media-filter{
-    border:1px solid #3a3c42;
-
-    background:#111317;
-
-    color:#fff;
-
-    padding:
-        11px 17px;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-weight:700;
-}
-
-.media-filter.active,
-.media-filter:hover{
-    background:#ff2638;
-
-    border-color:#ff2638;
-}
-
-.firebase-status{
-    text-align:center;
-
-    margin:
-        -8px auto 24px;
-
-    color:#777;
-
-    font-size:11px;
-}
-
-.firebase-status.live{
-    color:#69e58a;
-}
-
-.gallery{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px,190px)
-        );
-
-    justify-content:center;
-
-    gap:15px;
-}
-
-.gallery-item{
-    background:#111317;
-
-    border:1px solid #34363c;
-
-    border-radius:13px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.gallery-item:hover{
-    border-color:#ff2638;
-
-    transform:translateY(-3px);
-}
-
-.gallery-item img,
-.gallery-item video{
-    width:100%;
-
-    height:125px;
-
-    object-fit:cover;
-
-    display:block;
-}
-
-.gallery-caption{
-    padding:9px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-}
-
-.gallery-empty{
-    text-align:center;
-
-    color:#777;
-
-    padding:35px;
-}
-
-
-/* =====================================================
-   MEDIA VIEWER
-===================================================== */
-
-.section-viewer{
-    display:none;
-
-    margin:
-        28px auto 0;
-
-    max-width:760px;
-
-    border:
-        1px solid #ff2638;
-
-    border-radius:16px;
-
-    background:#0d0f12;
-
-    padding:14px;
-}
-
-.section-viewer.show{
-    display:block;
-}
-
-.section-viewer-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:
-        2px 4px 12px;
-}
-
-.section-viewer-head h3{
-    margin:0;
-
-    color:#ff2638;
-
-    font-size:16px;
-}
-
-.section-viewer-head button{
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    width:32px;
-    height:32px;
-
-    border-radius:50%;
-
-    font-size:21px;
-
-    cursor:pointer;
-}
-
-.section-viewer-content{
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-}
-
-.section-view-media{
-    max-width:100%;
-
-    max-height:500px;
-
-    border-radius:10px;
-}
-
-
-/* =====================================================
-   PRESENTATION
-===================================================== */
-
-.presentation{
-    max-width:900px;
-
-    margin:
-        60px auto 0;
-
-    padding:25px;
-
-    border:
-        1px solid #34363c;
-
-    border-radius:18px;
-
-    background:#111317;
-
-    box-shadow:
-        0 15px 50px #0007;
-}
-
-.presentation h2{
-    text-align:center;
-
-    margin-top:0;
-
-    color:#ff2638;
-}
-
-.presentation-video{
-    width:100%;
-
-    max-height:500px;
-
-    background:#000;
-
-    border-radius:12px;
-
-    display:block;
-}
-
-
-/* =====================================================
-   PDF READER
-===================================================== */
-
-/*
-   No iframe.
-   No download link.
-   No direct PDF navigation.
-
-   PDF.js renders the PDF directly into canvases.
-*/
-
-.pdf-container{
-    margin-top:28px;
-}
-
-.pdf-container h3{
-    text-align:center;
-
-    margin:
-        0 0 15px;
-
-    color:#fff;
-}
-
-.pdf-reader-box{
-    background:#17191d;
-
-    border:
-        1px solid #34363c;
-
-    border-radius:14px;
-
-    overflow:hidden;
-}
-
-.pdf-toolbar{
-    min-height:55px;
-
-    padding:
-        10px 12px;
-
-    background:#0d0f12;
-
-    border-bottom:
-        1px solid #34363c;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:8px;
-
-    flex-wrap:wrap;
-}
-
-.pdf-toolbar-left,
-.pdf-toolbar-right{
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-}
-
-.pdf-toolbar button{
-    border:1px solid #3a3c42;
-
-    background:#191b20;
-
-    color:#fff;
-
-    min-width:38px;
-
-    height:36px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-}
-
-.pdf-toolbar button:hover{
-    border-color:#ff2638;
-
-    background:#ff2638;
-}
-
-.pdf-page-info{
-    color:#aaa;
-
-    font-size:12px;
-
-    min-width:80px;
-
-    text-align:center;
-}
-
-.pdf-scroll{
-    height:
-        min(
-            75vh,
-            850px
-        );
-
-    overflow:auto;
-
-    background:#282a2e;
-
-    padding:20px 10px;
-}
-
-.pdf-pages{
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:18px;
-}
-
-.pdf-page{
-    background:#fff;
-
-    box-shadow:
-        0 8px 25px #0008;
-
-    max-width:100%;
-
-    height:auto;
-
-    display:block;
-}
-
-.pdf-loading{
-    min-height:300px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    color:#aaa;
-
-    padding:30px;
-}
-
-.pdf-error{
-    min-height:250px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    padding:30px;
-
-    color:#ff6b76;
-}
-
-.pdf-error button{
-    margin-top:15px;
-
-    padding:
-        11px 18px;
-
-    border:0;
-
-    border-radius:8px;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-.pdf-status{
-    text-align:center;
-
-    color:#777;
-
-    font-size:11px;
-
-    margin-top:9px;
-}
-
-
-/* =====================================================
-   FUNCTION
-===================================================== */
-
-.steps{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:15px;
-}
-
-.step{
-    padding:22px;
-
-    border:
-        1px solid #34363c;
-
-    border-radius:13px;
-
-    background:#111317;
-
-    text-align:center;
-}
-
-.step .icon{
-    font-size:29px;
-
-    color:#ff2638;
-
-    margin-bottom:10px;
-}
-
-.step p{
-    color:#aaa;
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-.num{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#ff2638;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:
-        0 auto 17px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-grid{
-    max-width:950px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
+  background:linear-gradient(90deg,var(--blue2),#fff 38%,var(--red2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{max-width:620px;color:#c6cfdf;font-size:18px;line-height:1.75}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.primary,.secondary{
+  border-radius:14px;padding:14px 21px;border:1px solid var(--line);font-weight:800;
+  display:inline-flex;align-items:center;gap:8px;transition:.25s;
+}
+.primary{background:linear-gradient(100deg,var(--blue),var(--red));color:#fff;box-shadow:0 12px 35px rgba(22,119,255,.20)}
+.secondary{background:rgba(255,255,255,.045)}
+.primary:hover,.secondary:hover{transform:translateY(-3px);border-color:var(--accent)}
+.hero-heart{
+  min-height:470px;position:relative;display:grid;place-items:center;
+}
+.heart-orbit{
+  width:min(430px,80vw);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(56,168,255,.20);
+  box-shadow:0 0 90px rgba(22,119,255,.12),inset 0 0 80px rgba(255,35,69,.08);
+  position:relative;animation:orbit 12s linear infinite;
+}
+.heart-orbit:before,.heart-orbit:after{
+  content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,35,69,.20);
+}
+.heart-orbit:before{inset:12%;animation:spinReverse 8s linear infinite}
+.heart-orbit:after{inset:25%;border-color:rgba(56,168,255,.25);animation:spinReverse 5s linear infinite}
+.big-heart{
+  position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(150px,22vw,250px);
+  color:#ff3552;text-shadow:0 0 25px #ff2345,0 0 70px rgba(255,35,69,.55),0 0 120px rgba(22,119,255,.35);
+  animation:bigHeart 1.35s infinite;
+}
+.big-heart small{
+  position:absolute;bottom:13%;font-size:11px;letter-spacing:3px;color:#b9d8ff;text-transform:uppercase;
+  text-shadow:none;
+}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes spinReverse{to{transform:rotate(-360deg)}}
+@keyframes bigHeart{0%,100%{transform:scale(.95)}50%{transform:scale(1.05)}}
+
+.info-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 65px;
+}
+.stat{
+  padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);
+  box-shadow:var(--shadow);backdrop-filter:blur(14px);
+}
+.stat b{display:block;font-size:25px;color:#fff}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+
+.section-title{text-align:center;margin:0 auto 38px;max-width:760px}
+.section-title h2{font-size:42px;margin:0 0 10px;letter-spacing:-1.5px}
+.section-title h2 span{color:var(--accent2)}
+.section-title p{color:var(--muted);line-height:1.7}
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.info-card{
+  padding:23px;border:1px solid var(--line);border-radius:20px;background:var(--panel2);
+  transition:.3s;box-shadow:0 15px 50px rgba(0,0,0,.18);
+}
+.info-card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.info-icon{font-size:28px;margin-bottom:15px;filter:drop-shadow(0 0 12px var(--accent))}
+.info-card h3{margin:0 0 8px}.info-card p{color:var(--muted);font-size:13px;line-height:1.65;margin:0}
+
+.content-section{margin-top:85px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{
+  border:1px solid var(--line);border-radius:24px;background:var(--panel);
+  padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(16px);
+}
+.panel h3{margin-top:0;font-size:25px}.panel p{color:#bcc7d9;line-height:1.75}
+.list{display:grid;gap:10px;margin-top:18px}
+.list-item{padding:13px 15px;border-left:3px solid var(--accent);background:rgba(255,255,255,.035);border-radius:10px;color:#cbd4e4;font-size:13px;line-height:1.55}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--panel2);text-align:center}
+.num{width:36px;height:36px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--red));font-weight:900}
+.step h3{margin:0 0 8px}.step p{color:var(--muted);font-size:13px;line-height:1.6}
+
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.team-card{padding:18px;text-align:center;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.team-card:first-child{border-color:var(--accent2);box-shadow:0 0 30px rgba(255,35,69,.10)}
+.team-card strong{display:block}.team-card span{display:block;color:var(--accent2);font-size:11px;margin-top:6px}
+
+/* ---------- MEDIA PAGES ---------- */
+.media-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}
+.media-head h1{font-size:48px;margin:0 0 8px;letter-spacing:-2px}
+.media-head p{margin:0;color:var(--muted)}
+.media-count{color:#8fbfff;font-size:12px}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.media-card{
+  position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(19,29,48,.82),rgba(7,11,20,.90));
+  box-shadow:0 20px 55px rgba(0,0,0,.30);transition:.3s;
+}
+.media-card:before{
+  content:"";position:absolute;inset:0;border-radius:20px;padding:1px;
+  background:linear-gradient(135deg,rgba(56,168,255,.5),rgba(255,35,69,.45),transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+}
+.media-card:hover{transform:translateY(-5px);box-shadow:0 25px 70px rgba(22,119,255,.16)}
+.media-card img,.media-card video{width:100%;height:230px;display:block;object-fit:cover;background:#02040a}
+.media-caption{padding:13px 15px}.media-caption strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.media-caption span{color:var(--muted);font-size:11px;display:block;margin-top:5px}
+.empty{padding:70px 20px;text-align:center;border:1px dashed var(--line);border-radius:20px;color:var(--muted)}
+.status{font-size:12px;color:var(--muted);margin-bottom:20px}
+.media-viewer{
+  position:fixed;inset:0;z-index:3000;display:none;place-items:center;padding:25px;
+  background:rgba(0,0,0,.82);backdrop-filter:blur(14px)
+}
+.media-viewer.show{display:grid}
+.viewer-box{width:min(1000px,95vw);max-height:90vh;padding:14px;border-radius:22px;border:1px solid var(--line);background:#07101c}
+.viewer-box img,.viewer-box video{max-width:100%;max-height:78vh;display:block;margin:auto;border-radius:14px}
+.viewer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.viewer-top button{border:0;background:#ffffff10;color:#fff;width:38px;height:38px;border-radius:12px}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .contact-card{
-    display:flex;
+  display:block;padding:26px;border:1px solid var(--line);border-radius:22px;background:var(--panel);
+  transition:.3s;box-shadow:var(--shadow)
+}
+.contact-card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.contact-icon{font-size:30px;margin-bottom:18px}.contact-card h3{margin:0 0 7px}.contact-card p{color:var(--muted);margin:0;word-break:break-word}.contact-link{display:inline-block;color:#8fc6ff;font-size:12px;margin-top:15px}
 
-    align-items:center;
+/* ---------- RATING ---------- */
+.rating-overlay{
+  position:fixed;inset:0;z-index:2500;display:none;place-items:center;padding:20px;
+  background:rgba(1,4,10,.72);backdrop-filter:blur(12px)
+}
+.rating-overlay.show{display:grid}
+.rating-modal{
+  width:min(480px,94vw);padding:28px;border-radius:28px;
+  background:linear-gradient(145deg,rgba(14,24,42,.97),rgba(7,12,23,.98));
+  border:1px solid rgba(56,168,255,.38);box-shadow:0 30px 100px #000b;text-align:center;
+  position:relative;overflow:hidden;
+}
+.rating-modal:after{content:"";position:absolute;inset:auto -20% -45% 20%;height:180px;background:radial-gradient(circle,var(--red),transparent 65%);opacity:.16;pointer-events:none}
+.rating-icon{font-size:55px;color:#ff3655;text-shadow:0 0 30px #ff2345;animation:bigHeart 1.4s infinite}
+.rating-modal h2{margin:8px 0 5px}.rating-modal p{color:var(--muted);margin:0 0 22px}
+.stars{display:flex;justify-content:center;gap:3px;margin:12px 0 24px}
+.star{border:0;background:transparent;color:#384356;font-size:42px;padding:0 3px;transition:.18s}
+.star.active,.star:hover{color:#ffd84d;filter:drop-shadow(0 0 10px #ffd84d);transform:scale(1.1)}
+.rating-submit{width:100%;border:0;border-radius:14px;padding:14px;background:linear-gradient(90deg,var(--red),var(--blue));color:#fff;font-weight:900}
+.rating-close{margin-top:12px;border:0;background:transparent;color:var(--muted)}
+.success{display:none}.success.show{display:block}.success .rating-icon{color:#55e98b;text-shadow:0 0 30px #55e98b}
+.rating-mini{
+  position:fixed;left:18px;top:90px;z-index:900;padding:8px 11px;border-radius:13px;
+  background:rgba(7,13,24,.82);border:1px solid var(--line);backdrop-filter:blur(14px);
+  font-size:10px;color:var(--muted);box-shadow:0 10px 30px #0007
+}
+.rating-mini strong{color:#ffd84d}
 
-    gap:15px;
+/* ---------- MENU DRAWER ---------- */
+.drawer-backdrop{
+  position:fixed;inset:0;z-index:1800;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+  display:none
+}
+.drawer-backdrop.show{display:block}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:1900;width:min(520px,52vw);
+  min-width:340px;transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  background:linear-gradient(180deg,rgba(8,15,28,.98),rgba(5,9,17,.98));
+  border-left:1px solid var(--line);box-shadow:-25px 0 90px #0009;padding:28px;overflow:auto
+}
+.drawer.show{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.drawer-brand{display:flex;gap:12px;align-items:center}.drawer-brand b{font-size:19px}.drawer-brand small{display:block;color:var(--muted);margin-top:3px}
+.drawer-close{border:0;background:#ffffff08;color:#fff;width:40px;height:40px;border-radius:12px;font-size:22px}
+.drawer-line{height:1px;background:var(--line);margin:20px 0}
+.menu-list{display:grid;gap:8px}
+.menu-link{
+  display:flex;align-items:center;gap:13px;padding:14px;border-radius:14px;color:#dce5f4;
+  border:1px solid transparent
+}
+.menu-link:hover,.menu-link.active{background:rgba(22,119,255,.08);border-color:rgba(56,168,255,.18);color:#fff}
+.menu-link .mi{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#ffffff08}
+.menu-title{font-weight:800}.menu-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.theme-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.theme-btn{border:1px solid var(--line);padding:13px;border-radius:12px;background:#ffffff06;color:#fff;font-weight:800}
+.theme-btn.active{border-color:var(--accent);box-shadow:0 0 22px rgba(22,119,255,.15)}
+.password-box{padding:16px;border:1px solid var(--line);border-radius:16px;background:#ffffff04}
+.password-box label{display:block;font-size:10px;color:var(--muted);margin-bottom:7px;letter-spacing:1px}
+.password-box input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#02050b;color:#fff;outline:0}
+.password-box button{width:100%;margin-top:8px;padding:12px;border:0;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--red));color:#fff;font-weight:900}
+#editorMsg{font-size:11px;margin-top:8px;min-height:15px}
 
-    padding:24px;
-
-    border:
-        1px solid #34363c;
-
-    border-radius:14px;
-
-    background:#111317;
-
-    text-decoration:none;
-
-    color:#fff;
+/* ---------- BOTTOM NAV ---------- */
+.bottom-nav{
+  position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:1500;
+  width:min(760px,calc(100% - 22px));padding:8px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:5px;
+  border:1px solid rgba(255,255,255,.13);border-radius:23px;
+  background:rgba(7,13,24,.84);backdrop-filter:blur(22px);
+  box-shadow:0 20px 60px #0009;
+}
+.nav-btn{
+  border:0;background:transparent;color:#8f9bad;border-radius:17px;padding:9px 5px 8px;
+  display:grid;place-items:center;gap:4px;min-height:58px;transition:.25s
+}
+.nav-btn .nav-icon{font-size:20px}.nav-btn span{font-size:10px;font-weight:800}
+.nav-btn.active{
+  color:#fff;background:linear-gradient(135deg,rgba(22,119,255,.92),rgba(255,35,69,.92));
+  box-shadow:0 7px 25px rgba(22,119,255,.25),0 7px 25px rgba(255,35,69,.18)
 }
 
-.contact-card:hover{
-    border-color:#ff2638;
+/* ---------- FOOTER ---------- */
+footer{margin-top:80px;padding:50px 6% 125px;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
+footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-weight:900}
+.footer-gradient{display:inline-block;background:linear-gradient(90deg,var(--blue2),var(--red2));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-    transform:translateY(-4px);
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.hero-actions{justify-content:center}
+  .hero-heart{min-height:400px}.info-strip{grid-template-columns:1fr 1fr}.card-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
 }
-
-.contact-icon{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:#ff2638;
-
-    flex:none;
+@media(max-width:600px){
+  .topbar{height:64px;padding:0 16px}.page{padding:30px 16px 15px}
+  .hero{min-height:auto;padding:25px 0 45px}.hero h1{font-size:54px;letter-spacing:-3px}
+  .hero-heart{min-height:330px}.heart-orbit{width:310px}.big-heart{font-size:170px}
+  .info-strip,.card-grid,.steps,.team-grid{grid-template-columns:1fr}
+  .media-head{display:block}.media-head h1{font-size:40px}
+  .drawer{width:88vw;min-width:0;padding:22px}.bottom-nav{bottom:8px;border-radius:20px}
+  .nav-btn{min-height:54px}.nav-btn .nav-icon{font-size:18px}.nav-btn span{font-size:9px}
+  .rating-mini{top:76px;left:10px}
 }
-
-.contact-card h3{
-    margin:
-        0 0 6px;
-}
-
-.contact-card p{
-    margin:0;
-
-    color:#aaa;
-
-    word-break:break-word;
-
-    font-size:13px;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    padding:
-        45px 7% 20px;
-
-    border-top:
-        1px solid #292a30;
-
-    background:#090a0c;
-}
-
-.footer-grid{
-    max-width:1100px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr 1fr;
-
-    gap:35px;
-}
-
-.footer-grid h3{
-    color:#ff2638;
-}
-
-.footer-grid p{
-    color:#aaa;
-
-    line-height:1.7;
-}
-
-.credit-title{
-    color:#ff2638;
-
-    font-weight:bold;
-
-    margin-bottom:5px;
-}
-
-.credit-name{
-    color:#fff;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    line-height:1.45;
-
-    margin-bottom:18px;
-}
-
-.copy{
-    text-align:center;
-
-    color:#666;
-
-    border-top:
-        1px solid #222;
-
-    margin-top:30px;
-
-    padding-top:18px;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-.settings-menu{
-    position:fixed;
-
-    top:76px;
-    right:6%;
-
-    width:min(
-        340px,
-        88vw
-    );
-
-    z-index:2000;
-
-    display:none;
-
-    padding:18px;
-
-    border:
-        1px solid #3a3c42;
-
-    border-radius:16px;
-
-    background:#101114;
-
-    box-shadow:
-        0 20px 60px #000b;
-}
-
-.settings-menu.show{
-    display:block;
-}
-
-.settings-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:15px;
-}
-
-.settings-head h3{
-    margin:0;
-
-    color:#ff2638;
-}
-
-.settings-head button{
-    border:0;
-
-    background:none;
-
-    color:#fff;
-
-    font-size:25px;
-
-    cursor:pointer;
-}
-
-.settings-card{
-    display:flex;
-
-    gap:14px;
-
-    padding:17px;
-
-    border:
-        1px solid #34363c;
-
-    border-radius:12px;
-
-    background:#111317;
-}
-
-.settings-card h4{
-    margin:
-        0 0 5px;
-}
-
-.settings-card p{
-    margin:
-        0 0 12px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-    line-height:1.5;
-}
-
-.settings-password{
-    margin-top:12px;
-
-    padding-top:12px;
-
-    border-top:
-        1px solid #292b31;
-}
-
-.settings-password label{
-    display:block;
-
-    font-size:9px;
-
-    letter-spacing:1.8px;
-
-    color:#ff6b76;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-.settings-password input{
-    width:100%;
-
-    padding:
-        10px 11px;
-
-    background:#08090b;
-
-    border:
-        1px solid #383a40;
-
-    border-radius:8px;
-
-    color:#fff;
-
-    outline:none;
-}
-
-.settings-action{
-    width:100%;
-
-    margin-top:8px;
-
-    border:0;
-
-    background:#ff2638;
-
-    color:#fff;
-
-    border-radius:8px;
-
-    padding:10px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-.reveal{
-    opacity:0;
-
-    transform:
-        translateY(25px);
-
-    transition:.7s;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:800px){
-
-    .hero{
-        grid-template-columns:1fr;
-
-        text-align:center;
-    }
-
-    .hero p{
-        margin:auto;
-    }
-
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    .steps{
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .rating-card{
-        padding:15px;
-    }
-
-    .rating-heart{
-        width:54px;
-        height:54px;
-
-        font-size:25px;
-    }
-
-    .rating-star{
-        font-size:27px;
-    }
-
-}
-
-
-@media(max-width:500px){
-
-    .hero h1{
-        font-size:45px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .steps{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .team-list{
-        grid-template-columns:1fr;
-    }
-
-    .awareness-points{
-        grid-template-columns:1fr;
-    }
-
-    .rating-area{
-        padding:
-            14px 18px 0;
-    }
-
-    .rating-stars{
-        gap:0;
-    }
-
-    .rating-star{
-        font-size:24px;
-    }
-
-    .rating-mini{
-        left:18px;
-
-        top:145px;
-
-        padding:
-            10px 13px;
-    }
-
-    .bar{
-        font-size:14px;
-    }
-
-    .bar .big-name{
-        font-size:20px;
-    }
-
-    .bar b{
-        margin:
-            0 8px;
-    }
-
-    .pdf-scroll{
-        height:70vh;
-
-        padding:
-            12px 5px;
-    }
-
-    .pdf-toolbar{
-        justify-content:center;
-    }
-
-    .presentation{
-        padding:15px;
-    }
-
-}
-
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<nav>
-
-<div class="brand">
-Working Model of <span>Heart</span>
+<div class="vfx">
+  <div class="vfx-grid"></div>
+  <div class="ecg-bg"></div>
+  <div class="vfx-heart">♥</div><div class="vfx-heart">♥</div><div class="vfx-heart">♥</div>
+  <div class="vfx-heart">♥</div><div class="vfx-heart">♥</div><div class="vfx-heart">♥</div>
 </div>
 
-<button
-class="settings-btn"
-onclick="toggleSettings()"
-aria-label="Settings"
->
-
-<span></span>
-<span></span>
-<span></span>
-
-</button>
-
-</nav>
-
-
-<!-- =====================================================
-     TOTAL RATING
-===================================================== -->
-
-<div
-id="ratingMini"
-class="rating-mini"
->
-
-<span class="mini-star">
-★
-</span>
-
-<strong id="miniAverage">
-0.0 / 5
-</strong>
-
-<span>·</span>
-
-<span id="miniCount">
-0 ratings
-</span>
-
-</div>
-
-
-<!-- =====================================================
-     RATING PANEL
-===================================================== -->
-
-<!--
-     display:none is intentional.
-     JavaScript will show it ONLY if this visitor
-     has not already rated.
--->
-
-<div
-id="ratingArea"
-class="rating-area"
-style="display:none"
->
-
-<div class="rating-card">
-
-<div class="rating-left">
-
-<div class="rating-heart">
-♥
-</div>
-
-<div>
-
-<div class="rating-title">
-Rate Our Project
-</div>
-
-<div
-class="rating-total"
-id="ratingTotalText"
->
-<span style="color:#ffd52a">
-★
-</span>
-No ratings yet
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="rating-stars"
-id="ratingStars"
->
-
-<button
-class="rating-star"
-data-rating="1"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="2"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="3"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="4"
->
-★
-</button>
-
-<button
-class="rating-star"
-data-rating="5"
->
-★
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<header
-class="hero"
-id="home"
->
-
-<div>
-
-<div class="eyebrow">
-SCIENCE EXHIBITION 2026
-</div>
-
-<h1>
-Working Model<br>
-of the <span>Human Heart</span>
-</h1>
-
-<p>
-This project demonstrates the working
-of the human heart and how it pumps
-blood throughout the body.
-</p>
-
-<a
-class="btn"
-href="#media"
->
-Explore Images & Videos ↓
-</a>
-
-<div class="bpm">
-
-<div class="pulse">
-♥
-</div>
-
-<div>
-Heartbeat<br>
-
-<strong>
-<span id="bpm">72</span> BPM
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="ecg">
-
-<svg
-viewBox="0 0 1200 100"
-preserveAspectRatio="none"
->
-
-<polyline points="
-0,52 70,52 88,52 98,45 108,52
-126,52 138,38 146,65 154,52
-175,52 188,52 202,52 212,18
-222,82 232,52 252,52 275,52
-290,52 302,43 314,52 330,52
-345,52 360,52 370,52 380,52
-390,52 400,52 414,18 424,82
-434,52 454,52 480,52 505,52
-520,52 534,52 548,52 560,52
-574,38 582,65 590,52 612,52
-630,52 645,52 660,52 670,18
-680,82 690,52 710,52 735,52
-760,52 775,52 788,45 798,52
-816,52 830,38 838,65 846,52
-870,52 900,52 930,52 945,52
-958,18 968,82 978,52 1000,52
-1030,52 1060,52 1080,52 1092,45
-1100,52 1120,52 1134,38 1142,65
-1150,52 1200,52
-"></polyline>
-
-</svg>
-
-</div>
-
+<header class="topbar">
+  <a class="brand" href="#home" data-page="home">
+    <div class="brand-heart">♥</div>
+    <div class="brand-text">
+      <strong>It's Working <span style="color:var(--red2)">Heart</span></strong>
+      <span>Science Exhibition 2026</span>
+    </div>
+  </a>
+  <button class="menu-btn" id="menuOpen" aria-label="Open menu">
+    <span class="menu-icon"><i></i><i></i><i></i></span>
+  </button>
 </header>
 
-
-<!-- =====================================================
-     INFO BAR
-===================================================== -->
-
-<div class="bar">
-
-<span class="event-name">
-Science Exhibition 2026
-</span>
-
-<b>|</b>
-
-<span class="big-name">
-Aayushman Jha
-</span>
-
+<div class="rating-mini" id="ratingMini">
+  ★ <strong id="miniAverage">0.0 / 5</strong> · <span id="miniCount">0 ratings</span>
 </div>
 
+<main>
+<!-- HOME -->
+<section class="page active" id="page-home">
+<div class="container">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Science Exhibition 2026</div>
+      <h1>It's Working <span>Heart</span></h1>
+      <p>
+        This project demonstrates the working of the human heart and how it pumps blood
+        throughout the body. Our working model turns the concept of circulation into a
+        simple, practical and visual learning experience.
+      </p>
+      <div class="hero-actions">
+        <button class="primary" data-page="images">Explore Images →</button>
+        <button class="secondary" data-page="videos">Watch Videos ▶</button>
+      </div>
+    </div>
+    <div class="hero-heart">
+      <div class="heart-orbit">
+        <div class="big-heart">♥<small>Heartbeat • Blood Flow • Circulation</small></div>
+      </div>
+    </div>
+  </div>
 
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
+  <div class="info-strip">
+    <div class="stat"><b>72 BPM</b><span>Animated heartbeat display</span></div>
+    <div class="stat"><b>4 Chambers</b><span>Atria and ventricles</span></div>
+    <div class="stat"><b>Team Red Diamond</b><span>Science Exhibition 2026</span></div>
+    <div class="stat"><b>Live Media</b><span>Images & videos from Firebase</span></div>
+  </div>
 
-<div
-id="settingsMenu"
-class="settings-menu"
->
+  <div class="section-title">
+    <h2>About the <span>Heart</span></h2>
+    <p>The human heart is a muscular organ that continuously pumps blood throughout the body. Our working model demonstrates this pumping action in a simple and practical way.</p>
+  </div>
 
-<div class="settings-head">
+  <div class="card-grid">
+    <div class="info-card"><div class="info-icon">♥</div><h3>Realistic Action</h3><p>Pumping demonstration that helps explain the rhythmic action of the heart.</p></div>
+    <div class="info-card"><div class="info-icon">◉</div><h3>Blood Flow</h3><p>Shows the idea of circulation and movement of blood through the body.</p></div>
+    <div class="info-card"><div class="info-icon">⚙</div><h3>Mechanism</h3><p>A simple model designed to make the mechanism easy to understand.</p></div>
+    <div class="info-card"><div class="info-icon">▣</div><h3>Educational</h3><p>A science exhibition project built for learning through demonstration.</p></div>
+  </div>
 
-<h3>
-Settings
-</h3>
+  <div class="content-section two-col">
+    <div class="panel">
+      <h3>Why <span style="color:var(--accent2)">Heart Awareness</span> Matters</h3>
+      <p>Understanding heart health helps people recognize important risk factors and the value of prevention and early care.</p>
+      <div class="list">
+        <div class="list-item">Hypertension can increase the risk of heart disease.</div>
+        <div class="list-item">Heart disease is a major cause of death worldwide.</div>
+        <div class="list-item">Early awareness can help identify risk factors.</div>
+        <div class="list-item">Regular physical activity supports heart health.</div>
+        <div class="list-item">A balanced diet can support healthy circulation.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>More Heart Health Facts</h3>
+      <div class="list">
+        <div class="list-item">Smoking can significantly harm cardiovascular health.</div>
+        <div class="list-item">Diabetes can increase cardiovascular risk.</div>
+        <div class="list-item">Knowing warning signs can encourage timely medical help.</div>
+        <div class="list-item">Regular health checks can help monitor blood pressure.</div>
+        <div class="list-item">Heart health education encourages healthier choices.</div>
+      </div>
+    </div>
+  </div>
 
-<button
-onclick="toggleSettings()"
->
-×
-</button>
+  <div class="content-section">
+    <div class="section-title">
+      <h2>Function of the <span>Heart</span></h2>
+      <p>Learn the main functions of the heart and how blood moves through the chambers.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Receives Blood</h3><p>The atria receive blood returning to the heart.</p></div>
+      <div class="step"><div class="num">2</div><h3>Pumps Blood</h3><p>The ventricles contract and pump blood to the lungs and body.</p></div>
+      <div class="step"><div class="num">3</div><h3>Blood Circulation</h3><p>Blood travels through pulmonary and systemic circulation.</p></div>
+      <div class="step"><div class="num">4</div><h3>Continuous Cycle</h3><p>The heart repeatedly contracts and relaxes to maintain circulation.</p></div>
+    </div>
+  </div>
 
+  <div class="content-section">
+    <div class="section-title">
+      <h2>Team <span>Red Diamond</span></h2>
+      <p>Science Exhibition 2026</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><strong>Aayushman Jha</strong><span>Leader</span></div>
+      <div class="team-card"><strong>Raushan Kumar</strong></div>
+      <div class="team-card"><strong>Dayansh Shekhar Singh</strong></div>
+      <div class="team-card"><strong>Harsh Kumar</strong></div>
+      <div class="team-card"><strong>Divya Kumar</strong></div>
+      <div class="team-card"><strong>Abhishek Kumar</strong></div>
+      <div class="team-card"><strong>Sankalp Krishna</strong></div>
+    </div>
+  </div>
 </div>
-
-
-<div class="settings-card">
-
-<div>
-🔐
-</div>
-
-<div style="width:100%">
-
-<h4>
-Host Editor
-</h4>
-
-<p>
-Enter the host password to open
-the Firebase media editor.
-</p>
-
-<div class="settings-password">
-
-<label>
-HOST PASSWORD
-</label>
-
-<input
-id="settingsPassword"
-type="password"
-placeholder="Enter password"
->
-
-<button
-class="settings-action"
-onclick="unlockFromSettings()"
->
-Open Editor
-</button>
-
-<div
-id="settingsPasswordMessage"
-></div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     TEAM
-===================================================== -->
-
-<section
-id="team"
-class="reveal"
->
-
-<h2 class="title">
-<span>Team Members</span>
-</h2>
-
-<p class="sub">
-Team Red Diamond · Science Exhibition 2026
-</p>
-
-
-<div class="team-list">
-
-<div class="team-card">
-
-Leader
-
-<span class="team-role">
-Aayushman Jha
-</span>
-
-</div>
-
-<div class="team-card">
-Raushan Kumar
-</div>
-
-<div class="team-card">
-Dayansh Shekhar Singh
-</div>
-
-<div class="team-card">
-Harsh Kumar
-</div>
-
-<div class="team-card">
-Divya Kumar
-</div>
-
-<div class="team-card">
-Abhishek Kumar
-</div>
-
-<div class="team-card">
-Sankalp Krishna
-</div>
-
-</div>
-
 </section>
 
-
-<!-- =====================================================
-     ABOUT HEART
-===================================================== -->
-
-<section
-id="model"
-class="reveal"
->
-
-<div class="about">
-
-<div></div>
-
-<div>
-
-<h2>
-About the <span>Heart</span>
-</h2>
-
-<p>
-The human heart is a muscular organ
-that continuously pumps blood throughout
-the body. Our working model demonstrates
-this pumping action in a simple and
-practical way.
-</p>
-
-
-<div class="features">
-
-<div class="feature">
-
-<div class="icon">
-♥
+<!-- IMAGES -->
+<section class="page" id="page-images">
+<div class="container">
+  <div class="media-head">
+    <div><div class="eyebrow">Project Gallery</div><h1>Project <span style="color:var(--accent2)">Images</span></h1><p>Only photographs are shown on this page.</p></div>
+    <div class="media-count" id="imageCount">Loading…</div>
+  </div>
+  <div class="status" id="imageStatus">☁ Connecting to Firebase…</div>
+  <div class="media-grid" id="imageGrid"></div>
+  <div class="empty" id="imageEmpty" style="display:none">No project images have been uploaded yet.</div>
 </div>
-
-<div>
-
-<h3>
-Realistic Action
-</h3>
-
-<p>
-Pumping demonstration
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-◉
-</div>
-
-<div>
-
-<h3>
-Blood Flow
-</h3>
-
-<p>
-Shows circulation
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-⚙
-</div>
-
-<div>
-
-<h3>
-Mechanism
-</h3>
-
-<p>
-Easy to understand
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="icon">
-▣
-</div>
-
-<div>
-
-<h3>
-Educational
-</h3>
-
-<p>
-Science project
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     HEART AWARENESS
-===================================================== -->
-
-<div class="awareness">
-
-<h2>
-Why <span>Heart Awareness</span>
-Is Important
-</h2>
-
-<p class="awareness-intro">
-Understanding heart health helps people
-recognize important risk factors and the
-value of prevention and early care.
-</p>
-
-
-<div class="awareness-points">
-
-<div class="awareness-point">
-Hypertension can increase the risk of heart disease.
-</div>
-
-<div class="awareness-point">
-Heart disease is a major cause of death worldwide.
-</div>
-
-<div class="awareness-point">
-Early awareness can help identify risk factors.
-</div>
-
-<div class="awareness-point">
-Regular physical activity supports heart health.
-</div>
-
-<div class="awareness-point">
-A balanced diet can support healthy circulation.
-</div>
-
-<div class="awareness-point">
-Smoking can significantly harm cardiovascular health.
-</div>
-
-<div class="awareness-point">
-Diabetes can increase cardiovascular risk.
-</div>
-
-<div class="awareness-point">
-Knowing warning signs can encourage timely medical help.
-</div>
-
-<div class="awareness-point">
-Regular health checks can help monitor blood pressure.
-</div>
-
-<div class="awareness-point">
-Heart health education encourages healthier choices.
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-
-<!-- =====================================================
-     MEDIA
-===================================================== -->
-
-<section
-id="media"
-class="reveal"
->
-
-<h2 class="title">
-<span>Photo & Video</span>
-of Project
-</h2>
-
-<p class="sub">
-Explore photographs and videos of the
-Working Model of the Human Heart.
-</p>
-
-
-<div class="media-view-buttons">
-
-<button
-class="media-filter active"
-onclick="filterMedia('all',this)"
->
-👀 See All
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('photo',this)"
->
-📸 Photos
-</button>
-
-<button
-class="media-filter"
-onclick="filterMedia('video',this)"
->
-🎬 Videos
-</button>
-
+<!-- VIDEOS -->
+<section class="page" id="page-videos">
+<div class="container">
+  <div class="media-head">
+    <div><div class="eyebrow">Project Media</div><h1>Project <span style="color:var(--accent2)">Videos</span></h1><p>Only videos are shown on this page.</p></div>
+    <div class="media-count" id="videoCount">Loading…</div>
+  </div>
+  <div class="status" id="videoStatus">☁ Connecting to Firebase…</div>
+  <div class="media-grid" id="videoGrid"></div>
+  <div class="empty" id="videoEmpty" style="display:none">No project videos have been uploaded yet.</div>
 </div>
-
-
-<div
-id="firebaseStatus"
-class="firebase-status"
->
-☁️ Connecting to Firebase...
-</div>
-
-
-<div
-id="gallery"
-class="gallery"
-></div>
-
-
-<div
-id="galleryEmpty"
-class="gallery-empty"
-style="display:none"
->
-No photos or videos have been added yet.
-</div>
-
-
-<div
-id="sectionViewer"
-class="section-viewer"
->
-
-<div class="section-viewer-head">
-
-<h3 id="sectionViewerTitle">
-Preview
-</h3>
-
-<button
-onclick="closeSectionViewer()"
->
-×
-</button>
-
-</div>
-
-<div
-id="sectionViewerContent"
-class="section-viewer-content"
-></div>
-
-</div>
-
-
-<!-- =====================================================
-     PRESENTATION
-===================================================== -->
-
-<div class="presentation">
-
-<h2>
-📄 Project Presentation
-</h2>
-
-
-<!-- VIDEO -->
-
-<video
-class="presentation-video"
-controls
-playsinline
-preload="metadata"
->
-
-<source
-src="./1.mp4"
-type="video/mp4"
->
-
-Your browser does not support video playback.
-
-</video>
-
-
-<!-- =================================================
-     PDF
-================================================= -->
-
-<div class="pdf-container">
-
-<h3>
-📖 Project Presentation PDF
-</h3>
-
-
-<div class="pdf-reader-box">
-
-
-<div class="pdf-toolbar">
-
-
-<div class="pdf-toolbar-left">
-
-<button
-id="pdfPrev"
-type="button"
->
-‹
-</button>
-
-<button
-id="pdfNext"
-type="button"
->
-›
-</button>
-
-<span
-id="pdfPageInfo"
-class="pdf-page-info"
->
-Loading...
-</span>
-
-</div>
-
-
-<div class="pdf-toolbar-right">
-
-<button
-id="pdfZoomOut"
-type="button"
->
-−
-</button>
-
-<button
-id="pdfZoomReset"
-type="button"
->
-100%
-</button>
-
-<button
-id="pdfZoomIn"
-type="button"
->
-+
-</button>
-
-<button
-id="pdfFullscreen"
-type="button"
->
-⛶
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="pdfScroll"
-class="pdf-scroll"
->
-
-<div
-id="pdfPages"
-class="pdf-pages"
->
-
-<div class="pdf-loading">
-📖 Loading Project Presentation...
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-id="pdfStatus"
-class="pdf-status"
->
-PDF reader ready
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-
-<!-- =====================================================
-     FUNCTION
-===================================================== -->
-
-<section
-id="working"
-class="reveal"
->
-
-<h2 class="title">
-About the
-<span>Function of the Heart</span>
-</h2>
-
-<p class="sub">
-Learn the main functions of the heart
-and how blood moves through the chambers.
-</p>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="num">
-1
+<!-- CONTACT -->
+<section class="page" id="page-contact">
+<div class="container">
+  <div class="section-title">
+    <div class="eyebrow">Team Red Diamond</div>
+    <h2>Contact <span>Us</span></h2>
+    <p>Get in touch with the team behind It's Working Heart.</p>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:aayushmanjha1108@gmail.com">
+      <div class="contact-icon">✉️</div><h3>Email</h3><p>aayushmanjha1108@gmail.com</p><span class="contact-link">Send an Email →</span>
+    </a>
+    <a class="contact-card" href="tel:+919931203827">
+      <div class="contact-icon">☎️</div><h3>Phone</h3><p>+91 99312 03827</p><span class="contact-link">Call Now →</span>
+    </a>
+    <a class="contact-card" href="https://www.instagram.com/its_working_heart?stkn=NzAzZHN2bnJpajZ5.." target="_blank" rel="noopener">
+      <div class="contact-icon">◎</div><h3>Instagram</h3><p>@its_working_heart</p><span class="contact-link">Open Instagram →</span>
+    </a>
+  </div>
 </div>
-
-<div class="icon">
-⏻
-</div>
-
-<h3>
-Receives Blood
-</h3>
-
-<p>
-The atria receive blood returning
-to the heart.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-2
-</div>
-
-<div class="icon">
-♥
-</div>
-
-<h3>
-Pumps Blood
-</h3>
-
-<p>
-The ventricles contract and pump
-blood to the lungs and body.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-3
-</div>
-
-<div class="icon">
-◆
-</div>
-
-<h3>
-Blood Circulation
-</h3>
-
-<p>
-Blood travels through pulmonary
-and systemic circulation.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="num">
-4
-</div>
-
-<div class="icon">
-↻
-</div>
-
-<h3>
-Continuous Cycle
-</h3>
-
-<p>
-The heart repeatedly contracts
-and relaxes to maintain circulation.
-</p>
-
-</div>
-
-</div>
-
 </section>
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section
-id="contact"
-class="reveal"
->
-
-<h2 class="title">
-Contact <span>Us</span>
-</h2>
-
-<p class="sub">
-Get in touch with Team Red Diamond
-about our Working Model of the Human Heart.
-</p>
-
-
-<div class="contact-grid">
-
-
-<a
-class="contact-card"
-href="mailto:aayushmanjha1108@gmail.com"
->
-
-<div class="contact-icon">
-✉
-</div>
-
-<div>
-
-<h3>
-Email
-</h3>
-
-<p>
-aayushmanjha1108@gmail.com
-</p>
-
-</div>
-
-</a>
-
-
-<a
-class="contact-card"
-href="tel:+919931203827"
->
-
-<div class="contact-icon">
-☎
-</div>
-
-<div>
-
-<h3>
-Phone
-</h3>
-
-<p>
-+91 99312 03827
-</p>
-
-</div>
-
-</a>
-
-
-<div class="contact-card">
-
-<div class="contact-icon">
-◆
-</div>
-
-<div>
-
-<h3>
-Team
-</h3>
-
-<p>
-Team Red Diamond
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+</main>
 
 <footer>
-
-<div class="footer-grid">
-
-
-<div>
-
-<h3>
-About
-</h3>
-
-<p>
-Educational project to understand
-the structure and working of the
-human heart.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Team
-</h3>
-
-<p>
-Team Red Diamond
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Credits
-</h3>
-
-<div class="credit-title">
-Lead by
-</div>
-
-<div class="credit-name">
-Aayushman Jha
-</div>
-
-<div class="credit-title">
-Website by
-</div>
-
-<div class="credit-name">
-Raushan Kumar
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="copy">
-
-© 2026 Working Model of Heart
-· Team Red Diamond
-
-</div>
-
+  <div class="footer-brand">It's Working <span class="footer-gradient">Heart</span></div>
+  <p>Science Exhibition 2026 · Team Red Diamond</p>
+  <small>© 2026 It's Working Heart</small>
 </footer>
 
-
-<!-- =====================================================
-     NORMAL JAVASCRIPT
-===================================================== -->
-
-<script>
-
-/* =====================================================
-   BPM
-===================================================== */
-
-const bpm =
-document.getElementById("bpm");
-
-setInterval(
-()=>{
-    bpm.textContent =
-        70 +
-        Math.floor(
-            Math.random()*7
-        );
-},
-1200
-);
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-const revealObserver =
-new IntersectionObserver(
-entries=>{
-
-    entries.forEach(
-    entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target
-                .classList
-                .add("show");
-
-        }
-
-    });
-
-},
-{
-    threshold:.12
-});
-
-
-document
-.querySelectorAll(".reveal")
-.forEach(
-element=>{
-    revealObserver.observe(element);
-});
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-window.toggleSettings =
-function(){
-
-    document
-    .getElementById(
-        "settingsMenu"
-    )
-    .classList
-    .toggle("show");
-
-};
-
-
-const HOST_PASSWORD =
-"aayushman";
-
-
-window.unlockFromSettings =
-function(){
-
-    const input =
-    document.getElementById(
-        "settingsPassword"
-    );
-
-    const msg =
-    document.getElementById(
-        "settingsPasswordMessage"
-    );
-
-
-    if(
-        input.value ===
-        HOST_PASSWORD
-    ){
-
-        msg.textContent =
-        "✓ Access granted.";
-
-        msg.style.color =
-        "#69e58a";
-
-
-        setTimeout(
-        ()=>{
-
-            location.href =
-                "edit.html";
-
-        },
-        400
-        );
-
-    }
-    else{
-
-        msg.textContent =
-        "Incorrect password.";
-
-        msg.style.color =
-        "#ff5262";
-
-    }
-
-};
-
-
-/* =====================================================
-   MEDIA FILTER
-===================================================== */
-
-let currentFilter =
-"all";
-
-
-window.filterMedia =
-function(
-    filter,
-    button
-){
-
-    currentFilter =
-        filter;
-
-
-    document
-    .querySelectorAll(
-        ".media-filter"
-    )
-    .forEach(
-    btn=>{
-        btn.classList.remove(
-            "active"
-        );
-    });
-
-
-    if(button){
-        button.classList.add(
-            "active"
-        );
-    }
-
-
-    if(
-        typeof window.renderMedia
-        === "function"
-    ){
-
-        window.renderMedia();
-
-    }
-
-};
-
-
-/* =====================================================
-   MEDIA VIEWER
-===================================================== */
-
-window.closeSectionViewer =
-function(){
-
-    const viewer =
-    document.getElementById(
-        "sectionViewer"
-    );
-
-    const content =
-    document.getElementById(
-        "sectionViewerContent"
-    );
-
-
-    viewer.classList.remove(
-        "show"
-    );
-
-    content.innerHTML =
-        "";
-
-};
-
-
-/* =====================================================
-   RATING LOCAL STORAGE
-===================================================== */
-
-/*
-   Two storage methods are used.
-
-   localStorage:
-   normal persistent browser storage.
-
-   cookie:
-   second local fallback.
-
-   The rating panel is HIDDEN in HTML first,
-   so it can never flash during page startup.
-*/
-
-function hasLocalRating(){
-
-    try{
-
-        if(
-            localStorage.getItem(
-                "heartProjectRated"
-            ) === "yes"
-        ){
-
-            return true;
-
-        }
-
-    }
-    catch(e){}
-
-
-    const cookies =
-        document.cookie
-        .split(";")
-        .map(
-            item=>item.trim()
-        );
-
-
-    return cookies.includes(
-        "heartProjectRated=yes"
-    );
-
-}
-
-
-function saveLocalRating(){
-
-    try{
-
-        localStorage.setItem(
-            "heartProjectRated",
-            "yes"
-        );
-
-    }
-    catch(e){}
-
-
-    /*
-       Cookie lasts for one year.
-    */
-
-    document.cookie =
-        "heartProjectRated=yes; max-age=31536000; path=/; SameSite=Lax";
-
-}
-
-
-/* =====================================================
-   VOTER ID
-===================================================== */
-
-function getVoterId(){
-
-    let id = null;
-
-
-    try{
-
-        id =
-        localStorage.getItem(
-            "heartRatingVoterId"
-        );
-
-    }
-    catch(e){}
-
-
-    if(!id){
-
-        id =
-            "voter_" +
-            Date.now() +
-            "_" +
-            Math.random()
-            .toString(36)
-            .slice(2);
-
-
-        try{
-
-            localStorage.setItem(
-                "heartRatingVoterId",
-                id
-            );
-
-        }
-        catch(e){}
-
-    }
-
-
-    return id;
-
-}
-
-
-window.heartVoterId =
-    getVoterId();
-
-
-/* =====================================================
-   RATING PANEL DECISION
-===================================================== */
-
-window.showRatingPanel =
-function(){
-
-    if(hasLocalRating()){
-
-        return;
-
-    }
-
-
-    const area =
-    document.getElementById(
-        "ratingArea"
-    );
-
-
-    if(area){
-
-        area.style.display =
-            "block";
-
-    }
-
-};
-
-
-window.hideRatingPanel =
-function(){
-
-    const area =
-    document.getElementById(
-        "ratingArea"
-    );
-
-
-    if(area){
-
-        area.style.display =
-            "none";
-
-    }
-
-};
-
-
-/* =====================================================
-   STAR UI
-===================================================== */
-
-let selectedRating =
-0;
-
-
-document
-.querySelectorAll(
-    ".rating-star"
-)
-.forEach(
-star=>{
-
-
-    star.addEventListener(
-        "mouseenter",
-        ()=>{
-
-            const value =
-            Number(
-                star.dataset.rating
-            );
-
-
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
-
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= value
-                );
-
-            });
-
-        }
-    );
-
-
-    star.addEventListener(
-        "mouseleave",
-        ()=>{
-
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
-
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= selectedRating
-                );
-
-            });
-
-        }
-    );
-
-
-    star.addEventListener(
-        "click",
-        ()=>{
-
-            selectedRating =
-                Number(
-                    star.dataset.rating
-                );
-
-
-            document
-            .querySelectorAll(
-                ".rating-star"
-            )
-            .forEach(
-            item=>{
-
-                item.classList.toggle(
-                    "active",
-                    Number(
-                        item.dataset.rating
-                    ) <= selectedRating
-                );
-
-            });
-
-
-            if(
-                typeof window.submitRating
-                === "function"
-            ){
-
-                window.submitRating(
-                    selectedRating
-                );
-
-            }
-
-        }
-    );
-
-});
-
-
-</script>
-
-
-<!-- =====================================================
-     FIREBASE + PDF.JS
-===================================================== -->
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-btn active" data-page="home"><div class="nav-icon">⌂</div><span>Home</span></button>
+  <button class="nav-btn" data-page="images"><div class="nav-icon">▧</div><span>Images</span></button>
+  <button class="nav-btn" data-page="videos"><div class="nav-icon">▶</div><span>Videos</span></button>
+  <button class="nav-btn" data-page="contact"><div class="nav-icon">◎</div><span>Contact</span></button>
+  <button class="nav-btn" id="menuBottom"><div class="nav-icon">☰</div><span>Menu</span></button>
+</nav>
+
+<!-- MENU -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-brand"><div class="brand-heart">♥</div><div><b>It's Working Heart</b><small>Science Exhibition 2026</small></div></div>
+    <button class="drawer-close" id="menuClose">×</button>
+  </div>
+
+  <div class="menu-list">
+    <button class="menu-link" data-page="home"><span class="mi">⌂</span><span><div class="menu-title">Home</div><div class="menu-sub">Project overview</div></span></button>
+    <button class="menu-link" data-page="images"><span class="mi">▧</span><span><div class="menu-title">Images</div><div class="menu-sub">Project photographs</div></span></button>
+    <button class="menu-link" data-page="videos"><span class="mi">▶</span><span><div class="menu-title">Videos</div><div class="menu-sub">Project videos</div></span></button>
+    <button class="menu-link" data-page="contact"><span class="mi">◎</span><span><div class="menu-title">Contact</div><div class="menu-sub">Email · Phone · Instagram</div></span></button>
+  </div>
+
+  <div class="drawer-line"></div>
+
+  <div class="menu-title" style="margin-bottom:10px">Theme</div>
+  <div class="theme-row">
+    <button class="theme-btn active" id="blueTheme">🔵 Blue</button>
+    <button class="theme-btn" id="redTheme">🔴 Red</button>
+  </div>
+
+  <div class="drawer-line"></div>
+
+  <div class="menu-title" style="margin-bottom:10px">Host Editor</div>
+  <div class="password-box">
+    <label>HOST PASSWORD</label>
+    <input id="editorPassword" type="password" placeholder="Enter password">
+    <button id="openEditor">Open Editor →</button>
+    <div id="editorMsg"></div>
+  </div>
+
+  <div class="drawer-line"></div>
+  <div style="color:var(--muted);font-size:12px;line-height:1.7">
+    <strong style="color:#fff">Team Red Diamond</strong><br>
+    Educational project to understand the structure and working of the human heart.
+  </div>
+</aside>
+
+<!-- RATING -->
+<div class="rating-overlay" id="ratingOverlay">
+  <div class="rating-modal" id="ratingModal">
+    <div class="rating-content" id="ratingContent">
+      <div class="rating-icon">♥</div>
+      <h2>Rate Our Project</h2>
+      <p>Your feedback encourages us and helps us improve!</p>
+      <div class="stars" id="stars">
+        <button class="star" data-rating="1">★</button>
+        <button class="star" data-rating="2">★</button>
+        <button class="star" data-rating="3">★</button>
+        <button class="star" data-rating="4">★</button>
+        <button class="star" data-rating="5">★</button>
+      </div>
+      <button class="rating-submit" id="submitRating">Submit Rating</button>
+      <button class="rating-close" id="cancelRating">Cancel</button>
+    </div>
+    <div class="rating-content success" id="ratingSuccess">
+      <div class="rating-icon">✓</div>
+      <h2>Rating Submitted</h2>
+      <p>Thank you for supporting Team Red Diamond.</p>
+      <button class="rating-submit" id="ratingDone">Confirmation ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIEWER -->
+<div class="media-viewer" id="viewer">
+  <div class="viewer-box">
+    <div class="viewer-top"><strong id="viewerTitle">Preview</strong><button id="viewerClose">×</button></div>
+    <div id="viewerContent"></div>
+  </div>
+</div>
 
 <script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {getFirestore,collection,getDocs,addDoc,query,where,limit,serverTimestamp}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-
-/* =====================================================
-   FIREBASE
-===================================================== */
-
-import {
-    initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    addDoc,
-    query,
-    where,
-    limit,
-    serverTimestamp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-/* =====================================================
-   PDF.JS
-===================================================== */
-
-import * as pdfjsLib
-from
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.2.108/pdf.min.mjs";
-
-
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.2.108/pdf.worker.min.mjs";
-
-
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
-
-const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyDdYdMXyUU52kvja7a8jE3-8Bh1ahY3sjU",
-
-    authDomain:
-    "working-heart.firebaseapp.com",
-
-    projectId:
-    "working-heart",
-
-    storageBucket:
-    "working-heart.firebasestorage.app",
-
-    messagingSenderId:
-    "583684499453",
-
-    appId:
-    "1:583684499453:web:8793e7149555af3a711b94"
-
+/* DO NOT CHANGE: original Firebase configuration */
+const firebaseConfig={
+  apiKey:"AIzaSyDdYdMXyUU52kvja7a8jE3-8Bh1ahY3sjU",
+  authDomain:"working-heart.firebaseapp.com",
+  projectId:"working-heart",
+  storageBucket:"working-heart.firebasestorage.app",
+  messagingSenderId:"583684499453",
+  appId:"1:583684499453:web:8793e7149555af3a711b94"
 };
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+const MEDIA_COLLECTION="heartProjectMedia";
+const RATINGS_COLLECTION="heartProjectRatings";
 
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
 
-const app =
-initializeApp(
-    firebaseConfig
-);
-
-const db =
-getFirestore(app);
-
-
-const MEDIA_COLLECTION =
-"heartProjectMedia";
-
-const RATINGS_COLLECTION =
-"heartProjectRatings";
-
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const gallery =
-document.getElementById(
-    "gallery"
-);
-
-const galleryEmpty =
-document.getElementById(
-    "galleryEmpty"
-);
-
-const firebaseStatus =
-document.getElementById(
-    "firebaseStatus"
-);
-
-const miniAverage =
-document.getElementById(
-    "miniAverage"
-);
-
-const miniCount =
-document.getElementById(
-    "miniCount"
-);
-
-const ratingTotalText =
-document.getElementById(
-    "ratingTotalText"
-);
-
-
-/* =====================================================
-   MEDIA STORAGE
-===================================================== */
-
-let mediaStore = [];
-
-
-/* =====================================================
-   FIREBASE STATUS
-===================================================== */
-
-function setFirebaseStatus(
-    text,
-    live=false
-){
-
-    firebaseStatus.textContent =
-        text;
-
-    firebaseStatus.classList.toggle(
-        "live",
-        live
-    );
-
+/* ---------- navigation ---------- */
+function showPage(page){
+  $$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));
+  $$(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  $$(".menu-link").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  window.scrollTo({top:0,behavior:"smooth"});
+  closeMenu();
 }
+window.showPage=showPage;
+$$("[data-page]").forEach(el=>{
+  el.addEventListener("click",()=>showPage(el.dataset.page));
+});
 
+/* ---------- menu ---------- */
+const drawer=$("#drawer"),backdrop=$("#drawerBackdrop");
+function openMenu(){drawer.classList.add("show");backdrop.classList.add("show")}
+function closeMenu(){drawer.classList.remove("show");backdrop.classList.remove("show")}
+$("#menuOpen").onclick=openMenu;
+$("#menuBottom").onclick=openMenu;
+$("#menuClose").onclick=closeMenu;
+backdrop.onclick=closeMenu;
 
-/* =====================================================
-   LOAD MEDIA
-===================================================== */
-
-async function loadFirebaseMedia(){
-
-    try{
-
-        setFirebaseStatus(
-            "☁️ Reading Firebase..."
-        );
-
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                MEDIA_COLLECTION
-            )
-        );
-
-
-        mediaStore = [];
-
-
-        snapshot.forEach(
-        documentSnapshot=>{
-
-            const data =
-                documentSnapshot.data();
-
-
-            const url =
-                data.url ||
-                data.link ||
-                data.mediaUrl ||
-                data.secure_url;
-
-
-            if(!url){
-                return;
-            }
-
-
-            let type =
-                String(
-                    data.type ||
-                    data.mediaType ||
-                    ""
-                ).toLowerCase();
-
-
-            if(
-                type === "image" ||
-                type === "photo" ||
-                type === "photos"
-            ){
-
-                type =
-                    "photo";
-
-            }
-
-
-            if(
-                type === "video" ||
-                type === "videos"
-            ){
-
-                type =
-                    "video";
-
-            }
-
-
-            if(
-                type !== "photo" &&
-                type !== "video"
-            ){
-
-                const clean =
-                    url
-                    .split("?")[0]
-                    .toLowerCase();
-
-
-                if(
-                    /\.(jpg|jpeg|png|gif|webp|avif)$/
-                    .test(clean)
-                ){
-
-                    type =
-                        "photo";
-
-                }
-                else if(
-                    /\.(mp4|webm|mov|m4v|ogg)$/
-                    .test(clean)
-                ){
-
-                    type =
-                        "video";
-
-                }
-                else{
-
-                    return;
-
-                }
-
-            }
-
-
-            mediaStore.push({
-
-                id:
-                    documentSnapshot.id,
-
-                name:
-                    data.name ||
-                    data.title ||
-                    "Project Media",
-
-                url:
-                    url,
-
-                type:
-                    type
-
-            });
-
-        });
-
-
-        setFirebaseStatus(
-            "☁️ Firebase connected • " +
-            mediaStore.length +
-            " media loaded",
-            true
-        );
-
-
-        renderMedia();
-
-    }
-    catch(error){
-
-        console.error(
-            error
-        );
-
-
-        setFirebaseStatus(
-            "❌ Firebase error"
-        );
-
-
-        gallery.innerHTML =
-            "";
-
-        galleryEmpty.style.display =
-            "block";
-
-        galleryEmpty.textContent =
-            "Unable to load project media.";
-
-    }
-
+/* ---------- theme ---------- */
+function setTheme(theme){
+  document.body.classList.toggle("red-theme",theme==="red");
+  $("#blueTheme").classList.toggle("active",theme==="blue");
+  $("#redTheme").classList.toggle("active",theme==="red");
+  localStorage.setItem("heartTheme",theme);
 }
+setTheme(localStorage.getItem("heartTheme")||"blue");
+$("#blueTheme").onclick=()=>setTheme("blue");
+$("#redTheme").onclick=()=>setTheme("red");
 
-
-/* =====================================================
-   RENDER MEDIA
-===================================================== */
-
-window.renderMedia =
-function(){
-
-    gallery.innerHTML =
-        "";
-
-
-    const filtered =
-    mediaStore.filter(
-    item=>{
-
-        return(
-            currentFilter === "all" ||
-            item.type === currentFilter
-        );
-
-    });
-
-
-    if(!filtered.length){
-
-        galleryEmpty.style.display =
-            "block";
-
-        galleryEmpty.textContent =
-            mediaStore.length
-            ? "No media found."
-            : "No photos or videos have been added yet.";
-
-        return;
-
-    }
-
-
-    galleryEmpty.style.display =
-        "none";
-
-
-    filtered.forEach(
-    item=>{
-
-        const card =
-        document.createElement(
-            "div"
-        );
-
-        card.className =
-            "gallery-item";
-
-
-        let media;
-
-
-        if(
-            item.type === "video"
-        ){
-
-            media =
-            document.createElement(
-                "video"
-            );
-
-            media.controls =
-                false;
-
-            media.muted =
-                true;
-
-            media.playsInline =
-                true;
-
-            media.preload =
-                "metadata";
-
-        }
-        else{
-
-            media =
-            document.createElement(
-                "img"
-            );
-
-            media.loading =
-                "lazy";
-
-        }
-
-
-        media.src =
-            item.url;
-
-        media.alt =
-            item.name;
-
-
-        const caption =
-        document.createElement(
-            "div"
-        );
-
-        caption.className =
-            "gallery-caption";
-
-        caption.textContent =
-            item.name;
-
-
-        card.appendChild(
-            media
-        );
-
-        card.appendChild(
-            caption
-        );
-
-
-        card.onclick =
-        ()=>{
-
-            openMediaViewer(
-                item
-            );
-
-        };
-
-
-        gallery.appendChild(
-            card
-        );
-
-    });
-
+/* ---------- editor password ---------- */
+const HOST_PASSWORD="aayushman";
+$("#openEditor").onclick=()=>{
+  const msg=$("#editorMsg");
+  if($("#editorPassword").value===HOST_PASSWORD){
+    msg.textContent="✓ Access granted.";
+    msg.style.color="#55e98b";
+    setTimeout(()=>location.href="edit.html",350);
+  }else{
+    msg.textContent="Incorrect password.";
+    msg.style.color="#ff6b75";
+  }
 };
+$("#editorPassword").addEventListener("keydown",e=>{if(e.key==="Enter")$("#openEditor").click()});
 
+/* ---------- BPM ---------- */
+setInterval(()=>{$("#miniAverage").style.opacity="1"},1000);
 
-/* =====================================================
-   MEDIA VIEWER
-===================================================== */
-
-function openMediaViewer(
-    item
-){
-
-    const viewer =
-    document.getElementById(
-        "sectionViewer"
-    );
-
-    const title =
-    document.getElementById(
-        "sectionViewerTitle"
-    );
-
-    const content =
-    document.getElementById(
-        "sectionViewerContent"
-    );
-
-
-    content.innerHTML =
-        "";
-
-    title.textContent =
-        item.name;
-
-
-    let media;
-
-
-    if(
-        item.type === "video"
-    ){
-
-        media =
-        document.createElement(
-            "video"
-        );
-
-        media.controls =
-            true;
-
-        media.autoplay =
-            true;
-
-        media.playsInline =
-            true;
-
-    }
-    else{
-
-        media =
-        document.createElement(
-            "img"
-        );
-
-    }
-
-
-    media.src =
-        item.url;
-
-    media.className =
-        "section-view-media";
-
-
-    content.appendChild(
-        media
-    );
-
-
-    viewer.classList.add(
-        "show"
-    );
-
-
-    viewer.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
+/* ---------- media ---------- */
+let mediaStore=[];
+async function loadMedia(){
+  try{
+    const snap=await getDocs(collection(db,MEDIA_COLLECTION));
+    mediaStore=[];
+    snap.forEach(d=>{
+      const x=d.data();
+      const url=x.url||x.link||x.mediaUrl||x.secure_url;
+      if(!url)return;
+      let type=String(x.type||x.mediaType||"").toLowerCase();
+      if(["image","photo","photos"].includes(type))type="photo";
+      if(["video","videos"].includes(type))type="video";
+      if(type!=="photo"&&type!=="video"){
+        const clean=url.split("?")[0].toLowerCase();
+        if(/\.(jpg|jpeg|png|gif|webp|avif)$/.test(clean))type="photo";
+        else if(/\.(mp4|webm|mov|m4v|ogg)$/.test(clean))type="video";
+        else return;
+      }
+      mediaStore.push({id:d.id,name:x.name||x.title||"Project Media",url,type});
     });
-
+    renderMedia("photo");
+    renderMedia("video");
+  }catch(e){
+    console.error(e);
+    $("#imageStatus").textContent="❌ Firebase media could not be loaded.";
+    $("#videoStatus").textContent="❌ Firebase media could not be loaded.";
+  }
 }
-
-
-/* =====================================================
-   RATING DATA
-===================================================== */
-
-function updateRatingDisplay(
-    average,
-    count
-){
-
-    miniAverage.textContent =
-        average.toFixed(1) +
-        " / 5";
-
-
-    miniCount.textContent =
-        count +
-        (
-            count === 1
-            ? " rating"
-            : " ratings"
-        );
-
-
-    if(count){
-
-        ratingTotalText.innerHTML =
-            "<strong>★ " +
-            average.toFixed(1) +
-            " / 5</strong> · " +
-            count +
-            (
-                count === 1
-                ? " rating"
-                : " ratings"
-            );
-
-    }
-    else{
-
-        ratingTotalText.innerHTML =
-            '<span style="color:#ffd52a">★</span> No ratings yet';
-
-    }
-
+function renderMedia(type){
+  const isPhoto=type==="photo";
+  const grid=$(isPhoto?"#imageGrid":"#videoGrid");
+  const empty=$(isPhoto?"#imageEmpty":"#videoEmpty");
+  const count=$(isPhoto?"#imageCount":"#videoCount");
+  const status=$(isPhoto?"#imageStatus":"#videoStatus");
+  const items=mediaStore.filter(x=>x.type===type);
+  grid.innerHTML="";
+  count.textContent=`${items.length} ${isPhoto?(items.length===1?"image":"images"):(items.length===1?"video":"videos")}`;
+  status.textContent=`☁ Firebase connected · ${items.length} loaded`;
+  status.style.color="#69e58a";
+  empty.style.display=items.length?"none":"block";
+  items.forEach(item=>{
+    const card=document.createElement("article");card.className="media-card";
+    const media=document.createElement(isPhoto?"img":"video");
+    media.src=item.url;media.alt=item.name;
+    if(!isPhoto){media.muted=true;media.playsInline=true;media.preload="metadata"}
+    else media.loading="lazy";
+    const cap=document.createElement("div");cap.className="media-caption";
+    cap.innerHTML=`<strong></strong><span>${isPhoto?"PHOTO":"VIDEO"}</span>`;
+    cap.querySelector("strong").textContent=item.name;
+    card.append(media,cap);
+    card.onclick=()=>openViewer(item);
+    grid.appendChild(card);
+  });
 }
+function openViewer(item){
+  $("#viewerTitle").textContent=item.name;
+  const c=$("#viewerContent");c.innerHTML="";
+  const media=document.createElement(item.type==="video"?"video":"img");
+  media.src=item.url;media.className="viewer-media";
+  if(item.type==="video"){media.controls=true;media.autoplay=true;media.playsInline=true}
+  c.appendChild(media);$("#viewer").classList.add("show");
+}
+$("#viewerClose").onclick=()=>$("#viewer").classList.remove("show");
+$("#viewer").onclick=e=>{if(e.target.id==="viewer")$("#viewer").classList.remove("show")};
+loadMedia();
 
-
-/* =====================================================
-   LOAD ALL RATINGS
-===================================================== */
-
+/* ---------- rating ---------- */
+function hasRated(){
+  return localStorage.getItem("heartProjectRated")==="yes" ||
+    document.cookie.split(";").some(x=>x.trim()==="heartProjectRated=yes");
+}
+function markRated(){
+  localStorage.setItem("heartProjectRated","yes");
+  document.cookie="heartProjectRated=yes;max-age=31536000;path=/;SameSite=Lax";
+}
+let voterId=localStorage.getItem("heartRatingVoterId");
+if(!voterId){
+  voterId="voter_"+Date.now()+"_"+Math.random().toString(36).slice(2);
+  localStorage.setItem("heartRatingVoterId",voterId);
+}
+let selectedRating=0;
+const overlay=$("#ratingOverlay");
+function openRating(){if(!hasRated())overlay.classList.add("show")}
+function closeRating(){overlay.classList.remove("show")}
+$$(".star").forEach(star=>{
+  star.onmouseenter=()=>{
+    const n=+star.dataset.rating;
+    $$(".star").forEach(s=>s.classList.toggle("active",+s.dataset.rating<=n));
+  };
+  star.onmouseleave=()=>$$(".star").forEach(s=>s.classList.toggle("active",+s.dataset.rating<=selectedRating));
+  star.onclick=()=>{
+    selectedRating=+star.dataset.rating;
+    $$(".star").forEach(s=>s.classList.toggle("active",+s.dataset.rating<=selectedRating));
+  };
+});
+$("#cancelRating").onclick=closeRating;
+$("#submitRating").onclick=async()=>{
+  if(!selectedRating){alert("Please select a rating.");return}
+  $$(".star").forEach(s=>s.disabled=true);
+  $("#submitRating").disabled=true;
+  try{
+    await addDoc(collection(db,RATINGS_COLLECTION),{rating:selectedRating,voterId,createdAt:serverTimestamp()});
+    markRated();
+    await loadRatings();
+    $("#ratingContent").style.display="none";
+    $("#ratingSuccess").classList.add("show");
+  }catch(e){
+    console.error(e);
+    alert("Unable to save rating. Please check your internet connection.");
+    $$(".star").forEach(s=>s.disabled=false);
+    $("#submitRating").disabled=false;
+  }
+};
+$("#ratingDone").onclick=()=>{
+  closeRating();
+  $("#ratingSuccess").classList.remove("show");
+  $("#ratingContent").style.display="";
+  selectedRating=0;
+  $$(".star").forEach(s=>{s.disabled=false;s.classList.remove("active")});
+  $("#submitRating").disabled=false;
+};
 async function loadRatings(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            )
-        );
-
-
-        let total = 0;
-
-        let count = 0;
-
-
-        snapshot.forEach(
-        documentSnapshot=>{
-
-            const data =
-                documentSnapshot.data();
-
-
-            const rating =
-                Number(
-                    data.rating
-                );
-
-
-            if(
-                rating >= 1 &&
-                rating <= 5
-            ){
-
-                total +=
-                    rating;
-
-                count++;
-
-            }
-
-        });
-
-
-        const average =
-            count
-            ? total / count
-            : 0;
-
-
-        updateRatingDisplay(
-            average,
-            count
-        );
-
-
-        /*
-           CRITICAL FIX:
-
-           Check Firebase too.
-
-           So even if the page's local storage
-           is lost, the same browser/device is
-           recognized from its voterId.
-        */
-
-        await checkWhetherAlreadyRated();
-
-    }
-    catch(error){
-
-        console.error(
-            "Rating load error:",
-            error
-        );
-
-
-        /*
-           If Firebase cannot be checked,
-           use local storage.
-        */
-
-        if(
-            hasLocalRating()
-        ){
-
-            hideRatingPanel();
-
-        }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-
-}
-
-
-/* =====================================================
-   CHECK WHETHER THIS VOTER ALREADY RATED
-===================================================== */
-
-async function checkWhetherAlreadyRated(){
-
-    if(
-        hasLocalRating()
-    ){
-
-        hideRatingPanel();
-
-        return;
-
-    }
-
-
-    const voterId =
-        window.heartVoterId;
-
-
-    if(!voterId){
-
-        showRatingPanel();
-
-        return;
-
-    }
-
-
-    try{
-
-        const q =
-        query(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            ),
-
-            where(
-                "voterId",
-                "==",
-                voterId
-            ),
-
-            limit(1)
-        );
-
-
-        const result =
-        await getDocs(q);
-
-
-        if(
-            !result.empty
-        ){
-
-            /*
-               Firebase confirms that this browser
-               already rated.
-
-               Save locally too so the rating panel
-               stays hidden immediately on future visits.
-            */
-
-            saveLocalRating();
-
-            hideRatingPanel();
-
-        }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-    catch(error){
-
-        console.error(
-            "Voter check error:",
-            error
-        );
-
-
-        /*
-           Don't show rating if local storage
-           already says rated.
-        */
-
-        if(
-            hasLocalRating()
-        ){
-
-            hideRatingPanel();
-
-        }
-        else{
-
-            showRatingPanel();
-
-        }
-
-    }
-
-}
-
-
-/* =====================================================
-   SUBMIT RATING
-===================================================== */
-
-window.submitRating =
-async function(
-    rating
-){
-
-    if(
-        rating < 1 ||
-        rating > 5
-    ){
-
-        return;
-
-    }
-
-
-    const stars =
-    document.querySelectorAll(
-        ".rating-star"
-    );
-
-
-    stars.forEach(
-    star=>{
-        star.disabled =
-            true;
+  try{
+    const snap=await getDocs(collection(db,RATINGS_COLLECTION));
+    let total=0,count=0;
+    snap.forEach(d=>{
+      const n=Number(d.data().rating);
+      if(n>=1&&n<=5){total+=n;count++}
     });
-
-
-    try{
-
-        await addDoc(
-            collection(
-                db,
-                RATINGS_COLLECTION
-            ),
-            {
-
-                rating:
-                    Number(rating),
-
-                voterId:
-                    window.heartVoterId,
-
-                createdAt:
-                    serverTimestamp()
-
-            }
-        );
-
-
-        /*
-           Mark immediately.
-
-           This prevents the panel from returning
-           when the page is revisited.
-        */
-
-        saveLocalRating();
-
-
-        await loadRatings();
-
-
-        /*
-           Hide the large rating panel shortly
-           after the successful submission.
-        */
-
-        setTimeout(
-        ()=>{
-
-            hideRatingPanel();
-
-        },
-        1500
-        );
-
-    }
-    catch(error){
-
-        console.error(
-            "Rating save error:",
-            error
-        );
-
-
-        stars.forEach(
-        star=>{
-            star.disabled =
-                false;
-        });
-
-
-        alert(
-            "Unable to save rating. Please check your internet connection."
-        );
-
-    }
-
-};
-
-
-/* =====================================================
-   PDF READER
-===================================================== */
-
-const PDF_URL =
-"./1.pdf";
-
-
-const pdfPages =
-document.getElementById(
-    "pdfPages"
-);
-
-const pdfScroll =
-document.getElementById(
-    "pdfScroll"
-);
-
-const pdfPageInfo =
-document.getElementById(
-    "pdfPageInfo"
-);
-
-const pdfStatus =
-document.getElementById(
-    "pdfStatus"
-);
-
-const pdfPrev =
-document.getElementById(
-    "pdfPrev"
-);
-
-const pdfNext =
-document.getElementById(
-    "pdfNext"
-);
-
-const pdfZoomIn =
-document.getElementById(
-    "pdfZoomIn"
-);
-
-const pdfZoomOut =
-document.getElementById(
-    "pdfZoomOut"
-);
-
-const pdfZoomReset =
-document.getElementById(
-    "pdfZoomReset"
-);
-
-const pdfFullscreen =
-document.getElementById(
-    "pdfFullscreen"
-);
-
-
-let pdfDocument =
-null;
-
-let pdfCurrentPage =
-1;
-
-let pdfScale =
-1.25;
-
-
-/* =====================================================
-   PDF STATUS
-===================================================== */
-
-function setPdfStatus(
-    text
-){
-
-    pdfStatus.textContent =
-        text;
-
+    const avg=count?total/count:0;
+    $("#miniAverage").textContent=avg.toFixed(1)+" / 5";
+    $("#miniCount").textContent=count+(count===1?" rating":" ratings");
+    if(!hasRated())setTimeout(openRating,1000);
+    else await checkVoter();
+  }catch(e){
+    console.error(e);
+    if(!hasRated())setTimeout(openRating,1000);
+  }
 }
-
-
-/* =====================================================
-   LOAD PDF
-===================================================== */
-
-async function loadPDF(){
-
-    try{
-
-        setPdfStatus(
-            "📖 Loading 1.pdf..."
-        );
-
-
-        pdfPages.innerHTML =
-            `
-            <div class="pdf-loading">
-                📖 Opening Project Presentation...
-            </div>
-            `;
-
-
-        /*
-           PDF.js loads the actual PDF bytes.
-           It does NOT navigate to the PDF URL,
-           so Android's download prompt is avoided.
-        */
-
-        pdfDocument =
-        await pdfjsLib.getDocument({
-            url:PDF_URL,
-            disableAutoFetch:false,
-            disableStream:false
-        }).promise;
-
-
-        pdfPages.innerHTML =
-            "";
-
-
-        setPdfStatus(
-            "✓ PDF loaded • " +
-            pdfDocument.numPages +
-            " pages"
-        );
-
-
-        await renderAllPdfPages();
-
-
-        updatePdfPageInfo();
-
-    }
-    catch(error){
-
-        console.error(
-            "PDF error:",
-            error
-        );
-
-
-        pdfPages.innerHTML =
-            `
-            <div class="pdf-error">
-
-                <strong>
-                    Unable to display the PDF.
-                </strong>
-
-                <div style="margin-top:8px;color:#aaa">
-                    Please make sure <b>1.pdf</b>
-                    is in the same folder as index.html.
-                </div>
-
-                <button
-                    type="button"
-                    onclick="location.reload()"
-                >
-                    Try Again
-                </button>
-
-            </div>
-            `;
-
-
-        setPdfStatus(
-            "❌ PDF could not be loaded"
-        );
-
-    }
-
+async function checkVoter(){
+  try{
+    const q=query(collection(db,RATINGS_COLLECTION),where("voterId","==",voterId),limit(1));
+    const snap=await getDocs(q);
+    if(!snap.empty)markRated();
+  }catch(e){console.error(e)}
 }
-
-
-/* =====================================================
-   RENDER ALL PDF PAGES
-===================================================== */
-
-async function renderAllPdfPages(){
-
-    if(!pdfDocument){
-        return;
-    }
-
-
-    pdfPages.innerHTML =
-        "";
-
-
-    for(
-        let pageNumber = 1;
-        pageNumber <= pdfDocument.numPages;
-        pageNumber++
-    ){
-
-        await renderPdfPage(
-            pageNumber
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   RENDER ONE PAGE
-===================================================== */
-
-async function renderPdfPage(
-    pageNumber
-){
-
-    const page =
-        await pdfDocument.getPage(
-            pageNumber
-        );
-
-
-    const viewport =
-        page.getViewport({
-            scale:pdfScale
-        });
-
-
-    const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-    canvas.className =
-        "pdf-page";
-
-
-    const context =
-        canvas.getContext(
-            "2d",
-            {
-                alpha:false
-            }
-        );
-
-
-    const outputScale =
-        window.devicePixelRatio || 1;
-
-
-    canvas.width =
-        Math.floor(
-            viewport.width *
-            outputScale
-        );
-
-
-    canvas.height =
-        Math.floor(
-            viewport.height *
-            outputScale
-        );
-
-
-    canvas.style.width =
-        Math.floor(
-            viewport.width
-        ) +
-        "px";
-
-
-    canvas.style.height =
-        Math.floor(
-            viewport.height
-        ) +
-        "px";
-
-
-    const transform =
-        outputScale !== 1
-        ? [
-            outputScale,
-            0,
-            0,
-            outputScale,
-            0,
-            0
-        ]
-        : null;
-
-
-    await page.render({
-
-        canvasContext:
-            context,
-
-        transform:
-            transform,
-
-        viewport:
-            viewport
-
-    }).promise;
-
-
-    canvas.dataset.page =
-        pageNumber;
-
-
-    pdfPages.appendChild(
-        canvas
-    );
-
-}
-
-
-/* =====================================================
-   PDF PAGE INFO
-===================================================== */
-
-function updatePdfPageInfo(){
-
-    if(!pdfDocument){
-
-        pdfPageInfo.textContent =
-            "PDF";
-
-        return;
-
-    }
-
-
-    pdfPageInfo.textContent =
-        pdfCurrentPage +
-        " / " +
-        pdfDocument.numPages;
-
-}
-
-
-/* =====================================================
-   FIND CURRENT PDF PAGE
-===================================================== */
-
-function findCurrentPdfPage(){
-
-    const canvases =
-        pdfPages.querySelectorAll(
-            ".pdf-page"
-        );
-
-
-    let closestPage =
-        1;
-
-    let smallestDistance =
-        Infinity;
-
-
-    const scrollTop =
-        pdfScroll.scrollTop;
-
-
-    canvases.forEach(
-    canvas=>{
-
-        const distance =
-            Math.abs(
-                canvas.offsetTop -
-                scrollTop -
-                25
-            );
-
-
-        if(
-            distance <
-            smallestDistance
-        ){
-
-            smallestDistance =
-                distance;
-
-            closestPage =
-                Number(
-                    canvas.dataset.page
-                );
-
-        }
-
-    });
-
-
-    pdfCurrentPage =
-        closestPage;
-
-
-    updatePdfPageInfo();
-
-}
-
-
-/* =====================================================
-   PDF SCROLL
-===================================================== */
-
-pdfScroll.addEventListener(
-    "scroll",
-    ()=>{
-        findCurrentPdfPage();
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* =====================================================
-   PDF NEXT
-===================================================== */
-
-pdfNext.addEventListener(
-    "click",
-    ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        pdfCurrentPage =
-            Math.min(
-                pdfCurrentPage + 1,
-                pdfDocument.numPages
-            );
-
-
-        scrollToPdfPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/* =====================================================
-   PDF PREVIOUS
-===================================================== */
-
-pdfPrev.addEventListener(
-    "click",
-    ()=>{
-
-        if(
-            !pdfDocument
-        ){
-
-            return;
-
-        }
-
-
-        pdfCurrentPage =
-            Math.max(
-                pdfCurrentPage - 1,
-                1
-            );
-
-
-        scrollToPdfPage(
-            pdfCurrentPage
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SCROLL TO PAGE
-===================================================== */
-
-function scrollToPdfPage(
-    pageNumber
-){
-
-    const canvas =
-        pdfPages.querySelector(
-            `.pdf-page[data-page="${pageNumber}"]`
-        );
-
-
-    if(!canvas){
-        return;
-    }
-
-
-    pdfScroll.scrollTo({
-
-        top:
-            canvas.offsetTop - 20,
-
-        behavior:
-            "smooth"
-
-    });
-
-
-    updatePdfPageInfo();
-
-}
-
-
-/* =====================================================
-   PDF ZOOM
-===================================================== */
-
-async function rebuildPdfZoom(){
-
-    if(!pdfDocument){
-
-        return;
-
-    }
-
-
-    const oldPage =
-        pdfCurrentPage;
-
-
-    setPdfStatus(
-        "🔄 Adjusting PDF..."
-    );
-
-
-    await renderAllPdfPages();
-
-
-    pdfCurrentPage =
-        oldPage;
-
-
-    setTimeout(
-    ()=>{
-
-        scrollToPdfPage(
-            oldPage
-        );
-
-        setPdfStatus(
-            "✓ PDF ready"
-        );
-
-    },
-    50
-    );
-
-}
-
-
-pdfZoomIn.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            Math.min(
-                pdfScale + .15,
-                2.5
-            );
-
-
-        pdfZoomReset.textContent =
-            Math.round(
-                pdfScale * 80
-            ) +
-            "%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-pdfZoomOut.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            Math.max(
-                pdfScale - .15,
-                .6
-            );
-
-
-        pdfZoomReset.textContent =
-            Math.round(
-                pdfScale * 80
-            ) +
-            "%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-pdfZoomReset.addEventListener(
-    "click",
-    async()=>{
-
-        pdfScale =
-            1.25;
-
-
-        pdfZoomReset.textContent =
-            "100%";
-
-
-        await rebuildPdfZoom();
-
-    }
-);
-
-
-/* =====================================================
-   PDF FULLSCREEN
-===================================================== */
-
-pdfFullscreen.addEventListener(
-    "click",
-    async()=>{
-
-        const reader =
-        document.querySelector(
-            ".pdf-reader-box"
-        );
-
-
-        if(
-            !document.fullscreenElement
-        ){
-
-            try{
-
-                await reader.requestFullscreen();
-
-            }
-            catch(error){
-
-                console.log(
-                    error
-                );
-
-            }
-
-        }
-        else{
-
-            await document.exitFullscreen();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
-
-/*
-   IMPORTANT:
-   These are called only once.
-
-   There is NO 10-second reload.
-   There is NO automatic page refresh.
-   There is NO repeated gallery replacement.
-
-   Therefore scrolling position will remain stable.
-*/
-
-loadFirebaseMedia();
-
 loadRatings();
-
-loadPDF();
-
 </script>
-
-
 </body>
-
 </html>
