@@ -404,13 +404,27 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
   color:#9ecbff;font-size:11px;letter-spacing:3px;font-weight:900;
 }
 .pulse-graph{position:absolute;inset:60px 18px 70px;width:calc(100% - 36px);height:260px;overflow:visible}
-.pulse-line{fill:none;stroke:url(#pulseGradient);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-.pulse-line-back{opacity:.15;filter:blur(10px)}
+.pulse-line{
+  fill:none;
+  stroke:url(#pulseGradient);
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.pulse-line-back{
+  opacity:.15;
+  filter:blur(10px);
+}
 .pulse-line-front{
-  stroke-dasharray:1050 1050;
-  stroke-dashoffset:1050;
-  animation:pulseRun 2.1s linear infinite;
   filter:drop-shadow(0 0 7px #ff2345) drop-shadow(0 0 15px #1677ff);
+}
+.pulse-track{
+  animation:pulseTrack 2.8s linear infinite;
+  will-change:transform;
+}
+@keyframes pulseTrack{
+  from{transform:translateX(0)}
+  to{transform:translateX(-1000px)}
 }
 .pulse-caption{
   position:absolute;left:26px;right:26px;bottom:21px;
@@ -419,7 +433,6 @@ footer strong{color:#fff} footer .footer-brand{font-size:25px;color:#fff;font-we
 .pulse-caption span{font-size:28px;font-weight:900}
 .pulse-caption span b{color:#fff}
 .pulse-caption small{color:#8f9bad;font-size:11px}
-@keyframes pulseRun{to{stroke-dashoffset:0}}
 @keyframes pulseGlow{50%{transform:scale(1.15);opacity:.75}}
 
 .bottom-nav{
@@ -716,6 +729,42 @@ body{
 /* Prevent any page-level background animation from being introduced. */
 body::before,body::after,main::before,main::after{animation:none !important;}
 
+
+/* ===== THEME GRADIENTS ===== */
+body{
+  --g1:#020817;
+  --g2:#06245a;
+  --g3:#17154b;
+  --g4:#3a0719;
+  --glowBlue:rgba(22,119,255,.34);
+  --glowRed:rgba(255,35,69,.30);
+  background:
+    radial-gradient(circle at 12% 18%,var(--glowBlue) 0%,transparent 34%),
+    radial-gradient(circle at 88% 22%,var(--glowRed) 0%,transparent 34%),
+    radial-gradient(circle at 72% 82%,rgba(255,35,69,.18) 0%,transparent 30%),
+    linear-gradient(135deg,var(--g1) 0%,var(--g2) 35%,var(--g3) 58%,var(--g4) 82%,#09040b 100%) !important;
+  background-attachment:scroll !important;
+}
+
+body.red-theme{
+  --g1:#100207;
+  --g2:#3b0718;
+  --g3:#32112b;
+  --g4:#071d55;
+  --glowBlue:rgba(22,119,255,.24);
+  --glowRed:rgba(255,35,69,.42);
+}
+
+body.red-theme .theme-btn.active{
+  background:linear-gradient(135deg,rgba(255,35,69,.28),rgba(22,119,255,.16)) !important;
+  border-color:#ff2345 !important;
+}
+
+body:not(.red-theme) .theme-btn.active{
+  background:linear-gradient(135deg,rgba(22,119,255,.28),rgba(255,35,69,.16)) !important;
+  border-color:#1677ff !important;
+}
+
 </style>
 </head>
 
@@ -768,17 +817,35 @@ body::before,body::after,main::before,main::after{animation:none !important;}
       <div class="pulse-stage">
         <div class="pulse-glow"></div>
         <div class="pulse-label">LIVE HEARTBEAT</div>
-        <svg class="pulse-graph" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="Running pulse graph">
-          <defs>
-            <linearGradient id="pulseGradient" x1="0" x2="1">
-              <stop offset="0" stop-color="#1677ff"/>
-              <stop offset=".52" stop-color="#ffffff"/>
-              <stop offset="1" stop-color="#ff2345"/>
-            </linearGradient>
-          </defs>
-          <polyline class="pulse-line pulse-line-back" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
-          <polyline class="pulse-line pulse-line-front" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
-        </svg>
+        <svg class="pulse-graph" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="Continuous running pulse graph">
+  <defs>
+    <linearGradient id="pulseGradient" x1="0" x2="1">
+      <stop offset="0" stop-color="#1677ff"/>
+      <stop offset=".52" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ff2345"/>
+    </linearGradient>
+    <linearGradient id="pulseEdgeFade" x1="0" x2="1">
+      <stop offset="0" stop-color="black"/>
+      <stop offset=".08" stop-color="white"/>
+      <stop offset=".92" stop-color="white"/>
+      <stop offset="1" stop-color="black"/>
+    </linearGradient>
+    <mask id="pulseMask">
+      <rect width="1000" height="300" fill="url(#pulseEdgeFade)"/>
+    </mask>
+  </defs>
+
+  <g class="pulse-track" mask="url(#pulseMask)">
+    <g class="pulse-copy">
+      <polyline class="pulse-line pulse-line-back" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+      <polyline class="pulse-line pulse-line-front" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+    </g>
+    <g class="pulse-copy" transform="translate(1000,0)">
+      <polyline class="pulse-line pulse-line-back" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+      <polyline class="pulse-line pulse-line-front" points="0,150 90,150 115,150 135,105 150,195 165,150 235,150 265,150 285,55 300,245 315,150 390,150 430,150 450,118 465,150 535,150 570,150 590,78 605,222 620,150 700,150 740,150 760,110 775,190 790,150 860,150 900,150 920,62 935,238 950,150 1000,150"/>
+    </g>
+  </g>
+</svg>
         <div class="pulse-caption">
           <span><b id="liveBpm">72</b> BPM</span>
           <small>Continuous pulse animation</small>
