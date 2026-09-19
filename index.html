@@ -701,6 +701,21 @@ section,
 .password-box input{background:#02050b !important;color:#ffffff !important}
 .password-box button{color:#ffffff !important}
 
+
+/* FINAL STATIC BACKGROUND — no animated background VFX */
+body{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(22,119,255,.34) 0%, transparent 34%),
+    radial-gradient(circle at 88% 22%, rgba(255,35,69,.30) 0%, transparent 34%),
+    radial-gradient(circle at 72% 82%, rgba(255,35,69,.18) 0%, transparent 30%),
+    linear-gradient(135deg,#020817 0%,#06245a 35%,#11144a 58%,#3a0719 82%,#09040b 100%) !important;
+  background-attachment:scroll !important;
+}
+/* Remove the animated decorative background completely. */
+.vfx{display:none !important;animation:none !important;}
+/* Prevent any page-level background animation from being introduced. */
+body::before,body::after,main::before,main::after{animation:none !important;}
+
 </style>
 </head>
 
@@ -838,9 +853,6 @@ section,
       <div class="team-card"><strong>Raushan Kumar</strong></div>
       <div class="team-card"><strong>Dayansh Shekhar Singh</strong></div>
       <div class="team-card"><strong>Harsh Kumar</strong></div>
-      <div class="team-card"><strong>Divya Kumar</strong></div>
-      <div class="team-card"><strong>Abhishek Kumar</strong></div>
-      <div class="team-card"><strong>Sankalp Krishna</strong></div>
     </div>
   </div>
 </div>
